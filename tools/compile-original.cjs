@@ -15,6 +15,8 @@ for(const file of fs.readdirSync(configDir).filter(f=>f.endsWith('.json')).sort(
   object.script=JSON.stringify(stacks);
  }
 }
+// Balance patch (block-level edits that numeric overrides cannot express).
+require('./balance-patch.cjs')(project);
 // Mirror matches isolate the original effects that were shared by both players.
 const sharedCore=new Set(['m0id','ocqj','n230','n8fg','00h9','m9cz']);
 for(const object of project.objects){
@@ -23,7 +25,13 @@ for(const object of project.objects){
  const visit=x=>{if(!x||typeof x!=='object')return;if(x.type==='get_variable'&&['y75t','s5vb'].includes(x.params?.[0]))selectors.add(x.params[0]);if(Array.isArray(x))x.forEach(visit);else Object.values(x).forEach(visit);};
  visit(JSON.parse(object.script));
  object.combatSide=['n230','00h9'].includes(object.id)?1:['ocqj','n8fg'].includes(object.id)?2:selectors.size===1?(selectors.has('y75t')?1:2):null;
- object.mirrorShared=selectors.size===2&&!sharedCore.has(object.id);
+ // An object that reads only one selector can still hold the other player's logic in the
+ // else-branch of `if (<selector> == n) ... else ...` (e.g. 독안개, 에너지필드, 용접가면, 미사일·폭격표식 that locate the 2P body).
+ // It must be split per side in mirror matches too, or the 2P copy runs the 1P branch.
+ const otherSide=(sel)=>{const want=sel==='y75t'?/^2p/i:/^1p/i;const names=new Map(project.variables.map(v=>[v.id,v.name]));const objs=new Set(project.objects.filter(o=>want.test(o.name)).map(o=>o.id));let hit=false;const scan=x=>{if(hit||!x||typeof x!=='object')return;if(x.type==='get_variable'&&want.test(names.get(x.params?.[0])||''))hit=true;if(Array.isArray(x.params)&&x.params.some(p=>typeof p==='string'&&objs.has(p)))hit=true;if(Array.isArray(x))x.forEach(scan);else Object.values(x).forEach(scan);};const find=x=>{if(hit||!x||typeof x!=='object')return;if(x.type==='if_else'&&JSON.stringify(x.params?.[0]||null).includes('"'+sel+'"')&&x.statements?.[1])scan(x.statements[1]);if(Array.isArray(x))x.forEach(find);else Object.values(x).forEach(find);};find(JSON.parse(object.script));return hit;};
+ const elseHoldsOther=selectors.size===1&&otherSide([...selectors][0]);
+ if(elseHoldsOther)object.combatSide=null;
+ object.mirrorShared=(selectors.size===2||elseHoldsOther)&&!sharedCore.has(object.id);
  object.sharedCore=sharedCore.has(object.id);
 }
 const metadata={...project,objects:project.objects.map(({script,...rest})=>structuredClone(rest)),functions:[]};

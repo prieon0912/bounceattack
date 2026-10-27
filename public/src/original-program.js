@@ -5827,6 +5827,8 @@ if(c.thread.cancelled||c.e.dead)return;
 r.register("dx65","when_message_cast",[null,"m55m"],function*(r,c){
 c.block="ohcx";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp08n";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="oejp";r.guard(c);
 for(let i53=0,n53=Math.max(0,Math.floor(r.num("60")));i53<n53;i53++){
 c.block="inap";r.guard(c);
@@ -5862,6 +5864,8 @@ yield 1;
 r.register("dx65","when_message_cast",[null,"h0rp"],function*(r,c){
 c.block="d8np";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp08p";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="nkvz";r.guard(c);
 for(let i55=0,n55=Math.max(0,Math.floor(r.num("60")));i55<n55;i55++){
 c.block="cchd";r.guard(c);
@@ -6803,10 +6807,14 @@ r.command(c,"show",[null]);
 c.block="f9qm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","32"]))){
 c.block="lqt1";r.guard(c);
-r.command(c,"locate",["n230",null]);
+r.command(c,"locate",["00h9",null]);
+c.block="bp08j";r.guard(c);
+r.command(c,"move_y",["7",null]);
 }else{
 c.block="qcv4";r.guard(c);
-r.command(c,"locate",["ocqj",null]);
+r.command(c,"locate",["n8fg",null]);
+c.block="bp08l";r.guard(c);
+r.command(c,"move_y",["7",null]);
 }
 c.block="tbq1";r.guard(c);
 for(let i86=0,n86=Math.max(0,Math.floor(r.num("20")));i86<n86;i86++){
@@ -6885,7 +6893,7 @@ r.command(c,"set_scale_size",["100",null]);
 c.block="9yt2";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS_OR_EQUAL",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"DIVIDE","2"]),"PLUS","0"])]))){
 c.block="s6b7";r.guard(c);
-yield* r.call(c,"qy83",["-7",10,"2"]);
+yield* r.call(c,"qy83",["-6",10,"2"]);
 c.block="aqg3";r.guard(c);
 r.command(c,"change_variable",["nccn",r.value(c,"calc_basic",[r.value(c,"get_variable",["ck61",null]),"MULTI","0.75"]),null]);
 }
@@ -6920,7 +6928,7 @@ r.command(c,"set_scale_size",["100",null]);
 c.block="5kk9";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS_OR_EQUAL",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"DIVIDE","2"]),"PLUS","0"])]))){
 c.block="lelx";r.guard(c);
-yield* r.call(c,"05j0",["-7",10,"2"]);
+yield* r.call(c,"05j0",["-6",10,"2"]);
 c.block="64vb";r.guard(c);
 r.command(c,"change_variable",["9af4",r.value(c,"calc_basic",[r.value(c,"get_variable",["ck61",null]),"MULTI","0.75"]),null]);
 }
@@ -7200,7 +7208,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="szzo";r.guard(c);
 for(let i102=0,n102=Math.max(0,Math.floor(r.num("3")));i102<n102;i102++){
 c.block="3y7d";r.guard(c);
-for(let i103=0,n103=Math.max(0,Math.floor(r.num("10")));i103<n103;i103++){
+for(let i103=0,n103=Math.max(0,Math.floor(r.num("8")));i103<n103;i103++){
 c.block="lp7h";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","21"]))){
 c.block="18nu";r.guard(c);
@@ -7210,9 +7218,9 @@ c.block="r946";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 }
 c.block="zf85";r.guard(c);
-r.command(c,"add_effect_amount",["transparency",r.value(c,"calc_basic",["-100","DIVIDE","30"]),null]);
+r.command(c,"add_effect_amount",["transparency",r.value(c,"calc_basic",["-100","DIVIDE","24"]),null]);
 c.block="31p1";r.guard(c);
-r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["16","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","5"]),null]);
+r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["16","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","4"]),null]);
 yield 1;
 }
 c.block="ao9m";r.guard(c);
@@ -7839,13 +7847,13 @@ r.command(c,"set_variable",["tzdq","60",null]);
 c.block="9mbn";r.guard(c);
 r.command(c,"set_scale_size",["22",null]);
 c.block="dxcb";r.guard(c);
-r.command(c,"set_variable",["zk7l","3",null]);
+r.command(c,"set_variable",["bpva","3",null]);
 c.block="jvmn";r.guard(c);
 for(let i126=0,n126=Math.max(0,Math.floor(r.num("450")));i126<n126;i126++){
 c.block="7ah0";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="nqj7";r.guard(c);
-r.command(c,"set_variable",["zk7l","3",null]);
+r.command(c,"set_variable",["bpva","3",null]);
 c.block="r664";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["185","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","15"]),null]);
 c.block="vl5s";r.guard(c);
@@ -7856,8 +7864,14 @@ c.block="6k66";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["tzdq",null]),"GREATER_OR_EQUAL","60"]))){
 c.block="gubx";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
-c.block="b5zd";r.guard(c);
+c.block="bp053";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ziwi",null]),"GREATER","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpvd",null]),"GREATER",r.value(c,"get_variable",["bpva",null])])]))){
+}else{
+c.block="bp050";r.guard(c);
 r.command(c,"set_variable",["ziwi","3",null]);
+c.block="bp052";r.guard(c);
+r.command(c,"set_variable",["bpvd",r.value(c,"get_variable",["bpva",null]),null]);
+}
 c.block="pblv";r.guard(c);
 r.command(c,"set_variable",["tzdq","0",null]);
 c.block="v6fg";r.guard(c);
@@ -7871,7 +7885,7 @@ for(let i127=0,n127=Math.max(0,Math.floor(r.num("30")));i127<n127;i127++){
 c.block="h53v";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="6zae";r.guard(c);
-r.command(c,"set_variable",["zk7l","3",null]);
+r.command(c,"set_variable",["bpva","3",null]);
 c.block="h1iw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="sr5d";r.guard(c);
@@ -7882,8 +7896,14 @@ c.block="ycdc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["tzdq",null]),"GREATER_OR_EQUAL","60"]))){
 c.block="7way";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
-c.block="y978";r.guard(c);
+c.block="bp05f";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ziwi",null]),"GREATER","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpvd",null]),"GREATER",r.value(c,"get_variable",["bpva",null])])]))){
+}else{
+c.block="bp05c";r.guard(c);
 r.command(c,"set_variable",["ziwi","3",null]);
+c.block="bp05e";r.guard(c);
+r.command(c,"set_variable",["bpvd",r.value(c,"get_variable",["bpva",null]),null]);
+}
 c.block="r0rt";r.guard(c);
 r.command(c,"set_variable",["tzdq","0",null]);
 c.block="qmzw";r.guard(c);
@@ -7893,7 +7913,7 @@ r.command(c,"set_variable",["nccn","15",null]);
 yield 1;
 }
 c.block="d5yx";r.guard(c);
-r.command(c,"set_variable",["zk7l","1",null]);
+r.command(c,"set_variable",["bpva","1",null]);
 c.block="v3sl";r.guard(c);
 r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
@@ -7925,8 +7945,14 @@ r.command(c,"set_variable",["1g8o","-4",null]);
 }
 c.block="d7x8";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
-c.block="nthh";r.guard(c);
+c.block="bp05r";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ziwi",null]),"GREATER","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpvd",null]),"GREATER",r.value(c,"get_variable",["bpva",null])])]))){
+}else{
+c.block="bp05o";r.guard(c);
 r.command(c,"set_variable",["ziwi","3",null]);
+c.block="bp05q";r.guard(c);
+r.command(c,"set_variable",["bpvd",r.value(c,"get_variable",["bpva",null]),null]);
+}
 c.block="cfr2";r.guard(c);
 r.command(c,"set_variable",["tzdq","0",null]);
 c.block="bbob";r.guard(c);
@@ -7960,8 +7986,14 @@ r.command(c,"set_variable",["1g8o","-4",null]);
 }
 c.block="qc9r";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
-c.block="patl";r.guard(c);
+c.block="bp063";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ziwi",null]),"GREATER","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpvd",null]),"GREATER",r.value(c,"get_variable",["bpva",null])])]))){
+}else{
+c.block="bp060";r.guard(c);
 r.command(c,"set_variable",["ziwi","3",null]);
+c.block="bp062";r.guard(c);
+r.command(c,"set_variable",["bpvd",r.value(c,"get_variable",["bpva",null]),null]);
+}
 c.block="a3zn";r.guard(c);
 r.command(c,"set_variable",["tzdq","0",null]);
 c.block="6g47";r.guard(c);
@@ -7998,13 +8030,13 @@ r.command(c,"set_variable",["tzdq","60",null]);
 c.block="j9x1";r.guard(c);
 r.command(c,"set_scale_size",["10",null]);
 c.block="q7jr";r.guard(c);
-r.command(c,"set_variable",["zk7l","3",null]);
+r.command(c,"set_variable",["bpvb","3",null]);
 c.block="xqxr";r.guard(c);
 for(let i130=0,n130=Math.max(0,Math.floor(r.num("450")));i130<n130;i130++){
 c.block="xfgb";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="pye5";r.guard(c);
-r.command(c,"set_variable",["zk7l","3",null]);
+r.command(c,"set_variable",["bpvb","3",null]);
 c.block="hqqi";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["185","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","15"]),null]);
 c.block="00pf";r.guard(c);
@@ -8015,8 +8047,14 @@ c.block="jund";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["tzdq",null]),"GREATER_OR_EQUAL","60"]))){
 c.block="n088";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
-c.block="hm2i";r.guard(c);
+c.block="bp06f";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["td66",null]),"GREATER","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpvc",null]),"GREATER",r.value(c,"get_variable",["bpvb",null])])]))){
+}else{
+c.block="bp06c";r.guard(c);
 r.command(c,"set_variable",["td66","3",null]);
+c.block="bp06e";r.guard(c);
+r.command(c,"set_variable",["bpvc",r.value(c,"get_variable",["bpvb",null]),null]);
+}
 c.block="h94k";r.guard(c);
 r.command(c,"set_variable",["tzdq","0",null]);
 c.block="yc32";r.guard(c);
@@ -8030,7 +8068,7 @@ for(let i131=0,n131=Math.max(0,Math.floor(r.num("30")));i131<n131;i131++){
 c.block="3rzs";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="ncem";r.guard(c);
-r.command(c,"set_variable",["zk7l","3",null]);
+r.command(c,"set_variable",["bpvb","3",null]);
 c.block="dfto";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="k4yw";r.guard(c);
@@ -8041,8 +8079,14 @@ c.block="07lr";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["tzdq",null]),"GREATER_OR_EQUAL","60"]))){
 c.block="o8st";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
-c.block="14mc";r.guard(c);
+c.block="bp06r";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["td66",null]),"GREATER","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpvc",null]),"GREATER",r.value(c,"get_variable",["bpvb",null])])]))){
+}else{
+c.block="bp06o";r.guard(c);
 r.command(c,"set_variable",["td66","3",null]);
+c.block="bp06q";r.guard(c);
+r.command(c,"set_variable",["bpvc",r.value(c,"get_variable",["bpvb",null]),null]);
+}
 c.block="si69";r.guard(c);
 r.command(c,"set_variable",["tzdq","0",null]);
 c.block="whta";r.guard(c);
@@ -8052,7 +8096,7 @@ r.command(c,"set_variable",["9af4","15",null]);
 yield 1;
 }
 c.block="8obs";r.guard(c);
-r.command(c,"set_variable",["zk7l","1",null]);
+r.command(c,"set_variable",["bpvb","1",null]);
 c.block="ornc";r.guard(c);
 r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
@@ -8084,8 +8128,14 @@ r.command(c,"set_variable",["bct6","-4",null]);
 }
 c.block="07uo";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
-c.block="jodq";r.guard(c);
+c.block="bp073";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["td66",null]),"GREATER","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpvc",null]),"GREATER",r.value(c,"get_variable",["bpvb",null])])]))){
+}else{
+c.block="bp070";r.guard(c);
 r.command(c,"set_variable",["td66","3",null]);
+c.block="bp072";r.guard(c);
+r.command(c,"set_variable",["bpvc",r.value(c,"get_variable",["bpvb",null]),null]);
+}
 c.block="wsbj";r.guard(c);
 r.command(c,"set_variable",["tzdq","0",null]);
 c.block="6vmi";r.guard(c);
@@ -8119,8 +8169,14 @@ r.command(c,"set_variable",["bct6","-4",null]);
 }
 c.block="pw90";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
-c.block="acl1";r.guard(c);
+c.block="bp07f";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["td66",null]),"GREATER","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpvc",null]),"GREATER",r.value(c,"get_variable",["bpvb",null])])]))){
+}else{
+c.block="bp07c";r.guard(c);
 r.command(c,"set_variable",["td66","3",null]);
+c.block="bp07e";r.guard(c);
+r.command(c,"set_variable",["bpvc",r.value(c,"get_variable",["bpvb",null]),null]);
+}
 c.block="dccr";r.guard(c);
 r.command(c,"set_variable",["tzdq","0",null]);
 c.block="nork";r.guard(c);
@@ -8962,6 +9018,8 @@ r.command(c,"change_variable",["lgp6","-80",null]);
 }
 c.block="m5y2";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp08r";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="c295";r.guard(c);
 for(let i162=0,n162=Math.max(0,Math.floor(r.num("100")));i162<n162;i162++){
 c.block="kpyu";r.guard(c);
@@ -8998,6 +9056,8 @@ r.command(c,"change_variable",["c9o4","80",null]);
 }
 c.block="00sn";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp08t";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="przn";r.guard(c);
 for(let i163=0,n163=Math.max(0,Math.floor(r.num("100")));i163<n163;i163++){
 c.block="ulnn";r.guard(c);
@@ -12254,7 +12314,7 @@ yield 1;
 c.block="dp60";r.guard(c);
 r.command(c,"set_variable",["g4sc","0",null]);
 c.block="q4yu";r.guard(c);
-yield* r.call(c,"41z4",["3"]);
+yield* r.call(c,"41z4",["0"]);
 c.block="t1s4";r.guard(c);
 r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
@@ -12306,7 +12366,7 @@ yield 1;
 c.block="4mk8";r.guard(c);
 r.command(c,"set_variable",["cfmd","0",null]);
 c.block="olxu";r.guard(c);
-yield* r.call(c,"albn",["3"]);
+yield* r.call(c,"albn",["0"]);
 c.block="0xam";r.guard(c);
 r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
@@ -15078,6 +15138,8 @@ c.block="3xuf";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","24"]))){
 c.block="3ssl";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp08v";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="8re9";r.guard(c);
 for(let i375=0,n375=Math.max(0,Math.floor(r.num("90")));i375<n375;i375++){
 yield 1;
@@ -15087,6 +15149,8 @@ r.command(c,"set_variable",["wyyq","0",null]);
 }else{
 c.block="0lh2";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp08x";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="zsb8";r.guard(c);
 for(let i376=0,n376=Math.max(0,Math.floor(r.num("90")));i376<n376;i376++){
 yield 1;
@@ -15145,10 +15209,10 @@ r.command(c,"set_scale_size",["40",null]);
 c.block="d4a1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="g9et";r.guard(c);
-r.command(c,"move_x",["12",null]);
+r.command(c,"move_x",["18",null]);
 }else{
 c.block="towp";r.guard(c);
-r.command(c,"move_x",["-12",null]);
+r.command(c,"move_x",["-18",null]);
 }
 c.block="5z4p";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
@@ -15156,7 +15220,7 @@ c.block="1fo9";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="rv0m";r.guard(c);
-r.command(c,"set_variable",["k94b","2",null]);
+r.command(c,"set_variable",["k94b","3",null]);
 c.block="rmos";r.guard(c);
 r.command(c,"set_variable",["glap",r.value(c,"get_variable",["846x",null]),null]);
 c.block="vvuf";r.guard(c);
@@ -15170,7 +15234,7 @@ c.block="7ja1";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["k94b",null]),"MULTI","-1"]),null]);
 }
 c.block="wbwg";r.guard(c);
-r.command(c,"change_variable",["k94b","-0.1",null]);
+r.command(c,"change_variable",["k94b","-0.15",null]);
 c.block="97o4";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="8f2c";r.guard(c);
@@ -15381,10 +15445,10 @@ r.command(c,"set_variable",["glap",r.value(c,"get_variable",["846x",null]),null]
 c.block="agak";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="kf0b";r.guard(c);
-r.command(c,"move_x",["22",null]);
+r.command(c,"move_x",["33",null]);
 }else{
 c.block="jk9y";r.guard(c);
-r.command(c,"move_x",["-22",null]);
+r.command(c,"move_x",["-33",null]);
 }
 c.block="n51n";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
@@ -15398,7 +15462,7 @@ yield 1;
 c.block="8qse";r.guard(c);
 r.command(c,"show",[null]);
 c.block="7jfz";r.guard(c);
-r.command(c,"set_variable",["k94b","3",null]);
+r.command(c,"set_variable",["k94b","4.5",null]);
 c.block="qkke";r.guard(c);
 for(let i389=0,n389=Math.max(0,Math.floor(r.num("20")));i389<n389;i389++){
 c.block="ic8n";r.guard(c);
@@ -15410,7 +15474,7 @@ c.block="lo13";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["k94b",null]),"MULTI","-1"]),null]);
 }
 c.block="an80";r.guard(c);
-r.command(c,"change_variable",["k94b","-0.15",null]);
+r.command(c,"change_variable",["k94b","-0.225",null]);
 c.block="0sim";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="2rfn";r.guard(c);
@@ -15548,7 +15612,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",
 c.block="vkp6";r.guard(c);
 r.command(c,"create_clone",["dcos",null]);
 c.block="6mtk";r.guard(c);
-for(let i394=0,n394=Math.max(0,Math.floor(r.num("30")));i394<n394;i394++){
+for(let i394=0,n394=Math.max(0,Math.floor(r.num("24")));i394<n394;i394++){
 c.block="w8i3";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="ou40";r.guard(c);
@@ -15663,6 +15727,8 @@ if(c.thread.cancelled||c.e.dead)return;
 r.register("52i7","when_message_cast",[null,"tu23"],function*(r,c){
 c.block="w4g5";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp08z";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="cm64";r.guard(c);
 for(let i397=0,n397=Math.max(0,Math.floor(r.num("90")));i397<n397;i397++){
 yield 1;
@@ -15710,10 +15776,10 @@ r.command(c,"set_scale_size",["40",null]);
 c.block="sum4";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="fo7w";r.guard(c);
-r.command(c,"move_x",["12",null]);
+r.command(c,"move_x",["18",null]);
 }else{
 c.block="osrh";r.guard(c);
-r.command(c,"move_x",["-12",null]);
+r.command(c,"move_x",["-18",null]);
 }
 c.block="weh0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
@@ -15721,7 +15787,7 @@ c.block="h32r";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="33wq";r.guard(c);
-r.command(c,"set_variable",["sykd","2",null]);
+r.command(c,"set_variable",["sykd","3",null]);
 c.block="tqeu";r.guard(c);
 r.command(c,"set_variable",["nr1n",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="1h6j";r.guard(c);
@@ -15735,7 +15801,7 @@ c.block="bf4s";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["sykd",null]),"MULTI","-1"]),null]);
 }
 c.block="pkm6";r.guard(c);
-r.command(c,"change_variable",["sykd","-0.1",null]);
+r.command(c,"change_variable",["sykd","-0.15",null]);
 c.block="jf7x";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="kth0";r.guard(c);
@@ -15944,10 +16010,10 @@ r.command(c,"set_scale_size",["30",null]);
 c.block="rvia";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="7mpt";r.guard(c);
-r.command(c,"move_x",["22",null]);
+r.command(c,"move_x",["33",null]);
 }else{
 c.block="3um4";r.guard(c);
-r.command(c,"move_x",["-22",null]);
+r.command(c,"move_x",["-33",null]);
 }
 c.block="0ik3";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
@@ -15963,7 +16029,7 @@ yield 1;
 c.block="ppkx";r.guard(c);
 r.command(c,"show",[null]);
 c.block="qdsl";r.guard(c);
-r.command(c,"set_variable",["sykd","3",null]);
+r.command(c,"set_variable",["sykd","4.5",null]);
 c.block="ihvk";r.guard(c);
 for(let i408=0,n408=Math.max(0,Math.floor(r.num("20")));i408<n408;i408++){
 c.block="4xyi";r.guard(c);
@@ -15975,7 +16041,7 @@ c.block="ccs0";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["sykd",null]),"MULTI","-1"]),null]);
 }
 c.block="ze3m";r.guard(c);
-r.command(c,"change_variable",["sykd","-0.15",null]);
+r.command(c,"change_variable",["sykd","-0.225",null]);
 c.block="krgb";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="y44p";r.guard(c);
@@ -16113,7 +16179,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",
 c.block="b2i0";r.guard(c);
 r.command(c,"create_clone",["dcos",null]);
 c.block="6mtk";r.guard(c);
-for(let i413=0,n413=Math.max(0,Math.floor(r.num("30")));i413<n413;i413++){
+for(let i413=0,n413=Math.max(0,Math.floor(r.num("24")));i413<n413;i413++){
 c.block="rspr";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="8ibj";r.guard(c);
@@ -16234,6 +16300,8 @@ if(c.thread.cancelled||c.e.dead)return;
 r.register("f9zp","when_message_cast",[null,"57im"],function*(r,c){
 c.block="w4g5";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp091";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="cm64";r.guard(c);
 for(let i416=0,n416=Math.max(0,Math.floor(r.num("90")));i416<n416;i416++){
 yield 1;
@@ -16519,7 +16587,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qvkr",
 c.block="g5c0";r.guard(c);
 r.command(c,"set_scale_size",["31",null]);
 c.block="u2k2";r.guard(c);
-r.command(c,"set_variable",["zgtb","7",null]);
+r.command(c,"set_variable",["zgtb","7.7",null]);
 c.block="56ka";r.guard(c);
 r.command(c,"set_variable",["91xd",r.value(c,"get_variable",["846x",null]),null]);
 c.block="9buu";r.guard(c);
@@ -16529,7 +16597,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["d8kc",
 c.block="r4cp";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="7j9a";r.guard(c);
-yield* r.call(c,"05j0",["-4",10,"1"]);
+yield* r.call(c,"05j0",["-5",10,"1"]);
 c.block="zy1s";r.guard(c);
 r.command(c,"set_variable",["d8kc","1",null]);
 c.block="wcx4";r.guard(c);
@@ -16992,7 +17060,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rr24",
 c.block="g5c0";r.guard(c);
 r.command(c,"set_scale_size",["31",null]);
 c.block="u2k2";r.guard(c);
-r.command(c,"set_variable",["5jyv","7",null]);
+r.command(c,"set_variable",["5jyv","7.7",null]);
 c.block="56ka";r.guard(c);
 r.command(c,"set_variable",["y2ih",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="9buu";r.guard(c);
@@ -17002,7 +17070,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["3crt",
 c.block="r4cp";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="0hxh";r.guard(c);
-yield* r.call(c,"qy83",["-4",10,"1"]);
+yield* r.call(c,"qy83",["-5",10,"1"]);
 c.block="zy1s";r.guard(c);
 r.command(c,"set_variable",["3crt","1",null]);
 c.block="wcx4";r.guard(c);
@@ -21873,7 +21941,7 @@ yield 1;
 c.block="ajnx";r.guard(c);
 r.command(c,"set_variable",["vhcu","0.02",null]);
 c.block="zl72";r.guard(c);
-while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","30"]))){yield 1;}
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","45"]))){yield 1;}
 c.block="k4i6";r.guard(c);
 r.command(c,"message_cast",["q518",null]);
 c.block="yhdl";r.guard(c);
@@ -22113,7 +22181,7 @@ yield 1;
 c.block="v0cv";r.guard(c);
 r.command(c,"set_variable",["vhcu","0.02",null]);
 c.block="61ge";r.guard(c);
-while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","30"]))){yield 1;}
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","45"]))){yield 1;}
 c.block="n2q4";r.guard(c);
 r.command(c,"message_cast",["q518",null]);
 c.block="e9uc";r.guard(c);
@@ -22162,7 +22230,7 @@ yield 1;
 c.block="p2n8";r.guard(c);
 r.command(c,"set_variable",["vhcu","0.02",null]);
 c.block="fxex";r.guard(c);
-while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","30"]))){yield 1;}
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","45"]))){yield 1;}
 c.block="742a";r.guard(c);
 r.command(c,"message_cast",["q518",null]);
 c.block="s5rb";r.guard(c);
@@ -22639,7 +22707,7 @@ yield 1;
 c.block="ajnx";r.guard(c);
 r.command(c,"set_variable",["7z7n","0.02",null]);
 c.block="zl72";r.guard(c);
-while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","30"]))){yield 1;}
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","45"]))){yield 1;}
 c.block="k4i6";r.guard(c);
 r.command(c,"message_cast",["xqge",null]);
 c.block="yhdl";r.guard(c);
@@ -22879,7 +22947,7 @@ yield 1;
 c.block="kl7y";r.guard(c);
 r.command(c,"set_variable",["7z7n","0.02",null]);
 c.block="ej2e";r.guard(c);
-while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","30"]))){yield 1;}
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","45"]))){yield 1;}
 c.block="40mh";r.guard(c);
 r.command(c,"message_cast",["xqge",null]);
 c.block="s1mi";r.guard(c);
@@ -22928,7 +22996,7 @@ yield 1;
 c.block="p2n8";r.guard(c);
 r.command(c,"set_variable",["7z7n","0.02",null]);
 c.block="fxex";r.guard(c);
-while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","30"]))){yield 1;}
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","45"]))){yield 1;}
 c.block="742a";r.guard(c);
 r.command(c,"message_cast",["xqge",null]);
 c.block="s5rb";r.guard(c);
@@ -23541,6 +23609,8 @@ c.block="rc30";r.guard(c);
 yield* r.call(c,"qy83",["-4",10,"2"]);
 c.block="5dag";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp093";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="e9rw";r.guard(c);
 for(let i591=0,n591=Math.max(0,Math.floor(r.num("30")));i591<n591;i591++){
 c.block="idur";r.guard(c);
@@ -23732,6 +23802,8 @@ c.block="0jt0";r.guard(c);
 yield* r.call(c,"05j0",["-4",10,"2"]);
 c.block="rohm";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp095";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="r2p8";r.guard(c);
 for(let i595=0,n595=Math.max(0,Math.floor(r.num("30")));i595<n595;i595++){
 c.block="5zqq";r.guard(c);
@@ -25871,6 +25943,8 @@ c.block="qv8m";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","24"]))){
 c.block="e2ln";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp097";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="tps0";r.guard(c);
 for(let i673=0,n673=Math.max(0,Math.floor(r.num("210")));i673<n673;i673++){
 yield 1;
@@ -25880,6 +25954,8 @@ r.command(c,"set_variable",["wyyq","0",null]);
 }else{
 c.block="4vne";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp099";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="9xqo";r.guard(c);
 for(let i674=0,n674=Math.max(0,Math.floor(r.num("210")));i674<n674;i674++){
 yield 1;
@@ -28266,6 +28342,8 @@ c.block="ix9j";r.guard(c);
 r.command(c,"set_variable",["xvg1","-10",null]);
 c.block="d0ei";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp09b";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="9foz";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","0"]))){
 c.block="e6th";r.guard(c);
@@ -28489,6 +28567,8 @@ c.block="gews";r.guard(c);
 r.command(c,"set_variable",["e8l1","1",null]);
 c.block="ncrc";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp09d";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="wli5";r.guard(c);
 for(let i762=0,n762=Math.max(0,Math.floor(r.num("16")));i762<n762;i762++){
 yield 1;
@@ -29082,6 +29162,8 @@ c.block="ix9j";r.guard(c);
 r.command(c,"set_variable",["xvg1","-10",null]);
 c.block="x2ft";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp09f";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="9foz";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","0"]))){
 c.block="fbau";r.guard(c);
@@ -29305,6 +29387,8 @@ c.block="gews";r.guard(c);
 r.command(c,"set_variable",["7vqa","1",null]);
 c.block="ncrc";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp09h";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="wli5";r.guard(c);
 for(let i784=0,n784=Math.max(0,Math.floor(r.num("16")));i784<n784;i784++){
 yield 1;
@@ -29392,10 +29476,12 @@ c.block="7taf";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER_OR_EQUAL","25"]))){
 c.block="xfn3";r.guard(c);
 r.command(c,"change_variable",["thom","-25",null]);
+c.block="bp02b";r.guard(c);
+r.command(c,"set_variable",["bpv9","0",null]);
 c.block="gjvj";r.guard(c);
 r.command(c,"set_variable",["qvkr","1",null]);
 c.block="abwd";r.guard(c);
-r.command(c,"set_variable",["cr38","-1",null]);
+r.command(c,"set_variable",["cr38","-1.625",null]);
 c.block="4fth";r.guard(c);
 r.command(c,"set_variable",["5965","0",null]);
 c.block="1gx8";r.guard(c);
@@ -29403,7 +29489,7 @@ r.command(c,"set_variable",["fu65","1",null]);
 c.block="4tw0";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="nfm0";r.guard(c);
-for(let i787=0,n787=Math.max(0,Math.floor(r.num("25")));i787<n787;i787++){
+for(let i787=0,n787=Math.max(0,Math.floor(r.num("15")));i787<n787;i787++){
 c.block="auan";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="iyv0";r.guard(c);
@@ -29412,7 +29498,7 @@ break;
 c.block="ki3y";r.guard(c);
 r.command(c,"change_variable",["5965",r.value(c,"get_variable",["cr38",null]),null]);
 c.block="yx9v";r.guard(c);
-r.command(c,"change_variable",["cr38","0.04",null]);
+r.command(c,"change_variable",["cr38","0.10833333333333334",null]);
 c.block="hbdr";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="98xl";r.guard(c);
@@ -29456,6 +29542,13 @@ c.block="nu50";r.guard(c);
 r.command(c,"set_variable",["vk0b","1",null]);
 c.block="vdfs";r.guard(c);
 yield* r.call(c,"05j0",["-11",10,"1"]);
+c.block="bp02v";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv9",null]),"EQUAL","0"]),"AND",r.value(c,"boolean_and_or",[r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["05ze",null]),"LESS_OR_EQUAL","0"])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jcf6",null]),"EQUAL","0"])])]))){
+c.block="bp02s";r.guard(c);
+r.command(c,"set_variable",["bpv9","1",null]);
+c.block="bp02u";r.guard(c);
+r.command(c,"set_variable",["bpv1","1",null]);
+}
 c.block="csw7";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="3tfz";r.guard(c);
@@ -29752,7 +29845,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"coordinate_object",[nu
 c.block="12nl";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="lr3u";r.guard(c);
-r.command(c,"set_variable",["bct6","-7.7",null]);
+r.command(c,"set_variable",["bct6","-4.7",null]);
 }else{
 c.block="lfew";r.guard(c);
 r.command(c,"set_variable",["bct6","0",null]);
@@ -29761,7 +29854,7 @@ r.command(c,"set_variable",["bct6","0",null]);
 c.block="h32o";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="hm80";r.guard(c);
-r.command(c,"set_variable",["bct6","-7.7",null]);
+r.command(c,"set_variable",["bct6","-4.7",null]);
 }else{
 c.block="79zc";r.guard(c);
 r.command(c,"set_variable",["bct6","0",null]);
@@ -29778,6 +29871,55 @@ r.command(c,"hide",[null]);
 c.block="mcrk";r.guard(c);
 r.command(c,"stop_object",["thisOnly",null]);
 if(c.thread.cancelled||c.e.dead)return;
+
+});
+r.register("l8ny","when_scene_start",[null],function*(r,c){
+c.block="bp04j";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","22"]))){
+c.block="bp04i";r.guard(c);
+while(true){
+c.block="bp03r";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv1",null]),"EQUAL","2"]))){
+c.block="bp034";r.guard(c);
+r.command(c,"set_variable",["bpv1","0",null]);
+c.block="bp03q";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["05ze",null]),"LESS_OR_EQUAL","0"])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jcf6",null]),"EQUAL","0"])]))){
+c.block="bp03l";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["du2p",null]),"LESS","1.25"]))){
+c.block="bp03k";r.guard(c);
+r.command(c,"set_variable",["du2p","1.25",null]);
+}
+c.block="bp03n";r.guard(c);
+r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp09j";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
+c.block="bp0an";r.guard(c);
+r.command(c,"set_variable",["bpv3",r.value(c,"get_variable",["bpv0",null]),null]);
+c.block="bp03p";r.guard(c);
+r.command(c,"set_variable",["bpv2","10",null]);
+}
+}
+c.block="bp03x";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv1",null]),"EQUAL","1"]))){
+c.block="bp03w";r.guard(c);
+r.command(c,"set_variable",["bpv1","2",null]);
+}
+c.block="bp04h";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv2",null]),"GREATER","0"]))){
+c.block="bp042";r.guard(c);
+r.command(c,"change_variable",["bpv2","-1",null]);
+c.block="bp04g";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv2",null]),"LESS_OR_EQUAL","0"]))){
+c.block="bp04f";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv0",null]),"EQUAL",r.value(c,"get_variable",["bpv3",null])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"])]))){
+c.block="bp04e";r.guard(c);
+r.command(c,"set_variable",["8w41","0",null]);
+}
+}
+}
+yield 1;
+}
+}
 
 });
 
@@ -29825,10 +29967,12 @@ c.block="7taf";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER_OR_EQUAL","25"]))){
 c.block="xfn3";r.guard(c);
 r.command(c,"change_variable",["qn98","-25",null]);
+c.block="bp001";r.guard(c);
+r.command(c,"set_variable",["bpv4","0",null]);
 c.block="3dvj";r.guard(c);
 r.command(c,"set_variable",["rr24","1",null]);
 c.block="dpbu";r.guard(c);
-r.command(c,"set_variable",["g700","-1",null]);
+r.command(c,"set_variable",["g700","-1.625",null]);
 c.block="naso";r.guard(c);
 r.command(c,"set_variable",["ceh0","0",null]);
 c.block="eryb";r.guard(c);
@@ -29836,7 +29980,7 @@ r.command(c,"set_variable",["ri3z","1",null]);
 c.block="s6mr";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="udcb";r.guard(c);
-for(let i798=0,n798=Math.max(0,Math.floor(r.num("25")));i798<n798;i798++){
+for(let i798=0,n798=Math.max(0,Math.floor(r.num("15")));i798<n798;i798++){
 c.block="4z7e";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="a1du";r.guard(c);
@@ -29845,7 +29989,7 @@ break;
 c.block="t58b";r.guard(c);
 r.command(c,"change_variable",["ceh0",r.value(c,"get_variable",["g700",null]),null]);
 c.block="6ch6";r.guard(c);
-r.command(c,"change_variable",["g700","0.04",null]);
+r.command(c,"change_variable",["g700","0.10833333333333334",null]);
 c.block="1c8h";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="53qr";r.guard(c);
@@ -29889,6 +30033,13 @@ c.block="85ne";r.guard(c);
 r.command(c,"set_variable",["vk0b","1",null]);
 c.block="wvb0";r.guard(c);
 yield* r.call(c,"qy83",["-11",10,"1"]);
+c.block="bp00l";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv4",null]),"EQUAL","0"]),"AND",r.value(c,"boolean_and_or",[r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1vu0",null]),"LESS_OR_EQUAL","0"])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ec6d",null]),"EQUAL","0"])])]))){
+c.block="bp00i";r.guard(c);
+r.command(c,"set_variable",["bpv4","1",null]);
+c.block="bp00k";r.guard(c);
+r.command(c,"set_variable",["bpv6","1",null]);
+}
 c.block="41og";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="b6xl";r.guard(c);
@@ -30185,7 +30336,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"coordinate_object",[nu
 c.block="kzoh";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="3hgs";r.guard(c);
-r.command(c,"set_variable",["1g8o","-7.7",null]);
+r.command(c,"set_variable",["1g8o","-4.7",null]);
 }else{
 c.block="panj";r.guard(c);
 r.command(c,"set_variable",["1g8o","0",null]);
@@ -30194,7 +30345,7 @@ r.command(c,"set_variable",["1g8o","0",null]);
 c.block="oiw0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="lkt2";r.guard(c);
-r.command(c,"set_variable",["1g8o","-7.7",null]);
+r.command(c,"set_variable",["1g8o","-4.7",null]);
 }else{
 c.block="rbba";r.guard(c);
 r.command(c,"set_variable",["1g8o","0",null]);
@@ -30211,6 +30362,55 @@ r.command(c,"hide",[null]);
 c.block="98pz";r.guard(c);
 r.command(c,"stop_object",["thisOnly",null]);
 if(c.thread.cancelled||c.e.dead)return;
+
+});
+r.register("z4wa","when_scene_start",[null],function*(r,c){
+c.block="bp029";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","22"]))){
+c.block="bp028";r.guard(c);
+while(true){
+c.block="bp01h";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv6",null]),"EQUAL","2"]))){
+c.block="bp00u";r.guard(c);
+r.command(c,"set_variable",["bpv6","0",null]);
+c.block="bp01g";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1vu0",null]),"LESS_OR_EQUAL","0"])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ec6d",null]),"EQUAL","0"])]))){
+c.block="bp01b";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iblx",null]),"LESS","1.25"]))){
+c.block="bp01a";r.guard(c);
+r.command(c,"set_variable",["iblx","1.25",null]);
+}
+c.block="bp01d";r.guard(c);
+r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp09l";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
+c.block="bp0al";r.guard(c);
+r.command(c,"set_variable",["bpv8",r.value(c,"get_variable",["bpv5",null]),null]);
+c.block="bp01f";r.guard(c);
+r.command(c,"set_variable",["bpv7","10",null]);
+}
+}
+c.block="bp01n";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv6",null]),"EQUAL","1"]))){
+c.block="bp01m";r.guard(c);
+r.command(c,"set_variable",["bpv6","2",null]);
+}
+c.block="bp027";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv7",null]),"GREATER","0"]))){
+c.block="bp01s";r.guard(c);
+r.command(c,"change_variable",["bpv7","-1",null]);
+c.block="bp026";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv7",null]),"LESS_OR_EQUAL","0"]))){
+c.block="bp025";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bpv5",null]),"EQUAL",r.value(c,"get_variable",["bpv8",null])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"])]))){
+c.block="bp024";r.guard(c);
+r.command(c,"set_variable",["wyyq","0",null]);
+}
+}
+}
+yield 1;
+}
+}
 
 });
 
@@ -30412,6 +30612,8 @@ c.block="bbso";r.guard(c);
 r.command(c,"change_variable",["xy3h","-0.2",null]);
 c.block="cdsm";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
+c.block="bp04r";r.guard(c);
+yield* r.call(c,"05j0",["-3","10","1"]);
 c.block="pq7r";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["fh33"]),null]);
 c.block="f2aw";r.guard(c);
@@ -30749,6 +30951,8 @@ c.block="bbso";r.guard(c);
 r.command(c,"change_variable",["k2jo","-0.2",null]);
 c.block="cdsm";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
+c.block="bp04n";r.guard(c);
+yield* r.call(c,"qy83",["-3","10","1"]);
 c.block="pq7r";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ceoq"]),null]);
 c.block="f2aw";r.guard(c);
@@ -31638,11 +31842,11 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["3oyb",
 c.block="5fdd";r.guard(c);
 r.command(c,"change_variable",["3oyb","1",null]);
 c.block="igpv";r.guard(c);
-r.command(c,"set_variable",["3w8a","-7",null]);
+r.command(c,"set_variable",["3w8a","-8.944444444444443",null]);
 c.block="vhf5";r.guard(c);
-for(let i845=0,n845=Math.max(0,Math.floor(r.num("70")));i845<n845;i845++){
+for(let i845=0,n845=Math.max(0,Math.floor(r.num("55")));i845<n845;i845++){
 c.block="01we";r.guard(c);
-r.command(c,"change_variable",["3w8a","0.1",null]);
+r.command(c,"change_variable",["3w8a","0.1626262626262626",null]);
 c.block="7jjr";r.guard(c);
 r.command(c,"change_variable",["lqgz",r.value(c,"calc_basic",[r.value(c,"get_variable",["3w8a",null]),"DIVIDE","40"]),null]);
 c.block="frh2";r.guard(c);
@@ -31687,11 +31891,11 @@ yield 1;
 c.block="7u6g";r.guard(c);
 r.command(c,"change_variable",["3oyb","1",null]);
 c.block="ml35";r.guard(c);
-r.command(c,"set_variable",["3w8a","-7",null]);
+r.command(c,"set_variable",["3w8a","-8.944444444444443",null]);
 c.block="1b7h";r.guard(c);
-for(let i847=0,n847=Math.max(0,Math.floor(r.num("70")));i847<n847;i847++){
+for(let i847=0,n847=Math.max(0,Math.floor(r.num("55")));i847<n847;i847++){
 c.block="bgzv";r.guard(c);
-r.command(c,"change_variable",["3w8a","0.1",null]);
+r.command(c,"change_variable",["3w8a","0.1626262626262626",null]);
 c.block="me3f";r.guard(c);
 r.command(c,"change_variable",["lqgz",r.value(c,"calc_basic",[r.value(c,"get_variable",["3w8a",null]),"DIVIDE","40"]),null]);
 c.block="cveg";r.guard(c);
@@ -32224,11 +32428,11 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["3oyb",
 c.block="5fdd";r.guard(c);
 r.command(c,"change_variable",["3oyb","1",null]);
 c.block="igpv";r.guard(c);
-r.command(c,"set_variable",["3w8a","-7",null]);
+r.command(c,"set_variable",["3w8a","-8.944444444444443",null]);
 c.block="vhf5";r.guard(c);
-for(let i855=0,n855=Math.max(0,Math.floor(r.num("70")));i855<n855;i855++){
+for(let i855=0,n855=Math.max(0,Math.floor(r.num("55")));i855<n855;i855++){
 c.block="01we";r.guard(c);
-r.command(c,"change_variable",["3w8a","0.1",null]);
+r.command(c,"change_variable",["3w8a","0.1626262626262626",null]);
 c.block="7jjr";r.guard(c);
 r.command(c,"change_variable",["lqgz",r.value(c,"calc_basic",[r.value(c,"get_variable",["3w8a",null]),"DIVIDE","40"]),null]);
 c.block="610r";r.guard(c);
@@ -32273,11 +32477,11 @@ yield 1;
 c.block="7u6g";r.guard(c);
 r.command(c,"change_variable",["3oyb","1",null]);
 c.block="ml35";r.guard(c);
-r.command(c,"set_variable",["3w8a","-7",null]);
+r.command(c,"set_variable",["3w8a","-8.944444444444443",null]);
 c.block="1b7h";r.guard(c);
-for(let i857=0,n857=Math.max(0,Math.floor(r.num("70")));i857<n857;i857++){
+for(let i857=0,n857=Math.max(0,Math.floor(r.num("55")));i857<n857;i857++){
 c.block="bgzv";r.guard(c);
-r.command(c,"change_variable",["3w8a","0.1",null]);
+r.command(c,"change_variable",["3w8a","0.1626262626262626",null]);
 c.block="me3f";r.guard(c);
 r.command(c,"change_variable",["lqgz",r.value(c,"calc_basic",[r.value(c,"get_variable",["3w8a",null]),"DIVIDE","40"]),null]);
 c.block="ke0c";r.guard(c);
@@ -32809,9 +33013,9 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",
 c.block="ygdy";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["40",null]))){
 c.block="qhr9";r.guard(c);
-if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER_OR_EQUAL","55"]))){
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER_OR_EQUAL","57"]))){
 c.block="g0xa";r.guard(c);
-r.command(c,"change_variable",["thom","-55",null]);
+r.command(c,"change_variable",["thom","-57",null]);
 c.block="jmhg";r.guard(c);
 r.command(c,"set_variable",["qvkr","0",null]);
 c.block="8rl9";r.guard(c);
@@ -32859,7 +33063,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ob2m",
 c.block="awzc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS","33"]))){
 c.block="3n8g";r.guard(c);
-r.command(c,"change_variable",["thom","64",null]);
+r.command(c,"change_variable",["thom","65",null]);
 c.block="2636";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER","100"]))){
 c.block="7h0i";r.guard(c);
@@ -33185,9 +33389,9 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",
 c.block="x3z4";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["83",null]))){
 c.block="t71x";r.guard(c);
-if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER_OR_EQUAL","55"]))){
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER_OR_EQUAL","57"]))){
 c.block="4g8a";r.guard(c);
-r.command(c,"change_variable",["qn98","-55",null]);
+r.command(c,"change_variable",["qn98","-57",null]);
 c.block="j3ni";r.guard(c);
 r.command(c,"set_variable",["rr24","0",null]);
 c.block="2gly";r.guard(c);
@@ -33235,7 +33439,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rav6",
 c.block="y81s";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS","33"]))){
 c.block="vvgx";r.guard(c);
-r.command(c,"change_variable",["qn98","64",null]);
+r.command(c,"change_variable",["qn98","65",null]);
 c.block="bfai";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER","100"]))){
 c.block="6ws9";r.guard(c);
@@ -37314,6 +37518,8 @@ r.command(c,"set_variable",["ftw9","1",null]);
 }else{
 c.block="9sel";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp09n";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 }
 c.block="xeq1";r.guard(c);
 for(let i1042=0,n1042=Math.max(0,Math.floor(r.num("4")));i1042<n1042;i1042++){
@@ -37897,6 +38103,8 @@ r.command(c,"set_variable",["ftw9","1",null]);
 }else{
 c.block="7cer";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp09p";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 }
 c.block="xeq1";r.guard(c);
 for(let i1066=0,n1066=Math.max(0,Math.floor(r.num("4")));i1066<n1066;i1066++){
@@ -38686,9 +38894,9 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",
 c.block="x3z4";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["80",null]))){
 c.block="t71x";r.guard(c);
-if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER_OR_EQUAL","31"]))){
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER_OR_EQUAL","28"]))){
 c.block="4g8a";r.guard(c);
-r.command(c,"change_variable",["thom","-31",null]);
+r.command(c,"change_variable",["thom","-28",null]);
 c.block="464d";r.guard(c);
 r.command(c,"create_clone",["9thh",null]);
 c.block="y63g";r.guard(c);
@@ -39180,9 +39388,9 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",
 c.block="x3z4";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["82",null]))){
 c.block="t71x";r.guard(c);
-if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER_OR_EQUAL","31"]))){
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER_OR_EQUAL","28"]))){
 c.block="4g8a";r.guard(c);
-r.command(c,"change_variable",["qn98","-31",null]);
+r.command(c,"change_variable",["qn98","-28",null]);
 c.block="464d";r.guard(c);
 r.command(c,"create_clone",["9srf",null]);
 c.block="p72d";r.guard(c);
@@ -44976,9 +45184,9 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ob2m",
 c.block="gvza";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS","33"]))){
 c.block="2gar";r.guard(c);
-yield* r.call(c,"05j0",["-9","12","2"]);
+yield* r.call(c,"05j0",["-10","12","2"]);
 c.block="0sez";r.guard(c);
-r.command(c,"set_variable",["05ze","0.5",null]);
+r.command(c,"set_variable",["05ze","0.62",null]);
 }
 }
 }
@@ -45056,6 +45264,8 @@ if(c.thread.cancelled||c.e.dead)return;
 r.register("rlr8","when_message_cast",[null,"xz4h"],function*(r,c){
 c.block="9q8o";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp09r";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="20ki";r.guard(c);
 r.command(c,"set_variable",["du2p","1.3",null]);
 c.block="pyit";r.guard(c);
@@ -46047,7 +46257,7 @@ r.command(c,"change_variable",["jyph",r.value(c,"calc_basic",[r.value(c,"get_var
 c.block="dta1";r.guard(c);
 r.command(c,"change_variable",["ks88","-0.4",null]);
 c.block="esqh";r.guard(c);
-if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
+if(r.truth(r.value(c,"reach_something",[null,"n230",null,"1","2"]))){
 c.block="7fut";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["c5zi",null]),"EQUAL","0"]))){
 c.block="np12";r.guard(c);
@@ -46134,7 +46344,7 @@ r.command(c,"rotate_relative",["12",null]);
 c.block="eqrx";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="ntyy";r.guard(c);
-if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
+if(r.truth(r.value(c,"reach_something",[null,"n230",null,"1","2"]))){
 c.block="e9u0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["4355",null]),"EQUAL","0"]))){
 c.block="qpf8";r.guard(c);
@@ -46260,6 +46470,8 @@ c.block="blzu";r.guard(c);
 yield* r.call(c,"05j0",["-11","11","2"]);
 c.block="eaft";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp09t";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="liha";r.guard(c);
 r.command(c,"set_variable",["qvkr","3",null]);
 c.block="2q4t";r.guard(c);
@@ -46384,7 +46596,7 @@ c.block="sgpx";r.guard(c);
 break;
 }
 c.block="ipve";r.guard(c);
-if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
+if(r.truth(r.value(c,"reach_something",[null,"n230",null,"1","2"]))){
 c.block="w62s";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["g8iy",null]),"EQUAL","0"]))){
 c.block="m279";r.guard(c);
@@ -46438,7 +46650,7 @@ r.command(c,"change_variable",["uy2f",r.value(c,"calc_basic",[r.value(c,"get_var
 c.block="a6sl";r.guard(c);
 r.command(c,"change_variable",["9c3g","-0.4",null]);
 c.block="v69z";r.guard(c);
-if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
+if(r.truth(r.value(c,"reach_something",[null,"n230",null,"1","2"]))){
 c.block="hdxa";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["g8iy",null]),"EQUAL","0"]))){
 c.block="t1va";r.guard(c);
@@ -47234,6 +47446,8 @@ yield 1;
 r.register("56e1","when_message_cast",[null,"98fz"],function*(r,c){
 c.block="y1ku";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp09v";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="n0bd";r.guard(c);
 for(let i1362=0,n1362=Math.max(0,Math.floor(r.num("180")));i1362<n1362;i1362++){
 yield 1;
@@ -48997,7 +49211,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ziwi",
 c.block="e7af";r.guard(c);
 r.command(c,"change_variable",["ziwi","-1",null]);
 c.block="omuk";r.guard(c);
-yield* r.call(c,"qy83",[r.value(c,"calc_basic",[r.value(c,"get_variable",["zk7l",null]),"MULTI","-1"]),"6","0"]);
+yield* r.call(c,"qy83",[r.value(c,"calc_basic",[r.value(c,"get_variable",["bpvd",null]),"MULTI","-1"]),"6","0"]);
 c.block="ug8j";r.guard(c);
 for(let i1441=0,n1441=Math.max(0,Math.floor(r.num("60")));i1441<n1441;i1441++){
 yield 1;
@@ -49221,6 +49435,11 @@ yield 1;
 }
 c.block="515j";r.guard(c);
 yield* r.call(c,"05j0",["-8",10,"2"]);
+c.block="bp08c";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["7rns",null]),"LESS_OR_EQUAL","9"]))){
+c.block="bp08b";r.guard(c);
+r.command(c,"create_clone",["cba1",null]);
+}
 c.block="9noa";r.guard(c);
 r.command(c,"change_variable",["9af4",r.value(c,"calc_basic",[r.value(c,"get_variable",["ck61",null]),"MULTI","0.75"]),null]);
 c.block="kzyg";r.guard(c);
@@ -49279,6 +49498,11 @@ c.block="u9gc";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="m826";r.guard(c);
 yield* r.call(c,"05j0",["-8",10,"2"]);
+c.block="bp08h";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["7rns",null]),"LESS_OR_EQUAL","9"]))){
+c.block="bp08g";r.guard(c);
+r.command(c,"create_clone",["cba1",null]);
+}
 c.block="rjac";r.guard(c);
 r.command(c,"change_variable",["9af4",r.value(c,"calc_basic",[r.value(c,"get_variable",["ck61",null]),"MULTI","0.75"]),null]);
 c.block="xk9w";r.guard(c);
@@ -49339,15 +49563,15 @@ c.block="xgnb";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 }
 c.block="jz5w";r.guard(c);
-r.command(c,"move_direction",["5",null]);
+r.command(c,"move_direction",["6",null]);
 c.block="s6wa";r.guard(c);
-r.command(c,"set_variable",["0l1v","6",null]);
+r.command(c,"set_variable",["0l1v","7.2",null]);
 c.block="jtg5";r.guard(c);
 for(let i1451=0,n1451=Math.max(0,Math.floor(r.num("30")));i1451<n1451;i1451++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["0l1v",null]),null]);
 c.block="bin3";r.guard(c);
-r.command(c,"change_variable",["0l1v","-0.15",null]);
+r.command(c,"change_variable",["0l1v","-0.18",null]);
 c.block="gvza";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS_OR_EQUAL","10"]))){
 c.block="1e9t";r.guard(c);
@@ -49533,22 +49757,10 @@ c.block="3kij";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="4vlj";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
-c.block="48hh";r.guard(c);
-if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS","120"]))){
 c.block="hvwe";r.guard(c);
 r.command(c,"set_variable",["eopq",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"x"])]),null]);
 c.block="812u";r.guard(c);
 r.command(c,"set_variable",["ig8h",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"y"])]),null]);
-}else{
-c.block="ttld";r.guard(c);
-r.command(c,"see_angle_object",["n230",null]);
-c.block="zev9";r.guard(c);
-r.command(c,"move_direction",["120",null]);
-c.block="23t0";r.guard(c);
-r.command(c,"set_variable",["eopq",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"x"])]),null]);
-c.block="iwy1";r.guard(c);
-r.command(c,"set_variable",["ig8h",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"y"])]),null]);
-}
 c.block="0d2r";r.guard(c);
 r.command(c,"set_variable",["qvkr","3",null]);
 c.block="tij2";r.guard(c);
@@ -50218,9 +50430,9 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="wdyq";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rav6",null]),"EQUAL","0"]))){
 c.block="62cf";r.guard(c);
-yield* r.call(c,"qy83",["-9","12","2"]);
+yield* r.call(c,"qy83",["-10","12","2"]);
 c.block="0sez";r.guard(c);
-r.command(c,"set_variable",["1vu0","0.5",null]);
+r.command(c,"set_variable",["1vu0","0.62",null]);
 }
 }
 }
@@ -50298,6 +50510,8 @@ if(c.thread.cancelled||c.e.dead)return;
 r.register("sn6j","when_message_cast",[null,"e2lz"],function*(r,c){
 c.block="9q8o";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp09x";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="20ki";r.guard(c);
 r.command(c,"set_variable",["iblx","1.3",null]);
 c.block="pyit";r.guard(c);
@@ -51287,7 +51501,7 @@ r.command(c,"change_variable",["aau3",r.value(c,"calc_basic",[r.value(c,"get_var
 c.block="dta1";r.guard(c);
 r.command(c,"change_variable",["bxn7","-0.4",null]);
 c.block="esqh";r.guard(c);
-if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
+if(r.truth(r.value(c,"reach_something",[null,"ocqj",null,"1","2"]))){
 c.block="7fut";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["2u08",null]),"EQUAL","0"]))){
 c.block="np12";r.guard(c);
@@ -51374,7 +51588,7 @@ r.command(c,"rotate_relative",["12",null]);
 c.block="eqrx";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="ntyy";r.guard(c);
-if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
+if(r.truth(r.value(c,"reach_something",[null,"ocqj",null,"1","2"]))){
 c.block="e9u0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["hatx",null]),"EQUAL","0"]))){
 c.block="qpf8";r.guard(c);
@@ -51500,6 +51714,8 @@ c.block="3ggq";r.guard(c);
 yield* r.call(c,"qy83",["-11","11","2"]);
 c.block="eaft";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp09z";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="liha";r.guard(c);
 r.command(c,"set_variable",["rr24","3",null]);
 c.block="xov2";r.guard(c);
@@ -51621,7 +51837,7 @@ c.block="sgpx";r.guard(c);
 break;
 }
 c.block="ipve";r.guard(c);
-if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
+if(r.truth(r.value(c,"reach_something",[null,"ocqj",null,"1","2"]))){
 c.block="w62s";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["b9y7",null]),"EQUAL","0"]))){
 c.block="m279";r.guard(c);
@@ -51675,7 +51891,7 @@ r.command(c,"change_variable",["d9e9",r.value(c,"calc_basic",[r.value(c,"get_var
 c.block="a6sl";r.guard(c);
 r.command(c,"change_variable",["lle2","-0.4",null]);
 c.block="v69z";r.guard(c);
-if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
+if(r.truth(r.value(c,"reach_something",[null,"ocqj",null,"1","2"]))){
 c.block="hdxa";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["b9y7",null]),"EQUAL","0"]))){
 c.block="t1va";r.guard(c);
@@ -52471,6 +52687,8 @@ yield 1;
 r.register("f5xk","when_message_cast",[null,"2wes"],function*(r,c){
 c.block="y1ku";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp0a1";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="n0bd";r.guard(c);
 for(let i1551=0,n1551=Math.max(0,Math.floor(r.num("150")));i1551<n1551;i1551++){
 yield 1;
@@ -54013,7 +54231,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["td66",
 c.block="jx71";r.guard(c);
 r.command(c,"change_variable",["td66","-1",null]);
 c.block="ryuv";r.guard(c);
-yield* r.call(c,"05j0",[r.value(c,"calc_basic",[r.value(c,"get_variable",["zk7l",null]),"MULTI","-1"]),"6","0"]);
+yield* r.call(c,"05j0",[r.value(c,"calc_basic",[r.value(c,"get_variable",["bpvc",null]),"MULTI","-1"]),"6","0"]);
 c.block="jb6u";r.guard(c);
 for(let i1621=0,n1621=Math.max(0,Math.floor(r.num("60")));i1621<n1621;i1621++){
 yield 1;
@@ -54210,6 +54428,11 @@ yield 1;
 }
 c.block="88c8";r.guard(c);
 yield* r.call(c,"qy83",["-8","10","2"]);
+c.block="bp082";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["7rns",null]),"LESS_OR_EQUAL","9"]))){
+c.block="bp081";r.guard(c);
+r.command(c,"create_clone",["cba1",null]);
+}
 c.block="9noa";r.guard(c);
 r.command(c,"change_variable",["nccn",r.value(c,"calc_basic",[r.value(c,"get_variable",["ck61",null]),"MULTI","0.75"]),null]);
 c.block="kzyg";r.guard(c);
@@ -54268,6 +54491,11 @@ c.block="u9gc";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="hv2p";r.guard(c);
 yield* r.call(c,"qy83",["-8","10","2"]);
+c.block="bp087";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["7rns",null]),"LESS_OR_EQUAL","9"]))){
+c.block="bp086";r.guard(c);
+r.command(c,"create_clone",["cba1",null]);
+}
 c.block="xd4d";r.guard(c);
 r.command(c,"change_variable",["nccn",r.value(c,"calc_basic",[r.value(c,"get_variable",["ck61",null]),"MULTI","0.75"]),null]);
 c.block="xk9w";r.guard(c);
@@ -54328,15 +54556,15 @@ c.block="xgnb";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 }
 c.block="jz5w";r.guard(c);
-r.command(c,"move_direction",["5",null]);
+r.command(c,"move_direction",["6",null]);
 c.block="s6wa";r.guard(c);
-r.command(c,"set_variable",["wpmb","6",null]);
+r.command(c,"set_variable",["wpmb","7.2",null]);
 c.block="jtg5";r.guard(c);
 for(let i1630=0,n1630=Math.max(0,Math.floor(r.num("30")));i1630<n1630;i1630++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["wpmb",null]),null]);
 c.block="bin3";r.guard(c);
-r.command(c,"change_variable",["wpmb","-0.15",null]);
+r.command(c,"change_variable",["wpmb","-0.18",null]);
 c.block="gvza";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS_OR_EQUAL","10"]))){
 c.block="1e9t";r.guard(c);
@@ -54522,22 +54750,10 @@ c.block="3kij";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="4vlj";r.guard(c);
 r.command(c,"locate",["00h9",null]);
-c.block="48hh";r.guard(c);
-if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS","120"]))){
 c.block="hvwe";r.guard(c);
 r.command(c,"set_variable",["eopq",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"x"])]),null]);
 c.block="812u";r.guard(c);
 r.command(c,"set_variable",["ig8h",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"y"])]),null]);
-}else{
-c.block="ttld";r.guard(c);
-r.command(c,"see_angle_object",["ocqj",null]);
-c.block="zev9";r.guard(c);
-r.command(c,"move_direction",["120",null]);
-c.block="23t0";r.guard(c);
-r.command(c,"set_variable",["eopq",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"x"])]),null]);
-c.block="iwy1";r.guard(c);
-r.command(c,"set_variable",["ig8h",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"y"])]),null]);
-}
 c.block="0d2r";r.guard(c);
 r.command(c,"set_variable",["rr24","3",null]);
 c.block="tij2";r.guard(c);
@@ -56833,10 +57049,14 @@ c.block="oe0h";r.guard(c);
 r.command(c,"set_variable",["8w48",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"6b12",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"self",null,"y"])]),"DIVIDE","14"]),null]);
 c.block="413p";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp0a3";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="cwf4";r.guard(c);
 for(let i1705=0,n1705=Math.max(0,Math.floor(r.num("200")));i1705<n1705;i1705++){
 c.block="a7ci";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp0a5";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="44s5";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["a72j",null]),null]);
 c.block="y4xq";r.guard(c);
@@ -57438,6 +57658,8 @@ c.block="wcww";r.guard(c);
 r.command(c,"set_variable",["8w48",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"6b12",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"self",null,"y"])]),"DIVIDE","14"]),null]);
 c.block="dgtg";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp0a7";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="59xe";r.guard(c);
 for(let i1722=0,n1722=Math.max(0,Math.floor(r.num("200")));i1722<n1722;i1722++){
 c.block="kbeu";r.guard(c);
@@ -58416,12 +58638,12 @@ r.command(c,"set_variable",["jf5e","12.5",null]);
 c.block="mxc8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","22"]))){
 c.block="se3v";r.guard(c);
-r.command(c,"set_variable",["xul5","20",null]);
+r.command(c,"set_variable",["xul5","17",null]);
 }
 c.block="zzqy";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","22"]))){
 c.block="72e2";r.guard(c);
-r.command(c,"set_variable",["jf5e","20",null]);
+r.command(c,"set_variable",["jf5e","17",null]);
 }
 c.block="9mf9";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","17"]))){
@@ -59007,6 +59229,8 @@ yield 1;
 r.register("m9cz","when_message_cast",[null,"qua0"],function*(r,c){
 c.block="md3j";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp0a9";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="hk7q";r.guard(c);
 r.command(c,"set_variable",["iblx","1.7",null]);
 c.block="avox";r.guard(c);
@@ -59020,6 +59244,8 @@ r.command(c,"set_variable",["wyyq","0",null]);
 r.register("m9cz","when_message_cast",[null,"962w"],function*(r,c){
 c.block="4rjg";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp0ab";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="ttkv";r.guard(c);
 r.command(c,"set_variable",["du2p","0.9",null]);
 c.block="2rth";r.guard(c);
@@ -59038,6 +59264,8 @@ r.command(c,"set_variable",["8w41","0",null]);
 r.register("m9cz","when_message_cast",[null,"uhu2"],function*(r,c){
 c.block="yk37";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp0ad";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="idaz";r.guard(c);
 r.command(c,"set_variable",["iblx","0.9",null]);
 c.block="18jc";r.guard(c);
@@ -59056,6 +59284,8 @@ r.command(c,"set_variable",["wyyq","0",null]);
 r.register("m9cz","when_message_cast",[null,"22q7"],function*(r,c){
 c.block="4fp4";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp0af";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="t71d";r.guard(c);
 r.command(c,"set_variable",["du2p","1.7",null]);
 c.block="ke9h";r.guard(c);
@@ -59097,6 +59327,8 @@ c.block="iqo6";r.guard(c);
 r.command(c,"set_variable",["7vqa","0",null]);
 c.block="uev2";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
+c.block="bp0ah";r.guard(c);
+r.command(c,"change_variable",["bpv5","1",null]);
 c.block="nbtd";r.guard(c);
 for(let i1767=0,n1767=Math.max(0,Math.floor(r.num("240")));i1767<n1767;i1767++){
 yield 1;
@@ -59138,6 +59370,8 @@ c.block="fwes";r.guard(c);
 r.command(c,"set_variable",["e8l1","0",null]);
 c.block="u28e";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
+c.block="bp0aj";r.guard(c);
+r.command(c,"change_variable",["bpv0","1",null]);
 c.block="2ajv";r.guard(c);
 for(let i1771=0,n1771=Math.max(0,Math.floor(r.num("240")));i1771<n1771;i1771++){
 yield 1;
