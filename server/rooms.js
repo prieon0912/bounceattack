@@ -221,7 +221,13 @@ export class RoomHub {
     if (!ctx.code) throw new RoomError("방에 먼저 입장해 주세요.");
     return this.update(ctx.code, (r) => {
       const p = this.authorize(r, ctx);
-      if (msg.type === "pick") {
+      if (msg.type === "claim") {
+        // Lockstep stalled: whichever player still reaches the server first
+        // is the winner. Only the first claim counts, so both can't win.
+        if (r.phase !== "playing" || !r.match || msg.epoch !== r.match.epoch)
+          throw new RoomError("이미 끝난 대전이에요.");
+        if (r.match.winner === undefined) r.match.winner = ctx.role;
+      } else if (msg.type === "pick") {
         if (r.phase !== "lobby" || !validInt(msg.character, 1, 34))
           throw new RoomError("지금은 캐릭터를 바꿀 수 없어요.");
         p.character = msg.character;

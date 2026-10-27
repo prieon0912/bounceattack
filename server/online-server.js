@@ -109,7 +109,7 @@ export function createOnlineServer({ local = false, store = null } = {}) {
                 await store.touch("bounce:v1:room:" + ctx.code, 7200);
               }
               send({ type: "pong", at: msg.at });
-            } else if (["pick", "map", "ready", "rematch"].includes(msg.type)) {
+            } else if (["pick", "map", "ready", "rematch", "claim"].includes(msg.type)) {
               const room = await hub.action(ctx, msg);
               if (room.notice)
                 await hub.publish(ctx.code, {

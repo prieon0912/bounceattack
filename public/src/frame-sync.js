@@ -1,6 +1,6 @@
 export const KEYS = [
   [65, 68, 87, 69, 82, 83],
-  [37, 39, 38, 79, 80, 40],
+  [37, 39, 38, 13, 80, 40], // 2P: ← → ↑, Enter / P / ↓ (same keys as the original)
 ];
 export function applyInputs(runtime, masks) {
   runtime.keys.clear();

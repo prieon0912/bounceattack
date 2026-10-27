@@ -201,3 +201,63 @@ canvas:fullscreen {
 #game {
   container-type: inline-size;
 }
+
+/* Online connection overlay: dims the game while waiting for the opponent,
+   and briefly shows the result when a disconnect decides the match. */
+#net-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 24, 60, 0.35);
+  pointer-events: none;
+  animation: net-in 0.25s ease;
+}
+#net-overlay[hidden] {
+  display: none;
+}
+#net-overlay.result {
+  background: rgba(20, 24, 60, 0.15);
+}
+.net-box {
+  min-width: 34%;
+  padding: 1.6cqw 3cqw;
+  text-align: center;
+  font-family: SDComicStencil, Arial, sans-serif;
+  color: #6572f6;
+  background: #fff;
+  border: max(3px, 0.55cqw) solid #7580ff;
+  border-radius: 5px;
+  box-shadow: 0 0 0 2px #fff;
+}
+#net-title {
+  font-size: clamp(18px, 3.6cqw, 36px);
+}
+#net-text {
+  margin-top: 0.6cqw;
+  font-size: clamp(12px, 1.9cqw, 19px);
+  color: #4b56d8;
+}
+#net-overlay:not(.result) #net-title::after {
+  content: "";
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-left: 0.4em;
+  vertical-align: -0.1em;
+  border: 0.16em solid #c9cfff;
+  border-top-color: #6572f6;
+  border-radius: 50%;
+  animation: net-spin 0.8s linear infinite;
+}
+@keyframes net-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes net-in {
+  from {
+    opacity: 0;
+  }
+}

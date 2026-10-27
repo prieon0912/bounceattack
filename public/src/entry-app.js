@@ -38,6 +38,7 @@ function home() {
   forfeitWin = false;
   postMatch = false;
   onlineMode = false;
+  hideNet();
   for (const a of runtime?.playing || []) a.pause();
   runtime?.startProject();
   status.textContent = "";
@@ -60,10 +61,29 @@ function sceneUI() {
     }
   }
 }
-// Opponent left (forfeit message) or sent nothing for FORFEIT_AFTER ms:
-// end the lockstep match and finish it locally with the opponent's HP at 0,
-// so the original "승리" ending plays for this player.
+// Connection overlay shown over the game while waiting / when decided.
+const netOverlay = document.getElementById("net-overlay"),
+  netTitle = document.getElementById("net-title"),
+  netText = document.getElementById("net-text");
+let netHideTimer = null;
+function showNet(title, text = "", { result = false } = {}) {
+  clearTimeout(netHideTimer);
+  netTitle.textContent = title;
+  netText.textContent = text;
+  netOverlay.classList.toggle("result", result);
+  netOverlay.hidden = false;
+  if (result) netHideTimer = setTimeout(hideNet, 2200);
+}
+function hideNet() {
+  clearTimeout(netHideTimer);
+  netOverlay.hidden = true;
+}
+// Opponent left (forfeit message), or the server picked a winner after the
+// match stalled for FORFEIT_AFTER ms (see "claim" in server/rooms.js).
+// Lockstep ends and the match finishes locally with the loser's HP below 0,
+// so the original "승리" ending plays.
 const FORFEIT_AFTER = 15000;
+let claimSent = false;
 let forfeitWin = false,
   forfeitHp = null;
 const MAX_BACKLOG = (1000 / 60) * 4;
@@ -90,11 +110,13 @@ function endMatch() {
   postMatch = true;
   heldOnline.clear();
   runtime.keys.clear();
+  hideNet();
   status.textContent = "대전 종료 · 뒤로가기를 누르면 처음 화면으로 돌아가요.";
 }
-function winByForfeit() {
+function winByForfeit(won = true) {
   if (!sync || !connection) return;
   const role = connection.identity.role;
+  const loserIsOpponent = won;
   sync = null;
   epoch = null;
   connection.close();
@@ -105,9 +127,16 @@ function winByForfeit() {
   runtime.keys.clear();
   runtime.paused = false;
   // The original ends the round when HP drops *below* 0 (2P 체력 7ir2 / 1P 체력 akf6).
-  forfeitHp = role === 0 ? "7ir2" : "akf6";
+  const loser = loserIsOpponent ? 1 - role : role;
+  forfeitHp = loser === 1 ? "7ir2" : "akf6";
   elapsed = 0;
-  status.textContent = "상대가 나가서 승리했어요!";
+  if (won) {
+    status.textContent = "상대 연결이 끊겨 승리했어요!";
+    showNet("승리!", "상대 연결이 끊겼어요", { result: true });
+  } else {
+    status.textContent = "연결이 끊겨 패배 처리됐어요.";
+    showNet("연결 끊김", "패배 처리됐어요", { result: true });
+  }
 }
 window.addEventListener("pagehide", () => {
   if (sync) connection?.gameplay({ type: "forfeit" });
@@ -123,6 +152,15 @@ function search() {
       if (!sync) message.textContent = "상대를 찾고 있어요… (1 / 2)";
     },
     onRoom: (room) => {
+      if (
+        sync &&
+        room.match?.epoch === epoch &&
+        room.match.winner !== undefined &&
+        room.match.winner !== null
+      ) {
+        winByForfeit(room.match.winner === connection.identity.role);
+        return;
+      }
       if (room.phase === "playing" && room.match?.epoch !== epoch) {
         const match = room.match;
         epoch = match.epoch;
@@ -142,11 +180,11 @@ function search() {
           },
         });
         elapsed = 0;
+        claimSent = false;
+        hideNet();
         lastProgress = performance.now();
         connection.gameplay({ type: "sync", from: 1 });
-        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · A/D·←/→ 이동, W·↑ 점프, E/R/S·O/P/↓ 공격`;
-      } else if (sync && room.players.some((p) => !p?.connected)) {
-        status.textContent = "상대 연결을 기다리고 있어요…";
+        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · A/D·←/→ 이동, W·↑ 점프, E/R/S·Enter/P/↓ 공격`;
       }
     },
     onGameplay: (msg) => {
@@ -240,8 +278,19 @@ function onlineMask() {
   }
   return mask;
 }
+// A page button keeps focus after it is clicked, and Enter / Space would then
+// "click" it again instead of reaching the game (2P's Enter skill). Drop the
+// focus after every button click, and never let game keys activate a button.
+document.addEventListener("click", (event) => {
+  if (event.target.closest?.("button")) event.target.closest("button").blur();
+});
+const GAME_KEYS = new Set([...KEYS.flat(), 32]);
 window.addEventListener("keydown", (event) => {
-  if (!ready || !runtime || event.target.tagName === "BUTTON" || searching || forfeitWin || postMatch) return;
+  const onButton = event.target.tagName === "BUTTON";
+  if (onButton && GAME_KEYS.has(event.keyCode) && ready && runtime)
+    event.preventDefault();
+  else if (onButton) return;
+  if (!ready || !runtime || searching || forfeitWin || postMatch) return;
   if (sync) {
     if (onlineBit(event.keyCode) >= 0) {
       event.preventDefault();
@@ -278,7 +327,7 @@ document.getElementById("sound").onclick = (event) => {
 };
 document.getElementById("fullscreen").onclick = () =>
   canvas.requestFullscreen();
-function frame(now) {
+function update(now) {
   if (!last) last = now;
   elapsed += Math.min(now - last, 100);
   last = now;
@@ -316,18 +365,59 @@ function frame(now) {
     }
     elapsed -= 1000 / 60;
   }
-  if (sync && now - lastProgress > FORFEIT_AFTER) winByForfeit();
-  else if (sync && now - lastProgress > 800) {
-    status.textContent = `상대 연결을 기다리고 있어요… (${Math.ceil((FORFEIT_AFTER - (now - lastProgress)) / 1000)}초 후 승리 처리)`;
+  const stalled = sync ? now - lastProgress : 0;
+  if (sync && stalled > 600) {
+    if (stalled < FORFEIT_AFTER)
+      showNet(
+        "연결 대기 중",
+        `상대 연결을 기다리고 있어요… ${Math.ceil((FORFEIT_AFTER - stalled) / 1000)}초`,
+      );
+    else if (stalled < FORFEIT_AFTER + 10000)
+      showNet("연결 확인 중", "서버에서 승패를 확인하고 있어요…");
+    else showNet("연결 확인 중", "인터넷 연결을 확인해 주세요…");
     if (now - lastRequest > 1500) {
       lastRequest = now;
       connection.gameplay({ type: "sync", from: runtime.tick + 1 });
     }
+    // Ask the server to referee; it only accepts the first claim.
+    if (stalled > FORFEIT_AFTER && !claimSent) {
+      claimSent = true;
+      connection.command({ type: "claim", epoch });
+    }
+  } else if (sync && !netOverlay.hidden) hideNet();
+}
+function frame(now) {
+  // Keep the loop alive even if one frame throws (e.g. a network error).
+  requestAnimationFrame(frame);
+  try {
+    update(now);
+  } catch (error) {
+    console.error(error);
   }
   sceneUI();
   renderer.draw(runtime);
-  requestAnimationFrame(frame);
 }
+// Browsers pause requestAnimationFrame while the tab is hidden or the window
+// is minimised. During an online match that froze this player's simulation
+// (and inputs), so the opponent saw a disconnect. A worker timer keeps the
+// match running in the background; drawing resumes when the tab is visible.
+try {
+  const ticker = new Worker(
+    URL.createObjectURL(
+      new Blob(["setInterval(() => postMessage(0), 16);"], {
+        type: "text/javascript",
+      }),
+    ),
+  );
+  ticker.onmessage = () => {
+    if (document.hidden && runtime && sync)
+      try {
+        update(performance.now());
+      } catch (error) {
+        console.error(error);
+      }
+  };
+} catch {}
 
 const loading = document.getElementById("loading"),
   loadingFill = document.getElementById("loading-fill"),
