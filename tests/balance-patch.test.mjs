@@ -12,6 +12,7 @@ function game(p1, p2) {
   const vid = Object.fromEntries(project.variables.map((v) => [v.name, v.id]));
   r.g = (n) => Number(r.globals.get(vid[n]));
   r.s = (n, v) => r.globals.set(vid[n], v);
+  r.s2 = (n, v) => r.globals.set(vid[n] + "@2", v); // 미러전 2P 쪽 캐논 전역 사본
   r.run = (n, keys = []) => {
     for (let i = 0; i < n; i++) {
       r.keys.clear();
@@ -171,6 +172,16 @@ test("워트: 평타 사거리 1.5배, 궁 딜레이 24틱", () => {
   assert.equal(dash, 24);
 });
 
+test("워트: 스킬(물폭탄) 폭파 200 → 160틱 — 1P·2P", () => {
+  for (const [p1, p2, key, foe] of [[21, 2, 82, "2P"], [2, 21, 80, "1P"]]) {
+    const r = game(p1, p2); r.place(-15, 15); r.s("1P MP", 100); r.s("2P MP", 100);
+    r.s(`${foe} 방어력`, 0);
+    const h = r.g(`${foe} 체력`); let boom = -1;
+    for (let t = 0; t < 260 && boom < 0; t++) { r.run(1, t < 2 ? [key] : []); if (h - r.g(`${foe} 체력`) >= 14) boom = t; }
+    assert.ok(boom >= 158 && boom <= 163, "explode at " + boom);
+  }
+});
+
 test("엔릴: 평타 사거리 1.1배, 피해 5", () => {
   let r = game(27, 2); r.place(-200, 200); r.s("1P 방향", 1);
   let x0 = null, max = -1e9;
@@ -203,7 +214,23 @@ test("캐논: 평타 1.2배, 궁 거리 제한 없음·피해 6, R 적중 파편
 });
 
 test("캐논 미러: 2P 궁은 2P에서 발사되어 1P를 타격", () => {
-  const r = game(32, 32); r.place(-150, 150); r.s("2P MP", 100); r.s("정수갯수", 2); r.s("초과정수", 2); r.s("2P 방향", 0);
+  const r = game(32, 32); r.place(-150, 150); r.s("2P MP", 100); r.s2("정수갯수", 2); r.s2("초과정수", 2); r.s("2P 방향", 0);
   const h = r.g("1P 체력"); r.run(2, [40]); r.run(200);
   assert.equal(h - r.g("1P 체력"), 12);
+});
+
+test("캐논 미러: 두 캐논이 동시에 궁을 써도 각자 상대를 겨냥하고 범위 원이 사라진다", () => {
+  for (const delay of [0, 20, 90]) {
+    const r = game(32, 32); r.place(-200, 200);
+    r.s("1P MP", 100); r.s("2P MP", 100);
+    for (const n of ["정수갯수", "초과정수"]) { r.s(n, 3); r.s2(n, 3); }
+    const seen = new Set(), marks = { 1: [], 2: [] };
+    for (let t = 0; t < 420; t++) {
+      r.run(1, [...(t < 2 ? [83] : []), ...(t >= delay && t < delay + 2 ? [40] : [])]);
+      for (const e of r.entities) if (e.objectId === "hyk2" && e.clone && !e.dead && !seen.has(e.uid)) { seen.add(e.uid); marks[e.combatSide].push(Math.round(e.x)); }
+    }
+    assert.deepEqual(marks[1], [200, 200, 200], "1P delay " + delay);
+    assert.deepEqual(marks[2], [-200, -200, -200], "2P delay " + delay);
+    assert.equal(r.entities.filter((e) => e.clone && !e.dead && ["plg8", "cvkh"].includes(e.objectId)).length, 0);
+  }
 });

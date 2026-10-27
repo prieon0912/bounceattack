@@ -15292,7 +15292,7 @@ yield 1;
 c.block="3o3i";r.guard(c);
 r.command(c,"set_variable",["6rgj","0",null]);
 c.block="8mmv";r.guard(c);
-for(let i383=0,n383=Math.max(0,Math.floor(r.num("180")));i383<n383;i383++){
+for(let i383=0,n383=Math.max(0,Math.floor(r.num("140")));i383<n383;i383++){
 c.block="h56q";r.guard(c);
 r.command(c,"change_variable",["ljvf","1",null]);
 c.block="61x6";r.guard(c);
@@ -15303,7 +15303,7 @@ c.block="6o7d";r.guard(c);
 r.command(c,"set_variable",["ljvf","0",null]);
 }
 c.block="lc1w";r.guard(c);
-r.command(c,"change_variable",["6rgj",r.value(c,"calc_basic",["360","DIVIDE","180"]),null]);
+r.command(c,"change_variable",["6rgj",r.value(c,"calc_basic",["360","DIVIDE","140"]),null]);
 c.block="posz";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 yield 1;
@@ -15859,7 +15859,7 @@ yield 1;
 c.block="3o3i";r.guard(c);
 r.command(c,"set_variable",["6rgj","0",null]);
 c.block="8mmv";r.guard(c);
-for(let i402=0,n402=Math.max(0,Math.floor(r.num("180")));i402<n402;i402++){
+for(let i402=0,n402=Math.max(0,Math.floor(r.num("140")));i402<n402;i402++){
 c.block="h56q";r.guard(c);
 r.command(c,"change_variable",["ljvf","1",null]);
 c.block="61x6";r.guard(c);
@@ -15870,7 +15870,7 @@ c.block="6o7d";r.guard(c);
 r.command(c,"set_variable",["ljvf","0",null]);
 }
 c.block="lc1w";r.guard(c);
-r.command(c,"change_variable",["6rgj",r.value(c,"calc_basic",["360","DIVIDE","180"]),null]);
+r.command(c,"change_variable",["6rgj",r.value(c,"calc_basic",["360","DIVIDE","140"]),null]);
 c.block="6esd";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 yield 1;

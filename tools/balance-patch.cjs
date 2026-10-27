@@ -291,6 +291,10 @@ module.exports = function applyBalancePatch(project) {
     setNumber(o, w.sp3, [1], 3, 4.5);
     setNumber(o, w.dec2, [1], -0.15, -0.225);
     setNumber(o, "6mtk", [0], 30, 24);
+    // 스킬(물폭탄) 폭파까지 20 + 180 = 200틱 → 20 + 140 = 160틱(0.8배).
+    // 도화선 불꽃이 한 바퀴(360°)를 그 시간 안에 돌도록 각도 증가량도 360/140.
+    setNumber(o, "8mmv", [0], 180, 140);
+    setNumber(o, "c913", [2], 180, 140);
   }
   setNumber("dcos", "3y7d", [0], 10, 8);
   {
