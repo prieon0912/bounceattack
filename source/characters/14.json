@@ -1,0 +1,11 @@
+{
+  "id": 14,
+  "name": "가드",
+  "primaryObjects": [
+    "sn6j"
+  ],
+  "counterpartObjects": [
+    "rlr8"
+  ],
+  "overrides": []
+}

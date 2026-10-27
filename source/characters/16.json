@@ -1,0 +1,11 @@
+{
+  "id": 16,
+  "name": "스모크",
+  "primaryObjects": [
+    "tz68"
+  ],
+  "counterpartObjects": [
+    "6lns"
+  ],
+  "overrides": []
+}

@@ -1,0 +1,11 @@
+{
+  "id": 19,
+  "name": "데빌메이지",
+  "primaryObjects": [
+    "dg09"
+  ],
+  "counterpartObjects": [
+    "zzbm"
+  ],
+  "overrides": []
+}

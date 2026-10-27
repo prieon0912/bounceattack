@@ -1,0 +1,11 @@
+{
+  "id": 24,
+  "name": "엘리멘트",
+  "primaryObjects": [
+    "m54n"
+  ],
+  "counterpartObjects": [
+    "rj41"
+  ],
+  "overrides": []
+}

@@ -1,0 +1,11 @@
+{
+  "id": 17,
+  "name": "테슬라",
+  "primaryObjects": [
+    "5c1h"
+  ],
+  "counterpartObjects": [
+    "8rb4"
+  ],
+  "overrides": []
+}

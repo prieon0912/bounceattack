@@ -1,0 +1,11 @@
+{
+  "id": 12,
+  "name": "뉴크",
+  "primaryObjects": [
+    "oaqr"
+  ],
+  "counterpartObjects": [
+    "wd4j"
+  ],
+  "overrides": []
+}

@@ -1,0 +1,11 @@
+{
+  "id": 25,
+  "name": "아르테네스",
+  "primaryObjects": [
+    "hctz"
+  ],
+  "counterpartObjects": [
+    "xrqm"
+  ],
+  "overrides": []
+}

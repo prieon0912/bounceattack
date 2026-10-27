@@ -1,0 +1,11 @@
+{
+  "id": 32,
+  "name": "캐논",
+  "primaryObjects": [
+    "plg8"
+  ],
+  "counterpartObjects": [
+    "cvkh"
+  ],
+  "overrides": []
+}

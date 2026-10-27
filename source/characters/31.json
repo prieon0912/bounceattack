@@ -1,0 +1,11 @@
+{
+  "id": 31,
+  "name": "판그램",
+  "primaryObjects": [
+    "scgs"
+  ],
+  "counterpartObjects": [
+    "opol"
+  ],
+  "overrides": []
+}

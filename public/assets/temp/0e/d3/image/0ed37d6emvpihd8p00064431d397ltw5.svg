@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+               <svg xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xml:space="preserve"
+                    viewBox="0 0 124 124">
+                    <path xmlns="http://www.w3.org/2000/svg" d="M0,62c0,-34.24165 27.75835,-62 62,-62c34.24165,0 62,27.75835 62,62c0,34.24165 -27.75835,62 -62,62c-34.24165,0 -62,-27.75835 -62,-62z" data-paper-data="{&quot;segments&quot;:[{&quot;info&quot;:[&quot;Segment&quot;,[882.5,703.5],[0,34.24165],[0,-34.24165]],&quot;selected&quot;:false,&quot;view&quot;:null},{&quot;info&quot;:[&quot;Segment&quot;,[944.5,641.5],[-34.24165,0],[34.24165,0]],&quot;selected&quot;:false,&quot;view&quot;:null},{&quot;info&quot;:[&quot;Segment&quot;,[1006.5,703.5],[0,-34.24165],[0,34.24165]],&quot;selected&quot;:false,&quot;view&quot;:null},{&quot;info&quot;:[&quot;Segment&quot;,[944.5,765.5],[34.24165,0],[-34.24165,0]],&quot;selected&quot;:false,&quot;view&quot;:null}],&quot;guideItem&quot;:null,&quot;selected&quot;:false,&quot;strokeWidth&quot;:15}" fill="#ffa33b" fill-rule="nonzero" stroke="#000000" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"/>
+               </svg>

@@ -1,0 +1,11 @@
+{
+  "id": 27,
+  "name": "엔릴",
+  "primaryObjects": [
+    "awbu"
+  ],
+  "counterpartObjects": [
+    "kuhk"
+  ],
+  "overrides": []
+}

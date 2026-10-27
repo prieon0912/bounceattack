@@ -1,0 +1,11 @@
+{
+  "id": 5,
+  "name": "엑스",
+  "primaryObjects": [
+    "f5gc"
+  ],
+  "counterpartObjects": [
+    "45b6"
+  ],
+  "overrides": []
+}

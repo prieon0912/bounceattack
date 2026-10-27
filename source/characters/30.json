@@ -1,0 +1,13 @@
+{
+  "id": 30,
+  "name": "네이션",
+  "primaryObjects": [
+    "0dj2",
+    "clrp"
+  ],
+  "counterpartObjects": [
+    "5tsu",
+    "lyal"
+  ],
+  "overrides": []
+}

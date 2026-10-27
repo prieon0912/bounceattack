@@ -1,0 +1,4 @@
+* text=auto eol=lf
+public/assets/** -text -diff
+public/bower_components/** -text -diff
+public/src/vendor/** -diff
