@@ -21,7 +21,7 @@ function step(r, p1 = 0, p2 = 0) { applyInputs(r, [p1, p2]); r.step(); }
 test("Brand fire zone deals 5 every second, five times, and cleans up after five seconds", () => {
   const r = game(), hp = r.globals.get("7ir2");
   step(r, 16); const zone = r.secondarySkills.state(1).zone;
-  assert.deepEqual([zone.x, zone.y, zone.radius], [0, 0, 90]);
+  assert.deepEqual([zone.x, zone.y, zone.radius], [0, 0, 110]);
   assert.ok(r.num(r.globals.get("qn98")) < 69);
   for (let t = 1; t <= 301; t++) {
     step(r);
@@ -40,9 +40,9 @@ test("installed area stays put; slow applies only inside and preserves other slo
   assert.equal(r.secondarySkills.state(1).zone.x, 0);
   assert.equal(r.get(target, "nccn"), FIRE_ZONE.slow);
   assert.equal(r.num(r.globals.get("nccn")), 0, "secondary slow does not contaminate original decay state");
-  target.x = 91; assert.equal(r.num(r.get(target, "nccn")), 0);
-  target.x = 0; target.y = 91; assert.equal(r.num(r.get(target, "nccn")), 0);
-  target.y = 0; target.x = 90; assert.equal(r.get(target, "nccn"), FIRE_ZONE.slow);
+  target.x = 111; assert.equal(r.num(r.get(target, "nccn")), 0);
+  target.x = 0; target.y = 111; assert.equal(r.num(r.get(target, "nccn")), 0);
+  target.y = 0; target.x = 110; assert.equal(r.get(target, "nccn"), FIRE_ZONE.slow);
   r.globals.set("nccn", 15); assert.equal(r.get(target, "nccn"), 15);
   target.x = 150; assert.equal(r.get(target, "nccn"), 15);
 });
@@ -183,11 +183,13 @@ test("real original roster click commits 1P skill and presents fresh 2P default 
   assert.equal(r.secondarySkills.choice(2),"primary");
   assert.deepEqual(r.faults,[]);
 });
-test("zone particles use untouched original Brand pictures, no custom ring or rounded flame drawing", () => {
+test("zone shows only the original red circle, without flame particles", () => {
   const r = game(); step(r, 16); step(r);
   const originals = new Set([...r.defs.get("m9km").sprite.pictures, ...r.defs.get("iaqy").sprite.pictures].map(p => p.fileurl));
   const effects = r.entities.filter(e => e.secondaryEffect === "brand-fire-zone");
-  assert.equal(effects.length, 18);
+  assert.equal(effects.length, 1);
+  assert.equal(effects[0].effects.transparency, 75);
+  assert.equal(r.size(effects[0]), 220);
   assert.ok(effects.every(e => originals.has(e.picture.fileurl)));
 });
 

@@ -1,6 +1,6 @@
 // Brand's second skill. All gameplay sizes use Entry's 480 x 270 stage units.
 export const FIRE_ZONE = Object.freeze({
-  durationTicks: 300, radius: 90, intervalTicks: 60, damage: 5,
+  durationTicks: 300, radius: 110, intervalTicks: 60, damage: 5,
   slow: 8, manaCost: 32, cooldownTicks: 480, castTicks: 12,
 });
 export const brandFireZone = {
@@ -52,13 +52,7 @@ export const brandFireZone = {
       return e;
     };
     // The original circular explosion drawing forms a faint filled boundary (no new ring).
-    const area = addVisual(originalFlames[3], z.x, z.y, config.radius * 2, 85);
-    for (let i = 0; i < 12; i++) {
-      const angle = i * Math.PI * 2 / 12;
-      addVisual(originalFlames[0], z.x + Math.cos(angle) * 68, z.y + Math.sin(angle) * 68, 16, 12);
-    }
-    for (const [x, y] of [[0, 0], [-26, -24], [26, -24], [-26, 24], [26, 24]])
-      addVisual(originalFlames[0], z.x + x, z.y + y, 17, 12);
+    const area = addVisual(originalFlames[3], z.x, z.y, config.radius * 2, 75);
     r.spawn(area, function*(runtime, effectContext) {
       try {
         while (runtime.tick <= z.endsAt) {
@@ -72,17 +66,7 @@ export const brandFireZone = {
           }
           if (elapsed === config.durationTicks) break;
           const fade = elapsed < 282 ? 0 : (elapsed - 282) / 18;
-          area.effects.transparency = 85 + fade * 15;
-          for (let i = 1; i < visuals.length; i++) {
-            const flame = visuals[i];
-            const picture = originalFlames[Math.floor((elapsed + i * 3) / 9) % 3];
-            flame.picture = picture;
-            flame.width = picture.dimension.width; flame.height = picture.dimension.height;
-            flame.regX = flame.width / 2; flame.regY = flame.height / 2;
-            flame.scaleX = flame.scaleY = 1;
-            runtime.setSize(flame, 16 + 2 * Math.sin((elapsed + i * 4) / 7));
-            flame.effects.transparency = 12 + fade * 88;
-          }
+          area.effects.transparency = 75 + fade * 25;
           yield 1;
         }
       } finally {
