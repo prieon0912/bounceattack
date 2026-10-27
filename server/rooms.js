@@ -1,0 +1,260 @@
+import {
+  randomBytes,
+  randomInt,
+  randomUUID,
+  createHash,
+  timingSafeEqual,
+} from "node:crypto";
+const TTL = 7200,
+  prefix = "bounce:v1:",
+  roomKey = (c) => prefix + "room:" + c,
+  channel = (c) => prefix + "events:" + c;
+const hash = (s) => createHash("sha256").update(String(s)).digest("hex");
+const validInt = (n, min, max) => Number.isInteger(n) && n >= min && n <= max;
+const same = (a, b) =>
+  typeof a === "string" &&
+  typeof b === "string" &&
+  a.length === b.length &&
+  timingSafeEqual(Buffer.from(a), Buffer.from(b));
+export class RoomError extends Error {}
+export class RoomHub {
+  constructor(store) {
+    this.store = store;
+  }
+  public(room) {
+    return {
+      code: room.code,
+      rev: room.rev || 0,
+      phase: room.phase,
+      map: room.map,
+      players: room.players.map((p) =>
+        p ? { ready: p.ready, connected: p.connected } : null,
+      ),
+      match: room.match,
+      build: room.build,
+    };
+  }
+  async state(code) {
+    const raw = await this.store.get(roomKey(code));
+    if (!raw)
+      throw new RoomError("방이 없거나 만료됐어요. 새 방을 만들어 주세요.");
+    return JSON.parse(raw);
+  }
+  async update(code, fn) {
+    for (let i = 0; i < 8; i++) {
+      const old = await this.store.get(roomKey(code));
+      if (!old) throw new RoomError("방이 만료됐어요.");
+      const room = JSON.parse(old);
+      await fn(room);
+      room.rev = (room.rev || 0) + 1;
+      if (await this.store.cas(roomKey(code), old, JSON.stringify(room), TTL)) {
+        await this.publish(code, { type: "room", room: this.public(room) });
+        return room;
+      }
+    }
+    throw new RoomError("방 상태가 바뀌었어요. 다시 시도해 주세요.");
+  }
+  async publish(code, message) {
+    await this.store.publish(channel(code), JSON.stringify(message));
+  }
+  async watch(code, fn) {
+    return this.store.subscribe(channel(code), (raw) => {
+      try {
+        fn(JSON.parse(raw));
+      } catch {}
+    });
+  }
+  authorize(room, ctx) {
+    const p = room.players[ctx.role];
+    if (!p || !same(p.token, hash(ctx.token)) || p.session !== ctx.session)
+      throw new RoomError("접속이 만료됐거나 다른 창에서 다시 연결했어요.");
+    return p;
+  }
+  validateBuild(build) {
+    if (typeof build !== "string" || !/^[a-f0-9]{64}$/.test(build))
+      throw new RoomError("버전 정보를 불러오지 못했어요. 새로고침해 주세요.");
+  }
+  async create(ctx, msg) {
+    this.validateBuild(msg.build);
+    if (!validInt(msg.character, 1, 34) || !validInt(msg.map, 1, 6))
+      throw new RoomError("캐릭터와 전장을 확인해 주세요.");
+    ctx.token = randomBytes(24).toString("hex");
+    ctx.role = 0;
+    ctx.session = randomUUID();
+    for (let i = 0; i < 8; i++) {
+      const code = randomBytes(5).toString("hex").toUpperCase().slice(0, 8),
+        room = {
+          code,
+          rev: 0,
+          build: msg.build,
+          map: msg.map,
+          phase: "lobby",
+          players: [
+            {
+              token: hash(ctx.token),
+              session: ctx.session,
+              character: msg.character,
+              ready: false,
+              connected: true,
+            },
+            null,
+          ],
+          match: null,
+        };
+      if (await this.store.create(roomKey(code), JSON.stringify(room), TTL)) {
+        ctx.code = code;
+        return room;
+      }
+    }
+    throw new RoomError("방을 만들지 못했어요. 다시 시도해 주세요.");
+  }
+  async join(ctx, msg) {
+    this.validateBuild(msg.build);
+    const code = String(msg.code || "").toUpperCase();
+    if (!/^[A-F0-9]{8}$/.test(code) || !validInt(msg.character, 1, 34))
+      throw new RoomError("8자리 방 코드를 확인해 주세요.");
+    ctx.token = randomBytes(24).toString("hex");
+    ctx.role = 1;
+    ctx.session = randomUUID();
+    const room = await this.update(code, (r) => {
+      if (r.build !== msg.build)
+        throw new RoomError(
+          "친구와 게임 버전이 달라요. 둘 다 새로고침해 주세요.",
+        );
+      if (r.players[1])
+        throw new RoomError("이미 다른 친구가 들어온 방이에요.");
+      if (r.phase !== "lobby") throw new RoomError("이미 대전 중인 방이에요.");
+      r.players[1] = {
+        token: hash(ctx.token),
+        session: ctx.session,
+        character: msg.character,
+        ready: false,
+        connected: true,
+      };
+      r.players[0].ready = false;
+    });
+    ctx.code = code;
+    return room;
+  }
+  async resume(ctx, msg) {
+    const code = String(msg.code || "").toUpperCase();
+    if (
+      !/^[A-F0-9]{8}$/.test(code) ||
+      !validInt(msg.role, 0, 1) ||
+      typeof msg.token !== "string" ||
+      msg.token.length !== 48
+    )
+      throw new RoomError("다시 연결하지 못했어요.");
+    ctx.token = msg.token;
+    ctx.role = msg.role;
+    ctx.session = randomUUID();
+    const room = await this.update(code, (r) => {
+      const p = r.players[ctx.role];
+      if (!p || !same(p.token, hash(ctx.token)))
+        throw new RoomError("방 접속 정보를 확인할 수 없어요.");
+      p.session = ctx.session;
+      p.connected = true;
+    });
+    ctx.code = code;
+    return room;
+  }
+  async action(ctx, msg) {
+    if (!ctx.code) throw new RoomError("방에 먼저 입장해 주세요.");
+    return this.update(ctx.code, (r) => {
+      const p = this.authorize(r, ctx);
+      if (msg.type === "pick") {
+        if (r.phase !== "lobby" || !validInt(msg.character, 1, 34))
+          throw new RoomError("지금은 캐릭터를 바꿀 수 없어요.");
+        p.character = msg.character;
+        p.ready = false;
+      } else if (msg.type === "map") {
+        if (ctx.role !== 0 || r.phase !== "lobby" || !validInt(msg.map, 1, 6))
+          throw new RoomError("방장만 전장을 바꿀 수 있어요.");
+        r.map = msg.map;
+        for (const player of r.players) if (player) player.ready = false;
+      } else if (msg.type === "ready") {
+        if (r.phase !== "lobby") throw new RoomError("이미 시작한 대전이에요.");
+        p.ready = !!msg.ready;
+        if (r.players.every((x) => x?.ready && x.connected)) {
+          if (r.players[0].character === r.players[1].character) {
+            for (const player of r.players) player.ready = false;
+            r.notice =
+              "같은 캐릭터가 선택됐어요. 서로 다른 캐릭터로 다시 준비해 주세요.";
+          } else {
+            r.notice = null;
+            r.phase = "playing";
+            r.match = {
+              epoch: randomUUID(),
+              seed: randomInt(0, 0x100000000),
+              p1: r.players[0].character,
+              p2: r.players[1].character,
+              map: r.map,
+              delay: 3,
+            };
+          }
+        }
+      } else if (msg.type === "rematch") {
+        r.phase = "lobby";
+        r.match = null;
+        for (const player of r.players) if (player) player.ready = false;
+      } else throw new RoomError("알 수 없는 방 요청이에요.");
+    });
+  }
+  async relay(ctx, msg) {
+    const r = await this.state(ctx.code);
+    this.authorize(r, ctx);
+    const out = { type: msg.type, role: ctx.role };
+    if (msg.type === "signal") {
+      if (!msg.data || JSON.stringify(msg.data).length > 18000)
+        throw new RoomError("연결 요청이 너무 커요.");
+      out.data = msg.data;
+    } else {
+      if (r.phase !== "playing" || msg.epoch !== r.match.epoch)
+        throw new RoomError("종료된 대전의 입력이에요.");
+      out.epoch = msg.epoch;
+      if (msg.type === "input") {
+        if (
+          !Array.isArray(msg.frames) ||
+          msg.frames.length < 1 ||
+          msg.frames.length > 32 ||
+          !msg.frames.every(
+            (f) =>
+              Array.isArray(f) &&
+              f.length === 2 &&
+              validInt(f[0], 1, 10_000_000) &&
+              validInt(f[1], 0, 63),
+          )
+        )
+          throw new RoomError("올바르지 않은 대전 입력이에요.");
+        out.frames = msg.frames;
+      } else if (msg.type === "sync") {
+        if (!validInt(msg.from, 1, 10_000_000))
+          throw new RoomError("입력 순서를 확인할 수 없어요.");
+        out.from = msg.from;
+      } else if (msg.type === "checksum") {
+        if (
+          !validInt(msg.frame, 1, 10_000_000) ||
+          !validInt(msg.hash, 0, 0xffffffff)
+        )
+          throw new RoomError("잘못된 상태 확인이에요.");
+        out.frame = msg.frame;
+        out.hash = msg.hash;
+      } else if (msg.type === "pause") {
+        out.paused = !!msg.paused;
+      } else throw new RoomError("지원하지 않는 대전 요청이에요.");
+    }
+    await this.publish(ctx.code, out);
+  }
+  async leave(ctx) {
+    if (!ctx.code) return;
+    try {
+      await this.update(ctx.code, (r) => {
+        const p = r.players[ctx.role];
+        if (p?.session === ctx.session) {
+          p.connected = false;
+          p.ready = false;
+        }
+      });
+    } catch {}
+  }
+}
