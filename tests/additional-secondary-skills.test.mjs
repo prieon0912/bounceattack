@@ -110,3 +110,31 @@ test("healing area expands from center without bottle or outlines; sword arc kee
  assert.ok(!svg.includes("stroke="));
  }
 });
+
+
+test("healing uses original green floating recovery numbers and displays only actual restored HP",()=>{
+ for(const side of [1,2]){
+ const r=game(side===1?16:2,side===2?16:2,side===1?["secondary","primary"]:["primary","secondary"]);freeze(r);
+ r.s(`${side}P 체력`,r.g(`${side}P 최대체력`)-1);r.run(1,[side===1?82:80]);r.run(62);
+ const numbers=r.entities.filter(e=>e.clone&&e.objectId===(side===1?"0oxa":"siav"));
+ assert.equal(numbers.length,1);assert.equal(String(numbers[0].text),"1");
+ assert.equal(r.g(`${side}P 체력`),r.g(`${side}P 최대체력`));
+ r.run(60);assert.ok(!r.entities.some(e=>e.clone&&e.objectId===(side===1?"0oxa":"siav")));
+ assert.deepEqual(r.faults,[]);
+ }
+});
+test("stealthed Atlen cannot emit sword waves or deal damage with waves already in flight",()=>{
+ for(const side of [1,2]){
+ const create=()=>{const r=game(side===1?7:2,side===2?7:2,side===1?["secondary","primary"]:["primary","secondary"]);freeze(r);
+ r.s(`${side}P 방향`,side===1?1:0);r.originals.get(side===1?"n8fg":"00h9").x=side===1?100:-100;
+ r.run(1,[side===1?82:80]);r.run(1);return r;};
+ const stealth=side===1?"ob2m":"rav6",hp=side===1?"2P 체력":"1P 체력",key=side===1?69:13;
+ let r=create(),health=r.g(hp);r.globals.set(stealth,1);r.run(2,[key]);r.run(100);
+ assert.equal(r.g(hp),health);assert.equal(r.secondarySkills.state(side).charges,3);
+ assert.ok(!r.entities.some(e=>e.secondaryEffect==="atlen-sword-wave"));
+ r=create();health=r.g(hp);r.run(2,[key]);
+ for(let i=0;i<40&&!r.entities.some(e=>e.secondaryEffect==="atlen-sword-wave");i++)r.run(1);
+ assert.ok(r.entities.some(e=>e.secondaryEffect==="atlen-sword-wave"));r.globals.set(stealth,1);r.run(60);
+ assert.equal(r.g(hp),health);assert.deepEqual(r.faults,[]);
+ }
+});

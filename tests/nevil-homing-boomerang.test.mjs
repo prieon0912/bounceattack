@@ -27,19 +27,27 @@ test("outbound boomerang follows each new target position using original project
  }
  assert.ok(checks>40);assert.deepEqual(r.faults,[]);
 });
-test("return aims once at caster position and stays straight when caster subsequently moves",()=>{
- const r=game();step(r,16);
- while(r.secondarySkills.state(1).boomerang.phase!=="return")step(r);
- let e=projectile(r);const origin={x:e.x,y:e.y};
- const destination={...r.secondarySkills.state(1).boomerang.returnTarget};
- let checks=0;
- for(let t=0;t<220&&projectile(r);t++){
-  Object.assign(r.originals.get("00h9"),{x:-150+t/2,y:60*Math.sin(t/9)});step(r);e=projectile(r);
-  if(e){assert.ok(Math.abs((e.x-origin.x)*(destination.y-origin.y)-(e.y-origin.y)*(destination.x-origin.x))<1e-6);checks++;}
+test("return re-aims at the moving caster each tick and catches within the original 18 units on both sides",()=>{
+ for(const side of [1,2]){
+ const r=game(side===1?3:2,side===2?3:2);step(r,side===1?16:0,side===2?16:0);
+ while(r.secondarySkills.state(side).boomerang.phase!=="return")step(r);
+ const caster=r.originals.get(side===1?"00h9":"n8fg");let checks=0,curves=0,previous=null;
+ for(let t=0;t<300&&projectile(r);t++){
+  Object.assign(caster,{x:side===1?-100:-20,y:40*Math.sin(t/12)});
+  const e=projectile(r),x=e.x,y=e.y,tx=caster.x-x,ty=caster.y-y;step(r);
+  const vx=e.x-x,vy=e.y-y;
+  if(Math.hypot(vx,vy)>1e-6){
+   assert.ok(Math.abs(vx*ty-vy*tx)<1e-6,"return follows current owner position");
+   if(previous&&Math.abs(vx*previous[1]-vy*previous[0])>1e-5)curves++;
+   previous=[vx,vy];checks++;
+  }
+  if(!projectile(r))assert.ok(Math.hypot(caster.x-e.x,caster.y-e.y)<=18);
  }
- assert.ok(checks>30);assert.ok(!projectile(r));assert.equal(r.num(r.globals.get("7a8q")),0);
- assert.deepEqual(r.faults,[]);
+ assert.ok(checks>10);assert.ok(curves>5);assert.ok(!projectile(r));
+ assert.equal(r.num(r.globals.get(side===1?"7a8q":"97v8")),0);assert.deepEqual(r.faults,[]);
+ }
 });
+
 test("each leg deals original basic damage 8 once, with matching 2P behavior",()=>{
  for(const [p1,p2,side]of [[3,2,1],[2,3,2]]){
   const r=game(p1,p2),hpId=side===1?"7ir2":"akf6",hp=r.num(r.globals.get(hpId));
@@ -61,7 +69,7 @@ test("Nevil skill switches only in original blurred description and commits inde
  const r=game();r.loadScene("1ckl");r.globals.set("jx38",1);r.globals.set("16fh",3);r.globals.set("yraj",1);
  r.secondarySkills.syncSelection();assert.equal(r.originals.get("o9rj").picture.id,"pcgv");
  assert.ok(r.secondarySkills.selectKey(82));assert.equal(r.originals.get("o9rj").picture.id,"nevil-secondary-icon");
- assert.match(r.originals.get("3my6").text,/직선/);
+ assert.match(r.originals.get("3my6").text,/일반 부메랑처럼/);
  r.globals.set("y75t",3);r.command({e:r.originals.get("o9rj")},"set_variable",["jx38",2]);r.secondarySkills.syncSelection();
  assert.equal(r.secondarySkills.choice(1),"secondary");assert.equal(r.secondarySkills.selectionInfo(2).name,"3환 부메랑");
  r.globals.set("yraj",0);assert.equal(r.secondarySkills.selectKey(80),false);

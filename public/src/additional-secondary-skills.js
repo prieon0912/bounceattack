@@ -42,8 +42,11 @@ export const smokeHealingPotion = {
         const progress = tick >= cfg.expandTicks ? 1 :
           (1 - Math.pow(.85, tick)) / (1 - Math.pow(.85, cfg.expandTicks));
         r.setSize(area, 2 + (cfg.radius * 2 - 2) * progress);
-        if (tick % cfg.intervalTicks === 0 && Math.hypot(caster.x - x, caster.y - y) <= cfg.radius)
-          r.globals.set(hp, Math.min(r.num(r.globals.get(max)), r.num(r.globals.get(hp)) + cfg.healing));
+        if (tick % cfg.intervalTicks === 0 && Math.hypot(caster.x - x, caster.y - y) <= cfg.radius) {
+          const healed = Math.max(0, Math.min(cfg.healing, r.num(r.globals.get(max)) - r.num(r.globals.get(hp))));
+          // Original healing path also feeds the existing green floating recovery text.
+          if (healed > 0) yield* r.call(c, side === 1 ? "albn" : "41z4", [healed]);
+        }
         area.effects.transparency = tick > 160 ? (tick - 160) * 5 : 0;
       }
     } finally { area.dead = true; delete state.healingArea; }
@@ -60,6 +63,7 @@ export const atlenSwordWave = {
   onCommand(r, c, type, args, side, state) {
     if (c.e.objectId !== (side === 1 ? "0j72" : "3uq6") || c.e.clone ||
         type !== "set_variable" || !["1txk", "e7u6"].includes(c.block) || !(state.charges > 0)) return;
+    if (r.num(r.globals.get(side === 1 ? "ob2m" : "rav6")) !== 0) return;
     state.charges--;
     const caster = r.originals.get(bodyId(side)), target = r.originals.get(bodyId(side === 1 ? 2 : 1));
     const direction = r.num(r.globals.get(side === 1 ? "etjn" : "846x")) === 1 ? 1 : -1;
@@ -77,7 +81,8 @@ export const atlenSwordWave = {
           const opacity = Math.min(1, (tick + 1) / 4, (SWORD_WAVE.durationTicks - tick) / 6);
           wind.effects.transparency = 100 - opacity * 55;
           // Swept horizontal margin prevents tunnelling; the arc extends above the wielder.
-          if (!target.dead && runtime.num(runtime.globals.get(side === 1 ? "rav6" : "ob2m")) === 0 &&
+          if (!target.dead && runtime.num(runtime.globals.get(side === 1 ? "ob2m" : "rav6")) === 0 &&
+              runtime.num(runtime.globals.get(side === 1 ? "rav6" : "ob2m")) === 0 &&
               Math.abs(target.x - wave.x) <= 12 && Math.abs(target.y - wave.y) <= 22) {
             yield* runtime.call(context, side === 1 ? "qy83" : "05j0", [-SWORD_WAVE.damage, 0, 1]); return;
           }
