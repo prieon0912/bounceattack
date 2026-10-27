@@ -86,3 +86,14 @@ test("matchmaking accepts Nevil secondary and distributes it to both clients",as
  const room=await hub.matchmake(b,{build,character:3,skill:"primary"});
  assert.deepEqual(room.match.skills,["secondary","primary"]);
 });
+
+test("Nevil 1P body uses the same original orange art as 2P without changing geometry",()=>{
+ for(const skills of [["primary","primary"],["secondary","primary"]]){
+  const r=game(3,2,skills),body=r.defs.get("n230").sprite.pictures[2],orange=r.defs.get("ocqj").sprite.pictures[2];
+  const original=project.objects.find(o=>o.id==="n230").sprite.pictures[2];
+  assert.equal(body.fileurl,orange.fileurl);
+  assert.equal(body.id,original.id);
+  assert.deepEqual(body.dimension,original.dimension);
+  assert.equal(r.originals.get("n230").picture.fileurl,orange.fileurl);
+ }
+});

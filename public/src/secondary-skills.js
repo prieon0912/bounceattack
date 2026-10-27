@@ -3,6 +3,16 @@ import { brandFireZone } from "./brand-fire-zone.js";
 import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
 export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
+  // Nevil's archived 1P body references a black/green variant; use the same orange
+  // body as 2P and the original selector, preserving picture id, size and hit geometry.
+  const nevilP1 = project.objects.find(o => o.id === "n230")?.sprite.pictures[2];
+  const nevilP2 = project.objects.find(o => o.id === "ocqj")?.sprite.pictures[2];
+  if (nevilP1 && nevilP2) nevilP1.fileurl = nevilP2.fileurl;
+  // Keep Creation's command names readable without the archived empty brackets.
+  for (const [id, name] of [["x7mx", "명령: 자력"], ["74ed", "명령: 전자기파"]]) {
+    const entry = project.variables.find(v => v.id === id)?.array?.[10];
+    if (entry) entry.data = name;
+  }
   const eclipse = project.variables.find(v => v.id === "gsve")?.array?.[3];
   if (eclipse) eclipse.data = "패시브의 사정거리, 공전속도, 피해량을 증가시킵니다. 끄고 킬 수 있습니다.";
   for (const definition of definitions) definition.prepare?.(project);

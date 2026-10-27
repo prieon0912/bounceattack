@@ -128,6 +128,10 @@ module.exports = function applyBalancePatch(project) {
     }
 
   // 4. 프린스
+  // 기본 피해 5 → 7; 궁극기 강화 추가 피해는 유지.
+  setNumber("z4wa", "1mm1", [0], -5, -7);
+  setNumber("l8ny", "wqwk", [0], -5, -7);
+  project.variables.find(v => v.id === "gsve").array[21].data = "적을 끌어당기며 띄우고 강하게 찌릅니다";
   //  - 기본 이동 분모 20 → 17, 접근 보정 −7.7 → −4.7 (접근 중 분모 12.3 유지)
   setNumber("m9cz", "se3v", [1], 20, 17);
   setNumber("m9cz", "72e2", [1], 20, 17);

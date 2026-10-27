@@ -35,7 +35,7 @@ function installZone(r, side = 1) {
 test("Brand fire zone deals 5 every second, five times, and cleans up after five seconds", () => {
   const r = game(), hp = r.globals.get("7ir2");
   installZone(r); const zone = r.secondarySkills.state(1).zone;
-  assert.deepEqual([zone.x, zone.y, zone.radius], [0, 0, 100]);
+  assert.deepEqual([zone.x, zone.y, zone.radius], [0, 0, 10]);
   assert.ok(r.num(r.globals.get("qn98")) < 69);
   for (let t = 1; t <= 301; t++) {
     step(r);
@@ -50,7 +50,7 @@ test("installed area stays put; slow applies only inside and preserves other slo
   const r = game(), target = r.originals.get("n8fg");
   installZone(r);
   r.originals.get("00h9").x = -150;
-  step(r);
+  for (let i = 0; i < FIRE_ZONE.expandTicks; i++) step(r);
   assert.equal(r.secondarySkills.state(1).zone.x, 0);
   assert.equal(r.get(target, "nccn"), FIRE_ZONE.slow);
   assert.equal(r.num(r.globals.get("nccn")), 0, "secondary slow does not contaminate original decay state");
@@ -205,6 +205,8 @@ test("zone shows only the original red circle, without flame particles", () => {
   const effects = r.entities.filter(e => e.secondaryEffect === "brand-fire-zone");
   assert.equal(effects.length, 1);
   assert.equal(effects[0].effects.transparency, 30);
+  assert.ok(r.size(effects[0]) > 20 && r.size(effects[0]) < 200);
+  for (let i = 0; i < FIRE_ZONE.expandTicks; i++) step(r);
   assert.equal(r.size(effects[0]), 200);
   assert.ok(effects.every(e => originals.has(e.picture.fileurl)));
 });
@@ -286,4 +288,43 @@ test("simultaneous real mirror fireballs install independent zones on both clien
  assert.notEqual(a.secondarySkills.state(1).zone,a.secondarySkills.state(2).zone);
  assert.equal(a.entities.filter(e=>e.secondaryEffect==="brand-fire-zone").length,2);
  assert.deepEqual(a.faults,[]);
+});
+
+test("fire zone becomes reusable only after next-basic placement and area expiry, without another cooldown",()=>{
+ for(const [p1,p2,side]of [[1,2,1],[2,1,2]]){
+  const r=game(p1,p2);r.collisionProvider=()=>false;
+  const press=()=>step(r,side===1?16:0,side===2?16:0);
+  press();const armedAt=r.tick,state=r.secondarySkills.state(side);
+  for(let i=0;i<150;i++)step(r); // Delay the basic after arming.
+  step(r,side===1?8:0,side===2?8:0);step(r,side===1?8:0,side===2?8:0);
+  for(let i=0;i<100&&!state.zone;i++)step(r);
+  assert.ok(state.zone);const end=state.zone.endsAt;
+  assert.equal(state.readyAt,end);
+  while(r.tick<armedAt+305)step(r);
+  const mp=side===1?"qn98":"thom";r.globals.set(mp,100);press();
+  assert.ok(r.num(r.globals.get(mp))>=100,"no mana spent while existing area remains");
+  assert.equal(state.armed,false);
+  assert.equal(r.entities.filter(e=>e.secondaryEffect==="brand-fire-zone").length,1);
+  while(state.zone)step(r);
+  assert.equal(r.tick,end,"area expires at its own end time");
+  r.globals.set(mp,100);press();
+  assert.equal(state.armed,true,"reusable immediately after expiry");
+  assert.ok(Math.abs(r.num(r.globals.get(mp))-63)<.5);
+  assert.deepEqual(r.faults,[]);
+ }
+});
+
+test("fire zone grows smoothly from the original explosion size and its radius matches the visible circle",()=>{
+ const r=game();installZone(r);
+ const area=r.entities.find(e=>e.secondaryEffect==="brand-fire-zone"),z=r.secondarySkills.state(1).zone;
+ assert.equal(r.size(area),20);assert.equal(z.radius,10);
+ let last=20;
+ for(let tick=1;tick<=FIRE_ZONE.expandTicks;tick++){
+  step(r);const size=r.size(area);
+  assert.ok(size>last && size<=200);
+  assert.ok(Math.abs(z.radius-size/2)<1e-9);
+  assert.ok(size-last<25,"no full-size pop");last=size;
+ }
+ assert.equal(last,200);assert.equal(z.radius,100);
+ assert.deepEqual(r.faults,[]);
 });

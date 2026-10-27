@@ -1,7 +1,7 @@
 // Brand's second skill. All gameplay sizes use Entry's 480 x 270 stage units.
 export const FIRE_ZONE = Object.freeze({
   durationTicks: 300, radius: 100, intervalTicks: 60, damage: 5,
-  slow: 8, manaCost: 32, cooldownTicks: 300, castTicks: 12,
+  slow: 8, manaCost: 37, cooldownTicks: 300, castTicks: 12, expandTicks: 24, initialSize: 20,
 });
 export const brandFireZone = {
   character: 1, name: "화염지대", manaCost: FIRE_ZONE.manaCost, cooldownTicks: FIRE_ZONE.cooldownTicks,
@@ -35,7 +35,7 @@ export const brandFireZone = {
   },
   canCast(r, side) {
     const state = r.secondarySkills.state(side);
-    return !state.armed && !state.pendingShot;
+    return !state.armed && !state.pendingShot && !state.zone && !(state.zones?.length);
   },
   *cast(r, c, { state }) {
     state.armed = true;
@@ -59,7 +59,8 @@ export const brandFireZone = {
   install(r, c, { side, state }, point) {
     const target = r.originals.get(side === 1 ? "n8fg" : "00h9");
     const config = FIRE_ZONE;
-    const z = { x: point.x, y: point.y, radius: config.radius, startsAt: r.tick, endsAt: r.tick + config.durationTicks };
+    const z = { x: point.x, y: point.y, radius: config.initialSize / 2, startsAt: r.tick, endsAt: r.tick + config.durationTicks };
+    state.readyAt = z.endsAt;
     state.zone = z;
     (state.zones ??= []).push(z);
     // Reuse only original Brand drawings, on visual-only entities with no original clone scripts.
@@ -79,12 +80,19 @@ export const brandFireZone = {
       return e;
     };
     // The original circular explosion drawing forms a faint filled boundary (no new ring).
-    const area = addVisual(originalFlames[3], z.x, z.y, config.radius * 2, 30);
+    const area = addVisual(originalFlames[3], z.x, z.y, config.initialSize, 30);
     r.spawn(area, function*(runtime, effectContext) {
       try {
         while (runtime.tick <= z.endsAt) {
           const elapsed = runtime.tick - z.startsAt;
           if (Number(runtime.globals.get("r71b")) !== 0) break;
+          // Same 0.9 easing as the original fireball explosion, reaching full size
+          // in 0.4 seconds. Slow/collision radius follows the visible boundary.
+          const progress = elapsed >= config.expandTicks ? 1 :
+            (1 - Math.pow(.9, elapsed)) / (1 - Math.pow(.9, config.expandTicks));
+          const size = config.initialSize + (config.radius * 2 - config.initialSize) * progress;
+          runtime.setSize(area, size);
+          z.radius = size / 2;
           if (elapsed > 0 && elapsed % config.intervalTicks === 0 && !target.dead &&
               Math.hypot(target.x - z.x, target.y - z.y) <= config.radius &&
               runtime.num(runtime.globals.get(side === 1 ? "7ir2" : "akf6")) > 0) {

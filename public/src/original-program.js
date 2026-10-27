@@ -29646,7 +29646,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",
 c.block="oxk7";r.guard(c);
 r.command(c,"set_variable",["vk0b","1",null]);
 c.block="ce17";r.guard(c);
-yield* r.call(c,"05j0",[r.value(c,"calc_basic",["-5","MINUS",r.value(c,"calc_basic",["7","MULTI",r.value(c,"get_variable",["tqbe",null])])]),10,"1"]);
+yield* r.call(c,"05j0",[r.value(c,"calc_basic",["-7","MINUS",r.value(c,"calc_basic",["7","MULTI",r.value(c,"get_variable",["tqbe",null])])]),10,"1"]);
 }
 }
 }
@@ -30137,7 +30137,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",
 c.block="344s";r.guard(c);
 r.command(c,"set_variable",["vk0b","1",null]);
 c.block="j55n";r.guard(c);
-yield* r.call(c,"qy83",[r.value(c,"calc_basic",["-5","MINUS",r.value(c,"calc_basic",["7","MULTI",r.value(c,"get_variable",["6q5z",null])])]),10,"1"]);
+yield* r.call(c,"qy83",[r.value(c,"calc_basic",["-7","MINUS",r.value(c,"calc_basic",["7","MULTI",r.value(c,"get_variable",["6q5z",null])])]),10,"1"]);
 }
 }
 }

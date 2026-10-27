@@ -291,3 +291,16 @@ test("캐논 궁: 움직이는 상대를 조준하고 큰 파란 원은 생성�
     assert.deepEqual(r.faults, []);
   }
 });
+
+
+test("프린스: 양쪽 평타 기본 피해 7, 스킬 설명 갱신", () => {
+  assert.equal(project.variables.find(v => v.id === "gsve").array[21].data, "적을 끌어당기며 띄우고 강하게 찌릅니다");
+  for (const side of [1, 2]) {
+    const r = game(side === 1 ? 22 : 2, side === 2 ? 22 : 2);
+    r.place(-15, 15); r.s(`${side}P 방향`, side === 1 ? 1 : 0);
+    const foe = side === 1 ? "2P 체력" : "1P 체력", hp = r.g(foe);
+    r.run(2, [side === 1 ? 69 : 13]);
+    for (let i = 0; i < 60 && r.g(foe) === hp; i++) r.run(1);
+    assert.equal(hp - r.g(foe), 7);
+  }
+});
