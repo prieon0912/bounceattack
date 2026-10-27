@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BOUNCE / ATTACK</title>
+    <meta
+      name="description"
+      content="34명의 캐릭터, 친구와 함께하는 바운스어택 로컬·온라인 대전."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <a class="wordmark" href="./"
+          >BOUNCE<span>/</span>ATTACK<small
+            >LOCAL / ONLINE · 34 FIGHTERS</small
+          ></a
+        >
+        <div>
+          <button id="sound" aria-pressed="true">소리 켜짐</button>
+          <button id="fullscreen">전체 화면 ↗</button>
+        </div>
+      </header>
+      <section id="selection">
+        <div class="intro">
+          <div>
+            <p class="eyebrow">CHOOSE YOUR FIGHTER</p>
+            <h1>한 판 더.</h1>
+            <p>캐릭터를 고르고, 친구와 바로 붙어보세요.</p>
+          </div>
+          <span class="badge">2 PLAYERS<br />1 KEYBOARD</span>
+        </div>
+        <div class="mode-switch">
+          <button id="local-mode" class="active">같은 PC에서 대전</button
+          ><button id="online-mode">친구와 온라인 대전</button>
+        </div>
+        <section
+          id="online-panel"
+          class="online-panel"
+          hidden
+          aria-label="온라인 대전 방"
+        >
+          <div id="room-entry">
+            <div>
+              <h2>친구와 한 판</h2>
+              <p>
+                캐릭터를 고른 뒤 방을 만들거나, 친구의 방 코드를 입력하세요.
+              </p>
+            </div>
+            <button id="create-room" disabled>방 만들기</button>
+            <div class="join-row">
+              <input
+                id="join-code"
+                aria-label="방 코드"
+                placeholder="8자리 방 코드"
+                maxlength="8"
+                autocomplete="off"
+                spellcheck="false"
+              /><button id="join-room" disabled>입장</button>
+            </div>
+          </div>
+          <div id="room-lobby" hidden>
+            <div>
+              <span class="eyebrow">ROOM CODE</span
+              ><strong id="room-code"></strong
+              ><button id="copy-room">초대 링크 복사</button>
+            </div>
+            <p id="room-players"></p>
+            <div>
+              <button id="ready-room" class="primary">준비 완료</button
+              ><button id="leave-room">방 나가기</button>
+            </div>
+          </div>
+          <p id="online-status" role="status">
+            친구의 캐릭터는 대전이 시작될 때 공개돼요.
+          </p>
+        </section>
+        <div class="selection-layout">
+          <div>
+            <div class="roster-heading">
+              <h2>캐릭터 선택 <span>34</span></h2>
+              <div>
+                <button id="choose1" class="active">1P 선택</button>
+                <button id="choose2">2P 선택</button>
+              </div>
+            </div>
+            <div id="roster" class="roster"></div>
+          </div>
+          <aside>
+            <div class="player-card p1">
+              <span class="eyebrow">PLAYER 01</span>
+              <h2 id="p1name"></h2>
+              <p>A D 이동 · W 점프<br />E 기본 공격 · R 스킬 · S 궁극기</p>
+            </div>
+            <div class="player-card p2">
+              <span class="eyebrow">PLAYER 02</span>
+              <h2 id="p2name"></h2>
+              <p>← → 이동 · ↑ 점프<br />O 기본 공격 · P 스킬 · ↓ 궁극기</p>
+            </div>
+            <label class="field"
+              >전장<select id="map">
+                <option value="1">전장 01</option>
+                <option value="2">전장 02</option>
+                <option value="3">전장 03</option>
+                <option value="4">전장 04</option>
+                <option value="5">전장 05</option>
+                <option value="6">전장 06</option>
+              </select></label
+            ><button class="primary" id="start" disabled>준비 중…</button>
+            <p id="loading" role="status">원작 이미지를 불러오고 있어요.</p>
+          </aside>
+        </div>
+        <details>
+          <summary>선택한 캐릭터의 기술 보기</summary>
+          <div id="skills"></div>
+        </details>
+        <p class="footnote">
+          원작 이미지와 기술을 사용하는 웹 이식 버전 · 같은 키보드로 즐기는 2인
+          대전
+        </p>
+      </section>
+      <section id="battle" hidden>
+        <div class="battle-top">
+          <div>
+            <p class="eyebrow">LOCAL VERSUS</p>
+            <h1 id="match-title"></h1>
+          </div>
+          <div>
+            <button id="pause">일시정지</button>
+            <button id="restart">다시 대전</button>
+            <button id="back">캐릭터 선택</button>
+          </div>
+        </div>
+        <div class="stage-wrap">
+          <canvas
+            id="stage"
+            width="960"
+            height="540"
+            tabindex="0"
+            aria-label="바운스어택 대전 화면"
+          ></canvas>
+          <div id="overlay" hidden></div>
+        </div>
+        <div class="battle-bottom">
+          <p><b>1P</b> A D / W / E R S</p>
+          <output id="battle-status"></output
+          ><output id="network-status"></output>
+          <p><b>2P</b> ← → / ↑ / O P ↓</p>
+        </div>
+        <p class="footnote">
+          Esc 일시정지 · 게임 화면을 클릭한 뒤 조작해 주세요.
+        </p>
+      </section>
+      <details class="diagnostics">
+        <summary>실행 상태</summary>
+        <pre id="diagnostics">초기화 중</pre>
+      </details>
+    </main>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>

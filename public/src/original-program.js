@@ -632,6 +632,3700 @@ r.command(c,"change_variable",["zjlp",c.args["stringParam_6wnh"]??0,null]);
 
 });
 
+// 음악12 / ui31
+r.register("ui31","when_scene_start",[null],function*(r,c){
+c.block="e88h";r.guard(c);
+r.command(c,"set_visible_project_timer",[null,"HIDE",null,null]);
+c.block="eqjo";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"START",null,null]);
+c.block="x7px";r.guard(c);
+r.command(c,"sound_volume_set",["15",null]);
+c.block="1rif";r.guard(c);
+while(true){
+c.block="075l";r.guard(c);
+r.command(c,"sound_silent_all",["all",null]);
+c.block="vepj";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","1"]))){
+c.block="h03c";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["bm5s"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"bm5s",null]));
+}
+c.block="exq9";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","2"]))){
+c.block="y8cu";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["hc5x"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"hc5x",null]));
+}
+c.block="hog3";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","3"]))){
+c.block="3c4p";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["160f"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"160f",null]));
+}
+c.block="bsn5";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"STOP",null,null]);
+c.block="vit5";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"RESET",null,null]);
+yield 1;
+}
+
+});
+
+// 부스트 모드1 / cqy0
+r.register("cqy0","when_run_button_click",[null],function*(r,c){
+c.block="g03s";r.guard(c);
+r.command(c,"start_scene",["qc29",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+r.register("cqy0","when_scene_start",[null],function*(r,c){
+
+});
+
+// 부스트 모드 / si5s
+r.register("si5s","when_scene_start",[null],function*(r,c){
+c.block="al52";r.guard(c);
+r.command(c,"show",[null]);
+c.block="bms4";r.guard(c);
+r.command(c,"change_effect_amount",["transparency","100",null]);
+c.block="136m";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="gd3v";r.guard(c);
+r.command(c,"set_variable",["ezjz","0",null]);
+}else{
+c.block="2xdp";r.guard(c);
+r.command(c,"set_variable",["ezjz","1",null]);
+}
+
+});
+
+// 빛잔상1 / gs1n
+r.register("gs1n","when_scene_start",[null],function*(r,c){
+c.block="4l8w";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+
+// 1P 무기1 / hk5f
+r.register("hk5f","when_scene_start",[null],function*(r,c){
+c.block="32aw";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+
+// 1player2 / fr2r
+r.register("fr2r","when_scene_start",[null],function*(r,c){
+c.block="fvm6";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+
+// Bounce / 95mw
+r.register("95mw","when_scene_start",[null],function*(r,c){
+c.block="6tr9";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+
+// Attack / j7ii
+r.register("j7ii","when_scene_start",[null],function*(r,c){
+c.block="h202";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+
+// 화염 / 2wpj
+r.register("2wpj","when_scene_start",[null],function*(r,c){
+c.block="36gr";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+
+// 화염1 / rs79
+r.register("rs79","when_scene_start",[null],function*(r,c){
+c.block="36gr";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+
+// 투명배경5 / hhoe
+r.register("hhoe","when_scene_start",[null],function*(r,c){
+c.block="gl55";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+r.register("hhoe","when_scene_start",[null],function*(r,c){
+c.block="21i8";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+
+// 화면 캡처 2020-12-10 235955.png / 2qko
+r.register("2qko","when_scene_start",[null],function*(r,c){
+c.block="zbjy";r.guard(c);
+r.command(c,"hide",[null]);
+
+});
+
+// 새 오브젝트96 / kkfa
+
+// 새 오브젝트97 / c1jl
+
+// 엑스 버튼1 / 3amf
+r.register("3amf","when_scene_start",[null],function*(r,c){
+c.block="z2l9";r.guard(c);
+r.command(c,"show",[null]);
+c.block="kqco";r.guard(c);
+while(true){
+c.block="a2tz";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="bsfh";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="153g";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="zr2s";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("3amf","when_object_click",[null],function*(r,c){
+c.block="jruc";r.guard(c);
+r.command(c,"start_scene",["1323",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 엑스 버튼 / syvy
+r.register("syvy","when_scene_start",[null],function*(r,c){
+c.block="z2l9";r.guard(c);
+r.command(c,"show",[null]);
+c.block="kqco";r.guard(c);
+while(true){
+c.block="a2tz";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="bsfh";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="153g";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="zr2s";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("syvy","when_object_click",[null],function*(r,c){
+c.block="jruc";r.guard(c);
+r.command(c,"start_scene",["ub0s",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 배경 / x455
+
+// 음악10 / iw1r
+r.register("iw1r","when_object_click",[null],function*(r,c){
+c.block="k91w";r.guard(c);
+r.command(c,"set_variable",["yx69","3",null]);
+
+});
+
+// 음악9 / vcsu
+r.register("vcsu","when_object_click",[null],function*(r,c){
+c.block="2fej";r.guard(c);
+r.command(c,"set_variable",["yx69","2",null]);
+
+});
+
+// 음악 / c5q9
+r.register("c5q9","when_object_click",[null],function*(r,c){
+c.block="22wm";r.guard(c);
+r.command(c,"set_variable",["yx69","1",null]);
+
+});
+
+// BGM / rlxu
+
+// 엑스 버튼6 / kxh8
+r.register("kxh8","when_scene_start",[null],function*(r,c){
+c.block="z2l9";r.guard(c);
+r.command(c,"show",[null]);
+c.block="kqco";r.guard(c);
+while(true){
+c.block="a2tz";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="bsfh";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="153g";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="zr2s";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("kxh8","when_object_click",[null],function*(r,c){
+c.block="jruc";r.guard(c);
+r.command(c,"start_scene",["qc29",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 음악2 / b8fo
+r.register("b8fo","when_run_button_click",[null],function*(r,c){
+c.block="s7y0";r.guard(c);
+r.command(c,"start_scene",["qc29",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+r.register("b8fo","when_scene_start",[null],function*(r,c){
+c.block="x7px";r.guard(c);
+r.command(c,"sound_volume_set",["15",null]);
+c.block="vho4";r.guard(c);
+r.command(c,"set_variable",["i4d3",r.value(c,"get_variable",["yx69",null]),null]);
+c.block="1rif";r.guard(c);
+while(true){
+c.block="h3ee";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL",r.value(c,"get_variable",["i4d3",null])]))){
+c.block="obkg";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"RESET",null,null]);
+c.block="quct";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"START",null,null]);
+c.block="075l";r.guard(c);
+r.command(c,"sound_silent_all",["all",null]);
+c.block="kby6";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","1"]))){
+c.block="y1lp";r.guard(c);
+r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["ihop"]),null]);
+}
+c.block="rqzu";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","2"]))){
+c.block="eu9e";r.guard(c);
+r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["821y"]),null]);
+}
+c.block="61hy";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","3"]))){
+c.block="sxxl";r.guard(c);
+r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["bdyz"]),null]);
+}
+c.block="aqf0";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"NOT_EQUAL",r.value(c,"get_variable",["i4d3",null])]))){yield 1;}
+c.block="clxq";r.guard(c);
+r.command(c,"set_variable",["i4d3",r.value(c,"get_variable",["yx69",null]),null]);
+}
+yield 1;
+}
+
+});
+
+// 실행 버튼8 / 8w80
+r.register("8w80","when_scene_start",[null],function*(r,c){
+
+});
+r.register("8w80","when_object_click",[null],function*(r,c){
+c.block="bsoy";r.guard(c);
+r.command(c,"start_scene",["a4a6",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 실행 버튼 / jg1q
+r.register("jg1q","when_scene_start",[null],function*(r,c){
+c.block="1g0i";r.guard(c);
+r.command(c,"show",[null]);
+c.block="spxj";r.guard(c);
+while(true){
+c.block="xcvz";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="hc2l";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vtxv";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="q0ot";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("jg1q","when_object_click",[null],function*(r,c){
+c.block="bsoy";r.guard(c);
+r.command(c,"start_scene",["1ckl",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 체력모드 / yr27
+r.register("yr27","when_scene_start",[null],function*(r,c){
+c.block="xnvi";r.guard(c);
+r.command(c,"set_variable",["295r","2",null]);
+c.block="uskr";r.guard(c);
+while(true){
+c.block="ymq7";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["295r",null]),"EQUAL","1"]))){
+c.block="vt2c";r.guard(c);
+r.command(c,"text_write",["매치모드",null]);
+}
+c.block="xf8o";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["295r",null]),"EQUAL","2"]))){
+c.block="51vl";r.guard(c);
+r.command(c,"text_write",["보통모드",null]);
+}
+c.block="ry72";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["295r",null]),"EQUAL","3"]))){
+c.block="5kfn";r.guard(c);
+r.command(c,"text_write",["탱커모드",null]);
+}
+yield 1;
+}
+
+});
+r.register("yr27","when_object_click",[null],function*(r,c){
+c.block="i4r3";r.guard(c);
+r.command(c,"change_variable",["295r","1",null]);
+c.block="0xfz";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["295r",null]),"EQUAL","4"]))){
+c.block="fahf";r.guard(c);
+r.command(c,"set_variable",["295r","1",null]);
+}
+
+});
+
+// 마나모드 / t4qv
+r.register("t4qv","when_scene_start",[null],function*(r,c){
+c.block="pghu";r.guard(c);
+r.command(c,"set_variable",["75q1","2",null]);
+c.block="bp8i";r.guard(c);
+while(true){
+c.block="60sm";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["75q1",null]),"EQUAL","1"]))){
+c.block="c9u3";r.guard(c);
+r.command(c,"text_write",["보통모드",null]);
+}
+c.block="uim0";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["75q1",null]),"EQUAL","2"]))){
+c.block="jsh8";r.guard(c);
+r.command(c,"text_write",["필살모드",null]);
+}
+c.block="ogl5";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["75q1",null]),"EQUAL","3"]))){
+c.block="ldsa";r.guard(c);
+r.command(c,"text_write",["막장모드",null]);
+}
+yield 1;
+}
+
+});
+r.register("t4qv","when_object_click",[null],function*(r,c){
+c.block="8a5w";r.guard(c);
+r.command(c,"change_variable",["75q1","1",null]);
+c.block="ljgv";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["75q1",null]),"EQUAL","4"]))){
+c.block="6b8v";r.guard(c);
+r.command(c,"set_variable",["75q1","1",null]);
+}
+
+});
+
+// 마나 / thx5
+r.register("thx5","when_scene_start",[null],function*(r,c){
+c.block="absi";r.guard(c);
+while(true){
+c.block="5oiu";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["75q1",null]),null]);
+yield 1;
+}
+
+});
+r.register("thx5","when_object_click",[null],function*(r,c){
+c.block="wh6w";r.guard(c);
+r.command(c,"change_variable",["75q1","1",null]);
+c.block="bqho";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["75q1",null]),"EQUAL","4"]))){
+c.block="qy1d";r.guard(c);
+r.command(c,"set_variable",["75q1","1",null]);
+}
+
+});
+
+// 체력 / u2lc
+r.register("u2lc","when_scene_start",[null],function*(r,c){
+c.block="bktb";r.guard(c);
+r.command(c,"set_variable",["jx38","1",null]);
+c.block="absi";r.guard(c);
+while(true){
+c.block="5oiu";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["295r",null]),null]);
+yield 1;
+}
+
+});
+r.register("u2lc","when_object_click",[null],function*(r,c){
+c.block="wh6w";r.guard(c);
+r.command(c,"change_variable",["295r","1",null]);
+c.block="bqho";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["295r",null]),"EQUAL","4"]))){
+c.block="qy1d";r.guard(c);
+r.command(c,"set_variable",["295r","1",null]);
+}
+
+});
+
+// 배경1 / 4u7i
+r.register("4u7i","when_run_button_click",[null],function*(r,c){
+c.block="p4q8";r.guard(c);
+r.command(c,"start_scene",["ub0s",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+r.register("4u7i","when_scene_start",[null],function*(r,c){
+
+});
+
+// 궁극기 설명 부가1 / xnkl
+r.register("xnkl","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="u70q";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["16fh",null]),"EQUAL","26"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+}else{
+c.block="17ok";r.guard(c);
+r.command(c,"hide",[null]);
+}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("xnkl","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",["하란으로부터 도망갑니다. ",null]);
+yield 1;
+}
+
+});
+
+// 음악6 / akxr
+r.register("akxr","when_scene_start",[null],function*(r,c){
+c.block="e88h";r.guard(c);
+r.command(c,"set_visible_project_timer",[null,"HIDE",null,null]);
+c.block="eqjo";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"START",null,null]);
+c.block="x7px";r.guard(c);
+r.command(c,"sound_volume_set",["15",null]);
+c.block="1rif";r.guard(c);
+while(true){
+c.block="075l";r.guard(c);
+r.command(c,"sound_silent_all",["all",null]);
+c.block="vepj";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","1"]))){
+c.block="h03c";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["bm5s"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"bm5s",null]));
+}
+c.block="exq9";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","2"]))){
+c.block="y8cu";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["hc5x"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"hc5x",null]));
+}
+c.block="hog3";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","3"]))){
+c.block="3c4p";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["160f"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"160f",null]));
+}
+c.block="bsn5";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"STOP",null,null]);
+c.block="vit5";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"RESET",null,null]);
+yield 1;
+}
+
+});
+
+// 새 오브젝트100 / z5gw
+r.register("z5gw","when_scene_start",[null],function*(r,c){
+c.block="s4jz";r.guard(c);
+r.command(c,"change_effect_amount",["transparency","100",null]);
+c.block="84jm";r.guard(c);
+while(true){
+c.block="esvs";r.guard(c);
+r.command(c,"locate",["mouse",null]);
+c.block="mdff";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"3y3g",null]))){
+c.block="d239";r.guard(c);
+r.command(c,"set_variable",["yraj","1",null]);
+}else{
+c.block="2p66";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"k089",null]))){
+c.block="33j1";r.guard(c);
+r.command(c,"set_variable",["yraj","1",null]);
+}else{
+c.block="rg6x";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"646h",null]))){
+c.block="khzi";r.guard(c);
+r.command(c,"set_variable",["yraj","1",null]);
+}else{
+c.block="jrp1";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"a091",null]))){
+c.block="d1la";r.guard(c);
+r.command(c,"set_variable",["yraj","1",null]);
+}else{
+c.block="ioqo";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"ncwe",null]))){
+c.block="zlt5";r.guard(c);
+r.command(c,"set_variable",["yraj","1",null]);
+}else{
+c.block="quti";r.guard(c);
+r.command(c,"set_variable",["yraj","0",null]);
+}
+}
+}
+}
+}
+yield 1;
+}
+
+});
+
+// 캐릭터 / 1t4x
+r.register("1t4x","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="qs8m";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("1t4x","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",[r.value(c,"value_of_index_from_list",[null,"5pvu",null,r.value(c,"get_variable",["16fh",null]),null]),null]);
+yield 1;
+}
+
+});
+
+// 부가설명 / ysyj
+r.register("ysyj","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="qs8m";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("ysyj","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",[r.value(c,"value_of_index_from_list",[null,"xxgw",null,r.value(c,"get_variable",["16fh",null]),null]),null]);
+yield 1;
+}
+
+});
+
+// 패시브 / na6g
+r.register("na6g","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="qs8m";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("na6g","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",[r.value(c,"combine_something",[null,"패시브 : ",null,r.value(c,"value_of_index_from_list",[null,"of7a",null,r.value(c,"get_variable",["16fh",null]),null]),null]),null]);
+yield 1;
+}
+
+});
+
+// 패시브1 / 87lp
+r.register("87lp","when_scene_start",[null],function*(r,c){
+c.block="y5we";r.guard(c);
+while(true){
+c.block="r2wc";r.guard(c);
+r.command(c,"text_write",[r.value(c,"value_of_index_from_list",[null,"dw8v",null,r.value(c,"get_variable",["16fh",null]),null]),null]);
+yield 1;
+}
+
+});
+r.register("87lp","when_scene_start",[null],function*(r,c){
+c.block="crz5";r.guard(c);
+while(true){
+c.block="276z";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="lorg";r.guard(c);
+r.command(c,"show",[null]);
+c.block="wl6h";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="b7k0";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="1nm4";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+
+// 궁극기 / 7ia7
+r.register("7ia7","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="qs8m";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("7ia7","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",[r.value(c,"combine_something",[null,"궁극기 : ",null,r.value(c,"value_of_index_from_list",[null,"74ed",null,r.value(c,"get_variable",["16fh",null]),null]),null]),null]);
+yield 1;
+}
+
+});
+
+// 스킬 / c72k
+r.register("c72k","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="qs8m";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("c72k","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",[r.value(c,"combine_something",[null,"스킬 : ",null,r.value(c,"value_of_index_from_list",[null,"x7mx",null,r.value(c,"get_variable",["16fh",null]),null]),null]),null]);
+yield 1;
+}
+
+});
+
+// 기본공격 / io23
+r.register("io23","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="qs8m";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("io23","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",[r.value(c,"combine_something",[null,"기본공격 : ",null,r.value(c,"value_of_index_from_list",[null,"twcx",null,r.value(c,"get_variable",["16fh",null]),null]),null]),null]);
+yield 1;
+}
+
+});
+
+// 기본공격 설명 / 9f3u
+r.register("9f3u","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="qs8m";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("9f3u","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",[r.value(c,"value_of_index_from_list",[null,"wynm",null,r.value(c,"get_variable",["16fh",null]),null]),null]);
+yield 1;
+}
+
+});
+
+// 궁극기 설명 / m9p6
+r.register("m9p6","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="qs8m";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("m9p6","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",[r.value(c,"value_of_index_from_list",[null,"9m7u",null,r.value(c,"get_variable",["16fh",null]),null]),null]);
+yield 1;
+}
+
+});
+
+// 궁극기 설명 부가 / imlv
+r.register("imlv","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="u70q";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["16fh",null]),"EQUAL","27"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+}else{
+c.block="17ok";r.guard(c);
+r.command(c,"hide",[null]);
+}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("imlv","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",["지속시간이 끝날 때 근처 적에게 피해를 입히고 공중에 띄우며 둔화시킵니다.",null]);
+yield 1;
+}
+
+});
+
+// 스킬 설명 / 3my6
+r.register("3my6","when_scene_start",[null],function*(r,c){
+c.block="e3p4";r.guard(c);
+while(true){
+c.block="2klo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="iaqt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="qs8m";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="f75w";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="gopw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("3my6","when_scene_start",[null],function*(r,c){
+c.block="xv53";r.guard(c);
+while(true){
+c.block="gcli";r.guard(c);
+r.command(c,"text_write",[r.value(c,"value_of_index_from_list",[null,"gsve",null,r.value(c,"get_variable",["16fh",null]),null]),null]);
+yield 1;
+}
+
+});
+
+// 궁극기1 / 4ffm
+r.register("4ffm","when_scene_start",[null],function*(r,c){
+c.block="nxz6";r.guard(c);
+while(true){
+c.block="2uiu";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="nlts";r.guard(c);
+r.command(c,"change_effect_amount",["transparency","100",null]);
+c.block="3vgx";r.guard(c);
+r.command(c,"show",[null]);
+c.block="p96x";r.guard(c);
+for(let i0=0,n0=Math.max(0,Math.floor(r.num("8")));i0<n0;i0++){
+c.block="6ys6";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","-15",null]);
+yield 1;
+}
+c.block="bb7e";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="sk5z";r.guard(c);
+for(let i1=0,n1=Math.max(0,Math.floor(r.num("8")));i1<n1;i1++){
+c.block="f1bb";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","15",null]);
+yield 1;
+}
+c.block="xbc8";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="brky";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("4ffm","when_scene_start",[null],function*(r,c){
+c.block="5m8w";r.guard(c);
+while(true){
+c.block="kosh";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["16fh",null]),null]);
+yield 1;
+}
+
+});
+
+// 스킬1 / o9rj
+r.register("o9rj","when_scene_start",[null],function*(r,c){
+c.block="nxz6";r.guard(c);
+while(true){
+c.block="2uiu";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="nlts";r.guard(c);
+r.command(c,"change_effect_amount",["transparency","100",null]);
+c.block="3vgx";r.guard(c);
+r.command(c,"show",[null]);
+c.block="p96x";r.guard(c);
+for(let i2=0,n2=Math.max(0,Math.floor(r.num("8")));i2<n2;i2++){
+c.block="6ys6";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","-15",null]);
+yield 1;
+}
+c.block="bb7e";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="sk5z";r.guard(c);
+for(let i3=0,n3=Math.max(0,Math.floor(r.num("8")));i3<n3;i3++){
+c.block="f1bb";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","15",null]);
+yield 1;
+}
+c.block="xbc8";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="brky";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("o9rj","when_scene_start",[null],function*(r,c){
+c.block="5m8w";r.guard(c);
+while(true){
+c.block="kosh";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["16fh",null]),null]);
+yield 1;
+}
+
+});
+
+// 평타 / pyez
+r.register("pyez","when_scene_start",[null],function*(r,c){
+c.block="nxz6";r.guard(c);
+while(true){
+c.block="2uiu";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="nlts";r.guard(c);
+r.command(c,"change_effect_amount",["transparency","100",null]);
+c.block="3vgx";r.guard(c);
+r.command(c,"show",[null]);
+c.block="p96x";r.guard(c);
+for(let i4=0,n4=Math.max(0,Math.floor(r.num("8")));i4<n4;i4++){
+c.block="6ys6";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","-15",null]);
+yield 1;
+}
+c.block="bb7e";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="sk5z";r.guard(c);
+for(let i5=0,n5=Math.max(0,Math.floor(r.num("8")));i5<n5;i5++){
+c.block="f1bb";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","15",null]);
+yield 1;
+}
+c.block="xbc8";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="brky";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+r.register("pyez","when_scene_start",[null],function*(r,c){
+c.block="5m8w";r.guard(c);
+while(true){
+c.block="kosh";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["16fh",null]),null]);
+yield 1;
+}
+
+});
+
+// 투명배경4 / 68f9
+r.register("68f9","when_scene_start",[null],function*(r,c){
+c.block="qiry";r.guard(c);
+while(true){
+c.block="1s85";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){
+c.block="r335";r.guard(c);
+r.command(c,"change_effect_amount",["transparency","100",null]);
+c.block="xxqn";r.guard(c);
+r.command(c,"show",[null]);
+c.block="s7yn";r.guard(c);
+for(let i6=0,n6=Math.max(0,Math.floor(r.num("8")));i6<n6;i6++){
+c.block="fohw";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","-10",null]);
+yield 1;
+}
+c.block="9x11";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","0"]))){yield 1;}
+}else{
+c.block="y9ek";r.guard(c);
+for(let i7=0,n7=Math.max(0,Math.floor(r.num("8")));i7<n7;i7++){
+c.block="hka5";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","10",null]);
+yield 1;
+}
+c.block="qcmt";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="1duw";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yraj",null]),"EQUAL","1"]))){yield 1;}
+}
+yield 1;
+}
+
+});
+
+// 2P 무기 / mimn
+r.register("mimn","when_scene_start",[null],function*(r,c){
+c.block="39nv";r.guard(c);
+r.command(c,"show",[null]);
+c.block="fy2k";r.guard(c);
+r.command(c,"flip_y",[null]);
+c.block="oo9w";r.guard(c);
+while(true){
+c.block="ry4b";r.guard(c);
+r.command(c,"locate",["zyy3",null]);
+c.block="tsyg";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","1"]))){
+c.block="lj3a";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["5xo4"]),null]);
+c.block="iiqy";r.guard(c);
+r.command(c,"set_scale_size",["36",null]);
+c.block="dp2o";r.guard(c);
+r.command(c,"move_x",["-22",null]);
+c.block="95yr";r.guard(c);
+r.command(c,"move_y",["-3",null]);
+c.block="o93r";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="3kj4";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","2"]))){
+c.block="4wgz";r.guard(c);
+r.command(c,"move_x",["-29",null]);
+c.block="zkap";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+c.block="3z6g";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["je2k"]),null]);
+c.block="eewl";r.guard(c);
+r.command(c,"set_scale_size",["33",null]);
+c.block="ix45";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="3yw0";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","3"]))){
+c.block="pr7z";r.guard(c);
+r.command(c,"move_x",["-22",null]);
+c.block="jw5i";r.guard(c);
+r.command(c,"move_y",["-3",null]);
+c.block="cxnz";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["8nc0"]),null]);
+c.block="wymw";r.guard(c);
+r.command(c,"set_scale_size",["38",null]);
+c.block="07kd";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="7iul";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","4"]))){
+c.block="g1pl";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["eg8g"]),null]);
+c.block="8pm5";r.guard(c);
+r.command(c,"set_scale_size",["95",null]);
+c.block="ehin";r.guard(c);
+r.command(c,"rotate_relative",["-2",null]);
+}
+c.block="es0c";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","5"]))){
+c.block="ojyz";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["5sgs"]),null]);
+c.block="fd1q";r.guard(c);
+r.command(c,"set_scale_size",["61",null]);
+c.block="ztmr";r.guard(c);
+r.command(c,"move_x",["-22",null]);
+c.block="1ajb";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+c.block="gqur";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="n4nv";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","6"]))){
+c.block="3rf8";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["8jcu"]),null]);
+c.block="8xdx";r.guard(c);
+r.command(c,"set_scale_size",["35",null]);
+c.block="5bgv";r.guard(c);
+r.command(c,"move_x",["-25",null]);
+c.block="3ujd";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+c.block="vu8x";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="srfz";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","7"]))){
+c.block="woe9";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["r9cc"]),null]);
+c.block="kwqj";r.guard(c);
+r.command(c,"set_scale_size",["60",null]);
+c.block="k9sh";r.guard(c);
+r.command(c,"move_x",["-26",null]);
+c.block="zz91";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+c.block="5l3a";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="6r25";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","8"]))){
+c.block="sxe4";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["30e0"]),null]);
+c.block="sg7r";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="7xb1";r.guard(c);
+r.command(c,"move_x",["-5",null]);
+c.block="sff3";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+c.block="77o9";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="btl5";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","9"]))){
+c.block="6icj";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["hvx6"]),null]);
+c.block="k9r9";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="uc5q";r.guard(c);
+r.command(c,"move_x",["2",null]);
+c.block="news";r.guard(c);
+r.command(c,"move_y",["12",null]);
+c.block="3b6c";r.guard(c);
+r.command(c,"rotate_absolute",["28",null]);
+}
+c.block="da3t";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","10"]))){
+c.block="zrlw";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["mord"]),null]);
+c.block="8ucu";r.guard(c);
+r.command(c,"set_scale_size",["60",null]);
+c.block="5z3h";r.guard(c);
+r.command(c,"move_x",["-15",null]);
+c.block="4fsv";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+c.block="1o3q";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="t2dq";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","11"]))){
+c.block="1yov";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["1789"]),null]);
+}
+c.block="txv1";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","12"]))){
+c.block="lkm7";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["xydp"]),null]);
+c.block="jnun";r.guard(c);
+r.command(c,"set_scale_size",["50",null]);
+c.block="jpf1";r.guard(c);
+r.command(c,"move_x",["-14",null]);
+c.block="oml6";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+c.block="63m1";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="jse3";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","13"]))){
+c.block="ili2";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["m529"]),null]);
+c.block="zjem";r.guard(c);
+r.command(c,"set_scale_size",["47",null]);
+c.block="g7go";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="4ti3";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","14"]))){
+c.block="i37b";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["xry7"]),null]);
+c.block="ihbx";r.guard(c);
+r.command(c,"set_scale_size",["50",null]);
+c.block="lrfs";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="j079";r.guard(c);
+r.command(c,"move_y",["-10",null]);
+}
+c.block="npc4";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","15"]))){
+c.block="5ts8";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["tokr"]),null]);
+c.block="zgx3";r.guard(c);
+r.command(c,"set_scale_size",["75",null]);
+c.block="31ag";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="xhe4";r.guard(c);
+r.command(c,"move_x",["-7",null]);
+c.block="7rp7";r.guard(c);
+r.command(c,"move_y",["-20",null]);
+}
+c.block="0ojv";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","16"]))){
+c.block="ky7w";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["b7d4"]),null]);
+c.block="j4ye";r.guard(c);
+r.command(c,"set_scale_size",["32",null]);
+c.block="8zo1";r.guard(c);
+r.command(c,"rotate_absolute",["-45",null]);
+c.block="a8e2";r.guard(c);
+r.command(c,"move_x",["-22",null]);
+c.block="3hjn";r.guard(c);
+r.command(c,"move_y",["-7",null]);
+}
+c.block="vq4f";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","17"]))){
+c.block="9wi7";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["tbqe"]),null]);
+c.block="lxik";r.guard(c);
+r.command(c,"set_scale_size",["55",null]);
+c.block="yr6h";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="awby";r.guard(c);
+r.command(c,"move_x",["-14",null]);
+c.block="j340";r.guard(c);
+r.command(c,"move_y",["-10",null]);
+}
+c.block="nonk";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","18"]))){
+c.block="3ot2";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["5yor"]),null]);
+c.block="45zz";r.guard(c);
+r.command(c,"set_scale_size",["26",null]);
+c.block="6b82";r.guard(c);
+r.command(c,"rotate_absolute",["-45",null]);
+c.block="l7n3";r.guard(c);
+r.command(c,"move_x",["-22",null]);
+c.block="gfdn";r.guard(c);
+r.command(c,"move_y",["-7",null]);
+}
+c.block="wdos";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","19"]))){
+c.block="nsjj";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["4lst"]),null]);
+c.block="c1m2";r.guard(c);
+r.command(c,"set_scale_size",["60",null]);
+c.block="acew";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="2lnv";r.guard(c);
+r.command(c,"move_x",["-22",null]);
+c.block="r9yp";r.guard(c);
+r.command(c,"move_y",["-13",null]);
+}
+c.block="3f7t";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","20"]))){
+c.block="znj1";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["vfdn"]),null]);
+c.block="098c";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="ooua";r.guard(c);
+r.command(c,"move_x",["-5",null]);
+c.block="ypqc";r.guard(c);
+r.command(c,"move_y",["-12",null]);
+c.block="f6cm";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="fqs6";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","21"]))){
+c.block="ah2x";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["3ezo"]),null]);
+c.block="qsg3";r.guard(c);
+r.command(c,"set_scale_size",["30",null]);
+c.block="xmxo";r.guard(c);
+r.command(c,"move_x",["-22",null]);
+c.block="kl0r";r.guard(c);
+r.command(c,"move_y",["-6",null]);
+c.block="q2u3";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="i305";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","22"]))){
+c.block="2ojj";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["01gm"]),null]);
+c.block="fu6m";r.guard(c);
+r.command(c,"set_scale_size",["65",null]);
+c.block="0lpx";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="mimv";r.guard(c);
+r.command(c,"move_x",["-22",null]);
+c.block="43lk";r.guard(c);
+r.command(c,"move_y",["-13",null]);
+}
+c.block="mqgv";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","23"]))){
+c.block="x44i";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["8ugu"]),null]);
+c.block="58mr";r.guard(c);
+r.command(c,"set_scale_size",["65",null]);
+c.block="k64p";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="7c7o";r.guard(c);
+r.command(c,"move_x",["-15",null]);
+c.block="59hw";r.guard(c);
+r.command(c,"move_y",["-14",null]);
+}
+c.block="a81w";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","24"]))){
+c.block="x0gr";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["m2jy"]),null]);
+c.block="3zqz";r.guard(c);
+r.command(c,"set_scale_size",["80",null]);
+c.block="ff2q";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="lqxr";r.guard(c);
+r.command(c,"move_x",["-35",null]);
+c.block="g6g7";r.guard(c);
+r.command(c,"move_y",["-4",null]);
+}
+c.block="3vkd";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","25"]))){
+c.block="xy9e";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["qwp2"]),null]);
+c.block="0ktk";r.guard(c);
+r.command(c,"set_scale_size",["80",null]);
+c.block="gp0s";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="q92s";r.guard(c);
+r.command(c,"move_x",["-15",null]);
+c.block="kqyh";r.guard(c);
+r.command(c,"move_y",["-11",null]);
+}
+c.block="fm2x";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","26"]))){
+c.block="uzfk";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["wcr4"]),null]);
+c.block="ecvo";r.guard(c);
+r.command(c,"set_scale_size",["55",null]);
+c.block="1lz3";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="tzac";r.guard(c);
+r.command(c,"move_x",["-16",null]);
+c.block="qols";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+}
+c.block="jnyb";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","27"]))){
+c.block="l0kl";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["umrq"]),null]);
+c.block="9ka2";r.guard(c);
+r.command(c,"set_scale_size",["63",null]);
+c.block="wqig";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="k58c";r.guard(c);
+r.command(c,"move_x",["-7",null]);
+c.block="t59r";r.guard(c);
+r.command(c,"move_y",["-6",null]);
+}
+c.block="h5t9";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","28"]))){
+c.block="1bft";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["1789"]),null]);
+}
+c.block="lyl5";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","29"]))){
+c.block="ejx4";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["r39b"]),null]);
+c.block="q419";r.guard(c);
+r.command(c,"set_scale_size",["60",null]);
+c.block="x2a5";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="ixic";r.guard(c);
+r.command(c,"move_x",["-10",null]);
+c.block="xkzk";r.guard(c);
+r.command(c,"move_y",["-16",null]);
+}
+c.block="2nrf";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","30"]))){
+c.block="btqr";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["w9y2"]),null]);
+c.block="kznc";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="p5gi";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="pbp4";r.guard(c);
+r.command(c,"move_x",["-20",null]);
+c.block="mk3n";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+}
+c.block="uhof";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","31"]))){
+c.block="rznh";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["dsqu"]),null]);
+c.block="mm58";r.guard(c);
+r.command(c,"set_scale_size",["64",null]);
+c.block="opm2";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="njef";r.guard(c);
+r.command(c,"move_x",["-22",null]);
+c.block="2rar";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+}
+c.block="zquz";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","32"]))){
+c.block="t97d";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["1789"]),null]);
+}
+c.block="esy1";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","33"]))){
+c.block="oy8t";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["c10k"]),null]);
+c.block="c4jk";r.guard(c);
+r.command(c,"set_scale_size",["77",null]);
+c.block="0ou1";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="kvdv";r.guard(c);
+r.command(c,"move_x",["-44",null]);
+c.block="g885";r.guard(c);
+r.command(c,"move_y",["-3",null]);
+}
+c.block="hq70";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","34"]))){
+c.block="0zzt";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["qxwn"]),null]);
+c.block="t0ua";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="9ycw";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="jed2";r.guard(c);
+r.command(c,"move_x",["-29",null]);
+}
+yield 1;
+}
+
+});
+
+// 1P 무기2 / 31us
+r.register("31us","when_scene_start",[null],function*(r,c){
+c.block="39nv";r.guard(c);
+r.command(c,"show",[null]);
+c.block="oo9w";r.guard(c);
+while(true){
+c.block="ry4b";r.guard(c);
+r.command(c,"locate",["j5y7",null]);
+c.block="tsyg";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","1"]))){
+c.block="lj3a";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["p9vx"]),null]);
+c.block="iiqy";r.guard(c);
+r.command(c,"set_scale_size",["36",null]);
+c.block="dp2o";r.guard(c);
+r.command(c,"move_x",["22",null]);
+c.block="95yr";r.guard(c);
+r.command(c,"move_y",["-3",null]);
+c.block="o93r";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="3kj4";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","2"]))){
+c.block="4wgz";r.guard(c);
+r.command(c,"move_x",["29",null]);
+c.block="zkap";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+c.block="3z6g";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["qfse"]),null]);
+c.block="eewl";r.guard(c);
+r.command(c,"set_scale_size",["33",null]);
+c.block="ix45";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="3yw0";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","3"]))){
+c.block="pr7z";r.guard(c);
+r.command(c,"move_x",["22",null]);
+c.block="jw5i";r.guard(c);
+r.command(c,"move_y",["-3",null]);
+c.block="cxnz";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ke5n"]),null]);
+c.block="wymw";r.guard(c);
+r.command(c,"set_scale_size",["38",null]);
+c.block="07kd";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="7iul";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","4"]))){
+c.block="g1pl";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["a7r4"]),null]);
+c.block="8pm5";r.guard(c);
+r.command(c,"set_scale_size",["95",null]);
+c.block="ehin";r.guard(c);
+r.command(c,"rotate_relative",["2",null]);
+}
+c.block="es0c";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","5"]))){
+c.block="ojyz";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["l6ra"]),null]);
+c.block="fd1q";r.guard(c);
+r.command(c,"set_scale_size",["61",null]);
+c.block="ztmr";r.guard(c);
+r.command(c,"move_x",["22",null]);
+c.block="1ajb";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+c.block="gqur";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="n4nv";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","6"]))){
+c.block="3rf8";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["7l31"]),null]);
+c.block="8xdx";r.guard(c);
+r.command(c,"set_scale_size",["36",null]);
+c.block="5bgv";r.guard(c);
+r.command(c,"move_x",["25",null]);
+c.block="3ujd";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+c.block="vu8x";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="srfz";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","7"]))){
+c.block="woe9";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["mg1j"]),null]);
+c.block="kwqj";r.guard(c);
+r.command(c,"set_scale_size",["60",null]);
+c.block="k9sh";r.guard(c);
+r.command(c,"move_x",["26",null]);
+c.block="zz91";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+c.block="5l3a";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="66xx";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","8"]))){
+c.block="br0h";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["rasp"]),null]);
+c.block="vwbt";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="xdr1";r.guard(c);
+r.command(c,"move_x",["5",null]);
+c.block="gqlz";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+c.block="x4ig";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="r22e";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","9"]))){
+c.block="6w7p";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["vrfs"]),null]);
+c.block="2xgr";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="yvwu";r.guard(c);
+r.command(c,"move_x",["-2",null]);
+c.block="ocdn";r.guard(c);
+r.command(c,"move_y",["12",null]);
+c.block="9vbg";r.guard(c);
+r.command(c,"rotate_absolute",["-27",null]);
+}
+c.block="kva4";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","10"]))){
+c.block="ttac";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["9tdj"]),null]);
+c.block="9cds";r.guard(c);
+r.command(c,"set_scale_size",["60",null]);
+c.block="okkc";r.guard(c);
+r.command(c,"move_x",["15",null]);
+c.block="els9";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+c.block="tmiq";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="jxuw";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","11"]))){
+c.block="y4n5";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["grn8"]),null]);
+}
+c.block="0yo8";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","12"]))){
+c.block="9t4r";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["4m93"]),null]);
+c.block="ab9a";r.guard(c);
+r.command(c,"set_scale_size",["50",null]);
+c.block="9moi";r.guard(c);
+r.command(c,"move_x",["14",null]);
+c.block="khhr";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+c.block="jopt";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="wn2j";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","13"]))){
+c.block="ewdd";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["gk7x"]),null]);
+c.block="4c4u";r.guard(c);
+r.command(c,"set_scale_size",["47",null]);
+c.block="33uc";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="cj07";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","14"]))){
+c.block="bem8";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["7d2z"]),null]);
+c.block="ny7z";r.guard(c);
+r.command(c,"set_scale_size",["50",null]);
+c.block="uwa9";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="ema0";r.guard(c);
+r.command(c,"move_y",["-10",null]);
+}
+c.block="nz32";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","15"]))){
+c.block="gxtk";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["gkca"]),null]);
+c.block="gzn3";r.guard(c);
+r.command(c,"set_scale_size",["75",null]);
+c.block="zv66";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="tkbm";r.guard(c);
+r.command(c,"move_x",["7",null]);
+c.block="0774";r.guard(c);
+r.command(c,"move_y",["-20",null]);
+}
+c.block="o830";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","16"]))){
+c.block="1nna";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["1pmy"]),null]);
+c.block="cyzk";r.guard(c);
+r.command(c,"set_scale_size",["32",null]);
+c.block="j1h8";r.guard(c);
+r.command(c,"rotate_absolute",["45",null]);
+c.block="cx04";r.guard(c);
+r.command(c,"move_x",["22",null]);
+c.block="b24i";r.guard(c);
+r.command(c,"move_y",["-7",null]);
+}
+c.block="wftc";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","17"]))){
+c.block="wmq9";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["5wrq"]),null]);
+c.block="pffb";r.guard(c);
+r.command(c,"set_scale_size",["55",null]);
+c.block="o2h7";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="m9c3";r.guard(c);
+r.command(c,"move_x",["14",null]);
+c.block="8lar";r.guard(c);
+r.command(c,"move_y",["-10",null]);
+}
+c.block="y036";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","18"]))){
+c.block="ab8n";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["cq11"]),null]);
+c.block="5lzd";r.guard(c);
+r.command(c,"set_scale_size",["26",null]);
+c.block="y19y";r.guard(c);
+r.command(c,"rotate_absolute",["45",null]);
+c.block="hxvm";r.guard(c);
+r.command(c,"move_x",["22",null]);
+c.block="kffp";r.guard(c);
+r.command(c,"move_y",["-7",null]);
+}
+c.block="4psh";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","19"]))){
+c.block="4cqg";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["yjvg"]),null]);
+c.block="10e0";r.guard(c);
+r.command(c,"set_scale_size",["60",null]);
+c.block="bhwe";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="ziuu";r.guard(c);
+r.command(c,"move_x",["22",null]);
+c.block="12fx";r.guard(c);
+r.command(c,"move_y",["-13",null]);
+}
+c.block="9tdw";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","20"]))){
+c.block="4vqu";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["h79r"]),null]);
+c.block="w9pl";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="c9a0";r.guard(c);
+r.command(c,"move_x",["5",null]);
+c.block="zv45";r.guard(c);
+r.command(c,"move_y",["-12",null]);
+c.block="owl6";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="py7e";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","21"]))){
+c.block="hurs";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["epu4"]),null]);
+c.block="rqlr";r.guard(c);
+r.command(c,"set_scale_size",["30",null]);
+c.block="ljmx";r.guard(c);
+r.command(c,"move_x",["22",null]);
+c.block="qjbw";r.guard(c);
+r.command(c,"move_y",["-6",null]);
+c.block="hh5r";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+}
+c.block="ssi6";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","22"]))){
+c.block="x1j7";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ytjf"]),null]);
+c.block="9qn5";r.guard(c);
+r.command(c,"set_scale_size",["65",null]);
+c.block="wmpp";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="4x8h";r.guard(c);
+r.command(c,"move_x",["22",null]);
+c.block="lh6h";r.guard(c);
+r.command(c,"move_y",["-13",null]);
+}
+c.block="lfqc";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","23"]))){
+c.block="nkpp";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["nk3k"]),null]);
+c.block="aabp";r.guard(c);
+r.command(c,"set_scale_size",["65",null]);
+c.block="ylgk";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="6q1r";r.guard(c);
+r.command(c,"move_x",["15",null]);
+c.block="rcq4";r.guard(c);
+r.command(c,"move_y",["-14",null]);
+}
+c.block="w4if";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","24"]))){
+c.block="zwfz";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["4lcd"]),null]);
+c.block="orvk";r.guard(c);
+r.command(c,"set_scale_size",["80",null]);
+c.block="wysu";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="raqu";r.guard(c);
+r.command(c,"move_x",["35",null]);
+c.block="aqph";r.guard(c);
+r.command(c,"move_y",["-4",null]);
+}
+c.block="fqgk";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","25"]))){
+c.block="ls3q";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["4yrt"]),null]);
+c.block="kndm";r.guard(c);
+r.command(c,"set_scale_size",["80",null]);
+c.block="s4ps";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="8q8t";r.guard(c);
+r.command(c,"move_x",["15",null]);
+c.block="h5cy";r.guard(c);
+r.command(c,"move_y",["-11",null]);
+}
+c.block="5rof";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","26"]))){
+c.block="wup3";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["kdbs"]),null]);
+c.block="rggh";r.guard(c);
+r.command(c,"set_scale_size",["55",null]);
+c.block="wb2g";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="n211";r.guard(c);
+r.command(c,"move_x",["16",null]);
+c.block="pt7v";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+}
+c.block="dhdw";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","27"]))){
+c.block="s61p";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ei1s"]),null]);
+c.block="bota";r.guard(c);
+r.command(c,"set_scale_size",["63",null]);
+c.block="tvkm";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="ryui";r.guard(c);
+r.command(c,"move_x",["7",null]);
+c.block="zg17";r.guard(c);
+r.command(c,"move_y",["-6",null]);
+}
+c.block="mewf";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","28"]))){
+c.block="481z";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["grn8"]),null]);
+}
+c.block="jb0q";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","29"]))){
+c.block="nvl9";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["fo78"]),null]);
+c.block="7zm6";r.guard(c);
+r.command(c,"set_scale_size",["60",null]);
+c.block="dxk0";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="nqa9";r.guard(c);
+r.command(c,"move_x",["10",null]);
+c.block="slko";r.guard(c);
+r.command(c,"move_y",["-16",null]);
+}
+c.block="tom6";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","30"]))){
+c.block="cyja";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["xqkq"]),null]);
+c.block="bx7b";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="29qb";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="1rwe";r.guard(c);
+r.command(c,"move_x",["20",null]);
+c.block="g5zk";r.guard(c);
+r.command(c,"move_y",["-8",null]);
+}
+c.block="9qcm";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","31"]))){
+c.block="24sz";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["089q"]),null]);
+c.block="94wl";r.guard(c);
+r.command(c,"set_scale_size",["64",null]);
+c.block="0u3p";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="pcj7";r.guard(c);
+r.command(c,"move_x",["22",null]);
+c.block="qz38";r.guard(c);
+r.command(c,"move_y",["-15",null]);
+}
+c.block="dpzv";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","32"]))){
+c.block="sdih";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["grn8"]),null]);
+}
+c.block="vxxx";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","33"]))){
+c.block="hbst";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["l6b2"]),null]);
+c.block="a9yb";r.guard(c);
+r.command(c,"set_scale_size",["77",null]);
+c.block="r7gx";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="zihb";r.guard(c);
+r.command(c,"move_x",["44",null]);
+c.block="ul6n";r.guard(c);
+r.command(c,"move_y",["-3",null]);
+}
+c.block="1wdd";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","34"]))){
+c.block="lxul";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["fxtk"]),null]);
+c.block="343t";r.guard(c);
+r.command(c,"set_scale_size",["45",null]);
+c.block="vsgw";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="ja6i";r.guard(c);
+r.command(c,"move_x",["29",null]);
+}
+yield 1;
+}
+
+});
+
+// 1player1 / j5y7
+r.register("j5y7","when_scene_start",[null],function*(r,c){
+c.block="aqi1";r.guard(c);
+r.command(c,"set_variable",["y75t","1",null]);
+c.block="3bvi";r.guard(c);
+r.command(c,"set_variable",["s5vb","2",null]);
+c.block="52cb";r.guard(c);
+while(true){
+c.block="i91b";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["y75t",null]),null]);
+yield 1;
+}
+
+});
+r.register("j5y7","when_clone_start",[null],function*(r,c){
+c.block="o726";r.guard(c);
+r.command(c,"change_effect_amount",["transparency","50",null]);
+c.block="pufn";r.guard(c);
+for(let i8=0,n8=Math.max(0,Math.floor(r.num("50")));i8<n8;i8++){
+c.block="z3fv";r.guard(c);
+r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["80","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
+c.block="urwz";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","1",null]);
+yield 1;
+}
+c.block="j2e2";r.guard(c);
+r.command(c,"delete_clone",[null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 1P2 / 6zak
+r.register("6zak","when_scene_start",[null],function*(r,c){
+c.block="y7g5";r.guard(c);
+while(true){
+c.block="u996";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rks6",null]),"EQUAL","1"]))){
+c.block="3wfd";r.guard(c);
+r.command(c,"text_write",["AI",null]);
+}else{
+c.block="1it9";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rks6",null]),"EQUAL","0"]))){
+c.block="dlmo";r.guard(c);
+r.command(c,"text_write",["2P",null]);
+}
+}
+yield 1;
+}
+
+});
+
+// 2player2 / zyy3
+r.register("zyy3","when_scene_start",[null],function*(r,c){
+c.block="52cb";r.guard(c);
+while(true){
+c.block="i91b";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["s5vb",null]),null]);
+yield 1;
+}
+
+});
+r.register("zyy3","when_clone_start",[null],function*(r,c){
+c.block="vi8z";r.guard(c);
+r.command(c,"change_effect_amount",["transparency","50",null]);
+c.block="40r9";r.guard(c);
+for(let i9=0,n9=Math.max(0,Math.floor(r.num("50")));i9<n9;i9++){
+c.block="0qqy";r.guard(c);
+r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["80","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
+c.block="w7hx";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","1",null]);
+yield 1;
+}
+c.block="hpxe";r.guard(c);
+r.command(c,"delete_clone",[null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 1P1 / 4u9z
+
+// 2P 대포1 / pe89
+r.register("pe89","when_scene_start",[null],function*(r,c){
+c.block="xxl3";r.guard(c);
+while(true){
+c.block="bhz5";r.guard(c);
+r.command(c,"locate",["zyy3",null]);
+c.block="bqum";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="89yt";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","32"]))){
+c.block="phud";r.guard(c);
+r.command(c,"show",[null]);
+c.block="zzmr";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["5mhk"]),null]);
+c.block="7lpm";r.guard(c);
+r.command(c,"set_scale_size",["35",null]);
+c.block="vac3";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="yv5j";r.guard(c);
+r.command(c,"move_x",["-20",null]);
+}
+yield 1;
+}
+
+});
+
+// 1P 대포1 / v4ad
+r.register("v4ad","when_scene_start",[null],function*(r,c){
+c.block="xxl3";r.guard(c);
+while(true){
+c.block="bhz5";r.guard(c);
+r.command(c,"locate",["j5y7",null]);
+c.block="bqum";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="89yt";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","32"]))){
+c.block="phud";r.guard(c);
+r.command(c,"show",[null]);
+c.block="zzmr";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["iwgb"]),null]);
+c.block="7lpm";r.guard(c);
+r.command(c,"set_scale_size",["35",null]);
+c.block="vac3";r.guard(c);
+r.command(c,"rotate_absolute",["0",null]);
+c.block="yv5j";r.guard(c);
+r.command(c,"move_x",["20",null]);
+}
+yield 1;
+}
+
+});
+
+// 창 / xr3n
+
+// 창2 / b1xj
+
+// 캐릭터2 / yvxw
+r.register("yvxw","when_scene_start",[null],function*(r,c){
+c.block="iurj";r.guard(c);
+while(true){
+c.block="p9qw";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"GREATER","0"]))){
+c.block="k606";r.guard(c);
+r.command(c,"change_variable",["qrm8","-1",null]);
+}
+yield 1;
+}
+c.block="l3jx";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+
+});
+r.register("yvxw","when_scene_start",[null],function*(r,c){
+c.block="fnio";r.guard(c);
+while(true){
+c.block="jbps";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="ebiy";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="kzbv";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="abrm";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("yvxw","when_clone_start",[null],function*(r,c){
+c.block="38rt";r.guard(c);
+r.command(c,"set_scale_size",["33",null]);
+c.block="16ye";r.guard(c);
+r.command(c,"locate_xy",["-140","-86",null]);
+c.block="cjli";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["nqf5"]),null]);
+c.block="o88d";r.guard(c);
+r.command(c,"show",[null]);
+
+});
+r.register("yvxw","when_scene_start",[null],function*(r,c){
+c.block="lg53";r.guard(c);
+while(true){
+c.block="63s8";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="hh0k";r.guard(c);
+if(r.truth(r.value(c,"is_clicked",[null]))){
+c.block="cdlc";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"LESS_OR_EQUAL","0"]))){
+c.block="cs3q";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="xyep";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"calc_rand",[null,"1",null,"34",null]),null]);
+c.block="0hnl";r.guard(c);
+r.command(c,"set_variable",["jx38","2",null]);
+c.block="rl20";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="jpnu";r.guard(c);
+r.command(c,"create_clone",["j5y7",null]);
+}else{
+c.block="5lt4";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="mei4";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL",r.value(c,"get_variable",["uzz4",null])]))){
+c.block="ti1w";r.guard(c);
+r.command(c,"set_variable",["uzz4",r.value(c,"calc_rand",[null,"1",null,"34",null]),null]);
+c.block="lc92";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["uzz4",null])]),null]))){
+c.block="gxmr";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["uzz4",null]),null]);
+}
+yield 1;
+}
+c.block="mwhf";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="b9my";r.guard(c);
+r.command(c,"set_variable",["jx38","0",null]);
+c.block="sxny";r.guard(c);
+r.command(c,"create_clone",["zyy3",null]);
+}
+}
+}
+}
+}
+yield 1;
+}
+
+});
+
+// 실행 버튼10 / ht5e
+r.register("ht5e","when_scene_start",[null],function*(r,c){
+c.block="spxj";r.guard(c);
+while(true){
+c.block="xcvz";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="hc2l";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vtxv";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="q0ot";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("ht5e","when_object_click",[null],function*(r,c){
+c.block="5e5p";r.guard(c);
+r.command(c,"set_variable",["iqtj","0",null]);
+
+});
+r.register("ht5e","when_scene_start",[null],function*(r,c){
+c.block="3bh9";r.guard(c);
+while(true){
+c.block="669t";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iqtj",null]),"EQUAL","1"]))){
+c.block="qwio";r.guard(c);
+r.command(c,"show",[null]);
+}else{
+c.block="0wpx";r.guard(c);
+r.command(c,"hide",[null]);
+}
+yield 1;
+}
+
+});
+
+// 실행 버튼9 / l1ru
+r.register("l1ru","when_scene_start",[null],function*(r,c){
+c.block="spxj";r.guard(c);
+while(true){
+c.block="xcvz";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="hc2l";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vtxv";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="q0ot";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("l1ru","when_object_click",[null],function*(r,c){
+c.block="5e5p";r.guard(c);
+r.command(c,"set_variable",["iqtj","1",null]);
+
+});
+r.register("l1ru","when_scene_start",[null],function*(r,c){
+c.block="lc2z";r.guard(c);
+while(true){
+c.block="62y0";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iqtj",null]),"EQUAL","0"]))){
+c.block="jx8u";r.guard(c);
+r.command(c,"show",[null]);
+}else{
+c.block="jzvx";r.guard(c);
+r.command(c,"hide",[null]);
+}
+yield 1;
+}
+
+});
+
+// 캐릭터5 / ncwe
+r.register("ncwe","when_scene_start",[null],function*(r,c){
+c.block="zyp8";r.guard(c);
+r.command(c,"set_variable",["8smh","0",null]);
+c.block="zz3q";r.guard(c);
+r.command(c,"move_y",["-40",null]);
+c.block="wbrk";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="2kmy";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+
+});
+r.register("ncwe","when_clone_start",[null],function*(r,c){
+c.block="c5oe";r.guard(c);
+r.command(c,"show",[null]);
+c.block="9nvi";r.guard(c);
+r.command(c,"change_variable",["8smh","1",null]);
+c.block="zqoq";r.guard(c);
+r.command(c,"set_variable",["eti2",r.value(c,"calc_basic",[r.value(c,"get_variable",["8smh",null]),"PLUS","32"]),null]);
+c.block="7exj";r.guard(c);
+r.command(c,"move_x",[r.value(c,"calc_basic",["40","MULTI",r.value(c,"calc_basic",[r.value(c,"get_variable",["8smh",null]),"MINUS","1"])]),null]);
+c.block="grgv";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["8smh",null]),null]);
+
+});
+r.register("ncwe","when_scene_start",[null],function*(r,c){
+c.block="iurj";r.guard(c);
+while(true){
+c.block="p9qw";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"GREATER","0"]))){
+c.block="k606";r.guard(c);
+r.command(c,"change_variable",["qrm8","-1",null]);
+}
+yield 1;
+}
+
+});
+r.register("ncwe","when_clone_start",[null],function*(r,c){
+c.block="4cd2";r.guard(c);
+while(true){
+c.block="6nhw";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="xgmn";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])])]))){
+c.block="j0sg";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="jpw0";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+}
+c.block="4zal";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="0iyp";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])])]))){
+c.block="5371";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="fq2l";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+}
+yield 1;
+}
+
+});
+r.register("ncwe","when_clone_start",[null],function*(r,c){
+c.block="xwcg";r.guard(c);
+while(true){
+c.block="1n1w";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="0qbx";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="pc1u";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["eti2",null]),null]);
+}else{
+c.block="xpy1";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="eqs9";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),null]))){
+c.block="qpl5";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["eti2",null]),null]);
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("ncwe","when_clone_start",[null],function*(r,c){
+c.block="u24d";r.guard(c);
+while(true){
+c.block="1zel";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),"AND",r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["s5vb",null])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"])])]))){
+c.block="moq7";r.guard(c);
+r.command(c,"change_variable",["s5vb","1",null]);
+}
+yield 1;
+}
+
+});
+r.register("ncwe","when_clone_start",[null],function*(r,c){
+c.block="yelh";r.guard(c);
+while(true){
+c.block="fsnl";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="8t5b";r.guard(c);
+if(r.truth(r.value(c,"is_clicked",[null]))){
+c.block="f11l";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"LESS_OR_EQUAL","0"]))){
+c.block="ty9i";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="yypi";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["eti2",null]),null]);
+c.block="m8g3";r.guard(c);
+r.command(c,"set_variable",["jc9i",r.value(c,"get_variable",["eti2",null]),null]);
+c.block="t76w";r.guard(c);
+r.command(c,"set_variable",["jx38","2",null]);
+c.block="13tp";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="91pg";r.guard(c);
+r.command(c,"create_clone",["j5y7",null]);
+}else{
+c.block="owxa";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="kff7";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),null]))){
+c.block="55ci";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["eti2",null]),null]);
+c.block="deze";r.guard(c);
+r.command(c,"set_variable",["ymu4",r.value(c,"get_variable",["eti2",null]),null]);
+c.block="eirt";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="2fko";r.guard(c);
+r.command(c,"set_variable",["jx38","0",null]);
+c.block="h036";r.guard(c);
+r.command(c,"create_clone",["zyy3",null]);
+}
+}
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("ncwe","when_clone_start",[null],function*(r,c){
+c.block="rxiz";r.guard(c);
+while(true){
+c.block="3dy7";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"z5gw",null]))){
+c.block="q05s";r.guard(c);
+r.command(c,"set_variable",["16fh",r.value(c,"get_variable",["eti2",null]),null]);
+}
+yield 1;
+}
+
+});
+r.register("ncwe","when_clone_start",[null],function*(r,c){
+c.block="jdzr";r.guard(c);
+while(true){
+c.block="h7v1";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iqtj",null]),"EQUAL","1"]))){
+c.block="4m8r";r.guard(c);
+r.command(c,"show",[null]);
+}else{
+c.block="94wr";r.guard(c);
+r.command(c,"hide",[null]);
+}
+yield 1;
+}
+
+});
+
+// 캐릭터4 / a091
+r.register("a091","when_scene_start",[null],function*(r,c){
+c.block="zyp8";r.guard(c);
+r.command(c,"set_variable",["8smh","0",null]);
+c.block="wbrk";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="goor";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="rkhf";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="vn3y";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="o6xy";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="qvkr";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="1hj1";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="2kmy";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+
+});
+r.register("a091","when_clone_start",[null],function*(r,c){
+c.block="c5oe";r.guard(c);
+r.command(c,"show",[null]);
+c.block="9nvi";r.guard(c);
+r.command(c,"change_variable",["8smh","1",null]);
+c.block="zqoq";r.guard(c);
+r.command(c,"set_variable",["dytc",r.value(c,"calc_basic",[r.value(c,"get_variable",["8smh",null]),"PLUS","24"]),null]);
+c.block="7exj";r.guard(c);
+r.command(c,"move_x",[r.value(c,"calc_basic",["40","MULTI",r.value(c,"calc_basic",[r.value(c,"get_variable",["8smh",null]),"MINUS","1"])]),null]);
+c.block="grgv";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["8smh",null]),null]);
+
+});
+r.register("a091","when_scene_start",[null],function*(r,c){
+c.block="iurj";r.guard(c);
+while(true){
+c.block="p9qw";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"GREATER","0"]))){
+c.block="k606";r.guard(c);
+r.command(c,"change_variable",["qrm8","-1",null]);
+}
+yield 1;
+}
+
+});
+r.register("a091","when_clone_start",[null],function*(r,c){
+c.block="4cd2";r.guard(c);
+while(true){
+c.block="6nhw";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="xgmn";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["dytc",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["dytc",null])])]))){
+c.block="j0sg";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="jpw0";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+}
+c.block="4zal";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="0iyp";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["dytc",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["dytc",null])])]))){
+c.block="5371";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="fq2l";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+}
+yield 1;
+}
+
+});
+r.register("a091","when_clone_start",[null],function*(r,c){
+c.block="xwcg";r.guard(c);
+while(true){
+c.block="1n1w";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="0qbx";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="pc1u";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["dytc",null]),null]);
+}else{
+c.block="xpy1";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="eqs9";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["dytc",null])]),null]))){
+c.block="qpl5";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["dytc",null]),null]);
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("a091","when_clone_start",[null],function*(r,c){
+c.block="u24d";r.guard(c);
+while(true){
+c.block="1zel";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["dytc",null])]),"AND",r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["s5vb",null])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"])])]))){
+c.block="moq7";r.guard(c);
+r.command(c,"change_variable",["s5vb","1",null]);
+}
+yield 1;
+}
+
+});
+r.register("a091","when_clone_start",[null],function*(r,c){
+c.block="yelh";r.guard(c);
+while(true){
+c.block="fsnl";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="8t5b";r.guard(c);
+if(r.truth(r.value(c,"is_clicked",[null]))){
+c.block="f11l";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"LESS_OR_EQUAL","0"]))){
+c.block="ty9i";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="yypi";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["dytc",null]),null]);
+c.block="m8g3";r.guard(c);
+r.command(c,"set_variable",["jc9i",r.value(c,"get_variable",["dytc",null]),null]);
+c.block="t76w";r.guard(c);
+r.command(c,"set_variable",["jx38","2",null]);
+c.block="13tp";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="91pg";r.guard(c);
+r.command(c,"create_clone",["j5y7",null]);
+}else{
+c.block="owxa";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="kff7";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["dytc",null])]),null]))){
+c.block="55ci";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["dytc",null]),null]);
+c.block="deze";r.guard(c);
+r.command(c,"set_variable",["ymu4",r.value(c,"get_variable",["dytc",null]),null]);
+c.block="eirt";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="2fko";r.guard(c);
+r.command(c,"set_variable",["jx38","0",null]);
+c.block="h036";r.guard(c);
+r.command(c,"create_clone",["zyy3",null]);
+}
+}
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("a091","when_clone_start",[null],function*(r,c){
+c.block="rxiz";r.guard(c);
+while(true){
+c.block="3dy7";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"z5gw",null]))){
+c.block="q05s";r.guard(c);
+r.command(c,"set_variable",["16fh",r.value(c,"get_variable",["dytc",null]),null]);
+}
+yield 1;
+}
+
+});
+r.register("a091","when_clone_start",[null],function*(r,c){
+c.block="jdzr";r.guard(c);
+while(true){
+c.block="h7v1";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iqtj",null]),"EQUAL","1"]))){
+c.block="4m8r";r.guard(c);
+r.command(c,"show",[null]);
+}else{
+c.block="94wr";r.guard(c);
+r.command(c,"hide",[null]);
+}
+yield 1;
+}
+
+});
+
+// 캐릭터3 / 646h
+r.register("646h","when_scene_start",[null],function*(r,c){
+c.block="zyp8";r.guard(c);
+r.command(c,"set_variable",["tzev","0",null]);
+c.block="zt6q";r.guard(c);
+r.command(c,"move_y",["-40",null]);
+c.block="6gu9";r.guard(c);
+r.command(c,"move_y",["-40",null]);
+c.block="wbrk";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="9ubg";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="w77j";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="ge8d";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="4tgc";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="x7px";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="7fyf";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="6ve3";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+
+});
+r.register("646h","when_clone_start",[null],function*(r,c){
+c.block="c5oe";r.guard(c);
+r.command(c,"show",[null]);
+c.block="9nvi";r.guard(c);
+r.command(c,"change_variable",["tzev","1",null]);
+c.block="qrg5";r.guard(c);
+r.command(c,"set_variable",["olrb",r.value(c,"calc_basic",[r.value(c,"get_variable",["tzev",null]),"PLUS","16"]),null]);
+c.block="7exj";r.guard(c);
+r.command(c,"move_x",[r.value(c,"calc_basic",["40","MULTI",r.value(c,"calc_basic",[r.value(c,"get_variable",["tzev",null]),"MINUS","1"])]),null]);
+c.block="grgv";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["tzev",null]),null]);
+
+});
+r.register("646h","when_clone_start",[null],function*(r,c){
+c.block="itzn";r.guard(c);
+while(true){
+c.block="qt3v";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="t1cs";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="yeug";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["olrb",null]),null]);
+}else{
+c.block="z4tb";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="51lc";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["olrb",null])]),null]))){
+c.block="6aup";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["olrb",null]),null]);
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("646h","when_clone_start",[null],function*(r,c){
+c.block="e8yr";r.guard(c);
+while(true){
+c.block="gpo5";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="1iut";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["olrb",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["olrb",null])])]))){
+c.block="0bg4";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="fjkn";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+}
+c.block="pfmg";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="2y5i";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["olrb",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["olrb",null])])]))){
+c.block="ju3f";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="kfg2";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+}
+yield 1;
+}
+c.block="nzo5";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["olrb",null]),"EQUAL","10"]))){
+c.block="dygp";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="07i4";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+c.block="npgr";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,true,null]))){yield 1;}
+}
+
+});
+r.register("646h","when_clone_start",[null],function*(r,c){
+c.block="q43u";r.guard(c);
+while(true){
+c.block="vb4o";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["olrb",null])]),"AND",r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["s5vb",null])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"])])]))){
+c.block="b01p";r.guard(c);
+r.command(c,"change_variable",["s5vb","1",null]);
+}
+yield 1;
+}
+
+});
+r.register("646h","when_clone_start",[null],function*(r,c){
+c.block="hm7t";r.guard(c);
+while(true){
+c.block="ipmq";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="2fax";r.guard(c);
+if(r.truth(r.value(c,"is_clicked",[null]))){
+c.block="glai";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"LESS_OR_EQUAL","0"]))){
+c.block="eb5t";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="yzrc";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["olrb",null]),null]);
+c.block="5sms";r.guard(c);
+r.command(c,"set_variable",["jc9i",r.value(c,"get_variable",["olrb",null]),null]);
+c.block="wana";r.guard(c);
+r.command(c,"set_variable",["jx38","2",null]);
+c.block="mfvu";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="kue4";r.guard(c);
+r.command(c,"create_clone",["j5y7",null]);
+}else{
+c.block="br8n";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="5cap";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["olrb",null])]),null]))){
+c.block="0z9z";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["olrb",null]),null]);
+c.block="c0z0";r.guard(c);
+r.command(c,"set_variable",["ymu4",r.value(c,"get_variable",["olrb",null]),null]);
+c.block="6f0r";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="n5cp";r.guard(c);
+r.command(c,"set_variable",["jx38","0",null]);
+c.block="ti10";r.guard(c);
+r.command(c,"create_clone",["zyy3",null]);
+}
+}
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("646h","when_clone_start",[null],function*(r,c){
+c.block="2jz6";r.guard(c);
+while(true){
+c.block="fk4w";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"z5gw",null]))){
+c.block="bmrv";r.guard(c);
+r.command(c,"set_variable",["16fh",r.value(c,"get_variable",["olrb",null]),null]);
+}
+yield 1;
+}
+
+});
+r.register("646h","when_clone_start",[null],function*(r,c){
+c.block="jlhb";r.guard(c);
+while(true){
+c.block="2grx";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iqtj",null]),"EQUAL","0"]))){
+c.block="6roa";r.guard(c);
+r.command(c,"show",[null]);
+}else{
+c.block="nvp5";r.guard(c);
+r.command(c,"hide",[null]);
+}
+yield 1;
+}
+
+});
+
+// 캐릭터1 / k089
+r.register("k089","when_scene_start",[null],function*(r,c){
+c.block="zyp8";r.guard(c);
+r.command(c,"set_variable",["tzev","0",null]);
+c.block="zt6q";r.guard(c);
+r.command(c,"move_y",["-40",null]);
+c.block="wbrk";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="goor";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="k16h";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="jbrd";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="7pvw";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="qz51";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="4tgc";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="9ubg";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+
+});
+r.register("k089","when_clone_start",[null],function*(r,c){
+c.block="c5oe";r.guard(c);
+r.command(c,"show",[null]);
+c.block="9nvi";r.guard(c);
+r.command(c,"change_variable",["tzev","1",null]);
+c.block="qrg5";r.guard(c);
+r.command(c,"set_variable",["ttn8",r.value(c,"calc_basic",[r.value(c,"get_variable",["tzev",null]),"PLUS","7"]),null]);
+c.block="wxcd";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ttn8",null]),"EQUAL","15"]))){
+c.block="0kd1";r.guard(c);
+r.command(c,"set_variable",["ttn8","16",null]);
+}
+c.block="7exj";r.guard(c);
+r.command(c,"move_x",[r.value(c,"calc_basic",["40","MULTI",r.value(c,"calc_basic",[r.value(c,"get_variable",["tzev",null]),"MINUS","1"])]),null]);
+c.block="grgv";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["tzev",null]),null]);
+
+});
+r.register("k089","when_clone_start",[null],function*(r,c){
+c.block="itzn";r.guard(c);
+while(true){
+c.block="qt3v";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="t1cs";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="yeug";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["ttn8",null]),null]);
+}else{
+c.block="z4tb";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="51lc";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["ttn8",null])]),null]))){
+c.block="6aup";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["ttn8",null]),null]);
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("k089","when_clone_start",[null],function*(r,c){
+c.block="e8yr";r.guard(c);
+while(true){
+c.block="gpo5";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="1iut";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["ttn8",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["ttn8",null])])]))){
+c.block="0bg4";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="fjkn";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+}
+c.block="pfmg";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="2y5i";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["ttn8",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["ttn8",null])])]))){
+c.block="ju3f";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="kfg2";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+}
+yield 1;
+}
+c.block="nzo5";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ttn8",null]),"EQUAL","10"]))){
+c.block="dygp";r.guard(c);
+r.command(c,"hide",[null]);
+c.block="07i4";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+c.block="npgr";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,true,null]))){yield 1;}
+}
+
+});
+r.register("k089","when_clone_start",[null],function*(r,c){
+c.block="q43u";r.guard(c);
+while(true){
+c.block="vb4o";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["ttn8",null])]),"AND",r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["s5vb",null])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"])])]))){
+c.block="b01p";r.guard(c);
+r.command(c,"change_variable",["s5vb","1",null]);
+}
+yield 1;
+}
+
+});
+r.register("k089","when_clone_start",[null],function*(r,c){
+c.block="hm7t";r.guard(c);
+while(true){
+c.block="ipmq";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="2fax";r.guard(c);
+if(r.truth(r.value(c,"is_clicked",[null]))){
+c.block="glai";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"LESS_OR_EQUAL","0"]))){
+c.block="eb5t";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="yzrc";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["ttn8",null]),null]);
+c.block="5sms";r.guard(c);
+r.command(c,"set_variable",["jc9i",r.value(c,"get_variable",["ttn8",null]),null]);
+c.block="wana";r.guard(c);
+r.command(c,"set_variable",["jx38","2",null]);
+c.block="mfvu";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="kue4";r.guard(c);
+r.command(c,"create_clone",["j5y7",null]);
+}else{
+c.block="br8n";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="5cap";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["ttn8",null])]),null]))){
+c.block="0z9z";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["ttn8",null]),null]);
+c.block="c0z0";r.guard(c);
+r.command(c,"set_variable",["ymu4",r.value(c,"get_variable",["ttn8",null]),null]);
+c.block="6f0r";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="n5cp";r.guard(c);
+r.command(c,"set_variable",["jx38","0",null]);
+c.block="ti10";r.guard(c);
+r.command(c,"create_clone",["zyy3",null]);
+}
+}
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("k089","when_clone_start",[null],function*(r,c){
+c.block="2jz6";r.guard(c);
+while(true){
+c.block="fk4w";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"z5gw",null]))){
+c.block="bmrv";r.guard(c);
+r.command(c,"set_variable",["16fh",r.value(c,"get_variable",["ttn8",null]),null]);
+}
+yield 1;
+}
+
+});
+r.register("k089","when_clone_start",[null],function*(r,c){
+c.block="hed5";r.guard(c);
+while(true){
+c.block="rtc8";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iqtj",null]),"EQUAL","0"]))){
+c.block="z7td";r.guard(c);
+r.command(c,"show",[null]);
+}else{
+c.block="vg6h";r.guard(c);
+r.command(c,"hide",[null]);
+}
+yield 1;
+}
+
+});
+
+// 캐릭터 / 3y3g
+r.register("3y3g","when_scene_start",[null],function*(r,c){
+c.block="zyp8";r.guard(c);
+r.command(c,"set_variable",["4v8r","0",null]);
+c.block="wbrk";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="goor";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="k16h";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="jbrd";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="7pvw";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="qz51";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="4tgc";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+c.block="tuwy";r.guard(c);
+r.command(c,"create_clone",["self",null]);
+
+});
+r.register("3y3g","when_clone_start",[null],function*(r,c){
+c.block="c5oe";r.guard(c);
+r.command(c,"show",[null]);
+c.block="9nvi";r.guard(c);
+r.command(c,"change_variable",["4v8r","1",null]);
+c.block="zqoq";r.guard(c);
+r.command(c,"set_variable",["9k0l",r.value(c,"get_variable",["4v8r",null]),null]);
+c.block="2ruu";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["9k0l",null]),"EQUAL","8"]))){
+c.block="4bgl";r.guard(c);
+r.command(c,"set_variable",["9k0l","15",null]);
+}
+c.block="7exj";r.guard(c);
+r.command(c,"move_x",[r.value(c,"calc_basic",["40","MULTI",r.value(c,"calc_basic",[r.value(c,"get_variable",["4v8r",null]),"MINUS","1"])]),null]);
+c.block="grgv";r.guard(c);
+r.command(c,"change_to_some_shape",[r.value(c,"get_variable",["4v8r",null]),null]);
+
+});
+r.register("3y3g","when_scene_start",[null],function*(r,c){
+c.block="iurj";r.guard(c);
+while(true){
+c.block="p9qw";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"GREATER","0"]))){
+c.block="k606";r.guard(c);
+r.command(c,"change_variable",["qrm8","-1",null]);
+}
+yield 1;
+}
+
+});
+r.register("3y3g","when_clone_start",[null],function*(r,c){
+c.block="4cd2";r.guard(c);
+while(true){
+c.block="6nhw";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="xgmn";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["9k0l",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["9k0l",null])])]))){
+c.block="j0sg";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="jpw0";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+}
+c.block="4zal";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="0iyp";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jc9i",null]),"EQUAL",r.value(c,"get_variable",["9k0l",null])]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ymu4",null]),"EQUAL",r.value(c,"get_variable",["9k0l",null])])]))){
+c.block="5371";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","-50",null]);
+}else{
+c.block="fq2l";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+}
+yield 1;
+}
+
+});
+r.register("3y3g","when_clone_start",[null],function*(r,c){
+c.block="xwcg";r.guard(c);
+while(true){
+c.block="1n1w";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="0qbx";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="pc1u";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["9k0l",null]),null]);
+}else{
+c.block="xpy1";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="eqs9";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["9k0l",null])]),null]))){
+c.block="qpl5";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["9k0l",null]),null]);
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("3y3g","when_clone_start",[null],function*(r,c){
+c.block="u24d";r.guard(c);
+while(true){
+c.block="1zel";r.guard(c);
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["9k0l",null])]),"AND",r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["s5vb",null])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"])])]))){
+c.block="moq7";r.guard(c);
+r.command(c,"change_variable",["s5vb","1",null]);
+}
+yield 1;
+}
+
+});
+r.register("3y3g","when_clone_start",[null],function*(r,c){
+c.block="yelh";r.guard(c);
+while(true){
+c.block="fsnl";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"mouse",null]))){
+c.block="8t5b";r.guard(c);
+if(r.truth(r.value(c,"is_clicked",[null]))){
+c.block="f11l";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",null]),"LESS_OR_EQUAL","0"]))){
+c.block="ty9i";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
+c.block="yypi";r.guard(c);
+r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["9k0l",null]),null]);
+c.block="m8g3";r.guard(c);
+r.command(c,"set_variable",["jc9i",r.value(c,"get_variable",["9k0l",null]),null]);
+c.block="t76w";r.guard(c);
+r.command(c,"set_variable",["jx38","2",null]);
+c.block="13tp";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="91pg";r.guard(c);
+r.command(c,"create_clone",["j5y7",null]);
+}else{
+c.block="owxa";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
+c.block="kff7";r.guard(c);
+if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["9k0l",null])]),null]))){
+c.block="55ci";r.guard(c);
+r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["9k0l",null]),null]);
+c.block="deze";r.guard(c);
+r.command(c,"set_variable",["ymu4",r.value(c,"get_variable",["9k0l",null]),null]);
+c.block="eirt";r.guard(c);
+r.command(c,"set_variable",["qrm8","30",null]);
+c.block="2fko";r.guard(c);
+r.command(c,"set_variable",["jx38","0",null]);
+c.block="h036";r.guard(c);
+r.command(c,"create_clone",["zyy3",null]);
+}
+}
+}
+}
+}
+}
+yield 1;
+}
+
+});
+r.register("3y3g","when_clone_start",[null],function*(r,c){
+c.block="rxiz";r.guard(c);
+while(true){
+c.block="3dy7";r.guard(c);
+if(r.truth(r.value(c,"reach_something",[null,"z5gw",null]))){
+c.block="q05s";r.guard(c);
+r.command(c,"set_variable",["16fh",r.value(c,"get_variable",["9k0l",null]),null]);
+}
+yield 1;
+}
+
+});
+r.register("3y3g","when_clone_start",[null],function*(r,c){
+c.block="jdzr";r.guard(c);
+while(true){
+c.block="h7v1";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iqtj",null]),"EQUAL","0"]))){
+c.block="4m8r";r.guard(c);
+r.command(c,"show",[null]);
+}else{
+c.block="94wr";r.guard(c);
+r.command(c,"hide",[null]);
+}
+yield 1;
+}
+
+});
+
+// 실행 버튼3 / waql
+r.register("waql","when_scene_start",[null],function*(r,c){
+c.block="duyt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="u8x3";r.guard(c);
+while(true){
+c.block="5bj5";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="y2nl";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="6qa9";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="zz6j";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("waql","when_object_click",[null],function*(r,c){
+c.block="vz6m";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rks6",null]),"EQUAL","2"]))){
+c.block="5ig2";r.guard(c);
+r.command(c,"start_scene",["a4a6",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+c.block="4sij";r.guard(c);
+r.command(c,"start_scene",["ub0s",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 실행 버튼2 / shpn
+r.register("shpn","when_scene_start",[null],function*(r,c){
+c.block="spxj";r.guard(c);
+while(true){
+c.block="xcvz";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="hc2l";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vtxv";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="q0ot";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("shpn","when_object_click",[null],function*(r,c){
+c.block="bsoy";r.guard(c);
+r.command(c,"start_scene",["s27s",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+r.register("shpn","when_scene_start",[null],function*(r,c){
+c.block="ytwm";r.guard(c);
+while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","0"]))){yield 1;}
+c.block="sjus";r.guard(c);
+r.command(c,"show",[null]);
+
+});
+
+// 배경2 / ckti
+r.register("ckti","when_run_button_click",[null],function*(r,c){
+c.block="p4q8";r.guard(c);
+r.command(c,"start_scene",["1ckl",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+r.register("ckti","when_scene_start",[null],function*(r,c){
+c.block="d0os";r.guard(c);
+r.command(c,"set_variable",["jc9i","0",null]);
+c.block="813n";r.guard(c);
+r.command(c,"set_variable",["ymu4","0",null]);
+
+});
+
+// 음악11 / vtvl
+r.register("vtvl","when_scene_start",[null],function*(r,c){
+c.block="e88h";r.guard(c);
+r.command(c,"set_visible_project_timer",[null,"HIDE",null,null]);
+c.block="eqjo";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"START",null,null]);
+c.block="x7px";r.guard(c);
+r.command(c,"sound_volume_set",["15",null]);
+c.block="1rif";r.guard(c);
+while(true){
+c.block="075l";r.guard(c);
+r.command(c,"sound_silent_all",["all",null]);
+c.block="vepj";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","1"]))){
+c.block="h03c";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["bm5s"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"bm5s",null]));
+}
+c.block="exq9";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","2"]))){
+c.block="y8cu";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["hc5x"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"hc5x",null]));
+}
+c.block="hog3";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yx69",null]),"EQUAL","3"]))){
+c.block="3c4p";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["160f"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"160f",null]));
+}
+c.block="bsn5";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"STOP",null,null]);
+c.block="vit5";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"RESET",null,null]);
+yield 1;
+}
+
+});
+
+// 단색 배경2 / vnw1
+r.register("vnw1","when_message_cast",[null,"h0nn"],function*(r,c){
+c.block="xrax";r.guard(c);
+r.command(c,"set_variable",["ii4n","1",null]);
+c.block="yrjq";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","100",null]);
+c.block="a2vt";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vus7",null]),"EQUAL","4"]))){
+c.block="4msl";r.guard(c);
+r.command(c,"show",[null]);
+c.block="p569";r.guard(c);
+for(let i10=0,n10=Math.max(0,Math.floor(r.num("100")));i10<n10;i10++){
+c.block="xo6n";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","-1",null]);
+yield 1;
+}
+c.block="ftqg";r.guard(c);
+r.command(c,"sound_volume_set",["0",null]);
+}
+c.block="xes7";r.guard(c);
+r.command(c,"show",[null]);
+c.block="4x14";r.guard(c);
+for(let i11=0,n11=Math.max(0,Math.floor(r.num("50")));i11<n11;i11++){
+c.block="ol7a";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","-2",null]);
+yield 1;
+}
+
+});
+r.register("vnw1","when_scene_start",[null],function*(r,c){
+c.block="gqy0";r.guard(c);
+r.command(c,"add_effect_amount",["transparency","100",null]);
+
+});
+
+// 실행 버튼5 / six4
+r.register("six4","when_scene_start",[null],function*(r,c){
+c.block="duyt";r.guard(c);
+r.command(c,"show",[null]);
+c.block="u8x3";r.guard(c);
+while(true){
+c.block="5bj5";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="y2nl";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="6qa9";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="zz6j";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("six4","when_object_click",[null],function*(r,c){
+c.block="4sij";r.guard(c);
+r.command(c,"start_scene",["1ckl",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 왕궁복도3 / c2hl
+r.register("c2hl","when_object_click",[null],function*(r,c){
+c.block="kjmj";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="bm9q";r.guard(c);
+r.command(c,"set_variable",["vus7","6",null]);
+c.block="5j5t";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="9cqf";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="0180";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="2n4v";r.guard(c);
+for(let i12=0,n12=Math.max(0,Math.floor(r.num("50")));i12<n12;i12++){
+yield 1;
+}
+c.block="iomb";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 왕궁복도2 / x8l3
+r.register("x8l3","when_object_click",[null],function*(r,c){
+c.block="kjmj";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="bm9q";r.guard(c);
+r.command(c,"set_variable",["vus7","5",null]);
+c.block="5j5t";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="9cqf";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="0180";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="2n4v";r.guard(c);
+for(let i13=0,n13=Math.max(0,Math.floor(r.num("50")));i13<n13;i13++){
+yield 1;
+}
+c.block="iomb";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 왕궁복도1 / dz9m
+r.register("dz9m","when_object_click",[null],function*(r,c){
+c.block="kjmj";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="mgn2";r.guard(c);
+r.command(c,"set_variable",["vus7","4",null]);
+c.block="k04t";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="olmu";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="r75g";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="9bol";r.guard(c);
+for(let i14=0,n14=Math.max(0,Math.floor(r.num("100")));i14<n14;i14++){
+c.block="5cs5";r.guard(c);
+r.command(c,"sound_volume_change",["-0.15",null]);
+yield 1;
+}
+c.block="tcxv";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 황야1 / fhff
+r.register("fhff","when_object_click",[null],function*(r,c){
+c.block="zmwo";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="ptgw";r.guard(c);
+r.command(c,"set_variable",["vus7","3",null]);
+c.block="c62a";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="k9wr";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="j73t";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="fs5p";r.guard(c);
+for(let i15=0,n15=Math.max(0,Math.floor(r.num("50")));i15<n15;i15++){
+yield 1;
+}
+c.block="5gwf";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 황야 / 9hgi
+r.register("9hgi","when_object_click",[null],function*(r,c){
+c.block="ro7n";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="ulqh";r.guard(c);
+r.command(c,"set_variable",["vus7","2",null]);
+c.block="g0k4";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="i1uh";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="z7hj";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="hkfq";r.guard(c);
+for(let i16=0,n16=Math.max(0,Math.floor(r.num("50")));i16<n16;i16++){
+yield 1;
+}
+c.block="j1lg";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 왕궁복도 / 6wmq
+r.register("6wmq","when_object_click",[null],function*(r,c){
+c.block="t6qa";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="ohk5";r.guard(c);
+r.command(c,"set_variable",["vus7","1",null]);
+c.block="05sh";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="cnlb";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="rp8w";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="qfxk";r.guard(c);
+for(let i17=0,n17=Math.max(0,Math.floor(r.num("50")));i17<n17;i17++){
+yield 1;
+}
+c.block="s9x3";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 마나12 / pqsr
+r.register("pqsr","when_object_click",[null],function*(r,c){
+c.block="l54v";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="xq8t";r.guard(c);
+r.command(c,"set_variable",["vus7","6",null]);
+c.block="ucdg";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="uizw";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="9s81";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="d626";r.guard(c);
+for(let i18=0,n18=Math.max(0,Math.floor(r.num("50")));i18<n18;i18++){
+yield 1;
+}
+c.block="q06g";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+r.register("pqsr","when_scene_start",[null],function*(r,c){
+c.block="atf3";r.guard(c);
+r.command(c,"show",[null]);
+c.block="4cps";r.guard(c);
+while(true){
+c.block="5etx";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="vqih";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vnu3";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="lnbs";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+
+// 마나11 / cftk
+r.register("cftk","when_scene_start",[null],function*(r,c){
+c.block="atf3";r.guard(c);
+r.command(c,"show",[null]);
+c.block="4cps";r.guard(c);
+while(true){
+c.block="5etx";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="vqih";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vnu3";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="lnbs";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("cftk","when_object_click",[null],function*(r,c){
+c.block="lckp";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="molw";r.guard(c);
+r.command(c,"set_variable",["vus7","5",null]);
+c.block="pn1p";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="lq33";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="03qn";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="j1px";r.guard(c);
+for(let i19=0,n19=Math.max(0,Math.floor(r.num("50")));i19<n19;i19++){
+yield 1;
+}
+c.block="cg7x";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 마나10 / uvof
+r.register("uvof","when_object_click",[null],function*(r,c){
+c.block="l54v";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="xq8t";r.guard(c);
+r.command(c,"set_variable",["vus7","4",null]);
+c.block="ucdg";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="uizw";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="9s81";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="d626";r.guard(c);
+for(let i20=0,n20=Math.max(0,Math.floor(r.num("100")));i20<n20;i20++){
+c.block="fey0";r.guard(c);
+r.command(c,"sound_volume_change",["-0.15",null]);
+yield 1;
+}
+c.block="q06g";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+r.register("uvof","when_scene_start",[null],function*(r,c){
+c.block="atf3";r.guard(c);
+r.command(c,"show",[null]);
+c.block="4cps";r.guard(c);
+while(true){
+c.block="5etx";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="vqih";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vnu3";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="lnbs";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+
+// 마나9 / dov5
+r.register("dov5","when_scene_start",[null],function*(r,c){
+c.block="atf3";r.guard(c);
+r.command(c,"show",[null]);
+c.block="4cps";r.guard(c);
+while(true){
+c.block="5etx";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="vqih";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vnu3";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="lnbs";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("dov5","when_object_click",[null],function*(r,c){
+c.block="hzyf";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="udtv";r.guard(c);
+r.command(c,"set_variable",["vus7","3",null]);
+c.block="upv9";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="vk7o";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="g0sz";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="f4me";r.guard(c);
+for(let i21=0,n21=Math.max(0,Math.floor(r.num("50")));i21<n21;i21++){
+yield 1;
+}
+c.block="8l7s";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 마나2 / 3j1e
+r.register("3j1e","when_scene_start",[null],function*(r,c){
+c.block="atf3";r.guard(c);
+r.command(c,"show",[null]);
+c.block="4cps";r.guard(c);
+while(true){
+c.block="5etx";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="vqih";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vnu3";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="lnbs";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("3j1e","when_object_click",[null],function*(r,c){
+c.block="lckp";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="molw";r.guard(c);
+r.command(c,"set_variable",["vus7","2",null]);
+c.block="pn1p";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="lq33";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="03qn";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="j1px";r.guard(c);
+for(let i22=0,n22=Math.max(0,Math.floor(r.num("50")));i22<n22;i22++){
+yield 1;
+}
+c.block="cg7x";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 마나1 / xte6
+r.register("xte6","when_scene_start",[null],function*(r,c){
+c.block="atf3";r.guard(c);
+r.command(c,"show",[null]);
+c.block="4cps";r.guard(c);
+while(true){
+c.block="5etx";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="vqih";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="vnu3";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="lnbs";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("xte6","when_object_click",[null],function*(r,c){
+c.block="m28h";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ii4n",null]),"EQUAL","0"]))){
+c.block="ml4g";r.guard(c);
+r.command(c,"set_variable",["vus7","1",null]);
+c.block="oxzy";r.guard(c);
+r.command(c,"set_variable",["mlfj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
+c.block="6i7h";r.guard(c);
+r.command(c,"set_variable",["tpfq",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
+c.block="65vf";r.guard(c);
+r.command(c,"message_cast",["h0nn",null]);
+c.block="6wek";r.guard(c);
+for(let i23=0,n23=Math.max(0,Math.floor(r.num("50")));i23<n23;i23++){
+yield 1;
+}
+c.block="z367";r.guard(c);
+r.command(c,"start_scene",["7dwq",null]);
+if(c.thread.cancelled||c.e.dead)return;
+}
+
+});
+
+// 배경3 / ao8v
+r.register("ao8v","when_run_button_click",[null],function*(r,c){
+c.block="p4q8";r.guard(c);
+r.command(c,"start_scene",["s27s",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+r.register("ao8v","when_scene_start",[null],function*(r,c){
+
+});
+r.register("ao8v","when_scene_start",[null],function*(r,c){
+c.block="evqd";r.guard(c);
+r.command(c,"set_variable",["jx38","1",null]);
+c.block="khz8";r.guard(c);
+r.command(c,"set_variable",["ii4n","0",null]);
+
+});
+
 // ㅇntitld / y1id
 
 // 플레이어중심 / 57b7
@@ -667,7 +4361,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["wh5g"]),null]);
 c.block="4msl";r.guard(c);
 r.command(c,"show",[null]);
 c.block="p569";r.guard(c);
-for(let i0=0,n0=Math.max(0,Math.floor(r.num("100")));i0<n0;i0++){
+for(let i24=0,n24=Math.max(0,Math.floor(r.num("100")));i24<n24;i24++){
 c.block="xo6n";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1",null]);
 c.block="xc84";r.guard(c);
@@ -678,7 +4372,7 @@ yield 1;
 c.block="xes7";r.guard(c);
 r.command(c,"show",[null]);
 c.block="4x14";r.guard(c);
-for(let i1=0,n1=Math.max(0,Math.floor(r.num("50")));i1<n1;i1++){
+for(let i25=0,n25=Math.max(0,Math.floor(r.num("50")));i25<n25;i25++){
 c.block="ol7a";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 yield 1;
@@ -691,7 +4385,7 @@ r.register("mu01","when_clone_start",[null],function*(r,c){
 c.block="c4t5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="q43u";r.guard(c);
-for(let i2=0,n2=Math.max(0,Math.floor(r.num("20")));i2<n2;i2++){
+for(let i26=0,n26=Math.max(0,Math.floor(r.num("20")));i26<n26;i26++){
 c.block="3gsj";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -707,11 +4401,11 @@ r.register("5uiw","when_clone_start",[null],function*(r,c){
 c.block="c4t5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="61gv";r.guard(c);
-for(let i3=0,n3=Math.max(0,Math.floor(r.num("30")));i3<n3;i3++){
+for(let i27=0,n27=Math.max(0,Math.floor(r.num("30")));i27<n27;i27++){
 yield 1;
 }
 c.block="q43u";r.guard(c);
-for(let i4=0,n4=Math.max(0,Math.floor(r.num("50")));i4<n4;i4++){
+for(let i28=0,n28=Math.max(0,Math.floor(r.num("50")));i28<n28;i28++){
 c.block="3gsj";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 yield 1;
@@ -727,7 +4421,7 @@ r.register("h1z0","when_clone_start",[null],function*(r,c){
 c.block="63hh";r.guard(c);
 r.command(c,"show",[null]);
 c.block="n7hu";r.guard(c);
-for(let i5=0,n5=Math.max(0,Math.floor(r.num("20")));i5<n5;i5++){
+for(let i29=0,n29=Math.max(0,Math.floor(r.num("20")));i29<n29;i29++){
 c.block="acek";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -768,7 +4462,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="9sgt";r.guard(c);
 r.command(c,"locate_xy",["0","-30",null]);
 c.block="bcww";r.guard(c);
-for(let i6=0,n6=Math.max(0,Math.floor(r.num("100")));i6<n6;i6++){
+for(let i30=0,n30=Math.max(0,Math.floor(r.num("100")));i30<n30;i30++){
 c.block="uk3d";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["60","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="ziaw";r.guard(c);
@@ -785,7 +4479,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="k6wq";r.guard(c);
 r.command(c,"locate_xy",["0","-30",null]);
 c.block="25ef";r.guard(c);
-for(let i7=0,n7=Math.max(0,Math.floor(r.num("100")));i7<n7;i7++){
+for(let i31=0,n31=Math.max(0,Math.floor(r.num("100")));i31<n31;i31++){
 c.block="pkcs";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["60","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="ui7b";r.guard(c);
@@ -804,7 +4498,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="qg1g";r.guard(c);
 r.command(c,"locate_xy",["0","30",null]);
 c.block="ec3x";r.guard(c);
-for(let i8=0,n8=Math.max(0,Math.floor(r.num("100")));i8<n8;i8++){
+for(let i32=0,n32=Math.max(0,Math.floor(r.num("100")));i32<n32;i32++){
 c.block="q609";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["81","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="b1ov";r.guard(c);
@@ -821,7 +4515,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="dq9s";r.guard(c);
 r.command(c,"locate_xy",["0","30",null]);
 c.block="fnrj";r.guard(c);
-for(let i9=0,n9=Math.max(0,Math.floor(r.num("100")));i9<n9;i9++){
+for(let i33=0,n33=Math.max(0,Math.floor(r.num("100")));i33<n33;i33++){
 c.block="1bk4";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["85","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="74yo";r.guard(c);
@@ -842,7 +4536,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="qg1g";r.guard(c);
 r.command(c,"locate_xy",["0","30",null]);
 c.block="ec3x";r.guard(c);
-for(let i10=0,n10=Math.max(0,Math.floor(r.num("100")));i10<n10;i10++){
+for(let i34=0,n34=Math.max(0,Math.floor(r.num("100")));i34<n34;i34++){
 c.block="q609";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["65","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="b1ov";r.guard(c);
@@ -861,7 +4555,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="3w5q";r.guard(c);
 r.command(c,"locate_xy",["0","30",null]);
 c.block="f3d6";r.guard(c);
-for(let i11=0,n11=Math.max(0,Math.floor(r.num("100")));i11<n11;i11++){
+for(let i35=0,n35=Math.max(0,Math.floor(r.num("100")));i35<n35;i35++){
 c.block="r6zx";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["65","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="inl6";r.guard(c);
@@ -919,7 +4613,7 @@ r.command(c,"change_variable",["cfmd","12",null]);
 c.block="1lds";r.guard(c);
 r.command(c,"create_clone",["8f6d",null]);
 c.block="skih";r.guard(c);
-for(let i12=0,n12=Math.max(0,Math.floor(r.num("240")));i12<n12;i12++){
+for(let i36=0,n36=Math.max(0,Math.floor(r.num("240")));i36<n36;i36++){
 c.block="l6ir";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="fsau";r.guard(c);
@@ -1123,7 +4817,7 @@ r.command(c,"change_variable",["g4sc","12",null]);
 c.block="vnnp";r.guard(c);
 r.command(c,"create_clone",["8f6d",null]);
 c.block="nowr";r.guard(c);
-for(let i13=0,n13=Math.max(0,Math.floor(r.num("240")));i13<n13;i13++){
+for(let i37=0,n37=Math.max(0,Math.floor(r.num("240")));i37<n37;i37++){
 c.block="4e50";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="4c9x";r.guard(c);
@@ -1786,7 +5480,7 @@ while(true){
 c.block="gphm";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["9bgr",null]),null,"abs"]),"GREATER_OR_EQUAL","1"]))){yield 1;}
 c.block="3oie";r.guard(c);
-for(let i14=0,n14=Math.max(0,Math.floor(r.num("2")));i14<n14;i14++){
+for(let i38=0,n38=Math.max(0,Math.floor(r.num("2")));i38<n38;i38++){
 yield 1;
 }
 c.block="u1k8";r.guard(c);
@@ -1803,7 +5497,7 @@ while(true){
 c.block="244h";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["c19k",null]),null,"abs"]),"GREATER_OR_EQUAL","1"]))){yield 1;}
 c.block="rq6r";r.guard(c);
-for(let i15=0,n15=Math.max(0,Math.floor(r.num("2")));i15<n15;i15++){
+for(let i39=0,n39=Math.max(0,Math.floor(r.num("2")));i39<n39;i39++){
 yield 1;
 }
 c.block="ova7";r.guard(c);
@@ -1928,7 +5622,7 @@ r.command(c,"set_scale_size",["10",null]);
 c.block="6t3h";r.guard(c);
 r.command(c,"show",[null]);
 c.block="fcvj";r.guard(c);
-for(let i16=0,n16=Math.max(0,Math.floor(r.num("40")));i16<n16;i16++){
+for(let i40=0,n40=Math.max(0,Math.floor(r.num("40")));i40<n40;i40++){
 c.block="tvv9";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="ttra";r.guard(c);
@@ -1938,7 +5632,7 @@ r.command(c,"move_y",[r.value(c,"get_variable",["t6ui",null]),null]);
 yield 1;
 }
 c.block="uin8";r.guard(c);
-for(let i17=0,n17=Math.max(0,Math.floor(r.num("5")));i17<n17;i17++){
+for(let i41=0,n41=Math.max(0,Math.floor(r.num("5")));i41<n41;i41++){
 c.block="yeae";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="aaq9";r.guard(c);
@@ -1988,7 +5682,7 @@ r.command(c,"set_scale_size",["10",null]);
 c.block="6t3h";r.guard(c);
 r.command(c,"show",[null]);
 c.block="fcvj";r.guard(c);
-for(let i18=0,n18=Math.max(0,Math.floor(r.num("40")));i18<n18;i18++){
+for(let i42=0,n42=Math.max(0,Math.floor(r.num("40")));i42<n42;i42++){
 c.block="tvv9";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="ttra";r.guard(c);
@@ -1998,7 +5692,7 @@ r.command(c,"move_y",[r.value(c,"get_variable",["fjo1",null]),null]);
 yield 1;
 }
 c.block="uin8";r.guard(c);
-for(let i19=0,n19=Math.max(0,Math.floor(r.num("5")));i19<n19;i19++){
+for(let i43=0,n43=Math.max(0,Math.floor(r.num("5")));i43<n43;i43++){
 c.block="yeae";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="aaq9";r.guard(c);
@@ -2027,27 +5721,27 @@ r.command(c,"show",[null]);
 c.block="qtbk";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="d5dd";r.guard(c);
-for(let i20=0,n20=Math.max(0,Math.floor(r.num("20")));i20<n20;i20++){
+for(let i44=0,n44=Math.max(0,Math.floor(r.num("20")));i44<n44;i44++){
 c.block="egu1";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-5",null]);
 yield 1;
 }
 c.block="r9mr";r.guard(c);
-for(let i21=0,n21=Math.max(0,Math.floor(r.num("20")));i21<n21;i21++){
+for(let i45=0,n45=Math.max(0,Math.floor(r.num("20")));i45<n45;i45++){
 c.block="74l3";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
 }
 c.block="pxh9";r.guard(c);
-for(let i22=0,n22=Math.max(0,Math.floor(r.num("2")));i22<n22;i22++){
+for(let i46=0,n46=Math.max(0,Math.floor(r.num("2")));i46<n46;i46++){
 c.block="9ibw";r.guard(c);
-for(let i23=0,n23=Math.max(0,Math.floor(r.num("10")));i23<n23;i23++){
+for(let i47=0,n47=Math.max(0,Math.floor(r.num("10")));i47<n47;i47++){
 c.block="qxmv";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
 }
 c.block="3p98";r.guard(c);
-for(let i24=0,n24=Math.max(0,Math.floor(r.num("10")));i24<n24;i24++){
+for(let i48=0,n48=Math.max(0,Math.floor(r.num("10")));i48<n48;i48++){
 c.block="m5n0";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -2055,13 +5749,13 @@ yield 1;
 yield 1;
 }
 c.block="64ju";r.guard(c);
-for(let i25=0,n25=Math.max(0,Math.floor(r.num("5")));i25<n25;i25++){
+for(let i49=0,n49=Math.max(0,Math.floor(r.num("5")));i49<n49;i49++){
 c.block="4mi0";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-20",null]);
 yield 1;
 }
 c.block="gsi9";r.guard(c);
-for(let i26=0,n26=Math.max(0,Math.floor(r.num("5")));i26<n26;i26++){
+for(let i50=0,n50=Math.max(0,Math.floor(r.num("5")));i50<n50;i50++){
 c.block="lzhl";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -2087,7 +5781,7 @@ c.block="jrcs";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 }
 c.block="u48j";r.guard(c);
-for(let i27=0,n27=Math.max(0,Math.floor(r.num("20")));i27<n27;i27++){
+for(let i51=0,n51=Math.max(0,Math.floor(r.num("20")));i51<n51;i51++){
 yield 1;
 }
 c.block="xnmx";r.guard(c);
@@ -2120,7 +5814,7 @@ c.block="hcsh";r.guard(c);
 r.command(c,"message_cast",["h0rp",null]);
 }
 c.block="8ho8";r.guard(c);
-for(let i28=0,n28=Math.max(0,Math.floor(r.num("25")));i28<n28;i28++){
+for(let i52=0,n52=Math.max(0,Math.floor(r.num("25")));i52<n52;i52++){
 c.block="ffpr";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3",null]);
 yield 1;
@@ -2134,7 +5828,7 @@ r.register("dx65","when_message_cast",[null,"m55m"],function*(r,c){
 c.block="ohcx";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="oejp";r.guard(c);
-for(let i29=0,n29=Math.max(0,Math.floor(r.num("60")));i29<n29;i29++){
+for(let i53=0,n53=Math.max(0,Math.floor(r.num("60")));i53<n53;i53++){
 c.block="inap";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","0"]))){
 c.block="a5gy";r.guard(c);
@@ -2154,7 +5848,7 @@ while(true){
 c.block="08m2";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vx5n",null]),"EQUAL","1"]))){
 c.block="2f6a";r.guard(c);
-for(let i30=0,n30=Math.max(0,Math.floor(r.num("90")));i30<n30;i30++){
+for(let i54=0,n54=Math.max(0,Math.floor(r.num("90")));i54<n54;i54++){
 yield 1;
 }
 c.block="sq83";r.guard(c);
@@ -2169,7 +5863,7 @@ r.register("dx65","when_message_cast",[null,"h0rp"],function*(r,c){
 c.block="d8np";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="nkvz";r.guard(c);
-for(let i31=0,n31=Math.max(0,Math.floor(r.num("60")));i31<n31;i31++){
+for(let i55=0,n55=Math.max(0,Math.floor(r.num("60")));i55<n55;i55++){
 c.block="cchd";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","0"]))){
 c.block="5gcu";r.guard(c);
@@ -2218,11 +5912,11 @@ r.command(c,"locate",["6npu",null]);
 c.block="lgqt";r.guard(c);
 r.command(c,"set_variable",["xl26","-30",null]);
 c.block="tt33";r.guard(c);
-for(let i32=0,n32=Math.max(0,Math.floor(r.num("10")));i32<n32;i32++){
+for(let i56=0,n56=Math.max(0,Math.floor(r.num("10")));i56<n56;i56++){
 c.block="jero";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="hcqp";r.guard(c);
-for(let i33=0,n33=Math.max(0,Math.floor(r.num("10")));i33<n33;i33++){
+for(let i57=0,n57=Math.max(0,Math.floor(r.num("10")));i57<n57;i57++){
 c.block="vj7b";r.guard(c);
 r.command(c,"change_variable",["xl26","0.3",null]);
 c.block="kpyf";r.guard(c);
@@ -2286,7 +5980,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"calc_rand",[null,"1",null,"7",nul
 c.block="j6kr";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="lgzi";r.guard(c);
-for(let i34=0,n34=Math.max(0,Math.floor(r.num("6")));i34<n34;i34++){
+for(let i58=0,n58=Math.max(0,Math.floor(r.num("6")));i58<n58;i58++){
 c.block="l0j5";r.guard(c);
 r.command(c,"change_scale_size",["1",null]);
 yield 1;
@@ -2296,7 +5990,7 @@ r.command(c,"set_variable",["p0kr","-0.005",null]);
 c.block="3bfm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["63tw",null]),"EQUAL","1"]))){
 c.block="s7o5";r.guard(c);
-for(let i35=0,n35=Math.max(0,Math.floor(r.num("350")));i35<n35;i35++){
+for(let i59=0,n59=Math.max(0,Math.floor(r.num("350")));i59<n59;i59++){
 c.block="k3jl";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["p0kr",null]),null]);
 c.block="22kl";r.guard(c);
@@ -2334,7 +6028,7 @@ yield 1;
 }
 }else{
 c.block="4vci";r.guard(c);
-for(let i36=0,n36=Math.max(0,Math.floor(r.num("350")));i36<n36;i36++){
+for(let i60=0,n60=Math.max(0,Math.floor(r.num("350")));i60<n60;i60++){
 c.block="z980";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["p0kr",null]),null]);
 c.block="z6yw";r.guard(c);
@@ -2384,7 +6078,7 @@ while(true){
 c.block="7lkn";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["gj41",null]),"EQUAL","1"]))){
 c.block="b0fe";r.guard(c);
-for(let i37=0,n37=Math.max(0,Math.floor(r.num("10")));i37<n37;i37++){
+for(let i61=0,n61=Math.max(0,Math.floor(r.num("10")));i61<n61;i61++){
 yield 1;
 }
 c.block="tjdp";r.guard(c);
@@ -2414,7 +6108,7 @@ r.command(c,"show",[null]);
 c.block="n90t";r.guard(c);
 r.command(c,"set_scale_size",["56",null]);
 c.block="ord6";r.guard(c);
-for(let i38=0,n38=Math.max(0,Math.floor(r.num("70")));i38<n38;i38++){
+for(let i62=0,n62=Math.max(0,Math.floor(r.num("70")));i62<n62;i62++){
 c.block="wukb";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["68","MINUS",r.value(c,"coordinate_object",[null,"self",null,"y"])]),"DIVIDE","12"]),null]);
 c.block="clxr";r.guard(c);
@@ -2440,7 +6134,7 @@ r.command(c,"show",[null]);
 c.block="n90t";r.guard(c);
 r.command(c,"set_scale_size",["56",null]);
 c.block="ord6";r.guard(c);
-for(let i39=0,n39=Math.max(0,Math.floor(r.num("70")));i39<n39;i39++){
+for(let i63=0,n63=Math.max(0,Math.floor(r.num("70")));i63<n63;i63++){
 c.block="wukb";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vqko",null]),"MINUS","100"]),"MINUS",r.value(c,"coordinate_object",[null,"self",null,"y"])]),"DIVIDE","12"]),null]);
 c.block="clxr";r.guard(c);
@@ -2477,7 +6171,7 @@ r.command(c,"show",[null]);
 c.block="12um";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="upw7";r.guard(c);
-for(let i40=0,n40=Math.max(0,Math.floor(r.num("75")));i40<n40;i40++){
+for(let i64=0,n64=Math.max(0,Math.floor(r.num("75")));i64<n64;i64++){
 c.block="83a7";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-1",null]);
 yield 1;
@@ -2509,13 +6203,13 @@ r.command(c,"message_cast",["gg6a",null]);
 c.block="pcal";r.guard(c);
 r.command(c,"message_cast",["vmzu",null]);
 c.block="ord6";r.guard(c);
-for(let i41=0,n41=Math.max(0,Math.floor(r.num("85")));i41<n41;i41++){
+for(let i65=0,n65=Math.max(0,Math.floor(r.num("85")));i65<n65;i65++){
 c.block="clxr";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0.3",null]);
 yield 1;
 }
 c.block="4bvj";r.guard(c);
-for(let i42=0,n42=Math.max(0,Math.floor(r.num("60")));i42<n42;i42++){
+for(let i66=0,n66=Math.max(0,Math.floor(r.num("60")));i66<n66;i66++){
 c.block="aqfx";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="n3cc";r.guard(c);
@@ -2538,13 +6232,13 @@ r.command(c,"message_cast",["gg6a",null]);
 c.block="6g4y";r.guard(c);
 r.command(c,"message_cast",["vk2s",null]);
 c.block="0hdq";r.guard(c);
-for(let i43=0,n43=Math.max(0,Math.floor(r.num("85")));i43<n43;i43++){
+for(let i67=0,n67=Math.max(0,Math.floor(r.num("85")));i67<n67;i67++){
 c.block="g1z6";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0.3",null]);
 yield 1;
 }
 c.block="qsv7";r.guard(c);
-for(let i44=0,n44=Math.max(0,Math.floor(r.num("60")));i44<n44;i44++){
+for(let i68=0,n68=Math.max(0,Math.floor(r.num("60")));i68<n68;i68++){
 c.block="l3nm";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="8lac";r.guard(c);
@@ -2557,7 +6251,7 @@ if(c.thread.cancelled||c.e.dead)return;
 }
 }
 c.block="cdqp";r.guard(c);
-for(let i45=0,n45=Math.max(0,Math.floor(r.num("20")));i45<n45;i45++){
+for(let i69=0,n69=Math.max(0,Math.floor(r.num("20")));i69<n69;i69++){
 c.block="sind";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 c.block="xjkt";r.guard(c);
@@ -2615,11 +6309,11 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",
 c.block="58ha";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="u6ov";r.guard(c);
-for(let i46=0,n46=Math.max(0,Math.floor(r.num("60")));i46<n46;i46++){
+for(let i70=0,n70=Math.max(0,Math.floor(r.num("60")));i70<n70;i70++){
 yield 1;
 }
 c.block="ispf";r.guard(c);
-for(let i47=0,n47=Math.max(0,Math.floor(r.num("12")));i47<n47;i47++){
+for(let i71=0,n71=Math.max(0,Math.floor(r.num("12")));i71<n71;i71++){
 yield 1;
 }
 c.block="ofyw";r.guard(c);
@@ -2670,11 +6364,11 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",
 c.block="x93u";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="enrk";r.guard(c);
-for(let i48=0,n48=Math.max(0,Math.floor(r.num("60")));i48<n48;i48++){
+for(let i72=0,n72=Math.max(0,Math.floor(r.num("60")));i72<n72;i72++){
 yield 1;
 }
 c.block="cbjp";r.guard(c);
-for(let i49=0,n49=Math.max(0,Math.floor(r.num("12")));i49<n49;i49++){
+for(let i73=0,n73=Math.max(0,Math.floor(r.num("12")));i73<n73;i73++){
 yield 1;
 }
 c.block="yoa4";r.guard(c);
@@ -2714,7 +6408,7 @@ r.command(c,"set_variable",["yi8j",r.value(c,"coordinate_object",[null,"self",nu
 c.block="k51j";r.guard(c);
 r.command(c,"set_variable",["4x50",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="y217";r.guard(c);
-for(let i50=0,n50=Math.max(0,Math.floor(r.num("75")));i50<n50;i50++){
+for(let i74=0,n74=Math.max(0,Math.floor(r.num("75")));i74<n74;i74++){
 c.block="pmta";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="ru02";r.guard(c);
@@ -2760,7 +6454,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="pd4c";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="zyez";r.guard(c);
-for(let i51=0,n51=Math.max(0,Math.floor(r.num("19")));i51<n51;i51++){
+for(let i75=0,n75=Math.max(0,Math.floor(r.num("19")));i75<n75;i75++){
 c.block="5ss8";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="8ejh";r.guard(c);
@@ -2786,7 +6480,7 @@ r.command(c,"stop_drawing",[null]);
 yield 1;
 }
 c.block="tqs5";r.guard(c);
-for(let i52=0,n52=Math.max(0,Math.floor(r.num("30")));i52<n52;i52++){
+for(let i76=0,n76=Math.max(0,Math.floor(r.num("30")));i76<n76;i76++){
 c.block="9ll5";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="2w7h";r.guard(c);
@@ -2826,7 +6520,7 @@ r.register("6znu","when_clone_start",[null],function*(r,c){
 c.block="qw6n";r.guard(c);
 r.command(c,"locate",["6y87",null]);
 c.block="7p2n";r.guard(c);
-for(let i53=0,n53=Math.max(0,Math.floor(r.num("75")));i53<n53;i53++){
+for(let i77=0,n77=Math.max(0,Math.floor(r.num("75")));i77<n77;i77++){
 yield 1;
 }
 c.block="b3x1";r.guard(c);
@@ -2872,7 +6566,7 @@ r.command(c,"set_variable",["05ze","6",null]);
 }
 }
 c.block="34wx";r.guard(c);
-for(let i54=0,n54=Math.max(0,Math.floor(r.num("1")));i54<n54;i54++){
+for(let i78=0,n78=Math.max(0,Math.floor(r.num("1")));i78<n78;i78++){
 yield 1;
 }
 c.block="m7ok";r.guard(c);
@@ -2880,7 +6574,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="8u9f";r.guard(c);
 r.command(c,"set_scale_size",["100",null]);
 c.block="nbmr";r.guard(c);
-for(let i55=0,n55=Math.max(0,Math.floor(r.num("50")));i55<n55;i55++){
+for(let i79=0,n79=Math.max(0,Math.floor(r.num("50")));i79<n79;i79++){
 c.block="9bye";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["140","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","14"]),null]);
 c.block="ozv1";r.guard(c);
@@ -2910,7 +6604,7 @@ r.command(c,"show",[null]);
 c.block="3ba0";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["rrau"]),null]);
 c.block="qsr5";r.guard(c);
-for(let i56=0,n56=Math.max(0,Math.floor(r.num("30")));i56<n56;i56++){
+for(let i80=0,n80=Math.max(0,Math.floor(r.num("30")));i80<n80;i80++){
 c.block="f59u";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["120","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -2951,7 +6645,7 @@ r.command(c,"set_variable",["xpz0",r.value(c,"coordinate_object",[null,"self",nu
 c.block="z995";r.guard(c);
 r.command(c,"create_clone",["rlee",null]);
 c.block="at2y";r.guard(c);
-for(let i57=0,n57=Math.max(0,Math.floor(r.num("40")));i57<n57;i57++){
+for(let i81=0,n81=Math.max(0,Math.floor(r.num("40")));i81<n81;i81++){
 c.block="bqpf";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cxgg",null]),"EQUAL","0"]))){
 c.block="2prl";r.guard(c);
@@ -2969,7 +6663,7 @@ yield 1;
 c.block="7xla";r.guard(c);
 r.command(c,"set_variable",["nqdf","0.001",null]);
 c.block="n2th";r.guard(c);
-for(let i58=0,n58=Math.max(0,Math.floor(r.num("100")));i58<n58;i58++){
+for(let i82=0,n82=Math.max(0,Math.floor(r.num("100")));i82<n82;i82++){
 c.block="0sk4";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cxgg",null]),"EQUAL","0"]))){
 c.block="eztp";r.guard(c);
@@ -3010,7 +6704,7 @@ r.command(c,"show",[null]);
 c.block="6llv";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["rrau"]),null]);
 c.block="ehbe";r.guard(c);
-for(let i59=0,n59=Math.max(0,Math.floor(r.num("30")));i59<n59;i59++){
+for(let i83=0,n83=Math.max(0,Math.floor(r.num("30")));i83<n83;i83++){
 c.block="pecu";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["120","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -3051,7 +6745,7 @@ r.command(c,"set_variable",["xpz0",r.value(c,"coordinate_object",[null,"self",nu
 c.block="hs5r";r.guard(c);
 r.command(c,"create_clone",["rlee",null]);
 c.block="s7al";r.guard(c);
-for(let i60=0,n60=Math.max(0,Math.floor(r.num("40")));i60<n60;i60++){
+for(let i84=0,n84=Math.max(0,Math.floor(r.num("40")));i84<n84;i84++){
 c.block="vxts";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cxgg",null]),"EQUAL","0"]))){
 c.block="8wov";r.guard(c);
@@ -3069,7 +6763,7 @@ yield 1;
 c.block="tfh1";r.guard(c);
 r.command(c,"set_variable",["nqdf","0.001",null]);
 c.block="vbjw";r.guard(c);
-for(let i61=0,n61=Math.max(0,Math.floor(r.num("100")));i61<n61;i61++){
+for(let i85=0,n85=Math.max(0,Math.floor(r.num("100")));i85<n85;i85++){
 c.block="fcru";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cxgg",null]),"EQUAL","0"]))){
 c.block="arpw";r.guard(c);
@@ -3115,7 +6809,7 @@ c.block="qcv4";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 }
 c.block="tbq1";r.guard(c);
-for(let i62=0,n62=Math.max(0,Math.floor(r.num("20")));i62<n62;i62++){
+for(let i86=0,n86=Math.max(0,Math.floor(r.num("20")));i86<n86;i86++){
 c.block="llbu";r.guard(c);
 r.command(c,"move_y",["20",null]);
 yield 1;
@@ -3125,7 +6819,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ocbk"]),null]);
 c.block="0lvc";r.guard(c);
 r.command(c,"locate_xy",[r.value(c,"get_variable",["o5kt",null]),r.value(c,"calc_basic",[r.value(c,"get_variable",["cpo6",null]),"PLUS","300"]),null]);
 c.block="kt88";r.guard(c);
-for(let i63=0,n63=Math.max(0,Math.floor(r.num("15")));i63<n63;i63++){
+for(let i87=0,n87=Math.max(0,Math.floor(r.num("15")));i87<n87;i87++){
 c.block="zdfq";r.guard(c);
 r.command(c,"move_y",["-20",null]);
 yield 1;
@@ -3167,7 +6861,7 @@ r.command(c,"set_variable",["cpo6",r.value(c,"coordinate_object",[null,"self",nu
 c.block="54jh";r.guard(c);
 r.command(c,"create_clone",["p041",null]);
 c.block="3we8";r.guard(c);
-for(let i64=0,n64=Math.max(0,Math.floor(r.num("20")));i64<n64;i64++){
+for(let i88=0,n88=Math.max(0,Math.floor(r.num("20")));i88<n88;i88++){
 c.block="0zio";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-5",null]);
 c.block="er4o";r.guard(c);
@@ -3175,7 +6869,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 yield 1;
 }
 c.block="xizz";r.guard(c);
-for(let i65=0,n65=Math.max(0,Math.floor(r.num("15")));i65<n65;i65++){
+for(let i89=0,n89=Math.max(0,Math.floor(r.num("15")));i89<n89;i89++){
 c.block="36vq";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["98","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -3196,7 +6890,7 @@ c.block="aqg3";r.guard(c);
 r.command(c,"change_variable",["nccn",r.value(c,"calc_basic",[r.value(c,"get_variable",["ck61",null]),"MULTI","0.75"]),null]);
 }
 c.block="8ru7";r.guard(c);
-for(let i66=0,n66=Math.max(0,Math.floor(r.num("1")));i66<n66;i66++){
+for(let i90=0,n90=Math.max(0,Math.floor(r.num("1")));i90<n90;i90++){
 yield 1;
 }
 c.block="cb1j";r.guard(c);
@@ -3208,7 +6902,7 @@ r.command(c,"set_scale_size",["20",null]);
 c.block="2fjb";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0",null]);
 c.block="24zp";r.guard(c);
-for(let i67=0,n67=Math.max(0,Math.floor(r.num("50")));i67<n67;i67++){
+for(let i91=0,n91=Math.max(0,Math.floor(r.num("50")));i91<n91;i91++){
 c.block="6q8d";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="39sk";r.guard(c);
@@ -3231,7 +6925,7 @@ c.block="64vb";r.guard(c);
 r.command(c,"change_variable",["9af4",r.value(c,"calc_basic",[r.value(c,"get_variable",["ck61",null]),"MULTI","0.75"]),null]);
 }
 c.block="rspb";r.guard(c);
-for(let i68=0,n68=Math.max(0,Math.floor(r.num("1")));i68<n68;i68++){
+for(let i92=0,n92=Math.max(0,Math.floor(r.num("1")));i92<n92;i92++){
 yield 1;
 }
 c.block="hrvw";r.guard(c);
@@ -3243,7 +6937,7 @@ r.command(c,"set_scale_size",["20",null]);
 c.block="a4md";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0",null]);
 c.block="7dcd";r.guard(c);
-for(let i69=0,n69=Math.max(0,Math.floor(r.num("50")));i69<n69;i69++){
+for(let i93=0,n93=Math.max(0,Math.floor(r.num("50")));i93<n93;i93++){
 c.block="gei3";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="jl4w";r.guard(c);
@@ -3287,9 +6981,9 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="3lwf";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="szzo";r.guard(c);
-for(let i70=0,n70=Math.max(0,Math.floor(r.num("24")));i70<n70;i70++){
+for(let i94=0,n94=Math.max(0,Math.floor(r.num("24")));i94<n94;i94++){
 c.block="3y7d";r.guard(c);
-for(let i71=0,n71=Math.max(0,Math.floor(r.num("10")));i71<n71;i71++){
+for(let i95=0,n95=Math.max(0,Math.floor(r.num("10")));i95<n95;i95++){
 c.block="lp7h";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","14"]))){
 c.block="18nu";r.guard(c);
@@ -3311,7 +7005,7 @@ yield 1;
 c.block="v9mi";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="61zt";r.guard(c);
-for(let i72=0,n72=Math.max(0,Math.floor(r.num("80")));i72<n72;i72++){
+for(let i96=0,n96=Math.max(0,Math.floor(r.num("80")));i96<n96;i96++){
 c.block="dx4m";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","14"]))){
 c.block="029y";r.guard(c);
@@ -3355,7 +7049,7 @@ c.block="vk66";r.guard(c);
 r.command(c,"message_cast",["k6oc",null]);
 }
 c.block="sljm";r.guard(c);
-for(let i73=0,n73=Math.max(0,Math.floor(r.num("120")));i73<n73;i73++){
+for(let i97=0,n97=Math.max(0,Math.floor(r.num("120")));i97<n97;i97++){
 c.block="1l9u";r.guard(c);
 r.command(c,"create_clone",["bs52",null]);
 c.block="qsyf";r.guard(c);
@@ -3367,7 +7061,7 @@ yield 1;
 c.block="hhee";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="8dgj";r.guard(c);
-for(let i74=0,n74=Math.max(0,Math.floor(r.num("300")));i74<n74;i74++){
+for(let i98=0,n98=Math.max(0,Math.floor(r.num("300")));i98<n98;i98++){
 c.block="4oit";r.guard(c);
 r.command(c,"create_clone",["bs52",null]);
 yield 1;
@@ -3397,7 +7091,7 @@ c.block="z6gz";r.guard(c);
 r.command(c,"locate",["n230",null]);
 }
 c.block="f86d";r.guard(c);
-for(let i75=0,n75=Math.max(0,Math.floor(r.num("60")));i75<n75;i75++){
+for(let i99=0,n99=Math.max(0,Math.floor(r.num("60")));i99<n99;i99++){
 c.block="9okm";r.guard(c);
 r.command(c,"add_effect_amount",["transparency",r.value(c,"calc_basic",["100","DIVIDE","60"]),null]);
 c.block="z0pt";r.guard(c);
@@ -3432,7 +7126,7 @@ r.command(c,"locate",["ocqj",null]);
 }
 }
 c.block="7oty";r.guard(c);
-for(let i76=0,n76=Math.max(0,Math.floor(r.num("100")));i76<n76;i76++){
+for(let i100=0,n100=Math.max(0,Math.floor(r.num("100")));i100<n100;i100++){
 c.block="8vly";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1",null]);
 c.block="61hy";r.guard(c);
@@ -3460,7 +7154,7 @@ r.command(c,"set_scale_size",["16",null]);
 c.block="tsmb";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="e8bn";r.guard(c);
-for(let i77=0,n77=Math.max(0,Math.floor(r.num("80")));i77<n77;i77++){
+for(let i101=0,n101=Math.max(0,Math.floor(r.num("80")));i101<n101;i101++){
 c.block="t7ij";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1",null]);
 c.block="tu5o";r.guard(c);
@@ -3504,9 +7198,9 @@ r.command(c,"show",[null]);
 c.block="i457";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="szzo";r.guard(c);
-for(let i78=0,n78=Math.max(0,Math.floor(r.num("3")));i78<n78;i78++){
+for(let i102=0,n102=Math.max(0,Math.floor(r.num("3")));i102<n102;i102++){
 c.block="3y7d";r.guard(c);
-for(let i79=0,n79=Math.max(0,Math.floor(r.num("10")));i79<n79;i79++){
+for(let i103=0,n103=Math.max(0,Math.floor(r.num("10")));i103<n103;i103++){
 c.block="lp7h";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","21"]))){
 c.block="18nu";r.guard(c);
@@ -3561,7 +7255,7 @@ r.command(c,"move_x",[r.value(c,"get_variable",["ro7u",null]),null]);
 c.block="b0rd";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"wall_left",null]))){
 c.block="ys38";r.guard(c);
-for(let i80=0,n80=Math.max(0,Math.floor(r.num("100")));i80<n80;i80++){
+for(let i104=0,n104=Math.max(0,Math.floor(r.num("100")));i104<n104;i104++){
 c.block="z8an";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["ro7u",null]),null]);
 yield 1;
@@ -3580,7 +7274,7 @@ r.command(c,"move_x",[r.value(c,"get_variable",["ro7u",null]),null]);
 c.block="z6j9";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"wall_right",null]))){
 c.block="uftj";r.guard(c);
-for(let i81=0,n81=Math.max(0,Math.floor(r.num("100")));i81<n81;i81++){
+for(let i105=0,n105=Math.max(0,Math.floor(r.num("100")));i105<n105;i105++){
 c.block="p0qr";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["ro7u",null]),null]);
 yield 1;
@@ -3689,7 +7383,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",
 c.block="ozai";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="628k";r.guard(c);
-for(let i82=0,n82=Math.max(0,Math.floor(r.num("4")));i82<n82;i82++){
+for(let i106=0,n106=Math.max(0,Math.floor(r.num("4")));i106<n106;i106++){
 c.block="6ayg";r.guard(c);
 r.command(c,"rotate_relative",["-1",null]);
 yield 1;
@@ -3697,13 +7391,13 @@ yield 1;
 c.block="kqnw";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","0"]))){
 c.block="gh6h";r.guard(c);
-for(let i83=0,n83=Math.max(0,Math.floor(r.num("8")));i83<n83;i83++){
+for(let i107=0,n107=Math.max(0,Math.floor(r.num("8")));i107<n107;i107++){
 c.block="ka8n";r.guard(c);
 r.command(c,"rotate_relative",["1",null]);
 yield 1;
 }
 c.block="tvhr";r.guard(c);
-for(let i84=0,n84=Math.max(0,Math.floor(r.num("8")));i84<n84;i84++){
+for(let i108=0,n108=Math.max(0,Math.floor(r.num("8")));i108<n108;i108++){
 c.block="p075";r.guard(c);
 r.command(c,"rotate_relative",["-1",null]);
 yield 1;
@@ -3725,7 +7419,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",
 c.block="dnvh";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="ati2";r.guard(c);
-for(let i85=0,n85=Math.max(0,Math.floor(r.num("4")));i85<n85;i85++){
+for(let i109=0,n109=Math.max(0,Math.floor(r.num("4")));i109<n109;i109++){
 c.block="mfsx";r.guard(c);
 r.command(c,"rotate_relative",["-1",null]);
 yield 1;
@@ -3733,13 +7427,13 @@ yield 1;
 c.block="k0yh";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","0"]))){
 c.block="ji1e";r.guard(c);
-for(let i86=0,n86=Math.max(0,Math.floor(r.num("8")));i86<n86;i86++){
+for(let i110=0,n110=Math.max(0,Math.floor(r.num("8")));i110<n110;i110++){
 c.block="eew0";r.guard(c);
 r.command(c,"rotate_relative",["1",null]);
 yield 1;
 }
 c.block="wco0";r.guard(c);
-for(let i87=0,n87=Math.max(0,Math.floor(r.num("8")));i87<n87;i87++){
+for(let i111=0,n111=Math.max(0,Math.floor(r.num("8")));i111<n111;i111++){
 c.block="2i33";r.guard(c);
 r.command(c,"rotate_relative",["-1",null]);
 yield 1;
@@ -3782,7 +7476,7 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"3",null,"-10",null]),null]);
 c.block="tb19";r.guard(c);
 r.command(c,"show",[null]);
 c.block="cato";r.guard(c);
-for(let i88=0,n88=Math.max(0,Math.floor(r.num("14")));i88<n88;i88++){
+for(let i112=0,n112=Math.max(0,Math.floor(r.num("14")));i112<n112;i112++){
 c.block="5f3z";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","8",null]);
 c.block="017z";r.guard(c);
@@ -3806,7 +7500,7 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"3",null,"-10",null]),null]);
 c.block="tb19";r.guard(c);
 r.command(c,"show",[null]);
 c.block="cato";r.guard(c);
-for(let i89=0,n89=Math.max(0,Math.floor(r.num("14")));i89<n89;i89++){
+for(let i113=0,n113=Math.max(0,Math.floor(r.num("14")));i113<n113;i113++){
 c.block="5f3z";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","8",null]);
 c.block="017z";r.guard(c);
@@ -3830,7 +7524,7 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"8",null,"-8",null]),null]);
 c.block="tb19";r.guard(c);
 r.command(c,"show",[null]);
 c.block="cato";r.guard(c);
-for(let i90=0,n90=Math.max(0,Math.floor(r.num("20")));i90<n90;i90++){
+for(let i114=0,n114=Math.max(0,Math.floor(r.num("20")));i114<n114;i114++){
 c.block="5f3z";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -3852,7 +7546,7 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"8",null,"-8",null]),null]);
 c.block="tb19";r.guard(c);
 r.command(c,"show",[null]);
 c.block="cato";r.guard(c);
-for(let i91=0,n91=Math.max(0,Math.floor(r.num("20")));i91<n91;i91++){
+for(let i115=0,n115=Math.max(0,Math.floor(r.num("20")));i115<n115;i115++){
 c.block="5f3z";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -3874,7 +7568,7 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"8",null,"-8",null]),null]);
 c.block="tb19";r.guard(c);
 r.command(c,"show",[null]);
 c.block="cato";r.guard(c);
-for(let i92=0,n92=Math.max(0,Math.floor(r.num("20")));i92<n92;i92++){
+for(let i116=0,n116=Math.max(0,Math.floor(r.num("20")));i116<n116;i116++){
 c.block="5f3z";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -3896,7 +7590,7 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"8",null,"-8",null]),null]);
 c.block="tb19";r.guard(c);
 r.command(c,"show",[null]);
 c.block="cato";r.guard(c);
-for(let i93=0,n93=Math.max(0,Math.floor(r.num("20")));i93<n93;i93++){
+for(let i117=0,n117=Math.max(0,Math.floor(r.num("20")));i117<n117;i117++){
 c.block="5f3z";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -3922,7 +7616,7 @@ r.command(c,"set_variable",["j0b4","200",null]);
 c.block="qn51";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","30"]))){
 c.block="7olk";r.guard(c);
-for(let i94=0,n94=Math.max(0,Math.floor(r.num("60")));i94<n94;i94++){
+for(let i118=0,n118=Math.max(0,Math.floor(r.num("60")));i118<n118;i118++){
 c.block="55tj";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1",null]);
 c.block="8ywu";r.guard(c);
@@ -3958,7 +7652,7 @@ r.command(c,"change_variable",["cfmd","2",null]);
 yield 1;
 }
 c.block="6h57";r.guard(c);
-for(let i95=0,n95=Math.max(0,Math.floor(r.num("640")));i95<n95;i95++){
+for(let i119=0,n119=Math.max(0,Math.floor(r.num("640")));i119<n119;i119++){
 c.block="j8sy";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["333","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","12"]),null]);
 c.block="zevw";r.guard(c);
@@ -3998,7 +7692,7 @@ r.command(c,"set_variable",["dluc","0",null]);
 c.block="51t7";r.guard(c);
 r.command(c,"set_variable",["mm0r","1",null]);
 c.block="ty3r";r.guard(c);
-for(let i96=0,n96=Math.max(0,Math.floor(r.num("40")));i96<n96;i96++){
+for(let i120=0,n120=Math.max(0,Math.floor(r.num("40")));i120<n120;i120++){
 c.block="kn1u";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 yield 1;
@@ -4008,7 +7702,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }else{
 c.block="aw1r";r.guard(c);
-for(let i97=0,n97=Math.max(0,Math.floor(r.num("60")));i97<n97;i97++){
+for(let i121=0,n121=Math.max(0,Math.floor(r.num("60")));i121<n121;i121++){
 c.block="byfs";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1",null]);
 c.block="6h7x";r.guard(c);
@@ -4044,7 +7738,7 @@ r.command(c,"change_variable",["g4sc","2",null]);
 yield 1;
 }
 c.block="asbh";r.guard(c);
-for(let i98=0,n98=Math.max(0,Math.floor(r.num("640")));i98<n98;i98++){
+for(let i122=0,n122=Math.max(0,Math.floor(r.num("640")));i122<n122;i122++){
 c.block="bw2z";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["333","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","12"]),null]);
 c.block="ga69";r.guard(c);
@@ -4084,7 +7778,7 @@ r.command(c,"set_variable",["dluc","0",null]);
 c.block="j8v1";r.guard(c);
 r.command(c,"set_variable",["nmkh","1",null]);
 c.block="lb0r";r.guard(c);
-for(let i99=0,n99=Math.max(0,Math.floor(r.num("40")));i99<n99;i99++){
+for(let i123=0,n123=Math.max(0,Math.floor(r.num("40")));i123<n123;i123++){
 c.block="0jzf";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 yield 1;
@@ -4105,7 +7799,7 @@ r.command(c,"change_effect_amount",["transparency","30",null]);
 c.block="jfro";r.guard(c);
 r.command(c,"set_scale_size",["5",null]);
 c.block="lg7i";r.guard(c);
-for(let i100=0,n100=Math.max(0,Math.floor(r.num("40")));i100<n100;i100++){
+for(let i124=0,n124=Math.max(0,Math.floor(r.num("40")));i124<n124;i124++){
 c.block="ttiw";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="3ril";r.guard(c);
@@ -4113,7 +7807,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 yield 1;
 }
 c.block="e0mj";r.guard(c);
-for(let i101=0,n101=Math.max(0,Math.floor(r.num("7")));i101<n101;i101++){
+for(let i125=0,n125=Math.max(0,Math.floor(r.num("7")));i125<n125;i125++){
 c.block="lu1n";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="fkia";r.guard(c);
@@ -4147,7 +7841,7 @@ r.command(c,"set_scale_size",["22",null]);
 c.block="dxcb";r.guard(c);
 r.command(c,"set_variable",["zk7l","3",null]);
 c.block="jvmn";r.guard(c);
-for(let i102=0,n102=Math.max(0,Math.floor(r.num("450")));i102<n102;i102++){
+for(let i126=0,n126=Math.max(0,Math.floor(r.num("450")));i126<n126;i126++){
 c.block="7ah0";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="nqj7";r.guard(c);
@@ -4173,7 +7867,7 @@ r.command(c,"set_variable",["nccn","15",null]);
 yield 1;
 }
 c.block="xg85";r.guard(c);
-for(let i103=0,n103=Math.max(0,Math.floor(r.num("30")));i103<n103;i103++){
+for(let i127=0,n127=Math.max(0,Math.floor(r.num("30")));i127<n127;i127++){
 c.block="h53v";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="6zae";r.guard(c);
@@ -4217,7 +7911,7 @@ r.command(c,"set_variable",["tzdq","60",null]);
 c.block="0jch";r.guard(c);
 r.command(c,"set_scale_size",["10",null]);
 c.block="85d1";r.guard(c);
-for(let i104=0,n104=Math.max(0,Math.floor(r.num("270")));i104<n104;i104++){
+for(let i128=0,n128=Math.max(0,Math.floor(r.num("270")));i128<n128;i128++){
 c.block="dly4";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["150","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","15"]),null]);
 c.block="b8uf";r.guard(c);
@@ -4252,7 +7946,7 @@ yield* r.call(c,"qy83",["-6",10,"1"]);
 yield 1;
 }
 c.block="dcar";r.guard(c);
-for(let i105=0,n105=Math.max(0,Math.floor(r.num("30")));i105<n105;i105++){
+for(let i129=0,n129=Math.max(0,Math.floor(r.num("30")));i129<n129;i129++){
 c.block="c3xb";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="gzdm";r.guard(c);
@@ -4306,7 +8000,7 @@ r.command(c,"set_scale_size",["10",null]);
 c.block="q7jr";r.guard(c);
 r.command(c,"set_variable",["zk7l","3",null]);
 c.block="xqxr";r.guard(c);
-for(let i106=0,n106=Math.max(0,Math.floor(r.num("450")));i106<n106;i106++){
+for(let i130=0,n130=Math.max(0,Math.floor(r.num("450")));i130<n130;i130++){
 c.block="xfgb";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="pye5";r.guard(c);
@@ -4332,7 +8026,7 @@ r.command(c,"set_variable",["9af4","15",null]);
 yield 1;
 }
 c.block="e6oi";r.guard(c);
-for(let i107=0,n107=Math.max(0,Math.floor(r.num("30")));i107<n107;i107++){
+for(let i131=0,n131=Math.max(0,Math.floor(r.num("30")));i131<n131;i131++){
 c.block="3rzs";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="ncem";r.guard(c);
@@ -4376,7 +8070,7 @@ r.command(c,"set_variable",["tzdq","60",null]);
 c.block="z530";r.guard(c);
 r.command(c,"set_scale_size",["10",null]);
 c.block="zeqn";r.guard(c);
-for(let i108=0,n108=Math.max(0,Math.floor(r.num("270")));i108<n108;i108++){
+for(let i132=0,n132=Math.max(0,Math.floor(r.num("270")));i132<n132;i132++){
 c.block="ibk1";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["150","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","15"]),null]);
 c.block="rk2n";r.guard(c);
@@ -4411,7 +8105,7 @@ yield* r.call(c,"05j0",["-6",10,"1"]);
 yield 1;
 }
 c.block="db17";r.guard(c);
-for(let i109=0,n109=Math.max(0,Math.floor(r.num("30")));i109<n109;i109++){
+for(let i133=0,n133=Math.max(0,Math.floor(r.num("30")));i133<n133;i133++){
 c.block="d4eb";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="kbe9";r.guard(c);
@@ -4477,7 +8171,7 @@ r.command(c,"show",[null]);
 c.block="3ekq";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="2zvj";r.guard(c);
-for(let i110=0,n110=Math.max(0,Math.floor(r.num("150")));i110<n110;i110++){
+for(let i134=0,n134=Math.max(0,Math.floor(r.num("150")));i134<n134;i134++){
 c.block="6d9m";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0.75",null]);
 c.block="iwk7";r.guard(c);
@@ -4501,7 +8195,7 @@ r.command(c,"show",[null]);
 c.block="3ekq";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="r85o";r.guard(c);
-for(let i111=0,n111=Math.max(0,Math.floor(r.num("50")));i111<n111;i111++){
+for(let i135=0,n135=Math.max(0,Math.floor(r.num("50")));i135<n135;i135++){
 c.block="5ays";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="97ix";r.guard(c);
@@ -4521,7 +8215,7 @@ r.command(c,"show",[null]);
 c.block="cari";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="gm1z";r.guard(c);
-for(let i112=0,n112=Math.max(0,Math.floor(r.num("50")));i112<n112;i112++){
+for(let i136=0,n136=Math.max(0,Math.floor(r.num("50")));i136<n136;i136++){
 c.block="wj3p";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="3hwr";r.guard(c);
@@ -4545,7 +8239,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",
 c.block="ixdv";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="bf35";r.guard(c);
-for(let i113=0,n113=Math.max(0,Math.floor(r.num("15")));i113<n113;i113++){
+for(let i137=0,n137=Math.max(0,Math.floor(r.num("15")));i137<n137;i137++){
 yield 1;
 }
 c.block="uszz";r.guard(c);
@@ -4555,7 +8249,7 @@ r.command(c,"show",[null]);
 c.block="3ekq";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="2zvj";r.guard(c);
-for(let i114=0,n114=Math.max(0,Math.floor(r.num("100")));i114<n114;i114++){
+for(let i138=0,n138=Math.max(0,Math.floor(r.num("100")));i138<n138;i138++){
 c.block="6d9m";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1",null]);
 c.block="iwk7";r.guard(c);
@@ -4589,7 +8283,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",
 c.block="77wd";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="5sj0";r.guard(c);
-for(let i115=0,n115=Math.max(0,Math.floor(r.num("15")));i115<n115;i115++){
+for(let i139=0,n139=Math.max(0,Math.floor(r.num("15")));i139<n139;i139++){
 yield 1;
 }
 c.block="94d5";r.guard(c);
@@ -4599,7 +8293,7 @@ r.command(c,"show",[null]);
 c.block="cari";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="gm1z";r.guard(c);
-for(let i116=0,n116=Math.max(0,Math.floor(r.num("100")));i116<n116;i116++){
+for(let i140=0,n140=Math.max(0,Math.floor(r.num("100")));i140<n140;i140++){
 c.block="wj3p";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1",null]);
 c.block="3hwr";r.guard(c);
@@ -4643,7 +8337,7 @@ r.command(c,"show",[null]);
 c.block="3ekq";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="r85o";r.guard(c);
-for(let i117=0,n117=Math.max(0,Math.floor(r.num("50")));i117<n117;i117++){
+for(let i141=0,n141=Math.max(0,Math.floor(r.num("50")));i141<n141;i141++){
 c.block="5ays";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="97ix";r.guard(c);
@@ -4663,7 +8357,7 @@ r.command(c,"show",[null]);
 c.block="cari";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="gm1z";r.guard(c);
-for(let i118=0,n118=Math.max(0,Math.floor(r.num("50")));i118<n118;i118++){
+for(let i142=0,n142=Math.max(0,Math.floor(r.num("50")));i142<n142;i142++){
 c.block="wj3p";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="3hwr";r.guard(c);
@@ -4693,7 +8387,7 @@ c.block="25yh";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 }
 c.block="zr8x";r.guard(c);
-for(let i119=0,n119=Math.max(0,Math.floor(r.num("30")));i119<n119;i119++){
+for(let i143=0,n143=Math.max(0,Math.floor(r.num("30")));i143<n143;i143++){
 c.block="p64p";r.guard(c);
 r.command(c,"add_effect_amount",["transparency",r.value(c,"calc_basic",["100","DIVIDE","30"]),null]);
 c.block="ea2j";r.guard(c);
@@ -4730,7 +8424,7 @@ r.command(c,"rotate_absolute",[r.value(c,"calc_rand",[null,"0",null,"359",null])
 c.block="ld63";r.guard(c);
 r.command(c,"show",[null]);
 c.block="3suh";r.guard(c);
-for(let i120=0,n120=Math.max(0,Math.floor(r.num("100")));i120<n120;i120++){
+for(let i144=0,n144=Math.max(0,Math.floor(r.num("100")));i144<n144;i144++){
 c.block="ibbn";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["25","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","14"]),null]);
 c.block="80x2";r.guard(c);
@@ -4738,7 +8432,7 @@ r.command(c,"add_effect_amount",["transparency","0.3",null]);
 yield 1;
 }
 c.block="2qrs";r.guard(c);
-for(let i121=0,n121=Math.max(0,Math.floor(r.num("10")));i121<n121;i121++){
+for(let i145=0,n145=Math.max(0,Math.floor(r.num("10")));i145<n145;i145++){
 c.block="e94m";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["25","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","14"]),null]);
 c.block="3yo7";r.guard(c);
@@ -4773,7 +8467,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="d6bz";r.guard(c);
 r.command(c,"set_variable",["6ok4","0",null]);
 c.block="bob3";r.guard(c);
-for(let i122=0,n122=Math.max(0,Math.floor(r.num("100")));i122<n122;i122++){
+for(let i146=0,n146=Math.max(0,Math.floor(r.num("100")));i146<n146;i146++){
 c.block="wlym";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1",null]);
 c.block="slir";r.guard(c);
@@ -4817,7 +8511,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="am14";r.guard(c);
 r.command(c,"show",[null]);
 c.block="l48o";r.guard(c);
-for(let i123=0,n123=Math.max(0,Math.floor(r.num("10")));i123<n123;i123++){
+for(let i147=0,n147=Math.max(0,Math.floor(r.num("10")));i147<n147;i147++){
 c.block="vg30";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="jg6m";r.guard(c);
@@ -4825,7 +8519,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 yield 1;
 }
 c.block="1a5l";r.guard(c);
-for(let i124=0,n124=Math.max(0,Math.floor(r.num("50")));i124<n124;i124++){
+for(let i148=0,n148=Math.max(0,Math.floor(r.num("50")));i148<n148;i148++){
 c.block="1tmc";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="mzz4";r.guard(c);
@@ -4855,7 +8549,7 @@ r.command(c,"show",[null]);
 c.block="al6u";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="zp98";r.guard(c);
-for(let i125=0,n125=Math.max(0,Math.floor(r.num("50")));i125<n125;i125++){
+for(let i149=0,n149=Math.max(0,Math.floor(r.num("50")));i149<n149;i149++){
 c.block="e9iv";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="k1uv";r.guard(c);
@@ -4881,7 +8575,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",
 c.block="klmv";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="yiaw";r.guard(c);
-for(let i126=0,n126=Math.max(0,Math.floor(r.num("15")));i126<n126;i126++){
+for(let i150=0,n150=Math.max(0,Math.floor(r.num("15")));i150<n150;i150++){
 yield 1;
 }
 c.block="pmbb";r.guard(c);
@@ -4891,7 +8585,7 @@ r.command(c,"show",[null]);
 c.block="pz9q";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="5wv2";r.guard(c);
-for(let i127=0,n127=Math.max(0,Math.floor(r.num("100")));i127<n127;i127++){
+for(let i151=0,n151=Math.max(0,Math.floor(r.num("100")));i151<n151;i151++){
 c.block="x9yf";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1",null]);
 c.block="7t7u";r.guard(c);
@@ -5010,13 +8704,13 @@ r.command(c,"set_scale_size",["12",null]);
 c.block="tauf";r.guard(c);
 r.command(c,"show",[null]);
 c.block="5rwk";r.guard(c);
-for(let i128=0,n128=Math.max(0,Math.floor(r.num("20")));i128<n128;i128++){
+for(let i152=0,n152=Math.max(0,Math.floor(r.num("20")));i152<n152;i152++){
 c.block="9q44";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["40","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
 }
 c.block="8ey5";r.guard(c);
-for(let i129=0,n129=Math.max(0,Math.floor(r.num("6")));i129<n129;i129++){
+for(let i153=0,n153=Math.max(0,Math.floor(r.num("6")));i153<n153;i153++){
 c.block="lltp";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["40","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="14cr";r.guard(c);
@@ -5044,7 +8738,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="faed";r.guard(c);
 r.command(c,"show",[null]);
 c.block="t3a0";r.guard(c);
-for(let i130=0,n130=Math.max(0,Math.floor(r.num("9")));i130<n130;i130++){
+for(let i154=0,n154=Math.max(0,Math.floor(r.num("9")));i154<n154;i154++){
 c.block="cpib";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["35","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="qwz0";r.guard(c);
@@ -5052,7 +8746,7 @@ r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
 }
 c.block="7e32";r.guard(c);
-for(let i131=0,n131=Math.max(0,Math.floor(r.num("1")));i131<n131;i131++){
+for(let i155=0,n155=Math.max(0,Math.floor(r.num("1")));i155<n155;i155++){
 yield 1;
 }
 c.block="48kt";r.guard(c);
@@ -5150,7 +8844,7 @@ r.command(c,"set_variable",["mm0r","0.5",null]);
 c.block="pi3n";r.guard(c);
 r.command(c,"set_variable",["6gd6","1",null]);
 c.block="2te0";r.guard(c);
-for(let i132=0,n132=Math.max(0,Math.floor(r.num("150")));i132<n132;i132++){
+for(let i156=0,n156=Math.max(0,Math.floor(r.num("150")));i156<n156;i156++){
 c.block="40wp";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["27","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="rvvl";r.guard(c);
@@ -5158,7 +8852,7 @@ r.command(c,"locate",["00h9",null]);
 c.block="usij";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="qahs";r.guard(c);
-for(let i133=0,n133=Math.max(0,Math.floor(r.num("1")));i133<n133;i133++){
+for(let i157=0,n157=Math.max(0,Math.floor(r.num("1")));i157<n157;i157++){
 yield 1;
 }
 c.block="tmpi";r.guard(c);
@@ -5178,7 +8872,7 @@ r.command(c,"set_variable",["mm0r","1",null]);
 c.block="u2sd";r.guard(c);
 r.command(c,"set_variable",["6gd6","0",null]);
 c.block="7ppi";r.guard(c);
-for(let i134=0,n134=Math.max(0,Math.floor(r.num("20")));i134<n134;i134++){
+for(let i158=0,n158=Math.max(0,Math.floor(r.num("20")));i158<n158;i158++){
 c.block="x94x";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="4d8w";r.guard(c);
@@ -5200,7 +8894,7 @@ r.command(c,"set_variable",["nmkh","0.5",null]);
 c.block="xwp2";r.guard(c);
 r.command(c,"set_variable",["6gd6","1",null]);
 c.block="62qk";r.guard(c);
-for(let i135=0,n135=Math.max(0,Math.floor(r.num("150")));i135<n135;i135++){
+for(let i159=0,n159=Math.max(0,Math.floor(r.num("150")));i159<n159;i159++){
 c.block="bq6m";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["27","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="86md";r.guard(c);
@@ -5208,7 +8902,7 @@ r.command(c,"locate",["n8fg",null]);
 c.block="3coi";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="0yly";r.guard(c);
-for(let i136=0,n136=Math.max(0,Math.floor(r.num("1")));i136<n136;i136++){
+for(let i160=0,n160=Math.max(0,Math.floor(r.num("1")));i160<n160;i160++){
 yield 1;
 }
 c.block="8cvw";r.guard(c);
@@ -5228,7 +8922,7 @@ r.command(c,"set_variable",["nmkh","1",null]);
 c.block="99zo";r.guard(c);
 r.command(c,"set_variable",["6gd6","0",null]);
 c.block="f4e4";r.guard(c);
-for(let i137=0,n137=Math.max(0,Math.floor(r.num("20")));i137<n137;i137++){
+for(let i161=0,n161=Math.max(0,Math.floor(r.num("20")));i161<n161;i161++){
 c.block="436e";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="ajm1";r.guard(c);
@@ -5269,7 +8963,7 @@ r.command(c,"change_variable",["lgp6","-80",null]);
 c.block="m5y2";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="c295";r.guard(c);
-for(let i138=0,n138=Math.max(0,Math.floor(r.num("100")));i138<n138;i138++){
+for(let i162=0,n162=Math.max(0,Math.floor(r.num("100")));i162<n162;i162++){
 c.block="kpyu";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["100","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","12"]),null]);
 c.block="tvua";r.guard(c);
@@ -5305,7 +8999,7 @@ r.command(c,"change_variable",["c9o4","80",null]);
 c.block="00sn";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="przn";r.guard(c);
-for(let i139=0,n139=Math.max(0,Math.floor(r.num("100")));i139<n139;i139++){
+for(let i163=0,n163=Math.max(0,Math.floor(r.num("100")));i163<n163;i163++){
 c.block="ulnn";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["100","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","12"]),null]);
 c.block="vsk6";r.guard(c);
@@ -5342,7 +9036,7 @@ r.command(c,"set_color",["#80fffb",null]);
 c.block="rorw";r.guard(c);
 r.command(c,"set_brush_tranparency",["50",null]);
 c.block="mixj";r.guard(c);
-for(let i140=0,n140=Math.max(0,Math.floor(r.num("25")));i140<n140;i140++){
+for(let i164=0,n164=Math.max(0,Math.floor(r.num("25")));i164<n164;i164++){
 c.block="xdtd";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="hnkx";r.guard(c);
@@ -5370,7 +9064,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ndo3",
 c.block="5a23";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="wefg";r.guard(c);
-for(let i141=0,n141=Math.max(0,Math.floor(r.num("50")));i141<n141;i141++){
+for(let i165=0,n165=Math.max(0,Math.floor(r.num("50")));i165<n165;i165++){
 c.block="xb2i";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="1xai";r.guard(c);
@@ -5384,7 +9078,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="x8xu";r.guard(c);
-for(let i142=0,n142=Math.max(0,Math.floor(r.num("25")));i142<n142;i142++){
+for(let i166=0,n166=Math.max(0,Math.floor(r.num("25")));i166<n166;i166++){
 c.block="cdh7";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="z1mx";r.guard(c);
@@ -5412,7 +9106,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ndo3",
 c.block="ynsj";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="uky7";r.guard(c);
-for(let i143=0,n143=Math.max(0,Math.floor(r.num("50")));i143<n143;i143++){
+for(let i167=0,n167=Math.max(0,Math.floor(r.num("50")));i167<n167;i167++){
 c.block="q4a8";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="94hu";r.guard(c);
@@ -5428,7 +9122,7 @@ yield 1;
 c.block="q8mh";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="grzj";r.guard(c);
-for(let i144=0,n144=Math.max(0,Math.floor(r.num("260")));i144<n144;i144++){
+for(let i168=0,n168=Math.max(0,Math.floor(r.num("260")));i168<n168;i168++){
 c.block="5om4";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="40wp";r.guard(c);
@@ -5436,7 +9130,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 c.block="hrxj";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ndo3",null]),"EQUAL","0"]))){
 c.block="a24z";r.guard(c);
-for(let i145=0,n145=Math.max(0,Math.floor(r.num("50")));i145<n145;i145++){
+for(let i169=0,n169=Math.max(0,Math.floor(r.num("50")));i169<n169;i169++){
 c.block="aihk";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="hebf";r.guard(c);
@@ -5450,7 +9144,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="97xh";r.guard(c);
-for(let i146=0,n146=Math.max(0,Math.floor(r.num("10")));i146<n146;i146++){
+for(let i170=0,n170=Math.max(0,Math.floor(r.num("10")));i170<n170;i170++){
 c.block="jvil";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="twz7";r.guard(c);
@@ -5458,7 +9152,7 @@ r.command(c,"add_effect_amount",["transparency","5",null]);
 c.block="26jc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ndo3",null]),"EQUAL","0"]))){
 c.block="caa2";r.guard(c);
-for(let i147=0,n147=Math.max(0,Math.floor(r.num("50")));i147<n147;i147++){
+for(let i171=0,n171=Math.max(0,Math.floor(r.num("50")));i171<n171;i171++){
 c.block="d1tm";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="ae7k";r.guard(c);
@@ -5496,7 +9190,7 @@ r.command(c,"set_color",["#80fffb",null]);
 c.block="wpfz";r.guard(c);
 r.command(c,"set_brush_tranparency",["50",null]);
 c.block="ddhe";r.guard(c);
-for(let i148=0,n148=Math.max(0,Math.floor(r.num("25")));i148<n148;i148++){
+for(let i172=0,n172=Math.max(0,Math.floor(r.num("25")));i172<n172;i172++){
 c.block="tccm";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="2wbm";r.guard(c);
@@ -5524,7 +9218,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ndo3",
 c.block="wtqf";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="ts2r";r.guard(c);
-for(let i149=0,n149=Math.max(0,Math.floor(r.num("50")));i149<n149;i149++){
+for(let i173=0,n173=Math.max(0,Math.floor(r.num("50")));i173<n173;i173++){
 c.block="qmt1";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="khi5";r.guard(c);
@@ -5538,7 +9232,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="7l12";r.guard(c);
-for(let i150=0,n150=Math.max(0,Math.floor(r.num("25")));i150<n150;i150++){
+for(let i174=0,n174=Math.max(0,Math.floor(r.num("25")));i174<n174;i174++){
 c.block="8y9e";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="moc5";r.guard(c);
@@ -5566,7 +9260,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ndo3",
 c.block="8o66";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="2d5o";r.guard(c);
-for(let i151=0,n151=Math.max(0,Math.floor(r.num("50")));i151<n151;i151++){
+for(let i175=0,n175=Math.max(0,Math.floor(r.num("50")));i175<n175;i175++){
 c.block="rl46";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="9vkt";r.guard(c);
@@ -5582,7 +9276,7 @@ yield 1;
 c.block="08jz";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="vqip";r.guard(c);
-for(let i152=0,n152=Math.max(0,Math.floor(r.num("260")));i152<n152;i152++){
+for(let i176=0,n176=Math.max(0,Math.floor(r.num("260")));i176<n176;i176++){
 c.block="pbic";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="hexe";r.guard(c);
@@ -5590,7 +9284,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 c.block="v4h9";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ndo3",null]),"EQUAL","0"]))){
 c.block="nlzx";r.guard(c);
-for(let i153=0,n153=Math.max(0,Math.floor(r.num("50")));i153<n153;i153++){
+for(let i177=0,n177=Math.max(0,Math.floor(r.num("50")));i177<n177;i177++){
 c.block="aa9l";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="5e0w";r.guard(c);
@@ -5604,7 +9298,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="u1r1";r.guard(c);
-for(let i154=0,n154=Math.max(0,Math.floor(r.num("10")));i154<n154;i154++){
+for(let i178=0,n178=Math.max(0,Math.floor(r.num("10")));i178<n178;i178++){
 c.block="479n";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="r83b";r.guard(c);
@@ -5612,7 +9306,7 @@ r.command(c,"add_effect_amount",["transparency","5",null]);
 c.block="jz8u";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ndo3",null]),"EQUAL","0"]))){
 c.block="fyw4";r.guard(c);
-for(let i155=0,n155=Math.max(0,Math.floor(r.num("50")));i155<n155;i155++){
+for(let i179=0,n179=Math.max(0,Math.floor(r.num("50")));i179<n179;i179++){
 c.block="fiik";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="qmnn";r.guard(c);
@@ -5647,7 +9341,7 @@ r.command(c,"set_scale_size",["50",null]);
 c.block="bi68";r.guard(c);
 r.command(c,"show",[null]);
 c.block="p3nn";r.guard(c);
-for(let i156=0,n156=Math.max(0,Math.floor(r.num("20")));i156<n156;i156++){
+for(let i180=0,n180=Math.max(0,Math.floor(r.num("20")));i180<n180;i180++){
 c.block="ftek";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="4rcz";r.guard(c);
@@ -5665,7 +9359,7 @@ r.command(c,"set_scale_size",["50",null]);
 c.block="p9zh";r.guard(c);
 r.command(c,"show",[null]);
 c.block="eyg1";r.guard(c);
-for(let i157=0,n157=Math.max(0,Math.floor(r.num("20")));i157<n157;i157++){
+for(let i181=0,n181=Math.max(0,Math.floor(r.num("20")));i181<n181;i181++){
 c.block="r3p7";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="nolv";r.guard(c);
@@ -5692,7 +9386,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["klgo"]),null]);
 c.block="kx9z";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="37sk";r.guard(c);
-for(let i158=0,n158=Math.max(0,Math.floor(r.num("60")));i158<n158;i158++){
+for(let i182=0,n182=Math.max(0,Math.floor(r.num("60")));i182<n182;i182++){
 c.block="mkzg";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["21","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="gy6j";r.guard(c);
@@ -5702,7 +9396,7 @@ r.command(c,"move_y",["18",null]);
 yield 1;
 }
 c.block="hl54";r.guard(c);
-for(let i159=0,n159=Math.max(0,Math.floor(r.num("50")));i159<n159;i159++){
+for(let i183=0,n183=Math.max(0,Math.floor(r.num("50")));i183<n183;i183++){
 c.block="xfix";r.guard(c);
 r.command(c,"add_effect_amount",["transparency",r.value(c,"calc_basic",["70","DIVIDE","50"]),null]);
 c.block="1j5y";r.guard(c);
@@ -5722,7 +9416,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["klgo"]),null]);
 c.block="z8ba";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="jtg8";r.guard(c);
-for(let i160=0,n160=Math.max(0,Math.floor(r.num("60")));i160<n160;i160++){
+for(let i184=0,n184=Math.max(0,Math.floor(r.num("60")));i184<n184;i184++){
 c.block="7un7";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["21","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="qup3";r.guard(c);
@@ -5732,7 +9426,7 @@ r.command(c,"move_y",["18",null]);
 yield 1;
 }
 c.block="k62x";r.guard(c);
-for(let i161=0,n161=Math.max(0,Math.floor(r.num("50")));i161<n161;i161++){
+for(let i185=0,n185=Math.max(0,Math.floor(r.num("50")));i185<n185;i185++){
 c.block="glud";r.guard(c);
 r.command(c,"add_effect_amount",["transparency",r.value(c,"calc_basic",["70","DIVIDE","50"]),null]);
 c.block="56w1";r.guard(c);
@@ -5863,7 +9557,7 @@ c.block="waha";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 }
 c.block="o9w1";r.guard(c);
-for(let i162=0,n162=Math.max(0,Math.floor(r.num("10")));i162<n162;i162++){
+for(let i186=0,n186=Math.max(0,Math.floor(r.num("10")));i186<n186;i186++){
 c.block="0aqm";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -5875,7 +9569,7 @@ c.block="x0rj";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 }
 c.block="84cj";r.guard(c);
-for(let i163=0,n163=Math.max(0,Math.floor(r.num("10")));i163<n163;i163++){
+for(let i187=0,n187=Math.max(0,Math.floor(r.num("10")));i187<n187;i187++){
 c.block="8ezy";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -5900,7 +9594,7 @@ c.block="49o2";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 }
 c.block="bzpc";r.guard(c);
-for(let i164=0,n164=Math.max(0,Math.floor(r.num("10")));i164<n164;i164++){
+for(let i188=0,n188=Math.max(0,Math.floor(r.num("10")));i188<n188;i188++){
 c.block="qcwo";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -5912,7 +9606,7 @@ c.block="ynon";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 }
 c.block="rvul";r.guard(c);
-for(let i165=0,n165=Math.max(0,Math.floor(r.num("10")));i165<n165;i165++){
+for(let i189=0,n189=Math.max(0,Math.floor(r.num("10")));i189<n189;i189++){
 c.block="froh";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -5976,7 +9670,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["f7f6"]),null]);
 c.block="2m2w";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="iwpn";r.guard(c);
-for(let i166=0,n166=Math.max(0,Math.floor(r.num("40")));i166<n166;i166++){
+for(let i190=0,n190=Math.max(0,Math.floor(r.num("40")));i190<n190;i190++){
 c.block="c3ye";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["30","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="odyq";r.guard(c);
@@ -6004,7 +9698,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["gqvm"]),null]);
 c.block="3pgz";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="d264";r.guard(c);
-for(let i167=0,n167=Math.max(0,Math.floor(r.num("40")));i167<n167;i167++){
+for(let i191=0,n191=Math.max(0,Math.floor(r.num("40")));i191<n191;i191++){
 c.block="eeo0";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["30","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="o3a7";r.guard(c);
@@ -6046,7 +9740,7 @@ c.block="n97g";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 }
 c.block="0v15";r.guard(c);
-for(let i168=0,n168=Math.max(0,Math.floor(r.num("10")));i168<n168;i168++){
+for(let i192=0,n192=Math.max(0,Math.floor(r.num("10")));i192<n192;i192++){
 c.block="jpgf";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -6058,7 +9752,7 @@ c.block="i9gm";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 }
 c.block="uslu";r.guard(c);
-for(let i169=0,n169=Math.max(0,Math.floor(r.num("10")));i169<n169;i169++){
+for(let i193=0,n193=Math.max(0,Math.floor(r.num("10")));i193<n193;i193++){
 c.block="jg7p";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -6083,7 +9777,7 @@ c.block="o44m";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 }
 c.block="emsx";r.guard(c);
-for(let i170=0,n170=Math.max(0,Math.floor(r.num("10")));i170<n170;i170++){
+for(let i194=0,n194=Math.max(0,Math.floor(r.num("10")));i194<n194;i194++){
 c.block="v199";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -6095,7 +9789,7 @@ c.block="6txe";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 }
 c.block="0gg3";r.guard(c);
-for(let i171=0,n171=Math.max(0,Math.floor(r.num("10")));i171<n171;i171++){
+for(let i195=0,n195=Math.max(0,Math.floor(r.num("10")));i195<n195;i195++){
 c.block="a35x";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -6213,7 +9907,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["gtwh"]),null]);
 c.block="0qcy";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="l7ta";r.guard(c);
-for(let i172=0,n172=Math.max(0,Math.floor(r.num("40")));i172<n172;i172++){
+for(let i196=0,n196=Math.max(0,Math.floor(r.num("40")));i196<n196;i196++){
 c.block="syd8";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["30","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="7xu7";r.guard(c);
@@ -6306,7 +10000,7 @@ r.command(c,"show",[null]);
 c.block="sprh";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="wppt";r.guard(c);
-for(let i173=0,n173=Math.max(0,Math.floor(r.num("4")));i173<n173;i173++){
+for(let i197=0,n197=Math.max(0,Math.floor(r.num("4")));i197<n197;i197++){
 c.block="po31";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-25",null]);
 yield 1;
@@ -6315,7 +10009,7 @@ c.block="user";r.guard(c);
 while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["zxd6",null]),"GREATER","0"]),null]))){yield 1;}
 }else{
 c.block="ae55";r.guard(c);
-for(let i174=0,n174=Math.max(0,Math.floor(r.num("5")));i174<n174;i174++){
+for(let i198=0,n198=Math.max(0,Math.floor(r.num("5")));i198<n198;i198++){
 c.block="k102";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -6339,7 +10033,7 @@ r.command(c,"show",[null]);
 c.block="uy4m";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="yxdg";r.guard(c);
-for(let i175=0,n175=Math.max(0,Math.floor(r.num("4")));i175<n175;i175++){
+for(let i199=0,n199=Math.max(0,Math.floor(r.num("4")));i199<n199;i199++){
 c.block="kgbp";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-25",null]);
 yield 1;
@@ -6348,7 +10042,7 @@ c.block="tkmk";r.guard(c);
 while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["zxd6",null]),"GREATER","0"]),null]))){yield 1;}
 }else{
 c.block="iawt";r.guard(c);
-for(let i176=0,n176=Math.max(0,Math.floor(r.num("5")));i176<n176;i176++){
+for(let i200=0,n200=Math.max(0,Math.floor(r.num("5")));i200<n200;i200++){
 c.block="u0fu";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -6387,7 +10081,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="a1m6";r.guard(c);
 r.command(c,"show",[null]);
 c.block="enhb";r.guard(c);
-for(let i177=0,n177=Math.max(0,Math.floor(r.num("50")));i177<n177;i177++){
+for(let i201=0,n201=Math.max(0,Math.floor(r.num("50")));i201<n201;i201++){
 c.block="6n0d";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["27","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="fxff";r.guard(c);
@@ -6415,11 +10109,11 @@ r.command(c,"set_scale_size",["6",null]);
 c.block="3tf5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="n2n6";r.guard(c);
-for(let i178=0,n178=Math.max(0,Math.floor(r.num("15")));i178<n178;i178++){
+for(let i202=0,n202=Math.max(0,Math.floor(r.num("15")));i202<n202;i202++){
 yield 1;
 }
 c.block="exsb";r.guard(c);
-for(let i179=0,n179=Math.max(0,Math.floor(r.num("6")));i179<n179;i179++){
+for(let i203=0,n203=Math.max(0,Math.floor(r.num("6")));i203<n203;i203++){
 c.block="c4ra";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -6452,7 +10146,7 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="7lat";r.guard(c);
 r.command(c,"show",[null]);
 c.block="69t8";r.guard(c);
-for(let i180=0,n180=Math.max(0,Math.floor(r.num("7")));i180<n180;i180++){
+for(let i204=0,n204=Math.max(0,Math.floor(r.num("7")));i204<n204;i204++){
 c.block="moka";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="njkv";r.guard(c);
@@ -6464,7 +10158,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="9gqs";r.guard(c);
-for(let i181=0,n181=Math.max(0,Math.floor(r.num("7")));i181<n181;i181++){
+for(let i205=0,n205=Math.max(0,Math.floor(r.num("7")));i205<n205;i205++){
 c.block="7b2e";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="v2ds";r.guard(c);
@@ -6494,7 +10188,7 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="b9mc";r.guard(c);
 r.command(c,"show",[null]);
 c.block="16ut";r.guard(c);
-for(let i182=0,n182=Math.max(0,Math.floor(r.num("7")));i182<n182;i182++){
+for(let i206=0,n206=Math.max(0,Math.floor(r.num("7")));i206<n206;i206++){
 c.block="8q7k";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="shll";r.guard(c);
@@ -6506,7 +10200,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="29fp";r.guard(c);
-for(let i183=0,n183=Math.max(0,Math.floor(r.num("7")));i183<n183;i183++){
+for(let i207=0,n207=Math.max(0,Math.floor(r.num("7")));i207<n207;i207++){
 c.block="v3aw";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="2bu3";r.guard(c);
@@ -6543,7 +10237,7 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="9ou5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="lywj";r.guard(c);
-for(let i184=0,n184=Math.max(0,Math.floor(r.num("7")));i184<n184;i184++){
+for(let i208=0,n208=Math.max(0,Math.floor(r.num("7")));i208<n208;i208++){
 c.block="t1xk";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="8yv3";r.guard(c);
@@ -6555,7 +10249,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="k8hc";r.guard(c);
-for(let i185=0,n185=Math.max(0,Math.floor(r.num("7")));i185<n185;i185++){
+for(let i209=0,n209=Math.max(0,Math.floor(r.num("7")));i209<n209;i209++){
 c.block="vz67";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="btt6";r.guard(c);
@@ -6585,7 +10279,7 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="8651";r.guard(c);
 r.command(c,"show",[null]);
 c.block="8x5g";r.guard(c);
-for(let i186=0,n186=Math.max(0,Math.floor(r.num("7")));i186<n186;i186++){
+for(let i210=0,n210=Math.max(0,Math.floor(r.num("7")));i210<n210;i210++){
 c.block="lju1";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="ew94";r.guard(c);
@@ -6597,7 +10291,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="b3ie";r.guard(c);
-for(let i187=0,n187=Math.max(0,Math.floor(r.num("7")));i187<n187;i187++){
+for(let i211=0,n211=Math.max(0,Math.floor(r.num("7")));i211<n211;i211++){
 c.block="hk2w";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="ye1y";r.guard(c);
@@ -6640,7 +10334,7 @@ r.command(c,"show",[null]);
 c.block="jswh";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"359",null]),null]);
 c.block="lywj";r.guard(c);
-for(let i188=0,n188=Math.max(0,Math.floor(r.num("7")));i188<n188;i188++){
+for(let i212=0,n212=Math.max(0,Math.floor(r.num("7")));i212<n212;i212++){
 c.block="vfxy";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="i5f6";r.guard(c);
@@ -6650,7 +10344,7 @@ r.command(c,"move_to_angle",[r.value(c,"get_variable",["xkbk",null]),r.value(c,"
 yield 1;
 }
 c.block="k8hc";r.guard(c);
-for(let i189=0,n189=Math.max(0,Math.floor(r.num("8")));i189<n189;i189++){
+for(let i213=0,n213=Math.max(0,Math.floor(r.num("8")));i213<n213;i213++){
 c.block="kuj1";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 c.block="mm0x";r.guard(c);
@@ -6684,7 +10378,7 @@ r.command(c,"show",[null]);
 c.block="wqgg";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"359",null]),null]);
 c.block="cnw4";r.guard(c);
-for(let i190=0,n190=Math.max(0,Math.floor(r.num("7")));i190<n190;i190++){
+for(let i214=0,n214=Math.max(0,Math.floor(r.num("7")));i214<n214;i214++){
 c.block="keu7";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="o9d2";r.guard(c);
@@ -6694,7 +10388,7 @@ r.command(c,"move_to_angle",[r.value(c,"get_variable",["xkbk",null]),r.value(c,"
 yield 1;
 }
 c.block="iv2w";r.guard(c);
-for(let i191=0,n191=Math.max(0,Math.floor(r.num("8")));i191<n191;i191++){
+for(let i215=0,n215=Math.max(0,Math.floor(r.num("8")));i215<n215;i215++){
 c.block="d60x";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 c.block="lb68";r.guard(c);
@@ -6727,13 +10421,13 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="9ou5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="lywj";r.guard(c);
-for(let i192=0,n192=Math.max(0,Math.floor(r.num("7")));i192<n192;i192++){
+for(let i216=0,n216=Math.max(0,Math.floor(r.num("7")));i216<n216;i216++){
 c.block="vfxy";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="k8hc";r.guard(c);
-for(let i193=0,n193=Math.max(0,Math.floor(r.num("8")));i193<n193;i193++){
+for(let i217=0,n217=Math.max(0,Math.floor(r.num("8")));i217<n217;i217++){
 c.block="kuj1";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -6755,13 +10449,13 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="asgt";r.guard(c);
 r.command(c,"show",[null]);
 c.block="6zug";r.guard(c);
-for(let i194=0,n194=Math.max(0,Math.floor(r.num("7")));i194<n194;i194++){
+for(let i218=0,n218=Math.max(0,Math.floor(r.num("7")));i218<n218;i218++){
 c.block="bg9c";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="biw7";r.guard(c);
-for(let i195=0,n195=Math.max(0,Math.floor(r.num("8")));i195<n195;i195++){
+for(let i219=0,n219=Math.max(0,Math.floor(r.num("8")));i219<n219;i219++){
 c.block="kd6e";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -6786,7 +10480,7 @@ r.command(c,"set_variable",["w1am",r.value(c,"calc_rand",[null,"0",null,"4",null
 c.block="qy1o";r.guard(c);
 r.command(c,"show",[null]);
 c.block="xe27";r.guard(c);
-for(let i196=0,n196=Math.max(0,Math.floor(r.num("50")));i196<n196;i196++){
+for(let i220=0,n220=Math.max(0,Math.floor(r.num("50")));i220<n220;i220++){
 c.block="s0uv";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["39na",null]),null]);
 c.block="5896";r.guard(c);
@@ -6828,9 +10522,9 @@ r.command(c,"set_variable",["nhow",r.value(c,"calc_rand",[null,"0.1",null,"1.2",
 c.block="qy1o";r.guard(c);
 r.command(c,"show",[null]);
 c.block="xe27";r.guard(c);
-for(let i197=0,n197=Math.max(0,Math.floor(r.num("8")));i197<n197;i197++){
+for(let i221=0,n221=Math.max(0,Math.floor(r.num("8")));i221<n221;i221++){
 c.block="z173";r.guard(c);
-for(let i198=0,n198=Math.max(0,Math.floor(r.num("4")));i198<n198;i198++){
+for(let i222=0,n222=Math.max(0,Math.floor(r.num("4")));i222<n222;i222++){
 c.block="s0uv";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["w7l3",null]),null]);
 c.block="5896";r.guard(c);
@@ -6852,7 +10546,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="bi6t";r.guard(c);
-for(let i199=0,n199=Math.max(0,Math.floor(r.num("10")));i199<n199;i199++){
+for(let i223=0,n223=Math.max(0,Math.floor(r.num("10")));i223<n223;i223++){
 c.block="odxw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="r2zb";r.guard(c);
@@ -6894,9 +10588,9 @@ r.command(c,"set_variable",["4cqs","7.2",null]);
 c.block="qy1o";r.guard(c);
 r.command(c,"show",[null]);
 c.block="xe27";r.guard(c);
-for(let i200=0,n200=Math.max(0,Math.floor(r.num("2")));i200<n200;i200++){
+for(let i224=0,n224=Math.max(0,Math.floor(r.num("2")));i224<n224;i224++){
 c.block="kzqe";r.guard(c);
-for(let i201=0,n201=Math.max(0,Math.floor(r.num("12")));i201<n201;i201++){
+for(let i225=0,n225=Math.max(0,Math.floor(r.num("12")));i225<n225;i225++){
 c.block="gmtu";r.guard(c);
 r.command(c,"change_variable",["4cqs","-0.2",null]);
 c.block="aku7";r.guard(c);
@@ -6908,7 +10602,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="udtd";r.guard(c);
-for(let i202=0,n202=Math.max(0,Math.floor(r.num("12")));i202<n202;i202++){
+for(let i226=0,n226=Math.max(0,Math.floor(r.num("12")));i226<n226;i226++){
 c.block="bq4f";r.guard(c);
 r.command(c,"change_variable",["4cqs","-0.2",null]);
 c.block="jgfr";r.guard(c);
@@ -6916,7 +10610,7 @@ r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",[
 yield 1;
 }
 c.block="okwl";r.guard(c);
-for(let i203=0,n203=Math.max(0,Math.floor(r.num("6")));i203<n203;i203++){
+for(let i227=0,n227=Math.max(0,Math.floor(r.num("6")));i227<n227;i227++){
 c.block="opyg";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -6944,9 +10638,9 @@ r.command(c,"set_variable",["9itb","7.2",null]);
 c.block="qy1o";r.guard(c);
 r.command(c,"show",[null]);
 c.block="xe27";r.guard(c);
-for(let i204=0,n204=Math.max(0,Math.floor(r.num("2")));i204<n204;i204++){
+for(let i228=0,n228=Math.max(0,Math.floor(r.num("2")));i228<n228;i228++){
 c.block="kzqe";r.guard(c);
-for(let i205=0,n205=Math.max(0,Math.floor(r.num("12")));i205<n205;i205++){
+for(let i229=0,n229=Math.max(0,Math.floor(r.num("12")));i229<n229;i229++){
 c.block="gmtu";r.guard(c);
 r.command(c,"change_variable",["9itb","-0.2",null]);
 c.block="aku7";r.guard(c);
@@ -6958,7 +10652,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="udtd";r.guard(c);
-for(let i206=0,n206=Math.max(0,Math.floor(r.num("12")));i206<n206;i206++){
+for(let i230=0,n230=Math.max(0,Math.floor(r.num("12")));i230<n230;i230++){
 c.block="bq4f";r.guard(c);
 r.command(c,"change_variable",["9itb","-0.2",null]);
 c.block="jgfr";r.guard(c);
@@ -6966,7 +10660,7 @@ r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",[
 yield 1;
 }
 c.block="okwl";r.guard(c);
-for(let i207=0,n207=Math.max(0,Math.floor(r.num("6")));i207<n207;i207++){
+for(let i231=0,n231=Math.max(0,Math.floor(r.num("6")));i231<n231;i231++){
 c.block="opyg";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -7012,7 +10706,7 @@ r.command(c,"show",[null]);
 c.block="nryx";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="y4z3";r.guard(c);
-for(let i208=0,n208=Math.max(0,Math.floor(r.num("60")));i208<n208;i208++){
+for(let i232=0,n232=Math.max(0,Math.floor(r.num("60")));i232<n232;i232++){
 c.block="wjwt";r.guard(c);
 r.command(c,"change_variable",["hbch","0.02",null]);
 c.block="shde";r.guard(c);
@@ -7049,7 +10743,7 @@ yield 1;
 c.block="mmg7";r.guard(c);
 yield* r.call(c,"qy83",["-1","5","0"]);
 c.block="e58v";r.guard(c);
-for(let i209=0,n209=Math.max(0,Math.floor(r.num("5")));i209<n209;i209++){
+for(let i233=0,n233=Math.max(0,Math.floor(r.num("5")));i233<n233;i233++){
 c.block="geta";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -7084,7 +10778,7 @@ r.command(c,"show",[null]);
 c.block="vhz0";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","30",null]);
 c.block="8n6w";r.guard(c);
-for(let i210=0,n210=Math.max(0,Math.floor(r.num("25")));i210<n210;i210++){
+for(let i234=0,n234=Math.max(0,Math.floor(r.num("25")));i234<n234;i234++){
 c.block="kb8u";r.guard(c);
 r.command(c,"change_variable",["rsjc","-0.1",null]);
 c.block="b7ad";r.guard(c);
@@ -7092,7 +10786,7 @@ r.command(c,"move_direction",[r.value(c,"get_variable",["rsjc",null]),null]);
 yield 1;
 }
 c.block="o38z";r.guard(c);
-for(let i211=0,n211=Math.max(0,Math.floor(r.num("5")));i211<n211;i211++){
+for(let i235=0,n235=Math.max(0,Math.floor(r.num("5")));i235<n235;i235++){
 c.block="01ey";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","14",null]);
 yield 1;
@@ -7131,7 +10825,7 @@ r.command(c,"show",[null]);
 c.block="vhz0";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="obbh";r.guard(c);
-for(let i212=0,n212=Math.max(0,Math.floor(r.num(r.value(c,"calc_operation",[null,r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["wp8i",null]),null,"abs"]),"MULTI","200"]),null,"round"]))));i212<n212;i212++){
+for(let i236=0,n236=Math.max(0,Math.floor(r.num(r.value(c,"calc_operation",[null,r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["wp8i",null]),null,"abs"]),"MULTI","200"]),null,"round"]))));i236<n236;i236++){
 c.block="ba3z";r.guard(c);
 r.command(c,"change_variable",["wp8i","-0.02",null]);
 c.block="baws";r.guard(c);
@@ -7141,7 +10835,7 @@ r.command(c,"move_x",[r.value(c,"get_variable",["zald",null]),null]);
 yield 1;
 }
 c.block="o38z";r.guard(c);
-for(let i213=0,n213=Math.max(0,Math.floor(r.num("5")));i213<n213;i213++){
+for(let i237=0,n237=Math.max(0,Math.floor(r.num("5")));i237<n237;i237++){
 c.block="rb6n";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -7177,9 +10871,9 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="9ou5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="lywj";r.guard(c);
-for(let i214=0,n214=Math.max(0,Math.floor(r.num("7")));i214<n214;i214++){
+for(let i238=0,n238=Math.max(0,Math.floor(r.num("7")));i238<n238;i238++){
 c.block="5cjh";r.guard(c);
-for(let i215=0,n215=Math.max(0,Math.floor(r.num("1")));i215<n215;i215++){
+for(let i239=0,n239=Math.max(0,Math.floor(r.num("1")));i239<n239;i239++){
 c.block="glsa";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","7"]))){
 c.block="4cju";r.guard(c);
@@ -7199,7 +10893,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="k8hc";r.guard(c);
-for(let i216=0,n216=Math.max(0,Math.floor(r.num("4")));i216<n216;i216++){
+for(let i240=0,n240=Math.max(0,Math.floor(r.num("4")));i240<n240;i240++){
 c.block="kuj1";r.guard(c);
 r.command(c,"change_scale_size",["-2",null]);
 c.block="zke0";r.guard(c);
@@ -7237,9 +10931,9 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="9ou5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="lywj";r.guard(c);
-for(let i217=0,n217=Math.max(0,Math.floor(r.num("7")));i217<n217;i217++){
+for(let i241=0,n241=Math.max(0,Math.floor(r.num("7")));i241<n241;i241++){
 c.block="5cjh";r.guard(c);
-for(let i218=0,n218=Math.max(0,Math.floor(r.num("1")));i218<n218;i218++){
+for(let i242=0,n242=Math.max(0,Math.floor(r.num("1")));i242<n242;i242++){
 yield 1;
 }
 c.block="vfxy";r.guard(c);
@@ -7247,7 +10941,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="k8hc";r.guard(c);
-for(let i219=0,n219=Math.max(0,Math.floor(r.num("4")));i219<n219;i219++){
+for(let i243=0,n243=Math.max(0,Math.floor(r.num("4")));i243<n243;i243++){
 c.block="kuj1";r.guard(c);
 r.command(c,"change_scale_size",["-2",null]);
 yield 1;
@@ -7277,7 +10971,7 @@ r.command(c,"move_x",["-2.5",null]);
 c.block="eenn";r.guard(c);
 r.command(c,"show",[null]);
 c.block="kuc3";r.guard(c);
-for(let i220=0,n220=Math.max(0,Math.floor(r.num("10")));i220<n220;i220++){
+for(let i244=0,n244=Math.max(0,Math.floor(r.num("10")));i244<n244;i244++){
 c.block="yg7g";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -7301,7 +10995,7 @@ r.command(c,"move_x",["-2.5",null]);
 c.block="1mct";r.guard(c);
 r.command(c,"show",[null]);
 c.block="m0bb";r.guard(c);
-for(let i221=0,n221=Math.max(0,Math.floor(r.num("10")));i221<n221;i221++){
+for(let i245=0,n245=Math.max(0,Math.floor(r.num("10")));i245<n245;i245++){
 c.block="fcwh";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -7326,7 +11020,7 @@ r.command(c,"locate",["00h9",null]);
 c.block="a585";r.guard(c);
 r.command(c,"show",[null]);
 c.block="agyh";r.guard(c);
-for(let i222=0,n222=Math.max(0,Math.floor(r.num("20")));i222<n222;i222++){
+for(let i246=0,n246=Math.max(0,Math.floor(r.num("20")));i246<n246;i246++){
 c.block="hxxg";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -7354,7 +11048,7 @@ r.command(c,"set_scale_size",["15",null]);
 c.block="twro";r.guard(c);
 r.command(c,"show",[null]);
 c.block="3ink";r.guard(c);
-for(let i223=0,n223=Math.max(0,Math.floor(r.num("30")));i223<n223;i223++){
+for(let i247=0,n247=Math.max(0,Math.floor(r.num("30")));i247<n247;i247++){
 c.block="wub1";r.guard(c);
 r.command(c,"rotate_relative",["2",null]);
 c.block="9llq";r.guard(c);
@@ -7376,7 +11070,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["tisl",
 c.block="xe2h";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="eott";r.guard(c);
-for(let i224=0,n224=Math.max(0,Math.floor(r.num("6")));i224<n224;i224++){
+for(let i248=0,n248=Math.max(0,Math.floor(r.num("6")));i248<n248;i248++){
 yield 1;
 }
 }
@@ -7392,7 +11086,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["twfb",
 c.block="ugn3";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="bat4";r.guard(c);
-for(let i225=0,n225=Math.max(0,Math.floor(r.num("6")));i225<n225;i225++){
+for(let i249=0,n249=Math.max(0,Math.floor(r.num("6")));i249<n249;i249++){
 yield 1;
 }
 }
@@ -7414,7 +11108,7 @@ r.command(c,"set_scale_size",["13",null]);
 c.block="twro";r.guard(c);
 r.command(c,"show",[null]);
 c.block="3ink";r.guard(c);
-for(let i226=0,n226=Math.max(0,Math.floor(r.num("26")));i226<n226;i226++){
+for(let i250=0,n250=Math.max(0,Math.floor(r.num("26")));i250<n250;i250++){
 c.block="9llq";r.guard(c);
 r.command(c,"change_scale_size",["-0.5",null]);
 c.block="wub1";r.guard(c);
@@ -7438,7 +11132,7 @@ r.command(c,"set_scale_size",["13",null]);
 c.block="twro";r.guard(c);
 r.command(c,"show",[null]);
 c.block="3ink";r.guard(c);
-for(let i227=0,n227=Math.max(0,Math.floor(r.num("26")));i227<n227;i227++){
+for(let i251=0,n251=Math.max(0,Math.floor(r.num("26")));i251<n251;i251++){
 c.block="9llq";r.guard(c);
 r.command(c,"change_scale_size",["-0.5",null]);
 c.block="wub1";r.guard(c);
@@ -7464,13 +11158,13 @@ r.command(c,"set_scale_size",["2",null]);
 c.block="2hsw";r.guard(c);
 r.command(c,"show",[null]);
 c.block="u44x";r.guard(c);
-for(let i228=0,n228=Math.max(0,Math.floor(r.num("11")));i228<n228;i228++){
+for(let i252=0,n252=Math.max(0,Math.floor(r.num("11")));i252<n252;i252++){
 c.block="ld49";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["22","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
 }
 c.block="z9nk";r.guard(c);
-for(let i229=0,n229=Math.max(0,Math.floor(r.num("6")));i229<n229;i229++){
+for(let i253=0,n253=Math.max(0,Math.floor(r.num("6")));i253<n253;i253++){
 c.block="59rl";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["22","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="woqj";r.guard(c);
@@ -7492,7 +11186,7 @@ r.command(c,"locate",["00h9",null]);
 c.block="b2ez";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="amkh";r.guard(c);
-for(let i230=0,n230=Math.max(0,Math.floor(r.num("2")));i230<n230;i230++){
+for(let i254=0,n254=Math.max(0,Math.floor(r.num("2")));i254<n254;i254++){
 yield 1;
 }
 c.block="oo1w";r.guard(c);
@@ -7520,7 +11214,7 @@ yield* r.call(c,"qy83",["-9","10","10"]);
 c.block="avh4";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="2ecn";r.guard(c);
-for(let i231=0,n231=Math.max(0,Math.floor(r.num("15")));i231<n231;i231++){
+for(let i255=0,n255=Math.max(0,Math.floor(r.num("15")));i255<n255;i255++){
 c.block="08rf";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7.5",null]);
 yield 1;
@@ -7538,7 +11232,7 @@ r.command(c,"locate",["n8fg",null]);
 c.block="jroe";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="tld5";r.guard(c);
-for(let i232=0,n232=Math.max(0,Math.floor(r.num("2")));i232<n232;i232++){
+for(let i256=0,n256=Math.max(0,Math.floor(r.num("2")));i256<n256;i256++){
 yield 1;
 }
 c.block="ds0l";r.guard(c);
@@ -7566,7 +11260,7 @@ yield* r.call(c,"05j0",["-9","10","10"]);
 c.block="s2s4";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="2rma";r.guard(c);
-for(let i233=0,n233=Math.max(0,Math.floor(r.num("15")));i233<n233;i233++){
+for(let i257=0,n257=Math.max(0,Math.floor(r.num("15")));i257<n257;i257++){
 c.block="nrf9";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7.5",null]);
 yield 1;
@@ -7606,7 +11300,7 @@ r.command(c,"set_scale_size",["14",null]);
 c.block="z5ml";r.guard(c);
 r.command(c,"set_variable",["aapa","0",null]);
 c.block="0mwh";r.guard(c);
-for(let i234=0,n234=Math.max(0,Math.floor(r.num("11")));i234<n234;i234++){
+for(let i258=0,n258=Math.max(0,Math.floor(r.num("11")));i258<n258;i258++){
 c.block="e69r";r.guard(c);
 r.command(c,"change_variable",["aapa","15",null]);
 c.block="f6o8";r.guard(c);
@@ -7645,7 +11339,7 @@ break;
 yield 1;
 }
 c.block="5s62";r.guard(c);
-for(let i235=0,n235=Math.max(0,Math.floor(r.num("25")));i235<n235;i235++){
+for(let i259=0,n259=Math.max(0,Math.floor(r.num("25")));i259<n259;i259++){
 c.block="5x18";r.guard(c);
 r.command(c,"change_variable",["aapa","15",null]);
 c.block="sm3g";r.guard(c);
@@ -7709,7 +11403,7 @@ r.command(c,"change_variable",["lgp6","-22",null]);
 }
 }
 c.block="k34c";r.guard(c);
-for(let i236=0,n236=Math.max(0,Math.floor(r.num("25")));i236<n236;i236++){
+for(let i260=0,n260=Math.max(0,Math.floor(r.num("25")));i260<n260;i260++){
 c.block="v2vi";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["99","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="p2fr";r.guard(c);
@@ -7745,7 +11439,7 @@ r.command(c,"set_scale_size",["14",null]);
 c.block="dawy";r.guard(c);
 r.command(c,"set_variable",["aapa","0",null]);
 c.block="k8y7";r.guard(c);
-for(let i237=0,n237=Math.max(0,Math.floor(r.num("11")));i237<n237;i237++){
+for(let i261=0,n261=Math.max(0,Math.floor(r.num("11")));i261<n261;i261++){
 c.block="0odi";r.guard(c);
 r.command(c,"change_variable",["aapa","15",null]);
 c.block="z5yd";r.guard(c);
@@ -7784,7 +11478,7 @@ break;
 yield 1;
 }
 c.block="j4c2";r.guard(c);
-for(let i238=0,n238=Math.max(0,Math.floor(r.num("25")));i238<n238;i238++){
+for(let i262=0,n262=Math.max(0,Math.floor(r.num("25")));i262<n262;i262++){
 c.block="dy6i";r.guard(c);
 r.command(c,"change_variable",["aapa","15",null]);
 c.block="nczv";r.guard(c);
@@ -7848,7 +11542,7 @@ r.command(c,"change_variable",["c9o4","-22",null]);
 }
 }
 c.block="z8hi";r.guard(c);
-for(let i239=0,n239=Math.max(0,Math.floor(r.num("25")));i239<n239;i239++){
+for(let i263=0,n263=Math.max(0,Math.floor(r.num("25")));i263<n263;i263++){
 c.block="ag23";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["99","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="ks0b";r.guard(c);
@@ -7871,7 +11565,7 @@ r.command(c,"set_variable",["zbuo",r.value(c,"coordinate_object",[null,"self",nu
 c.block="bsr4";r.guard(c);
 r.command(c,"set_variable",["jl4b",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
 c.block="ynng";r.guard(c);
-for(let i240=0,n240=Math.max(0,Math.floor(r.num("1")));i240<n240;i240++){
+for(let i264=0,n264=Math.max(0,Math.floor(r.num("1")));i264<n264;i264++){
 yield 1;
 }
 c.block="sjez";r.guard(c);
@@ -7885,7 +11579,7 @@ r.command(c,"set_color",["#ff1f84",null]);
 c.block="dq3o";r.guard(c);
 r.command(c,"set_thickness",["7",null]);
 c.block="cews";r.guard(c);
-for(let i241=0,n241=Math.max(0,Math.floor(r.num("10")));i241<n241;i241++){
+for(let i265=0,n265=Math.max(0,Math.floor(r.num("10")));i265<n265;i265++){
 c.block="11wu";r.guard(c);
 r.command(c,"locate_xy",[r.value(c,"get_variable",["zbuo",null]),r.value(c,"get_variable",["jl4b",null]),null]);
 c.block="6go7";r.guard(c);
@@ -7917,7 +11611,7 @@ r.command(c,"set_variable",["bgs6",r.value(c,"coordinate_object",[null,"self",nu
 c.block="bsr4";r.guard(c);
 r.command(c,"set_variable",["mufx",r.value(c,"coordinate_object",[null,"self",null,"y"]),null]);
 c.block="ynng";r.guard(c);
-for(let i242=0,n242=Math.max(0,Math.floor(r.num("1")));i242<n242;i242++){
+for(let i266=0,n266=Math.max(0,Math.floor(r.num("1")));i266<n266;i266++){
 yield 1;
 }
 c.block="sjez";r.guard(c);
@@ -7931,7 +11625,7 @@ r.command(c,"set_color",["#5100ff",null]);
 c.block="dq3o";r.guard(c);
 r.command(c,"set_thickness",["7",null]);
 c.block="cews";r.guard(c);
-for(let i243=0,n243=Math.max(0,Math.floor(r.num("10")));i243<n243;i243++){
+for(let i267=0,n267=Math.max(0,Math.floor(r.num("10")));i267<n267;i267++){
 c.block="11wu";r.guard(c);
 r.command(c,"locate_xy",[r.value(c,"get_variable",["bgs6",null]),r.value(c,"get_variable",["mufx",null]),null]);
 c.block="6go7";r.guard(c);
@@ -7985,7 +11679,7 @@ r.command(c,"set_scale_size",["28",null]);
 c.block="67u0";r.guard(c);
 r.command(c,"show",[null]);
 c.block="paj8";r.guard(c);
-for(let i244=0,n244=Math.max(0,Math.floor(r.num("25")));i244<n244;i244++){
+for(let i268=0,n268=Math.max(0,Math.floor(r.num("25")));i268<n268;i268++){
 c.block="7lv5";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","4",null]);
 yield 1;
@@ -8022,7 +11716,7 @@ c.block="czkq";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="zynt";r.guard(c);
-for(let i245=0,n245=Math.max(0,Math.floor(r.num("40")));i245<n245;i245++){
+for(let i269=0,n269=Math.max(0,Math.floor(r.num("40")));i269<n269;i269++){
 c.block="r5ej";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2.5",null]);
 c.block="oycf";r.guard(c);
@@ -8074,11 +11768,11 @@ r.command(c,"locate",["ocqj",null]);
 }
 }
 c.block="d1sn";r.guard(c);
-for(let i246=0,n246=Math.max(0,Math.floor(r.num("5")));i246<n246;i246++){
+for(let i270=0,n270=Math.max(0,Math.floor(r.num("5")));i270<n270;i270++){
 c.block="t2r7";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="7oty";r.guard(c);
-for(let i247=0,n247=Math.max(0,Math.floor(r.num("10")));i247<n247;i247++){
+for(let i271=0,n271=Math.max(0,Math.floor(r.num("10")));i271<n271;i271++){
 c.block="8vly";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="61hy";r.guard(c);
@@ -8204,7 +11898,7 @@ r.command(c,"show",[null]);
 c.block="1v98";r.guard(c);
 r.command(c,"set_variable",["e9s2","10",null]);
 c.block="8wck";r.guard(c);
-for(let i248=0,n248=Math.max(0,Math.floor(r.num("50")));i248<n248;i248++){
+for(let i272=0,n272=Math.max(0,Math.floor(r.num("50")));i272<n272;i272++){
 c.block="i96r";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["i64q",null]),"EQUAL","1"]))){
 c.block="8txf";r.guard(c);
@@ -8218,7 +11912,7 @@ r.command(c,"change_variable",["e9s2","-0.2",null]);
 yield 1;
 }
 c.block="pwhf";r.guard(c);
-for(let i249=0,n249=Math.max(0,Math.floor(r.num("5")));i249<n249;i249++){
+for(let i273=0,n273=Math.max(0,Math.floor(r.num("5")));i273<n273;i273++){
 c.block="escw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -8254,7 +11948,7 @@ c.block="lphr";r.guard(c);
 r.command(c,"move_x",["8",null]);
 }
 c.block="m9ku";r.guard(c);
-for(let i250=0,n250=Math.max(0,Math.floor(r.num("45")));i250<n250;i250++){
+for(let i274=0,n274=Math.max(0,Math.floor(r.num("45")));i274<n274;i274++){
 c.block="qmks";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["lwv2",null]),"LESS_OR_EQUAL","0"]))){
 c.block="mcd5";r.guard(c);
@@ -8288,7 +11982,7 @@ r.command(c,"change_variable",["lwv2","-0.2",null]);
 yield 1;
 }
 c.block="wm5l";r.guard(c);
-for(let i251=0,n251=Math.max(0,Math.floor(r.num("5")));i251<n251;i251++){
+for(let i275=0,n275=Math.max(0,Math.floor(r.num("5")));i275<n275;i275++){
 c.block="uask";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -8318,7 +12012,7 @@ c.block="4ahy";r.guard(c);
 r.command(c,"move_x",["8",null]);
 }
 c.block="1yxr";r.guard(c);
-for(let i252=0,n252=Math.max(0,Math.floor(r.num("45")));i252<n252;i252++){
+for(let i276=0,n276=Math.max(0,Math.floor(r.num("45")));i276<n276;i276++){
 c.block="dioz";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["lwv2",null]),"LESS_OR_EQUAL","0"]))){
 c.block="oax0";r.guard(c);
@@ -8352,7 +12046,7 @@ r.command(c,"change_variable",["lwv2","-0.2",null]);
 yield 1;
 }
 c.block="7pgy";r.guard(c);
-for(let i253=0,n253=Math.max(0,Math.floor(r.num("5")));i253<n253;i253++){
+for(let i277=0,n277=Math.max(0,Math.floor(r.num("5")));i277<n277;i277++){
 c.block="ufp4";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -8417,7 +12111,7 @@ c.block="xamd";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 }
 c.block="mr79";r.guard(c);
-for(let i254=0,n254=Math.max(0,Math.floor(r.num("15")));i254<n254;i254++){
+for(let i278=0,n278=Math.max(0,Math.floor(r.num("15")));i278<n278;i278++){
 c.block="3yyr";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="ifp1";r.guard(c);
@@ -8476,7 +12170,7 @@ c.block="5m0z";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 }
 c.block="1h3b";r.guard(c);
-for(let i255=0,n255=Math.max(0,Math.floor(r.num("15")));i255<n255;i255++){
+for(let i279=0,n279=Math.max(0,Math.floor(r.num("15")));i279<n279;i279++){
 c.block="kms4";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="qr38";r.guard(c);
@@ -8526,7 +12220,7 @@ r.command(c,"set_scale_size",["2",null]);
 c.block="utpp";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","30",null]);
 c.block="zmth";r.guard(c);
-for(let i256=0,n256=Math.max(0,Math.floor(r.num("300")));i256<n256;i256++){
+for(let i280=0,n280=Math.max(0,Math.floor(r.num("300")));i280<n280;i280++){
 c.block="pbv8";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["35","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="lfnw";r.guard(c);
@@ -8544,7 +12238,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["h488"]),null]);
 c.block="wxb4";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","20",null]);
 c.block="a5bi";r.guard(c);
-for(let i257=0,n257=Math.max(0,Math.floor(r.num("40")));i257<n257;i257++){
+for(let i281=0,n281=Math.max(0,Math.floor(r.num("40")));i281<n281;i281++){
 c.block="o3bk";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["80","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="29yz";r.guard(c);
@@ -8578,7 +12272,7 @@ r.command(c,"set_scale_size",["2",null]);
 c.block="09iu";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","30",null]);
 c.block="s7mx";r.guard(c);
-for(let i258=0,n258=Math.max(0,Math.floor(r.num("300")));i258<n258;i258++){
+for(let i282=0,n282=Math.max(0,Math.floor(r.num("300")));i282<n282;i282++){
 c.block="vjq8";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["35","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="is9p";r.guard(c);
@@ -8596,7 +12290,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["w5o6"]),null]);
 c.block="x2nl";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","20",null]);
 c.block="i7u9";r.guard(c);
-for(let i259=0,n259=Math.max(0,Math.floor(r.num("40")));i259<n259;i259++){
+for(let i283=0,n283=Math.max(0,Math.floor(r.num("40")));i283<n283;i283++){
 c.block="i14v";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["80","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="k0sr";r.guard(c);
@@ -8727,7 +12421,7 @@ r.command(c,"set_variable",["9g9x",r.value(c,"calc_basic",[r.value(c,"get_variab
 c.block="9ejm";r.guard(c);
 r.command(c,"set_variable",["4ynb",r.value(c,"calc_basic",[r.value(c,"get_variable",["4ynb",null]),"MULTI","0.7"]),null]);
 c.block="2xxj";r.guard(c);
-for(let i260=0,n260=Math.max(0,Math.floor(r.num("4")));i260<n260;i260++){
+for(let i284=0,n284=Math.max(0,Math.floor(r.num("4")));i284<n284;i284++){
 c.block="kb8u";r.guard(c);
 r.command(c,"change_variable",["9g9x","-0.06",null]);
 c.block="5gie";r.guard(c);
@@ -8751,7 +12445,7 @@ r.command(c,"set_variable",["9g9x",r.value(c,"calc_basic",[r.value(c,"get_variab
 c.block="zmxa";r.guard(c);
 r.command(c,"set_variable",["4ynb",r.value(c,"calc_basic",[r.value(c,"get_variable",["4ynb",null]),"MULTI","0.7"]),null]);
 c.block="9300";r.guard(c);
-for(let i261=0,n261=Math.max(0,Math.floor(r.num("4")));i261<n261;i261++){
+for(let i285=0,n285=Math.max(0,Math.floor(r.num("4")));i285<n285;i285++){
 c.block="byol";r.guard(c);
 r.command(c,"change_variable",["9g9x","-0.06",null]);
 c.block="n6jy";r.guard(c);
@@ -8775,7 +12469,7 @@ r.command(c,"set_variable",["9g9x",r.value(c,"calc_basic",[r.value(c,"get_variab
 c.block="wjom";r.guard(c);
 r.command(c,"set_variable",["4ynb",r.value(c,"calc_basic",[r.value(c,"get_variable",["4ynb",null]),"MULTI","0.7"]),null]);
 c.block="etzf";r.guard(c);
-for(let i262=0,n262=Math.max(0,Math.floor(r.num("4")));i262<n262;i262++){
+for(let i286=0,n286=Math.max(0,Math.floor(r.num("4")));i286<n286;i286++){
 c.block="f8o8";r.guard(c);
 r.command(c,"change_variable",["9g9x","-0.06",null]);
 c.block="zz50";r.guard(c);
@@ -8795,7 +12489,7 @@ r.command(c,"move_x",[r.value(c,"get_variable",["4ynb",null]),null]);
 yield 1;
 }
 c.block="qcap";r.guard(c);
-for(let i263=0,n263=Math.max(0,Math.floor(r.num("30")));i263<n263;i263++){
+for(let i287=0,n287=Math.max(0,Math.floor(r.num("30")));i287<n287;i287++){
 c.block="swfo";r.guard(c);
 r.command(c,"change_scale_size",["-0.2",null]);
 yield 1;
@@ -8813,11 +12507,11 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",
 c.block="9918";r.guard(c);
 r.command(c,"show",[null]);
 c.block="nhxb";r.guard(c);
-for(let i264=0,n264=Math.max(0,Math.floor(r.num("30")));i264<n264;i264++){
+for(let i288=0,n288=Math.max(0,Math.floor(r.num("30")));i288<n288;i288++){
 c.block="ago7";r.guard(c);
 r.command(c,"flip_y",[null]);
 c.block="cuio";r.guard(c);
-for(let i265=0,n265=Math.max(0,Math.floor(r.num("10")));i265<n265;i265++){
+for(let i289=0,n289=Math.max(0,Math.floor(r.num("10")));i289<n289;i289++){
 c.block="9oa2";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 yield 1;
@@ -8831,11 +12525,11 @@ if(c.thread.cancelled||c.e.dead)return;
 c.block="2d33";r.guard(c);
 r.command(c,"show",[null]);
 c.block="jxqo";r.guard(c);
-for(let i266=0,n266=Math.max(0,Math.floor(r.num("30")));i266<n266;i266++){
+for(let i290=0,n290=Math.max(0,Math.floor(r.num("30")));i290<n290;i290++){
 c.block="1vpx";r.guard(c);
 r.command(c,"flip_y",[null]);
 c.block="s1e5";r.guard(c);
-for(let i267=0,n267=Math.max(0,Math.floor(r.num("10")));i267<n267;i267++){
+for(let i291=0,n291=Math.max(0,Math.floor(r.num("10")));i291<n291;i291++){
 c.block="an03";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 yield 1;
@@ -8892,7 +12586,7 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-6",null,"6",null]),null]);
 }
 }
 c.block="dw35";r.guard(c);
-for(let i268=0,n268=Math.max(0,Math.floor(r.num("10")));i268<n268;i268++){
+for(let i292=0,n292=Math.max(0,Math.floor(r.num("10")));i292<n292;i292++){
 c.block="b4zu";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -8947,7 +12641,7 @@ r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="w00c";r.guard(c);
 r.command(c,"set_scale_size",["12",null]);
 c.block="7anx";r.guard(c);
-for(let i269=0,n269=Math.max(0,Math.floor(r.num("1")));i269<n269;i269++){
+for(let i293=0,n293=Math.max(0,Math.floor(r.num("1")));i293<n293;i293++){
 yield 1;
 }
 c.block="qkt2";r.guard(c);
@@ -8957,11 +12651,11 @@ r.command(c,"change_effect_amount",["transparency","40",null]);
 c.block="iu4o";r.guard(c);
 r.command(c,"move_direction",["24",null]);
 c.block="1qjz";r.guard(c);
-for(let i270=0,n270=Math.max(0,Math.floor(r.num("12")));i270<n270;i270++){
+for(let i294=0,n294=Math.max(0,Math.floor(r.num("12")));i294<n294;i294++){
 c.block="2j65";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-5",null]);
 c.block="n0kl";r.guard(c);
-for(let i271=0,n271=Math.max(0,Math.floor(r.num("3")));i271<n271;i271++){
+for(let i295=0,n295=Math.max(0,Math.floor(r.num("3")));i295<n295;i295++){
 c.block="e8wc";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["30","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","50"]),null]);
 c.block="4ghj";r.guard(c);
@@ -8977,7 +12671,7 @@ yield 1;
 c.block="oarj";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="c068";r.guard(c);
-for(let i272=0,n272=Math.max(0,Math.floor(r.num("3")));i272<n272;i272++){
+for(let i296=0,n296=Math.max(0,Math.floor(r.num("3")));i296<n296;i296++){
 c.block="ytps";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["30","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","50"]),null]);
 c.block="5pmx";r.guard(c);
@@ -8993,7 +12687,7 @@ yield 1;
 yield 1;
 }
 c.block="a4tc";r.guard(c);
-for(let i273=0,n273=Math.max(0,Math.floor(r.num("10")));i273<n273;i273++){
+for(let i297=0,n297=Math.max(0,Math.floor(r.num("10")));i297<n297;i297++){
 c.block="1fsd";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","4"]),null]);
 yield 1;
@@ -9039,7 +12733,7 @@ r.command(c,"set_variable",["wbsa","0",null]);
 c.block="w9q1";r.guard(c);
 r.command(c,"set_scale_size",["12",null]);
 c.block="1uib";r.guard(c);
-for(let i274=0,n274=Math.max(0,Math.floor(r.num("1")));i274<n274;i274++){
+for(let i298=0,n298=Math.max(0,Math.floor(r.num("1")));i298<n298;i298++){
 yield 1;
 }
 c.block="opv0";r.guard(c);
@@ -9049,11 +12743,11 @@ r.command(c,"change_effect_amount",["transparency","40",null]);
 c.block="radn";r.guard(c);
 r.command(c,"move_direction",["24",null]);
 c.block="6pcw";r.guard(c);
-for(let i275=0,n275=Math.max(0,Math.floor(r.num("12")));i275<n275;i275++){
+for(let i299=0,n299=Math.max(0,Math.floor(r.num("12")));i299<n299;i299++){
 c.block="74rn";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-5",null]);
 c.block="8v58";r.guard(c);
-for(let i276=0,n276=Math.max(0,Math.floor(r.num("3")));i276<n276;i276++){
+for(let i300=0,n300=Math.max(0,Math.floor(r.num("3")));i300<n300;i300++){
 c.block="xtvj";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["30","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","50"]),null]);
 c.block="an3h";r.guard(c);
@@ -9069,7 +12763,7 @@ yield 1;
 c.block="qrkl";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="53ac";r.guard(c);
-for(let i277=0,n277=Math.max(0,Math.floor(r.num("3")));i277<n277;i277++){
+for(let i301=0,n301=Math.max(0,Math.floor(r.num("3")));i301<n301;i301++){
 c.block="651m";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["30","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","50"]),null]);
 c.block="9wr0";r.guard(c);
@@ -9085,7 +12779,7 @@ yield 1;
 yield 1;
 }
 c.block="8rr6";r.guard(c);
-for(let i278=0,n278=Math.max(0,Math.floor(r.num("10")));i278<n278;i278++){
+for(let i302=0,n302=Math.max(0,Math.floor(r.num("10")));i302<n302;i302++){
 c.block="6l3s";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","4"]),null]);
 yield 1;
@@ -9128,11 +12822,11 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 c.block="lb7e";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","40",null]);
 c.block="1qjz";r.guard(c);
-for(let i279=0,n279=Math.max(0,Math.floor(r.num("12")));i279<n279;i279++){
+for(let i303=0,n303=Math.max(0,Math.floor(r.num("12")));i303<n303;i303++){
 c.block="2j65";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-5",null]);
 c.block="n0kl";r.guard(c);
-for(let i280=0,n280=Math.max(0,Math.floor(r.num("1")));i280<n280;i280++){
+for(let i304=0,n304=Math.max(0,Math.floor(r.num("1")));i304<n304;i304++){
 c.block="e8wc";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["16","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","15"]),null]);
 c.block="4ghj";r.guard(c);
@@ -9144,7 +12838,7 @@ yield 1;
 c.block="oarj";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="c068";r.guard(c);
-for(let i281=0,n281=Math.max(0,Math.floor(r.num("1")));i281<n281;i281++){
+for(let i305=0,n305=Math.max(0,Math.floor(r.num("1")));i305<n305;i305++){
 c.block="ytps";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["16","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","15"]),null]);
 c.block="5pmx";r.guard(c);
@@ -9156,7 +12850,7 @@ yield 1;
 yield 1;
 }
 c.block="a4tc";r.guard(c);
-for(let i282=0,n282=Math.max(0,Math.floor(r.num("5")));i282<n282;i282++){
+for(let i306=0,n306=Math.max(0,Math.floor(r.num("5")));i306<n306;i306++){
 c.block="1fsd";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","2"]),null]);
 yield 1;
@@ -9204,7 +12898,7 @@ r.command(c,"set_variable",["t59l",r.value(c,"get_variable",["t59l",null]),null]
 c.block="tp8r";r.guard(c);
 r.command(c,"set_variable",["rmx4","4",null]);
 c.block="u6mt";r.guard(c);
-for(let i283=0,n283=Math.max(0,Math.floor(r.num("20")));i283<n283;i283++){
+for(let i307=0,n307=Math.max(0,Math.floor(r.num("20")));i307<n307;i307++){
 c.block="255b";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["t59l",null]),null]);
 c.block="b623";r.guard(c);
@@ -9214,7 +12908,7 @@ r.command(c,"change_variable",["rmx4",r.value(c,"calc_basic",["8","DIVIDE","-100
 yield 1;
 }
 c.block="s7y2";r.guard(c);
-for(let i284=0,n284=Math.max(0,Math.floor(r.num("80")));i284<n284;i284++){
+for(let i308=0,n308=Math.max(0,Math.floor(r.num("80")));i308<n308;i308++){
 c.block="2x5m";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["t59l",null]),null]);
 c.block="2tc3";r.guard(c);
@@ -9235,7 +12929,7 @@ r.command(c,"set_scale_size",["8",null]);
 c.block="c9z6";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","30",null]);
 c.block="w4fy";r.guard(c);
-for(let i285=0,n285=Math.max(0,Math.floor(r.num("70")));i285<n285;i285++){
+for(let i309=0,n309=Math.max(0,Math.floor(r.num("70")));i309<n309;i309++){
 c.block="4hs1";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["150","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="n09h";r.guard(c);
@@ -9291,7 +12985,7 @@ r.command(c,"set_variable",["t59l",r.value(c,"get_variable",["t59l",null]),null]
 c.block="iorx";r.guard(c);
 r.command(c,"set_variable",["rmx4","4",null]);
 c.block="50nj";r.guard(c);
-for(let i286=0,n286=Math.max(0,Math.floor(r.num("20")));i286<n286;i286++){
+for(let i310=0,n310=Math.max(0,Math.floor(r.num("20")));i310<n310;i310++){
 c.block="dukx";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["t59l",null]),null]);
 c.block="889s";r.guard(c);
@@ -9301,7 +12995,7 @@ r.command(c,"change_variable",["rmx4",r.value(c,"calc_basic",["8","DIVIDE","-100
 yield 1;
 }
 c.block="a584";r.guard(c);
-for(let i287=0,n287=Math.max(0,Math.floor(r.num("80")));i287<n287;i287++){
+for(let i311=0,n311=Math.max(0,Math.floor(r.num("80")));i311<n311;i311++){
 c.block="i01k";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["t59l",null]),null]);
 c.block="bi2x";r.guard(c);
@@ -9322,7 +13016,7 @@ r.command(c,"set_scale_size",["8",null]);
 c.block="8f7a";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","30",null]);
 c.block="m9vq";r.guard(c);
-for(let i288=0,n288=Math.max(0,Math.floor(r.num("70")));i288<n288;i288++){
+for(let i312=0,n312=Math.max(0,Math.floor(r.num("70")));i312<n312;i312++){
 c.block="q37h";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["150","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="0c5j";r.guard(c);
@@ -9359,7 +13053,7 @@ r.command(c,"show",[null]);
 c.block="13os";r.guard(c);
 r.command(c,"set_scale_size",["7",null]);
 c.block="axq5";r.guard(c);
-for(let i289=0,n289=Math.max(0,Math.floor(r.num("20")));i289<n289;i289++){
+for(let i313=0,n313=Math.max(0,Math.floor(r.num("20")));i313<n313;i313++){
 c.block="tvlz";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"self",null,"x"])]),"DIVIDE","4"]),null]);
 c.block="x0qd";r.guard(c);
@@ -9383,7 +13077,7 @@ r.command(c,"show",[null]);
 c.block="onh9";r.guard(c);
 r.command(c,"set_scale_size",["7",null]);
 c.block="ryfa";r.guard(c);
-for(let i290=0,n290=Math.max(0,Math.floor(r.num("20")));i290<n290;i290++){
+for(let i314=0,n314=Math.max(0,Math.floor(r.num("20")));i314<n314;i314++){
 c.block="1v0b";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"self",null,"x"])]),"DIVIDE","4"]),null]);
 c.block="dnzu";r.guard(c);
@@ -9420,7 +13114,7 @@ r.command(c,"set_scale_size",[r.value(c,"value_of_index_from_list",[null,"jlth",
 c.block="mngx";r.guard(c);
 r.command(c,"change_variable",["xbcl","1",null]);
 c.block="3840";r.guard(c);
-for(let i291=0,n291=Math.max(0,Math.floor(r.num("360")));i291<n291;i291++){
+for(let i315=0,n315=Math.max(0,Math.floor(r.num("360")));i315<n315;i315++){
 c.block="rw6k";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="ija1";r.guard(c);
@@ -9428,7 +13122,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"value_of_index
 yield 1;
 }
 c.block="71uh";r.guard(c);
-for(let i292=0,n292=Math.max(0,Math.floor(r.num("10")));i292<n292;i292++){
+for(let i316=0,n316=Math.max(0,Math.floor(r.num("10")));i316<n316;i316++){
 c.block="c0gb";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="50ta";r.guard(c);
@@ -9452,7 +13146,7 @@ r.command(c,"set_scale_size",[r.value(c,"value_of_index_from_list",[null,"jlth",
 c.block="5zi0";r.guard(c);
 r.command(c,"change_variable",["xbcl","1",null]);
 c.block="1imc";r.guard(c);
-for(let i293=0,n293=Math.max(0,Math.floor(r.num("360")));i293<n293;i293++){
+for(let i317=0,n317=Math.max(0,Math.floor(r.num("360")));i317<n317;i317++){
 c.block="mweb";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="fh1m";r.guard(c);
@@ -9460,7 +13154,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"value_of_index
 yield 1;
 }
 c.block="f6yt";r.guard(c);
-for(let i294=0,n294=Math.max(0,Math.floor(r.num("10")));i294<n294;i294++){
+for(let i318=0,n318=Math.max(0,Math.floor(r.num("10")));i318<n318;i318++){
 c.block="dk8o";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="yjwo";r.guard(c);
@@ -9500,7 +13194,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"359",null])
 c.block="2cb4";r.guard(c);
 r.command(c,"set_variable",["o7uy","-1.2",null]);
 c.block="3ykg";r.guard(c);
-for(let i295=0,n295=Math.max(0,Math.floor(r.num("60")));i295<n295;i295++){
+for(let i319=0,n319=Math.max(0,Math.floor(r.num("60")));i319<n319;i319++){
 c.block="xxm8";r.guard(c);
 r.command(c,"change_variable",["o7uy","0.02",null]);
 c.block="xkfv";r.guard(c);
@@ -9631,7 +13325,7 @@ r.command(c,"set_variable",["azdc","0",null]);
 c.block="z44y";r.guard(c);
 r.command(c,"set_variable",["x0m1","1.5",null]);
 c.block="6rzo";r.guard(c);
-for(let i296=0,n296=Math.max(0,Math.floor(r.num("30")));i296<n296;i296++){
+for(let i320=0,n320=Math.max(0,Math.floor(r.num("30")));i320<n320;i320++){
 c.block="gqsv";r.guard(c);
 r.command(c,"change_variable",["azdc",r.value(c,"calc_basic",[r.value(c,"get_variable",["x0m1",null]),"MULTI","0.4"]),null]);
 c.block="jepr";r.guard(c);
@@ -9653,7 +13347,7 @@ yield 1;
 c.block="lj62";r.guard(c);
 r.command(c,"set_variable",["x0m1","-4",null]);
 c.block="4z89";r.guard(c);
-for(let i297=0,n297=Math.max(0,Math.floor(r.num("6")));i297<n297;i297++){
+for(let i321=0,n321=Math.max(0,Math.floor(r.num("6")));i321<n321;i321++){
 c.block="tx0v";r.guard(c);
 r.command(c,"change_variable",["azdc",r.value(c,"calc_basic",[r.value(c,"get_variable",["x0m1",null]),"MULTI","0.7"]),null]);
 c.block="7y90";r.guard(c);
@@ -9673,7 +13367,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="4l9i";r.guard(c);
-for(let i298=0,n298=Math.max(0,Math.floor(r.num("14")));i298<n298;i298++){
+for(let i322=0,n322=Math.max(0,Math.floor(r.num("14")));i322<n322;i322++){
 c.block="t5wu";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="uy00";r.guard(c);
@@ -9689,7 +13383,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="ka75";r.guard(c);
-for(let i299=0,n299=Math.max(0,Math.floor(r.num("10")));i299<n299;i299++){
+for(let i323=0,n323=Math.max(0,Math.floor(r.num("10")));i323<n323;i323++){
 c.block="sg45";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="hpsq";r.guard(c);
@@ -9743,7 +13437,7 @@ r.command(c,"set_variable",["azdc","0",null]);
 c.block="xhte";r.guard(c);
 r.command(c,"set_variable",["x0m1","1.5",null]);
 c.block="gch5";r.guard(c);
-for(let i300=0,n300=Math.max(0,Math.floor(r.num("30")));i300<n300;i300++){
+for(let i324=0,n324=Math.max(0,Math.floor(r.num("30")));i324<n324;i324++){
 c.block="71op";r.guard(c);
 r.command(c,"change_variable",["azdc",r.value(c,"calc_basic",[r.value(c,"get_variable",["x0m1",null]),"MULTI","0.4"]),null]);
 c.block="t1kf";r.guard(c);
@@ -9765,7 +13459,7 @@ yield 1;
 c.block="yko7";r.guard(c);
 r.command(c,"set_variable",["x0m1","-4",null]);
 c.block="t79u";r.guard(c);
-for(let i301=0,n301=Math.max(0,Math.floor(r.num("6")));i301<n301;i301++){
+for(let i325=0,n325=Math.max(0,Math.floor(r.num("6")));i325<n325;i325++){
 c.block="7qzq";r.guard(c);
 r.command(c,"change_variable",["azdc",r.value(c,"calc_basic",[r.value(c,"get_variable",["x0m1",null]),"MULTI","0.7"]),null]);
 c.block="45l9";r.guard(c);
@@ -9785,7 +13479,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="hjsd";r.guard(c);
-for(let i302=0,n302=Math.max(0,Math.floor(r.num("14")));i302<n302;i302++){
+for(let i326=0,n326=Math.max(0,Math.floor(r.num("14")));i326<n326;i326++){
 c.block="z9v6";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="50xw";r.guard(c);
@@ -9801,7 +13495,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="67a4";r.guard(c);
-for(let i303=0,n303=Math.max(0,Math.floor(r.num("10")));i303<n303;i303++){
+for(let i327=0,n327=Math.max(0,Math.floor(r.num("10")));i327<n327;i327++){
 c.block="kpdm";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="mdqw";r.guard(c);
@@ -9838,7 +13532,7 @@ r.command(c,"rotate_relative",["90",null]);
 c.block="7cim";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8yy6",null]),"EQUAL","1"]))){yield 1;}
 c.block="ehzr";r.guard(c);
-for(let i304=0,n304=Math.max(0,Math.floor(r.num("60")));i304<n304;i304++){
+for(let i328=0,n328=Math.max(0,Math.floor(r.num("60")));i328<n328;i328++){
 c.block="q0j3";r.guard(c);
 r.command(c,"move_direction",["3",null]);
 c.block="0asm";r.guard(c);
@@ -9865,7 +13559,7 @@ r.command(c,"rotate_relative",["-90",null]);
 c.block="a5za";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8yy6",null]),"EQUAL","1"]))){yield 1;}
 c.block="jz7r";r.guard(c);
-for(let i305=0,n305=Math.max(0,Math.floor(r.num("60")));i305<n305;i305++){
+for(let i329=0,n329=Math.max(0,Math.floor(r.num("60")));i329<n329;i329++){
 c.block="kg9t";r.guard(c);
 r.command(c,"move_direction",["3",null]);
 c.block="q328";r.guard(c);
@@ -9900,7 +13594,7 @@ r.command(c,"rotate_relative",["90",null]);
 c.block="33ky";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8yy6",null]),"EQUAL","1"]))){yield 1;}
 c.block="8bs0";r.guard(c);
-for(let i306=0,n306=Math.max(0,Math.floor(r.num("60")));i306<n306;i306++){
+for(let i330=0,n330=Math.max(0,Math.floor(r.num("60")));i330<n330;i330++){
 c.block="scr7";r.guard(c);
 r.command(c,"move_direction",["3",null]);
 c.block="efni";r.guard(c);
@@ -9924,7 +13618,7 @@ r.command(c,"rotate_relative",["-90",null]);
 c.block="849a";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8yy6",null]),"EQUAL","1"]))){yield 1;}
 c.block="amse";r.guard(c);
-for(let i307=0,n307=Math.max(0,Math.floor(r.num("60")));i307<n307;i307++){
+for(let i331=0,n331=Math.max(0,Math.floor(r.num("60")));i331<n331;i331++){
 c.block="d10l";r.guard(c);
 r.command(c,"move_direction",["3",null]);
 c.block="194d";r.guard(c);
@@ -9959,7 +13653,7 @@ r.command(c,"set_variable",["4jsv",r.value(c,"coordinate_object",[null,"self",nu
 c.block="n52u";r.guard(c);
 r.command(c,"create_clone",["5luh",null]);
 c.block="qlui";r.guard(c);
-for(let i308=0,n308=Math.max(0,Math.floor(r.num("5")));i308<n308;i308++){
+for(let i332=0,n332=Math.max(0,Math.floor(r.num("5")));i332<n332;i332++){
 yield 1;
 }
 yield 1;
@@ -9988,7 +13682,7 @@ r.command(c,"set_scale_size",["13",null]);
 c.block="kcgm";r.guard(c);
 r.command(c,"show",[null]);
 c.block="s1c5";r.guard(c);
-for(let i309=0,n309=Math.max(0,Math.floor(r.num("26")));i309<n309;i309++){
+for(let i333=0,n333=Math.max(0,Math.floor(r.num("26")));i333<n333;i333++){
 c.block="1noi";r.guard(c);
 r.command(c,"change_scale_size",["-0.5",null]);
 c.block="kkdw";r.guard(c);
@@ -10012,7 +13706,7 @@ r.command(c,"set_scale_size",["13",null]);
 c.block="aoxo";r.guard(c);
 r.command(c,"show",[null]);
 c.block="mtst";r.guard(c);
-for(let i310=0,n310=Math.max(0,Math.floor(r.num("26")));i310<n310;i310++){
+for(let i334=0,n334=Math.max(0,Math.floor(r.num("26")));i334<n334;i334++){
 c.block="wd4b";r.guard(c);
 r.command(c,"change_scale_size",["-0.5",null]);
 c.block="3mva";r.guard(c);
@@ -10048,7 +13742,7 @@ r.command(c,"rotate_absolute",["90",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i311=0,n311=Math.max(0,Math.floor(r.num("15")));i311<n311;i311++){
+for(let i335=0,n335=Math.max(0,Math.floor(r.num("15")));i335<n335;i335++){
 c.block="noob";r.guard(c);
 r.command(c,"set_variable",["zt2t",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="tkqf";r.guard(c);
@@ -10056,7 +13750,7 @@ r.command(c,"set_variable",["iuwz",r.value(c,"coordinate_object",[null,"self",nu
 c.block="c32n";r.guard(c);
 r.command(c,"create_clone",["q4lr",null]);
 c.block="9xg1";r.guard(c);
-for(let i312=0,n312=Math.max(0,Math.floor(r.num("5")));i312<n312;i312++){
+for(let i336=0,n336=Math.max(0,Math.floor(r.num("5")));i336<n336;i336++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",["3",null]);
 c.block="gvza";r.guard(c);
@@ -10132,7 +13826,7 @@ r.command(c,"set_variable",["8yy6","0",null]);
 c.block="4h6p";r.guard(c);
 r.command(c,"set_variable",["6bjo","0",null]);
 c.block="0dnu";r.guard(c);
-for(let i313=0,n313=Math.max(0,Math.floor(r.num("2")));i313<n313;i313++){
+for(let i337=0,n337=Math.max(0,Math.floor(r.num("2")));i337<n337;i337++){
 c.block="2vbo";r.guard(c);
 r.command(c,"change_variable",["6bjo","1",null]);
 c.block="eukz";r.guard(c);
@@ -10177,7 +13871,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="5r9y";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="42g6";r.guard(c);
-for(let i314=0,n314=Math.max(0,Math.floor(r.num("4")));i314<n314;i314++){
+for(let i338=0,n338=Math.max(0,Math.floor(r.num("4")));i338<n338;i338++){
 yield 1;
 }
 c.block="5pbs";r.guard(c);
@@ -10185,7 +13879,7 @@ r.command(c,"set_variable",["qvkr","2",null]);
 c.block="07bf";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="4vav";r.guard(c);
-for(let i315=0,n315=Math.max(0,Math.floor(r.num("4")));i315<n315;i315++){
+for(let i339=0,n339=Math.max(0,Math.floor(r.num("4")));i339<n339;i339++){
 yield 1;
 }
 yield 1;
@@ -10273,7 +13967,7 @@ r.command(c,"set_scale_size",["13",null]);
 c.block="kcgm";r.guard(c);
 r.command(c,"show",[null]);
 c.block="s1c5";r.guard(c);
-for(let i316=0,n316=Math.max(0,Math.floor(r.num("26")));i316<n316;i316++){
+for(let i340=0,n340=Math.max(0,Math.floor(r.num("26")));i340<n340;i340++){
 c.block="1noi";r.guard(c);
 r.command(c,"change_scale_size",["-0.5",null]);
 c.block="kkdw";r.guard(c);
@@ -10297,7 +13991,7 @@ r.command(c,"set_scale_size",["13",null]);
 c.block="aoxo";r.guard(c);
 r.command(c,"show",[null]);
 c.block="mtst";r.guard(c);
-for(let i317=0,n317=Math.max(0,Math.floor(r.num("26")));i317<n317;i317++){
+for(let i341=0,n341=Math.max(0,Math.floor(r.num("26")));i341<n341;i341++){
 c.block="wd4b";r.guard(c);
 r.command(c,"change_scale_size",["-0.5",null]);
 c.block="3mva";r.guard(c);
@@ -10333,7 +14027,7 @@ r.command(c,"rotate_absolute",["90",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i318=0,n318=Math.max(0,Math.floor(r.num("15")));i318<n318;i318++){
+for(let i342=0,n342=Math.max(0,Math.floor(r.num("15")));i342<n342;i342++){
 c.block="noob";r.guard(c);
 r.command(c,"set_variable",["zt2t",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="tkqf";r.guard(c);
@@ -10341,7 +14035,7 @@ r.command(c,"set_variable",["iuwz",r.value(c,"coordinate_object",[null,"self",nu
 c.block="c32n";r.guard(c);
 r.command(c,"create_clone",["q4lr",null]);
 c.block="9xg1";r.guard(c);
-for(let i319=0,n319=Math.max(0,Math.floor(r.num("5")));i319<n319;i319++){
+for(let i343=0,n343=Math.max(0,Math.floor(r.num("5")));i343<n343;i343++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",["3",null]);
 c.block="gvza";r.guard(c);
@@ -10417,7 +14111,7 @@ r.command(c,"set_variable",["8yy6","0",null]);
 c.block="4h6p";r.guard(c);
 r.command(c,"set_variable",["6bjo","0",null]);
 c.block="0dnu";r.guard(c);
-for(let i320=0,n320=Math.max(0,Math.floor(r.num("2")));i320<n320;i320++){
+for(let i344=0,n344=Math.max(0,Math.floor(r.num("2")));i344<n344;i344++){
 c.block="2vbo";r.guard(c);
 r.command(c,"change_variable",["6bjo","1",null]);
 c.block="eukz";r.guard(c);
@@ -10462,7 +14156,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="5r9y";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="42g6";r.guard(c);
-for(let i321=0,n321=Math.max(0,Math.floor(r.num("4")));i321<n321;i321++){
+for(let i345=0,n345=Math.max(0,Math.floor(r.num("4")));i345<n345;i345++){
 yield 1;
 }
 c.block="rxfa";r.guard(c);
@@ -10470,7 +14164,7 @@ r.command(c,"set_variable",["rr24","2",null]);
 c.block="07bf";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="4vav";r.guard(c);
-for(let i322=0,n322=Math.max(0,Math.floor(r.num("4")));i322<n322;i322++){
+for(let i346=0,n346=Math.max(0,Math.floor(r.num("4")));i346<n346;i346++){
 yield 1;
 }
 yield 1;
@@ -10556,7 +14250,7 @@ r.command(c,"show",[null]);
 c.block="g3ps";r.guard(c);
 r.command(c,"set_thickness",["0",null]);
 c.block="ld6l";r.guard(c);
-for(let i323=0,n323=Math.max(0,Math.floor(r.num("15")));i323<n323;i323++){
+for(let i347=0,n347=Math.max(0,Math.floor(r.num("15")));i347<n347;i347++){
 c.block="30hw";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="1xeu";r.guard(c);
@@ -10585,7 +14279,7 @@ yield 1;
 c.block="g5su";r.guard(c);
 r.command(c,"set_variable",["vct3","0",null]);
 c.block="dlom";r.guard(c);
-for(let i324=0,n324=Math.max(0,Math.floor(r.num("10")));i324<n324;i324++){
+for(let i348=0,n348=Math.max(0,Math.floor(r.num("10")));i348<n348;i348++){
 c.block="wasw";r.guard(c);
 r.command(c,"change_thickness",[r.value(c,"calc_basic",["4","DIVIDE","25"]),null]);
 c.block="t7po";r.guard(c);
@@ -10598,11 +14292,11 @@ break;
 yield 1;
 }
 c.block="1sds";r.guard(c);
-for(let i325=0,n325=Math.max(0,Math.floor(r.num("4")));i325<n325;i325++){
+for(let i349=0,n349=Math.max(0,Math.floor(r.num("4")));i349<n349;i349++){
 c.block="4blo";r.guard(c);
 r.command(c,"set_variable",["vct3","0",null]);
 c.block="9th9";r.guard(c);
-for(let i326=0,n326=Math.max(0,Math.floor(r.num("10")));i326<n326;i326++){
+for(let i350=0,n350=Math.max(0,Math.floor(r.num("10")));i350<n350;i350++){
 c.block="s0vn";r.guard(c);
 yield* r.call(c,"nk1g",[]);
 c.block="3836";r.guard(c);
@@ -10622,7 +14316,7 @@ yield 1;
 c.block="uu87";r.guard(c);
 r.command(c,"set_variable",["vct3","0",null]);
 c.block="e8sm";r.guard(c);
-for(let i327=0,n327=Math.max(0,Math.floor(r.num("10")));i327<n327;i327++){
+for(let i351=0,n351=Math.max(0,Math.floor(r.num("10")));i351<n351;i351++){
 c.block="inib";r.guard(c);
 r.command(c,"change_thickness",[r.value(c,"calc_basic",["4","DIVIDE","-25"]),null]);
 c.block="osr4";r.guard(c);
@@ -10635,7 +14329,7 @@ break;
 yield 1;
 }
 c.block="5s6d";r.guard(c);
-for(let i328=0,n328=Math.max(0,Math.floor(r.num("15")));i328<n328;i328++){
+for(let i352=0,n352=Math.max(0,Math.floor(r.num("15")));i352<n352;i352++){
 c.block="98q5";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="liby";r.guard(c);
@@ -10678,7 +14372,7 @@ r.command(c,"show",[null]);
 c.block="t03q";r.guard(c);
 r.command(c,"set_variable",["b9tg","1",null]);
 c.block="ybln";r.guard(c);
-for(let i329=0,n329=Math.max(0,Math.floor(r.num("30")));i329<n329;i329++){
+for(let i353=0,n353=Math.max(0,Math.floor(r.num("30")));i353<n353;i353++){
 c.block="2oku";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["222","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","5"]),null]);
 yield 1;
@@ -10686,7 +14380,7 @@ yield 1;
 c.block="q4v2";r.guard(c);
 r.command(c,"set_scale_size",["222",null]);
 c.block="nju0";r.guard(c);
-for(let i330=0,n330=Math.max(0,Math.floor(r.num("20")));i330<n330;i330++){
+for(let i354=0,n354=Math.max(0,Math.floor(r.num("20")));i354<n354;i354++){
 yield 1;
 }
 c.block="048w";r.guard(c);
@@ -10701,7 +14395,7 @@ c.block="3640";r.guard(c);
 yield* r.call(c,"05j0",["-10",10,"2"]);
 }
 c.block="92xu";r.guard(c);
-for(let i331=0,n331=Math.max(0,Math.floor(r.num("50")));i331<n331;i331++){
+for(let i355=0,n355=Math.max(0,Math.floor(r.num("50")));i355<n355;i355++){
 c.block="lv8v";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -10744,7 +14438,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="4vlo";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="ptre";r.guard(c);
-for(let i332=0,n332=Math.max(0,Math.floor(r.num("165")));i332<n332;i332++){
+for(let i356=0,n356=Math.max(0,Math.floor(r.num("165")));i356<n356;i356++){
 yield 1;
 }
 }
@@ -10768,7 +14462,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",
 c.block="s05e";r.guard(c);
 r.command(c,"set_variable",["s9vp","1",null]);
 c.block="q5h7";r.guard(c);
-for(let i333=0,n333=Math.max(0,Math.floor(r.num("20")));i333<n333;i333++){
+for(let i357=0,n357=Math.max(0,Math.floor(r.num("20")));i357<n357;i357++){
 c.block="uuzq";r.guard(c);
 r.command(c,"change_variable",["thom","-0.15",null]);
 yield 1;
@@ -10782,7 +14476,7 @@ yield 1;
 c.block="jg2i";r.guard(c);
 r.command(c,"set_variable",["s9vp","0",null]);
 c.block="x12n";r.guard(c);
-for(let i334=0,n334=Math.max(0,Math.floor(r.num("40")));i334<n334;i334++){
+for(let i358=0,n358=Math.max(0,Math.floor(r.num("40")));i358<n358;i358++){
 yield 1;
 }
 }
@@ -10846,7 +14540,7 @@ r.command(c,"show",[null]);
 c.block="g3ps";r.guard(c);
 r.command(c,"set_thickness",["0",null]);
 c.block="ld6l";r.guard(c);
-for(let i335=0,n335=Math.max(0,Math.floor(r.num("15")));i335<n335;i335++){
+for(let i359=0,n359=Math.max(0,Math.floor(r.num("15")));i359<n359;i359++){
 c.block="30hw";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="1xeu";r.guard(c);
@@ -10875,7 +14569,7 @@ yield 1;
 c.block="g5su";r.guard(c);
 r.command(c,"set_variable",["nsnb","0",null]);
 c.block="dlom";r.guard(c);
-for(let i336=0,n336=Math.max(0,Math.floor(r.num("10")));i336<n336;i336++){
+for(let i360=0,n360=Math.max(0,Math.floor(r.num("10")));i360<n360;i360++){
 c.block="wasw";r.guard(c);
 r.command(c,"change_thickness",[r.value(c,"calc_basic",["4","DIVIDE","25"]),null]);
 c.block="q0pu";r.guard(c);
@@ -10888,11 +14582,11 @@ break;
 yield 1;
 }
 c.block="1sds";r.guard(c);
-for(let i337=0,n337=Math.max(0,Math.floor(r.num("4")));i337<n337;i337++){
+for(let i361=0,n361=Math.max(0,Math.floor(r.num("4")));i361<n361;i361++){
 c.block="4blo";r.guard(c);
 r.command(c,"set_variable",["nsnb","0",null]);
 c.block="9th9";r.guard(c);
-for(let i338=0,n338=Math.max(0,Math.floor(r.num("10")));i338<n338;i338++){
+for(let i362=0,n362=Math.max(0,Math.floor(r.num("10")));i362<n362;i362++){
 c.block="4t2h";r.guard(c);
 yield* r.call(c,"8204",[]);
 c.block="o738";r.guard(c);
@@ -10912,7 +14606,7 @@ yield 1;
 c.block="uu87";r.guard(c);
 r.command(c,"set_variable",["nsnb","0",null]);
 c.block="e8sm";r.guard(c);
-for(let i339=0,n339=Math.max(0,Math.floor(r.num("10")));i339<n339;i339++){
+for(let i363=0,n363=Math.max(0,Math.floor(r.num("10")));i363<n363;i363++){
 c.block="inib";r.guard(c);
 r.command(c,"change_thickness",[r.value(c,"calc_basic",["4","DIVIDE","-25"]),null]);
 c.block="682q";r.guard(c);
@@ -10925,7 +14619,7 @@ break;
 yield 1;
 }
 c.block="5s6d";r.guard(c);
-for(let i340=0,n340=Math.max(0,Math.floor(r.num("15")));i340<n340;i340++){
+for(let i364=0,n364=Math.max(0,Math.floor(r.num("15")));i364<n364;i364++){
 c.block="98q5";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="liby";r.guard(c);
@@ -10968,7 +14662,7 @@ r.command(c,"show",[null]);
 c.block="t03q";r.guard(c);
 r.command(c,"set_variable",["b9tg","1",null]);
 c.block="ybln";r.guard(c);
-for(let i341=0,n341=Math.max(0,Math.floor(r.num("30")));i341<n341;i341++){
+for(let i365=0,n365=Math.max(0,Math.floor(r.num("30")));i365<n365;i365++){
 c.block="2oku";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["222","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","5"]),null]);
 yield 1;
@@ -10976,7 +14670,7 @@ yield 1;
 c.block="q4v2";r.guard(c);
 r.command(c,"set_scale_size",["222",null]);
 c.block="nju0";r.guard(c);
-for(let i342=0,n342=Math.max(0,Math.floor(r.num("20")));i342<n342;i342++){
+for(let i366=0,n366=Math.max(0,Math.floor(r.num("20")));i366<n366;i366++){
 yield 1;
 }
 c.block="048w";r.guard(c);
@@ -10991,7 +14685,7 @@ c.block="5xox";r.guard(c);
 yield* r.call(c,"qy83",["-10",10,"2"]);
 }
 c.block="92xu";r.guard(c);
-for(let i343=0,n343=Math.max(0,Math.floor(r.num("50")));i343<n343;i343++){
+for(let i367=0,n367=Math.max(0,Math.floor(r.num("50")));i367<n367;i367++){
 c.block="lv8v";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -11034,7 +14728,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="4vlo";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="ptre";r.guard(c);
-for(let i344=0,n344=Math.max(0,Math.floor(r.num("165")));i344<n344;i344++){
+for(let i368=0,n368=Math.max(0,Math.floor(r.num("165")));i368<n368;i368++){
 yield 1;
 }
 }
@@ -11058,7 +14752,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",
 c.block="s05e";r.guard(c);
 r.command(c,"set_variable",["s9vp","1",null]);
 c.block="q5h7";r.guard(c);
-for(let i345=0,n345=Math.max(0,Math.floor(r.num("20")));i345<n345;i345++){
+for(let i369=0,n369=Math.max(0,Math.floor(r.num("20")));i369<n369;i369++){
 c.block="uuzq";r.guard(c);
 r.command(c,"change_variable",["qn98","-0.15",null]);
 yield 1;
@@ -11072,7 +14766,7 @@ yield 1;
 c.block="jg2i";r.guard(c);
 r.command(c,"set_variable",["s9vp","0",null]);
 c.block="x12n";r.guard(c);
-for(let i346=0,n346=Math.max(0,Math.floor(r.num("40")));i346<n346;i346++){
+for(let i370=0,n370=Math.max(0,Math.floor(r.num("40")));i370<n370;i370++){
 yield 1;
 }
 }
@@ -11171,7 +14865,7 @@ c.block="b2mt";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="4ajd";r.guard(c);
-for(let i347=0,n347=Math.max(0,Math.floor(r.num("40")));i347<n347;i347++){
+for(let i371=0,n371=Math.max(0,Math.floor(r.num("40")));i371<n371;i371++){
 c.block="vz1j";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vrg7",null]),"EQUAL","1"]))){
 c.block="yyql";r.guard(c);
@@ -11210,7 +14904,7 @@ r.command(c,"message_cast",["p724",null]);
 yield 1;
 }
 c.block="qjy8";r.guard(c);
-for(let i348=0,n348=Math.max(0,Math.floor(r.num("5")));i348<n348;i348++){
+for(let i372=0,n372=Math.max(0,Math.floor(r.num("5")));i372<n372;i372++){
 c.block="x37t";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="dbe9";r.guard(c);
@@ -11296,7 +14990,7 @@ c.block="g9mx";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="tujg";r.guard(c);
-for(let i349=0,n349=Math.max(0,Math.floor(r.num("40")));i349<n349;i349++){
+for(let i373=0,n373=Math.max(0,Math.floor(r.num("40")));i373<n373;i373++){
 c.block="3a71";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vrg7",null]),"EQUAL","1"]))){
 c.block="f8cl";r.guard(c);
@@ -11335,7 +15029,7 @@ r.command(c,"message_cast",["p724",null]);
 yield 1;
 }
 c.block="z6y4";r.guard(c);
-for(let i350=0,n350=Math.max(0,Math.floor(r.num("5")));i350<n350;i350++){
+for(let i374=0,n374=Math.max(0,Math.floor(r.num("5")));i374<n374;i374++){
 c.block="b9lm";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="h8ym";r.guard(c);
@@ -11385,7 +15079,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",
 c.block="3ssl";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="8re9";r.guard(c);
-for(let i351=0,n351=Math.max(0,Math.floor(r.num("90")));i351<n351;i351++){
+for(let i375=0,n375=Math.max(0,Math.floor(r.num("90")));i375<n375;i375++){
 yield 1;
 }
 c.block="vdfs";r.guard(c);
@@ -11394,7 +15088,7 @@ r.command(c,"set_variable",["wyyq","0",null]);
 c.block="0lh2";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="zsb8";r.guard(c);
-for(let i352=0,n352=Math.max(0,Math.floor(r.num("90")));i352<n352;i352++){
+for(let i376=0,n376=Math.max(0,Math.floor(r.num("90")));i376<n376;i376++){
 yield 1;
 }
 c.block="q2jg";r.guard(c);
@@ -11406,7 +15100,7 @@ r.register("4cof","when_message_cast",[null,"2q4x"],function*(r,c){
 c.block="pjn0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","24"]))){
 c.block="v9ju";r.guard(c);
-for(let i353=0,n353=Math.max(0,Math.floor(r.num("150")));i353<n353;i353++){
+for(let i377=0,n377=Math.max(0,Math.floor(r.num("150")));i377<n377;i377++){
 c.block="gr3h";r.guard(c);
 r.command(c,"set_variable",["nccn","16",null]);
 c.block="v7jh";r.guard(c);
@@ -11417,7 +15111,7 @@ c.block="oet3";r.guard(c);
 r.command(c,"set_variable",["7vqa","0",null]);
 }else{
 c.block="ugr0";r.guard(c);
-for(let i354=0,n354=Math.max(0,Math.floor(r.num("150")));i354<n354;i354++){
+for(let i378=0,n378=Math.max(0,Math.floor(r.num("150")));i378<n378;i378++){
 c.block="vhel";r.guard(c);
 r.command(c,"set_variable",["9af4","16",null]);
 c.block="4k3b";r.guard(c);
@@ -11437,7 +15131,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["gdvn"]),null]);
 c.block="k394";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qvkr",null]),"EQUAL","0"]))){
 c.block="dfvn";r.guard(c);
-for(let i355=0,n355=Math.max(0,Math.floor(r.num("1")));i355<n355;i355++){
+for(let i379=0,n379=Math.max(0,Math.floor(r.num("1")));i379<n379;i379++){
 yield 1;
 }
 c.block="8t8d";r.guard(c);
@@ -11466,7 +15160,7 @@ r.command(c,"set_variable",["k94b","2",null]);
 c.block="rmos";r.guard(c);
 r.command(c,"set_variable",["glap",r.value(c,"get_variable",["846x",null]),null]);
 c.block="vvuf";r.guard(c);
-for(let i356=0,n356=Math.max(0,Math.floor(r.num("20")));i356<n356;i356++){
+for(let i380=0,n380=Math.max(0,Math.floor(r.num("20")));i380<n380;i380++){
 c.block="5s3l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["glap",null]),"EQUAL","1"]))){
 c.block="bwes";r.guard(c);
@@ -11490,7 +15184,7 @@ r.command(c,"set_variable",["ihrd","1",null]);
 yield 1;
 }
 c.block="5v70";r.guard(c);
-for(let i357=0,n357=Math.max(0,Math.floor(r.num("5")));i357<n357;i357++){
+for(let i381=0,n381=Math.max(0,Math.floor(r.num("5")));i381<n381;i381++){
 c.block="e7jd";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="fo76";r.guard(c);
@@ -11522,7 +15216,7 @@ r.command(c,"set_scale_size",["80",null]);
 c.block="7bnr";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="mabe";r.guard(c);
-for(let i358=0,n358=Math.max(0,Math.floor(r.num("20")));i358<n358;i358++){
+for(let i382=0,n382=Math.max(0,Math.floor(r.num("20")));i382<n382;i382++){
 c.block="4wft";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-3",null]);
 c.block="306w";r.guard(c);
@@ -11534,7 +15228,7 @@ yield 1;
 c.block="3o3i";r.guard(c);
 r.command(c,"set_variable",["6rgj","0",null]);
 c.block="8mmv";r.guard(c);
-for(let i359=0,n359=Math.max(0,Math.floor(r.num("180")));i359<n359;i359++){
+for(let i383=0,n383=Math.max(0,Math.floor(r.num("180")));i383<n383;i383++){
 c.block="h56q";r.guard(c);
 r.command(c,"change_variable",["ljvf","1",null]);
 c.block="61x6";r.guard(c);
@@ -11566,13 +15260,13 @@ c.block="zgny";r.guard(c);
 r.command(c,"set_variable",["9af4","33",null]);
 }
 c.block="pani";r.guard(c);
-for(let i360=0,n360=Math.max(0,Math.floor(r.num("1")));i360<n360;i360++){
+for(let i384=0,n384=Math.max(0,Math.floor(r.num("1")));i384<n384;i384++){
 c.block="vpob";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 yield 1;
 }
 c.block="mxjy";r.guard(c);
-for(let i361=0,n361=Math.max(0,Math.floor(r.num("25")));i361<n361;i361++){
+for(let i385=0,n385=Math.max(0,Math.floor(r.num("25")));i385<n385;i385++){
 c.block="4e5b";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="opcv";r.guard(c);
@@ -11600,7 +15294,7 @@ c.block="t07e";r.guard(c);
 r.command(c,"rotate_relative",["-90",null]);
 }
 c.block="8um3";r.guard(c);
-for(let i362=0,n362=Math.max(0,Math.floor(r.num("60")));i362<n362;i362++){
+for(let i386=0,n386=Math.max(0,Math.floor(r.num("60")));i386<n386;i386++){
 c.block="1wys";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="aj6o";r.guard(c);
@@ -11632,7 +15326,7 @@ c.block="2m0i";r.guard(c);
 r.command(c,"change_variable",["gfu7","-7",null]);
 }
 c.block="i73i";r.guard(c);
-for(let i363=0,n363=Math.max(0,Math.floor(r.num("10")));i363<n363;i363++){
+for(let i387=0,n387=Math.max(0,Math.floor(r.num("10")));i387<n387;i387++){
 c.block="o4vo";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="m1rs";r.guard(c);
@@ -11698,7 +15392,7 @@ c.block="guov";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="qeb9";r.guard(c);
-for(let i364=0,n364=Math.max(0,Math.floor(r.num("8")));i364<n364;i364++){
+for(let i388=0,n388=Math.max(0,Math.floor(r.num("8")));i388<n388;i388++){
 yield 1;
 }
 c.block="8qse";r.guard(c);
@@ -11706,7 +15400,7 @@ r.command(c,"show",[null]);
 c.block="7jfz";r.guard(c);
 r.command(c,"set_variable",["k94b","3",null]);
 c.block="qkke";r.guard(c);
-for(let i365=0,n365=Math.max(0,Math.floor(r.num("20")));i365<n365;i365++){
+for(let i389=0,n389=Math.max(0,Math.floor(r.num("20")));i389<n389;i389++){
 c.block="ic8n";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["glap",null]),"EQUAL","1"]))){
 c.block="da5l";r.guard(c);
@@ -11730,7 +15424,7 @@ r.command(c,"set_variable",["ihrd","1",null]);
 yield 1;
 }
 c.block="4814";r.guard(c);
-for(let i366=0,n366=Math.max(0,Math.floor(r.num("5")));i366<n366;i366++){
+for(let i390=0,n390=Math.max(0,Math.floor(r.num("5")));i390<n390;i390++){
 c.block="h10m";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="yu5g";r.guard(c);
@@ -11797,7 +15491,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="jntz";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="3leb";r.guard(c);
-for(let i367=0,n367=Math.max(0,Math.floor(r.num("1")));i367<n367;i367++){
+for(let i391=0,n391=Math.max(0,Math.floor(r.num("1")));i391<n391;i391++){
 yield 1;
 }
 c.block="g9or";r.guard(c);
@@ -11807,7 +15501,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="7oxo";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="wb5c";r.guard(c);
-for(let i368=0,n368=Math.max(0,Math.floor(r.num("50")));i368<n368;i368++){
+for(let i392=0,n392=Math.max(0,Math.floor(r.num("50")));i392<n392;i392++){
 c.block="jiw2";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["40",null]))){
 c.block="5gnq";r.guard(c);
@@ -11826,7 +15520,7 @@ r.command(c,"show",[null]);
 c.block="rpiz";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="zljy";r.guard(c);
-for(let i369=0,n369=Math.max(0,Math.floor(r.num("10")));i369<n369;i369++){
+for(let i393=0,n393=Math.max(0,Math.floor(r.num("10")));i393<n393;i393++){
 c.block="tiq2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","4"]),null]);
 c.block="ba2f";r.guard(c);
@@ -11854,7 +15548,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",
 c.block="vkp6";r.guard(c);
 r.command(c,"create_clone",["dcos",null]);
 c.block="6mtk";r.guard(c);
-for(let i370=0,n370=Math.max(0,Math.floor(r.num("30")));i370<n370;i370++){
+for(let i394=0,n394=Math.max(0,Math.floor(r.num("30")));i394<n394;i394++){
 c.block="w8i3";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="ou40";r.guard(c);
@@ -11884,7 +15578,7 @@ c.block="dh7b";r.guard(c);
 r.command(c,"set_variable",["zcnn","0",null]);
 }
 c.block="b5im";r.guard(c);
-for(let i371=0,n371=Math.max(0,Math.floor(r.num("60")));i371<n371;i371++){
+for(let i395=0,n395=Math.max(0,Math.floor(r.num("60")));i395<n395;i395++){
 c.block="2u9j";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="lwj5";r.guard(c);
@@ -11947,7 +15641,7 @@ r.command(c,"change_variable",["thom","-40",null]);
 c.block="c7w8";r.guard(c);
 r.command(c,"set_variable",["bct6","-7",null]);
 c.block="2agf";r.guard(c);
-for(let i372=0,n372=Math.max(0,Math.floor(r.num("220")));i372<n372;i372++){
+for(let i396=0,n396=Math.max(0,Math.floor(r.num("220")));i396<n396;i396++){
 yield 1;
 }
 }
@@ -11970,7 +15664,7 @@ r.register("52i7","when_message_cast",[null,"tu23"],function*(r,c){
 c.block="w4g5";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="cm64";r.guard(c);
-for(let i373=0,n373=Math.max(0,Math.floor(r.num("90")));i373<n373;i373++){
+for(let i397=0,n397=Math.max(0,Math.floor(r.num("90")));i397<n397;i397++){
 yield 1;
 }
 c.block="eul5";r.guard(c);
@@ -12002,7 +15696,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["q51e"]),null]);
 c.block="k394";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rr24",null]),"EQUAL","0"]))){
 c.block="oa78";r.guard(c);
-for(let i374=0,n374=Math.max(0,Math.floor(r.num("1")));i374<n374;i374++){
+for(let i398=0,n398=Math.max(0,Math.floor(r.num("1")));i398<n398;i398++){
 yield 1;
 }
 c.block="0utn";r.guard(c);
@@ -12031,7 +15725,7 @@ r.command(c,"set_variable",["sykd","2",null]);
 c.block="tqeu";r.guard(c);
 r.command(c,"set_variable",["nr1n",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="1h6j";r.guard(c);
-for(let i375=0,n375=Math.max(0,Math.floor(r.num("20")));i375<n375;i375++){
+for(let i399=0,n399=Math.max(0,Math.floor(r.num("20")));i399<n399;i399++){
 c.block="nlz5";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["nr1n",null]),"EQUAL","1"]))){
 c.block="unnk";r.guard(c);
@@ -12055,7 +15749,7 @@ yield* r.call(c,"qy83",["-3",10,"1"]);
 yield 1;
 }
 c.block="l9md";r.guard(c);
-for(let i376=0,n376=Math.max(0,Math.floor(r.num("5")));i376<n376;i376++){
+for(let i400=0,n400=Math.max(0,Math.floor(r.num("5")));i400<n400;i400++){
 c.block="plzs";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="m3oo";r.guard(c);
@@ -12087,7 +15781,7 @@ r.command(c,"set_scale_size",["80",null]);
 c.block="7bnr";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="mabe";r.guard(c);
-for(let i377=0,n377=Math.max(0,Math.floor(r.num("20")));i377<n377;i377++){
+for(let i401=0,n401=Math.max(0,Math.floor(r.num("20")));i401<n401;i401++){
 c.block="4wft";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-3",null]);
 c.block="306w";r.guard(c);
@@ -12099,7 +15793,7 @@ yield 1;
 c.block="3o3i";r.guard(c);
 r.command(c,"set_variable",["6rgj","0",null]);
 c.block="8mmv";r.guard(c);
-for(let i378=0,n378=Math.max(0,Math.floor(r.num("180")));i378<n378;i378++){
+for(let i402=0,n402=Math.max(0,Math.floor(r.num("180")));i402<n402;i402++){
 c.block="h56q";r.guard(c);
 r.command(c,"change_variable",["ljvf","1",null]);
 c.block="61x6";r.guard(c);
@@ -12131,13 +15825,13 @@ c.block="zgny";r.guard(c);
 r.command(c,"set_variable",["nccn","33",null]);
 }
 c.block="pani";r.guard(c);
-for(let i379=0,n379=Math.max(0,Math.floor(r.num("1")));i379<n379;i379++){
+for(let i403=0,n403=Math.max(0,Math.floor(r.num("1")));i403<n403;i403++){
 c.block="vjyf";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 yield 1;
 }
 c.block="mxjy";r.guard(c);
-for(let i380=0,n380=Math.max(0,Math.floor(r.num("25")));i380<n380;i380++){
+for(let i404=0,n404=Math.max(0,Math.floor(r.num("25")));i404<n404;i404++){
 c.block="t45s";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="opcv";r.guard(c);
@@ -12165,7 +15859,7 @@ c.block="t07e";r.guard(c);
 r.command(c,"rotate_relative",["-90",null]);
 }
 c.block="8um3";r.guard(c);
-for(let i381=0,n381=Math.max(0,Math.floor(r.num("60")));i381<n381;i381++){
+for(let i405=0,n405=Math.max(0,Math.floor(r.num("60")));i405<n405;i405++){
 c.block="1wys";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="gppq";r.guard(c);
@@ -12197,7 +15891,7 @@ c.block="2m0i";r.guard(c);
 r.command(c,"change_variable",["fodd","-7",null]);
 }
 c.block="i73i";r.guard(c);
-for(let i382=0,n382=Math.max(0,Math.floor(r.num("10")));i382<n382;i382++){
+for(let i406=0,n406=Math.max(0,Math.floor(r.num("10")));i406<n406;i406++){
 c.block="o4vo";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="m1rs";r.guard(c);
@@ -12263,7 +15957,7 @@ r.command(c,"flip_y",[null]);
 c.block="wqu7";r.guard(c);
 r.command(c,"set_variable",["nr1n",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="ctni";r.guard(c);
-for(let i383=0,n383=Math.max(0,Math.floor(r.num("8")));i383<n383;i383++){
+for(let i407=0,n407=Math.max(0,Math.floor(r.num("8")));i407<n407;i407++){
 yield 1;
 }
 c.block="ppkx";r.guard(c);
@@ -12271,7 +15965,7 @@ r.command(c,"show",[null]);
 c.block="qdsl";r.guard(c);
 r.command(c,"set_variable",["sykd","3",null]);
 c.block="ihvk";r.guard(c);
-for(let i384=0,n384=Math.max(0,Math.floor(r.num("20")));i384<n384;i384++){
+for(let i408=0,n408=Math.max(0,Math.floor(r.num("20")));i408<n408;i408++){
 c.block="4xyi";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["nr1n",null]),"EQUAL","1"]))){
 c.block="ifq7";r.guard(c);
@@ -12295,7 +15989,7 @@ yield* r.call(c,"qy83",["-6",10,"1"]);
 yield 1;
 }
 c.block="obg7";r.guard(c);
-for(let i385=0,n385=Math.max(0,Math.floor(r.num("5")));i385<n385;i385++){
+for(let i409=0,n409=Math.max(0,Math.floor(r.num("5")));i409<n409;i409++){
 c.block="mmqz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="vw9w";r.guard(c);
@@ -12362,7 +16056,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="jntz";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="ajc4";r.guard(c);
-for(let i386=0,n386=Math.max(0,Math.floor(r.num("1")));i386<n386;i386++){
+for(let i410=0,n410=Math.max(0,Math.floor(r.num("1")));i410<n410;i410++){
 yield 1;
 }
 c.block="ztpk";r.guard(c);
@@ -12372,7 +16066,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="7oxo";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="wb5c";r.guard(c);
-for(let i387=0,n387=Math.max(0,Math.floor(r.num("50")));i387<n387;i387++){
+for(let i411=0,n411=Math.max(0,Math.floor(r.num("50")));i411<n411;i411++){
 c.block="jiw2";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["83",null]))){
 c.block="5gnq";r.guard(c);
@@ -12391,7 +16085,7 @@ r.command(c,"show",[null]);
 c.block="rpiz";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="zljy";r.guard(c);
-for(let i388=0,n388=Math.max(0,Math.floor(r.num("10")));i388<n388;i388++){
+for(let i412=0,n412=Math.max(0,Math.floor(r.num("10")));i412<n412;i412++){
 c.block="tiq2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","4"]),null]);
 c.block="ba2f";r.guard(c);
@@ -12419,7 +16113,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",
 c.block="b2i0";r.guard(c);
 r.command(c,"create_clone",["dcos",null]);
 c.block="6mtk";r.guard(c);
-for(let i389=0,n389=Math.max(0,Math.floor(r.num("30")));i389<n389;i389++){
+for(let i413=0,n413=Math.max(0,Math.floor(r.num("30")));i413<n413;i413++){
 c.block="rspr";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="8ibj";r.guard(c);
@@ -12449,7 +16143,7 @@ c.block="dh7b";r.guard(c);
 r.command(c,"set_variable",["zcnn","0",null]);
 }
 c.block="b5im";r.guard(c);
-for(let i390=0,n390=Math.max(0,Math.floor(r.num("60")));i390<n390;i390++){
+for(let i414=0,n414=Math.max(0,Math.floor(r.num("60")));i414<n414;i414++){
 c.block="3o4z";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="wpkc";r.guard(c);
@@ -12518,7 +16212,7 @@ r.command(c,"set_variable",["1g8o","-7",null]);
 c.block="2cyu";r.guard(c);
 r.command(c,"change_variable",["qn98","-40",null]);
 c.block="2agf";r.guard(c);
-for(let i391=0,n391=Math.max(0,Math.floor(r.num("220")));i391<n391;i391++){
+for(let i415=0,n415=Math.max(0,Math.floor(r.num("220")));i415<n415;i415++){
 yield 1;
 }
 }
@@ -12541,7 +16235,7 @@ r.register("f9zp","when_message_cast",[null,"57im"],function*(r,c){
 c.block="w4g5";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="cm64";r.guard(c);
-for(let i392=0,n392=Math.max(0,Math.floor(r.num("90")));i392<n392;i392++){
+for(let i416=0,n416=Math.max(0,Math.floor(r.num("90")));i416<n416;i416++){
 yield 1;
 }
 c.block="09u3";r.guard(c);
@@ -12615,7 +16309,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ard6"]),null]);
 c.block="7me1";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="ml3v";r.guard(c);
-for(let i393=0,n393=Math.max(0,Math.floor(r.num("4")));i393<n393;i393++){
+for(let i417=0,n417=Math.max(0,Math.floor(r.num("4")));i417<n417;i417++){
 c.block="sgtu";r.guard(c);
 r.command(c,"move_y",["1",null]);
 yield 1;
@@ -12631,7 +16325,7 @@ r.command(c,"create_clone",["loei",null]);
 c.block="xt8g";r.guard(c);
 r.command(c,"set_variable",["pf8j","1",null]);
 c.block="ou2v";r.guard(c);
-for(let i394=0,n394=Math.max(0,Math.floor(r.num("70")));i394<n394;i394++){
+for(let i418=0,n418=Math.max(0,Math.floor(r.num("70")));i418<n418;i418++){
 c.block="zud2";r.guard(c);
 r.command(c,"move_y",["2",null]);
 c.block="r12g";r.guard(c);
@@ -12649,7 +16343,7 @@ r.command(c,"set_variable",["pf8j","0",null]);
 c.block="x84n";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ard6"]),null]);
 c.block="o0hn";r.guard(c);
-for(let i395=0,n395=Math.max(0,Math.floor(r.num("5")));i395<n395;i395++){
+for(let i419=0,n419=Math.max(0,Math.floor(r.num("5")));i419<n419;i419++){
 c.block="vhgx";r.guard(c);
 r.command(c,"move_x",["2",null]);
 yield 1;
@@ -12671,7 +16365,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["vzea"]),null]);
 c.block="lctd";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="cpal";r.guard(c);
-for(let i396=0,n396=Math.max(0,Math.floor(r.num("2")));i396<n396;i396++){
+for(let i420=0,n420=Math.max(0,Math.floor(r.num("2")));i420<n420;i420++){
 c.block="mj31";r.guard(c);
 r.command(c,"move_y",["-3.5",null]);
 c.block="nmic";r.guard(c);
@@ -12684,7 +16378,7 @@ yield 1;
 c.block="x4d9";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["vg8u"]),null]);
 c.block="fa3s";r.guard(c);
-for(let i397=0,n397=Math.max(0,Math.floor(r.num("2")));i397<n397;i397++){
+for(let i421=0,n421=Math.max(0,Math.floor(r.num("2")));i421<n421;i421++){
 c.block="bn0l";r.guard(c);
 r.command(c,"move_y",["-5",null]);
 c.block="ucyn";r.guard(c);
@@ -12697,7 +16391,7 @@ yield 1;
 c.block="8kax";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["myht"]),null]);
 c.block="gqh6";r.guard(c);
-for(let i398=0,n398=Math.max(0,Math.floor(r.num("3")));i398<n398;i398++){
+for(let i422=0,n422=Math.max(0,Math.floor(r.num("3")));i422<n422;i422++){
 c.block="hd5c";r.guard(c);
 r.command(c,"move_y",["-7",null]);
 c.block="kmha";r.guard(c);
@@ -12719,7 +16413,7 @@ r.command(c,"create_clone",["3uht",null]);
 c.block="lmmw";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["xhpf"]),null]);
 c.block="hwpt";r.guard(c);
-for(let i399=0,n399=Math.max(0,Math.floor(r.num("10")));i399<n399;i399++){
+for(let i423=0,n423=Math.max(0,Math.floor(r.num("10")));i423<n423;i423++){
 c.block="wvdh";r.guard(c);
 r.command(c,"move_x",["-3",null]);
 c.block="cysp";r.guard(c);
@@ -12734,7 +16428,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["tljr"]),null]);
 c.block="pihe";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="11an";r.guard(c);
-for(let i400=0,n400=Math.max(0,Math.floor(r.num("15")));i400<n400;i400++){
+for(let i424=0,n424=Math.max(0,Math.floor(r.num("15")));i424<n424;i424++){
 yield 1;
 }
 }
@@ -12746,7 +16440,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["vzea"]),null]);
 c.block="vs4k";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="bc9j";r.guard(c);
-for(let i401=0,n401=Math.max(0,Math.floor(r.num("2")));i401<n401;i401++){
+for(let i425=0,n425=Math.max(0,Math.floor(r.num("2")));i425<n425;i425++){
 c.block="pzdy";r.guard(c);
 r.command(c,"move_y",["-3.5",null]);
 c.block="6iv7";r.guard(c);
@@ -12759,7 +16453,7 @@ yield 1;
 c.block="ebui";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["vg8u"]),null]);
 c.block="opfa";r.guard(c);
-for(let i402=0,n402=Math.max(0,Math.floor(r.num("2")));i402<n402;i402++){
+for(let i426=0,n426=Math.max(0,Math.floor(r.num("2")));i426<n426;i426++){
 c.block="3d4l";r.guard(c);
 r.command(c,"move_y",["-5",null]);
 c.block="kn2o";r.guard(c);
@@ -12772,7 +16466,7 @@ yield 1;
 c.block="luul";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["myht"]),null]);
 c.block="v7dy";r.guard(c);
-for(let i403=0,n403=Math.max(0,Math.floor(r.num("3")));i403<n403;i403++){
+for(let i427=0,n427=Math.max(0,Math.floor(r.num("3")));i427<n427;i427++){
 c.block="donn";r.guard(c);
 r.command(c,"move_y",["-7",null]);
 c.block="quzj";r.guard(c);
@@ -12792,7 +16486,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="v9ti";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["xhpf"]),null]);
 c.block="ph4e";r.guard(c);
-for(let i404=0,n404=Math.max(0,Math.floor(r.num("10")));i404<n404;i404++){
+for(let i428=0,n428=Math.max(0,Math.floor(r.num("10")));i428<n428;i428++){
 c.block="o1nd";r.guard(c);
 r.command(c,"move_x",["-3",null]);
 c.block="p70j";r.guard(c);
@@ -12807,7 +16501,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["tljr"]),null]);
 c.block="x943";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="p6ox";r.guard(c);
-for(let i405=0,n405=Math.max(0,Math.floor(r.num("15")));i405<n405;i405++){
+for(let i429=0,n429=Math.max(0,Math.floor(r.num("15")));i429<n429;i429++){
 yield 1;
 }
 }
@@ -12829,7 +16523,7 @@ r.command(c,"set_variable",["zgtb","7",null]);
 c.block="56ka";r.guard(c);
 r.command(c,"set_variable",["91xd",r.value(c,"get_variable",["846x",null]),null]);
 c.block="9buu";r.guard(c);
-for(let i406=0,n406=Math.max(0,Math.floor(r.num("14")));i406<n406;i406++){
+for(let i430=0,n430=Math.max(0,Math.floor(r.num("14")));i430<n430;i430++){
 c.block="x40d";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["d8kc",null]),"EQUAL","0"]))){
 c.block="r4cp";r.guard(c);
@@ -12853,7 +16547,7 @@ r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["zgtb",n
 yield 1;
 }
 c.block="wi6w";r.guard(c);
-for(let i407=0,n407=Math.max(0,Math.floor(r.num("2")));i407<n407;i407++){
+for(let i431=0,n431=Math.max(0,Math.floor(r.num("2")));i431<n431;i431++){
 c.block="hvsz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -12879,7 +16573,7 @@ r.command(c,"set_variable",["91xd",r.value(c,"get_variable",["846x",null]),null]
 c.block="ncpe";r.guard(c);
 r.command(c,"set_variable",["9x2t","0",null]);
 c.block="zgum";r.guard(c);
-for(let i408=0,n408=Math.max(0,Math.floor(r.num("60")));i408<n408;i408++){
+for(let i432=0,n432=Math.max(0,Math.floor(r.num("60")));i432<n432;i432++){
 c.block="v52y";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["16","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="rplq";r.guard(c);
@@ -12931,7 +16625,7 @@ r.command(c,"set_variable",["du2p","2",null]);
 c.block="soa9";r.guard(c);
 r.command(c,"set_variable",["e8l1","1",null]);
 c.block="hnba";r.guard(c);
-for(let i409=0,n409=Math.max(0,Math.floor(r.num("45")));i409<n409;i409++){
+for(let i433=0,n433=Math.max(0,Math.floor(r.num("45")));i433<n433;i433++){
 c.block="n412";r.guard(c);
 r.command(c,"set_variable",["9af4","7",null]);
 c.block="531n";r.guard(c);
@@ -12954,7 +16648,7 @@ if(c.thread.cancelled||c.e.dead)return;
 c.block="ohg1";r.guard(c);
 r.command(c,"set_variable",["e8l1","0",null]);
 c.block="e9r9";r.guard(c);
-for(let i410=0,n410=Math.max(0,Math.floor(r.num("10")));i410<n410;i410++){
+for(let i434=0,n434=Math.max(0,Math.floor(r.num("10")));i434<n434;i434++){
 c.block="n5ru";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="eg1k";r.guard(c);
@@ -13031,7 +16725,7 @@ r.register("kuhk","when_message_cast",[null,"t9k0"],function*(r,c){
 c.block="n6mi";r.guard(c);
 r.command(c,"set_variable",["05ze","1",null]);
 c.block="px6w";r.guard(c);
-for(let i411=0,n411=Math.max(0,Math.floor(r.num("1")));i411<n411;i411++){
+for(let i435=0,n435=Math.max(0,Math.floor(r.num("1")));i435<n435;i435++){
 yield 1;
 }
 c.block="itl9";r.guard(c);
@@ -13088,7 +16782,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["sch0"]),null]);
 c.block="7me1";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="ml3v";r.guard(c);
-for(let i412=0,n412=Math.max(0,Math.floor(r.num("4")));i412<n412;i412++){
+for(let i436=0,n436=Math.max(0,Math.floor(r.num("4")));i436<n436;i436++){
 c.block="sgtu";r.guard(c);
 r.command(c,"move_y",["1",null]);
 yield 1;
@@ -13104,7 +16798,7 @@ r.command(c,"create_clone",["loei",null]);
 c.block="xt8g";r.guard(c);
 r.command(c,"set_variable",["pf8j","1",null]);
 c.block="ou2v";r.guard(c);
-for(let i413=0,n413=Math.max(0,Math.floor(r.num("70")));i413<n413;i413++){
+for(let i437=0,n437=Math.max(0,Math.floor(r.num("70")));i437<n437;i437++){
 c.block="zud2";r.guard(c);
 r.command(c,"move_y",["2",null]);
 c.block="r12g";r.guard(c);
@@ -13122,7 +16816,7 @@ r.command(c,"set_variable",["pf8j","0",null]);
 c.block="x84n";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["sch0"]),null]);
 c.block="o0hn";r.guard(c);
-for(let i414=0,n414=Math.max(0,Math.floor(r.num("5")));i414<n414;i414++){
+for(let i438=0,n438=Math.max(0,Math.floor(r.num("5")));i438<n438;i438++){
 c.block="vhgx";r.guard(c);
 r.command(c,"move_x",["2",null]);
 yield 1;
@@ -13144,7 +16838,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["liqg"]),null]);
 c.block="lctd";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="cpal";r.guard(c);
-for(let i415=0,n415=Math.max(0,Math.floor(r.num("2")));i415<n415;i415++){
+for(let i439=0,n439=Math.max(0,Math.floor(r.num("2")));i439<n439;i439++){
 c.block="mj31";r.guard(c);
 r.command(c,"move_y",["-3.5",null]);
 c.block="8alh";r.guard(c);
@@ -13157,7 +16851,7 @@ yield 1;
 c.block="x4d9";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["y3y7"]),null]);
 c.block="fa3s";r.guard(c);
-for(let i416=0,n416=Math.max(0,Math.floor(r.num("2")));i416<n416;i416++){
+for(let i440=0,n440=Math.max(0,Math.floor(r.num("2")));i440<n440;i440++){
 c.block="bn0l";r.guard(c);
 r.command(c,"move_y",["-5",null]);
 c.block="pjvc";r.guard(c);
@@ -13170,7 +16864,7 @@ yield 1;
 c.block="8kax";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["bisg"]),null]);
 c.block="gqh6";r.guard(c);
-for(let i417=0,n417=Math.max(0,Math.floor(r.num("3")));i417<n417;i417++){
+for(let i441=0,n441=Math.max(0,Math.floor(r.num("3")));i441<n441;i441++){
 c.block="hd5c";r.guard(c);
 r.command(c,"move_y",["-7",null]);
 c.block="hnrg";r.guard(c);
@@ -13192,7 +16886,7 @@ r.command(c,"create_clone",["3uht",null]);
 c.block="lmmw";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["8ifz"]),null]);
 c.block="hwpt";r.guard(c);
-for(let i418=0,n418=Math.max(0,Math.floor(r.num("10")));i418<n418;i418++){
+for(let i442=0,n442=Math.max(0,Math.floor(r.num("10")));i442<n442;i442++){
 c.block="wvdh";r.guard(c);
 r.command(c,"move_x",["-3",null]);
 c.block="ttfq";r.guard(c);
@@ -13207,7 +16901,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["g2jn"]),null]);
 c.block="pihe";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="11an";r.guard(c);
-for(let i419=0,n419=Math.max(0,Math.floor(r.num("15")));i419<n419;i419++){
+for(let i443=0,n443=Math.max(0,Math.floor(r.num("15")));i443<n443;i443++){
 yield 1;
 }
 }
@@ -13219,7 +16913,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["liqg"]),null]);
 c.block="vs4k";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="bc9j";r.guard(c);
-for(let i420=0,n420=Math.max(0,Math.floor(r.num("2")));i420<n420;i420++){
+for(let i444=0,n444=Math.max(0,Math.floor(r.num("2")));i444<n444;i444++){
 c.block="pzdy";r.guard(c);
 r.command(c,"move_y",["-3.5",null]);
 c.block="z59s";r.guard(c);
@@ -13232,7 +16926,7 @@ yield 1;
 c.block="ebui";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["y3y7"]),null]);
 c.block="opfa";r.guard(c);
-for(let i421=0,n421=Math.max(0,Math.floor(r.num("2")));i421<n421;i421++){
+for(let i445=0,n445=Math.max(0,Math.floor(r.num("2")));i445<n445;i445++){
 c.block="3d4l";r.guard(c);
 r.command(c,"move_y",["-5",null]);
 c.block="fusj";r.guard(c);
@@ -13245,7 +16939,7 @@ yield 1;
 c.block="luul";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["bisg"]),null]);
 c.block="v7dy";r.guard(c);
-for(let i422=0,n422=Math.max(0,Math.floor(r.num("3")));i422<n422;i422++){
+for(let i446=0,n446=Math.max(0,Math.floor(r.num("3")));i446<n446;i446++){
 c.block="donn";r.guard(c);
 r.command(c,"move_y",["-7",null]);
 c.block="l5s6";r.guard(c);
@@ -13265,7 +16959,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="v9ti";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["8ifz"]),null]);
 c.block="ph4e";r.guard(c);
-for(let i423=0,n423=Math.max(0,Math.floor(r.num("10")));i423<n423;i423++){
+for(let i447=0,n447=Math.max(0,Math.floor(r.num("10")));i447<n447;i447++){
 c.block="o1nd";r.guard(c);
 r.command(c,"move_x",["-3",null]);
 c.block="6jh5";r.guard(c);
@@ -13280,7 +16974,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["g2jn"]),null]);
 c.block="x943";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="p6ox";r.guard(c);
-for(let i424=0,n424=Math.max(0,Math.floor(r.num("15")));i424<n424;i424++){
+for(let i448=0,n448=Math.max(0,Math.floor(r.num("15")));i448<n448;i448++){
 yield 1;
 }
 }
@@ -13302,7 +16996,7 @@ r.command(c,"set_variable",["5jyv","7",null]);
 c.block="56ka";r.guard(c);
 r.command(c,"set_variable",["y2ih",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="9buu";r.guard(c);
-for(let i425=0,n425=Math.max(0,Math.floor(r.num("14")));i425<n425;i425++){
+for(let i449=0,n449=Math.max(0,Math.floor(r.num("14")));i449<n449;i449++){
 c.block="x40d";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["3crt",null]),"EQUAL","0"]))){
 c.block="r4cp";r.guard(c);
@@ -13326,7 +17020,7 @@ r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["5jyv",n
 yield 1;
 }
 c.block="wi6w";r.guard(c);
-for(let i426=0,n426=Math.max(0,Math.floor(r.num("2")));i426<n426;i426++){
+for(let i450=0,n450=Math.max(0,Math.floor(r.num("2")));i450<n450;i450++){
 c.block="hvsz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -13352,7 +17046,7 @@ r.command(c,"set_variable",["y2ih",r.value(c,"get_variable",["etjn",null]),null]
 c.block="ncpe";r.guard(c);
 r.command(c,"set_variable",["9x2t","0",null]);
 c.block="zgum";r.guard(c);
-for(let i427=0,n427=Math.max(0,Math.floor(r.num("60")));i427<n427;i427++){
+for(let i451=0,n451=Math.max(0,Math.floor(r.num("60")));i451<n451;i451++){
 c.block="v52y";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["16","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="rplq";r.guard(c);
@@ -13404,7 +17098,7 @@ r.command(c,"set_variable",["iblx","2",null]);
 c.block="soa9";r.guard(c);
 r.command(c,"set_variable",["7vqa","1",null]);
 c.block="hnba";r.guard(c);
-for(let i428=0,n428=Math.max(0,Math.floor(r.num("45")));i428<n428;i428++){
+for(let i452=0,n452=Math.max(0,Math.floor(r.num("45")));i452<n452;i452++){
 c.block="n412";r.guard(c);
 r.command(c,"set_variable",["nccn","7",null]);
 c.block="531n";r.guard(c);
@@ -13427,7 +17121,7 @@ if(c.thread.cancelled||c.e.dead)return;
 c.block="ycin";r.guard(c);
 r.command(c,"set_variable",["7vqa","0",null]);
 c.block="e9r9";r.guard(c);
-for(let i429=0,n429=Math.max(0,Math.floor(r.num("10")));i429<n429;i429++){
+for(let i453=0,n453=Math.max(0,Math.floor(r.num("10")));i453<n453;i453++){
 c.block="n5ru";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="eg1k";r.guard(c);
@@ -13504,7 +17198,7 @@ r.register("awbu","when_message_cast",[null,"atty"],function*(r,c){
 c.block="aia2";r.guard(c);
 r.command(c,"set_variable",["1vu0","1",null]);
 c.block="yaww";r.guard(c);
-for(let i430=0,n430=Math.max(0,Math.floor(r.num("1")));i430<n430;i430++){
+for(let i454=0,n454=Math.max(0,Math.floor(r.num("1")));i454<n454;i454++){
 yield 1;
 }
 c.block="6ars";r.guard(c);
@@ -13627,17 +17321,17 @@ c.block="r7tv";r.guard(c);
 r.command(c,"set_variable",["v4si","17",null]);
 }
 c.block="tf6u";r.guard(c);
-for(let i431=0,n431=Math.max(0,Math.floor(r.num("4")));i431<n431;i431++){
+for(let i455=0,n455=Math.max(0,Math.floor(r.num("4")));i455<n455;i455++){
 yield 1;
 }
 c.block="plgx";r.guard(c);
-for(let i432=0,n432=Math.max(0,Math.floor(r.num("17")));i432<n432;i432++){
+for(let i456=0,n456=Math.max(0,Math.floor(r.num("17")));i456<n456;i456++){
 yield 1;
 }
 c.block="v3sp";r.guard(c);
 r.command(c,"set_variable",["ivec","1",null]);
 c.block="8190";r.guard(c);
-for(let i433=0,n433=Math.max(0,Math.floor(r.num("10")));i433<n433;i433++){
+for(let i457=0,n457=Math.max(0,Math.floor(r.num("10")));i457<n457;i457++){
 yield 1;
 }
 c.block="xen4";r.guard(c);
@@ -13678,7 +17372,7 @@ r.command(c,"set_variable",["v4si","17",null]);
 c.block="p6bv";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="ra0y";r.guard(c);
-for(let i434=0,n434=Math.max(0,Math.floor(r.num("10")));i434<n434;i434++){
+for(let i458=0,n458=Math.max(0,Math.floor(r.num("10")));i458<n458;i458++){
 yield 1;
 }
 c.block="c120";r.guard(c);
@@ -13694,7 +17388,7 @@ r.command(c,"change_variable",["thom","-26",null]);
 c.block="o8y2";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="0dae";r.guard(c);
-for(let i435=0,n435=Math.max(0,Math.floor(r.num("2")));i435<n435;i435++){
+for(let i459=0,n459=Math.max(0,Math.floor(r.num("2")));i459<n459;i459++){
 c.block="ja6n";r.guard(c);
 r.command(c,"set_variable",["ivec","0",null]);
 c.block="8j86";r.guard(c);
@@ -13721,25 +17415,25 @@ r.command(c,"set_variable",["v4si","17",null]);
 }
 }
 c.block="61nu";r.guard(c);
-for(let i436=0,n436=Math.max(0,Math.floor(r.num("4")));i436<n436;i436++){
+for(let i460=0,n460=Math.max(0,Math.floor(r.num("4")));i460<n460;i460++){
 yield 1;
 }
 c.block="3hlp";r.guard(c);
 r.command(c,"set_variable",["ivec","1",null]);
 c.block="vvz5";r.guard(c);
-for(let i437=0,n437=Math.max(0,Math.floor(r.num("4")));i437<n437;i437++){
+for(let i461=0,n461=Math.max(0,Math.floor(r.num("4")));i461<n461;i461++){
 yield 1;
 }
 yield 1;
 }
 c.block="hq0q";r.guard(c);
-for(let i438=0,n438=Math.max(0,Math.floor(r.num("15")));i438<n438;i438++){
+for(let i462=0,n462=Math.max(0,Math.floor(r.num("15")));i462<n462;i462++){
 yield 1;
 }
 c.block="dre1";r.guard(c);
 r.command(c,"set_variable",["ivec","1",null]);
 c.block="5fg8";r.guard(c);
-for(let i439=0,n439=Math.max(0,Math.floor(r.num("10")));i439<n439;i439++){
+for(let i463=0,n463=Math.max(0,Math.floor(r.num("10")));i463<n463;i463++){
 yield 1;
 }
 c.block="5hw8";r.guard(c);
@@ -13770,7 +17464,7 @@ r.command(c,"set_variable",["v4si","17",null]);
 c.block="z8h5";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="pdkn";r.guard(c);
-for(let i440=0,n440=Math.max(0,Math.floor(r.num("10")));i440<n440;i440++){
+for(let i464=0,n464=Math.max(0,Math.floor(r.num("10")));i464<n464;i464++){
 yield 1;
 }
 c.block="2sva";r.guard(c);
@@ -13804,7 +17498,7 @@ c.block="u0v1";r.guard(c);
 r.command(c,"set_variable",["v4si","17",null]);
 }
 c.block="d12z";r.guard(c);
-for(let i441=0,n441=Math.max(0,Math.floor(r.num("15")));i441<n441;i441++){
+for(let i465=0,n465=Math.max(0,Math.floor(r.num("15")));i465<n465;i465++){
 yield 1;
 }
 c.block="872v";r.guard(c);
@@ -13834,7 +17528,7 @@ c.block="uyzx";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="9buu";r.guard(c);
-for(let i442=0,n442=Math.max(0,Math.floor(r.num("25")));i442<n442;i442++){
+for(let i466=0,n466=Math.max(0,Math.floor(r.num("25")));i466<n466;i466++){
 c.block="yt69";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cs5i",null]),"EQUAL","1"]))){
 c.block="wqjg";r.guard(c);
@@ -13852,7 +17546,7 @@ yield* r.call(c,"05j0",["-7",10,"1"]);
 c.block="wtkd";r.guard(c);
 r.command(c,"set_variable",["zxd6","1.8",null]);
 c.block="yxxp";r.guard(c);
-for(let i443=0,n443=Math.max(0,Math.floor(r.num("2")));i443<n443;i443++){
+for(let i467=0,n467=Math.max(0,Math.floor(r.num("2")));i467<n467;i467++){
 c.block="cver";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -13864,7 +17558,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="wi6w";r.guard(c);
-for(let i444=0,n444=Math.max(0,Math.floor(r.num("2")));i444<n444;i444++){
+for(let i468=0,n468=Math.max(0,Math.floor(r.num("2")));i468<n468;i468++){
 c.block="hvsz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -13885,7 +17579,7 @@ c.block="bzzy";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="yxy5";r.guard(c);
-for(let i445=0,n445=Math.max(0,Math.floor(r.num("25")));i445<n445;i445++){
+for(let i469=0,n469=Math.max(0,Math.floor(r.num("25")));i469<n469;i469++){
 c.block="z0tu";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cs5i",null]),"EQUAL","1"]))){
 c.block="lkql";r.guard(c);
@@ -13908,7 +17602,7 @@ r.command(c,"create_clone",["z46k",null]);
 c.block="es95";r.guard(c);
 r.command(c,"set_variable",["zxd6","0",null]);
 c.block="zchp";r.guard(c);
-for(let i446=0,n446=Math.max(0,Math.floor(r.num("2")));i446<n446;i446++){
+for(let i470=0,n470=Math.max(0,Math.floor(r.num("2")));i470<n470;i470++){
 c.block="4p7m";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -13920,7 +17614,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="vql2";r.guard(c);
-for(let i447=0,n447=Math.max(0,Math.floor(r.num("2")));i447<n447;i447++){
+for(let i471=0,n471=Math.max(0,Math.floor(r.num("2")));i471<n471;i471++){
 c.block="oclv";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -13941,7 +17635,7 @@ c.block="jnqw";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="ljwa";r.guard(c);
-for(let i448=0,n448=Math.max(0,Math.floor(r.num("25")));i448<n448;i448++){
+for(let i472=0,n472=Math.max(0,Math.floor(r.num("25")));i472<n472;i472++){
 c.block="7l0m";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cs5i",null]),"EQUAL","1"]))){
 c.block="ze1v";r.guard(c);
@@ -13964,7 +17658,7 @@ r.command(c,"create_clone",["z46k",null]);
 c.block="kipy";r.guard(c);
 r.command(c,"set_variable",["zxd6","0",null]);
 c.block="slzo";r.guard(c);
-for(let i449=0,n449=Math.max(0,Math.floor(r.num("2")));i449<n449;i449++){
+for(let i473=0,n473=Math.max(0,Math.floor(r.num("2")));i473<n473;i473++){
 c.block="6ym9";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -13976,7 +17670,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="rg1n";r.guard(c);
-for(let i450=0,n450=Math.max(0,Math.floor(r.num("2")));i450<n450;i450++){
+for(let i474=0,n474=Math.max(0,Math.floor(r.num("2")));i474<n474;i474++){
 c.block="f28o";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14004,7 +17698,7 @@ r.command(c,"rotate_relative",[r.value(c,"get_variable",["sv2a",null]),null]);
 c.block="zi19";r.guard(c);
 r.command(c,"change_variable",["sv2a","9",null]);
 c.block="6h4f";r.guard(c);
-for(let i451=0,n451=Math.max(0,Math.floor(r.num("25")));i451<n451;i451++){
+for(let i475=0,n475=Math.max(0,Math.floor(r.num("25")));i475<n475;i475++){
 c.block="sa11";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["en1a",null]),null]);
 c.block="3roo";r.guard(c);
@@ -14021,7 +17715,7 @@ r.command(c,"create_clone",["z46k",null]);
 c.block="vtb1";r.guard(c);
 r.command(c,"set_variable",["zxd6","0",null]);
 c.block="iemm";r.guard(c);
-for(let i452=0,n452=Math.max(0,Math.floor(r.num("2")));i452<n452;i452++){
+for(let i476=0,n476=Math.max(0,Math.floor(r.num("2")));i476<n476;i476++){
 c.block="h1hq";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14033,7 +17727,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="kna3";r.guard(c);
-for(let i453=0,n453=Math.max(0,Math.floor(r.num("2")));i453<n453;i453++){
+for(let i477=0,n477=Math.max(0,Math.floor(r.num("2")));i477<n477;i477++){
 c.block="bt9b";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14061,7 +17755,7 @@ r.command(c,"rotate_relative",[r.value(c,"get_variable",["sv2a",null]),null]);
 c.block="8m6l";r.guard(c);
 r.command(c,"change_variable",["sv2a","6",null]);
 c.block="ehh5";r.guard(c);
-for(let i454=0,n454=Math.max(0,Math.floor(r.num("30")));i454<n454;i454++){
+for(let i478=0,n478=Math.max(0,Math.floor(r.num("30")));i478<n478;i478++){
 c.block="scxg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["en1a",null]),"MULTI","0.8"]),null]);
 c.block="jofa";r.guard(c);
@@ -14078,7 +17772,7 @@ r.command(c,"create_clone",["z46k",null]);
 c.block="7n0w";r.guard(c);
 r.command(c,"set_variable",["zxd6","0",null]);
 c.block="j73w";r.guard(c);
-for(let i455=0,n455=Math.max(0,Math.floor(r.num("2")));i455<n455;i455++){
+for(let i479=0,n479=Math.max(0,Math.floor(r.num("2")));i479<n479;i479++){
 c.block="duxn";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14090,7 +17784,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="472x";r.guard(c);
-for(let i456=0,n456=Math.max(0,Math.floor(r.num("2")));i456<n456;i456++){
+for(let i480=0,n480=Math.max(0,Math.floor(r.num("2")));i480<n480;i480++){
 c.block="8ea2";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14225,17 +17919,17 @@ c.block="r7tv";r.guard(c);
 r.command(c,"set_variable",["v4si","17",null]);
 }
 c.block="tf6u";r.guard(c);
-for(let i457=0,n457=Math.max(0,Math.floor(r.num("4")));i457<n457;i457++){
+for(let i481=0,n481=Math.max(0,Math.floor(r.num("4")));i481<n481;i481++){
 yield 1;
 }
 c.block="plgx";r.guard(c);
-for(let i458=0,n458=Math.max(0,Math.floor(r.num("17")));i458<n458;i458++){
+for(let i482=0,n482=Math.max(0,Math.floor(r.num("17")));i482<n482;i482++){
 yield 1;
 }
 c.block="v3sp";r.guard(c);
 r.command(c,"set_variable",["ivec","1",null]);
 c.block="8190";r.guard(c);
-for(let i459=0,n459=Math.max(0,Math.floor(r.num("10")));i459<n459;i459++){
+for(let i483=0,n483=Math.max(0,Math.floor(r.num("10")));i483<n483;i483++){
 yield 1;
 }
 c.block="xen4";r.guard(c);
@@ -14276,7 +17970,7 @@ r.command(c,"set_variable",["v4si","17",null]);
 c.block="p6bv";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="ra0y";r.guard(c);
-for(let i460=0,n460=Math.max(0,Math.floor(r.num("10")));i460<n460;i460++){
+for(let i484=0,n484=Math.max(0,Math.floor(r.num("10")));i484<n484;i484++){
 yield 1;
 }
 c.block="c120";r.guard(c);
@@ -14292,7 +17986,7 @@ r.command(c,"change_variable",["qn98","-26",null]);
 c.block="o8y2";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="0dae";r.guard(c);
-for(let i461=0,n461=Math.max(0,Math.floor(r.num("2")));i461<n461;i461++){
+for(let i485=0,n485=Math.max(0,Math.floor(r.num("2")));i485<n485;i485++){
 c.block="ja6n";r.guard(c);
 r.command(c,"set_variable",["ivec","0",null]);
 c.block="8j86";r.guard(c);
@@ -14319,25 +18013,25 @@ r.command(c,"set_variable",["v4si","17",null]);
 }
 }
 c.block="61nu";r.guard(c);
-for(let i462=0,n462=Math.max(0,Math.floor(r.num("4")));i462<n462;i462++){
+for(let i486=0,n486=Math.max(0,Math.floor(r.num("4")));i486<n486;i486++){
 yield 1;
 }
 c.block="3hlp";r.guard(c);
 r.command(c,"set_variable",["ivec","1",null]);
 c.block="vvz5";r.guard(c);
-for(let i463=0,n463=Math.max(0,Math.floor(r.num("4")));i463<n463;i463++){
+for(let i487=0,n487=Math.max(0,Math.floor(r.num("4")));i487<n487;i487++){
 yield 1;
 }
 yield 1;
 }
 c.block="hq0q";r.guard(c);
-for(let i464=0,n464=Math.max(0,Math.floor(r.num("15")));i464<n464;i464++){
+for(let i488=0,n488=Math.max(0,Math.floor(r.num("15")));i488<n488;i488++){
 yield 1;
 }
 c.block="dre1";r.guard(c);
 r.command(c,"set_variable",["ivec","1",null]);
 c.block="5fg8";r.guard(c);
-for(let i465=0,n465=Math.max(0,Math.floor(r.num("10")));i465<n465;i465++){
+for(let i489=0,n489=Math.max(0,Math.floor(r.num("10")));i489<n489;i489++){
 yield 1;
 }
 c.block="5hw8";r.guard(c);
@@ -14368,7 +18062,7 @@ r.command(c,"set_variable",["v4si","17",null]);
 c.block="z8h5";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="pdkn";r.guard(c);
-for(let i466=0,n466=Math.max(0,Math.floor(r.num("10")));i466<n466;i466++){
+for(let i490=0,n490=Math.max(0,Math.floor(r.num("10")));i490<n490;i490++){
 yield 1;
 }
 c.block="2sva";r.guard(c);
@@ -14402,7 +18096,7 @@ c.block="u0v1";r.guard(c);
 r.command(c,"set_variable",["v4si","17",null]);
 }
 c.block="d12z";r.guard(c);
-for(let i467=0,n467=Math.max(0,Math.floor(r.num("15")));i467<n467;i467++){
+for(let i491=0,n491=Math.max(0,Math.floor(r.num("15")));i491<n491;i491++){
 yield 1;
 }
 c.block="872v";r.guard(c);
@@ -14432,7 +18126,7 @@ c.block="uyzx";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="9buu";r.guard(c);
-for(let i468=0,n468=Math.max(0,Math.floor(r.num("25")));i468<n468;i468++){
+for(let i492=0,n492=Math.max(0,Math.floor(r.num("25")));i492<n492;i492++){
 c.block="yt69";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1xs3",null]),"EQUAL","1"]))){
 c.block="wqjg";r.guard(c);
@@ -14450,7 +18144,7 @@ yield* r.call(c,"qy83",["-7",10,"1"]);
 c.block="wtkd";r.guard(c);
 r.command(c,"set_variable",["zxd6","1.8",null]);
 c.block="yxxp";r.guard(c);
-for(let i469=0,n469=Math.max(0,Math.floor(r.num("2")));i469<n469;i469++){
+for(let i493=0,n493=Math.max(0,Math.floor(r.num("2")));i493<n493;i493++){
 c.block="cver";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14462,7 +18156,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="wi6w";r.guard(c);
-for(let i470=0,n470=Math.max(0,Math.floor(r.num("2")));i470<n470;i470++){
+for(let i494=0,n494=Math.max(0,Math.floor(r.num("2")));i494<n494;i494++){
 c.block="hvsz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14483,7 +18177,7 @@ c.block="bzzy";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="yxy5";r.guard(c);
-for(let i471=0,n471=Math.max(0,Math.floor(r.num("20")));i471<n471;i471++){
+for(let i495=0,n495=Math.max(0,Math.floor(r.num("20")));i495<n495;i495++){
 c.block="z0tu";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1xs3",null]),"EQUAL","1"]))){
 c.block="lkql";r.guard(c);
@@ -14506,7 +18200,7 @@ r.command(c,"create_clone",["z46k",null]);
 c.block="es95";r.guard(c);
 r.command(c,"set_variable",["zxd6","0",null]);
 c.block="zchp";r.guard(c);
-for(let i472=0,n472=Math.max(0,Math.floor(r.num("2")));i472<n472;i472++){
+for(let i496=0,n496=Math.max(0,Math.floor(r.num("2")));i496<n496;i496++){
 c.block="4p7m";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14518,7 +18212,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="vql2";r.guard(c);
-for(let i473=0,n473=Math.max(0,Math.floor(r.num("2")));i473<n473;i473++){
+for(let i497=0,n497=Math.max(0,Math.floor(r.num("2")));i497<n497;i497++){
 c.block="oclv";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14539,7 +18233,7 @@ c.block="jnqw";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="ljwa";r.guard(c);
-for(let i474=0,n474=Math.max(0,Math.floor(r.num("25")));i474<n474;i474++){
+for(let i498=0,n498=Math.max(0,Math.floor(r.num("25")));i498<n498;i498++){
 c.block="7l0m";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1xs3",null]),"EQUAL","1"]))){
 c.block="ze1v";r.guard(c);
@@ -14562,7 +18256,7 @@ r.command(c,"create_clone",["z46k",null]);
 c.block="4uaf";r.guard(c);
 r.command(c,"set_variable",["zxd6","0",null]);
 c.block="l85m";r.guard(c);
-for(let i475=0,n475=Math.max(0,Math.floor(r.num("2")));i475<n475;i475++){
+for(let i499=0,n499=Math.max(0,Math.floor(r.num("2")));i499<n499;i499++){
 c.block="5vb5";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14574,7 +18268,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="rg1n";r.guard(c);
-for(let i476=0,n476=Math.max(0,Math.floor(r.num("2")));i476<n476;i476++){
+for(let i500=0,n500=Math.max(0,Math.floor(r.num("2")));i500<n500;i500++){
 c.block="f28o";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14602,7 +18296,7 @@ r.command(c,"rotate_relative",[r.value(c,"get_variable",["sv2a",null]),null]);
 c.block="zi19";r.guard(c);
 r.command(c,"change_variable",["sv2a","9",null]);
 c.block="6h4f";r.guard(c);
-for(let i477=0,n477=Math.max(0,Math.floor(r.num("25")));i477<n477;i477++){
+for(let i501=0,n501=Math.max(0,Math.floor(r.num("25")));i501<n501;i501++){
 c.block="sa11";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["evu6",null]),null]);
 c.block="3roo";r.guard(c);
@@ -14619,7 +18313,7 @@ r.command(c,"create_clone",["z46k",null]);
 c.block="82kn";r.guard(c);
 r.command(c,"set_variable",["zxd6","0",null]);
 c.block="3plq";r.guard(c);
-for(let i478=0,n478=Math.max(0,Math.floor(r.num("2")));i478<n478;i478++){
+for(let i502=0,n502=Math.max(0,Math.floor(r.num("2")));i502<n502;i502++){
 c.block="s5kd";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14631,7 +18325,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="kna3";r.guard(c);
-for(let i479=0,n479=Math.max(0,Math.floor(r.num("2")));i479<n479;i479++){
+for(let i503=0,n503=Math.max(0,Math.floor(r.num("2")));i503<n503;i503++){
 c.block="bt9b";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14659,7 +18353,7 @@ r.command(c,"rotate_relative",[r.value(c,"get_variable",["sv2a",null]),null]);
 c.block="8m6l";r.guard(c);
 r.command(c,"change_variable",["sv2a","6",null]);
 c.block="ehh5";r.guard(c);
-for(let i480=0,n480=Math.max(0,Math.floor(r.num("30")));i480<n480;i480++){
+for(let i504=0,n504=Math.max(0,Math.floor(r.num("30")));i504<n504;i504++){
 c.block="scxg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["evu6",null]),"MULTI","0.8"]),null]);
 c.block="jofa";r.guard(c);
@@ -14676,7 +18370,7 @@ r.command(c,"create_clone",["z46k",null]);
 c.block="gu63";r.guard(c);
 r.command(c,"set_variable",["zxd6","0",null]);
 c.block="qjqq";r.guard(c);
-for(let i481=0,n481=Math.max(0,Math.floor(r.num("2")));i481<n481;i481++){
+for(let i505=0,n505=Math.max(0,Math.floor(r.num("2")));i505<n505;i505++){
 c.block="jeq4";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14688,7 +18382,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="472x";r.guard(c);
-for(let i482=0,n482=Math.max(0,Math.floor(r.num("2")));i482<n482;i482++){
+for(let i506=0,n506=Math.max(0,Math.floor(r.num("2")));i506<n506;i506++){
 c.block="8ea2";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","50",null]);
 yield 1;
@@ -14747,7 +18441,7 @@ r.command(c,"set_thickness",["1",null]);
 c.block="iknn";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ob2m",null]),"EQUAL","0"]))){
 c.block="c5bd";r.guard(c);
-for(let i483=0,n483=Math.max(0,Math.floor(r.num("20")));i483<n483;i483++){
+for(let i507=0,n507=Math.max(0,Math.floor(r.num("20")));i507<n507;i507++){
 c.block="06ns";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="ljgf";r.guard(c);
@@ -14845,7 +18539,7 @@ r.command(c,"show",[null]);
 c.block="dt6p";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="dq2o";r.guard(c);
-for(let i484=0,n484=Math.max(0,Math.floor(r.num("100")));i484<n484;i484++){
+for(let i508=0,n508=Math.max(0,Math.floor(r.num("100")));i508<n508;i508++){
 c.block="1yxk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="cpnk";r.guard(c);
@@ -14940,7 +18634,7 @@ r.command(c,"locate",["00h9",null]);
 c.block="bycv";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="oxj8";r.guard(c);
-for(let i485=0,n485=Math.max(0,Math.floor(r.num("2")));i485<n485;i485++){
+for(let i509=0,n509=Math.max(0,Math.floor(r.num("2")));i509<n509;i509++){
 c.block="3goh";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="m1md";r.guard(c);
@@ -14961,7 +18655,7 @@ r.command(c,"show",[null]);
 c.block="dump";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="f3pt";r.guard(c);
-for(let i486=0,n486=Math.max(0,Math.floor(r.num("100")));i486<n486;i486++){
+for(let i510=0,n510=Math.max(0,Math.floor(r.num("100")));i510<n510;i510++){
 c.block="t4ek";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="ckkl";r.guard(c);
@@ -15056,7 +18750,7 @@ r.command(c,"locate",["00h9",null]);
 c.block="0fly";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="70um";r.guard(c);
-for(let i487=0,n487=Math.max(0,Math.floor(r.num("2")));i487<n487;i487++){
+for(let i511=0,n511=Math.max(0,Math.floor(r.num("2")));i511<n511;i511++){
 c.block="qaae";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="gdk4";r.guard(c);
@@ -15087,7 +18781,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="jb4h";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="w3t4";r.guard(c);
-for(let i488=0,n488=Math.max(0,Math.floor(r.num("5")));i488<n488;i488++){
+for(let i512=0,n512=Math.max(0,Math.floor(r.num("5")));i512<n512;i512++){
 c.block="ee60";r.guard(c);
 r.command(c,"change_variable",["oafg","0.8",null]);
 c.block="pu5v";r.guard(c);
@@ -15347,13 +19041,13 @@ r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null
 c.block="qaea";r.guard(c);
 r.command(c,"move_direction",["15",null]);
 c.block="x8tv";r.guard(c);
-for(let i489=0,n489=Math.max(0,Math.floor(r.num("2")));i489<n489;i489++){
+for(let i513=0,n513=Math.max(0,Math.floor(r.num("2")));i513<n513;i513++){
 yield 1;
 }
 yield 1;
 }
 c.block="9d85";r.guard(c);
-for(let i490=0,n490=Math.max(0,Math.floor(r.num("3")));i490<n490;i490++){
+for(let i514=0,n514=Math.max(0,Math.floor(r.num("3")));i514<n514;i514++){
 c.block="y1ul";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="5v90";r.guard(c);
@@ -15611,7 +19305,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null
 c.block="98ej";r.guard(c);
 r.command(c,"move_direction",["15",null]);
 c.block="xe64";r.guard(c);
-for(let i491=0,n491=Math.max(0,Math.floor(r.num("2")));i491<n491;i491++){
+for(let i515=0,n515=Math.max(0,Math.floor(r.num("2")));i515<n515;i515++){
 yield 1;
 }
 yield 1;
@@ -15640,7 +19334,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="rd2z";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="buhd";r.guard(c);
-for(let i492=0,n492=Math.max(0,Math.floor(r.num("40")));i492<n492;i492++){
+for(let i516=0,n516=Math.max(0,Math.floor(r.num("40")));i516<n516;i516++){
 yield 1;
 }
 }
@@ -15712,7 +19406,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="mtxa";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="zur7";r.guard(c);
-for(let i493=0,n493=Math.max(0,Math.floor(r.num("1")));i493<n493;i493++){
+for(let i517=0,n517=Math.max(0,Math.floor(r.num("1")));i517<n517;i517++){
 yield 1;
 }
 c.block="tvhd";r.guard(c);
@@ -15722,7 +19416,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="9ccw";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="f02l";r.guard(c);
-for(let i494=0,n494=Math.max(0,Math.floor(r.num("300")));i494<n494;i494++){
+for(let i518=0,n518=Math.max(0,Math.floor(r.num("300")));i518<n518;i518++){
 yield 1;
 }
 }
@@ -15766,7 +19460,7 @@ r.command(c,"set_variable",["etjn","1",null]);
 }
 }
 c.block="fknz";r.guard(c);
-for(let i495=0,n495=Math.max(0,Math.floor(r.num("320")));i495<n495;i495++){
+for(let i519=0,n519=Math.max(0,Math.floor(r.num("320")));i519<n519;i519++){
 c.block="6ugq";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jcf6",null]),"EQUAL","0"]))){
 c.block="d3ow";r.guard(c);
@@ -15843,7 +19537,7 @@ r.command(c,"set_thickness",["1",null]);
 c.block="cv8l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rav6",null]),"EQUAL","0"]))){
 c.block="c5bd";r.guard(c);
-for(let i496=0,n496=Math.max(0,Math.floor(r.num("20")));i496<n496;i496++){
+for(let i520=0,n520=Math.max(0,Math.floor(r.num("20")));i520<n520;i520++){
 c.block="06ns";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="ljgf";r.guard(c);
@@ -15941,7 +19635,7 @@ r.command(c,"show",[null]);
 c.block="dt6p";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="dq2o";r.guard(c);
-for(let i497=0,n497=Math.max(0,Math.floor(r.num("100")));i497<n497;i497++){
+for(let i521=0,n521=Math.max(0,Math.floor(r.num("100")));i521<n521;i521++){
 c.block="1yxk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="cpnk";r.guard(c);
@@ -16036,7 +19730,7 @@ r.command(c,"locate",["ocqj",null]);
 c.block="bycv";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="oxj8";r.guard(c);
-for(let i498=0,n498=Math.max(0,Math.floor(r.num("2")));i498<n498;i498++){
+for(let i522=0,n522=Math.max(0,Math.floor(r.num("2")));i522<n522;i522++){
 c.block="3goh";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="m1md";r.guard(c);
@@ -16057,7 +19751,7 @@ r.command(c,"show",[null]);
 c.block="lmwn";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="u3p5";r.guard(c);
-for(let i499=0,n499=Math.max(0,Math.floor(r.num("100")));i499<n499;i499++){
+for(let i523=0,n523=Math.max(0,Math.floor(r.num("100")));i523<n523;i523++){
 c.block="z6hr";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="qfvm";r.guard(c);
@@ -16152,7 +19846,7 @@ r.command(c,"locate",["ocqj",null]);
 c.block="4l2o";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="7pwp";r.guard(c);
-for(let i500=0,n500=Math.max(0,Math.floor(r.num("2")));i500<n500;i500++){
+for(let i524=0,n524=Math.max(0,Math.floor(r.num("2")));i524<n524;i524++){
 c.block="d24e";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="cae9";r.guard(c);
@@ -16183,7 +19877,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="8w9q";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="w3t4";r.guard(c);
-for(let i501=0,n501=Math.max(0,Math.floor(r.num("5")));i501<n501;i501++){
+for(let i525=0,n525=Math.max(0,Math.floor(r.num("5")));i525<n525;i525++){
 c.block="ee60";r.guard(c);
 r.command(c,"change_variable",["oafg","0.8",null]);
 c.block="pu5v";r.guard(c);
@@ -16443,13 +20137,13 @@ r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null
 c.block="qaea";r.guard(c);
 r.command(c,"move_direction",["15",null]);
 c.block="x8tv";r.guard(c);
-for(let i502=0,n502=Math.max(0,Math.floor(r.num("2")));i502<n502;i502++){
+for(let i526=0,n526=Math.max(0,Math.floor(r.num("2")));i526<n526;i526++){
 yield 1;
 }
 yield 1;
 }
 c.block="9d85";r.guard(c);
-for(let i503=0,n503=Math.max(0,Math.floor(r.num("3")));i503<n503;i503++){
+for(let i527=0,n527=Math.max(0,Math.floor(r.num("3")));i527<n527;i527++){
 c.block="y1ul";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="5v90";r.guard(c);
@@ -16707,7 +20401,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null
 c.block="98ej";r.guard(c);
 r.command(c,"move_direction",["15",null]);
 c.block="xe64";r.guard(c);
-for(let i504=0,n504=Math.max(0,Math.floor(r.num("2")));i504<n504;i504++){
+for(let i528=0,n528=Math.max(0,Math.floor(r.num("2")));i528<n528;i528++){
 yield 1;
 }
 yield 1;
@@ -16736,7 +20430,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="rd2z";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="hf1g";r.guard(c);
-for(let i505=0,n505=Math.max(0,Math.floor(r.num("40")));i505<n505;i505++){
+for(let i529=0,n529=Math.max(0,Math.floor(r.num("40")));i529<n529;i529++){
 yield 1;
 }
 }
@@ -16808,7 +20502,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="mtxa";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="zur7";r.guard(c);
-for(let i506=0,n506=Math.max(0,Math.floor(r.num("1")));i506<n506;i506++){
+for(let i530=0,n530=Math.max(0,Math.floor(r.num("1")));i530<n530;i530++){
 yield 1;
 }
 c.block="tvhd";r.guard(c);
@@ -16818,7 +20512,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="9ccw";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="f02l";r.guard(c);
-for(let i507=0,n507=Math.max(0,Math.floor(r.num("300")));i507<n507;i507++){
+for(let i531=0,n531=Math.max(0,Math.floor(r.num("300")));i531<n531;i531++){
 yield 1;
 }
 }
@@ -16849,7 +20543,7 @@ if(r.truth(r.value(c,"is_press_some_key",["83",null]))){
 c.block="8000";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER_OR_EQUAL","63"]))){
 c.block="2ot7";r.guard(c);
-for(let i508=0,n508=Math.max(0,Math.floor(r.num("1")));i508<n508;i508++){
+for(let i532=0,n532=Math.max(0,Math.floor(r.num("1")));i532<n532;i532++){
 yield 1;
 }
 c.block="v6n2";r.guard(c);
@@ -16874,7 +20568,7 @@ r.command(c,"set_variable",["846x","1",null]);
 }
 }
 c.block="fknz";r.guard(c);
-for(let i509=0,n509=Math.max(0,Math.floor(r.num("320")));i509<n509;i509++){
+for(let i533=0,n533=Math.max(0,Math.floor(r.num("320")));i533<n533;i533++){
 c.block="6ugq";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ec6d",null]),"EQUAL","0"]))){
 c.block="d3ow";r.guard(c);
@@ -16974,7 +20668,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="y6po";r.guard(c);
 r.command(c,"set_variable",["abjy","18",null]);
 c.block="l5f1";r.guard(c);
-for(let i510=0,n510=Math.max(0,Math.floor(r.num("9")));i510<n510;i510++){
+for(let i534=0,n534=Math.max(0,Math.floor(r.num("9")));i534<n534;i534++){
 c.block="gcvm";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="im8c";r.guard(c);
@@ -17004,7 +20698,7 @@ c.block="xmv4";r.guard(c);
 r.command(c,"create_clone",["ojqi",null]);
 }
 c.block="9zg2";r.guard(c);
-for(let i511=0,n511=Math.max(0,Math.floor(r.num("6")));i511<n511;i511++){
+for(let i535=0,n535=Math.max(0,Math.floor(r.num("6")));i535<n535;i535++){
 c.block="oa2p";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="2xh8";r.guard(c);
@@ -17076,7 +20770,7 @@ break;
 yield 1;
 }
 c.block="k2wh";r.guard(c);
-for(let i512=0,n512=Math.max(0,Math.floor(r.num("22")));i512<n512;i512++){
+for(let i536=0,n536=Math.max(0,Math.floor(r.num("22")));i536<n536;i536++){
 c.block="6vhj";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="r6k2";r.guard(c);
@@ -17104,7 +20798,7 @@ c.block="b6iu";r.guard(c);
 r.command(c,"create_clone",["ojqi",null]);
 }
 c.block="lby4";r.guard(c);
-for(let i513=0,n513=Math.max(0,Math.floor(r.num("12")));i513<n513;i513++){
+for(let i537=0,n537=Math.max(0,Math.floor(r.num("12")));i537<n537;i537++){
 c.block="qyzt";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="jwpa";r.guard(c);
@@ -17176,7 +20870,7 @@ yield 1;
 c.block="egrx";r.guard(c);
 r.command(c,"set_variable",["abjy","14",null]);
 c.block="b4yy";r.guard(c);
-for(let i514=0,n514=Math.max(0,Math.floor(r.num("10")));i514<n514;i514++){
+for(let i538=0,n538=Math.max(0,Math.floor(r.num("10")));i538<n538;i538++){
 c.block="xvy6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="6xab";r.guard(c);
@@ -17209,7 +20903,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="wfoa";r.guard(c);
 r.command(c,"set_variable",["abjy","-20",null]);
 c.block="lwuo";r.guard(c);
-for(let i515=0,n515=Math.max(0,Math.floor(r.num("10")));i515<n515;i515++){
+for(let i539=0,n539=Math.max(0,Math.floor(r.num("10")));i539<n539;i539++){
 c.block="l5q1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="3xbk";r.guard(c);
@@ -17237,7 +20931,7 @@ c.block="v9t2";r.guard(c);
 r.command(c,"create_clone",["ojqi",null]);
 }
 c.block="he56";r.guard(c);
-for(let i516=0,n516=Math.max(0,Math.floor(r.num("6")));i516<n516;i516++){
+for(let i540=0,n540=Math.max(0,Math.floor(r.num("6")));i540<n540;i540++){
 c.block="4qb8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="wiaw";r.guard(c);
@@ -17305,13 +20999,13 @@ break;
 yield 1;
 }
 c.block="bhbu";r.guard(c);
-for(let i517=0,n517=Math.max(0,Math.floor(r.num("4")));i517<n517;i517++){
+for(let i541=0,n541=Math.max(0,Math.floor(r.num("4")));i541<n541;i541++){
 yield 1;
 }
 c.block="pt91";r.guard(c);
 r.command(c,"set_variable",["abjy","14",null]);
 c.block="o1o3";r.guard(c);
-for(let i518=0,n518=Math.max(0,Math.floor(r.num("10")));i518<n518;i518++){
+for(let i542=0,n542=Math.max(0,Math.floor(r.num("10")));i542<n542;i542++){
 c.block="2ei1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="5ic5";r.guard(c);
@@ -17360,7 +21054,7 @@ r.command(c,"create_clone",["4y6e",null]);
 c.block="5kin";r.guard(c);
 r.command(c,"create_clone",["g6qg",null]);
 c.block="15nj";r.guard(c);
-for(let i519=0,n519=Math.max(0,Math.floor(r.num("315")));i519<n519;i519++){
+for(let i543=0,n543=Math.max(0,Math.floor(r.num("315")));i543<n543;i543++){
 yield 1;
 }
 }
@@ -17379,7 +21073,7 @@ r.command(c,"show",[null]);
 c.block="bnmj";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="zjgr";r.guard(c);
-for(let i520=0,n520=Math.max(0,Math.floor(r.num("6")));i520<n520;i520++){
+for(let i544=0,n544=Math.max(0,Math.floor(r.num("6")));i544<n544;i544++){
 c.block="ye2x";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","17",null]);
 c.block="2gv3";r.guard(c);
@@ -17440,7 +21134,7 @@ r.command(c,"show",[null]);
 c.block="wf3f";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="qiau";r.guard(c);
-for(let i521=0,n521=Math.max(0,Math.floor(r.num("6")));i521<n521;i521++){
+for(let i545=0,n545=Math.max(0,Math.floor(r.num("6")));i545<n545;i545++){
 c.block="nhjs";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","17",null]);
 c.block="t8m8";r.guard(c);
@@ -17482,7 +21176,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="y6po";r.guard(c);
 r.command(c,"set_variable",["d722","18",null]);
 c.block="l5f1";r.guard(c);
-for(let i522=0,n522=Math.max(0,Math.floor(r.num("9")));i522<n522;i522++){
+for(let i546=0,n546=Math.max(0,Math.floor(r.num("9")));i546<n546;i546++){
 c.block="knlr";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="im8c";r.guard(c);
@@ -17512,7 +21206,7 @@ c.block="xmv4";r.guard(c);
 r.command(c,"create_clone",["ojqi",null]);
 }
 c.block="9zg2";r.guard(c);
-for(let i523=0,n523=Math.max(0,Math.floor(r.num("6")));i523<n523;i523++){
+for(let i547=0,n547=Math.max(0,Math.floor(r.num("6")));i547<n547;i547++){
 c.block="dh3v";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="2xh8";r.guard(c);
@@ -17584,7 +21278,7 @@ break;
 yield 1;
 }
 c.block="k2wh";r.guard(c);
-for(let i524=0,n524=Math.max(0,Math.floor(r.num("22")));i524<n524;i524++){
+for(let i548=0,n548=Math.max(0,Math.floor(r.num("22")));i548<n548;i548++){
 c.block="5xur";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="r6k2";r.guard(c);
@@ -17612,7 +21306,7 @@ c.block="b6iu";r.guard(c);
 r.command(c,"create_clone",["ojqi",null]);
 }
 c.block="lby4";r.guard(c);
-for(let i525=0,n525=Math.max(0,Math.floor(r.num("12")));i525<n525;i525++){
+for(let i549=0,n549=Math.max(0,Math.floor(r.num("12")));i549<n549;i549++){
 c.block="so2m";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="jwpa";r.guard(c);
@@ -17684,7 +21378,7 @@ yield 1;
 c.block="egrx";r.guard(c);
 r.command(c,"set_variable",["d722","14",null]);
 c.block="b4yy";r.guard(c);
-for(let i526=0,n526=Math.max(0,Math.floor(r.num("10")));i526<n526;i526++){
+for(let i550=0,n550=Math.max(0,Math.floor(r.num("10")));i550<n550;i550++){
 c.block="xvy6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="6xab";r.guard(c);
@@ -17717,7 +21411,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="wfoa";r.guard(c);
 r.command(c,"set_variable",["d722","-20",null]);
 c.block="lwuo";r.guard(c);
-for(let i527=0,n527=Math.max(0,Math.floor(r.num("10")));i527<n527;i527++){
+for(let i551=0,n551=Math.max(0,Math.floor(r.num("10")));i551<n551;i551++){
 c.block="l5q1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="3xbk";r.guard(c);
@@ -17745,7 +21439,7 @@ c.block="v9t2";r.guard(c);
 r.command(c,"create_clone",["ojqi",null]);
 }
 c.block="he56";r.guard(c);
-for(let i528=0,n528=Math.max(0,Math.floor(r.num("6")));i528<n528;i528++){
+for(let i552=0,n552=Math.max(0,Math.floor(r.num("6")));i552<n552;i552++){
 c.block="4qb8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="wiaw";r.guard(c);
@@ -17813,13 +21507,13 @@ break;
 yield 1;
 }
 c.block="v197";r.guard(c);
-for(let i529=0,n529=Math.max(0,Math.floor(r.num("4")));i529<n529;i529++){
+for(let i553=0,n553=Math.max(0,Math.floor(r.num("4")));i553<n553;i553++){
 yield 1;
 }
 c.block="pt91";r.guard(c);
 r.command(c,"set_variable",["d722","14",null]);
 c.block="o1o3";r.guard(c);
-for(let i530=0,n530=Math.max(0,Math.floor(r.num("10")));i530<n530;i530++){
+for(let i554=0,n554=Math.max(0,Math.floor(r.num("10")));i554<n554;i554++){
 c.block="2ei1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="5ic5";r.guard(c);
@@ -17868,7 +21562,7 @@ r.command(c,"create_clone",["4y6e",null]);
 c.block="5kin";r.guard(c);
 r.command(c,"create_clone",["g6qg",null]);
 c.block="15nj";r.guard(c);
-for(let i531=0,n531=Math.max(0,Math.floor(r.num("315")));i531<n531;i531++){
+for(let i555=0,n555=Math.max(0,Math.floor(r.num("315")));i555<n555;i555++){
 yield 1;
 }
 }
@@ -17909,7 +21603,7 @@ while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["zh
 c.block="e302";r.guard(c);
 r.command(c,"show",[null]);
 c.block="6ytl";r.guard(c);
-for(let i532=0,n532=Math.max(0,Math.floor(r.num("20")));i532<n532;i532++){
+for(let i556=0,n556=Math.max(0,Math.floor(r.num("20")));i556<n556;i556++){
 c.block="qb3p";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["359.9","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -17958,7 +21652,7 @@ r.command(c,"set_variable",["vhcu","6",null]);
 c.block="w6s5";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="zek8";r.guard(c);
-for(let i533=0,n533=Math.max(0,Math.floor(r.num("14")));i533<n533;i533++){
+for(let i557=0,n557=Math.max(0,Math.floor(r.num("14")));i557<n557;i557++){
 c.block="ssvb";r.guard(c);
 r.command(c,"bounce_wall",[null]);
 c.block="hgpm";r.guard(c);
@@ -18015,7 +21709,7 @@ r.command(c,"set_variable",["vhcu","-1.75",null]);
 c.block="2nmz";r.guard(c);
 r.command(c,"set_variable",["m2e5","5",null]);
 c.block="ij5f";r.guard(c);
-for(let i534=0,n534=Math.max(0,Math.floor(r.num("10")));i534<n534;i534++){
+for(let i558=0,n558=Math.max(0,Math.floor(r.num("10")));i558<n558;i558++){
 c.block="kurc";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
 c.block="noxn";r.guard(c);
@@ -18041,7 +21735,7 @@ r.command(c,"bounce_wall",[null]);
 yield 1;
 }
 c.block="lf43";r.guard(c);
-for(let i535=0,n535=Math.max(0,Math.floor(r.num("65")));i535<n535;i535++){
+for(let i559=0,n559=Math.max(0,Math.floor(r.num("65")));i559<n559;i559++){
 c.block="fk8i";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","30"]))){
 c.block="j2q8";r.guard(c);
@@ -18105,7 +21799,7 @@ yield 1;
 c.block="y7en";r.guard(c);
 r.command(c,"set_variable",["m2e5","2.5",null]);
 c.block="3rv3";r.guard(c);
-for(let i536=0,n536=Math.max(0,Math.floor(r.num("37")));i536<n536;i536++){
+for(let i560=0,n560=Math.max(0,Math.floor(r.num("37")));i560<n560;i560++){
 c.block="xll0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","30"]))){
 c.block="tixi";r.guard(c);
@@ -18193,7 +21887,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="qiau";r.guard(c);
-for(let i537=0,n537=Math.max(0,Math.floor(r.num("36")));i537<n537;i537++){
+for(let i561=0,n561=Math.max(0,Math.floor(r.num("36")));i561<n561;i561++){
 c.block="2sf7";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","30"]))){
 c.block="tecc";r.guard(c);
@@ -18255,7 +21949,7 @@ r.command(c,"set_variable",["vhcu","-1.75",null]);
 c.block="o7gv";r.guard(c);
 r.command(c,"set_variable",["m2e5","5",null]);
 c.block="ffz6";r.guard(c);
-for(let i538=0,n538=Math.max(0,Math.floor(r.num("10")));i538<n538;i538++){
+for(let i562=0,n562=Math.max(0,Math.floor(r.num("10")));i562<n562;i562++){
 c.block="k1l0";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
 c.block="k3g0";r.guard(c);
@@ -18281,7 +21975,7 @@ r.command(c,"bounce_wall",[null]);
 yield 1;
 }
 c.block="uiom";r.guard(c);
-for(let i539=0,n539=Math.max(0,Math.floor(r.num("65")));i539<n539;i539++){
+for(let i563=0,n563=Math.max(0,Math.floor(r.num("65")));i563<n563;i563++){
 c.block="zm40";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","30"]))){
 c.block="x5kg";r.guard(c);
@@ -18345,7 +22039,7 @@ yield 1;
 c.block="rimp";r.guard(c);
 r.command(c,"set_variable",["m2e5","2.5",null]);
 c.block="mb0x";r.guard(c);
-for(let i540=0,n540=Math.max(0,Math.floor(r.num("37")));i540<n540;i540++){
+for(let i564=0,n564=Math.max(0,Math.floor(r.num("37")));i564<n564;i564++){
 c.block="u94k";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","30"]))){
 c.block="gkta";r.guard(c);
@@ -18517,7 +22211,7 @@ yield 1;
 });
 r.register("e7ip","when_message_cast",[null,"q518"],function*(r,c){
 c.block="1nbq";r.guard(c);
-for(let i541=0,n541=Math.max(0,Math.floor(r.num("60")));i541<n541;i541++){
+for(let i565=0,n565=Math.max(0,Math.floor(r.num("60")));i565<n565;i565++){
 c.block="p4kq";r.guard(c);
 r.command(c,"set_variable",["bct6","-3.5",null]);
 yield 1;
@@ -18548,7 +22242,7 @@ r.command(c,"create_clone",["1v34",null]);
 c.block="40ll";r.guard(c);
 r.command(c,"create_clone",["yfwg",null]);
 c.block="v2hi";r.guard(c);
-for(let i542=0,n542=Math.max(0,Math.floor(r.num("180")));i542<n542;i542++){
+for(let i566=0,n566=Math.max(0,Math.floor(r.num("180")));i566<n566;i566++){
 yield 1;
 }
 }
@@ -18561,7 +22255,7 @@ yield 1;
 });
 r.register("e7ip","when_message_cast",[null,"w9n1"],function*(r,c){
 c.block="mzpr";r.guard(c);
-for(let i543=0,n543=Math.max(0,Math.floor(r.num("180")));i543<n543;i543++){
+for(let i567=0,n567=Math.max(0,Math.floor(r.num("180")));i567<n567;i567++){
 c.block="vyal";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"coordinate_object",[null,"n8fg",null,"x"]),"GREATER",r.value(c,"coordinate_object",[null,"00h9",null,"x"])]))){
 c.block="57ph";r.guard(c);
@@ -18606,7 +22300,7 @@ r.command(c,"message_cast",["1kqq",null]);
 c.block="frz3";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["p7ru"]),null]);
 c.block="s56h";r.guard(c);
-for(let i544=0,n544=Math.max(0,Math.floor(r.num("60")));i544<n544;i544++){
+for(let i568=0,n568=Math.max(0,Math.floor(r.num("60")));i568<n568;i568++){
 yield 1;
 }
 }
@@ -18670,7 +22364,7 @@ while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["zh
 c.block="e302";r.guard(c);
 r.command(c,"show",[null]);
 c.block="6ytl";r.guard(c);
-for(let i545=0,n545=Math.max(0,Math.floor(r.num("20")));i545<n545;i545++){
+for(let i569=0,n569=Math.max(0,Math.floor(r.num("20")));i569<n569;i569++){
 c.block="qb3p";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["359.9","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 c.block="n8cy";r.guard(c);
@@ -18724,7 +22418,7 @@ r.command(c,"set_variable",["7z7n","6",null]);
 c.block="w6s5";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="zek8";r.guard(c);
-for(let i546=0,n546=Math.max(0,Math.floor(r.num("14")));i546<n546;i546++){
+for(let i570=0,n570=Math.max(0,Math.floor(r.num("14")));i570<n570;i570++){
 c.block="ssvb";r.guard(c);
 r.command(c,"bounce_wall",[null]);
 c.block="hgpm";r.guard(c);
@@ -18781,7 +22475,7 @@ r.command(c,"set_variable",["7z7n","-1.75",null]);
 c.block="2nmz";r.guard(c);
 r.command(c,"set_variable",["2t0b","5",null]);
 c.block="ij5f";r.guard(c);
-for(let i547=0,n547=Math.max(0,Math.floor(r.num("10")));i547<n547;i547++){
+for(let i571=0,n571=Math.max(0,Math.floor(r.num("10")));i571<n571;i571++){
 c.block="kurc";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
 c.block="noxn";r.guard(c);
@@ -18807,7 +22501,7 @@ r.command(c,"bounce_wall",[null]);
 yield 1;
 }
 c.block="lf43";r.guard(c);
-for(let i548=0,n548=Math.max(0,Math.floor(r.num("65")));i548<n548;i548++){
+for(let i572=0,n572=Math.max(0,Math.floor(r.num("65")));i572<n572;i572++){
 c.block="fk8i";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","30"]))){
 c.block="j2q8";r.guard(c);
@@ -18871,7 +22565,7 @@ yield 1;
 c.block="y7en";r.guard(c);
 r.command(c,"set_variable",["2t0b","2.5",null]);
 c.block="3rv3";r.guard(c);
-for(let i549=0,n549=Math.max(0,Math.floor(r.num("37")));i549<n549;i549++){
+for(let i573=0,n573=Math.max(0,Math.floor(r.num("37")));i573<n573;i573++){
 c.block="xll0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","30"]))){
 c.block="tixi";r.guard(c);
@@ -18959,7 +22653,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="qiau";r.guard(c);
-for(let i550=0,n550=Math.max(0,Math.floor(r.num("36")));i550<n550;i550++){
+for(let i574=0,n574=Math.max(0,Math.floor(r.num("36")));i574<n574;i574++){
 c.block="2sf7";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","30"]))){
 c.block="tecc";r.guard(c);
@@ -19021,7 +22715,7 @@ r.command(c,"set_variable",["7z7n","-1.75",null]);
 c.block="t5og";r.guard(c);
 r.command(c,"set_variable",["2t0b","5",null]);
 c.block="9fks";r.guard(c);
-for(let i551=0,n551=Math.max(0,Math.floor(r.num("10")));i551<n551;i551++){
+for(let i575=0,n575=Math.max(0,Math.floor(r.num("10")));i575<n575;i575++){
 c.block="yxzn";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
 c.block="xdhl";r.guard(c);
@@ -19047,7 +22741,7 @@ r.command(c,"bounce_wall",[null]);
 yield 1;
 }
 c.block="emm9";r.guard(c);
-for(let i552=0,n552=Math.max(0,Math.floor(r.num("65")));i552<n552;i552++){
+for(let i576=0,n576=Math.max(0,Math.floor(r.num("65")));i576<n576;i576++){
 c.block="ab8l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","30"]))){
 c.block="y5cu";r.guard(c);
@@ -19111,7 +22805,7 @@ yield 1;
 c.block="hqu7";r.guard(c);
 r.command(c,"set_variable",["2t0b","2.5",null]);
 c.block="tf7i";r.guard(c);
-for(let i553=0,n553=Math.max(0,Math.floor(r.num("37")));i553<n553;i553++){
+for(let i577=0,n577=Math.max(0,Math.floor(r.num("37")));i577<n577;i577++){
 c.block="9on5";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","30"]))){
 c.block="814q";r.guard(c);
@@ -19283,7 +22977,7 @@ yield 1;
 });
 r.register("nijg","when_message_cast",[null,"xqge"],function*(r,c){
 c.block="1nbq";r.guard(c);
-for(let i554=0,n554=Math.max(0,Math.floor(r.num("60")));i554<n554;i554++){
+for(let i578=0,n578=Math.max(0,Math.floor(r.num("60")));i578<n578;i578++){
 c.block="p4kq";r.guard(c);
 r.command(c,"set_variable",["1g8o","-3.5",null]);
 yield 1;
@@ -19314,7 +23008,7 @@ r.command(c,"create_clone",["1v34",null]);
 c.block="2okx";r.guard(c);
 r.command(c,"create_clone",["yfwg",null]);
 c.block="v2hi";r.guard(c);
-for(let i555=0,n555=Math.max(0,Math.floor(r.num("180")));i555<n555;i555++){
+for(let i579=0,n579=Math.max(0,Math.floor(r.num("180")));i579<n579;i579++){
 yield 1;
 }
 }
@@ -19327,7 +23021,7 @@ yield 1;
 });
 r.register("nijg","when_message_cast",[null,"smzv"],function*(r,c){
 c.block="mzpr";r.guard(c);
-for(let i556=0,n556=Math.max(0,Math.floor(r.num("180")));i556<n556;i556++){
+for(let i580=0,n580=Math.max(0,Math.floor(r.num("180")));i580<n580;i580++){
 c.block="vyal";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"coordinate_object",[null,"n8fg",null,"x"]),"GREATER",r.value(c,"coordinate_object",[null,"00h9",null,"x"])]))){
 c.block="vqvn";r.guard(c);
@@ -19372,7 +23066,7 @@ r.command(c,"change_variable",["qn98","-29",null]);
 c.block="zu5l";r.guard(c);
 r.command(c,"message_cast",["mm57",null]);
 c.block="s56h";r.guard(c);
-for(let i557=0,n557=Math.max(0,Math.floor(r.num("60")));i557<n557;i557++){
+for(let i581=0,n581=Math.max(0,Math.floor(r.num("60")));i581<n581;i581++){
 yield 1;
 }
 }
@@ -19445,7 +23139,7 @@ c.block="avbt";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="b09i";r.guard(c);
-for(let i558=0,n558=Math.max(0,Math.floor(r.num("20")));i558<n558;i558++){
+for(let i582=0,n582=Math.max(0,Math.floor(r.num("20")));i582<n582;i582++){
 c.block="necz";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="s4v9";r.guard(c);
@@ -19469,7 +23163,7 @@ yield* r.call(c,"qy83",["-2","7","0"]);
 yield 1;
 }
 c.block="tn88";r.guard(c);
-for(let i559=0,n559=Math.max(0,Math.floor(r.num("5")));i559<n559;i559++){
+for(let i583=0,n583=Math.max(0,Math.floor(r.num("5")));i583<n583;i583++){
 c.block="w7gw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="arze";r.guard(c);
@@ -19522,7 +23216,7 @@ c.block="207q";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="ou60";r.guard(c);
-for(let i560=0,n560=Math.max(0,Math.floor(r.num("20")));i560<n560;i560++){
+for(let i584=0,n584=Math.max(0,Math.floor(r.num("20")));i584<n584;i584++){
 c.block="hx1l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="2q0l";r.guard(c);
@@ -19546,7 +23240,7 @@ yield* r.call(c,"05j0",["-2","7","0"]);
 yield 1;
 }
 c.block="whoi";r.guard(c);
-for(let i561=0,n561=Math.max(0,Math.floor(r.num("5")));i561<n561;i561++){
+for(let i585=0,n585=Math.max(0,Math.floor(r.num("5")));i585<n585;i585++){
 c.block="3sv3";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="wqbc";r.guard(c);
@@ -19621,7 +23315,7 @@ c.block="b2mt";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="4ajd";r.guard(c);
-for(let i562=0,n562=Math.max(0,Math.floor(r.num("20")));i562<n562;i562++){
+for(let i586=0,n586=Math.max(0,Math.floor(r.num("20")));i586<n586;i586++){
 c.block="vz1j";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="yyql";r.guard(c);
@@ -19649,7 +23343,7 @@ r.command(c,"change_variable",["ha8n","1",null]);
 yield 1;
 }
 c.block="qjy8";r.guard(c);
-for(let i563=0,n563=Math.max(0,Math.floor(r.num("5")));i563<n563;i563++){
+for(let i587=0,n587=Math.max(0,Math.floor(r.num("5")));i587<n587;i587++){
 c.block="x37t";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="dbe9";r.guard(c);
@@ -19712,7 +23406,7 @@ c.block="4oax";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="8uz7";r.guard(c);
-for(let i564=0,n564=Math.max(0,Math.floor(r.num("20")));i564<n564;i564++){
+for(let i588=0,n588=Math.max(0,Math.floor(r.num("20")));i588<n588;i588++){
 c.block="bvte";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="imhv";r.guard(c);
@@ -19740,7 +23434,7 @@ r.command(c,"change_variable",["ha8n","1",null]);
 yield 1;
 }
 c.block="jwnl";r.guard(c);
-for(let i565=0,n565=Math.max(0,Math.floor(r.num("5")));i565<n565;i565++){
+for(let i589=0,n589=Math.max(0,Math.floor(r.num("5")));i589<n589;i589++){
 c.block="zopx";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="8upo";r.guard(c);
@@ -19803,7 +23497,7 @@ r.command(c,"set_variable",["nc5e","5",null]);
 c.block="vzom";r.guard(c);
 r.command(c,"move_y",["4",null]);
 c.block="f0vd";r.guard(c);
-for(let i566=0,n566=Math.max(0,Math.floor(r.num("70")));i566<n566;i566++){
+for(let i590=0,n590=Math.max(0,Math.floor(r.num("70")));i590<n590;i590++){
 c.block="d08a";r.guard(c);
 r.command(c,"change_variable",["nc5e","-0.06",null]);
 c.block="rm85";r.guard(c);
@@ -19848,7 +23542,7 @@ yield* r.call(c,"qy83",["-4",10,"2"]);
 c.block="5dag";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="e9rw";r.guard(c);
-for(let i567=0,n567=Math.max(0,Math.floor(r.num("30")));i567<n567;i567++){
+for(let i591=0,n591=Math.max(0,Math.floor(r.num("30")));i591<n591;i591++){
 c.block="idur";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="gfz0";r.guard(c);
@@ -19884,7 +23578,7 @@ c.block="goq9";r.guard(c);
 r.command(c,"change_variable",["lgp6",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n230",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"ocqj",null,"x"])]),"MULTI","0.4"]),null]);
 }
 c.block="5jxj";r.guard(c);
-for(let i568=0,n568=Math.max(0,Math.floor(r.num("60")));i568<n568;i568++){
+for(let i592=0,n592=Math.max(0,Math.floor(r.num("60")));i592<n592;i592++){
 c.block="610j";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="2yto";r.guard(c);
@@ -19920,7 +23614,7 @@ c.block="o4yd";r.guard(c);
 r.command(c,"change_variable",["lgp6",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n230",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"ocqj",null,"x"])]),"MULTI","0.3"]),null]);
 }
 c.block="kh6d";r.guard(c);
-for(let i569=0,n569=Math.max(0,Math.floor(r.num("80")));i569<n569;i569++){
+for(let i593=0,n593=Math.max(0,Math.floor(r.num("80")));i593<n593;i593++){
 c.block="qlju";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="hd6t";r.guard(c);
@@ -19994,7 +23688,7 @@ r.command(c,"set_variable",["nc5e","5",null]);
 c.block="4pfk";r.guard(c);
 r.command(c,"move_y",["4",null]);
 c.block="u1a2";r.guard(c);
-for(let i570=0,n570=Math.max(0,Math.floor(r.num("70")));i570<n570;i570++){
+for(let i594=0,n594=Math.max(0,Math.floor(r.num("70")));i594<n594;i594++){
 c.block="0jbn";r.guard(c);
 r.command(c,"change_variable",["nc5e","-0.06",null]);
 c.block="cwdf";r.guard(c);
@@ -20039,7 +23733,7 @@ yield* r.call(c,"05j0",["-4",10,"2"]);
 c.block="rohm";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="r2p8";r.guard(c);
-for(let i571=0,n571=Math.max(0,Math.floor(r.num("30")));i571<n571;i571++){
+for(let i595=0,n595=Math.max(0,Math.floor(r.num("30")));i595<n595;i595++){
 c.block="5zqq";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="6zge";r.guard(c);
@@ -20075,7 +23769,7 @@ c.block="g0jv";r.guard(c);
 r.command(c,"change_variable",["c9o4",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n230",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"ocqj",null,"x"])]),"MULTI","-0.4"]),null]);
 }
 c.block="uq40";r.guard(c);
-for(let i572=0,n572=Math.max(0,Math.floor(r.num("60")));i572<n572;i572++){
+for(let i596=0,n596=Math.max(0,Math.floor(r.num("60")));i596<n596;i596++){
 c.block="o24h";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="25gs";r.guard(c);
@@ -20111,7 +23805,7 @@ c.block="5mfo";r.guard(c);
 r.command(c,"change_variable",["c9o4",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n230",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"ocqj",null,"x"])]),"MULTI","-0.3"]),null]);
 }
 c.block="fhe7";r.guard(c);
-for(let i573=0,n573=Math.max(0,Math.floor(r.num("80")));i573<n573;i573++){
+for(let i597=0,n597=Math.max(0,Math.floor(r.num("80")));i597<n597;i597++){
 c.block="kzt9";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="tdio";r.guard(c);
@@ -20221,7 +23915,7 @@ r.command(c,"set_variable",["5wqd","10",null]);
 c.block="ido2";r.guard(c);
 r.command(c,"create_clone",["bj55",null]);
 c.block="jl5s";r.guard(c);
-for(let i574=0,n574=Math.max(0,Math.floor(r.num("40")));i574<n574;i574++){
+for(let i598=0,n598=Math.max(0,Math.floor(r.num("40")));i598<n598;i598++){
 c.block="0b3c";r.guard(c);
 r.command(c,"change_variable",["r3uc",r.value(c,"calc_basic",[r.value(c,"get_variable",["5wqd",null]),"DIVIDE","1.7"]),null]);
 c.block="kypl";r.guard(c);
@@ -20236,7 +23930,7 @@ c.block="e24p";r.guard(c);
 r.command(c,"create_clone",["5uiw",null]);
 }
 c.block="1noq";r.guard(c);
-for(let i575=0,n575=Math.max(0,Math.floor(r.num("10")));i575<n575;i575++){
+for(let i599=0,n599=Math.max(0,Math.floor(r.num("10")));i599<n599;i599++){
 c.block="zdnu";r.guard(c);
 r.command(c,"change_variable",["r3uc",r.value(c,"calc_basic",[r.value(c,"get_variable",["5wqd",null]),"DIVIDE","1.7"]),null]);
 c.block="d7gv";r.guard(c);
@@ -20250,7 +23944,7 @@ r.command(c,"set_variable",["5wqd","-10",null]);
 c.block="4d8c";r.guard(c);
 r.command(c,"set_variable",["2egy","0",null]);
 c.block="fdo1";r.guard(c);
-for(let i576=0,n576=Math.max(0,Math.floor(r.num("20")));i576<n576;i576++){
+for(let i600=0,n600=Math.max(0,Math.floor(r.num("20")));i600<n600;i600++){
 c.block="523w";r.guard(c);
 r.command(c,"change_variable",["r3uc",r.value(c,"calc_basic",[r.value(c,"get_variable",["5wqd",null]),"MULTI","2.5"]),null]);
 c.block="qqh0";r.guard(c);
@@ -20260,7 +23954,7 @@ r.command(c,"set_variable",["lq8z","1",null]);
 yield 1;
 }
 c.block="sjhx";r.guard(c);
-for(let i577=0,n577=Math.max(0,Math.floor(r.num("40")));i577<n577;i577++){
+for(let i601=0,n601=Math.max(0,Math.floor(r.num("40")));i601<n601;i601++){
 c.block="5bby";r.guard(c);
 r.command(c,"set_variable",["lq8z","1",null]);
 yield 1;
@@ -20307,7 +24001,7 @@ r.command(c,"message_cast",["gg6a",null]);
 c.block="faqn";r.guard(c);
 r.command(c,"set_variable",["ha8n","0",null]);
 c.block="7oj8";r.guard(c);
-for(let i578=0,n578=Math.max(0,Math.floor(r.num("10")));i578<n578;i578++){
+for(let i602=0,n602=Math.max(0,Math.floor(r.num("10")));i602<n602;i602++){
 c.block="b5fj";r.guard(c);
 r.command(c,"set_variable",["lq8z","1",null]);
 c.block="5ngu";r.guard(c);
@@ -20339,7 +24033,7 @@ r.command(c,"set_variable",["fu65","1",null]);
 c.block="7xa9";r.guard(c);
 r.command(c,"set_variable",["5wqd","10",null]);
 c.block="ezqs";r.guard(c);
-for(let i579=0,n579=Math.max(0,Math.floor(r.num("30")));i579<n579;i579++){
+for(let i603=0,n603=Math.max(0,Math.floor(r.num("30")));i603<n603;i603++){
 c.block="t51r";r.guard(c);
 r.command(c,"change_variable",["r3uc",r.value(c,"calc_basic",[r.value(c,"get_variable",["5wqd",null]),"DIVIDE","1.2"]),null]);
 c.block="lms2";r.guard(c);
@@ -20361,7 +24055,7 @@ c.block="rgdq";r.guard(c);
 r.command(c,"set_variable",["zvxx","1",null]);
 }
 c.block="qn5c";r.guard(c);
-for(let i580=0,n580=Math.max(0,Math.floor(r.num("1")));i580<n580;i580++){
+for(let i604=0,n604=Math.max(0,Math.floor(r.num("1")));i604<n604;i604++){
 yield 1;
 }
 c.block="kuq1";r.guard(c);
@@ -20391,7 +24085,7 @@ r.command(c,"set_variable",["od28","0",null]);
 c.block="a3vn";r.guard(c);
 r.command(c,"show",[null]);
 c.block="by9k";r.guard(c);
-for(let i581=0,n581=Math.max(0,Math.floor(r.num("10")));i581<n581;i581++){
+for(let i605=0,n605=Math.max(0,Math.floor(r.num("10")));i605<n605;i605++){
 c.block="nwzk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="u3w1";r.guard(c);
@@ -20424,7 +24118,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="5i8c";r.guard(c);
 r.command(c,"set_variable",["5wqd","10",null]);
 c.block="8gmq";r.guard(c);
-for(let i582=0,n582=Math.max(0,Math.floor(r.num("30")));i582<n582;i582++){
+for(let i606=0,n606=Math.max(0,Math.floor(r.num("30")));i606<n606;i606++){
 c.block="fip6";r.guard(c);
 r.command(c,"change_variable",["r3uc",r.value(c,"calc_basic",[r.value(c,"get_variable",["5wqd",null]),"DIVIDE","1.2"]),null]);
 c.block="tbi8";r.guard(c);
@@ -20446,7 +24140,7 @@ c.block="8ku7";r.guard(c);
 r.command(c,"create_clone",["hpfj",null]);
 }
 c.block="m1wc";r.guard(c);
-for(let i583=0,n583=Math.max(0,Math.floor(r.num("20")));i583<n583;i583++){
+for(let i607=0,n607=Math.max(0,Math.floor(r.num("20")));i607<n607;i607++){
 c.block="6spw";r.guard(c);
 r.command(c,"change_variable",["r3uc",r.value(c,"calc_basic",[r.value(c,"get_variable",["5wqd",null]),"MULTI","2.5"]),null]);
 c.block="pkag";r.guard(c);
@@ -20470,7 +24164,7 @@ c.block="r36e";r.guard(c);
 r.command(c,"create_clone",["hpfj",null]);
 }
 c.block="q3wi";r.guard(c);
-for(let i584=0,n584=Math.max(0,Math.floor(r.num("20")));i584<n584;i584++){
+for(let i608=0,n608=Math.max(0,Math.floor(r.num("20")));i608<n608;i608++){
 c.block="y4hf";r.guard(c);
 r.command(c,"change_variable",["r3uc",r.value(c,"calc_basic",[r.value(c,"get_variable",["5wqd",null]),"MULTI","1.5"]),null]);
 c.block="tqm8";r.guard(c);
@@ -20485,7 +24179,7 @@ yield 1;
 c.block="m67n";r.guard(c);
 r.command(c,"flip_x",[null]);
 c.block="7qj0";r.guard(c);
-for(let i585=0,n585=Math.max(0,Math.floor(r.num("30")));i585<n585;i585++){
+for(let i609=0,n609=Math.max(0,Math.floor(r.num("30")));i609<n609;i609++){
 c.block="mjj8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="j5rj";r.guard(c);
@@ -20595,7 +24289,7 @@ r.command(c,"set_variable",["3tqz","10",null]);
 c.block="ido2";r.guard(c);
 r.command(c,"create_clone",["bj55",null]);
 c.block="jl5s";r.guard(c);
-for(let i586=0,n586=Math.max(0,Math.floor(r.num("40")));i586<n586;i586++){
+for(let i610=0,n610=Math.max(0,Math.floor(r.num("40")));i610<n610;i610++){
 c.block="0b3c";r.guard(c);
 r.command(c,"change_variable",["jem8",r.value(c,"calc_basic",[r.value(c,"get_variable",["3tqz",null]),"DIVIDE","1.7"]),null]);
 c.block="kypl";r.guard(c);
@@ -20610,7 +24304,7 @@ c.block="e24p";r.guard(c);
 r.command(c,"create_clone",["5uiw",null]);
 }
 c.block="1noq";r.guard(c);
-for(let i587=0,n587=Math.max(0,Math.floor(r.num("10")));i587<n587;i587++){
+for(let i611=0,n611=Math.max(0,Math.floor(r.num("10")));i611<n611;i611++){
 c.block="zdnu";r.guard(c);
 r.command(c,"change_variable",["jem8",r.value(c,"calc_basic",[r.value(c,"get_variable",["3tqz",null]),"DIVIDE","1.7"]),null]);
 c.block="d7gv";r.guard(c);
@@ -20626,7 +24320,7 @@ r.command(c,"set_variable",["v7ps","0",null]);
 c.block="zrsn";r.guard(c);
 r.command(c,"set_variable",["rr24","2",null]);
 c.block="fdo1";r.guard(c);
-for(let i588=0,n588=Math.max(0,Math.floor(r.num("20")));i588<n588;i588++){
+for(let i612=0,n612=Math.max(0,Math.floor(r.num("20")));i612<n612;i612++){
 c.block="523w";r.guard(c);
 r.command(c,"change_variable",["jem8",r.value(c,"calc_basic",[r.value(c,"get_variable",["3tqz",null]),"MULTI","2.5"]),null]);
 c.block="qqh0";r.guard(c);
@@ -20636,7 +24330,7 @@ r.command(c,"set_variable",["lq8z","1",null]);
 yield 1;
 }
 c.block="sjhx";r.guard(c);
-for(let i589=0,n589=Math.max(0,Math.floor(r.num("40")));i589<n589;i589++){
+for(let i613=0,n613=Math.max(0,Math.floor(r.num("40")));i613<n613;i613++){
 c.block="5bby";r.guard(c);
 r.command(c,"set_variable",["lq8z","1",null]);
 yield 1;
@@ -20683,7 +24377,7 @@ r.command(c,"message_cast",["gg6a",null]);
 c.block="faqn";r.guard(c);
 r.command(c,"set_variable",["ha8n","0",null]);
 c.block="7oj8";r.guard(c);
-for(let i590=0,n590=Math.max(0,Math.floor(r.num("10")));i590<n590;i590++){
+for(let i614=0,n614=Math.max(0,Math.floor(r.num("10")));i614<n614;i614++){
 c.block="b5fj";r.guard(c);
 r.command(c,"set_variable",["lq8z","1",null]);
 c.block="5ngu";r.guard(c);
@@ -20715,7 +24409,7 @@ r.command(c,"set_variable",["ri3z","1",null]);
 c.block="7xa9";r.guard(c);
 r.command(c,"set_variable",["3tqz","10",null]);
 c.block="ezqs";r.guard(c);
-for(let i591=0,n591=Math.max(0,Math.floor(r.num("30")));i591<n591;i591++){
+for(let i615=0,n615=Math.max(0,Math.floor(r.num("30")));i615<n615;i615++){
 c.block="t51r";r.guard(c);
 r.command(c,"change_variable",["jem8",r.value(c,"calc_basic",[r.value(c,"get_variable",["3tqz",null]),"DIVIDE","1.2"]),null]);
 c.block="lms2";r.guard(c);
@@ -20737,7 +24431,7 @@ c.block="rgdq";r.guard(c);
 r.command(c,"set_variable",["zvxx","1",null]);
 }
 c.block="qn5c";r.guard(c);
-for(let i592=0,n592=Math.max(0,Math.floor(r.num("1")));i592<n592;i592++){
+for(let i616=0,n616=Math.max(0,Math.floor(r.num("1")));i616<n616;i616++){
 yield 1;
 }
 c.block="kuq1";r.guard(c);
@@ -20767,7 +24461,7 @@ r.command(c,"brush_erase_all",[null]);
 c.block="a3vn";r.guard(c);
 r.command(c,"show",[null]);
 c.block="by9k";r.guard(c);
-for(let i593=0,n593=Math.max(0,Math.floor(r.num("10")));i593<n593;i593++){
+for(let i617=0,n617=Math.max(0,Math.floor(r.num("10")));i617<n617;i617++){
 c.block="nwzk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="u3w1";r.guard(c);
@@ -20800,7 +24494,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="5i8c";r.guard(c);
 r.command(c,"set_variable",["3tqz","10",null]);
 c.block="8gmq";r.guard(c);
-for(let i594=0,n594=Math.max(0,Math.floor(r.num("30")));i594<n594;i594++){
+for(let i618=0,n618=Math.max(0,Math.floor(r.num("30")));i618<n618;i618++){
 c.block="fip6";r.guard(c);
 r.command(c,"change_variable",["jem8",r.value(c,"calc_basic",[r.value(c,"get_variable",["3tqz",null]),"DIVIDE","1.2"]),null]);
 c.block="tbi8";r.guard(c);
@@ -20822,7 +24516,7 @@ c.block="8ku7";r.guard(c);
 r.command(c,"create_clone",["hpfj",null]);
 }
 c.block="m1wc";r.guard(c);
-for(let i595=0,n595=Math.max(0,Math.floor(r.num("20")));i595<n595;i595++){
+for(let i619=0,n619=Math.max(0,Math.floor(r.num("20")));i619<n619;i619++){
 c.block="6spw";r.guard(c);
 r.command(c,"change_variable",["jem8",r.value(c,"calc_basic",[r.value(c,"get_variable",["3tqz",null]),"MULTI","2.5"]),null]);
 c.block="pkag";r.guard(c);
@@ -20846,7 +24540,7 @@ c.block="r3mf";r.guard(c);
 r.command(c,"create_clone",["hpfj",null]);
 }
 c.block="q3wi";r.guard(c);
-for(let i596=0,n596=Math.max(0,Math.floor(r.num("20")));i596<n596;i596++){
+for(let i620=0,n620=Math.max(0,Math.floor(r.num("20")));i620<n620;i620++){
 c.block="y4hf";r.guard(c);
 r.command(c,"change_variable",["jem8",r.value(c,"calc_basic",[r.value(c,"get_variable",["3tqz",null]),"MULTI","1.5"]),null]);
 c.block="tqm8";r.guard(c);
@@ -20861,7 +24555,7 @@ yield 1;
 c.block="m67n";r.guard(c);
 r.command(c,"flip_x",[null]);
 c.block="7qj0";r.guard(c);
-for(let i597=0,n597=Math.max(0,Math.floor(r.num("30")));i597<n597;i597++){
+for(let i621=0,n621=Math.max(0,Math.floor(r.num("30")));i621<n621;i621++){
 c.block="mjj8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="j5rj";r.guard(c);
@@ -21007,7 +24701,7 @@ c.block="9pu4";r.guard(c);
 r.command(c,"set_variable",["xnmv","17",null]);
 }
 c.block="98nu";r.guard(c);
-for(let i598=0,n598=Math.max(0,Math.floor(r.num("110")));i598<n598;i598++){
+for(let i622=0,n622=Math.max(0,Math.floor(r.num("110")));i622<n622;i622++){
 c.block="qx6o";r.guard(c);
 r.command(c,"change_variable",["o4c5",r.value(c,"calc_basic",["7","DIVIDE","110"]),null]);
 yield 1;
@@ -21041,7 +24735,7 @@ c.block="0oyt";r.guard(c);
 r.command(c,"set_variable",["xnmv","17",null]);
 }
 c.block="dn8p";r.guard(c);
-for(let i599=0,n599=Math.max(0,Math.floor(r.num("110")));i599<n599;i599++){
+for(let i623=0,n623=Math.max(0,Math.floor(r.num("110")));i623<n623;i623++){
 c.block="mlyy";r.guard(c);
 r.command(c,"change_variable",["o4c5",r.value(c,"calc_basic",["7","DIVIDE","110"]),null]);
 yield 1;
@@ -21081,7 +24775,7 @@ r.command(c,"set_variable",["hh2k","10",null]);
 c.block="168p";r.guard(c);
 r.command(c,"set_variable",["o979",r.value(c,"get_variable",["846x",null]),null]);
 c.block="2hjk";r.guard(c);
-for(let i600=0,n600=Math.max(0,Math.floor(r.num("50")));i600<n600;i600++){
+for(let i624=0,n624=Math.max(0,Math.floor(r.num("50")));i624<n624;i624++){
 c.block="8rpz";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["hh2k",null]),null]);
 c.block="0hd3";r.guard(c);
@@ -21105,7 +24799,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="534q";r.guard(c);
 r.command(c,"set_scale_size",["16",null]);
 c.block="6t46";r.guard(c);
-for(let i601=0,n601=Math.max(0,Math.floor(r.num("30")));i601<n601;i601++){
+for(let i625=0,n625=Math.max(0,Math.floor(r.num("30")));i625<n625;i625++){
 c.block="t1zm";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.3",null]);
 c.block="g81m";r.guard(c);
@@ -21121,7 +24815,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="1jp1";r.guard(c);
 r.command(c,"set_scale_size",["16",null]);
 c.block="kci8";r.guard(c);
-for(let i602=0,n602=Math.max(0,Math.floor(r.num("30")));i602<n602;i602++){
+for(let i626=0,n626=Math.max(0,Math.floor(r.num("30")));i626<n626;i626++){
 c.block="hyhh";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.3",null]);
 c.block="6qlq";r.guard(c);
@@ -21137,7 +24831,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="w7cp";r.guard(c);
 r.command(c,"set_scale_size",["16",null]);
 c.block="6hbd";r.guard(c);
-for(let i603=0,n603=Math.max(0,Math.floor(r.num("30")));i603<n603;i603++){
+for(let i627=0,n627=Math.max(0,Math.floor(r.num("30")));i627<n627;i627++){
 c.block="p6i4";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.3",null]);
 c.block="mdvt";r.guard(c);
@@ -21170,7 +24864,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["i6om"]),null]);
 c.block="twqo";r.guard(c);
 r.command(c,"set_variable",["w3u7","0",null]);
 c.block="9mv6";r.guard(c);
-for(let i604=0,n604=Math.max(0,Math.floor(r.num("50")));i604<n604;i604++){
+for(let i628=0,n628=Math.max(0,Math.floor(r.num("50")));i628<n628;i628++){
 c.block="2wck";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="af7m";r.guard(c);
@@ -21214,7 +24908,7 @@ r.command(c,"set_variable",["o979",r.value(c,"get_variable",["846x",null]),null]
 c.block="2bp4";r.guard(c);
 r.command(c,"set_variable",["sy5z","-5",null]);
 c.block="i8co";r.guard(c);
-for(let i605=0,n605=Math.max(0,Math.floor(r.num("70")));i605<n605;i605++){
+for(let i629=0,n629=Math.max(0,Math.floor(r.num("70")));i629<n629;i629++){
 c.block="t68d";r.guard(c);
 r.command(c,"move_direction",["3.3",null]);
 c.block="xhsn";r.guard(c);
@@ -21242,7 +24936,7 @@ c.block="gf8b";r.guard(c);
 r.command(c,"change_variable",["c9o4",r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","PLUS",r.value(c,"calc_basic",[r.value(c,"get_variable",["sy5z",null]),"MULTI","-2"])]),"MULTI","-1"]),null]);
 }
 c.block="6zug";r.guard(c);
-for(let i606=0,n606=Math.max(0,Math.floor(r.num("50")));i606<n606;i606++){
+for(let i630=0,n630=Math.max(0,Math.floor(r.num("50")));i630<n630;i630++){
 c.block="4jif";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="cvy5";r.guard(c);
@@ -21275,11 +24969,11 @@ r.command(c,"set_variable",["w3u7","0",null]);
 c.block="gkm3";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="w23g";r.guard(c);
-for(let i607=0,n607=Math.max(0,Math.floor(r.num("5")));i607<n607;i607++){
+for(let i631=0,n631=Math.max(0,Math.floor(r.num("5")));i631<n631;i631++){
 c.block="jy3m";r.guard(c);
 r.command(c,"message_cast",["hg1n",null]);
 c.block="v37a";r.guard(c);
-for(let i608=0,n608=Math.max(0,Math.floor(r.num("10")));i608<n608;i608++){
+for(let i632=0,n632=Math.max(0,Math.floor(r.num("10")));i632<n632;i632++){
 c.block="dcwi";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="6jym";r.guard(c);
@@ -21323,7 +25017,7 @@ r.command(c,"move_y",["-2",null]);
 yield 1;
 }
 c.block="md4d";r.guard(c);
-for(let i609=0,n609=Math.max(0,Math.floor(r.num("15")));i609<n609;i609++){
+for(let i633=0,n633=Math.max(0,Math.floor(r.num("15")));i633<n633;i633++){
 c.block="9za0";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7.5",null]);
 yield 1;
@@ -21331,25 +25025,25 @@ yield 1;
 c.block="llvx";r.guard(c);
 while(!r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS","28"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ob2m",null]),"EQUAL","0"])]))){yield 1;}
 c.block="ljc6";r.guard(c);
-for(let i610=0,n610=Math.max(0,Math.floor(r.num("2")));i610<n610;i610++){
+for(let i634=0,n634=Math.max(0,Math.floor(r.num("2")));i634<n634;i634++){
 c.block="sv6g";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-100",null]);
 c.block="pw95";r.guard(c);
-for(let i611=0,n611=Math.max(0,Math.floor(r.num("7")));i611<n611;i611++){
+for(let i635=0,n635=Math.max(0,Math.floor(r.num("7")));i635<n635;i635++){
 yield 1;
 }
 c.block="pk6w";r.guard(c);
-for(let i612=0,n612=Math.max(0,Math.floor(r.num("3")));i612<n612;i612++){
+for(let i636=0,n636=Math.max(0,Math.floor(r.num("3")));i636<n636;i636++){
 yield 1;
 }
 c.block="hnlf";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","100",null]);
 c.block="m3y8";r.guard(c);
-for(let i613=0,n613=Math.max(0,Math.floor(r.num("7")));i613<n613;i613++){
+for(let i637=0,n637=Math.max(0,Math.floor(r.num("7")));i637<n637;i637++){
 yield 1;
 }
 c.block="z5v2";r.guard(c);
-for(let i614=0,n614=Math.max(0,Math.floor(r.num("3")));i614<n614;i614++){
+for(let i638=0,n638=Math.max(0,Math.floor(r.num("3")));i638<n638;i638++){
 yield 1;
 }
 yield 1;
@@ -21357,7 +25051,7 @@ yield 1;
 c.block="phlo";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-100",null]);
 c.block="ojcy";r.guard(c);
-for(let i615=0,n615=Math.max(0,Math.floor(r.num("7")));i615<n615;i615++){
+for(let i639=0,n639=Math.max(0,Math.floor(r.num("7")));i639<n639;i639++){
 yield 1;
 }
 c.block="mk5z";r.guard(c);
@@ -21367,7 +25061,7 @@ r.command(c,"set_variable",["w3u7","0",null]);
 c.block="qlxg";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="uc39";r.guard(c);
-for(let i616=0,n616=Math.max(0,Math.floor(r.num("50")));i616<n616;i616++){
+for(let i640=0,n640=Math.max(0,Math.floor(r.num("50")));i640<n640;i640++){
 c.block="e3o5";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="d9u1";r.guard(c);
@@ -21394,7 +25088,7 @@ r.register("g1va","when_message_cast",[null,"qn6b"],function*(r,c){
 c.block="hj4x";r.guard(c);
 r.command(c,"set_variable",["1vu0","5.2",null]);
 c.block="mpgq";r.guard(c);
-for(let i617=0,n617=Math.max(0,Math.floor(r.num("300")));i617<n617;i617++){
+for(let i641=0,n641=Math.max(0,Math.floor(r.num("300")));i641<n641;i641++){
 yield 1;
 }
 c.block="lm2j";r.guard(c);
@@ -21528,7 +25222,7 @@ c.block="9pu4";r.guard(c);
 r.command(c,"set_variable",["xnmv","17",null]);
 }
 c.block="98nu";r.guard(c);
-for(let i618=0,n618=Math.max(0,Math.floor(r.num("110")));i618<n618;i618++){
+for(let i642=0,n642=Math.max(0,Math.floor(r.num("110")));i642<n642;i642++){
 c.block="qx6o";r.guard(c);
 r.command(c,"change_variable",["o4c5",r.value(c,"calc_basic",["7","DIVIDE","110"]),null]);
 yield 1;
@@ -21562,7 +25256,7 @@ c.block="0oyt";r.guard(c);
 r.command(c,"set_variable",["xnmv","17",null]);
 }
 c.block="dn8p";r.guard(c);
-for(let i619=0,n619=Math.max(0,Math.floor(r.num("110")));i619<n619;i619++){
+for(let i643=0,n643=Math.max(0,Math.floor(r.num("110")));i643<n643;i643++){
 c.block="mlyy";r.guard(c);
 r.command(c,"change_variable",["o4c5",r.value(c,"calc_basic",["7","DIVIDE","110"]),null]);
 yield 1;
@@ -21602,7 +25296,7 @@ r.command(c,"set_variable",["qknu","10",null]);
 c.block="168p";r.guard(c);
 r.command(c,"set_variable",["i4mv",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="2hjk";r.guard(c);
-for(let i620=0,n620=Math.max(0,Math.floor(r.num("50")));i620<n620;i620++){
+for(let i644=0,n644=Math.max(0,Math.floor(r.num("50")));i644<n644;i644++){
 c.block="8rpz";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["qknu",null]),null]);
 c.block="0hd3";r.guard(c);
@@ -21626,7 +25320,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="534q";r.guard(c);
 r.command(c,"set_scale_size",["16",null]);
 c.block="6t46";r.guard(c);
-for(let i621=0,n621=Math.max(0,Math.floor(r.num("30")));i621<n621;i621++){
+for(let i645=0,n645=Math.max(0,Math.floor(r.num("30")));i645<n645;i645++){
 c.block="t1zm";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.3",null]);
 c.block="g81m";r.guard(c);
@@ -21642,7 +25336,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="1jp1";r.guard(c);
 r.command(c,"set_scale_size",["16",null]);
 c.block="kci8";r.guard(c);
-for(let i622=0,n622=Math.max(0,Math.floor(r.num("30")));i622<n622;i622++){
+for(let i646=0,n646=Math.max(0,Math.floor(r.num("30")));i646<n646;i646++){
 c.block="hyhh";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.3",null]);
 c.block="6qlq";r.guard(c);
@@ -21658,7 +25352,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="w7cp";r.guard(c);
 r.command(c,"set_scale_size",["16",null]);
 c.block="6hbd";r.guard(c);
-for(let i623=0,n623=Math.max(0,Math.floor(r.num("30")));i623<n623;i623++){
+for(let i647=0,n647=Math.max(0,Math.floor(r.num("30")));i647<n647;i647++){
 c.block="p6i4";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.3",null]);
 c.block="mdvt";r.guard(c);
@@ -21691,7 +25385,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["f2m2"]),null]);
 c.block="twqo";r.guard(c);
 r.command(c,"set_variable",["s3k8","0",null]);
 c.block="9mv6";r.guard(c);
-for(let i624=0,n624=Math.max(0,Math.floor(r.num("50")));i624<n624;i624++){
+for(let i648=0,n648=Math.max(0,Math.floor(r.num("50")));i648<n648;i648++){
 c.block="2wck";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="af7m";r.guard(c);
@@ -21735,7 +25429,7 @@ r.command(c,"set_variable",["i4mv",r.value(c,"get_variable",["etjn",null]),null]
 c.block="2bp4";r.guard(c);
 r.command(c,"set_variable",["0xsx","-5",null]);
 c.block="i8co";r.guard(c);
-for(let i625=0,n625=Math.max(0,Math.floor(r.num("70")));i625<n625;i625++){
+for(let i649=0,n649=Math.max(0,Math.floor(r.num("70")));i649<n649;i649++){
 c.block="t68d";r.guard(c);
 r.command(c,"move_direction",["3.3",null]);
 c.block="xhsn";r.guard(c);
@@ -21763,7 +25457,7 @@ c.block="gf8b";r.guard(c);
 r.command(c,"change_variable",["lgp6",r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","PLUS",r.value(c,"calc_basic",[r.value(c,"get_variable",["0xsx",null]),"MULTI","-2"])]),"MULTI","-1"]),null]);
 }
 c.block="6zug";r.guard(c);
-for(let i626=0,n626=Math.max(0,Math.floor(r.num("50")));i626<n626;i626++){
+for(let i650=0,n650=Math.max(0,Math.floor(r.num("50")));i650<n650;i650++){
 c.block="4jif";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="cvy5";r.guard(c);
@@ -21796,11 +25490,11 @@ r.command(c,"set_variable",["s3k8","0",null]);
 c.block="gkm3";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="w23g";r.guard(c);
-for(let i627=0,n627=Math.max(0,Math.floor(r.num("5")));i627<n627;i627++){
+for(let i651=0,n651=Math.max(0,Math.floor(r.num("5")));i651<n651;i651++){
 c.block="jy3m";r.guard(c);
 r.command(c,"message_cast",["hg1n",null]);
 c.block="v37a";r.guard(c);
-for(let i628=0,n628=Math.max(0,Math.floor(r.num("10")));i628<n628;i628++){
+for(let i652=0,n652=Math.max(0,Math.floor(r.num("10")));i652<n652;i652++){
 c.block="dcwi";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="6jym";r.guard(c);
@@ -21844,7 +25538,7 @@ r.command(c,"move_y",["-2",null]);
 yield 1;
 }
 c.block="md4d";r.guard(c);
-for(let i629=0,n629=Math.max(0,Math.floor(r.num("15")));i629<n629;i629++){
+for(let i653=0,n653=Math.max(0,Math.floor(r.num("15")));i653<n653;i653++){
 c.block="9za0";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7.5",null]);
 yield 1;
@@ -21852,25 +25546,25 @@ yield 1;
 c.block="llvx";r.guard(c);
 while(!r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rav6",null]),"EQUAL","0"]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS","28"])]))){yield 1;}
 c.block="ljc6";r.guard(c);
-for(let i630=0,n630=Math.max(0,Math.floor(r.num("2")));i630<n630;i630++){
+for(let i654=0,n654=Math.max(0,Math.floor(r.num("2")));i654<n654;i654++){
 c.block="sv6g";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-100",null]);
 c.block="pw95";r.guard(c);
-for(let i631=0,n631=Math.max(0,Math.floor(r.num("7")));i631<n631;i631++){
+for(let i655=0,n655=Math.max(0,Math.floor(r.num("7")));i655<n655;i655++){
 yield 1;
 }
 c.block="pk6w";r.guard(c);
-for(let i632=0,n632=Math.max(0,Math.floor(r.num("3")));i632<n632;i632++){
+for(let i656=0,n656=Math.max(0,Math.floor(r.num("3")));i656<n656;i656++){
 yield 1;
 }
 c.block="hnlf";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","100",null]);
 c.block="m3y8";r.guard(c);
-for(let i633=0,n633=Math.max(0,Math.floor(r.num("7")));i633<n633;i633++){
+for(let i657=0,n657=Math.max(0,Math.floor(r.num("7")));i657<n657;i657++){
 yield 1;
 }
 c.block="z5v2";r.guard(c);
-for(let i634=0,n634=Math.max(0,Math.floor(r.num("3")));i634<n634;i634++){
+for(let i658=0,n658=Math.max(0,Math.floor(r.num("3")));i658<n658;i658++){
 yield 1;
 }
 yield 1;
@@ -21878,7 +25572,7 @@ yield 1;
 c.block="phlo";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-100",null]);
 c.block="ojcy";r.guard(c);
-for(let i635=0,n635=Math.max(0,Math.floor(r.num("7")));i635<n635;i635++){
+for(let i659=0,n659=Math.max(0,Math.floor(r.num("7")));i659<n659;i659++){
 yield 1;
 }
 c.block="mk5z";r.guard(c);
@@ -21888,7 +25582,7 @@ r.command(c,"set_variable",["s3k8","0",null]);
 c.block="qlxg";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="uc39";r.guard(c);
-for(let i636=0,n636=Math.max(0,Math.floor(r.num("50")));i636<n636;i636++){
+for(let i660=0,n660=Math.max(0,Math.floor(r.num("50")));i660<n660;i660++){
 c.block="e3o5";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="d9u1";r.guard(c);
@@ -21915,7 +25609,7 @@ r.register("6115","when_message_cast",[null,"qn6b"],function*(r,c){
 c.block="hj4x";r.guard(c);
 r.command(c,"set_variable",["1vu0","5.2",null]);
 c.block="mpgq";r.guard(c);
-for(let i637=0,n637=Math.max(0,Math.floor(r.num("300")));i637<n637;i637++){
+for(let i661=0,n661=Math.max(0,Math.floor(r.num("300")));i661<n661;i661++){
 yield 1;
 }
 c.block="lm2j";r.guard(c);
@@ -21975,7 +25669,7 @@ r.command(c,"rotate_absolute",[r.value(c,"calc_rand",[null,"0",null,"359",null])
 c.block="jrov";r.guard(c);
 r.command(c,"show",[null]);
 c.block="mr9v";r.guard(c);
-for(let i638=0,n638=Math.max(0,Math.floor(r.num("30")));i638<n638;i638++){
+for(let i662=0,n662=Math.max(0,Math.floor(r.num("30")));i662<n662;i662++){
 c.block="r701";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["20","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="2rky";r.guard(c);
@@ -21983,7 +25677,7 @@ r.command(c,"add_effect_amount",["transparency","1",null]);
 yield 1;
 }
 c.block="hzp9";r.guard(c);
-for(let i639=0,n639=Math.max(0,Math.floor(r.num("10")));i639<n639;i639++){
+for(let i663=0,n663=Math.max(0,Math.floor(r.num("10")));i663<n663;i663++){
 c.block="g3pn";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["20","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","14"]),null]);
 c.block="250v";r.guard(c);
@@ -22017,7 +25711,7 @@ r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="uplz";r.guard(c);
 r.command(c,"set_variable",["zf8d","0",null]);
 c.block="v14k";r.guard(c);
-for(let i640=0,n640=Math.max(0,Math.floor(r.num("25")));i640<n640;i640++){
+for(let i664=0,n664=Math.max(0,Math.floor(r.num("25")));i664<n664;i664++){
 c.block="7j0d";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-3",null]);
 c.block="jfeq";r.guard(c);
@@ -22038,13 +25732,13 @@ yield* r.call(c,"qy83",["-10","10","2"]);
 }
 }
 c.block="jhau";r.guard(c);
-for(let i641=0,n641=Math.max(0,Math.floor(r.num("10")));i641<n641;i641++){
+for(let i665=0,n665=Math.max(0,Math.floor(r.num("10")));i665<n665;i665++){
 c.block="8c2m";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 yield 1;
 }
 c.block="273h";r.guard(c);
-for(let i642=0,n642=Math.max(0,Math.floor(r.num("10")));i642<n642;i642++){
+for(let i666=0,n666=Math.max(0,Math.floor(r.num("10")));i666<n666;i666++){
 c.block="ef29";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="zsgt";r.guard(c);
@@ -22072,7 +25766,7 @@ r.command(c,"add_effect_amount",["transparency","100",null]);
 c.block="5pei";r.guard(c);
 r.command(c,"set_variable",["zf8d","0",null]);
 c.block="jq3w";r.guard(c);
-for(let i643=0,n643=Math.max(0,Math.floor(r.num("25")));i643<n643;i643++){
+for(let i667=0,n667=Math.max(0,Math.floor(r.num("25")));i667<n667;i667++){
 c.block="lfa6";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="109e";r.guard(c);
@@ -22095,13 +25789,13 @@ yield* r.call(c,"qy83",["-10","10","2"]);
 }
 }
 c.block="j5kt";r.guard(c);
-for(let i644=0,n644=Math.max(0,Math.floor(r.num("10")));i644<n644;i644++){
+for(let i668=0,n668=Math.max(0,Math.floor(r.num("10")));i668<n668;i668++){
 c.block="6z2v";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 yield 1;
 }
 c.block="7ts3";r.guard(c);
-for(let i645=0,n645=Math.max(0,Math.floor(r.num("10")));i645<n645;i645++){
+for(let i669=0,n669=Math.max(0,Math.floor(r.num("10")));i669<n669;i669++){
 c.block="msav";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="sne6";r.guard(c);
@@ -22129,7 +25823,7 @@ r.command(c,"add_effect_amount",["transparency","100",null]);
 c.block="psa2";r.guard(c);
 r.command(c,"set_variable",["zf8d","0",null]);
 c.block="hqfj";r.guard(c);
-for(let i646=0,n646=Math.max(0,Math.floor(r.num("25")));i646<n646;i646++){
+for(let i670=0,n670=Math.max(0,Math.floor(r.num("25")));i670<n670;i670++){
 c.block="n2cv";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="ptg4";r.guard(c);
@@ -22152,13 +25846,13 @@ yield* r.call(c,"qy83",["-10","10","2"]);
 }
 }
 c.block="9gov";r.guard(c);
-for(let i647=0,n647=Math.max(0,Math.floor(r.num("10")));i647<n647;i647++){
+for(let i671=0,n671=Math.max(0,Math.floor(r.num("10")));i671<n671;i671++){
 c.block="m161";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 yield 1;
 }
 c.block="wo44";r.guard(c);
-for(let i648=0,n648=Math.max(0,Math.floor(r.num("10")));i648<n648;i648++){
+for(let i672=0,n672=Math.max(0,Math.floor(r.num("10")));i672<n672;i672++){
 c.block="syci";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="oq35";r.guard(c);
@@ -22178,7 +25872,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",
 c.block="e2ln";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="tps0";r.guard(c);
-for(let i649=0,n649=Math.max(0,Math.floor(r.num("210")));i649<n649;i649++){
+for(let i673=0,n673=Math.max(0,Math.floor(r.num("210")));i673<n673;i673++){
 yield 1;
 }
 c.block="i3s3";r.guard(c);
@@ -22187,7 +25881,7 @@ r.command(c,"set_variable",["wyyq","0",null]);
 c.block="4vne";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="9xqo";r.guard(c);
-for(let i650=0,n650=Math.max(0,Math.floor(r.num("210")));i650<n650;i650++){
+for(let i674=0,n674=Math.max(0,Math.floor(r.num("210")));i674<n674;i674++){
 yield 1;
 }
 c.block="vjnz";r.guard(c);
@@ -22199,7 +25893,7 @@ r.register("szec","when_message_cast",[null,"9ics"],function*(r,c){
 c.block="k51r";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","24"]))){
 c.block="9axk";r.guard(c);
-for(let i651=0,n651=Math.max(0,Math.floor(r.num("300")));i651<n651;i651++){
+for(let i675=0,n675=Math.max(0,Math.floor(r.num("300")));i675<n675;i675++){
 c.block="5ufz";r.guard(c);
 r.command(c,"set_variable",["nccn","45",null]);
 c.block="ui21";r.guard(c);
@@ -22212,7 +25906,7 @@ c.block="fuo3";r.guard(c);
 r.command(c,"set_variable",["7vqa","0",null]);
 }else{
 c.block="jbb0";r.guard(c);
-for(let i652=0,n652=Math.max(0,Math.floor(r.num("300")));i652<n652;i652++){
+for(let i676=0,n676=Math.max(0,Math.floor(r.num("300")));i676<n676;i676++){
 c.block="tnqo";r.guard(c);
 r.command(c,"set_variable",["9af4","45",null]);
 c.block="7z71";r.guard(c);
@@ -22246,7 +25940,7 @@ r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="4020";r.guard(c);
 r.command(c,"set_variable",["zf8d","0",null]);
 c.block="3lj6";r.guard(c);
-for(let i653=0,n653=Math.max(0,Math.floor(r.num("25")));i653<n653;i653++){
+for(let i677=0,n677=Math.max(0,Math.floor(r.num("25")));i677<n677;i677++){
 c.block="e44i";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-3",null]);
 c.block="ccz2";r.guard(c);
@@ -22267,13 +25961,13 @@ yield* r.call(c,"05j0",["-10",10,"2"]);
 }
 }
 c.block="kvku";r.guard(c);
-for(let i654=0,n654=Math.max(0,Math.floor(r.num("10")));i654<n654;i654++){
+for(let i678=0,n678=Math.max(0,Math.floor(r.num("10")));i678<n678;i678++){
 c.block="zsq3";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 yield 1;
 }
 c.block="ds0a";r.guard(c);
-for(let i655=0,n655=Math.max(0,Math.floor(r.num("10")));i655<n655;i655++){
+for(let i679=0,n679=Math.max(0,Math.floor(r.num("10")));i679<n679;i679++){
 c.block="mylb";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="01hn";r.guard(c);
@@ -22301,7 +25995,7 @@ r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="vd0i";r.guard(c);
 r.command(c,"set_variable",["zf8d","0",null]);
 c.block="04ql";r.guard(c);
-for(let i656=0,n656=Math.max(0,Math.floor(r.num("25")));i656<n656;i656++){
+for(let i680=0,n680=Math.max(0,Math.floor(r.num("25")));i680<n680;i680++){
 c.block="4o67";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-3",null]);
 c.block="cg55";r.guard(c);
@@ -22324,13 +26018,13 @@ yield* r.call(c,"05j0",["-10",10,"2"]);
 }
 }
 c.block="te1z";r.guard(c);
-for(let i657=0,n657=Math.max(0,Math.floor(r.num("10")));i657<n657;i657++){
+for(let i681=0,n681=Math.max(0,Math.floor(r.num("10")));i681<n681;i681++){
 c.block="kmwn";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 yield 1;
 }
 c.block="tcm0";r.guard(c);
-for(let i658=0,n658=Math.max(0,Math.floor(r.num("10")));i658<n658;i658++){
+for(let i682=0,n682=Math.max(0,Math.floor(r.num("10")));i682<n682;i682++){
 c.block="3bmt";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="7t18";r.guard(c);
@@ -22358,7 +26052,7 @@ r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="m626";r.guard(c);
 r.command(c,"set_variable",["zf8d","0",null]);
 c.block="glox";r.guard(c);
-for(let i659=0,n659=Math.max(0,Math.floor(r.num("25")));i659<n659;i659++){
+for(let i683=0,n683=Math.max(0,Math.floor(r.num("25")));i683<n683;i683++){
 c.block="g56o";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-3",null]);
 c.block="rvuq";r.guard(c);
@@ -22381,13 +26075,13 @@ yield* r.call(c,"05j0",["-10",10,"2"]);
 }
 }
 c.block="wmes";r.guard(c);
-for(let i660=0,n660=Math.max(0,Math.floor(r.num("10")));i660<n660;i660++){
+for(let i684=0,n684=Math.max(0,Math.floor(r.num("10")));i684<n684;i684++){
 c.block="kf3x";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 yield 1;
 }
 c.block="n44v";r.guard(c);
-for(let i661=0,n661=Math.max(0,Math.floor(r.num("10")));i661<n661;i661++){
+for(let i685=0,n685=Math.max(0,Math.floor(r.num("10")));i685<n685;i685++){
 c.block="gewv";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="6kx8";r.guard(c);
@@ -22427,7 +26121,7 @@ r.command(c,"set_variable",["g34s","-10",null]);
 c.block="f725";r.guard(c);
 r.command(c,"create_clone",["szec",null]);
 c.block="telf";r.guard(c);
-for(let i662=0,n662=Math.max(0,Math.floor(r.num("25")));i662<n662;i662++){
+for(let i686=0,n686=Math.max(0,Math.floor(r.num("25")));i686<n686;i686++){
 c.block="o47i";r.guard(c);
 r.command(c,"change_scale_size",["0.5",null]);
 c.block="qswe";r.guard(c);
@@ -22454,7 +26148,7 @@ r.command(c,"set_variable",["qu0m","0",null]);
 c.block="ddiq";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="jfuy";r.guard(c);
-for(let i663=0,n663=Math.max(0,Math.floor(r.num("10")));i663<n663;i663++){
+for(let i687=0,n687=Math.max(0,Math.floor(r.num("10")));i687<n687;i687++){
 c.block="zeim";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="c8ik";r.guard(c);
@@ -22477,7 +26171,7 @@ yield 1;
 c.block="k2nz";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="wogi";r.guard(c);
-for(let i664=0,n664=Math.max(0,Math.floor(r.num("22")));i664<n664;i664++){
+for(let i688=0,n688=Math.max(0,Math.floor(r.num("22")));i688<n688;i688++){
 yield 1;
 }
 c.block="8mg2";r.guard(c);
@@ -22490,7 +26184,7 @@ r.command(c,"set_variable",["arfp","0",null]);
 c.block="b3zq";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_basic",[r.value(c,"get_variable",["arfp",null]),"PLUS","1"]),null]);
 c.block="bw5h";r.guard(c);
-for(let i665=0,n665=Math.max(0,Math.floor(r.num("10")));i665<n665;i665++){
+for(let i689=0,n689=Math.max(0,Math.floor(r.num("10")));i689<n689;i689++){
 c.block="eqo1";r.guard(c);
 r.command(c,"change_scale_size",["-1.25",null]);
 c.block="lzh8";r.guard(c);
@@ -22515,7 +26209,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="pobx";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="ma9v";r.guard(c);
-for(let i666=0,n666=Math.max(0,Math.floor(r.num("1")));i666<n666;i666++){
+for(let i690=0,n690=Math.max(0,Math.floor(r.num("1")));i690<n690;i690++){
 yield 1;
 }
 }
@@ -22533,7 +26227,7 @@ r.command(c,"set_variable",["qvkr",r.value(c,"get_variable",["arfp",null]),null]
 c.block="wuj4";r.guard(c);
 r.command(c,"set_variable",["g34s","-10",null]);
 c.block="vap2";r.guard(c);
-for(let i667=0,n667=Math.max(0,Math.floor(r.num("25")));i667<n667;i667++){
+for(let i691=0,n691=Math.max(0,Math.floor(r.num("25")));i691<n691;i691++){
 c.block="i9ho";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="p9a0";r.guard(c);
@@ -22556,7 +26250,7 @@ r.command(c,"set_variable",["g34s","10",null]);
 c.block="xq4k";r.guard(c);
 r.command(c,"set_variable",["qu0m","0",null]);
 c.block="tfa1";r.guard(c);
-for(let i668=0,n668=Math.max(0,Math.floor(r.num("7")));i668<n668;i668++){
+for(let i692=0,n692=Math.max(0,Math.floor(r.num("7")));i692<n692;i692++){
 c.block="hfuw";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="ly4c";r.guard(c);
@@ -22584,7 +26278,7 @@ c.block="qed7";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 }
 c.block="73xv";r.guard(c);
-for(let i669=0,n669=Math.max(0,Math.floor(r.num("3")));i669<n669;i669++){
+for(let i693=0,n693=Math.max(0,Math.floor(r.num("3")));i693<n693;i693++){
 c.block="eye4";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="g2ju";r.guard(c);
@@ -22605,11 +26299,11 @@ r.command(c,"create_clone",["vh15",null]);
 yield 1;
 }
 c.block="jaly";r.guard(c);
-for(let i670=0,n670=Math.max(0,Math.floor(r.num("1")));i670<n670;i670++){
+for(let i694=0,n694=Math.max(0,Math.floor(r.num("1")));i694<n694;i694++){
 yield 1;
 }
 c.block="1out";r.guard(c);
-for(let i671=0,n671=Math.max(0,Math.floor(r.num("20")));i671<n671;i671++){
+for(let i695=0,n695=Math.max(0,Math.floor(r.num("20")));i695<n695;i695++){
 yield 1;
 }
 c.block="ms1c";r.guard(c);
@@ -22622,7 +26316,7 @@ r.command(c,"set_variable",["arfp","0",null]);
 c.block="1kva";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_basic",[r.value(c,"get_variable",["arfp",null]),"PLUS","1"]),null]);
 c.block="0n09";r.guard(c);
-for(let i672=0,n672=Math.max(0,Math.floor(r.num("10")));i672<n672;i672++){
+for(let i696=0,n696=Math.max(0,Math.floor(r.num("10")));i696<n696;i696++){
 c.block="ruvc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="d24d";r.guard(c);
@@ -22643,7 +26337,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="ko7p";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="xppf";r.guard(c);
-for(let i673=0,n673=Math.max(0,Math.floor(r.num("1")));i673<n673;i673++){
+for(let i697=0,n697=Math.max(0,Math.floor(r.num("1")));i697<n697;i697++){
 yield 1;
 }
 }
@@ -22657,7 +26351,7 @@ r.command(c,"set_variable",["qvkr",r.value(c,"get_variable",["arfp",null]),null]
 c.block="wfoa";r.guard(c);
 r.command(c,"set_variable",["g34s","-10",null]);
 c.block="lwuo";r.guard(c);
-for(let i674=0,n674=Math.max(0,Math.floor(r.num("25")));i674<n674;i674++){
+for(let i698=0,n698=Math.max(0,Math.floor(r.num("25")));i698<n698;i698++){
 c.block="t2qh";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="chrv";r.guard(c);
@@ -22680,7 +26374,7 @@ r.command(c,"set_variable",["g34s","10",null]);
 c.block="dk7h";r.guard(c);
 r.command(c,"set_variable",["qu0m","0",null]);
 c.block="he56";r.guard(c);
-for(let i675=0,n675=Math.max(0,Math.floor(r.num("5")));i675<n675;i675++){
+for(let i699=0,n699=Math.max(0,Math.floor(r.num("5")));i699<n699;i699++){
 c.block="4qb8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="wiaw";r.guard(c);
@@ -22708,7 +26402,7 @@ c.block="8es9";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 }
 c.block="6fc5";r.guard(c);
-for(let i676=0,n676=Math.max(0,Math.floor(r.num("3")));i676<n676;i676++){
+for(let i700=0,n700=Math.max(0,Math.floor(r.num("3")));i700<n700;i700++){
 c.block="h1dx";r.guard(c);
 r.command(c,"create_clone",["vh15",null]);
 c.block="9coh";r.guard(c);
@@ -22729,11 +26423,11 @@ break;
 yield 1;
 }
 c.block="1xum";r.guard(c);
-for(let i677=0,n677=Math.max(0,Math.floor(r.num("15")));i677<n677;i677++){
+for(let i701=0,n701=Math.max(0,Math.floor(r.num("15")));i701<n701;i701++){
 yield 1;
 }
 c.block="o1o3";r.guard(c);
-for(let i678=0,n678=Math.max(0,Math.floor(r.num("10")));i678<n678;i678++){
+for(let i702=0,n702=Math.max(0,Math.floor(r.num("10")));i702<n702;i702++){
 c.block="2ei1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="5ic5";r.guard(c);
@@ -22754,7 +26448,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="mgo0";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="quvt";r.guard(c);
-for(let i679=0,n679=Math.max(0,Math.floor(r.num("1")));i679<n679;i679++){
+for(let i703=0,n703=Math.max(0,Math.floor(r.num("1")));i703<n703;i703++){
 yield 1;
 }
 }
@@ -22849,7 +26543,7 @@ r.command(c,"set_variable",["qu0m","1",null]);
 }
 }
 c.block="5c4r";r.guard(c);
-for(let i680=0,n680=Math.max(0,Math.floor(r.num("1")));i680<n680;i680++){
+for(let i704=0,n704=Math.max(0,Math.floor(r.num("1")));i704<n704;i704++){
 yield 1;
 }
 c.block="iiju";r.guard(c);
@@ -22877,7 +26571,7 @@ r.command(c,"set_variable",["qu0m","1",null]);
 }
 }
 c.block="6xeo";r.guard(c);
-for(let i681=0,n681=Math.max(0,Math.floor(r.num("10")));i681<n681;i681++){
+for(let i705=0,n705=Math.max(0,Math.floor(r.num("10")));i705<n705;i705++){
 c.block="6gs2";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qu0m",null]),"EQUAL","0"]))){
 c.block="bp87";r.guard(c);
@@ -22903,7 +26597,7 @@ r.command(c,"move_x",["-18",null]);
 yield 1;
 }
 c.block="4y9l";r.guard(c);
-for(let i682=0,n682=Math.max(0,Math.floor(r.num("10")));i682<n682;i682++){
+for(let i706=0,n706=Math.max(0,Math.floor(r.num("10")));i706<n706;i706++){
 c.block="t7uw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="5cyo";r.guard(c);
@@ -22961,7 +26655,7 @@ r.command(c,"message_cast",["8fts",null]);
 }
 }
 c.block="gk2i";r.guard(c);
-for(let i683=0,n683=Math.max(0,Math.floor(r.num("1")));i683<n683;i683++){
+for(let i707=0,n707=Math.max(0,Math.floor(r.num("1")));i707<n707;i707++){
 yield 1;
 }
 c.block="lzny";r.guard(c);
@@ -22991,7 +26685,7 @@ r.command(c,"message_cast",["8fts",null]);
 }
 }
 c.block="scwk";r.guard(c);
-for(let i684=0,n684=Math.max(0,Math.floor(r.num("10")));i684<n684;i684++){
+for(let i708=0,n708=Math.max(0,Math.floor(r.num("10")));i708<n708;i708++){
 c.block="j57y";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="d44c";r.guard(c);
@@ -23019,7 +26713,7 @@ r.command(c,"message_cast",["8fts",null]);
 yield 1;
 }
 c.block="jbr8";r.guard(c);
-for(let i685=0,n685=Math.max(0,Math.floor(r.num("10")));i685<n685;i685++){
+for(let i709=0,n709=Math.max(0,Math.floor(r.num("10")));i709<n709;i709++){
 c.block="xbde";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="knwu";r.guard(c);
@@ -23077,7 +26771,7 @@ r.command(c,"set_variable",["9af4","9",null]);
 }
 }
 c.block="h5dl";r.guard(c);
-for(let i686=0,n686=Math.max(0,Math.floor(r.num("1")));i686<n686;i686++){
+for(let i710=0,n710=Math.max(0,Math.floor(r.num("1")));i710<n710;i710++){
 yield 1;
 }
 c.block="nqqn";r.guard(c);
@@ -23107,7 +26801,7 @@ r.command(c,"set_variable",["9af4","9",null]);
 }
 }
 c.block="o2l8";r.guard(c);
-for(let i687=0,n687=Math.max(0,Math.floor(r.num("10")));i687<n687;i687++){
+for(let i711=0,n711=Math.max(0,Math.floor(r.num("10")));i711<n711;i711++){
 c.block="z8gp";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="l0s1";r.guard(c);
@@ -23135,7 +26829,7 @@ r.command(c,"set_variable",["9af4","9",null]);
 yield 1;
 }
 c.block="3v08";r.guard(c);
-for(let i688=0,n688=Math.max(0,Math.floor(r.num("10")));i688<n688;i688++){
+for(let i712=0,n712=Math.max(0,Math.floor(r.num("10")));i712<n712;i712++){
 c.block="lvl0";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="7mpm";r.guard(c);
@@ -23184,7 +26878,7 @@ r.command(c,"set_variable",["9bj7","-10",null]);
 c.block="f725";r.guard(c);
 r.command(c,"create_clone",["szec",null]);
 c.block="telf";r.guard(c);
-for(let i689=0,n689=Math.max(0,Math.floor(r.num("25")));i689<n689;i689++){
+for(let i713=0,n713=Math.max(0,Math.floor(r.num("25")));i713<n713;i713++){
 c.block="o47i";r.guard(c);
 r.command(c,"change_scale_size",["0.5",null]);
 c.block="qswe";r.guard(c);
@@ -23211,7 +26905,7 @@ r.command(c,"set_variable",["dsbc","0",null]);
 c.block="ddiq";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="jfuy";r.guard(c);
-for(let i690=0,n690=Math.max(0,Math.floor(r.num("10")));i690<n690;i690++){
+for(let i714=0,n714=Math.max(0,Math.floor(r.num("10")));i714<n714;i714++){
 c.block="zeim";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="c8ik";r.guard(c);
@@ -23234,7 +26928,7 @@ yield 1;
 c.block="k2nz";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="wogi";r.guard(c);
-for(let i691=0,n691=Math.max(0,Math.floor(r.num("22")));i691<n691;i691++){
+for(let i715=0,n715=Math.max(0,Math.floor(r.num("22")));i715<n715;i715++){
 yield 1;
 }
 c.block="8mg2";r.guard(c);
@@ -23247,7 +26941,7 @@ r.command(c,"set_variable",["arfp","0",null]);
 c.block="b3zq";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_basic",[r.value(c,"get_variable",["arfp",null]),"PLUS","1"]),null]);
 c.block="bw5h";r.guard(c);
-for(let i692=0,n692=Math.max(0,Math.floor(r.num("10")));i692<n692;i692++){
+for(let i716=0,n716=Math.max(0,Math.floor(r.num("10")));i716<n716;i716++){
 c.block="eqo1";r.guard(c);
 r.command(c,"change_scale_size",["-1.25",null]);
 c.block="lzh8";r.guard(c);
@@ -23272,7 +26966,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="pobx";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="ma9v";r.guard(c);
-for(let i693=0,n693=Math.max(0,Math.floor(r.num("1")));i693<n693;i693++){
+for(let i717=0,n717=Math.max(0,Math.floor(r.num("1")));i717<n717;i717++){
 yield 1;
 }
 }
@@ -23290,7 +26984,7 @@ r.command(c,"set_variable",["rr24",r.value(c,"get_variable",["arfp",null]),null]
 c.block="wuj4";r.guard(c);
 r.command(c,"set_variable",["9bj7","-10",null]);
 c.block="vap2";r.guard(c);
-for(let i694=0,n694=Math.max(0,Math.floor(r.num("25")));i694<n694;i694++){
+for(let i718=0,n718=Math.max(0,Math.floor(r.num("25")));i718<n718;i718++){
 c.block="i9ho";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="p9a0";r.guard(c);
@@ -23313,7 +27007,7 @@ r.command(c,"set_variable",["9bj7","10",null]);
 c.block="xq4k";r.guard(c);
 r.command(c,"set_variable",["dsbc","0",null]);
 c.block="tfa1";r.guard(c);
-for(let i695=0,n695=Math.max(0,Math.floor(r.num("7")));i695<n695;i695++){
+for(let i719=0,n719=Math.max(0,Math.floor(r.num("7")));i719<n719;i719++){
 c.block="hfuw";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="ly4c";r.guard(c);
@@ -23341,7 +27035,7 @@ c.block="qed7";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 }
 c.block="73xv";r.guard(c);
-for(let i696=0,n696=Math.max(0,Math.floor(r.num("3")));i696<n696;i696++){
+for(let i720=0,n720=Math.max(0,Math.floor(r.num("3")));i720<n720;i720++){
 c.block="eye4";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="g2ju";r.guard(c);
@@ -23362,11 +27056,11 @@ r.command(c,"create_clone",["vh15",null]);
 yield 1;
 }
 c.block="jaly";r.guard(c);
-for(let i697=0,n697=Math.max(0,Math.floor(r.num("1")));i697<n697;i697++){
+for(let i721=0,n721=Math.max(0,Math.floor(r.num("1")));i721<n721;i721++){
 yield 1;
 }
 c.block="1out";r.guard(c);
-for(let i698=0,n698=Math.max(0,Math.floor(r.num("20")));i698<n698;i698++){
+for(let i722=0,n722=Math.max(0,Math.floor(r.num("20")));i722<n722;i722++){
 yield 1;
 }
 c.block="ms1c";r.guard(c);
@@ -23379,7 +27073,7 @@ r.command(c,"set_variable",["arfp","0",null]);
 c.block="1kva";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_basic",[r.value(c,"get_variable",["arfp",null]),"PLUS","1"]),null]);
 c.block="0n09";r.guard(c);
-for(let i699=0,n699=Math.max(0,Math.floor(r.num("10")));i699<n699;i699++){
+for(let i723=0,n723=Math.max(0,Math.floor(r.num("10")));i723<n723;i723++){
 c.block="ruvc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="d24d";r.guard(c);
@@ -23400,7 +27094,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="ko7p";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="xppf";r.guard(c);
-for(let i700=0,n700=Math.max(0,Math.floor(r.num("1")));i700<n700;i700++){
+for(let i724=0,n724=Math.max(0,Math.floor(r.num("1")));i724<n724;i724++){
 yield 1;
 }
 }
@@ -23414,7 +27108,7 @@ r.command(c,"set_variable",["rr24",r.value(c,"get_variable",["arfp",null]),null]
 c.block="wfoa";r.guard(c);
 r.command(c,"set_variable",["9bj7","-10",null]);
 c.block="lwuo";r.guard(c);
-for(let i701=0,n701=Math.max(0,Math.floor(r.num("25")));i701<n701;i701++){
+for(let i725=0,n725=Math.max(0,Math.floor(r.num("25")));i725<n725;i725++){
 c.block="t2qh";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="chrv";r.guard(c);
@@ -23437,7 +27131,7 @@ r.command(c,"set_variable",["9bj7","10",null]);
 c.block="dk7h";r.guard(c);
 r.command(c,"set_variable",["dsbc","0",null]);
 c.block="he56";r.guard(c);
-for(let i702=0,n702=Math.max(0,Math.floor(r.num("5")));i702<n702;i702++){
+for(let i726=0,n726=Math.max(0,Math.floor(r.num("5")));i726<n726;i726++){
 c.block="4qb8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="wiaw";r.guard(c);
@@ -23465,7 +27159,7 @@ c.block="8es9";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 }
 c.block="6fc5";r.guard(c);
-for(let i703=0,n703=Math.max(0,Math.floor(r.num("3")));i703<n703;i703++){
+for(let i727=0,n727=Math.max(0,Math.floor(r.num("3")));i727<n727;i727++){
 c.block="h1dx";r.guard(c);
 r.command(c,"create_clone",["vh15",null]);
 c.block="9coh";r.guard(c);
@@ -23486,11 +27180,11 @@ break;
 yield 1;
 }
 c.block="1xum";r.guard(c);
-for(let i704=0,n704=Math.max(0,Math.floor(r.num("15")));i704<n704;i704++){
+for(let i728=0,n728=Math.max(0,Math.floor(r.num("15")));i728<n728;i728++){
 yield 1;
 }
 c.block="o1o3";r.guard(c);
-for(let i705=0,n705=Math.max(0,Math.floor(r.num("10")));i705<n705;i705++){
+for(let i729=0,n729=Math.max(0,Math.floor(r.num("10")));i729<n729;i729++){
 c.block="2ei1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="5ic5";r.guard(c);
@@ -23511,7 +27205,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="mgo0";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="quvt";r.guard(c);
-for(let i706=0,n706=Math.max(0,Math.floor(r.num("1")));i706<n706;i706++){
+for(let i730=0,n730=Math.max(0,Math.floor(r.num("1")));i730<n730;i730++){
 yield 1;
 }
 }
@@ -23606,7 +27300,7 @@ r.command(c,"set_variable",["dsbc","1",null]);
 }
 }
 c.block="5c4r";r.guard(c);
-for(let i707=0,n707=Math.max(0,Math.floor(r.num("1")));i707<n707;i707++){
+for(let i731=0,n731=Math.max(0,Math.floor(r.num("1")));i731<n731;i731++){
 yield 1;
 }
 c.block="6m7y";r.guard(c);
@@ -23634,7 +27328,7 @@ r.command(c,"set_variable",["dsbc","1",null]);
 }
 }
 c.block="6xeo";r.guard(c);
-for(let i708=0,n708=Math.max(0,Math.floor(r.num("10")));i708<n708;i708++){
+for(let i732=0,n732=Math.max(0,Math.floor(r.num("10")));i732<n732;i732++){
 c.block="6gs2";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dsbc",null]),"EQUAL","0"]))){
 c.block="klbs";r.guard(c);
@@ -23660,7 +27354,7 @@ r.command(c,"move_x",["-18",null]);
 yield 1;
 }
 c.block="4y9l";r.guard(c);
-for(let i709=0,n709=Math.max(0,Math.floor(r.num("10")));i709<n709;i709++){
+for(let i733=0,n733=Math.max(0,Math.floor(r.num("10")));i733<n733;i733++){
 c.block="cm63";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="9qmw";r.guard(c);
@@ -23718,7 +27412,7 @@ r.command(c,"message_cast",["8fts",null]);
 }
 }
 c.block="gk2i";r.guard(c);
-for(let i710=0,n710=Math.max(0,Math.floor(r.num("1")));i710<n710;i710++){
+for(let i734=0,n734=Math.max(0,Math.floor(r.num("1")));i734<n734;i734++){
 yield 1;
 }
 c.block="20ih";r.guard(c);
@@ -23748,7 +27442,7 @@ r.command(c,"message_cast",["8fts",null]);
 }
 }
 c.block="scwk";r.guard(c);
-for(let i711=0,n711=Math.max(0,Math.floor(r.num("10")));i711<n711;i711++){
+for(let i735=0,n735=Math.max(0,Math.floor(r.num("10")));i735<n735;i735++){
 c.block="op1b";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dsbc",null]),"EQUAL","0"]))){
 c.block="m3ho";r.guard(c);
@@ -23776,7 +27470,7 @@ r.command(c,"move_x",["-25",null]);
 yield 1;
 }
 c.block="jbr8";r.guard(c);
-for(let i712=0,n712=Math.max(0,Math.floor(r.num("10")));i712<n712;i712++){
+for(let i736=0,n736=Math.max(0,Math.floor(r.num("10")));i736<n736;i736++){
 c.block="sp96";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="yxvz";r.guard(c);
@@ -23834,7 +27528,7 @@ r.command(c,"set_variable",["nccn","9",null]);
 }
 }
 c.block="v69k";r.guard(c);
-for(let i713=0,n713=Math.max(0,Math.floor(r.num("1")));i713<n713;i713++){
+for(let i737=0,n737=Math.max(0,Math.floor(r.num("1")));i737<n737;i737++){
 yield 1;
 }
 c.block="8e65";r.guard(c);
@@ -23864,7 +27558,7 @@ r.command(c,"set_variable",["nccn","9",null]);
 }
 }
 c.block="ey7i";r.guard(c);
-for(let i714=0,n714=Math.max(0,Math.floor(r.num("10")));i714<n714;i714++){
+for(let i738=0,n738=Math.max(0,Math.floor(r.num("10")));i738<n738;i738++){
 c.block="z37u";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dsbc",null]),"EQUAL","0"]))){
 c.block="0hev";r.guard(c);
@@ -23892,7 +27586,7 @@ r.command(c,"move_x",["-25",null]);
 yield 1;
 }
 c.block="pibm";r.guard(c);
-for(let i715=0,n715=Math.max(0,Math.floor(r.num("10")));i715<n715;i715++){
+for(let i739=0,n739=Math.max(0,Math.floor(r.num("10")));i739<n739;i739++){
 c.block="pgf9";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="8yui";r.guard(c);
@@ -23921,7 +27615,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",
 c.block="1zz9";r.guard(c);
 r.command(c,"set_variable",["1vu0","1",null]);
 c.block="9fyx";r.guard(c);
-for(let i716=0,n716=Math.max(0,Math.floor(r.num("10")));i716<n716;i716++){
+for(let i740=0,n740=Math.max(0,Math.floor(r.num("10")));i740<n740;i740++){
 yield 1;
 }
 c.block="2dyd";r.guard(c);
@@ -23930,7 +27624,7 @@ r.command(c,"set_variable",["1vu0","0",null]);
 c.block="uowj";r.guard(c);
 r.command(c,"set_variable",["05ze","1",null]);
 c.block="vta1";r.guard(c);
-for(let i717=0,n717=Math.max(0,Math.floor(r.num("10")));i717<n717;i717++){
+for(let i741=0,n741=Math.max(0,Math.floor(r.num("10")));i741<n741;i741++){
 yield 1;
 }
 c.block="fw15";r.guard(c);
@@ -23995,7 +27689,7 @@ r.command(c,"rotate_absolute",[r.value(c,"coordinate_object",[null,"rj41",null,"
 c.block="ux9m";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_basic",[r.value(c,"get_variable",["arfp",null]),"PLUS","1"]),null]);
 c.block="n2dh";r.guard(c);
-for(let i718=0,n718=Math.max(0,Math.floor(r.num("10")));i718<n718;i718++){
+for(let i742=0,n742=Math.max(0,Math.floor(r.num("10")));i742<n742;i742++){
 c.block="63iq";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","24"]))){
 c.block="ccbj";r.guard(c);
@@ -24101,7 +27795,7 @@ r.command(c,"set_variable",["fu65","1",null]);
 c.block="9suf";r.guard(c);
 r.command(c,"set_variable",["od28","25",null]);
 c.block="mw3s";r.guard(c);
-for(let i719=0,n719=Math.max(0,Math.floor(r.num("60")));i719<n719;i719++){
+for(let i743=0,n743=Math.max(0,Math.floor(r.num("60")));i743<n743;i743++){
 c.block="fkft";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="vk3l";r.guard(c);
@@ -24143,7 +27837,7 @@ r.command(c,"set_variable",["x3re","20",null]);
 c.block="ku5p";r.guard(c);
 r.command(c,"set_variable",["7873","0",null]);
 c.block="e2dh";r.guard(c);
-for(let i720=0,n720=Math.max(0,Math.floor(r.num("150")));i720<n720;i720++){
+for(let i744=0,n744=Math.max(0,Math.floor(r.num("150")));i744<n744;i744++){
 c.block="s1dk";r.guard(c);
 r.command(c,"change_variable",["x3re","1",null]);
 c.block="w28h";r.guard(c);
@@ -24176,7 +27870,7 @@ r.command(c,"set_variable",["7vqa","0",null]);
 c.block="vk9n";r.guard(c);
 r.command(c,"set_variable",["od28","0",null]);
 c.block="u6tx";r.guard(c);
-for(let i721=0,n721=Math.max(0,Math.floor(r.num("45")));i721<n721;i721++){
+for(let i745=0,n745=Math.max(0,Math.floor(r.num("45")));i745<n745;i745++){
 c.block="tlvm";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="rlef";r.guard(c);
@@ -24218,7 +27912,7 @@ r.command(c,"set_variable",["n0ya","0",null]);
 c.block="ksh6";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="k6vq";r.guard(c);
-for(let i722=0,n722=Math.max(0,Math.floor(r.num("40")));i722<n722;i722++){
+for(let i746=0,n746=Math.max(0,Math.floor(r.num("40")));i746<n746;i746++){
 c.block="u1k8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="8ceb";r.guard(c);
@@ -24247,7 +27941,7 @@ r.command(c,"set_variable",["od28","0",null]);
 c.block="yno9";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="oxtu";r.guard(c);
-for(let i723=0,n723=Math.max(0,Math.floor(r.num("10")));i723<n723;i723++){
+for(let i747=0,n747=Math.max(0,Math.floor(r.num("10")));i747<n747;i747++){
 c.block="6n96";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="11rb";r.guard(c);
@@ -24301,7 +27995,7 @@ c.block="kkdw";r.guard(c);
 r.command(c,"set_variable",["lgp6","-10",null]);
 }
 c.block="ifl0";r.guard(c);
-for(let i724=0,n724=Math.max(0,Math.floor(r.num("15")));i724<n724;i724++){
+for(let i748=0,n748=Math.max(0,Math.floor(r.num("15")));i748<n748;i748++){
 c.block="q2qu";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="inmh";r.guard(c);
@@ -24339,7 +28033,7 @@ r.command(c,"message_cast",["hg1n",null]);
 yield 1;
 }
 c.block="0y1l";r.guard(c);
-for(let i725=0,n725=Math.max(0,Math.floor(r.num("10")));i725<n725;i725++){
+for(let i749=0,n749=Math.max(0,Math.floor(r.num("10")));i749<n749;i749++){
 c.block="5y4r";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="bfx2";r.guard(c);
@@ -24360,7 +28054,7 @@ r.command(c,"set_variable",["od28","0",null]);
 c.block="eedj";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="y3dn";r.guard(c);
-for(let i726=0,n726=Math.max(0,Math.floor(r.num("18")));i726<n726;i726++){
+for(let i750=0,n750=Math.max(0,Math.floor(r.num("18")));i750<n750;i750++){
 c.block="krv4";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="5mxk";r.guard(c);
@@ -24391,7 +28085,7 @@ r.command(c,"set_variable",["n0ya","0",null]);
 c.block="cxin";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="n2i3";r.guard(c);
-for(let i727=0,n727=Math.max(0,Math.floor(r.num("20")));i727<n727;i727++){
+for(let i751=0,n751=Math.max(0,Math.floor(r.num("20")));i751<n751;i751++){
 c.block="saf6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="0kga";r.guard(c);
@@ -24416,7 +28110,7 @@ r.command(c,"set_variable",["xvg1","5.5",null]);
 c.block="fhpe";r.guard(c);
 r.command(c,"set_variable",["vk0b","0",null]);
 c.block="l9b2";r.guard(c);
-for(let i728=0,n728=Math.max(0,Math.floor(r.num("10")));i728<n728;i728++){
+for(let i752=0,n752=Math.max(0,Math.floor(r.num("10")));i752<n752;i752++){
 c.block="flec";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="ni06";r.guard(c);
@@ -24521,7 +28215,7 @@ r.command(c,"set_variable",["trhv",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="eyv6";r.guard(c);
 r.command(c,"set_variable",["05ze","1",null]);
 c.block="bied";r.guard(c);
-for(let i729=0,n729=Math.max(0,Math.floor(r.num("20")));i729<n729;i729++){
+for(let i753=0,n753=Math.max(0,Math.floor(r.num("20")));i753<n753;i753++){
 c.block="opfj";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="h72q";r.guard(c);
@@ -24543,7 +28237,7 @@ yield 1;
 c.block="98av";r.guard(c);
 r.command(c,"change_variable",["c19k","-0.1",null]);
 c.block="vzyw";r.guard(c);
-for(let i730=0,n730=Math.max(0,Math.floor(r.num("20")));i730<n730;i730++){
+for(let i754=0,n754=Math.max(0,Math.floor(r.num("20")));i754<n754;i754++){
 c.block="g6on";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="x7g6";r.guard(c);
@@ -24594,7 +28288,7 @@ c.block="yf2u";r.guard(c);
 r.command(c,"message_cast",["hg1n",null]);
 }
 c.block="0kbe";r.guard(c);
-for(let i731=0,n731=Math.max(0,Math.floor(r.num("5")));i731<n731;i731++){
+for(let i755=0,n755=Math.max(0,Math.floor(r.num("5")));i755<n755;i755++){
 c.block="8sdk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="mzgc";r.guard(c);
@@ -24623,7 +28317,7 @@ r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["n0ya",n
 yield 1;
 }
 c.block="j8mm";r.guard(c);
-for(let i732=0,n732=Math.max(0,Math.floor(r.num("2")));i732<n732;i732++){
+for(let i756=0,n756=Math.max(0,Math.floor(r.num("2")));i756<n756;i756++){
 c.block="6dyr";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="4py2";r.guard(c);
@@ -24643,7 +28337,7 @@ r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["n0ya",n
 yield 1;
 }
 c.block="1d7w";r.guard(c);
-for(let i733=0,n733=Math.max(0,Math.floor(r.num("25")));i733<n733;i733++){
+for(let i757=0,n757=Math.max(0,Math.floor(r.num("25")));i757<n757;i757++){
 c.block="qhqw";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="4paw";r.guard(c);
@@ -24687,7 +28381,7 @@ c.block="6mxf";r.guard(c);
 r.command(c,"move_x",["-11",null]);
 }
 c.block="992z";r.guard(c);
-for(let i734=0,n734=Math.max(0,Math.floor(r.num("20")));i734<n734;i734++){
+for(let i758=0,n758=Math.max(0,Math.floor(r.num("20")));i758<n758;i758++){
 c.block="8eh6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="mc4f";r.guard(c);
@@ -24719,7 +28413,7 @@ yield 1;
 c.block="dbvy";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="ijzq";r.guard(c);
-for(let i735=0,n735=Math.max(0,Math.floor(r.num("15")));i735<n735;i735++){
+for(let i759=0,n759=Math.max(0,Math.floor(r.num("15")));i759<n759;i759++){
 yield 1;
 }
 }
@@ -24749,13 +28443,13 @@ r.command(c,"change_effect_amount",["transparency","10",null]);
 c.block="8v0h";r.guard(c);
 r.command(c,"show",[null]);
 c.block="fb9s";r.guard(c);
-for(let i736=0,n736=Math.max(0,Math.floor(r.num("15")));i736<n736;i736++){
+for(let i760=0,n760=Math.max(0,Math.floor(r.num("15")));i760<n760;i760++){
 c.block="4kvi";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 yield 1;
 }
 c.block="2ynl";r.guard(c);
-for(let i737=0,n737=Math.max(0,Math.floor(r.num("10")));i737<n737;i737++){
+for(let i761=0,n761=Math.max(0,Math.floor(r.num("10")));i761<n761;i761++){
 c.block="izm1";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7",null]);
 c.block="acij";r.guard(c);
@@ -24796,7 +28490,7 @@ r.command(c,"set_variable",["e8l1","1",null]);
 c.block="ncrc";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="wli5";r.guard(c);
-for(let i738=0,n738=Math.max(0,Math.floor(r.num("16")));i738<n738;i738++){
+for(let i762=0,n762=Math.max(0,Math.floor(r.num("16")));i762<n762;i762++){
 yield 1;
 }
 c.block="x7tz";r.guard(c);
@@ -24825,11 +28519,11 @@ r.register("opol","when_clone_start",[null],function*(r,c){
 c.block="h902";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qvkr",null]),"EQUAL","1"]))){
 c.block="m9zk";r.guard(c);
-for(let i739=0,n739=Math.max(0,Math.floor(r.num("3")));i739<n739;i739++){
+for(let i763=0,n763=Math.max(0,Math.floor(r.num("3")));i763<n763;i763++){
 c.block="f87x";r.guard(c);
 r.command(c,"create_clone",["u9je",null]);
 c.block="b665";r.guard(c);
-for(let i740=0,n740=Math.max(0,Math.floor(r.num("5")));i740<n740;i740++){
+for(let i764=0,n764=Math.max(0,Math.floor(r.num("5")));i764<n764;i764++){
 yield 1;
 }
 yield 1;
@@ -24917,7 +28611,7 @@ r.command(c,"set_variable",["ri3z","1",null]);
 c.block="9suf";r.guard(c);
 r.command(c,"set_variable",["w5i0","25",null]);
 c.block="mw3s";r.guard(c);
-for(let i741=0,n741=Math.max(0,Math.floor(r.num("60")));i741<n741;i741++){
+for(let i765=0,n765=Math.max(0,Math.floor(r.num("60")));i765<n765;i765++){
 c.block="fkft";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="vk3l";r.guard(c);
@@ -24959,7 +28653,7 @@ r.command(c,"set_variable",["7873","0",null]);
 c.block="7fl2";r.guard(c);
 r.command(c,"set_variable",["j88w","0",null]);
 c.block="e2dh";r.guard(c);
-for(let i742=0,n742=Math.max(0,Math.floor(r.num("150")));i742<n742;i742++){
+for(let i766=0,n766=Math.max(0,Math.floor(r.num("150")));i766<n766;i766++){
 c.block="s1dk";r.guard(c);
 r.command(c,"change_variable",["x3re","1",null]);
 c.block="w28h";r.guard(c);
@@ -24992,7 +28686,7 @@ r.command(c,"set_variable",["e8l1","0",null]);
 c.block="vk9n";r.guard(c);
 r.command(c,"set_variable",["w5i0","0",null]);
 c.block="u6tx";r.guard(c);
-for(let i743=0,n743=Math.max(0,Math.floor(r.num("45")));i743<n743;i743++){
+for(let i767=0,n767=Math.max(0,Math.floor(r.num("45")));i767<n767;i767++){
 c.block="tlvm";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="rlef";r.guard(c);
@@ -25034,7 +28728,7 @@ r.command(c,"set_variable",["n0ya","0",null]);
 c.block="ksh6";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="k6vq";r.guard(c);
-for(let i744=0,n744=Math.max(0,Math.floor(r.num("40")));i744<n744;i744++){
+for(let i768=0,n768=Math.max(0,Math.floor(r.num("40")));i768<n768;i768++){
 c.block="u1k8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="8ceb";r.guard(c);
@@ -25063,7 +28757,7 @@ r.command(c,"set_variable",["w5i0","0",null]);
 c.block="yno9";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="oxtu";r.guard(c);
-for(let i745=0,n745=Math.max(0,Math.floor(r.num("10")));i745<n745;i745++){
+for(let i769=0,n769=Math.max(0,Math.floor(r.num("10")));i769<n769;i769++){
 c.block="6n96";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="11rb";r.guard(c);
@@ -25117,7 +28811,7 @@ c.block="cna8";r.guard(c);
 r.command(c,"set_variable",["c9o4","-10",null]);
 }
 c.block="ifl0";r.guard(c);
-for(let i746=0,n746=Math.max(0,Math.floor(r.num("15")));i746<n746;i746++){
+for(let i770=0,n770=Math.max(0,Math.floor(r.num("15")));i770<n770;i770++){
 c.block="q2qu";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="inmh";r.guard(c);
@@ -25155,7 +28849,7 @@ r.command(c,"message_cast",["hg1n",null]);
 yield 1;
 }
 c.block="0y1l";r.guard(c);
-for(let i747=0,n747=Math.max(0,Math.floor(r.num("10")));i747<n747;i747++){
+for(let i771=0,n771=Math.max(0,Math.floor(r.num("10")));i771<n771;i771++){
 c.block="5y4r";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="bfx2";r.guard(c);
@@ -25176,7 +28870,7 @@ r.command(c,"set_variable",["w5i0","0",null]);
 c.block="eedj";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="y3dn";r.guard(c);
-for(let i748=0,n748=Math.max(0,Math.floor(r.num("18")));i748<n748;i748++){
+for(let i772=0,n772=Math.max(0,Math.floor(r.num("18")));i772<n772;i772++){
 c.block="krv4";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="5mxk";r.guard(c);
@@ -25207,7 +28901,7 @@ r.command(c,"set_variable",["n0ya","0",null]);
 c.block="cxin";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="n2i3";r.guard(c);
-for(let i749=0,n749=Math.max(0,Math.floor(r.num("20")));i749<n749;i749++){
+for(let i773=0,n773=Math.max(0,Math.floor(r.num("20")));i773<n773;i773++){
 c.block="saf6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="0kga";r.guard(c);
@@ -25232,7 +28926,7 @@ r.command(c,"set_variable",["xvg1","5.5",null]);
 c.block="fhpe";r.guard(c);
 r.command(c,"set_variable",["vk0b","0",null]);
 c.block="l9b2";r.guard(c);
-for(let i750=0,n750=Math.max(0,Math.floor(r.num("10")));i750<n750;i750++){
+for(let i774=0,n774=Math.max(0,Math.floor(r.num("10")));i774<n774;i774++){
 c.block="flec";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="ni06";r.guard(c);
@@ -25337,7 +29031,7 @@ r.command(c,"set_variable",["trhv",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="eyv6";r.guard(c);
 r.command(c,"set_variable",["1vu0","1",null]);
 c.block="bied";r.guard(c);
-for(let i751=0,n751=Math.max(0,Math.floor(r.num("20")));i751<n751;i751++){
+for(let i775=0,n775=Math.max(0,Math.floor(r.num("20")));i775<n775;i775++){
 c.block="opfj";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="h72q";r.guard(c);
@@ -25359,7 +29053,7 @@ yield 1;
 c.block="98av";r.guard(c);
 r.command(c,"change_variable",["9bgr","-0.1",null]);
 c.block="vzyw";r.guard(c);
-for(let i752=0,n752=Math.max(0,Math.floor(r.num("20")));i752<n752;i752++){
+for(let i776=0,n776=Math.max(0,Math.floor(r.num("20")));i776<n776;i776++){
 c.block="g6on";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="x7g6";r.guard(c);
@@ -25410,7 +29104,7 @@ c.block="yf2u";r.guard(c);
 r.command(c,"message_cast",["hg1n",null]);
 }
 c.block="0kbe";r.guard(c);
-for(let i753=0,n753=Math.max(0,Math.floor(r.num("5")));i753<n753;i753++){
+for(let i777=0,n777=Math.max(0,Math.floor(r.num("5")));i777<n777;i777++){
 c.block="8sdk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="mzgc";r.guard(c);
@@ -25439,7 +29133,7 @@ r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["n0ya",n
 yield 1;
 }
 c.block="j8mm";r.guard(c);
-for(let i754=0,n754=Math.max(0,Math.floor(r.num("2")));i754<n754;i754++){
+for(let i778=0,n778=Math.max(0,Math.floor(r.num("2")));i778<n778;i778++){
 c.block="6dyr";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="4py2";r.guard(c);
@@ -25459,7 +29153,7 @@ r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["n0ya",n
 yield 1;
 }
 c.block="1d7w";r.guard(c);
-for(let i755=0,n755=Math.max(0,Math.floor(r.num("25")));i755<n755;i755++){
+for(let i779=0,n779=Math.max(0,Math.floor(r.num("25")));i779<n779;i779++){
 c.block="qhqw";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="4paw";r.guard(c);
@@ -25503,7 +29197,7 @@ c.block="6mxf";r.guard(c);
 r.command(c,"move_x",["-11",null]);
 }
 c.block="992z";r.guard(c);
-for(let i756=0,n756=Math.max(0,Math.floor(r.num("20")));i756<n756;i756++){
+for(let i780=0,n780=Math.max(0,Math.floor(r.num("20")));i780<n780;i780++){
 c.block="8eh6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="mc4f";r.guard(c);
@@ -25535,7 +29229,7 @@ yield 1;
 c.block="dbvy";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="ijzq";r.guard(c);
-for(let i757=0,n757=Math.max(0,Math.floor(r.num("15")));i757<n757;i757++){
+for(let i781=0,n781=Math.max(0,Math.floor(r.num("15")));i781<n781;i781++){
 yield 1;
 }
 }
@@ -25565,13 +29259,13 @@ r.command(c,"change_effect_amount",["transparency","10",null]);
 c.block="8v0h";r.guard(c);
 r.command(c,"show",[null]);
 c.block="fb9s";r.guard(c);
-for(let i758=0,n758=Math.max(0,Math.floor(r.num("15")));i758<n758;i758++){
+for(let i782=0,n782=Math.max(0,Math.floor(r.num("15")));i782<n782;i782++){
 c.block="4kvi";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 yield 1;
 }
 c.block="2ynl";r.guard(c);
-for(let i759=0,n759=Math.max(0,Math.floor(r.num("10")));i759<n759;i759++){
+for(let i783=0,n783=Math.max(0,Math.floor(r.num("10")));i783<n783;i783++){
 c.block="izm1";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7",null]);
 c.block="yxy4";r.guard(c);
@@ -25612,7 +29306,7 @@ r.command(c,"set_variable",["7vqa","1",null]);
 c.block="ncrc";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="wli5";r.guard(c);
-for(let i760=0,n760=Math.max(0,Math.floor(r.num("16")));i760<n760;i760++){
+for(let i784=0,n784=Math.max(0,Math.floor(r.num("16")));i784<n784;i784++){
 yield 1;
 }
 c.block="b8n5";r.guard(c);
@@ -25641,11 +29335,11 @@ r.register("scgs","when_clone_start",[null],function*(r,c){
 c.block="h902";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rr24",null]),"EQUAL","1"]))){
 c.block="m9zk";r.guard(c);
-for(let i761=0,n761=Math.max(0,Math.floor(r.num("3")));i761<n761;i761++){
+for(let i785=0,n785=Math.max(0,Math.floor(r.num("3")));i785<n785;i785++){
 c.block="f87x";r.guard(c);
 r.command(c,"create_clone",["u9je",null]);
 c.block="b665";r.guard(c);
-for(let i762=0,n762=Math.max(0,Math.floor(r.num("5")));i762<n762;i762++){
+for(let i786=0,n786=Math.max(0,Math.floor(r.num("5")));i786<n786;i786++){
 yield 1;
 }
 yield 1;
@@ -25709,7 +29403,7 @@ r.command(c,"set_variable",["fu65","1",null]);
 c.block="4tw0";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="nfm0";r.guard(c);
-for(let i763=0,n763=Math.max(0,Math.floor(r.num("25")));i763<n763;i763++){
+for(let i787=0,n787=Math.max(0,Math.floor(r.num("25")));i787<n787;i787++){
 c.block="auan";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="iyv0";r.guard(c);
@@ -25734,7 +29428,7 @@ r.command(c,"set_variable",["cr38","8",null]);
 c.block="wpk7";r.guard(c);
 r.command(c,"set_variable",["vk0b","0",null]);
 c.block="anwt";r.guard(c);
-for(let i764=0,n764=Math.max(0,Math.floor(r.num("10")));i764<n764;i764++){
+for(let i788=0,n788=Math.max(0,Math.floor(r.num("10")));i788<n788;i788++){
 c.block="8plt";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="6wwd";r.guard(c);
@@ -25772,7 +29466,7 @@ r.command(c,"message_cast",["tuhm",null]);
 yield 1;
 }
 c.block="ybx9";r.guard(c);
-for(let i765=0,n765=Math.max(0,Math.floor(r.num("20")));i765<n765;i765++){
+for(let i789=0,n789=Math.max(0,Math.floor(r.num("20")));i789<n789;i789++){
 c.block="vppg";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="ahk4";r.guard(c);
@@ -25807,7 +29501,7 @@ r.command(c,"set_variable",["5965","0",null]);
 c.block="dtr3";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="0uag";r.guard(c);
-for(let i766=0,n766=Math.max(0,Math.floor(r.num("10")));i766<n766;i766++){
+for(let i790=0,n790=Math.max(0,Math.floor(r.num("10")));i790<n790;i790++){
 c.block="4834";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="r71v";r.guard(c);
@@ -25832,7 +29526,7 @@ r.command(c,"set_variable",["cr38","5",null]);
 c.block="1wta";r.guard(c);
 r.command(c,"set_variable",["vk0b","0",null]);
 c.block="fxgj";r.guard(c);
-for(let i767=0,n767=Math.max(0,Math.floor(r.num("10")));i767<n767;i767++){
+for(let i791=0,n791=Math.max(0,Math.floor(r.num("10")));i791<n791;i791++){
 c.block="80wo";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="iex4";r.guard(c);
@@ -25866,7 +29560,7 @@ yield* r.call(c,"05j0",[r.value(c,"calc_basic",["-5","MINUS",r.value(c,"calc_bas
 yield 1;
 }
 c.block="89x2";r.guard(c);
-for(let i768=0,n768=Math.max(0,Math.floor(r.num("20")));i768<n768;i768++){
+for(let i792=0,n792=Math.max(0,Math.floor(r.num("20")));i792<n792;i792++){
 c.block="qibv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="kpd4";r.guard(c);
@@ -25918,9 +29612,9 @@ r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="iar0";r.guard(c);
 r.command(c,"show",[null]);
 c.block="hh5j";r.guard(c);
-for(let i769=0,n769=Math.max(0,Math.floor(r.num("3")));i769<n769;i769++){
+for(let i793=0,n793=Math.max(0,Math.floor(r.num("3")));i793<n793;i793++){
 c.block="t42p";r.guard(c);
-for(let i770=0,n770=Math.max(0,Math.floor(r.num("8")));i770<n770;i770++){
+for(let i794=0,n794=Math.max(0,Math.floor(r.num("8")));i794<n794;i794++){
 c.block="fcdt";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="w1n7";r.guard(c);
@@ -25963,13 +29657,13 @@ r.command(c,"set_variable",["e8l1","1",null]);
 c.block="9bd7";r.guard(c);
 r.command(c,"set_variable",["9af4","10",null]);
 c.block="v704";r.guard(c);
-for(let i771=0,n771=Math.max(0,Math.floor(r.num("2")));i771<n771;i771++){
+for(let i795=0,n795=Math.max(0,Math.floor(r.num("2")));i795<n795;i795++){
 yield 1;
 }
 c.block="i8qy";r.guard(c);
 r.command(c,"set_variable",["05ze","0",null]);
 c.block="hn4t";r.guard(c);
-for(let i772=0,n772=Math.max(0,Math.floor(r.num("13")));i772<n772;i772++){
+for(let i796=0,n796=Math.max(0,Math.floor(r.num("13")));i796<n796;i796++){
 yield 1;
 }
 }else{
@@ -26014,7 +29708,7 @@ r.command(c,"create_clone",["olgu",null]);
 c.block="wd0p";r.guard(c);
 r.command(c,"set_variable",["qg1y","1",null]);
 c.block="hjyg";r.guard(c);
-for(let i773=0,n773=Math.max(0,Math.floor(r.num("360")));i773<n773;i773++){
+for(let i797=0,n797=Math.max(0,Math.floor(r.num("360")));i797<n797;i797++){
 yield 1;
 }
 c.block="sm99";r.guard(c);
@@ -26142,7 +29836,7 @@ r.command(c,"set_variable",["ri3z","1",null]);
 c.block="s6mr";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="udcb";r.guard(c);
-for(let i774=0,n774=Math.max(0,Math.floor(r.num("25")));i774<n774;i774++){
+for(let i798=0,n798=Math.max(0,Math.floor(r.num("25")));i798<n798;i798++){
 c.block="4z7e";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="a1du";r.guard(c);
@@ -26167,7 +29861,7 @@ r.command(c,"set_variable",["g700","8",null]);
 c.block="an2u";r.guard(c);
 r.command(c,"set_variable",["vk0b","0",null]);
 c.block="n32s";r.guard(c);
-for(let i775=0,n775=Math.max(0,Math.floor(r.num("10")));i775<n775;i775++){
+for(let i799=0,n799=Math.max(0,Math.floor(r.num("10")));i799<n799;i799++){
 c.block="oqv7";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="xg73";r.guard(c);
@@ -26205,7 +29899,7 @@ r.command(c,"message_cast",["tuhm",null]);
 yield 1;
 }
 c.block="ky2y";r.guard(c);
-for(let i776=0,n776=Math.max(0,Math.floor(r.num("20")));i776<n776;i776++){
+for(let i800=0,n800=Math.max(0,Math.floor(r.num("20")));i800<n800;i800++){
 c.block="qhqv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="iko6";r.guard(c);
@@ -26240,7 +29934,7 @@ r.command(c,"set_variable",["ceh0","0",null]);
 c.block="r9yr";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="adpw";r.guard(c);
-for(let i777=0,n777=Math.max(0,Math.floor(r.num("10")));i777<n777;i777++){
+for(let i801=0,n801=Math.max(0,Math.floor(r.num("10")));i801<n801;i801++){
 c.block="2puf";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="w79x";r.guard(c);
@@ -26265,7 +29959,7 @@ r.command(c,"set_variable",["g700","5",null]);
 c.block="nw0n";r.guard(c);
 r.command(c,"set_variable",["vk0b","0",null]);
 c.block="exj3";r.guard(c);
-for(let i778=0,n778=Math.max(0,Math.floor(r.num("10")));i778<n778;i778++){
+for(let i802=0,n802=Math.max(0,Math.floor(r.num("10")));i802<n802;i802++){
 c.block="818l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="30zd";r.guard(c);
@@ -26299,7 +29993,7 @@ yield* r.call(c,"qy83",[r.value(c,"calc_basic",["-5","MINUS",r.value(c,"calc_bas
 yield 1;
 }
 c.block="mbdh";r.guard(c);
-for(let i779=0,n779=Math.max(0,Math.floor(r.num("20")));i779<n779;i779++){
+for(let i803=0,n803=Math.max(0,Math.floor(r.num("20")));i803<n803;i803++){
 c.block="m7tc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="0rgt";r.guard(c);
@@ -26351,9 +30045,9 @@ r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="8v0h";r.guard(c);
 r.command(c,"show",[null]);
 c.block="fb9s";r.guard(c);
-for(let i780=0,n780=Math.max(0,Math.floor(r.num("3")));i780<n780;i780++){
+for(let i804=0,n804=Math.max(0,Math.floor(r.num("3")));i804<n804;i804++){
 c.block="w249";r.guard(c);
-for(let i781=0,n781=Math.max(0,Math.floor(r.num("8")));i781<n781;i781++){
+for(let i805=0,n805=Math.max(0,Math.floor(r.num("8")));i805<n805;i805++){
 c.block="suxl";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="zt5n";r.guard(c);
@@ -26396,13 +30090,13 @@ r.command(c,"set_variable",["6q5z","1",null]);
 c.block="wft2";r.guard(c);
 r.command(c,"set_variable",["nccn","10",null]);
 c.block="v704";r.guard(c);
-for(let i782=0,n782=Math.max(0,Math.floor(r.num("2")));i782<n782;i782++){
+for(let i806=0,n806=Math.max(0,Math.floor(r.num("2")));i806<n806;i806++){
 yield 1;
 }
 c.block="u4ug";r.guard(c);
 r.command(c,"set_variable",["1vu0","0",null]);
 c.block="hn4t";r.guard(c);
-for(let i783=0,n783=Math.max(0,Math.floor(r.num("13")));i783<n783;i783++){
+for(let i807=0,n807=Math.max(0,Math.floor(r.num("13")));i807<n807;i807++){
 yield 1;
 }
 }else{
@@ -26447,7 +30141,7 @@ r.command(c,"create_clone",["olgu",null]);
 c.block="325v";r.guard(c);
 r.command(c,"set_variable",["qg1y","1",null]);
 c.block="mw3s";r.guard(c);
-for(let i784=0,n784=Math.max(0,Math.floor(r.num("360")));i784<n784;i784++){
+for(let i808=0,n808=Math.max(0,Math.floor(r.num("360")));i808<n808;i808++){
 yield 1;
 }
 c.block="6zw3";r.guard(c);
@@ -26579,7 +30273,7 @@ r.command(c,"create_clone",["wqxb",null]);
 c.block="ef1f";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="bms6";r.guard(c);
-for(let i785=0,n785=Math.max(0,Math.floor(r.num("20")));i785<n785;i785++){
+for(let i809=0,n809=Math.max(0,Math.floor(r.num("20")));i809<n809;i809++){
 yield 1;
 }
 c.block="k4yg";r.guard(c);
@@ -26587,7 +30281,7 @@ r.command(c,"show",[null]);
 c.block="gu8w";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="1bod";r.guard(c);
-for(let i786=0,n786=Math.max(0,Math.floor(r.num("25")));i786<n786;i786++){
+for(let i810=0,n810=Math.max(0,Math.floor(r.num("25")));i810<n810;i810++){
 c.block="6ydp";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["12","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -26605,7 +30299,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="xfuk";r.guard(c);
 r.command(c,"change_variable",["thom","-34",null]);
 c.block="c5iu";r.guard(c);
-for(let i787=0,n787=Math.max(0,Math.floor(r.num("30")));i787<n787;i787++){
+for(let i811=0,n811=Math.max(0,Math.floor(r.num("30")));i811<n811;i811++){
 c.block="z8cd";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["17","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="4oui";r.guard(c);
@@ -26623,7 +30317,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="s5t1";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="p2q5";r.guard(c);
-for(let i788=0,n788=Math.max(0,Math.floor(r.num("45")));i788<n788;i788++){
+for(let i812=0,n812=Math.max(0,Math.floor(r.num("45")));i812<n812;i812++){
 yield 1;
 }
 c.block="o3bu";r.guard(c);
@@ -26631,7 +30325,7 @@ r.command(c,"show",[null]);
 c.block="srtb";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="xmvq";r.guard(c);
-for(let i789=0,n789=Math.max(0,Math.floor(r.num("25")));i789<n789;i789++){
+for(let i813=0,n813=Math.max(0,Math.floor(r.num("25")));i813<n813;i813++){
 c.block="c4x0";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["12","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -26649,7 +30343,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="lx1i";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="fxvg";r.guard(c);
-for(let i790=0,n790=Math.max(0,Math.floor(r.num("70")));i790<n790;i790++){
+for(let i814=0,n814=Math.max(0,Math.floor(r.num("70")));i814<n814;i814++){
 yield 1;
 }
 c.block="jq0d";r.guard(c);
@@ -26657,7 +30351,7 @@ r.command(c,"show",[null]);
 c.block="zkfm";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="2m7d";r.guard(c);
-for(let i791=0,n791=Math.max(0,Math.floor(r.num("40")));i791<n791;i791++){
+for(let i815=0,n815=Math.max(0,Math.floor(r.num("40")));i815<n815;i815++){
 c.block="oxgf";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["12","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -26699,7 +30393,7 @@ r.command(c,"set_variable",["xy3h","3",null]);
 c.block="ctjx";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="nb36";r.guard(c);
-for(let i792=0,n792=Math.max(0,Math.floor(r.num("30")));i792<n792;i792++){
+for(let i816=0,n816=Math.max(0,Math.floor(r.num("30")));i816<n816;i816++){
 c.block="20h8";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["xy3h",null]),"DIVIDE","1.7"]),null]);
 c.block="012o";r.guard(c);
@@ -26723,7 +30417,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["fh33"]),null]);
 c.block="f2aw";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="4esn";r.guard(c);
-for(let i793=0,n793=Math.max(0,Math.floor(r.num("50")));i793<n793;i793++){
+for(let i817=0,n817=Math.max(0,Math.floor(r.num("50")));i817<n817;i817++){
 c.block="tful";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="uw0h";r.guard(c);
@@ -26751,7 +30445,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["fh33"]),null]);
 c.block="wuk2";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="czyx";r.guard(c);
-for(let i794=0,n794=Math.max(0,Math.floor(r.num("50")));i794<n794;i794++){
+for(let i818=0,n818=Math.max(0,Math.floor(r.num("50")));i818<n818;i818++){
 c.block="kx9g";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="ztfz";r.guard(c);
@@ -26797,7 +30491,7 @@ r.command(c,"set_variable",["xy3h","2.5",null]);
 c.block="ernq";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="58db";r.guard(c);
-for(let i795=0,n795=Math.max(0,Math.floor(r.num("50")));i795<n795;i795++){
+for(let i819=0,n819=Math.max(0,Math.floor(r.num("50")));i819<n819;i819++){
 c.block="ny1v";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["xy3h",null]),"DIVIDE","2"]),null]);
 c.block="t9qb";r.guard(c);
@@ -26916,7 +30610,7 @@ r.command(c,"create_clone",["wqxb",null]);
 c.block="ef1f";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="bms6";r.guard(c);
-for(let i796=0,n796=Math.max(0,Math.floor(r.num("20")));i796<n796;i796++){
+for(let i820=0,n820=Math.max(0,Math.floor(r.num("20")));i820<n820;i820++){
 yield 1;
 }
 c.block="k4yg";r.guard(c);
@@ -26924,7 +30618,7 @@ r.command(c,"show",[null]);
 c.block="gu8w";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="1bod";r.guard(c);
-for(let i797=0,n797=Math.max(0,Math.floor(r.num("25")));i797<n797;i797++){
+for(let i821=0,n821=Math.max(0,Math.floor(r.num("25")));i821<n821;i821++){
 c.block="6ydp";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["12","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -26942,7 +30636,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="xfuk";r.guard(c);
 r.command(c,"change_variable",["qn98","-34",null]);
 c.block="c5iu";r.guard(c);
-for(let i798=0,n798=Math.max(0,Math.floor(r.num("30")));i798<n798;i798++){
+for(let i822=0,n822=Math.max(0,Math.floor(r.num("30")));i822<n822;i822++){
 c.block="z8cd";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["17","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="7orh";r.guard(c);
@@ -26960,7 +30654,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="s5t1";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="p2q5";r.guard(c);
-for(let i799=0,n799=Math.max(0,Math.floor(r.num("45")));i799<n799;i799++){
+for(let i823=0,n823=Math.max(0,Math.floor(r.num("45")));i823<n823;i823++){
 yield 1;
 }
 c.block="o3bu";r.guard(c);
@@ -26968,7 +30662,7 @@ r.command(c,"show",[null]);
 c.block="srtb";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="xmvq";r.guard(c);
-for(let i800=0,n800=Math.max(0,Math.floor(r.num("25")));i800<n800;i800++){
+for(let i824=0,n824=Math.max(0,Math.floor(r.num("25")));i824<n824;i824++){
 c.block="c4x0";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["12","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -26986,7 +30680,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="lx1i";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="fxvg";r.guard(c);
-for(let i801=0,n801=Math.max(0,Math.floor(r.num("70")));i801<n801;i801++){
+for(let i825=0,n825=Math.max(0,Math.floor(r.num("70")));i825<n825;i825++){
 yield 1;
 }
 c.block="jq0d";r.guard(c);
@@ -26994,7 +30688,7 @@ r.command(c,"show",[null]);
 c.block="zkfm";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="2m7d";r.guard(c);
-for(let i802=0,n802=Math.max(0,Math.floor(r.num("40")));i802<n802;i802++){
+for(let i826=0,n826=Math.max(0,Math.floor(r.num("40")));i826<n826;i826++){
 c.block="oxgf";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["12","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -27036,7 +30730,7 @@ r.command(c,"set_variable",["k2jo","3",null]);
 c.block="ctjx";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="nb36";r.guard(c);
-for(let i803=0,n803=Math.max(0,Math.floor(r.num("30")));i803<n803;i803++){
+for(let i827=0,n827=Math.max(0,Math.floor(r.num("30")));i827<n827;i827++){
 c.block="20h8";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["k2jo",null]),"DIVIDE","1.7"]),null]);
 c.block="012o";r.guard(c);
@@ -27060,7 +30754,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ceoq"]),null]);
 c.block="f2aw";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="4esn";r.guard(c);
-for(let i804=0,n804=Math.max(0,Math.floor(r.num("50")));i804<n804;i804++){
+for(let i828=0,n828=Math.max(0,Math.floor(r.num("50")));i828<n828;i828++){
 c.block="tful";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="uw0h";r.guard(c);
@@ -27088,7 +30782,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ceoq"]),null]);
 c.block="wuk2";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="czyx";r.guard(c);
-for(let i805=0,n805=Math.max(0,Math.floor(r.num("50")));i805<n805;i805++){
+for(let i829=0,n829=Math.max(0,Math.floor(r.num("50")));i829<n829;i829++){
 c.block="kx9g";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["70","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="ztfz";r.guard(c);
@@ -27134,7 +30828,7 @@ r.command(c,"set_variable",["k2jo","2.5",null]);
 c.block="ernq";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="58db";r.guard(c);
-for(let i806=0,n806=Math.max(0,Math.floor(r.num("50")));i806<n806;i806++){
+for(let i830=0,n830=Math.max(0,Math.floor(r.num("50")));i830<n830;i830++){
 c.block="ny1v";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["k2jo",null]),"DIVIDE","2"]),null]);
 c.block="t9qb";r.guard(c);
@@ -27221,7 +30915,7 @@ c.block="o5d4";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-6",null,"6",null]),null]);
 }
 c.block="en77";r.guard(c);
-for(let i807=0,n807=Math.max(0,Math.floor(r.num("10")));i807<n807;i807++){
+for(let i831=0,n831=Math.max(0,Math.floor(r.num("10")));i831<n831;i831++){
 c.block="jfyw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -27245,7 +30939,7 @@ r.command(c,"set_variable",["g4sc","20",null]);
 c.block="39q4";r.guard(c);
 r.command(c,"set_variable",["ec6d","1",null]);
 c.block="cvgc";r.guard(c);
-for(let i808=0,n808=Math.max(0,Math.floor(r.num("100")));i808<n808;i808++){
+for(let i832=0,n832=Math.max(0,Math.floor(r.num("100")));i832<n832;i832++){
 c.block="m2aw";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["18","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="stjs";r.guard(c);
@@ -27263,7 +30957,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["fbwd"]),null]);
 yield 1;
 }
 c.block="ikre";r.guard(c);
-for(let i809=0,n809=Math.max(0,Math.floor(r.num("440")));i809<n809;i809++){
+for(let i833=0,n833=Math.max(0,Math.floor(r.num("440")));i833<n833;i833++){
 c.block="xii4";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="i4s0";r.guard(c);
@@ -27296,13 +30990,13 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="dvd8";r.guard(c);
 r.command(c,"set_variable",["fqlt","0",null]);
 c.block="2vs0";r.guard(c);
-for(let i810=0,n810=Math.max(0,Math.floor(r.num("5")));i810<n810;i810++){
+for(let i834=0,n834=Math.max(0,Math.floor(r.num("5")));i834<n834;i834++){
 yield 1;
 }
 c.block="36fg";r.guard(c);
 r.command(c,"set_variable",["ec6d","0",null]);
 c.block="6qd5";r.guard(c);
-for(let i811=0,n811=Math.max(0,Math.floor(r.num("50")));i811<n811;i811++){
+for(let i835=0,n835=Math.max(0,Math.floor(r.num("50")));i835<n835;i835++){
 c.block="qu0m";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["120","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="oskx";r.guard(c);
@@ -27318,13 +31012,13 @@ r.command(c,"set_variable",["g4sc","0",null]);
 c.block="0mjx";r.guard(c);
 r.command(c,"set_variable",["fqlt","0",null]);
 c.block="bzks";r.guard(c);
-for(let i812=0,n812=Math.max(0,Math.floor(r.num("5")));i812<n812;i812++){
+for(let i836=0,n836=Math.max(0,Math.floor(r.num("5")));i836<n836;i836++){
 yield 1;
 }
 c.block="w77a";r.guard(c);
 r.command(c,"set_variable",["ec6d","0",null]);
 c.block="lnoy";r.guard(c);
-for(let i813=0,n813=Math.max(0,Math.floor(r.num("20")));i813<n813;i813++){
+for(let i837=0,n837=Math.max(0,Math.floor(r.num("20")));i837<n837;i837++){
 c.block="wlnb";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","5"]),null]);
 yield 1;
@@ -27448,7 +31142,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["5h95",
 c.block="38uf";r.guard(c);
 r.command(c,"set_variable",["8npo","0",null]);
 c.block="686r";r.guard(c);
-for(let i814=0,n814=Math.max(0,Math.floor(r.num("20")));i814<n814;i814++){
+for(let i838=0,n838=Math.max(0,Math.floor(r.num("20")));i838<n838;i838++){
 c.block="b6gf";r.guard(c);
 r.command(c,"set_variable",["z66f","1",null]);
 c.block="efth";r.guard(c);
@@ -27456,7 +31150,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="jntz";r.guard(c);
 r.command(c,"create_clone",["v5v4",null]);
 c.block="6s2k";r.guard(c);
-for(let i815=0,n815=Math.max(0,Math.floor(r.num("6")));i815<n815;i815++){
+for(let i839=0,n839=Math.max(0,Math.floor(r.num("6")));i839<n839;i839++){
 c.block="xowm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="ffnt";r.guard(c);
@@ -27575,7 +31269,7 @@ r.command(c,"create_clone",["kvec",null]);
 c.block="qhdx";r.guard(c);
 r.command(c,"set_variable",["z66f","1",null]);
 c.block="xhos";r.guard(c);
-for(let i816=0,n816=Math.max(0,Math.floor(r.num("30")));i816<n816;i816++){
+for(let i840=0,n840=Math.max(0,Math.floor(r.num("30")));i840<n840;i840++){
 yield 1;
 }
 }
@@ -27610,7 +31304,7 @@ c.block="o5d4";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-6",null,"6",null]),null]);
 }
 c.block="en77";r.guard(c);
-for(let i817=0,n817=Math.max(0,Math.floor(r.num("10")));i817<n817;i817++){
+for(let i841=0,n841=Math.max(0,Math.floor(r.num("10")));i841<n841;i841++){
 c.block="jfyw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -27740,7 +31434,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["5h95",
 c.block="wqtc";r.guard(c);
 r.command(c,"set_variable",["8npo","0",null]);
 c.block="686r";r.guard(c);
-for(let i818=0,n818=Math.max(0,Math.floor(r.num("20")));i818<n818;i818++){
+for(let i842=0,n842=Math.max(0,Math.floor(r.num("20")));i842<n842;i842++){
 c.block="j77x";r.guard(c);
 r.command(c,"set_variable",["z66f","1",null]);
 c.block="efth";r.guard(c);
@@ -27748,7 +31442,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="jntz";r.guard(c);
 r.command(c,"create_clone",["v5v4",null]);
 c.block="6s2k";r.guard(c);
-for(let i819=0,n819=Math.max(0,Math.floor(r.num("6")));i819<n819;i819++){
+for(let i843=0,n843=Math.max(0,Math.floor(r.num("6")));i843<n843;i843++){
 c.block="xowm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="ffnt";r.guard(c);
@@ -27865,7 +31559,7 @@ r.command(c,"change_variable",["qn98","-21",null]);
 c.block="kz79";r.guard(c);
 r.command(c,"create_clone",["kvec",null]);
 c.block="jvm7";r.guard(c);
-for(let i820=0,n820=Math.max(0,Math.floor(r.num("30")));i820<n820;i820++){
+for(let i844=0,n844=Math.max(0,Math.floor(r.num("30")));i844<n844;i844++){
 yield 1;
 }
 }
@@ -27946,7 +31640,7 @@ r.command(c,"change_variable",["3oyb","1",null]);
 c.block="igpv";r.guard(c);
 r.command(c,"set_variable",["3w8a","-7",null]);
 c.block="vhf5";r.guard(c);
-for(let i821=0,n821=Math.max(0,Math.floor(r.num("70")));i821<n821;i821++){
+for(let i845=0,n845=Math.max(0,Math.floor(r.num("70")));i845<n845;i845++){
 c.block="01we";r.guard(c);
 r.command(c,"change_variable",["3w8a","0.1",null]);
 c.block="7jjr";r.guard(c);
@@ -27986,7 +31680,7 @@ r.command(c,"set_variable",["c4x1","17",null]);
 }
 }
 c.block="dn8p";r.guard(c);
-for(let i822=0,n822=Math.max(0,Math.floor(r.num("70")));i822<n822;i822++){
+for(let i846=0,n846=Math.max(0,Math.floor(r.num("70")));i846<n846;i846++){
 yield 1;
 }
 }else{
@@ -27995,7 +31689,7 @@ r.command(c,"change_variable",["3oyb","1",null]);
 c.block="ml35";r.guard(c);
 r.command(c,"set_variable",["3w8a","-7",null]);
 c.block="1b7h";r.guard(c);
-for(let i823=0,n823=Math.max(0,Math.floor(r.num("70")));i823<n823;i823++){
+for(let i847=0,n847=Math.max(0,Math.floor(r.num("70")));i847<n847;i847++){
 c.block="bgzv";r.guard(c);
 r.command(c,"change_variable",["3w8a","0.1",null]);
 c.block="me3f";r.guard(c);
@@ -28033,7 +31727,7 @@ r.command(c,"set_variable",["c4x1","17",null]);
 }
 }
 c.block="d12z";r.guard(c);
-for(let i824=0,n824=Math.max(0,Math.floor(r.num("70")));i824<n824;i824++){
+for(let i848=0,n848=Math.max(0,Math.floor(r.num("70")));i848<n848;i848++){
 yield 1;
 }
 }
@@ -28079,7 +31773,7 @@ r.register("8rb4","when_message_cast",[null,"iuuk"],function*(r,c){
 c.block="hj4x";r.guard(c);
 r.command(c,"set_variable",["05ze","5.2",null]);
 c.block="mpgq";r.guard(c);
-for(let i825=0,n825=Math.max(0,Math.floor(r.num("300")));i825<n825;i825++){
+for(let i849=0,n849=Math.max(0,Math.floor(r.num("300")));i849<n849;i849++){
 yield 1;
 }
 c.block="bmi9";r.guard(c);
@@ -28217,7 +31911,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="x6vs";r.guard(c);
-for(let i826=0,n826=Math.max(0,Math.floor(r.num("33")));i826<n826;i826++){
+for(let i850=0,n850=Math.max(0,Math.floor(r.num("33")));i850<n850;i850++){
 c.block="8afw";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="ldz1";r.guard(c);
@@ -28275,7 +31969,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="9zgv";r.guard(c);
-for(let i827=0,n827=Math.max(0,Math.floor(r.num("6")));i827<n827;i827++){
+for(let i851=0,n851=Math.max(0,Math.floor(r.num("6")));i851<n851;i851++){
 c.block="ewz3";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -28379,7 +32073,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="dljn";r.guard(c);
-for(let i828=0,n828=Math.max(0,Math.floor(r.num("9")));i828<n828;i828++){
+for(let i852=0,n852=Math.max(0,Math.floor(r.num("9")));i852<n852;i852++){
 c.block="ks6p";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="r6in";r.guard(c);
@@ -28387,7 +32081,7 @@ r.command(c,"set_variable",["7yzi",r.value(c,"coordinate_object",[null,"self",nu
 c.block="91rz";r.guard(c);
 r.command(c,"create_clone",["avmx",null]);
 c.block="mceg";r.guard(c);
-for(let i829=0,n829=Math.max(0,Math.floor(r.num("4")));i829<n829;i829++){
+for(let i853=0,n853=Math.max(0,Math.floor(r.num("4")));i853<n853;i853++){
 c.block="xxdj";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="etsg";r.guard(c);
@@ -28451,7 +32145,7 @@ yield 1;
 yield 1;
 }
 c.block="u577";r.guard(c);
-for(let i830=0,n830=Math.max(0,Math.floor(r.num("6")));i830<n830;i830++){
+for(let i854=0,n854=Math.max(0,Math.floor(r.num("6")));i854<n854;i854++){
 c.block="2guy";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -28532,7 +32226,7 @@ r.command(c,"change_variable",["3oyb","1",null]);
 c.block="igpv";r.guard(c);
 r.command(c,"set_variable",["3w8a","-7",null]);
 c.block="vhf5";r.guard(c);
-for(let i831=0,n831=Math.max(0,Math.floor(r.num("70")));i831<n831;i831++){
+for(let i855=0,n855=Math.max(0,Math.floor(r.num("70")));i855<n855;i855++){
 c.block="01we";r.guard(c);
 r.command(c,"change_variable",["3w8a","0.1",null]);
 c.block="7jjr";r.guard(c);
@@ -28572,7 +32266,7 @@ r.command(c,"set_variable",["c4x1","17",null]);
 }
 }
 c.block="dn8p";r.guard(c);
-for(let i832=0,n832=Math.max(0,Math.floor(r.num("70")));i832<n832;i832++){
+for(let i856=0,n856=Math.max(0,Math.floor(r.num("70")));i856<n856;i856++){
 yield 1;
 }
 }else{
@@ -28581,7 +32275,7 @@ r.command(c,"change_variable",["3oyb","1",null]);
 c.block="ml35";r.guard(c);
 r.command(c,"set_variable",["3w8a","-7",null]);
 c.block="1b7h";r.guard(c);
-for(let i833=0,n833=Math.max(0,Math.floor(r.num("70")));i833<n833;i833++){
+for(let i857=0,n857=Math.max(0,Math.floor(r.num("70")));i857<n857;i857++){
 c.block="bgzv";r.guard(c);
 r.command(c,"change_variable",["3w8a","0.1",null]);
 c.block="me3f";r.guard(c);
@@ -28619,7 +32313,7 @@ r.command(c,"set_variable",["c4x1","17",null]);
 }
 }
 c.block="d12z";r.guard(c);
-for(let i834=0,n834=Math.max(0,Math.floor(r.num("70")));i834<n834;i834++){
+for(let i858=0,n858=Math.max(0,Math.floor(r.num("70")));i858<n858;i858++){
 yield 1;
 }
 }
@@ -28728,7 +32422,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="bljj";r.guard(c);
-for(let i835=0,n835=Math.max(0,Math.floor(r.num("33")));i835<n835;i835++){
+for(let i859=0,n859=Math.max(0,Math.floor(r.num("33")));i859<n859;i859++){
 c.block="h554";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="vuxc";r.guard(c);
@@ -28786,7 +32480,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="su0p";r.guard(c);
-for(let i836=0,n836=Math.max(0,Math.floor(r.num("6")));i836<n836;i836++){
+for(let i860=0,n860=Math.max(0,Math.floor(r.num("6")));i860<n860;i860++){
 c.block="ii0b";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -28896,7 +32590,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="7toi";r.guard(c);
-for(let i837=0,n837=Math.max(0,Math.floor(r.num("9")));i837<n837;i837++){
+for(let i861=0,n861=Math.max(0,Math.floor(r.num("9")));i861<n861;i861++){
 c.block="ebmm";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="kmym";r.guard(c);
@@ -28904,7 +32598,7 @@ r.command(c,"set_variable",["7yzi",r.value(c,"coordinate_object",[null,"self",nu
 c.block="wko8";r.guard(c);
 r.command(c,"create_clone",["avmx",null]);
 c.block="4dvb";r.guard(c);
-for(let i838=0,n838=Math.max(0,Math.floor(r.num("4")));i838<n838;i838++){
+for(let i862=0,n862=Math.max(0,Math.floor(r.num("4")));i862<n862;i862++){
 c.block="ogo0";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="4i4i";r.guard(c);
@@ -28968,7 +32662,7 @@ yield 1;
 yield 1;
 }
 c.block="ieyd";r.guard(c);
-for(let i839=0,n839=Math.max(0,Math.floor(r.num("6")));i839<n839;i839++){
+for(let i863=0,n863=Math.max(0,Math.floor(r.num("6")));i863<n863;i863++){
 c.block="11xu";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -29009,7 +32703,7 @@ r.register("5c1h","when_message_cast",[null,"qn6b"],function*(r,c){
 c.block="hj4x";r.guard(c);
 r.command(c,"set_variable",["1vu0","5.2",null]);
 c.block="mpgq";r.guard(c);
-for(let i840=0,n840=Math.max(0,Math.floor(r.num("300")));i840<n840;i840++){
+for(let i864=0,n864=Math.max(0,Math.floor(r.num("300")));i864<n864;i864++){
 yield 1;
 }
 c.block="lm2j";r.guard(c);
@@ -29059,11 +32753,11 @@ r.command(c,"set_scale_size",["13.3",null]);
 c.block="pwwl";r.guard(c);
 r.command(c,"show",[null]);
 c.block="amoi";r.guard(c);
-for(let i841=0,n841=Math.max(0,Math.floor(r.num("21")));i841<n841;i841++){
+for(let i865=0,n865=Math.max(0,Math.floor(r.num("21")));i865<n865;i865++){
 yield 1;
 }
 c.block="99ub";r.guard(c);
-for(let i842=0,n842=Math.max(0,Math.floor(r.num("5")));i842<n842;i842++){
+for(let i866=0,n866=Math.max(0,Math.floor(r.num("5")));i866<n866;i866++){
 c.block="j0ra";r.guard(c);
 r.command(c,"change_scale_size",["-2",null]);
 yield 1;
@@ -29145,7 +32839,7 @@ r.command(c,"set_variable",["foic","1",null]);
 c.block="iovh";r.guard(c);
 r.command(c,"set_variable",["pm2f","1",null]);
 c.block="6g31";r.guard(c);
-for(let i843=0,n843=Math.max(0,Math.floor(r.num("10")));i843<n843;i843++){
+for(let i867=0,n867=Math.max(0,Math.floor(r.num("10")));i867<n867;i867++){
 c.block="6e7v";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="plov";r.guard(c);
@@ -29203,7 +32897,7 @@ r.command(c,"set_variable",["od28","0",null]);
 c.block="7bp3";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="qjqe";r.guard(c);
-for(let i844=0,n844=Math.max(0,Math.floor(r.num("15")));i844<n844;i844++){
+for(let i868=0,n868=Math.max(0,Math.floor(r.num("15")));i868<n868;i868++){
 yield 1;
 }
 c.block="q30w";r.guard(c);
@@ -29225,7 +32919,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="imj8";r.guard(c);
 r.command(c,"set_variable",["isc9","-10",null]);
 c.block="pluf";r.guard(c);
-for(let i845=0,n845=Math.max(0,Math.floor(r.num("25")));i845<n845;i845++){
+for(let i869=0,n869=Math.max(0,Math.floor(r.num("25")));i869<n869;i869++){
 c.block="subj";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="qj16";r.guard(c);
@@ -29248,7 +32942,7 @@ r.command(c,"set_variable",["isc9","10",null]);
 c.block="1lcs";r.guard(c);
 r.command(c,"set_variable",["7hc9","0",null]);
 c.block="y45g";r.guard(c);
-for(let i846=0,n846=Math.max(0,Math.floor(r.num("15")));i846<n846;i846++){
+for(let i870=0,n870=Math.max(0,Math.floor(r.num("15")));i870<n870;i870++){
 c.block="va5z";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="5t04";r.guard(c);
@@ -29289,7 +32983,7 @@ break;
 yield 1;
 }
 c.block="b421";r.guard(c);
-for(let i847=0,n847=Math.max(0,Math.floor(r.num("10")));i847<n847;i847++){
+for(let i871=0,n871=Math.max(0,Math.floor(r.num("10")));i871<n871;i871++){
 c.block="ucur";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="7ijr";r.guard(c);
@@ -29322,7 +33016,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="wfoa";r.guard(c);
 r.command(c,"set_variable",["isc9","-10",null]);
 c.block="ybp2";r.guard(c);
-for(let i848=0,n848=Math.max(0,Math.floor(r.num("25")));i848<n848;i848++){
+for(let i872=0,n872=Math.max(0,Math.floor(r.num("25")));i872<n872;i872++){
 c.block="u3wb";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="cyfq";r.guard(c);
@@ -29345,7 +33039,7 @@ r.command(c,"set_variable",["isc9","10",null]);
 c.block="dk7h";r.guard(c);
 r.command(c,"set_variable",["7hc9","0",null]);
 c.block="i7b1";r.guard(c);
-for(let i849=0,n849=Math.max(0,Math.floor(r.num("15")));i849<n849;i849++){
+for(let i873=0,n873=Math.max(0,Math.floor(r.num("15")));i873<n873;i873++){
 c.block="f55g";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="5yhv";r.guard(c);
@@ -29384,7 +33078,7 @@ break;
 yield 1;
 }
 c.block="i1j9";r.guard(c);
-for(let i850=0,n850=Math.max(0,Math.floor(r.num("10")));i850<n850;i850++){
+for(let i874=0,n874=Math.max(0,Math.floor(r.num("10")));i874<n874;i874++){
 c.block="9k75";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="dq0f";r.guard(c);
@@ -29405,7 +33099,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="10bd";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="nsg6";r.guard(c);
-for(let i851=0,n851=Math.max(0,Math.floor(r.num("20")));i851<n851;i851++){
+for(let i875=0,n875=Math.max(0,Math.floor(r.num("20")));i875<n875;i875++){
 yield 1;
 }
 }
@@ -29428,7 +33122,7 @@ c.block="v4xr";r.guard(c);
 r.command(c,"change_scale_size",["6",null]);
 }
 c.block="qiau";r.guard(c);
-for(let i852=0,n852=Math.max(0,Math.floor(r.num("10")));i852<n852;i852++){
+for(let i876=0,n876=Math.max(0,Math.floor(r.num("10")));i876<n876;i876++){
 c.block="nhjs";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="t8m8";r.guard(c);
@@ -29521,7 +33215,7 @@ r.command(c,"set_variable",["foic","1",null]);
 c.block="lca6";r.guard(c);
 r.command(c,"set_variable",["pm2f","1",null]);
 c.block="0wj7";r.guard(c);
-for(let i853=0,n853=Math.max(0,Math.floor(r.num("10")));i853<n853;i853++){
+for(let i877=0,n877=Math.max(0,Math.floor(r.num("10")));i877<n877;i877++){
 c.block="uqld";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="obhk";r.guard(c);
@@ -29579,7 +33273,7 @@ r.command(c,"set_variable",["w5i0","0",null]);
 c.block="rhsk";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="pluf";r.guard(c);
-for(let i854=0,n854=Math.max(0,Math.floor(r.num("15")));i854<n854;i854++){
+for(let i878=0,n878=Math.max(0,Math.floor(r.num("15")));i878<n878;i878++){
 yield 1;
 }
 c.block="amc8";r.guard(c);
@@ -29601,7 +33295,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="y6po";r.guard(c);
 r.command(c,"set_variable",["gkum","-10",null]);
 c.block="l5f1";r.guard(c);
-for(let i855=0,n855=Math.max(0,Math.floor(r.num("25")));i855<n855;i855++){
+for(let i879=0,n879=Math.max(0,Math.floor(r.num("25")));i879<n879;i879++){
 c.block="im8c";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="m0jo";r.guard(c);
@@ -29624,7 +33318,7 @@ r.command(c,"set_variable",["gkum","10",null]);
 c.block="gk19";r.guard(c);
 r.command(c,"set_variable",["qrgk","0",null]);
 c.block="9zg2";r.guard(c);
-for(let i856=0,n856=Math.max(0,Math.floor(r.num("15")));i856<n856;i856++){
+for(let i880=0,n880=Math.max(0,Math.floor(r.num("15")));i880<n880;i880++){
 c.block="rcbd";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="2xh8";r.guard(c);
@@ -29665,7 +33359,7 @@ break;
 yield 1;
 }
 c.block="dwe3";r.guard(c);
-for(let i857=0,n857=Math.max(0,Math.floor(r.num("10")));i857<n857;i857++){
+for(let i881=0,n881=Math.max(0,Math.floor(r.num("10")));i881<n881;i881++){
 c.block="gfwv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="enur";r.guard(c);
@@ -29698,7 +33392,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="wfoa";r.guard(c);
 r.command(c,"set_variable",["gkum","-10",null]);
 c.block="lwuo";r.guard(c);
-for(let i858=0,n858=Math.max(0,Math.floor(r.num("25")));i858<n858;i858++){
+for(let i882=0,n882=Math.max(0,Math.floor(r.num("25")));i882<n882;i882++){
 c.block="l5q1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="3xbk";r.guard(c);
@@ -29721,7 +33415,7 @@ r.command(c,"set_variable",["gkum","10",null]);
 c.block="dk7h";r.guard(c);
 r.command(c,"set_variable",["qrgk","0",null]);
 c.block="he56";r.guard(c);
-for(let i859=0,n859=Math.max(0,Math.floor(r.num("15")));i859<n859;i859++){
+for(let i883=0,n883=Math.max(0,Math.floor(r.num("15")));i883<n883;i883++){
 c.block="tbkd";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="4qb8";r.guard(c);
@@ -29760,7 +33454,7 @@ break;
 yield 1;
 }
 c.block="o1o3";r.guard(c);
-for(let i860=0,n860=Math.max(0,Math.floor(r.num("10")));i860<n860;i860++){
+for(let i884=0,n884=Math.max(0,Math.floor(r.num("10")));i884<n884;i884++){
 c.block="2ei1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="5ic5";r.guard(c);
@@ -29781,7 +33475,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="mgo0";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="kwqr";r.guard(c);
-for(let i861=0,n861=Math.max(0,Math.floor(r.num("20")));i861<n861;i861++){
+for(let i885=0,n885=Math.max(0,Math.floor(r.num("20")));i885<n885;i885++){
 yield 1;
 }
 }
@@ -29825,7 +33519,7 @@ c.block="zh5p";r.guard(c);
 r.command(c,"change_scale_size",["6",null]);
 }
 c.block="qiau";r.guard(c);
-for(let i862=0,n862=Math.max(0,Math.floor(r.num("10")));i862<n862;i862++){
+for(let i886=0,n886=Math.max(0,Math.floor(r.num("10")));i886<n886;i886++){
 c.block="nhjs";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="t8m8";r.guard(c);
@@ -29962,11 +33656,11 @@ r.command(c,"message_cast",["t17p",null]);
 c.block="pwz2";r.guard(c);
 r.command(c,"set_variable",["rav6","1",null]);
 c.block="97l2";r.guard(c);
-for(let i863=0,n863=Math.max(0,Math.floor(r.num("4")));i863<n863;i863++){
+for(let i887=0,n887=Math.max(0,Math.floor(r.num("4")));i887<n887;i887++){
 c.block="d4ns";r.guard(c);
 r.command(c,"create_clone",["flj5",null]);
 c.block="gpzs";r.guard(c);
-for(let i864=0,n864=Math.max(0,Math.floor(r.num("3")));i864<n864;i864++){
+for(let i888=0,n888=Math.max(0,Math.floor(r.num("3")));i888<n888;i888++){
 c.block="bzow";r.guard(c);
 r.command(c,"set_variable",["pf3t","0",null]);
 c.block="guy6";r.guard(c);
@@ -30023,7 +33717,7 @@ r.command(c,"set_variable",["tmov","17",null]);
 c.block="nezm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dr63",null]),"EQUAL","1"]))){
 c.block="y9cw";r.guard(c);
-for(let i865=0,n865=Math.max(0,Math.floor(r.num("8")));i865<n865;i865++){
+for(let i889=0,n889=Math.max(0,Math.floor(r.num("8")));i889<n889;i889++){
 c.block="45s9";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="y313";r.guard(c);
@@ -30038,7 +33732,7 @@ yield 1;
 }
 }else{
 c.block="zexm";r.guard(c);
-for(let i866=0,n866=Math.max(0,Math.floor(r.num("12")));i866<n866;i866++){
+for(let i890=0,n890=Math.max(0,Math.floor(r.num("12")));i890<n890;i890++){
 c.block="181p";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="nlmf";r.guard(c);
@@ -30092,7 +33786,7 @@ r.command(c,"rotate_relative",["180",null]);
 c.block="vdm3";r.guard(c);
 r.command(c,"set_variable",["rc0a","10",null]);
 c.block="85fg";r.guard(c);
-for(let i867=0,n867=Math.max(0,Math.floor(r.num("20")));i867<n867;i867++){
+for(let i891=0,n891=Math.max(0,Math.floor(r.num("20")));i891<n891;i891++){
 c.block="ux2t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rc0a",null]),"MULTI","1.2"]),null]);
 c.block="sksp";r.guard(c);
@@ -30102,7 +33796,7 @@ if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="cea9";r.guard(c);
 yield* r.call(c,"05j0",["-3","5","1"]);
 c.block="7hez";r.guard(c);
-for(let i868=0,n868=Math.max(0,Math.floor(r.num("6")));i868<n868;i868++){
+for(let i892=0,n892=Math.max(0,Math.floor(r.num("6")));i892<n892;i892++){
 c.block="s80b";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -30114,7 +33808,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="8qtb";r.guard(c);
-for(let i869=0,n869=Math.max(0,Math.floor(r.num("6")));i869<n869;i869++){
+for(let i893=0,n893=Math.max(0,Math.floor(r.num("6")));i893<n893;i893++){
 c.block="yuqu";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -30129,7 +33823,7 @@ r.register("xcmn","when_message_cast",[null,"zbod"],function*(r,c){
 c.block="szi1";r.guard(c);
 r.command(c,"set_variable",["dr63","1",null]);
 c.block="6x4i";r.guard(c);
-for(let i870=0,n870=Math.max(0,Math.floor(r.num("90")));i870<n870;i870++){
+for(let i894=0,n894=Math.max(0,Math.floor(r.num("90")));i894<n894;i894++){
 yield 1;
 }
 c.block="m1oh";r.guard(c);
@@ -30156,7 +33850,7 @@ r.command(c,"set_variable",["435j","1",null]);
 c.block="8pac";r.guard(c);
 r.command(c,"set_variable",["3oea","8",null]);
 c.block="ogd1";r.guard(c);
-for(let i871=0,n871=Math.max(0,Math.floor(r.num("360")));i871<n871;i871++){
+for(let i895=0,n895=Math.max(0,Math.floor(r.num("360")));i895<n895;i895++){
 c.block="4v1c";r.guard(c);
 r.command(c,"change_variable",["3oea","1",null]);
 c.block="bl0i";r.guard(c);
@@ -30206,7 +33900,7 @@ r.command(c,"change_variable",["7ir2",r.value(c,"calc_basic",["-1","MULTI",r.val
 c.block="eyl2";r.guard(c);
 r.command(c,"change_variable",["9bgr",r.value(c,"calc_basic",["-1","MULTI",r.value(c,"get_variable",["mm0r",null])]),null]);
 c.block="scv9";r.guard(c);
-for(let i872=0,n872=Math.max(0,Math.floor(r.num("20")));i872<n872;i872++){
+for(let i896=0,n896=Math.max(0,Math.floor(r.num("20")));i896<n896;i896++){
 yield 1;
 }
 }
@@ -30297,11 +33991,11 @@ r.command(c,"message_cast",["ixj2",null]);
 c.block="fuee";r.guard(c);
 r.command(c,"set_variable",["ob2m","1",null]);
 c.block="97l2";r.guard(c);
-for(let i873=0,n873=Math.max(0,Math.floor(r.num("4")));i873<n873;i873++){
+for(let i897=0,n897=Math.max(0,Math.floor(r.num("4")));i897<n897;i897++){
 c.block="d4ns";r.guard(c);
 r.command(c,"create_clone",["etj1",null]);
 c.block="gpzs";r.guard(c);
-for(let i874=0,n874=Math.max(0,Math.floor(r.num("3")));i874<n874;i874++){
+for(let i898=0,n898=Math.max(0,Math.floor(r.num("3")));i898<n898;i898++){
 c.block="jg2g";r.guard(c);
 r.command(c,"set_variable",["pf3t","0",null]);
 c.block="h858";r.guard(c);
@@ -30358,7 +34052,7 @@ r.command(c,"set_variable",["tmov","17",null]);
 c.block="nezm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dr63",null]),"EQUAL","1"]))){
 c.block="y9cw";r.guard(c);
-for(let i875=0,n875=Math.max(0,Math.floor(r.num("8")));i875<n875;i875++){
+for(let i899=0,n899=Math.max(0,Math.floor(r.num("8")));i899<n899;i899++){
 c.block="45s9";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="y313";r.guard(c);
@@ -30373,7 +34067,7 @@ yield 1;
 }
 }else{
 c.block="zexm";r.guard(c);
-for(let i876=0,n876=Math.max(0,Math.floor(r.num("12")));i876<n876;i876++){
+for(let i900=0,n900=Math.max(0,Math.floor(r.num("12")));i900<n900;i900++){
 c.block="181p";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="nlmf";r.guard(c);
@@ -30434,7 +34128,7 @@ r.command(c,"rotate_relative",["180",null]);
 c.block="vdm3";r.guard(c);
 r.command(c,"set_variable",["8h2g","10",null]);
 c.block="85fg";r.guard(c);
-for(let i877=0,n877=Math.max(0,Math.floor(r.num("20")));i877<n877;i877++){
+for(let i901=0,n901=Math.max(0,Math.floor(r.num("20")));i901<n901;i901++){
 c.block="ux2t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["8h2g",null]),"MULTI","1.2"]),null]);
 c.block="sksp";r.guard(c);
@@ -30444,7 +34138,7 @@ if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="39sm";r.guard(c);
 yield* r.call(c,"qy83",["-3","5","1"]);
 c.block="7hez";r.guard(c);
-for(let i878=0,n878=Math.max(0,Math.floor(r.num("6")));i878<n878;i878++){
+for(let i902=0,n902=Math.max(0,Math.floor(r.num("6")));i902<n902;i902++){
 c.block="s80b";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -30456,7 +34150,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="8qtb";r.guard(c);
-for(let i879=0,n879=Math.max(0,Math.floor(r.num("6")));i879<n879;i879++){
+for(let i903=0,n903=Math.max(0,Math.floor(r.num("6")));i903<n903;i903++){
 c.block="yuqu";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -30471,7 +34165,7 @@ r.register("5h1u","when_message_cast",[null,"hhqx"],function*(r,c){
 c.block="szi1";r.guard(c);
 r.command(c,"set_variable",["dr63","1",null]);
 c.block="6x4i";r.guard(c);
-for(let i880=0,n880=Math.max(0,Math.floor(r.num("90")));i880<n880;i880++){
+for(let i904=0,n904=Math.max(0,Math.floor(r.num("90")));i904<n904;i904++){
 yield 1;
 }
 c.block="m1oh";r.guard(c);
@@ -30498,7 +34192,7 @@ r.command(c,"set_variable",["435j","1",null]);
 c.block="m3pz";r.guard(c);
 r.command(c,"set_variable",["3oea","8",null]);
 c.block="caz3";r.guard(c);
-for(let i881=0,n881=Math.max(0,Math.floor(r.num("360")));i881<n881;i881++){
+for(let i905=0,n905=Math.max(0,Math.floor(r.num("360")));i905<n905;i905++){
 c.block="zwyx";r.guard(c);
 r.command(c,"change_variable",["3oea","1",null]);
 c.block="9rgq";r.guard(c);
@@ -30548,7 +34242,7 @@ r.command(c,"change_variable",["akf6",r.value(c,"calc_basic",["-1","MULTI",r.val
 c.block="zm8h";r.guard(c);
 r.command(c,"change_variable",["c19k",r.value(c,"calc_basic",["-1","MULTI",r.value(c,"get_variable",["mm0r",null])]),null]);
 c.block="jz1u";r.guard(c);
-for(let i882=0,n882=Math.max(0,Math.floor(r.num("20")));i882<n882;i882++){
+for(let i906=0,n906=Math.max(0,Math.floor(r.num("20")));i906<n906;i906++){
 yield 1;
 }
 }
@@ -30626,7 +34320,7 @@ r.command(c,"set_variable",["2ucs","0",null]);
 c.block="pcwx";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="o0si";r.guard(c);
-for(let i883=0,n883=Math.max(0,Math.floor(r.num("1")));i883<n883;i883++){
+for(let i907=0,n907=Math.max(0,Math.floor(r.num("1")));i907<n907;i907++){
 c.block="j107";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2ucs",null]),"DIVIDE","1.5"]),"MULTI","10"]),null]);
 c.block="uhbe";r.guard(c);
@@ -30664,7 +34358,7 @@ r.command(c,"set_variable",["rx65","0",null]);
 c.block="g69j";r.guard(c);
 r.command(c,"set_variable",["igl4","0",null]);
 c.block="719m";r.guard(c);
-for(let i884=0,n884=Math.max(0,Math.floor(r.num("25")));i884<n884;i884++){
+for(let i908=0,n908=Math.max(0,Math.floor(r.num("25")));i908<n908;i908++){
 c.block="1uoa";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["igl4",null]),"EQUAL","0"]))){
 c.block="s5po";r.guard(c);
@@ -30698,7 +34392,7 @@ break;
 yield 1;
 }
 c.block="w6pt";r.guard(c);
-for(let i885=0,n885=Math.max(0,Math.floor(r.num("15")));i885<n885;i885++){
+for(let i909=0,n909=Math.max(0,Math.floor(r.num("15")));i909<n909;i909++){
 c.block="joad";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["2ucs",null]),"DIVIDE","2.3"]),null]);
 c.block="0asw";r.guard(c);
@@ -30713,7 +34407,7 @@ yield 1;
 c.block="3ehp";r.guard(c);
 r.command(c,"set_variable",["mwek","0",null]);
 c.block="ej8k";r.guard(c);
-for(let i886=0,n886=Math.max(0,Math.floor(r.num("20")));i886<n886;i886++){
+for(let i910=0,n910=Math.max(0,Math.floor(r.num("20")));i910<n910;i910++){
 c.block="skq0";r.guard(c);
 r.command(c,"change_variable",["cnxl","-0.9",null]);
 c.block="6vx2";r.guard(c);
@@ -30728,7 +34422,7 @@ r.command(c,"set_variable",["cnxl","0",null]);
 c.block="c5y3";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="i4z7";r.guard(c);
-for(let i887=0,n887=Math.max(0,Math.floor(r.num("24")));i887<n887;i887++){
+for(let i911=0,n911=Math.max(0,Math.floor(r.num("24")));i911<n911;i911++){
 yield 1;
 }
 }
@@ -30744,7 +34438,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="a23z";r.guard(c);
 r.command(c,"set_variable",["2ucs","0",null]);
 c.block="nqnj";r.guard(c);
-for(let i888=0,n888=Math.max(0,Math.floor(r.num("10")));i888<n888;i888++){
+for(let i912=0,n912=Math.max(0,Math.floor(r.num("10")));i912<n912;i912++){
 c.block="mo2m";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["2ucs",null]),"DIVIDE","1.5"]),null]);
 c.block="met7";r.guard(c);
@@ -30774,7 +34468,7 @@ r.command(c,"change_variable",["lgp6","-22",null]);
 c.block="hmht";r.guard(c);
 r.command(c,"set_variable",["rx65","0",null]);
 c.block="h3zg";r.guard(c);
-for(let i889=0,n889=Math.max(0,Math.floor(r.num("10")));i889<n889;i889++){
+for(let i913=0,n913=Math.max(0,Math.floor(r.num("10")));i913<n913;i913++){
 c.block="sry2";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["2ucs",null]),"DIVIDE","1.5"]),null]);
 c.block="tkg8";r.guard(c);
@@ -30797,7 +34491,7 @@ break;
 yield 1;
 }
 c.block="f66g";r.guard(c);
-for(let i890=0,n890=Math.max(0,Math.floor(r.num("20")));i890<n890;i890++){
+for(let i914=0,n914=Math.max(0,Math.floor(r.num("20")));i914<n914;i914++){
 c.block="6wld";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["2ucs",null]),"DIVIDE","4"]),null]);
 c.block="01bu";r.guard(c);
@@ -30814,7 +34508,7 @@ r.command(c,"set_variable",["fu65","0",null]);
 c.block="sz3l";r.guard(c);
 r.command(c,"set_variable",["mwek","0",null]);
 c.block="dktl";r.guard(c);
-for(let i891=0,n891=Math.max(0,Math.floor(r.num("20")));i891<n891;i891++){
+for(let i915=0,n915=Math.max(0,Math.floor(r.num("20")));i915<n915;i915++){
 c.block="yvx3";r.guard(c);
 r.command(c,"change_variable",["cnxl","-0.9",null]);
 c.block="jmp5";r.guard(c);
@@ -30832,7 +34526,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="sc9y";r.guard(c);
 r.command(c,"set_variable",["2ucs","0",null]);
 c.block="72kp";r.guard(c);
-for(let i892=0,n892=Math.max(0,Math.floor(r.num("5")));i892<n892;i892++){
+for(let i916=0,n916=Math.max(0,Math.floor(r.num("5")));i916<n916;i916++){
 c.block="s9wr";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["2ucs",null]),"DIVIDE","1.5"]),null]);
 c.block="jcwf";r.guard(c);
@@ -30862,7 +34556,7 @@ r.command(c,"change_variable",["lgp6","-22",null]);
 c.block="xriu";r.guard(c);
 r.command(c,"set_variable",["rx65","0",null]);
 c.block="xr11";r.guard(c);
-for(let i893=0,n893=Math.max(0,Math.floor(r.num("5")));i893<n893;i893++){
+for(let i917=0,n917=Math.max(0,Math.floor(r.num("5")));i917<n917;i917++){
 c.block="edxe";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["2ucs",null]),"MULTI","1.5"]),null]);
 c.block="zznh";r.guard(c);
@@ -30891,7 +34585,7 @@ r.command(c,"change_variable",["kfqd","-1",null]);
 c.block="no93";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["kfqd",null]),"EQUAL","0"]))){
 c.block="xdxh";r.guard(c);
-for(let i894=0,n894=Math.max(0,Math.floor(r.num("20")));i894<n894;i894++){
+for(let i918=0,n918=Math.max(0,Math.floor(r.num("20")));i918<n918;i918++){
 c.block="kvw9";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["2ucs",null]),"DIVIDE","2"]),null]);
 c.block="3lug";r.guard(c);
@@ -30908,7 +34602,7 @@ r.command(c,"set_variable",["fu65","0",null]);
 c.block="skrz";r.guard(c);
 r.command(c,"set_variable",["mwek","0",null]);
 c.block="6njr";r.guard(c);
-for(let i895=0,n895=Math.max(0,Math.floor(r.num("20")));i895<n895;i895++){
+for(let i919=0,n919=Math.max(0,Math.floor(r.num("20")));i919<n919;i919++){
 c.block="357x";r.guard(c);
 r.command(c,"change_variable",["cnxl","-0.9",null]);
 c.block="lmyr";r.guard(c);
@@ -30922,7 +34616,7 @@ c.block="vzbx";r.guard(c);
 r.command(c,"set_variable",["cnxl","0",null]);
 }else{
 c.block="v1ew";r.guard(c);
-for(let i896=0,n896=Math.max(0,Math.floor(r.num("5")));i896<n896;i896++){
+for(let i920=0,n920=Math.max(0,Math.floor(r.num("5")));i920<n920;i920++){
 c.block="522w";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["2ucs",null]),"DIVIDE","1"]),null]);
 c.block="oja8";r.guard(c);
@@ -30997,25 +34691,25 @@ r.command(c,"hide",[null]);
 c.block="3v88";r.guard(c);
 r.command(c,"set_variable",["ob2m","1",null]);
 c.block="s3xr";r.guard(c);
-for(let i897=0,n897=Math.max(0,Math.floor(r.num("5")));i897<n897;i897++){
+for(let i921=0,n921=Math.max(0,Math.floor(r.num("5")));i921<n921;i921++){
 yield 1;
 }
 c.block="feef";r.guard(c);
-for(let i898=0,n898=Math.max(0,Math.floor(r.num("5")));i898<n898;i898++){
+for(let i922=0,n922=Math.max(0,Math.floor(r.num("5")));i922<n922;i922++){
 c.block="89dq";r.guard(c);
 yield* r.call(c,"05j0",["-2","5","0"]);
 c.block="jv8q";r.guard(c);
-for(let i899=0,n899=Math.max(0,Math.floor(r.num("10")));i899<n899;i899++){
+for(let i923=0,n923=Math.max(0,Math.floor(r.num("10")));i923<n923;i923++){
 yield 1;
 }
 yield 1;
 }
 c.block="bsr2";r.guard(c);
-for(let i900=0,n900=Math.max(0,Math.floor(r.num("2")));i900<n900;i900++){
+for(let i924=0,n924=Math.max(0,Math.floor(r.num("2")));i924<n924;i924++){
 c.block="500h";r.guard(c);
 yield* r.call(c,"05j0",["-3","5","0"]);
 c.block="u6i4";r.guard(c);
-for(let i901=0,n901=Math.max(0,Math.floor(r.num("10")));i901<n901;i901++){
+for(let i925=0,n925=Math.max(0,Math.floor(r.num("10")));i925<n925;i925++){
 yield 1;
 }
 yield 1;
@@ -31097,7 +34791,7 @@ r.command(c,"set_variable",["iwkm","0",null]);
 c.block="c9yk";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="jvmr";r.guard(c);
-for(let i902=0,n902=Math.max(0,Math.floor(r.num("1")));i902<n902;i902++){
+for(let i926=0,n926=Math.max(0,Math.floor(r.num("1")));i926<n926;i926++){
 c.block="i5ze";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"get_variable",["iwkm",null]),"DIVIDE","1.5"]),"MULTI","10"]),null]);
 c.block="zl0q";r.guard(c);
@@ -31135,7 +34829,7 @@ r.command(c,"set_variable",["9k1p","0",null]);
 c.block="sy13";r.guard(c);
 r.command(c,"set_variable",["igl4","0",null]);
 c.block="bmo6";r.guard(c);
-for(let i903=0,n903=Math.max(0,Math.floor(r.num("25")));i903<n903;i903++){
+for(let i927=0,n927=Math.max(0,Math.floor(r.num("25")));i927<n927;i927++){
 c.block="zf27";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["igl4",null]),"EQUAL","0"]))){
 c.block="di11";r.guard(c);
@@ -31169,7 +34863,7 @@ break;
 yield 1;
 }
 c.block="cpho";r.guard(c);
-for(let i904=0,n904=Math.max(0,Math.floor(r.num("15")));i904<n904;i904++){
+for(let i928=0,n928=Math.max(0,Math.floor(r.num("15")));i928<n928;i928++){
 c.block="0433";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["iwkm",null]),"DIVIDE","2.3"]),null]);
 c.block="csi9";r.guard(c);
@@ -31184,7 +34878,7 @@ yield 1;
 c.block="n7vg";r.guard(c);
 r.command(c,"set_variable",["af7f","0",null]);
 c.block="mbjt";r.guard(c);
-for(let i905=0,n905=Math.max(0,Math.floor(r.num("20")));i905<n905;i905++){
+for(let i929=0,n929=Math.max(0,Math.floor(r.num("20")));i929<n929;i929++){
 c.block="xjnp";r.guard(c);
 r.command(c,"change_variable",["dbm5","-0.9",null]);
 c.block="b5nv";r.guard(c);
@@ -31199,7 +34893,7 @@ r.command(c,"set_variable",["dbm5","0",null]);
 c.block="ge6q";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="6a88";r.guard(c);
-for(let i906=0,n906=Math.max(0,Math.floor(r.num("24")));i906<n906;i906++){
+for(let i930=0,n930=Math.max(0,Math.floor(r.num("24")));i930<n930;i930++){
 yield 1;
 }
 }
@@ -31215,7 +34909,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="a23z";r.guard(c);
 r.command(c,"set_variable",["iwkm","0",null]);
 c.block="nqnj";r.guard(c);
-for(let i907=0,n907=Math.max(0,Math.floor(r.num("10")));i907<n907;i907++){
+for(let i931=0,n931=Math.max(0,Math.floor(r.num("10")));i931<n931;i931++){
 c.block="mo2m";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["iwkm",null]),"DIVIDE","1.5"]),null]);
 c.block="met7";r.guard(c);
@@ -31245,7 +34939,7 @@ r.command(c,"change_variable",["c9o4","-22",null]);
 c.block="hmht";r.guard(c);
 r.command(c,"set_variable",["9k1p","0",null]);
 c.block="h3zg";r.guard(c);
-for(let i908=0,n908=Math.max(0,Math.floor(r.num("10")));i908<n908;i908++){
+for(let i932=0,n932=Math.max(0,Math.floor(r.num("10")));i932<n932;i932++){
 c.block="sry2";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["iwkm",null]),"DIVIDE","1.5"]),null]);
 c.block="tkg8";r.guard(c);
@@ -31270,7 +34964,7 @@ break;
 yield 1;
 }
 c.block="f66g";r.guard(c);
-for(let i909=0,n909=Math.max(0,Math.floor(r.num("20")));i909<n909;i909++){
+for(let i933=0,n933=Math.max(0,Math.floor(r.num("20")));i933<n933;i933++){
 c.block="6wld";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["iwkm",null]),"DIVIDE","4"]),null]);
 c.block="01bu";r.guard(c);
@@ -31287,7 +34981,7 @@ r.command(c,"set_variable",["af7f","0",null]);
 c.block="a4bj";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="dktl";r.guard(c);
-for(let i910=0,n910=Math.max(0,Math.floor(r.num("20")));i910<n910;i910++){
+for(let i934=0,n934=Math.max(0,Math.floor(r.num("20")));i934<n934;i934++){
 c.block="hkwl";r.guard(c);
 r.command(c,"change_variable",["dbm5","-0.9",null]);
 c.block="0vna";r.guard(c);
@@ -31305,7 +34999,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="sc9y";r.guard(c);
 r.command(c,"set_variable",["iwkm","0",null]);
 c.block="72kp";r.guard(c);
-for(let i911=0,n911=Math.max(0,Math.floor(r.num("5")));i911<n911;i911++){
+for(let i935=0,n935=Math.max(0,Math.floor(r.num("5")));i935<n935;i935++){
 c.block="s9wr";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["iwkm",null]),"DIVIDE","1.5"]),null]);
 c.block="jcwf";r.guard(c);
@@ -31335,7 +35029,7 @@ r.command(c,"change_variable",["c9o4","-22",null]);
 c.block="xriu";r.guard(c);
 r.command(c,"set_variable",["9k1p","0",null]);
 c.block="xr11";r.guard(c);
-for(let i912=0,n912=Math.max(0,Math.floor(r.num("5")));i912<n912;i912++){
+for(let i936=0,n936=Math.max(0,Math.floor(r.num("5")));i936<n936;i936++){
 c.block="edxe";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["iwkm",null]),"MULTI","1.5"]),null]);
 c.block="zznh";r.guard(c);
@@ -31366,7 +35060,7 @@ r.command(c,"set_variable",["ri3z","0",null]);
 c.block="wavc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["edhh",null]),"EQUAL","0"]))){
 c.block="8sje";r.guard(c);
-for(let i913=0,n913=Math.max(0,Math.floor(r.num("20")));i913<n913;i913++){
+for(let i937=0,n937=Math.max(0,Math.floor(r.num("20")));i937<n937;i937++){
 c.block="bwh9";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["iwkm",null]),"DIVIDE","2"]),null]);
 c.block="wt4h";r.guard(c);
@@ -31383,7 +35077,7 @@ r.command(c,"set_variable",["af7f","0",null]);
 c.block="0yaw";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="rdhd";r.guard(c);
-for(let i914=0,n914=Math.max(0,Math.floor(r.num("20")));i914<n914;i914++){
+for(let i938=0,n938=Math.max(0,Math.floor(r.num("20")));i938<n938;i938++){
 c.block="g5da";r.guard(c);
 r.command(c,"change_variable",["dbm5","-0.9",null]);
 c.block="m6bj";r.guard(c);
@@ -31397,7 +35091,7 @@ c.block="j9o6";r.guard(c);
 r.command(c,"set_variable",["dbm5","0",null]);
 }else{
 c.block="dmm2";r.guard(c);
-for(let i915=0,n915=Math.max(0,Math.floor(r.num("5")));i915<n915;i915++){
+for(let i939=0,n939=Math.max(0,Math.floor(r.num("5")));i939<n939;i939++){
 c.block="j5bg";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["iwkm",null]),"DIVIDE","1"]),null]);
 c.block="95j3";r.guard(c);
@@ -31474,25 +35168,25 @@ r.command(c,"hide",[null]);
 c.block="b9nd";r.guard(c);
 r.command(c,"set_variable",["ob2m","1",null]);
 c.block="pdnn";r.guard(c);
-for(let i916=0,n916=Math.max(0,Math.floor(r.num("5")));i916<n916;i916++){
+for(let i940=0,n940=Math.max(0,Math.floor(r.num("5")));i940<n940;i940++){
 yield 1;
 }
 c.block="f67u";r.guard(c);
-for(let i917=0,n917=Math.max(0,Math.floor(r.num("5")));i917<n917;i917++){
+for(let i941=0,n941=Math.max(0,Math.floor(r.num("5")));i941<n941;i941++){
 c.block="xbsy";r.guard(c);
 yield* r.call(c,"qy83",["-2","5","0"]);
 c.block="5qr5";r.guard(c);
-for(let i918=0,n918=Math.max(0,Math.floor(r.num("10")));i918<n918;i918++){
+for(let i942=0,n942=Math.max(0,Math.floor(r.num("10")));i942<n942;i942++){
 yield 1;
 }
 yield 1;
 }
 c.block="53ls";r.guard(c);
-for(let i919=0,n919=Math.max(0,Math.floor(r.num("2")));i919<n919;i919++){
+for(let i943=0,n943=Math.max(0,Math.floor(r.num("2")));i943<n943;i943++){
 c.block="rfjk";r.guard(c);
 yield* r.call(c,"qy83",["-3","5","0"]);
 c.block="0vci";r.guard(c);
-for(let i920=0,n920=Math.max(0,Math.floor(r.num("10")));i920<n920;i920++){
+for(let i944=0,n944=Math.max(0,Math.floor(r.num("10")));i944<n944;i944++){
 yield 1;
 }
 yield 1;
@@ -31508,15 +35202,15 @@ r.command(c,"set_variable",["du2p","0",null]);
 });
 r.register("0j72","when_message_cast",[null,"cwzf"],function*(r,c){
 c.block="b8lq";r.guard(c);
-for(let i921=0,n921=Math.max(0,Math.floor(r.num("5")));i921<n921;i921++){
+for(let i945=0,n945=Math.max(0,Math.floor(r.num("5")));i945<n945;i945++){
 yield 1;
 }
 c.block="1feg";r.guard(c);
-for(let i922=0,n922=Math.max(0,Math.floor(r.num("5")));i922<n922;i922++){
+for(let i946=0,n946=Math.max(0,Math.floor(r.num("5")));i946<n946;i946++){
 c.block="vofj";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["jhmc"]),null]);
 c.block="e0r4";r.guard(c);
-for(let i923=0,n923=Math.max(0,Math.floor(r.num("10")));i923<n923;i923++){
+for(let i947=0,n947=Math.max(0,Math.floor(r.num("10")));i947<n947;i947++){
 yield 1;
 }
 yield 1;
@@ -31524,7 +35218,7 @@ yield 1;
 c.block="cjex";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["zh5p"]),null]);
 c.block="7xka";r.guard(c);
-for(let i924=0,n924=Math.max(0,Math.floor(r.num("2")));i924<n924;i924++){
+for(let i948=0,n948=Math.max(0,Math.floor(r.num("2")));i948<n948;i948++){
 yield 1;
 }
 
@@ -31576,7 +35270,7 @@ r.command(c,"show",[null]);
 c.block="vci9";r.guard(c);
 r.command(c,"set_scale_size",["17",null]);
 c.block="x0t5";r.guard(c);
-for(let i925=0,n925=Math.max(0,Math.floor(r.num("10")));i925<n925;i925++){
+for(let i949=0,n949=Math.max(0,Math.floor(r.num("10")));i949<n949;i949++){
 c.block="esby";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 c.block="191x";r.guard(c);
@@ -31596,7 +35290,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="amx5";r.guard(c);
-for(let i926=0,n926=Math.max(0,Math.floor(r.num("10")));i926<n926;i926++){
+for(let i950=0,n950=Math.max(0,Math.floor(r.num("10")));i950<n950;i950++){
 c.block="h6et";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="6swc";r.guard(c);
@@ -31614,7 +35308,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="2z8h";r.guard(c);
-for(let i927=0,n927=Math.max(0,Math.floor(r.num("15")));i927<n927;i927++){
+for(let i951=0,n951=Math.max(0,Math.floor(r.num("15")));i951<n951;i951++){
 c.block="ka8t";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7.5",null]);
 c.block="3rnj";r.guard(c);
@@ -31648,7 +35342,7 @@ r.command(c,"show",[null]);
 c.block="ekjn";r.guard(c);
 r.command(c,"set_scale_size",["17",null]);
 c.block="x0tf";r.guard(c);
-for(let i928=0,n928=Math.max(0,Math.floor(r.num("10")));i928<n928;i928++){
+for(let i952=0,n952=Math.max(0,Math.floor(r.num("10")));i952<n952;i952++){
 c.block="xds7";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 c.block="2c6j";r.guard(c);
@@ -31668,7 +35362,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="nrhz";r.guard(c);
-for(let i929=0,n929=Math.max(0,Math.floor(r.num("35")));i929<n929;i929++){
+for(let i953=0,n953=Math.max(0,Math.floor(r.num("35")));i953<n953;i953++){
 c.block="qdb1";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="s53q";r.guard(c);
@@ -31686,7 +35380,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="4fpn";r.guard(c);
-for(let i930=0,n930=Math.max(0,Math.floor(r.num("15")));i930<n930;i930++){
+for(let i954=0,n954=Math.max(0,Math.floor(r.num("15")));i954<n954;i954++){
 c.block="whz5";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7.5",null]);
 c.block="owsg";r.guard(c);
@@ -31725,7 +35419,7 @@ r.command(c,"show",[null]);
 c.block="u15z";r.guard(c);
 r.command(c,"set_scale_size",["17",null]);
 c.block="ec2g";r.guard(c);
-for(let i931=0,n931=Math.max(0,Math.floor(r.num("10")));i931<n931;i931++){
+for(let i955=0,n955=Math.max(0,Math.floor(r.num("10")));i955<n955;i955++){
 c.block="pyr9";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 c.block="l5ol";r.guard(c);
@@ -31745,7 +35439,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="9ffp";r.guard(c);
-for(let i932=0,n932=Math.max(0,Math.floor(r.num("10")));i932<n932;i932++){
+for(let i956=0,n956=Math.max(0,Math.floor(r.num("10")));i956<n956;i956++){
 c.block="dmb0";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="qz69";r.guard(c);
@@ -31763,7 +35457,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="vj02";r.guard(c);
-for(let i933=0,n933=Math.max(0,Math.floor(r.num("15")));i933<n933;i933++){
+for(let i957=0,n957=Math.max(0,Math.floor(r.num("15")));i957<n957;i957++){
 c.block="x1de";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7.5",null]);
 c.block="fjgf";r.guard(c);
@@ -31797,7 +35491,7 @@ r.command(c,"show",[null]);
 c.block="cyao";r.guard(c);
 r.command(c,"set_scale_size",["17",null]);
 c.block="yxh0";r.guard(c);
-for(let i934=0,n934=Math.max(0,Math.floor(r.num("10")));i934<n934;i934++){
+for(let i958=0,n958=Math.max(0,Math.floor(r.num("10")));i958<n958;i958++){
 c.block="hn8x";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 c.block="vjf5";r.guard(c);
@@ -31817,7 +35511,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="drdi";r.guard(c);
-for(let i935=0,n935=Math.max(0,Math.floor(r.num("35")));i935<n935;i935++){
+for(let i959=0,n959=Math.max(0,Math.floor(r.num("35")));i959<n959;i959++){
 c.block="0d23";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="illq";r.guard(c);
@@ -31835,7 +35529,7 @@ r.command(c,"move_x",["-11",null]);
 yield 1;
 }
 c.block="yscq";r.guard(c);
-for(let i936=0,n936=Math.max(0,Math.floor(r.num("15")));i936<n936;i936++){
+for(let i960=0,n960=Math.max(0,Math.floor(r.num("15")));i960<n960;i960++){
 c.block="4b8r";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","7.5",null]);
 c.block="uqx8";r.guard(c);
@@ -31919,7 +35613,7 @@ r.command(c,"set_variable",["qvkr","2",null]);
 c.block="yqck";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="iekt";r.guard(c);
-for(let i937=0,n937=Math.max(0,Math.floor(r.num("25")));i937<n937;i937++){
+for(let i961=0,n961=Math.max(0,Math.floor(r.num("25")));i961<n961;i961++){
 yield 1;
 }
 c.block="8mes";r.guard(c);
@@ -31927,7 +35621,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="zmc8";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="46ts";r.guard(c);
-for(let i938=0,n938=Math.max(0,Math.floor(r.num("25")));i938<n938;i938++){
+for(let i962=0,n962=Math.max(0,Math.floor(r.num("25")));i962<n962;i962++){
 yield 1;
 }
 c.block="oi23";r.guard(c);
@@ -31946,7 +35640,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="ron8";r.guard(c);
 r.command(c,"create_clone",["s0et",null]);
 c.block="fvfr";r.guard(c);
-for(let i939=0,n939=Math.max(0,Math.floor(r.num("3")));i939<n939;i939++){
+for(let i963=0,n963=Math.max(0,Math.floor(r.num("3")));i963<n963;i963++){
 c.block="lva3";r.guard(c);
 r.command(c,"set_variable",["qvkr","0",null]);
 c.block="7bi8";r.guard(c);
@@ -31954,7 +35648,7 @@ r.command(c,"set_variable",["3xh6","0",null]);
 c.block="dq8w";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="c604";r.guard(c);
-for(let i940=0,n940=Math.max(0,Math.floor(r.num("4")));i940<n940;i940++){
+for(let i964=0,n964=Math.max(0,Math.floor(r.num("4")));i964<n964;i964++){
 yield 1;
 }
 c.block="jbdc";r.guard(c);
@@ -31964,7 +35658,7 @@ r.command(c,"set_variable",["3xh6","5",null]);
 c.block="6o43";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="zvvs";r.guard(c);
-for(let i941=0,n941=Math.max(0,Math.floor(r.num("4")));i941<n941;i941++){
+for(let i965=0,n965=Math.max(0,Math.floor(r.num("4")));i965<n965;i965++){
 yield 1;
 }
 c.block="o8v6";r.guard(c);
@@ -31974,7 +35668,7 @@ r.command(c,"set_variable",["3xh6","-5",null]);
 c.block="yz2o";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="yepg";r.guard(c);
-for(let i942=0,n942=Math.max(0,Math.floor(r.num("4")));i942<n942;i942++){
+for(let i966=0,n966=Math.max(0,Math.floor(r.num("4")));i966<n966;i966++){
 yield 1;
 }
 yield 1;
@@ -32007,7 +35701,7 @@ r.command(c,"move_y",[r.value(c,"get_variable",["3xh6",null]),null]);
 c.block="wc15";r.guard(c);
 r.command(c,"change_variable",["3xh6","-10",null]);
 c.block="f4r9";r.guard(c);
-for(let i943=0,n943=Math.max(0,Math.floor(r.num("20")));i943<n943;i943++){
+for(let i967=0,n967=Math.max(0,Math.floor(r.num("20")));i967<n967;i967++){
 c.block="gmh6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["j830",null]),"EQUAL","1"]))){
 c.block="vcsp";r.guard(c);
@@ -32021,7 +35715,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="fx87";r.guard(c);
 yield* r.call(c,"05j0",["-2",10,"0"]);
 c.block="w7z5";r.guard(c);
-for(let i944=0,n944=Math.max(0,Math.floor(r.num("4")));i944<n944;i944++){
+for(let i968=0,n968=Math.max(0,Math.floor(r.num("4")));i968<n968;i968++){
 c.block="0c1l";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","25",null]);
 c.block="gf2c";r.guard(c);
@@ -32041,7 +35735,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="7lfx";r.guard(c);
-for(let i945=0,n945=Math.max(0,Math.floor(r.num("4")));i945<n945;i945++){
+for(let i969=0,n969=Math.max(0,Math.floor(r.num("4")));i969<n969;i969++){
 c.block="zh20";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","25",null]);
 c.block="c8l0";r.guard(c);
@@ -32093,7 +35787,7 @@ r.command(c,"set_variable",["kzgx","0",null]);
 c.block="skxo";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="xlzl";r.guard(c);
-for(let i946=0,n946=Math.max(0,Math.floor(r.num("10")));i946<n946;i946++){
+for(let i970=0,n970=Math.max(0,Math.floor(r.num("10")));i970<n970;i970++){
 c.block="z7gc";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 c.block="d9sy";r.guard(c);
@@ -32109,7 +35803,7 @@ yield 1;
 c.block="sjjv";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="7khy";r.guard(c);
-for(let i947=0,n947=Math.max(0,Math.floor(r.num("50")));i947<n947;i947++){
+for(let i971=0,n971=Math.max(0,Math.floor(r.num("50")));i971<n971;i971++){
 c.block="iexe";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["55","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="2fkv";r.guard(c);
@@ -32151,7 +35845,7 @@ r.command(c,"create_clone",["chu8",null]);
 yield 1;
 }
 c.block="hrtz";r.guard(c);
-for(let i948=0,n948=Math.max(0,Math.floor(r.num("7")));i948<n948;i948++){
+for(let i972=0,n972=Math.max(0,Math.floor(r.num("7")));i972<n972;i972++){
 c.block="f56y";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","15",null]);
 c.block="9bfm";r.guard(c);
@@ -32193,7 +35887,7 @@ r.command(c,"show",[null]);
 c.block="9ox2";r.guard(c);
 r.command(c,"set_scale_size",["125",null]);
 c.block="o1xi";r.guard(c);
-for(let i949=0,n949=Math.max(0,Math.floor(r.num("35")));i949<n949;i949++){
+for(let i973=0,n973=Math.max(0,Math.floor(r.num("35")));i973<n973;i973++){
 c.block="xenx";r.guard(c);
 r.command(c,"locate",["8boq",null]);
 c.block="7vsc";r.guard(c);
@@ -32211,7 +35905,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["plgd"]),null]);
 yield 1;
 }
 c.block="eob5";r.guard(c);
-for(let i950=0,n950=Math.max(0,Math.floor(r.num("20")));i950<n950;i950++){
+for(let i974=0,n974=Math.max(0,Math.floor(r.num("20")));i974<n974;i974++){
 c.block="lkeq";r.guard(c);
 r.command(c,"locate",["8boq",null]);
 c.block="a6pz";r.guard(c);
@@ -32260,7 +35954,7 @@ r.command(c,"create_clone",["t12n",null]);
 c.block="7wsb";r.guard(c);
 r.command(c,"create_clone",["t12n",null]);
 c.block="irha";r.guard(c);
-for(let i951=0,n951=Math.max(0,Math.floor(r.num("54")));i951<n951;i951++){
+for(let i975=0,n975=Math.max(0,Math.floor(r.num("54")));i975<n975;i975++){
 yield 1;
 }
 }
@@ -32329,7 +36023,7 @@ r.command(c,"set_variable",["rr24","2",null]);
 c.block="yqck";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="iekt";r.guard(c);
-for(let i952=0,n952=Math.max(0,Math.floor(r.num("25")));i952<n952;i952++){
+for(let i976=0,n976=Math.max(0,Math.floor(r.num("25")));i976<n976;i976++){
 yield 1;
 }
 c.block="s3ud";r.guard(c);
@@ -32337,7 +36031,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="zmc8";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="46ts";r.guard(c);
-for(let i953=0,n953=Math.max(0,Math.floor(r.num("25")));i953<n953;i953++){
+for(let i977=0,n977=Math.max(0,Math.floor(r.num("25")));i977<n977;i977++){
 yield 1;
 }
 c.block="oi23";r.guard(c);
@@ -32356,7 +36050,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="ron8";r.guard(c);
 r.command(c,"create_clone",["s0et",null]);
 c.block="fvfr";r.guard(c);
-for(let i954=0,n954=Math.max(0,Math.floor(r.num("3")));i954<n954;i954++){
+for(let i978=0,n978=Math.max(0,Math.floor(r.num("3")));i978<n978;i978++){
 c.block="lva3";r.guard(c);
 r.command(c,"set_variable",["rr24","0",null]);
 c.block="7bi8";r.guard(c);
@@ -32364,7 +36058,7 @@ r.command(c,"set_variable",["3xh6","0",null]);
 c.block="dq8w";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="c604";r.guard(c);
-for(let i955=0,n955=Math.max(0,Math.floor(r.num("4")));i955<n955;i955++){
+for(let i979=0,n979=Math.max(0,Math.floor(r.num("4")));i979<n979;i979++){
 yield 1;
 }
 c.block="187g";r.guard(c);
@@ -32374,7 +36068,7 @@ r.command(c,"set_variable",["3xh6","5",null]);
 c.block="2at6";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="wbo8";r.guard(c);
-for(let i956=0,n956=Math.max(0,Math.floor(r.num("4")));i956<n956;i956++){
+for(let i980=0,n980=Math.max(0,Math.floor(r.num("4")));i980<n980;i980++){
 yield 1;
 }
 c.block="jtw4";r.guard(c);
@@ -32384,7 +36078,7 @@ r.command(c,"set_variable",["3xh6","-5",null]);
 c.block="pp4g";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="cu2p";r.guard(c);
-for(let i957=0,n957=Math.max(0,Math.floor(r.num("4")));i957<n957;i957++){
+for(let i981=0,n981=Math.max(0,Math.floor(r.num("4")));i981<n981;i981++){
 yield 1;
 }
 yield 1;
@@ -32417,7 +36111,7 @@ r.command(c,"move_y",[r.value(c,"get_variable",["3xh6",null]),null]);
 c.block="wc15";r.guard(c);
 r.command(c,"change_variable",["3xh6","-10",null]);
 c.block="f4r9";r.guard(c);
-for(let i958=0,n958=Math.max(0,Math.floor(r.num("20")));i958<n958;i958++){
+for(let i982=0,n982=Math.max(0,Math.floor(r.num("20")));i982<n982;i982++){
 c.block="gmh6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["o9np",null]),"EQUAL","1"]))){
 c.block="vcsp";r.guard(c);
@@ -32431,7 +36125,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="peyr";r.guard(c);
 yield* r.call(c,"qy83",["-2",10,"0"]);
 c.block="w7z5";r.guard(c);
-for(let i959=0,n959=Math.max(0,Math.floor(r.num("4")));i959<n959;i959++){
+for(let i983=0,n983=Math.max(0,Math.floor(r.num("4")));i983<n983;i983++){
 c.block="0c1l";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","25",null]);
 c.block="gf2c";r.guard(c);
@@ -32451,7 +36145,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="7lfx";r.guard(c);
-for(let i960=0,n960=Math.max(0,Math.floor(r.num("4")));i960<n960;i960++){
+for(let i984=0,n984=Math.max(0,Math.floor(r.num("4")));i984<n984;i984++){
 c.block="zh20";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","25",null]);
 c.block="c8l0";r.guard(c);
@@ -32503,7 +36197,7 @@ r.command(c,"set_variable",["7px7","0",null]);
 c.block="skxo";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="xlzl";r.guard(c);
-for(let i961=0,n961=Math.max(0,Math.floor(r.num("10")));i961<n961;i961++){
+for(let i985=0,n985=Math.max(0,Math.floor(r.num("10")));i985<n985;i985++){
 c.block="z7gc";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 c.block="mai8";r.guard(c);
@@ -32519,7 +36213,7 @@ yield 1;
 c.block="sjjv";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="7khy";r.guard(c);
-for(let i962=0,n962=Math.max(0,Math.floor(r.num("50")));i962<n962;i962++){
+for(let i986=0,n986=Math.max(0,Math.floor(r.num("50")));i986<n986;i986++){
 c.block="iexe";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["55","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="2fkv";r.guard(c);
@@ -32561,7 +36255,7 @@ r.command(c,"create_clone",["chu8",null]);
 yield 1;
 }
 c.block="hrtz";r.guard(c);
-for(let i963=0,n963=Math.max(0,Math.floor(r.num("7")));i963<n963;i963++){
+for(let i987=0,n987=Math.max(0,Math.floor(r.num("7")));i987<n987;i987++){
 c.block="f56y";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","15",null]);
 c.block="9bfm";r.guard(c);
@@ -32603,7 +36297,7 @@ r.command(c,"show",[null]);
 c.block="9ox2";r.guard(c);
 r.command(c,"set_scale_size",["125",null]);
 c.block="o1xi";r.guard(c);
-for(let i964=0,n964=Math.max(0,Math.floor(r.num("35")));i964<n964;i964++){
+for(let i988=0,n988=Math.max(0,Math.floor(r.num("35")));i988<n988;i988++){
 c.block="xenx";r.guard(c);
 r.command(c,"locate",["6y87",null]);
 c.block="7vsc";r.guard(c);
@@ -32621,7 +36315,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["8g1z"]),null]);
 yield 1;
 }
 c.block="eob5";r.guard(c);
-for(let i965=0,n965=Math.max(0,Math.floor(r.num("20")));i965<n965;i965++){
+for(let i989=0,n989=Math.max(0,Math.floor(r.num("20")));i989<n989;i989++){
 c.block="jleg";r.guard(c);
 r.command(c,"locate",["6y87",null]);
 c.block="a6pz";r.guard(c);
@@ -32670,7 +36364,7 @@ r.command(c,"create_clone",["t12n",null]);
 c.block="7wsb";r.guard(c);
 r.command(c,"create_clone",["t12n",null]);
 c.block="irha";r.guard(c);
-for(let i966=0,n966=Math.max(0,Math.floor(r.num("54")));i966<n966;i966++){
+for(let i990=0,n990=Math.max(0,Math.floor(r.num("54")));i990<n990;i990++){
 yield 1;
 }
 }
@@ -32707,7 +36401,7 @@ r.command(c,"set_variable",["vhpg","10",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i967=0,n967=Math.max(0,Math.floor(r.num("55")));i967<n967;i967++){
+for(let i991=0,n991=Math.max(0,Math.floor(r.num("55")));i991<n991;i991++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhpg",null]),"DIVIDE","2"]),null]);
 c.block="jtw3";r.guard(c);
@@ -32717,7 +36411,7 @@ if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="4xxr";r.guard(c);
 yield* r.call(c,"05j0",["-2","8","0"]);
 c.block="d04a";r.guard(c);
-for(let i968=0,n968=Math.max(0,Math.floor(r.num("10")));i968<n968;i968++){
+for(let i992=0,n992=Math.max(0,Math.floor(r.num("10")));i992<n992;i992++){
 c.block="lr5f";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -32729,7 +36423,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="d7tu";r.guard(c);
-for(let i969=0,n969=Math.max(0,Math.floor(r.num("10")));i969<n969;i969++){
+for(let i993=0,n993=Math.max(0,Math.floor(r.num("10")));i993<n993;i993++){
 c.block="uavi";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -32747,7 +36441,7 @@ r.command(c,"set_scale_size",["50",null]);
 c.block="k434";r.guard(c);
 r.command(c,"show",[null]);
 c.block="g4d4";r.guard(c);
-for(let i970=0,n970=Math.max(0,Math.floor(r.num("20")));i970<n970;i970++){
+for(let i994=0,n994=Math.max(0,Math.floor(r.num("20")));i994<n994;i994++){
 c.block="r7l4";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="3lbf";r.guard(c);
@@ -32775,7 +36469,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",
 c.block="n84t";r.guard(c);
 r.command(c,"set_variable",["vhpg","5",null]);
 c.block="m2go";r.guard(c);
-for(let i971=0,n971=Math.max(0,Math.floor(r.num("25")));i971<n971;i971++){
+for(let i995=0,n995=Math.max(0,Math.floor(r.num("25")));i995<n995;i995++){
 c.block="50pn";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="x2no";r.guard(c);
@@ -32787,7 +36481,7 @@ r.command(c,"move_direction",[r.value(c,"get_variable",["gefw",null]),null]);
 yield 1;
 }
 c.block="8btx";r.guard(c);
-for(let i972=0,n972=Math.max(0,Math.floor(r.num("30")));i972<n972;i972++){
+for(let i996=0,n996=Math.max(0,Math.floor(r.num("30")));i996<n996;i996++){
 c.block="oaux";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="5kkg";r.guard(c);
@@ -32795,7 +36489,7 @@ r.command(c,"move_direction",[r.value(c,"get_variable",["gefw",null]),null]);
 yield 1;
 }
 c.block="7w6x";r.guard(c);
-for(let i973=0,n973=Math.max(0,Math.floor(r.num("26")));i973<n973;i973++){
+for(let i997=0,n997=Math.max(0,Math.floor(r.num("26")));i997<n997;i997++){
 c.block="5byz";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"0t1a",null,"rotation"]),"MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","5"]),null]);
 yield 1;
@@ -32805,7 +36499,7 @@ r.command(c,"see_angle_object",["n230",null]);
 c.block="1a8w";r.guard(c);
 r.command(c,"set_variable",["vhpg","10",null]);
 c.block="v9cg";r.guard(c);
-for(let i974=0,n974=Math.max(0,Math.floor(r.num("55")));i974<n974;i974++){
+for(let i998=0,n998=Math.max(0,Math.floor(r.num("55")));i998<n998;i998++){
 c.block="y0wb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhpg",null]),"MULTI","0.8"]),null]);
 c.block="v7ca";r.guard(c);
@@ -32815,7 +36509,7 @@ if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="mtd2";r.guard(c);
 yield* r.call(c,"05j0",["-2","9","1"]);
 c.block="kf1z";r.guard(c);
-for(let i975=0,n975=Math.max(0,Math.floor(r.num("10")));i975<n975;i975++){
+for(let i999=0,n999=Math.max(0,Math.floor(r.num("10")));i999<n999;i999++){
 c.block="3llg";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -32827,7 +36521,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="s15x";r.guard(c);
-for(let i976=0,n976=Math.max(0,Math.floor(r.num("10")));i976<n976;i976++){
+for(let i1000=0,n1000=Math.max(0,Math.floor(r.num("10")));i1000<n1000;i1000++){
 c.block="ljij";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -32896,7 +36590,7 @@ r.command(c,"set_variable",["x73n","1",null]);
 c.block="cz4x";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="j7h2";r.guard(c);
-for(let i977=0,n977=Math.max(0,Math.floor(r.num("10")));i977<n977;i977++){
+for(let i1001=0,n1001=Math.max(0,Math.floor(r.num("10")));i1001<n1001;i1001++){
 c.block="fcap";r.guard(c);
 r.command(c,"set_variable",["qvkr","2",null]);
 c.block="97nc";r.guard(c);
@@ -32904,7 +36598,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="6b0k";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_rand",[null,"2",null,"5",null]),null]);
 c.block="jzcw";r.guard(c);
-for(let i978=0,n978=Math.max(0,Math.floor(r.num("4")));i978<n978;i978++){
+for(let i1002=0,n1002=Math.max(0,Math.floor(r.num("4")));i1002<n1002;i1002++){
 yield 1;
 }
 yield 1;
@@ -32914,7 +36608,7 @@ r.command(c,"set_variable",["fu65","0",null]);
 c.block="bl0n";r.guard(c);
 r.command(c,"set_variable",["lyf2","0",null]);
 c.block="ghj8";r.guard(c);
-for(let i979=0,n979=Math.max(0,Math.floor(r.num("30")));i979<n979;i979++){
+for(let i1003=0,n1003=Math.max(0,Math.floor(r.num("30")));i1003<n1003;i1003++){
 yield 1;
 }
 c.block="97m5";r.guard(c);
@@ -32924,7 +36618,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="b3sc";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="vc52";r.guard(c);
-for(let i980=0,n980=Math.max(0,Math.floor(r.num("22")));i980<n980;i980++){
+for(let i1004=0,n1004=Math.max(0,Math.floor(r.num("22")));i1004<n1004;i1004++){
 c.block="is7v";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -32940,7 +36634,7 @@ if(r.truth(r.value(c,"is_press_some_key",["13",null]))){
 c.block="ysx5";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="92ro";r.guard(c);
-for(let i981=0,n981=Math.max(0,Math.floor(r.num("3")));i981<n981;i981++){
+for(let i1005=0,n1005=Math.max(0,Math.floor(r.num("3")));i1005<n1005;i1005++){
 c.block="1vyv";r.guard(c);
 r.command(c,"set_variable",["qvkr","0",null]);
 c.block="4mhx";r.guard(c);
@@ -32948,13 +36642,13 @@ r.command(c,"create_clone",["self",null]);
 c.block="vfqu";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_rand",[null,"2",null,"5",null]),null]);
 c.block="u1fm";r.guard(c);
-for(let i982=0,n982=Math.max(0,Math.floor(r.num("8")));i982<n982;i982++){
+for(let i1006=0,n1006=Math.max(0,Math.floor(r.num("8")));i1006<n1006;i1006++){
 yield 1;
 }
 yield 1;
 }
 c.block="32cf";r.guard(c);
-for(let i983=0,n983=Math.max(0,Math.floor(r.num("5")));i983<n983;i983++){
+for(let i1007=0,n1007=Math.max(0,Math.floor(r.num("5")));i1007<n1007;i1007++){
 yield 1;
 }
 c.block="uig1";r.guard(c);
@@ -32962,7 +36656,7 @@ r.command(c,"show",[null]);
 c.block="g027";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="56th";r.guard(c);
-for(let i984=0,n984=Math.max(0,Math.floor(r.num("40")));i984<n984;i984++){
+for(let i1008=0,n1008=Math.max(0,Math.floor(r.num("40")));i1008<n1008;i1008++){
 c.block="r4a2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -32996,7 +36690,7 @@ r.command(c,"set_variable",["igdl","1",null]);
 c.block="2u01";r.guard(c);
 r.command(c,"create_clone",["gj4b",null]);
 c.block="h537";r.guard(c);
-for(let i985=0,n985=Math.max(0,Math.floor(r.num("20")));i985<n985;i985++){
+for(let i1009=0,n1009=Math.max(0,Math.floor(r.num("20")));i1009<n1009;i1009++){
 yield 1;
 }
 c.block="latx";r.guard(c);
@@ -33006,7 +36700,7 @@ r.command(c,"create_clone",["knq6",null]);
 c.block="4oka";r.guard(c);
 r.command(c,"message_cast",["zxkb",null]);
 c.block="vyky";r.guard(c);
-for(let i986=0,n986=Math.max(0,Math.floor(r.num("3")));i986<n986;i986++){
+for(let i1010=0,n1010=Math.max(0,Math.floor(r.num("3")));i1010<n1010;i1010++){
 yield 1;
 }
 c.block="e0xi";r.guard(c);
@@ -33017,7 +36711,7 @@ c.block="tbns";r.guard(c);
 yield* r.call(c,"05j0",["-2","8","1"]);
 }
 c.block="nlp4";r.guard(c);
-for(let i987=0,n987=Math.max(0,Math.floor(r.num("7")));i987<n987;i987++){
+for(let i1011=0,n1011=Math.max(0,Math.floor(r.num("7")));i1011<n1011;i1011++){
 yield 1;
 }
 c.block="cllw";r.guard(c);
@@ -33025,7 +36719,7 @@ r.command(c,"set_variable",["igdl","0",null]);
 c.block="mn5c";r.guard(c);
 r.command(c,"set_variable",["od28","6",null]);
 c.block="i1nj";r.guard(c);
-for(let i988=0,n988=Math.max(0,Math.floor(r.num("40")));i988<n988;i988++){
+for(let i1012=0,n1012=Math.max(0,Math.floor(r.num("40")));i1012<n1012;i1012++){
 yield 1;
 }
 }
@@ -33106,7 +36800,7 @@ r.command(c,"set_variable",["x73n","1",null]);
 c.block="o7rt";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="j7h2";r.guard(c);
-for(let i989=0,n989=Math.max(0,Math.floor(r.num("10")));i989<n989;i989++){
+for(let i1013=0,n1013=Math.max(0,Math.floor(r.num("10")));i1013<n1013;i1013++){
 c.block="oxjs";r.guard(c);
 r.command(c,"set_variable",["rr24","2",null]);
 c.block="97nc";r.guard(c);
@@ -33114,7 +36808,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="zijc";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_rand",[null,"2",null,"5",null]),null]);
 c.block="jzcw";r.guard(c);
-for(let i990=0,n990=Math.max(0,Math.floor(r.num("4")));i990<n990;i990++){
+for(let i1014=0,n1014=Math.max(0,Math.floor(r.num("4")));i1014<n1014;i1014++){
 yield 1;
 }
 yield 1;
@@ -33124,7 +36818,7 @@ r.command(c,"set_variable",["ri3z","0",null]);
 c.block="bl0n";r.guard(c);
 r.command(c,"set_variable",["73gy","0",null]);
 c.block="ghj8";r.guard(c);
-for(let i991=0,n991=Math.max(0,Math.floor(r.num("30")));i991<n991;i991++){
+for(let i1015=0,n1015=Math.max(0,Math.floor(r.num("30")));i1015<n1015;i1015++){
 yield 1;
 }
 c.block="97m5";r.guard(c);
@@ -33134,7 +36828,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="b3sc";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="vc52";r.guard(c);
-for(let i992=0,n992=Math.max(0,Math.floor(r.num("22")));i992<n992;i992++){
+for(let i1016=0,n1016=Math.max(0,Math.floor(r.num("22")));i1016<n1016;i1016++){
 c.block="is7v";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -33150,7 +36844,7 @@ if(r.truth(r.value(c,"is_press_some_key",["69",null]))){
 c.block="ysx5";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="92ro";r.guard(c);
-for(let i993=0,n993=Math.max(0,Math.floor(r.num("3")));i993<n993;i993++){
+for(let i1017=0,n1017=Math.max(0,Math.floor(r.num("3")));i1017<n1017;i1017++){
 c.block="1vyv";r.guard(c);
 r.command(c,"set_variable",["rr24","0",null]);
 c.block="4mhx";r.guard(c);
@@ -33158,13 +36852,13 @@ r.command(c,"create_clone",["self",null]);
 c.block="80bg";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_rand",[null,"2",null,"5",null]),null]);
 c.block="u1fm";r.guard(c);
-for(let i994=0,n994=Math.max(0,Math.floor(r.num("8")));i994<n994;i994++){
+for(let i1018=0,n1018=Math.max(0,Math.floor(r.num("8")));i1018<n1018;i1018++){
 yield 1;
 }
 yield 1;
 }
 c.block="32cf";r.guard(c);
-for(let i995=0,n995=Math.max(0,Math.floor(r.num("5")));i995<n995;i995++){
+for(let i1019=0,n1019=Math.max(0,Math.floor(r.num("5")));i1019<n1019;i1019++){
 yield 1;
 }
 c.block="uig1";r.guard(c);
@@ -33172,7 +36866,7 @@ r.command(c,"show",[null]);
 c.block="g027";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="56th";r.guard(c);
-for(let i996=0,n996=Math.max(0,Math.floor(r.num("40")));i996<n996;i996++){
+for(let i1020=0,n1020=Math.max(0,Math.floor(r.num("40")));i1020<n1020;i1020++){
 c.block="r4a2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -33206,7 +36900,7 @@ r.command(c,"set_variable",["omu7","1",null]);
 c.block="2u01";r.guard(c);
 r.command(c,"create_clone",["gj4b",null]);
 c.block="h537";r.guard(c);
-for(let i997=0,n997=Math.max(0,Math.floor(r.num("20")));i997<n997;i997++){
+for(let i1021=0,n1021=Math.max(0,Math.floor(r.num("20")));i1021<n1021;i1021++){
 yield 1;
 }
 c.block="latx";r.guard(c);
@@ -33216,7 +36910,7 @@ r.command(c,"create_clone",["knq6",null]);
 c.block="4oka";r.guard(c);
 r.command(c,"message_cast",["fq2c",null]);
 c.block="vyky";r.guard(c);
-for(let i998=0,n998=Math.max(0,Math.floor(r.num("3")));i998<n998;i998++){
+for(let i1022=0,n1022=Math.max(0,Math.floor(r.num("3")));i1022<n1022;i1022++){
 yield 1;
 }
 c.block="e0xi";r.guard(c);
@@ -33227,7 +36921,7 @@ c.block="g4zb";r.guard(c);
 yield* r.call(c,"qy83",["-2","8","1"]);
 }
 c.block="nlp4";r.guard(c);
-for(let i999=0,n999=Math.max(0,Math.floor(r.num("7")));i999<n999;i999++){
+for(let i1023=0,n1023=Math.max(0,Math.floor(r.num("7")));i1023<n1023;i1023++){
 yield 1;
 }
 c.block="cllw";r.guard(c);
@@ -33235,7 +36929,7 @@ r.command(c,"set_variable",["omu7","0",null]);
 c.block="mn5c";r.guard(c);
 r.command(c,"set_variable",["w5i0","6",null]);
 c.block="i1nj";r.guard(c);
-for(let i1000=0,n1000=Math.max(0,Math.floor(r.num("40")));i1000<n1000;i1000++){
+for(let i1024=0,n1024=Math.max(0,Math.floor(r.num("40")));i1024<n1024;i1024++){
 yield 1;
 }
 }
@@ -33278,7 +36972,7 @@ r.command(c,"set_variable",["6e0c","10",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i1001=0,n1001=Math.max(0,Math.floor(r.num("55")));i1001<n1001;i1001++){
+for(let i1025=0,n1025=Math.max(0,Math.floor(r.num("55")));i1025<n1025;i1025++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["6e0c",null]),"DIVIDE","2"]),null]);
 c.block="jtw3";r.guard(c);
@@ -33288,7 +36982,7 @@ if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="62cf";r.guard(c);
 yield* r.call(c,"qy83",["-2","8","0"]);
 c.block="d04a";r.guard(c);
-for(let i1002=0,n1002=Math.max(0,Math.floor(r.num("10")));i1002<n1002;i1002++){
+for(let i1026=0,n1026=Math.max(0,Math.floor(r.num("10")));i1026<n1026;i1026++){
 c.block="lr5f";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -33300,7 +36994,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="d7tu";r.guard(c);
-for(let i1003=0,n1003=Math.max(0,Math.floor(r.num("10")));i1003<n1003;i1003++){
+for(let i1027=0,n1027=Math.max(0,Math.floor(r.num("10")));i1027<n1027;i1027++){
 c.block="uavi";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -33318,7 +37012,7 @@ r.command(c,"set_scale_size",["50",null]);
 c.block="k434";r.guard(c);
 r.command(c,"show",[null]);
 c.block="g4d4";r.guard(c);
-for(let i1004=0,n1004=Math.max(0,Math.floor(r.num("20")));i1004<n1004;i1004++){
+for(let i1028=0,n1028=Math.max(0,Math.floor(r.num("20")));i1028<n1028;i1028++){
 c.block="0wz9";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="3lbf";r.guard(c);
@@ -33346,7 +37040,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",
 c.block="n84t";r.guard(c);
 r.command(c,"set_variable",["6e0c","5",null]);
 c.block="m2go";r.guard(c);
-for(let i1005=0,n1005=Math.max(0,Math.floor(r.num("25")));i1005<n1005;i1005++){
+for(let i1029=0,n1029=Math.max(0,Math.floor(r.num("25")));i1029<n1029;i1029++){
 c.block="e7aa";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="x2no";r.guard(c);
@@ -33358,7 +37052,7 @@ r.command(c,"move_direction",[r.value(c,"get_variable",["hu1f",null]),null]);
 yield 1;
 }
 c.block="8btx";r.guard(c);
-for(let i1006=0,n1006=Math.max(0,Math.floor(r.num("30")));i1006<n1006;i1006++){
+for(let i1030=0,n1030=Math.max(0,Math.floor(r.num("30")));i1030<n1030;i1030++){
 c.block="ye5e";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="5kkg";r.guard(c);
@@ -33366,7 +37060,7 @@ r.command(c,"move_direction",[r.value(c,"get_variable",["hu1f",null]),null]);
 yield 1;
 }
 c.block="7w6x";r.guard(c);
-for(let i1007=0,n1007=Math.max(0,Math.floor(r.num("26")));i1007<n1007;i1007++){
+for(let i1031=0,n1031=Math.max(0,Math.floor(r.num("26")));i1031<n1031;i1031++){
 c.block="5byz";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"0t1a",null,"rotation"]),"MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","5"]),null]);
 yield 1;
@@ -33376,7 +37070,7 @@ r.command(c,"see_angle_object",["ocqj",null]);
 c.block="1a8w";r.guard(c);
 r.command(c,"set_variable",["6e0c","10",null]);
 c.block="v9cg";r.guard(c);
-for(let i1008=0,n1008=Math.max(0,Math.floor(r.num("55")));i1008<n1008;i1008++){
+for(let i1032=0,n1032=Math.max(0,Math.floor(r.num("55")));i1032<n1032;i1032++){
 c.block="y0wb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["6e0c",null]),"MULTI","0.8"]),null]);
 c.block="v7ca";r.guard(c);
@@ -33386,7 +37080,7 @@ if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="o4ax";r.guard(c);
 yield* r.call(c,"qy83",["-2","9","1"]);
 c.block="kf1z";r.guard(c);
-for(let i1009=0,n1009=Math.max(0,Math.floor(r.num("10")));i1009<n1009;i1009++){
+for(let i1033=0,n1033=Math.max(0,Math.floor(r.num("10")));i1033<n1033;i1033++){
 c.block="3llg";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -33398,7 +37092,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="s15x";r.guard(c);
-for(let i1010=0,n1010=Math.max(0,Math.floor(r.num("10")));i1010<n1010;i1010++){
+for(let i1034=0,n1034=Math.max(0,Math.floor(r.num("10")));i1034<n1034;i1034++){
 c.block="ljij";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -33415,13 +37109,13 @@ r.register("vntk","when_message_cast",[null,"cwzf"],function*(r,c){
 c.block="ky7s";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","7"]))){
 c.block="1xzu";r.guard(c);
-for(let i1011=0,n1011=Math.max(0,Math.floor(r.num("7")));i1011<n1011;i1011++){
+for(let i1035=0,n1035=Math.max(0,Math.floor(r.num("7")));i1035<n1035;i1035++){
 c.block="1lbz";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"359",null]),null]);
 c.block="yyls";r.guard(c);
 r.command(c,"set_variable",["00rd","-27",null]);
 c.block="44gl";r.guard(c);
-for(let i1012=0,n1012=Math.max(0,Math.floor(r.num("10")));i1012<n1012;i1012++){
+for(let i1036=0,n1036=Math.max(0,Math.floor(r.num("10")));i1036<n1036;i1036++){
 c.block="xfg1";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="wmw3";r.guard(c);
@@ -33442,13 +37136,13 @@ c.block="3fn5";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 }else{
 c.block="63bp";r.guard(c);
-for(let i1013=0,n1013=Math.max(0,Math.floor(r.num("7")));i1013<n1013;i1013++){
+for(let i1037=0,n1037=Math.max(0,Math.floor(r.num("7")));i1037<n1037;i1037++){
 c.block="llzs";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"359",null]),null]);
 c.block="f89w";r.guard(c);
 r.command(c,"set_variable",["00rd","-27",null]);
 c.block="lo33";r.guard(c);
-for(let i1014=0,n1014=Math.max(0,Math.floor(r.num("10")));i1014<n1014;i1014++){
+for(let i1038=0,n1038=Math.max(0,Math.floor(r.num("10")));i1038<n1038;i1038++){
 c.block="1hcb";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="eqzg";r.guard(c);
@@ -33518,7 +37212,7 @@ r.command(c,"set_variable",["uton","8",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i1015=0,n1015=Math.max(0,Math.floor(r.num("40")));i1015<n1015;i1015++){
+for(let i1039=0,n1039=Math.max(0,Math.floor(r.num("40")));i1039<n1039;i1039++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["uton",null]),"DIVIDE","1.3"]),null]);
 c.block="nfhd";r.guard(c);
@@ -33542,7 +37236,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["6oc9"]),null]
 yield 1;
 }
 c.block="d7tu";r.guard(c);
-for(let i1016=0,n1016=Math.max(0,Math.floor(r.num("20")));i1016<n1016;i1016++){
+for(let i1040=0,n1040=Math.max(0,Math.floor(r.num("20")));i1040<n1040;i1040++){
 c.block="894z";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 c.block="uavi";r.guard(c);
@@ -33588,7 +37282,7 @@ r.command(c,"set_variable",["uton","10",null]);
 c.block="o817";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["igg4"]),null]);
 c.block="ybln";r.guard(c);
-for(let i1017=0,n1017=Math.max(0,Math.floor(r.num("50")));i1017<n1017;i1017++){
+for(let i1041=0,n1041=Math.max(0,Math.floor(r.num("50")));i1041<n1041;i1041++){
 c.block="p5lr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["uton",null]),"DIVIDE","1.6"]),null]);
 c.block="ktiv";r.guard(c);
@@ -33622,9 +37316,9 @@ c.block="9sel";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 }
 c.block="xeq1";r.guard(c);
-for(let i1018=0,n1018=Math.max(0,Math.floor(r.num("4")));i1018<n1018;i1018++){
+for(let i1042=0,n1042=Math.max(0,Math.floor(r.num("4")));i1042<n1042;i1042++){
 c.block="1gcc";r.guard(c);
-for(let i1019=0,n1019=Math.max(0,Math.floor(r.num("12")));i1019<n1019;i1019++){
+for(let i1043=0,n1043=Math.max(0,Math.floor(r.num("12")));i1043<n1043;i1043++){
 c.block="fpxc";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["20","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","5"]),null]);
 c.block="113e";r.guard(c);
@@ -33632,7 +37326,7 @@ r.command(c,"locate",["n230",null]);
 yield 1;
 }
 c.block="9neo";r.guard(c);
-for(let i1020=0,n1020=Math.max(0,Math.floor(r.num("8")));i1020<n1020;i1020++){
+for(let i1044=0,n1044=Math.max(0,Math.floor(r.num("8")));i1044<n1044;i1044++){
 c.block="i2ru";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","4"]),null]);
 c.block="gy52";r.guard(c);
@@ -33644,7 +37338,7 @@ yield* r.call(c,"05j0",["-1","8","0"]);
 yield 1;
 }
 c.block="kjsm";r.guard(c);
-for(let i1021=0,n1021=Math.max(0,Math.floor(r.num("12")));i1021<n1021;i1021++){
+for(let i1045=0,n1045=Math.max(0,Math.floor(r.num("12")));i1045<n1045;i1045++){
 c.block="id6h";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["20","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","4"]),null]);
 c.block="jfg3";r.guard(c);
@@ -33652,7 +37346,7 @@ r.command(c,"locate",["n230",null]);
 yield 1;
 }
 c.block="qiqj";r.guard(c);
-for(let i1022=0,n1022=Math.max(0,Math.floor(r.num("7")));i1022<n1022;i1022++){
+for(let i1046=0,n1046=Math.max(0,Math.floor(r.num("7")));i1046<n1046;i1046++){
 c.block="1l08";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","3"]),null]);
 c.block="jlc8";r.guard(c);
@@ -33660,7 +37354,7 @@ r.command(c,"locate",["n230",null]);
 yield 1;
 }
 c.block="vqzz";r.guard(c);
-for(let i1023=0,n1023=Math.max(0,Math.floor(r.num("10")));i1023<n1023;i1023++){
+for(let i1047=0,n1047=Math.max(0,Math.floor(r.num("10")));i1047<n1047;i1047++){
 c.block="3uja";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="p896";r.guard(c);
@@ -33684,7 +37378,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="c34g";r.guard(c);
-for(let i1024=0,n1024=Math.max(0,Math.floor(r.num("20")));i1024<n1024;i1024++){
+for(let i1048=0,n1048=Math.max(0,Math.floor(r.num("20")));i1048<n1048;i1048++){
 c.block="jor3";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -33710,7 +37404,7 @@ r.command(c,"set_variable",["uton","8",null]);
 c.block="00qw";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="mbze";r.guard(c);
-for(let i1025=0,n1025=Math.max(0,Math.floor(r.num("40")));i1025<n1025;i1025++){
+for(let i1049=0,n1049=Math.max(0,Math.floor(r.num("40")));i1049<n1049;i1049++){
 c.block="gr03";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["uton",null]),"DIVIDE","1.3"]),null]);
 c.block="h1sy";r.guard(c);
@@ -33732,7 +37426,7 @@ yield* r.call(c,"05j0",["-4","8","0"]);
 yield 1;
 }
 c.block="osso";r.guard(c);
-for(let i1026=0,n1026=Math.max(0,Math.floor(r.num("20")));i1026<n1026;i1026++){
+for(let i1050=0,n1050=Math.max(0,Math.floor(r.num("20")));i1050<n1050;i1050++){
 c.block="r23n";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 c.block="4jna";r.guard(c);
@@ -33801,7 +37495,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="0hd0";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="6ak2";r.guard(c);
-for(let i1027=0,n1027=Math.max(0,Math.floor(r.num("15")));i1027<n1027;i1027++){
+for(let i1051=0,n1051=Math.max(0,Math.floor(r.num("15")));i1051<n1051;i1051++){
 yield 1;
 }
 c.block="t2tt";r.guard(c);
@@ -33809,7 +37503,7 @@ r.command(c,"show",[null]);
 c.block="sl1r";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="n55t";r.guard(c);
-for(let i1028=0,n1028=Math.max(0,Math.floor(r.num("25")));i1028<n1028;i1028++){
+for(let i1052=0,n1052=Math.max(0,Math.floor(r.num("25")));i1052<n1052;i1052++){
 c.block="1eon";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["13","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -33829,7 +37523,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="47ny";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="okeq";r.guard(c);
-for(let i1029=0,n1029=Math.max(0,Math.floor(r.num("15")));i1029<n1029;i1029++){
+for(let i1053=0,n1053=Math.max(0,Math.floor(r.num("15")));i1053<n1053;i1053++){
 yield 1;
 }
 c.block="eobv";r.guard(c);
@@ -33837,7 +37531,7 @@ r.command(c,"show",[null]);
 c.block="6llq";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="3jt0";r.guard(c);
-for(let i1030=0,n1030=Math.max(0,Math.floor(r.num("25")));i1030<n1030;i1030++){
+for(let i1054=0,n1054=Math.max(0,Math.floor(r.num("25")));i1054<n1054;i1054++){
 c.block="x27z";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["13","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -33863,7 +37557,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="ijc7";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="eze8";r.guard(c);
-for(let i1031=0,n1031=Math.max(0,Math.floor(r.num("22")));i1031<n1031;i1031++){
+for(let i1055=0,n1055=Math.max(0,Math.floor(r.num("22")));i1055<n1055;i1055++){
 yield 1;
 }
 c.block="5ysi";r.guard(c);
@@ -33871,7 +37565,7 @@ r.command(c,"show",[null]);
 c.block="uwgi";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="4tke";r.guard(c);
-for(let i1032=0,n1032=Math.max(0,Math.floor(r.num("40")));i1032<n1032;i1032++){
+for(let i1056=0,n1056=Math.max(0,Math.floor(r.num("40")));i1056<n1056;i1056++){
 c.block="4st3";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["13","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="568i";r.guard(c);
@@ -33924,7 +37618,7 @@ r.command(c,"hide",[null]);
 c.block="uu66";r.guard(c);
 r.command(c,"set_variable",["rav6","1",null]);
 c.block="j7h2";r.guard(c);
-for(let i1033=0,n1033=Math.max(0,Math.floor(r.num("50")));i1033<n1033;i1033++){
+for(let i1057=0,n1057=Math.max(0,Math.floor(r.num("50")));i1057<n1057;i1057++){
 c.block="kspf";r.guard(c);
 r.command(c,"set_variable",["bct6","-8",null]);
 yield 1;
@@ -33944,7 +37638,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="nobr";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="vc52";r.guard(c);
-for(let i1034=0,n1034=Math.max(0,Math.floor(r.num("22")));i1034<n1034;i1034++){
+for(let i1058=0,n1058=Math.max(0,Math.floor(r.num("22")));i1058<n1058;i1058++){
 c.block="xswf";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -34017,7 +37711,7 @@ r.command(c,"set_variable",["kzhe","10",null]);
 c.block="6acz";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="6ns3";r.guard(c);
-for(let i1035=0,n1035=Math.max(0,Math.floor(r.num("50")));i1035<n1035;i1035++){
+for(let i1059=0,n1059=Math.max(0,Math.floor(r.num("50")));i1059<n1059;i1059++){
 c.block="pnt0";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"MULTI","1.3"]),null]);
 c.block="ipln";r.guard(c);
@@ -34031,7 +37725,7 @@ if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="mwk3";r.guard(c);
 yield* r.call(c,"qy83",["-2","8","0"]);
 c.block="v19e";r.guard(c);
-for(let i1036=0,n1036=Math.max(0,Math.floor(r.num("10")));i1036<n1036;i1036++){
+for(let i1060=0,n1060=Math.max(0,Math.floor(r.num("10")));i1060<n1060;i1060++){
 c.block="mo2e";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","5"]),null]);
 yield 1;
@@ -34043,7 +37737,7 @@ if(c.thread.cancelled||c.e.dead)return;
 c.block="ug5l";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="gfjt";r.guard(c);
-for(let i1037=0,n1037=Math.max(0,Math.floor(r.num("20")));i1037<n1037;i1037++){
+for(let i1061=0,n1061=Math.max(0,Math.floor(r.num("20")));i1061<n1061;i1061++){
 c.block="niop";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -34055,7 +37749,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="wx2a";r.guard(c);
-for(let i1038=0,n1038=Math.max(0,Math.floor(r.num("20")));i1038<n1038;i1038++){
+for(let i1062=0,n1062=Math.max(0,Math.floor(r.num("20")));i1062<n1062;i1062++){
 c.block="fx6l";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -34103,7 +37797,7 @@ r.command(c,"set_variable",["kzhe","8",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i1039=0,n1039=Math.max(0,Math.floor(r.num("40")));i1039<n1039;i1039++){
+for(let i1063=0,n1063=Math.max(0,Math.floor(r.num("40")));i1063<n1063;i1063++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"DIVIDE","1.3"]),null]);
 c.block="nfhd";r.guard(c);
@@ -34127,7 +37821,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["v0xr"]),null]
 yield 1;
 }
 c.block="d7tu";r.guard(c);
-for(let i1040=0,n1040=Math.max(0,Math.floor(r.num("20")));i1040<n1040;i1040++){
+for(let i1064=0,n1064=Math.max(0,Math.floor(r.num("20")));i1064<n1064;i1064++){
 c.block="uavi";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -34171,7 +37865,7 @@ r.command(c,"set_variable",["kzhe","10",null]);
 c.block="9bh4";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["15co"]),null]);
 c.block="ybln";r.guard(c);
-for(let i1041=0,n1041=Math.max(0,Math.floor(r.num("50")));i1041<n1041;i1041++){
+for(let i1065=0,n1065=Math.max(0,Math.floor(r.num("50")));i1065<n1065;i1065++){
 c.block="p5lr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"DIVIDE","1.6"]),null]);
 c.block="ktiv";r.guard(c);
@@ -34205,9 +37899,9 @@ c.block="7cer";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 }
 c.block="xeq1";r.guard(c);
-for(let i1042=0,n1042=Math.max(0,Math.floor(r.num("4")));i1042<n1042;i1042++){
+for(let i1066=0,n1066=Math.max(0,Math.floor(r.num("4")));i1066<n1066;i1066++){
 c.block="1gcc";r.guard(c);
-for(let i1043=0,n1043=Math.max(0,Math.floor(r.num("12")));i1043<n1043;i1043++){
+for(let i1067=0,n1067=Math.max(0,Math.floor(r.num("12")));i1067<n1067;i1067++){
 c.block="fpxc";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["20","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","5"]),null]);
 c.block="113e";r.guard(c);
@@ -34215,7 +37909,7 @@ r.command(c,"locate",["ocqj",null]);
 yield 1;
 }
 c.block="9neo";r.guard(c);
-for(let i1044=0,n1044=Math.max(0,Math.floor(r.num("8")));i1044<n1044;i1044++){
+for(let i1068=0,n1068=Math.max(0,Math.floor(r.num("8")));i1068<n1068;i1068++){
 c.block="i2ru";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","4"]),null]);
 c.block="g0o3";r.guard(c);
@@ -34227,7 +37921,7 @@ yield* r.call(c,"qy83",["-1","8","0"]);
 yield 1;
 }
 c.block="kjsm";r.guard(c);
-for(let i1045=0,n1045=Math.max(0,Math.floor(r.num("12")));i1045<n1045;i1045++){
+for(let i1069=0,n1069=Math.max(0,Math.floor(r.num("12")));i1069<n1069;i1069++){
 c.block="id6h";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["20","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","4"]),null]);
 c.block="2cit";r.guard(c);
@@ -34235,7 +37929,7 @@ r.command(c,"locate",["ocqj",null]);
 yield 1;
 }
 c.block="qiqj";r.guard(c);
-for(let i1046=0,n1046=Math.max(0,Math.floor(r.num("7")));i1046<n1046;i1046++){
+for(let i1070=0,n1070=Math.max(0,Math.floor(r.num("7")));i1070<n1070;i1070++){
 c.block="1l08";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["10","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","3"]),null]);
 c.block="wb3u";r.guard(c);
@@ -34243,7 +37937,7 @@ r.command(c,"locate",["ocqj",null]);
 yield 1;
 }
 c.block="vqzz";r.guard(c);
-for(let i1047=0,n1047=Math.max(0,Math.floor(r.num("10")));i1047<n1047;i1047++){
+for(let i1071=0,n1071=Math.max(0,Math.floor(r.num("10")));i1071<n1071;i1071++){
 c.block="3uja";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="p896";r.guard(c);
@@ -34267,7 +37961,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="92xu";r.guard(c);
-for(let i1048=0,n1048=Math.max(0,Math.floor(r.num("20")));i1048<n1048;i1048++){
+for(let i1072=0,n1072=Math.max(0,Math.floor(r.num("20")));i1072<n1072;i1072++){
 c.block="2oku";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -34293,7 +37987,7 @@ r.command(c,"set_variable",["kzhe","8",null]);
 c.block="00qw";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="mbze";r.guard(c);
-for(let i1049=0,n1049=Math.max(0,Math.floor(r.num("40")));i1049<n1049;i1049++){
+for(let i1073=0,n1073=Math.max(0,Math.floor(r.num("40")));i1073<n1073;i1073++){
 c.block="gr03";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"DIVIDE","1.3"]),null]);
 c.block="h1sy";r.guard(c);
@@ -34315,7 +38009,7 @@ yield* r.call(c,"qy83",["-4","8","0"]);
 yield 1;
 }
 c.block="osso";r.guard(c);
-for(let i1050=0,n1050=Math.max(0,Math.floor(r.num("20")));i1050<n1050;i1050++){
+for(let i1074=0,n1074=Math.max(0,Math.floor(r.num("20")));i1074<n1074;i1074++){
 c.block="4jna";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -34382,7 +38076,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="tby0";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="be5x";r.guard(c);
-for(let i1051=0,n1051=Math.max(0,Math.floor(r.num("15")));i1051<n1051;i1051++){
+for(let i1075=0,n1075=Math.max(0,Math.floor(r.num("15")));i1075<n1075;i1075++){
 yield 1;
 }
 c.block="mh9m";r.guard(c);
@@ -34390,7 +38084,7 @@ r.command(c,"show",[null]);
 c.block="ozlj";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="lqjf";r.guard(c);
-for(let i1052=0,n1052=Math.max(0,Math.floor(r.num("25")));i1052<n1052;i1052++){
+for(let i1076=0,n1076=Math.max(0,Math.floor(r.num("25")));i1076<n1076;i1076++){
 c.block="tn8d";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["13","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -34410,7 +38104,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="47ny";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="okeq";r.guard(c);
-for(let i1053=0,n1053=Math.max(0,Math.floor(r.num("15")));i1053<n1053;i1053++){
+for(let i1077=0,n1077=Math.max(0,Math.floor(r.num("15")));i1077<n1077;i1077++){
 yield 1;
 }
 c.block="eobv";r.guard(c);
@@ -34418,7 +38112,7 @@ r.command(c,"show",[null]);
 c.block="6llq";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="3jt0";r.guard(c);
-for(let i1054=0,n1054=Math.max(0,Math.floor(r.num("25")));i1054<n1054;i1054++){
+for(let i1078=0,n1078=Math.max(0,Math.floor(r.num("25")));i1078<n1078;i1078++){
 c.block="x27z";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["13","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -34444,7 +38138,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="ysx5";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="92ro";r.guard(c);
-for(let i1055=0,n1055=Math.max(0,Math.floor(r.num("22")));i1055<n1055;i1055++){
+for(let i1079=0,n1079=Math.max(0,Math.floor(r.num("22")));i1079<n1079;i1079++){
 yield 1;
 }
 c.block="uig1";r.guard(c);
@@ -34452,7 +38146,7 @@ r.command(c,"show",[null]);
 c.block="g027";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="56th";r.guard(c);
-for(let i1056=0,n1056=Math.max(0,Math.floor(r.num("40")));i1056<n1056;i1056++){
+for(let i1080=0,n1080=Math.max(0,Math.floor(r.num("40")));i1080<n1080;i1080++){
 c.block="r4a2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["13","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="f8h4";r.guard(c);
@@ -34505,7 +38199,7 @@ r.command(c,"hide",[null]);
 c.block="uu66";r.guard(c);
 r.command(c,"set_variable",["ob2m","1",null]);
 c.block="j7h2";r.guard(c);
-for(let i1057=0,n1057=Math.max(0,Math.floor(r.num("50")));i1057<n1057;i1057++){
+for(let i1081=0,n1081=Math.max(0,Math.floor(r.num("50")));i1081<n1081;i1081++){
 c.block="ynj4";r.guard(c);
 r.command(c,"set_variable",["1g8o","-8",null]);
 yield 1;
@@ -34525,7 +38219,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="b3sc";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="vc52";r.guard(c);
-for(let i1058=0,n1058=Math.max(0,Math.floor(r.num("22")));i1058<n1058;i1058++){
+for(let i1082=0,n1082=Math.max(0,Math.floor(r.num("22")));i1082<n1082;i1082++){
 c.block="is7v";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -34535,7 +38229,7 @@ r.command(c,"show",[null]);
 c.block="2vtt";r.guard(c);
 r.command(c,"set_scale_size",["12",null]);
 c.block="6cop";r.guard(c);
-for(let i1059=0,n1059=Math.max(0,Math.floor(r.num("40")));i1059<n1059;i1059++){
+for(let i1083=0,n1083=Math.max(0,Math.floor(r.num("40")));i1083<n1083;i1083++){
 yield 1;
 }
 }
@@ -34598,15 +38292,15 @@ r.command(c,"change_variable",["thom","-75",null]);
 c.block="vkte";r.guard(c);
 r.command(c,"set_variable",["yonw","15",null]);
 c.block="oln7";r.guard(c);
-for(let i1060=0,n1060=Math.max(0,Math.floor(r.num("12")));i1060<n1060;i1060++){
+for(let i1084=0,n1084=Math.max(0,Math.floor(r.num("12")));i1084<n1084;i1084++){
 c.block="crxj";r.guard(c);
 r.command(c,"set_variable",["1exb","0",null]);
 c.block="7lek";r.guard(c);
 r.command(c,"set_variable",["e8l1","0",null]);
 c.block="30sb";r.guard(c);
-for(let i1061=0,n1061=Math.max(0,Math.floor(r.num("3")));i1061<n1061;i1061++){
+for(let i1085=0,n1085=Math.max(0,Math.floor(r.num("3")));i1085<n1085;i1085++){
 c.block="3ug7";r.guard(c);
-for(let i1062=0,n1062=Math.max(0,Math.floor(r.num("2")));i1062<n1062;i1062++){
+for(let i1086=0,n1086=Math.max(0,Math.floor(r.num("2")));i1086<n1086;i1086++){
 c.block="h5a5";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1exb",null]),"EQUAL","0"]))){
 c.block="zh3y";r.guard(c);
@@ -34677,7 +38371,7 @@ yield 1;
 c.block="l2cz";r.guard(c);
 r.command(c,"set_variable",["e8l1","0",null]);
 c.block="z38x";r.guard(c);
-for(let i1063=0,n1063=Math.max(0,Math.floor(r.num("30")));i1063<n1063;i1063++){
+for(let i1087=0,n1087=Math.max(0,Math.floor(r.num("30")));i1087<n1087;i1087++){
 c.block="9r0d";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 c.block="bu8i";r.guard(c);
@@ -34697,15 +38391,15 @@ r.command(c,"change_variable",["thom","-75",null]);
 c.block="g86s";r.guard(c);
 r.command(c,"set_variable",["yonw","-15",null]);
 c.block="9oe6";r.guard(c);
-for(let i1064=0,n1064=Math.max(0,Math.floor(r.num("12")));i1064<n1064;i1064++){
+for(let i1088=0,n1088=Math.max(0,Math.floor(r.num("12")));i1088<n1088;i1088++){
 c.block="fjum";r.guard(c);
 r.command(c,"set_variable",["1exb","0",null]);
 c.block="91ir";r.guard(c);
 r.command(c,"set_variable",["e8l1","0",null]);
 c.block="oiss";r.guard(c);
-for(let i1065=0,n1065=Math.max(0,Math.floor(r.num("3")));i1065<n1065;i1065++){
+for(let i1089=0,n1089=Math.max(0,Math.floor(r.num("3")));i1089<n1089;i1089++){
 c.block="6b5z";r.guard(c);
-for(let i1066=0,n1066=Math.max(0,Math.floor(r.num("2")));i1066<n1066;i1066++){
+for(let i1090=0,n1090=Math.max(0,Math.floor(r.num("2")));i1090<n1090;i1090++){
 c.block="irrx";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1exb",null]),"EQUAL","0"]))){
 c.block="9mlq";r.guard(c);
@@ -34776,7 +38470,7 @@ yield 1;
 c.block="5egv";r.guard(c);
 r.command(c,"set_variable",["e8l1","0",null]);
 c.block="naro";r.guard(c);
-for(let i1067=0,n1067=Math.max(0,Math.floor(r.num("30")));i1067<n1067;i1067++){
+for(let i1091=0,n1091=Math.max(0,Math.floor(r.num("30")));i1091<n1091;i1091++){
 c.block="xm4v";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["359.9","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 c.block="yi43";r.guard(c);
@@ -34804,7 +38498,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="wfoa";r.guard(c);
 r.command(c,"set_variable",["yonw","-10",null]);
 c.block="lwuo";r.guard(c);
-for(let i1068=0,n1068=Math.max(0,Math.floor(r.num("25")));i1068<n1068;i1068++){
+for(let i1092=0,n1092=Math.max(0,Math.floor(r.num("25")));i1092<n1092;i1092++){
 c.block="3xbk";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["yonw",null]),"DIVIDE","1"]),null]);
 c.block="5o0i";r.guard(c);
@@ -34821,7 +38515,7 @@ r.command(c,"set_variable",["yonw","10",null]);
 c.block="dk7h";r.guard(c);
 r.command(c,"set_variable",["1exb","0",null]);
 c.block="xvgr";r.guard(c);
-for(let i1069=0,n1069=Math.max(0,Math.floor(r.num("20")));i1069<n1069;i1069++){
+for(let i1093=0,n1093=Math.max(0,Math.floor(r.num("20")));i1093<n1093;i1093++){
 c.block="wiaw";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["yonw",null]),"MULTI","2.2"]),null]);
 c.block="tdks";r.guard(c);
@@ -34869,7 +38563,7 @@ break;
 yield 1;
 }
 c.block="he56";r.guard(c);
-for(let i1070=0,n1070=Math.max(0,Math.floor(r.num("30")));i1070<n1070;i1070++){
+for(let i1094=0,n1094=Math.max(0,Math.floor(r.num("30")));i1094<n1094;i1094++){
 c.block="mxsv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 c.block="18j7";r.guard(c);
@@ -34891,7 +38585,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="cv7s";r.guard(c);
 r.command(c,"set_variable",["yonw","10",null]);
 c.block="bu1p";r.guard(c);
-for(let i1071=0,n1071=Math.max(0,Math.floor(r.num("25")));i1071<n1071;i1071++){
+for(let i1095=0,n1095=Math.max(0,Math.floor(r.num("25")));i1095<n1095;i1095++){
 c.block="ho1v";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["yonw",null]),"DIVIDE","1"]),null]);
 c.block="rwtq";r.guard(c);
@@ -34908,7 +38602,7 @@ r.command(c,"set_variable",["yonw","-10",null]);
 c.block="27xu";r.guard(c);
 r.command(c,"set_variable",["1exb","0",null]);
 c.block="8xlf";r.guard(c);
-for(let i1072=0,n1072=Math.max(0,Math.floor(r.num("20")));i1072<n1072;i1072++){
+for(let i1096=0,n1096=Math.max(0,Math.floor(r.num("20")));i1096<n1096;i1096++){
 c.block="ckpv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["yonw",null]),"MULTI","2.2"]),null]);
 c.block="nsg2";r.guard(c);
@@ -34956,7 +38650,7 @@ break;
 yield 1;
 }
 c.block="jgbl";r.guard(c);
-for(let i1073=0,n1073=Math.max(0,Math.floor(r.num("30")));i1073<n1073;i1073++){
+for(let i1097=0,n1097=Math.max(0,Math.floor(r.num("30")));i1097<n1097;i1097++){
 c.block="6wqu";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["359.9","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 c.block="1b8p";r.guard(c);
@@ -34972,7 +38666,7 @@ c.block="0odr";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 }
 c.block="ezc6";r.guard(c);
-for(let i1074=0,n1074=Math.max(0,Math.floor(r.num("20")));i1074<n1074;i1074++){
+for(let i1098=0,n1098=Math.max(0,Math.floor(r.num("20")));i1098<n1098;i1098++){
 yield 1;
 }
 }
@@ -34998,7 +38692,7 @@ r.command(c,"change_variable",["thom","-31",null]);
 c.block="464d";r.guard(c);
 r.command(c,"create_clone",["9thh",null]);
 c.block="y63g";r.guard(c);
-for(let i1075=0,n1075=Math.max(0,Math.floor(r.num("140")));i1075<n1075;i1075++){
+for(let i1099=0,n1099=Math.max(0,Math.floor(r.num("140")));i1099<n1099;i1099++){
 yield 1;
 }
 }
@@ -35034,7 +38728,7 @@ r.register("45b6","when_clone_start",[null],function*(r,c){
 c.block="5s7s";r.guard(c);
 r.command(c,"show",[null]);
 c.block="0srm";r.guard(c);
-for(let i1076=0,n1076=Math.max(0,Math.floor(r.num("15")));i1076<n1076;i1076++){
+for(let i1100=0,n1100=Math.max(0,Math.floor(r.num("15")));i1100<n1100;i1100++){
 c.block="7tx7";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="32hy";r.guard(c);
@@ -35096,15 +38790,15 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="fl1n";r.guard(c);
 r.command(c,"change_variable",["qn98","-75",null]);
 c.block="oln7";r.guard(c);
-for(let i1077=0,n1077=Math.max(0,Math.floor(r.num("12")));i1077<n1077;i1077++){
+for(let i1101=0,n1101=Math.max(0,Math.floor(r.num("12")));i1101<n1101;i1101++){
 c.block="crxj";r.guard(c);
 r.command(c,"set_variable",["x3ra","0",null]);
 c.block="psbb";r.guard(c);
 r.command(c,"set_variable",["7vqa","0",null]);
 c.block="30sb";r.guard(c);
-for(let i1078=0,n1078=Math.max(0,Math.floor(r.num("3")));i1078<n1078;i1078++){
+for(let i1102=0,n1102=Math.max(0,Math.floor(r.num("3")));i1102<n1102;i1102++){
 c.block="6fwl";r.guard(c);
-for(let i1079=0,n1079=Math.max(0,Math.floor(r.num("2")));i1079<n1079;i1079++){
+for(let i1103=0,n1103=Math.max(0,Math.floor(r.num("2")));i1103<n1103;i1103++){
 c.block="h5a5";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["x3ra",null]),"EQUAL","0"]))){
 c.block="9obn";r.guard(c);
@@ -35175,7 +38869,7 @@ yield 1;
 c.block="wpti";r.guard(c);
 r.command(c,"set_variable",["7vqa","0",null]);
 c.block="z38x";r.guard(c);
-for(let i1080=0,n1080=Math.max(0,Math.floor(r.num("30")));i1080<n1080;i1080++){
+for(let i1104=0,n1104=Math.max(0,Math.floor(r.num("30")));i1104<n1104;i1104++){
 c.block="9r0d";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 c.block="0ocs";r.guard(c);
@@ -35195,15 +38889,15 @@ r.command(c,"change_variable",["qn98","-75",null]);
 c.block="67xj";r.guard(c);
 r.command(c,"set_variable",["6e1b","-15",null]);
 c.block="o1xi";r.guard(c);
-for(let i1081=0,n1081=Math.max(0,Math.floor(r.num("12")));i1081<n1081;i1081++){
+for(let i1105=0,n1105=Math.max(0,Math.floor(r.num("12")));i1105<n1105;i1105++){
 c.block="1vly";r.guard(c);
 r.command(c,"set_variable",["x3ra","0",null]);
 c.block="2kva";r.guard(c);
 r.command(c,"set_variable",["7vqa","0",null]);
 c.block="2yw2";r.guard(c);
-for(let i1082=0,n1082=Math.max(0,Math.floor(r.num("3")));i1082<n1082;i1082++){
+for(let i1106=0,n1106=Math.max(0,Math.floor(r.num("3")));i1106<n1106;i1106++){
 c.block="buzk";r.guard(c);
-for(let i1083=0,n1083=Math.max(0,Math.floor(r.num("2")));i1083<n1083;i1083++){
+for(let i1107=0,n1107=Math.max(0,Math.floor(r.num("2")));i1107<n1107;i1107++){
 c.block="blvu";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["x3ra",null]),"EQUAL","0"]))){
 c.block="i3zy";r.guard(c);
@@ -35274,7 +38968,7 @@ yield 1;
 c.block="88lr";r.guard(c);
 r.command(c,"set_variable",["7vqa","0",null]);
 c.block="18sh";r.guard(c);
-for(let i1084=0,n1084=Math.max(0,Math.floor(r.num("30")));i1084<n1084;i1084++){
+for(let i1108=0,n1108=Math.max(0,Math.floor(r.num("30")));i1108<n1108;i1108++){
 c.block="p0t4";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["359.9","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 c.block="5nap";r.guard(c);
@@ -35302,7 +38996,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="wfoa";r.guard(c);
 r.command(c,"set_variable",["6e1b","-10",null]);
 c.block="lwuo";r.guard(c);
-for(let i1085=0,n1085=Math.max(0,Math.floor(r.num("25")));i1085<n1085;i1085++){
+for(let i1109=0,n1109=Math.max(0,Math.floor(r.num("25")));i1109<n1109;i1109++){
 c.block="3xbk";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["6e1b",null]),"DIVIDE","1"]),null]);
 c.block="5o0i";r.guard(c);
@@ -35319,7 +39013,7 @@ r.command(c,"set_variable",["6e1b","10",null]);
 c.block="dk7h";r.guard(c);
 r.command(c,"set_variable",["x3ra","0",null]);
 c.block="xvgr";r.guard(c);
-for(let i1086=0,n1086=Math.max(0,Math.floor(r.num("20")));i1086<n1086;i1086++){
+for(let i1110=0,n1110=Math.max(0,Math.floor(r.num("20")));i1110<n1110;i1110++){
 c.block="wiaw";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["6e1b",null]),"MULTI","2.2"]),null]);
 c.block="tdks";r.guard(c);
@@ -35367,7 +39061,7 @@ break;
 yield 1;
 }
 c.block="he56";r.guard(c);
-for(let i1087=0,n1087=Math.max(0,Math.floor(r.num("30")));i1087<n1087;i1087++){
+for(let i1111=0,n1111=Math.max(0,Math.floor(r.num("30")));i1111<n1111;i1111++){
 c.block="mxsv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 c.block="olkv";r.guard(c);
@@ -35389,7 +39083,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="1nsm";r.guard(c);
 r.command(c,"set_variable",["6e1b","10",null]);
 c.block="dm5y";r.guard(c);
-for(let i1088=0,n1088=Math.max(0,Math.floor(r.num("25")));i1088<n1088;i1088++){
+for(let i1112=0,n1112=Math.max(0,Math.floor(r.num("25")));i1112<n1112;i1112++){
 c.block="zawl";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["6e1b",null]),"DIVIDE","1"]),null]);
 c.block="ikar";r.guard(c);
@@ -35406,7 +39100,7 @@ r.command(c,"set_variable",["6e1b","-10",null]);
 c.block="dwgh";r.guard(c);
 r.command(c,"set_variable",["x3ra","0",null]);
 c.block="j8rk";r.guard(c);
-for(let i1089=0,n1089=Math.max(0,Math.floor(r.num("20")));i1089<n1089;i1089++){
+for(let i1113=0,n1113=Math.max(0,Math.floor(r.num("20")));i1113<n1113;i1113++){
 c.block="3fkl";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["6e1b",null]),"MULTI","2.2"]),null]);
 c.block="ctk5";r.guard(c);
@@ -35454,7 +39148,7 @@ break;
 yield 1;
 }
 c.block="jvri";r.guard(c);
-for(let i1090=0,n1090=Math.max(0,Math.floor(r.num("30")));i1090<n1090;i1090++){
+for(let i1114=0,n1114=Math.max(0,Math.floor(r.num("30")));i1114<n1114;i1114++){
 c.block="6mnu";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["359.9","MINUS",r.value(c,"coordinate_object",[null,"self",null,"rotation"])]),"DIVIDE","6"]),null]);
 c.block="tnql";r.guard(c);
@@ -35492,7 +39186,7 @@ r.command(c,"change_variable",["qn98","-31",null]);
 c.block="464d";r.guard(c);
 r.command(c,"create_clone",["9srf",null]);
 c.block="p72d";r.guard(c);
-for(let i1091=0,n1091=Math.max(0,Math.floor(r.num("140")));i1091<n1091;i1091++){
+for(let i1115=0,n1115=Math.max(0,Math.floor(r.num("140")));i1115<n1115;i1115++){
 yield 1;
 }
 }
@@ -35526,7 +39220,7 @@ yield 1;
 });
 r.register("f5gc","when_clone_start",[null],function*(r,c){
 c.block="qiau";r.guard(c);
-for(let i1092=0,n1092=Math.max(0,Math.floor(r.num("15")));i1092<n1092;i1092++){
+for(let i1116=0,n1116=Math.max(0,Math.floor(r.num("15")));i1116<n1116;i1116++){
 c.block="u30c";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="nhjs";r.guard(c);
@@ -35694,7 +39388,7 @@ r.command(c,"set_variable",["fu65","1",null]);
 c.block="zbtc";r.guard(c);
 r.command(c,"set_variable",["pr1a","-9",null]);
 c.block="s012";r.guard(c);
-for(let i1093=0,n1093=Math.max(0,Math.floor(r.num("9")));i1093<n1093;i1093++){
+for(let i1117=0,n1117=Math.max(0,Math.floor(r.num("9")));i1117<n1117;i1117++){
 c.block="9dfe";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="wc3q";r.guard(c);
@@ -35717,7 +39411,7 @@ r.command(c,"set_variable",["pr1a","10",null]);
 c.block="ss8d";r.guard(c);
 r.command(c,"set_variable",["udqp","0",null]);
 c.block="j8nw";r.guard(c);
-for(let i1094=0,n1094=Math.max(0,Math.floor(r.num("15")));i1094<n1094;i1094++){
+for(let i1118=0,n1118=Math.max(0,Math.floor(r.num("15")));i1118<n1118;i1118++){
 c.block="4h44";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="6vou";r.guard(c);
@@ -35754,7 +39448,7 @@ break;
 yield 1;
 }
 c.block="6ln5";r.guard(c);
-for(let i1095=0,n1095=Math.max(0,Math.floor(r.num("20")));i1095<n1095;i1095++){
+for(let i1119=0,n1119=Math.max(0,Math.floor(r.num("20")));i1119<n1119;i1119++){
 c.block="ldry";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="jzev";r.guard(c);
@@ -35775,7 +39469,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="dfks";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="edf3";r.guard(c);
-for(let i1096=0,n1096=Math.max(0,Math.floor(r.num("25")));i1096<n1096;i1096++){
+for(let i1120=0,n1120=Math.max(0,Math.floor(r.num("25")));i1120<n1120;i1120++){
 yield 1;
 }
 }
@@ -35823,7 +39517,7 @@ r.command(c,"set_variable",["50rm","1",null]);
 c.block="smyz";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["c1h1"]),null]);
 c.block="jr0e";r.guard(c);
-for(let i1097=0,n1097=Math.max(0,Math.floor(r.num("60")));i1097<n1097;i1097++){
+for(let i1121=0,n1121=Math.max(0,Math.floor(r.num("60")));i1121<n1121;i1121++){
 c.block="ajp6";r.guard(c);
 r.command(c,"change_variable",["thom","-0.25",null]);
 c.block="r0wy";r.guard(c);
@@ -35843,7 +39537,7 @@ r.command(c,"set_variable",["50rm","0",null]);
 c.block="wub1";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["cyfp"]),null]);
 c.block="zdre";r.guard(c);
-for(let i1098=0,n1098=Math.max(0,Math.floor(r.num("70")));i1098<n1098;i1098++){
+for(let i1122=0,n1122=Math.max(0,Math.floor(r.num("70")));i1122<n1122;i1122++){
 c.block="obch";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["26.8","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -36053,7 +39747,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="zhht";r.guard(c);
 r.command(c,"set_variable",["zln8","-9",null]);
 c.block="npbg";r.guard(c);
-for(let i1099=0,n1099=Math.max(0,Math.floor(r.num("9")));i1099<n1099;i1099++){
+for(let i1123=0,n1123=Math.max(0,Math.floor(r.num("9")));i1123<n1123;i1123++){
 c.block="on1y";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="smxr";r.guard(c);
@@ -36076,7 +39770,7 @@ r.command(c,"set_variable",["zln8","10",null]);
 c.block="21yr";r.guard(c);
 r.command(c,"set_variable",["y3mn","0",null]);
 c.block="d9re";r.guard(c);
-for(let i1100=0,n1100=Math.max(0,Math.floor(r.num("15")));i1100<n1100;i1100++){
+for(let i1124=0,n1124=Math.max(0,Math.floor(r.num("15")));i1124<n1124;i1124++){
 c.block="voo3";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="2ce5";r.guard(c);
@@ -36113,7 +39807,7 @@ break;
 yield 1;
 }
 c.block="2xzc";r.guard(c);
-for(let i1101=0,n1101=Math.max(0,Math.floor(r.num("20")));i1101<n1101;i1101++){
+for(let i1125=0,n1125=Math.max(0,Math.floor(r.num("20")));i1125<n1125;i1125++){
 c.block="i5xh";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="z4bh";r.guard(c);
@@ -36134,7 +39828,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="d1ux";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="s0tm";r.guard(c);
-for(let i1102=0,n1102=Math.max(0,Math.floor(r.num("25")));i1102<n1102;i1102++){
+for(let i1126=0,n1126=Math.max(0,Math.floor(r.num("25")));i1126<n1126;i1126++){
 yield 1;
 }
 }
@@ -36162,7 +39856,7 @@ r.command(c,"set_variable",["xrie","1",null]);
 c.block="w99i";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["6eys"]),null]);
 c.block="jr0e";r.guard(c);
-for(let i1103=0,n1103=Math.max(0,Math.floor(r.num("60")));i1103<n1103;i1103++){
+for(let i1127=0,n1127=Math.max(0,Math.floor(r.num("60")));i1127<n1127;i1127++){
 c.block="ajp6";r.guard(c);
 r.command(c,"change_variable",["qn98","-0.25",null]);
 c.block="wkez";r.guard(c);
@@ -36182,7 +39876,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ej8p"]),null]);
 c.block="c7u8";r.guard(c);
 r.command(c,"set_variable",["xrie","0",null]);
 c.block="zdre";r.guard(c);
-for(let i1104=0,n1104=Math.max(0,Math.floor(r.num("70")));i1104<n1104;i1104++){
+for(let i1128=0,n1128=Math.max(0,Math.floor(r.num("70")));i1128<n1128;i1128++){
 c.block="n37c";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["26.8","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -36324,7 +40018,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="084m";r.guard(c);
 r.command(c,"set_scale_size",["13",null]);
 c.block="p7i7";r.guard(c);
-for(let i1105=0,n1105=Math.max(0,Math.floor(r.num("2")));i1105<n1105;i1105++){
+for(let i1129=0,n1129=Math.max(0,Math.floor(r.num("2")));i1129<n1129;i1129++){
 c.block="jntz";r.guard(c);
 r.command(c,"create_clone",["va8y",null]);
 c.block="3x42";r.guard(c);
@@ -36346,7 +40040,7 @@ c.block="sgw2";r.guard(c);
 r.command(c,"set_variable",["6r3f","17",null]);
 }
 c.block="42py";r.guard(c);
-for(let i1106=0,n1106=Math.max(0,Math.floor(r.num("12")));i1106<n1106;i1106++){
+for(let i1130=0,n1130=Math.max(0,Math.floor(r.num("12")));i1130<n1130;i1130++){
 c.block="jyxn";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="r3cy";r.guard(c);
@@ -36362,7 +40056,7 @@ break;
 yield 1;
 }
 c.block="fh7u";r.guard(c);
-for(let i1107=0,n1107=Math.max(0,Math.floor(r.num("10")));i1107<n1107;i1107++){
+for(let i1131=0,n1131=Math.max(0,Math.floor(r.num("10")));i1131<n1131;i1131++){
 yield 1;
 }
 }
@@ -36423,7 +40117,7 @@ c.block="ikkz";r.guard(c);
 r.command(c,"change_variable",["lgp6","-45",null]);
 }
 c.block="os02";r.guard(c);
-for(let i1108=0,n1108=Math.max(0,Math.floor(r.num("30")));i1108<n1108;i1108++){
+for(let i1132=0,n1132=Math.max(0,Math.floor(r.num("30")));i1132<n1132;i1132++){
 yield 1;
 }
 }
@@ -36459,7 +40153,7 @@ c.block="1mch";r.guard(c);
 r.command(c,"set_variable",["6r3f","36",null]);
 }
 c.block="3z64";r.guard(c);
-for(let i1109=0,n1109=Math.max(0,Math.floor(r.num("30")));i1109<n1109;i1109++){
+for(let i1133=0,n1133=Math.max(0,Math.floor(r.num("30")));i1133<n1133;i1133++){
 yield 1;
 }
 }
@@ -36494,7 +40188,7 @@ r.command(c,"set_variable",["5m8k","10",null]);
 c.block="meal";r.guard(c);
 r.command(c,"set_variable",["n7yi",r.value(c,"get_variable",["846x",null]),null]);
 c.block="6pcw";r.guard(c);
-for(let i1110=0,n1110=Math.max(0,Math.floor(r.num("30")));i1110<n1110;i1110++){
+for(let i1134=0,n1134=Math.max(0,Math.floor(r.num("30")));i1134<n1134;i1134++){
 c.block="rss2";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["5m8k",null]),"DIVIDE","1.5"]),null]);
 c.block="6hrr";r.guard(c);
@@ -36524,7 +40218,7 @@ r.command(c,"change_variable",["c9o4","-13",null]);
 }
 }
 c.block="e4uo";r.guard(c);
-for(let i1111=0,n1111=Math.max(0,Math.floor(r.num("6")));i1111<n1111;i1111++){
+for(let i1135=0,n1135=Math.max(0,Math.floor(r.num("6")));i1135<n1135;i1135++){
 c.block="xw6u";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -36536,7 +40230,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="1y0z";r.guard(c);
-for(let i1112=0,n1112=Math.max(0,Math.floor(r.num("6")));i1112<n1112;i1112++){
+for(let i1136=0,n1136=Math.max(0,Math.floor(r.num("6")));i1136<n1136;i1136++){
 c.block="i2jj";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -36572,7 +40266,7 @@ r.command(c,"set_variable",["5m8k","10",null]);
 c.block="55yv";r.guard(c);
 r.command(c,"set_variable",["wge9","0.06",null]);
 c.block="fy0h";r.guard(c);
-for(let i1113=0,n1113=Math.max(0,Math.floor(r.num("30")));i1113<n1113;i1113++){
+for(let i1137=0,n1137=Math.max(0,Math.floor(r.num("30")));i1137<n1137;i1137++){
 c.block="9b1t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["5m8k",null]),"MULTI","1.2"]),null]);
 c.block="g8o3";r.guard(c);
@@ -36604,7 +40298,7 @@ r.command(c,"change_variable",["c9o4","-20",null]);
 }
 }
 c.block="nesw";r.guard(c);
-for(let i1114=0,n1114=Math.max(0,Math.floor(r.num("6")));i1114<n1114;i1114++){
+for(let i1138=0,n1138=Math.max(0,Math.floor(r.num("6")));i1138<n1138;i1138++){
 c.block="fzqz";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -36616,7 +40310,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="ej4i";r.guard(c);
-for(let i1115=0,n1115=Math.max(0,Math.floor(r.num("6")));i1115<n1115;i1115++){
+for(let i1139=0,n1139=Math.max(0,Math.floor(r.num("6")));i1139<n1139;i1139++){
 c.block="6sbr";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -36646,7 +40340,7 @@ r.command(c,"set_variable",["5m8k","10",null]);
 c.block="0kmw";r.guard(c);
 r.command(c,"set_variable",["n7yi",r.value(c,"get_variable",["846x",null]),null]);
 c.block="jrlc";r.guard(c);
-for(let i1116=0,n1116=Math.max(0,Math.floor(r.num("40")));i1116<n1116;i1116++){
+for(let i1140=0,n1140=Math.max(0,Math.floor(r.num("40")));i1140<n1140;i1140++){
 c.block="9f0l";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["5m8k",null]),"MULTI","1"]),null]);
 c.block="41rk";r.guard(c);
@@ -36678,7 +40372,7 @@ r.command(c,"change_variable",["c9o4","-220",null]);
 }
 }
 c.block="ki8m";r.guard(c);
-for(let i1117=0,n1117=Math.max(0,Math.floor(r.num("6")));i1117<n1117;i1117++){
+for(let i1141=0,n1141=Math.max(0,Math.floor(r.num("6")));i1141<n1141;i1141++){
 c.block="c2yp";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -36718,7 +40412,7 @@ r.command(c,"change_variable",["c9o4","-220",null]);
 }
 }
 c.block="xphx";r.guard(c);
-for(let i1118=0,n1118=Math.max(0,Math.floor(r.num("6")));i1118<n1118;i1118++){
+for(let i1142=0,n1142=Math.max(0,Math.floor(r.num("6")));i1142<n1142;i1142++){
 c.block="5bn2";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -36730,7 +40424,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="u5jq";r.guard(c);
-for(let i1119=0,n1119=Math.max(0,Math.floor(r.num("6")));i1119<n1119;i1119++){
+for(let i1143=0,n1143=Math.max(0,Math.floor(r.num("6")));i1143<n1143;i1143++){
 c.block="ipub";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -36849,7 +40543,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="76qa";r.guard(c);
 r.command(c,"set_scale_size",["13",null]);
 c.block="p7i7";r.guard(c);
-for(let i1120=0,n1120=Math.max(0,Math.floor(r.num("2")));i1120<n1120;i1120++){
+for(let i1144=0,n1144=Math.max(0,Math.floor(r.num("2")));i1144<n1144;i1144++){
 c.block="jntz";r.guard(c);
 r.command(c,"create_clone",["pvlq",null]);
 c.block="3x42";r.guard(c);
@@ -36871,7 +40565,7 @@ c.block="sgw2";r.guard(c);
 r.command(c,"set_variable",["6r3f","17",null]);
 }
 c.block="42py";r.guard(c);
-for(let i1121=0,n1121=Math.max(0,Math.floor(r.num("12")));i1121<n1121;i1121++){
+for(let i1145=0,n1145=Math.max(0,Math.floor(r.num("12")));i1145<n1145;i1145++){
 c.block="lavk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="2a5j";r.guard(c);
@@ -36887,7 +40581,7 @@ break;
 yield 1;
 }
 c.block="fh7u";r.guard(c);
-for(let i1122=0,n1122=Math.max(0,Math.floor(r.num("10")));i1122<n1122;i1122++){
+for(let i1146=0,n1146=Math.max(0,Math.floor(r.num("10")));i1146<n1146;i1146++){
 yield 1;
 }
 }
@@ -36948,7 +40642,7 @@ c.block="5cuc";r.guard(c);
 r.command(c,"set_variable",["6r3f","17",null]);
 }
 c.block="bbtf";r.guard(c);
-for(let i1123=0,n1123=Math.max(0,Math.floor(r.num("30")));i1123<n1123;i1123++){
+for(let i1147=0,n1147=Math.max(0,Math.floor(r.num("30")));i1147<n1147;i1147++){
 yield 1;
 }
 }
@@ -36984,7 +40678,7 @@ c.block="1mch";r.guard(c);
 r.command(c,"set_variable",["6r3f","36",null]);
 }
 c.block="9y74";r.guard(c);
-for(let i1124=0,n1124=Math.max(0,Math.floor(r.num("30")));i1124<n1124;i1124++){
+for(let i1148=0,n1148=Math.max(0,Math.floor(r.num("30")));i1148<n1148;i1148++){
 yield 1;
 }
 }
@@ -37019,7 +40713,7 @@ r.command(c,"set_variable",["vj8w","10",null]);
 c.block="meal";r.guard(c);
 r.command(c,"set_variable",["rxjz",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="6pcw";r.guard(c);
-for(let i1125=0,n1125=Math.max(0,Math.floor(r.num("30")));i1125<n1125;i1125++){
+for(let i1149=0,n1149=Math.max(0,Math.floor(r.num("30")));i1149<n1149;i1149++){
 c.block="rss2";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vj8w",null]),"DIVIDE","1.5"]),null]);
 c.block="6hrr";r.guard(c);
@@ -37049,7 +40743,7 @@ r.command(c,"change_variable",["lgp6","-13",null]);
 }
 }
 c.block="e4uo";r.guard(c);
-for(let i1126=0,n1126=Math.max(0,Math.floor(r.num("6")));i1126<n1126;i1126++){
+for(let i1150=0,n1150=Math.max(0,Math.floor(r.num("6")));i1150<n1150;i1150++){
 c.block="xw6u";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -37061,7 +40755,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="1y0z";r.guard(c);
-for(let i1127=0,n1127=Math.max(0,Math.floor(r.num("6")));i1127<n1127;i1127++){
+for(let i1151=0,n1151=Math.max(0,Math.floor(r.num("6")));i1151<n1151;i1151++){
 c.block="i2jj";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -37097,7 +40791,7 @@ r.command(c,"set_variable",["vj8w","10",null]);
 c.block="dots";r.guard(c);
 r.command(c,"set_variable",["jg77","0.06",null]);
 c.block="fy0h";r.guard(c);
-for(let i1128=0,n1128=Math.max(0,Math.floor(r.num("30")));i1128<n1128;i1128++){
+for(let i1152=0,n1152=Math.max(0,Math.floor(r.num("30")));i1152<n1152;i1152++){
 c.block="9b1t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vj8w",null]),"MULTI","1.2"]),null]);
 c.block="g8o3";r.guard(c);
@@ -37129,7 +40823,7 @@ r.command(c,"change_variable",["lgp6","-20",null]);
 }
 }
 c.block="nesw";r.guard(c);
-for(let i1129=0,n1129=Math.max(0,Math.floor(r.num("6")));i1129<n1129;i1129++){
+for(let i1153=0,n1153=Math.max(0,Math.floor(r.num("6")));i1153<n1153;i1153++){
 c.block="fzqz";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -37141,7 +40835,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="ej4i";r.guard(c);
-for(let i1130=0,n1130=Math.max(0,Math.floor(r.num("6")));i1130<n1130;i1130++){
+for(let i1154=0,n1154=Math.max(0,Math.floor(r.num("6")));i1154<n1154;i1154++){
 c.block="6sbr";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -37171,7 +40865,7 @@ r.command(c,"set_variable",["vj8w","10",null]);
 c.block="0kmw";r.guard(c);
 r.command(c,"set_variable",["rxjz",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="jrlc";r.guard(c);
-for(let i1131=0,n1131=Math.max(0,Math.floor(r.num("40")));i1131<n1131;i1131++){
+for(let i1155=0,n1155=Math.max(0,Math.floor(r.num("40")));i1155<n1155;i1155++){
 c.block="z8zt";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vj8w",null]),"MULTI","1"]),null]);
 c.block="tm7w";r.guard(c);
@@ -37203,7 +40897,7 @@ r.command(c,"change_variable",["lgp6","-220",null]);
 }
 }
 c.block="fho5";r.guard(c);
-for(let i1132=0,n1132=Math.max(0,Math.floor(r.num("6")));i1132<n1132;i1132++){
+for(let i1156=0,n1156=Math.max(0,Math.floor(r.num("6")));i1156<n1156;i1156++){
 c.block="ix2p";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -37243,7 +40937,7 @@ r.command(c,"change_variable",["lgp6","-220",null]);
 }
 }
 c.block="ji5w";r.guard(c);
-for(let i1133=0,n1133=Math.max(0,Math.floor(r.num("6")));i1133<n1133;i1133++){
+for(let i1157=0,n1157=Math.max(0,Math.floor(r.num("6")));i1157<n1157;i1157++){
 c.block="a51f";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -37255,7 +40949,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="u5jq";r.guard(c);
-for(let i1134=0,n1134=Math.max(0,Math.floor(r.num("6")));i1134<n1134;i1134++){
+for(let i1158=0,n1158=Math.max(0,Math.floor(r.num("6")));i1158<n1158;i1158++){
 c.block="ipub";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -37304,7 +40998,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["6p9l"]),null]
 c.block="2tov";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["xhhz"]),null]);
 c.block="6pcw";r.guard(c);
-for(let i1135=0,n1135=Math.max(0,Math.floor(r.num("70")));i1135<n1135;i1135++){
+for(let i1159=0,n1159=Math.max(0,Math.floor(r.num("70")));i1159<n1159;i1159++){
 c.block="rss2";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["goky",null]),"DIVIDE","1.3"]),null]);
 c.block="6hrr";r.guard(c);
@@ -37392,7 +41086,7 @@ r.command(c,"set_variable",["goky","7",null]);
 c.block="wnji";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"value_of_index_from_list",[null,"uue8",null,r.value(c,"get_variable",["r4y8",null]),null]),null]);
 c.block="ue3z";r.guard(c);
-for(let i1136=0,n1136=Math.max(0,Math.floor(r.num("70")));i1136<n1136;i1136++){
+for(let i1160=0,n1160=Math.max(0,Math.floor(r.num("70")));i1160<n1160;i1160++){
 c.block="m4zh";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["goky",null]),"DIVIDE","1.3"]),null]);
 c.block="lnbq";r.guard(c);
@@ -37476,7 +41170,7 @@ r.command(c,"show",[null]);
 c.block="qh7r";r.guard(c);
 r.command(c,"set_variable",["goky","10",null]);
 c.block="eg7b";r.guard(c);
-for(let i1137=0,n1137=Math.max(0,Math.floor(r.num("100")));i1137<n1137;i1137++){
+for(let i1161=0,n1161=Math.max(0,Math.floor(r.num("100")));i1161<n1161;i1161++){
 c.block="ek22";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["goky",null]),"DIVIDE","4"]),null]);
 c.block="d4ma";r.guard(c);
@@ -37536,7 +41230,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["6cp3"]),null]
 yield 1;
 }
 c.block="g0md";r.guard(c);
-for(let i1138=0,n1138=Math.max(0,Math.floor(r.num("5")));i1138<n1138;i1138++){
+for(let i1162=0,n1162=Math.max(0,Math.floor(r.num("5")));i1162<n1162;i1162++){
 c.block="cko1";r.guard(c);
 r.command(c,"change_scale_size",["-4",null]);
 c.block="2uy9";r.guard(c);
@@ -37618,7 +41312,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="2aoq";r.guard(c);
 r.command(c,"set_variable",["r4y8","0",null]);
 c.block="okbc";r.guard(c);
-for(let i1139=0,n1139=Math.max(0,Math.floor(r.num("3")));i1139<n1139;i1139++){
+for(let i1163=0,n1163=Math.max(0,Math.floor(r.num("3")));i1163<n1163;i1163++){
 c.block="i01m";r.guard(c);
 r.command(c,"change_variable",["r4y8","1",null]);
 c.block="genp";r.guard(c);
@@ -37638,7 +41332,7 @@ r.command(c,"change_variable",["lgp6","-10",null]);
 c.block="btfs";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="vvvs";r.guard(c);
-for(let i1140=0,n1140=Math.max(0,Math.floor(r.num("1")));i1140<n1140;i1140++){
+for(let i1164=0,n1164=Math.max(0,Math.floor(r.num("1")));i1164<n1164;i1164++){
 yield 1;
 }
 c.block="ozjf";r.guard(c);
@@ -37652,7 +41346,7 @@ r.command(c,"show",[null]);
 c.block="ar03";r.guard(c);
 r.command(c,"set_scale_size",["20",null]);
 c.block="j6nq";r.guard(c);
-for(let i1141=0,n1141=Math.max(0,Math.floor(r.num("45")));i1141<n1141;i1141++){
+for(let i1165=0,n1165=Math.max(0,Math.floor(r.num("45")));i1165<n1165;i1165++){
 c.block="gysf";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["12","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -37686,7 +41380,7 @@ r.command(c,"show",[null]);
 c.block="rpiz";r.guard(c);
 r.command(c,"set_scale_size",["20",null]);
 c.block="zljy";r.guard(c);
-for(let i1142=0,n1142=Math.max(0,Math.floor(r.num("45")));i1142<n1142;i1142++){
+for(let i1166=0,n1166=Math.max(0,Math.floor(r.num("45")));i1166<n1166;i1166++){
 c.block="tiq2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["12","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -37731,7 +41425,7 @@ r.command(c,"set_variable",["97v8","10",null]);
 c.block="9tcy";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="7cwu";r.guard(c);
-for(let i1143=0,n1143=Math.max(0,Math.floor(r.num("1")));i1143<n1143;i1143++){
+for(let i1167=0,n1167=Math.max(0,Math.floor(r.num("1")));i1167<n1167;i1167++){
 yield 1;
 }
 c.block="s594";r.guard(c);
@@ -37745,7 +41439,7 @@ r.command(c,"show",[null]);
 c.block="11k7";r.guard(c);
 r.command(c,"set_scale_size",["20",null]);
 c.block="zogr";r.guard(c);
-for(let i1144=0,n1144=Math.max(0,Math.floor(r.num("45")));i1144<n1144;i1144++){
+for(let i1168=0,n1168=Math.max(0,Math.floor(r.num("45")));i1168<n1168;i1168++){
 c.block="46r2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["12","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -37772,7 +41466,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["97v8",
 c.block="xmoh";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["97v8",null]),"EQUAL","0"]))){
 c.block="bz8s";r.guard(c);
-for(let i1145=0,n1145=Math.max(0,Math.floor(r.num("4")));i1145<n1145;i1145++){
+for(let i1169=0,n1169=Math.max(0,Math.floor(r.num("4")));i1169<n1169;i1169++){
 c.block="c94j";r.guard(c);
 r.command(c,"set_variable",["bct6","-9",null]);
 yield 1;
@@ -37805,7 +41499,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["6p9l"]),null]
 c.block="wrci";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["xhhz"]),null]);
 c.block="h4ex";r.guard(c);
-for(let i1146=0,n1146=Math.max(0,Math.floor(r.num("70")));i1146<n1146;i1146++){
+for(let i1170=0,n1170=Math.max(0,Math.floor(r.num("70")));i1170<n1170;i1170++){
 yield 1;
 }
 c.block="ntcy";r.guard(c);
@@ -37818,7 +41512,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["6p9l"]),null]
 c.block="cpw8";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["xhhz"]),null]);
 c.block="gg94";r.guard(c);
-for(let i1147=0,n1147=Math.max(0,Math.floor(r.num("100")));i1147<n1147;i1147++){
+for(let i1171=0,n1171=Math.max(0,Math.floor(r.num("100")));i1171<n1171;i1171++){
 yield 1;
 }
 c.block="47xh";r.guard(c);
@@ -37856,7 +41550,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["sg5x"]),null]
 c.block="jflw";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["ctma"]),null]);
 c.block="dl9o";r.guard(c);
-for(let i1148=0,n1148=Math.max(0,Math.floor(r.num("70")));i1148<n1148;i1148++){
+for(let i1172=0,n1172=Math.max(0,Math.floor(r.num("70")));i1172<n1172;i1172++){
 c.block="ooyy";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["w750",null]),"DIVIDE","1.3"]),null]);
 c.block="qy30";r.guard(c);
@@ -37944,7 +41638,7 @@ r.command(c,"rotate_relative",[r.value(c,"value_of_index_from_list",[null,"uue8"
 c.block="ng10";r.guard(c);
 r.command(c,"set_variable",["w750","7",null]);
 c.block="ue3z";r.guard(c);
-for(let i1149=0,n1149=Math.max(0,Math.floor(r.num("70")));i1149<n1149;i1149++){
+for(let i1173=0,n1173=Math.max(0,Math.floor(r.num("70")));i1173<n1173;i1173++){
 c.block="m4zh";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["w750",null]),"DIVIDE","1.3"]),null]);
 c.block="lnbq";r.guard(c);
@@ -38028,7 +41722,7 @@ r.command(c,"show",[null]);
 c.block="qh7r";r.guard(c);
 r.command(c,"set_variable",["w750","10",null]);
 c.block="eg7b";r.guard(c);
-for(let i1150=0,n1150=Math.max(0,Math.floor(r.num("100")));i1150<n1150;i1150++){
+for(let i1174=0,n1174=Math.max(0,Math.floor(r.num("100")));i1174<n1174;i1174++){
 c.block="ek22";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["w750",null]),"DIVIDE","4"]),null]);
 c.block="d4ma";r.guard(c);
@@ -38088,7 +41782,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["y1ft"]),null]
 yield 1;
 }
 c.block="27h1";r.guard(c);
-for(let i1151=0,n1151=Math.max(0,Math.floor(r.num("5")));i1151<n1151;i1151++){
+for(let i1175=0,n1175=Math.max(0,Math.floor(r.num("5")));i1175<n1175;i1175++){
 c.block="g17w";r.guard(c);
 r.command(c,"change_scale_size",["-4",null]);
 c.block="egug";r.guard(c);
@@ -38170,7 +41864,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="2aoq";r.guard(c);
 r.command(c,"set_variable",["do5m","0",null]);
 c.block="th8m";r.guard(c);
-for(let i1152=0,n1152=Math.max(0,Math.floor(r.num("3")));i1152<n1152;i1152++){
+for(let i1176=0,n1176=Math.max(0,Math.floor(r.num("3")));i1176<n1176;i1176++){
 c.block="l7lp";r.guard(c);
 r.command(c,"change_variable",["do5m","1",null]);
 c.block="genp";r.guard(c);
@@ -38190,7 +41884,7 @@ r.command(c,"change_variable",["c9o4","-10",null]);
 c.block="btfs";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="15qh";r.guard(c);
-for(let i1153=0,n1153=Math.max(0,Math.floor(r.num("1")));i1153<n1153;i1153++){
+for(let i1177=0,n1177=Math.max(0,Math.floor(r.num("1")));i1177<n1177;i1177++){
 yield 1;
 }
 c.block="a8qp";r.guard(c);
@@ -38204,7 +41898,7 @@ r.command(c,"show",[null]);
 c.block="ar03";r.guard(c);
 r.command(c,"set_scale_size",["20",null]);
 c.block="j6nq";r.guard(c);
-for(let i1154=0,n1154=Math.max(0,Math.floor(r.num("45")));i1154<n1154;i1154++){
+for(let i1178=0,n1178=Math.max(0,Math.floor(r.num("45")));i1178<n1178;i1178++){
 c.block="gysf";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["15.2","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -38238,7 +41932,7 @@ r.command(c,"show",[null]);
 c.block="rpiz";r.guard(c);
 r.command(c,"set_scale_size",["20",null]);
 c.block="zljy";r.guard(c);
-for(let i1155=0,n1155=Math.max(0,Math.floor(r.num("45")));i1155<n1155;i1155++){
+for(let i1179=0,n1179=Math.max(0,Math.floor(r.num("45")));i1179<n1179;i1179++){
 c.block="tiq2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["15.2","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -38283,7 +41977,7 @@ r.command(c,"set_variable",["7a8q","10",null]);
 c.block="9tcy";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="koed";r.guard(c);
-for(let i1156=0,n1156=Math.max(0,Math.floor(r.num("1")));i1156<n1156;i1156++){
+for(let i1180=0,n1180=Math.max(0,Math.floor(r.num("1")));i1180<n1180;i1180++){
 yield 1;
 }
 c.block="b4q2";r.guard(c);
@@ -38297,7 +41991,7 @@ r.command(c,"show",[null]);
 c.block="11k7";r.guard(c);
 r.command(c,"set_scale_size",["20",null]);
 c.block="zogr";r.guard(c);
-for(let i1157=0,n1157=Math.max(0,Math.floor(r.num("45")));i1157<n1157;i1157++){
+for(let i1181=0,n1181=Math.max(0,Math.floor(r.num("45")));i1181<n1181;i1181++){
 c.block="46r2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["15.2","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -38324,7 +42018,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["7a8q",
 c.block="xmoh";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["7a8q",null]),"EQUAL","0"]))){
 c.block="bz8s";r.guard(c);
-for(let i1158=0,n1158=Math.max(0,Math.floor(r.num("4")));i1158<n1158;i1158++){
+for(let i1182=0,n1182=Math.max(0,Math.floor(r.num("4")));i1182<n1182;i1182++){
 c.block="by7a";r.guard(c);
 r.command(c,"set_variable",["1g8o","-9",null]);
 yield 1;
@@ -38357,7 +42051,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["sg5x"]),null]
 c.block="i9y0";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["ctma"]),null]);
 c.block="r2zp";r.guard(c);
-for(let i1159=0,n1159=Math.max(0,Math.floor(r.num("70")));i1159<n1159;i1159++){
+for(let i1183=0,n1183=Math.max(0,Math.floor(r.num("70")));i1183<n1183;i1183++){
 yield 1;
 }
 c.block="lpyf";r.guard(c);
@@ -38370,7 +42064,7 @@ r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["sg5x"]),null]
 c.block="ggz6";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["ctma"]),null]);
 c.block="n647";r.guard(c);
-for(let i1160=0,n1160=Math.max(0,Math.floor(r.num("100")));i1160<n1160;i1160++){
+for(let i1184=0,n1184=Math.max(0,Math.floor(r.num("100")));i1184<n1184;i1184++){
 yield 1;
 }
 c.block="ngv7";r.guard(c);
@@ -38394,7 +42088,7 @@ r.command(c,"show",[null]);
 c.block="5byq";r.guard(c);
 r.command(c,"set_variable",["esrc","7",null]);
 c.block="sdrn";r.guard(c);
-for(let i1161=0,n1161=Math.max(0,Math.floor(r.num("15")));i1161<n1161;i1161++){
+for(let i1185=0,n1185=Math.max(0,Math.floor(r.num("15")));i1185<n1185;i1185++){
 c.block="5q75";r.guard(c);
 r.command(c,"locate",["clrp",null]);
 c.block="psmz";r.guard(c);
@@ -38402,7 +42096,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r
 yield 1;
 }
 c.block="dyfe";r.guard(c);
-for(let i1162=0,n1162=Math.max(0,Math.floor(r.num("70")));i1162<n1162;i1162++){
+for(let i1186=0,n1186=Math.max(0,Math.floor(r.num("70")));i1186<n1186;i1186++){
 c.block="g7r7";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="9h5v";r.guard(c);
@@ -38461,7 +42155,7 @@ r.command(c,"set_scale_size",["30",null]);
 c.block="o0ck";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["bxck"]),null]);
 c.block="3mxg";r.guard(c);
-for(let i1163=0,n1163=Math.max(0,Math.floor(r.num("25")));i1163<n1163;i1163++){
+for(let i1187=0,n1187=Math.max(0,Math.floor(r.num("25")));i1187<n1187;i1187++){
 c.block="131f";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","13"]),null]);
 c.block="690k";r.guard(c);
@@ -38477,7 +42171,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["bxck"]),null]);
 c.block="wwgs";r.guard(c);
 r.command(c,"set_scale_size",["10",null]);
 c.block="wmaz";r.guard(c);
-for(let i1164=0,n1164=Math.max(0,Math.floor(r.num("75")));i1164<n1164;i1164++){
+for(let i1188=0,n1188=Math.max(0,Math.floor(r.num("75")));i1188<n1188;i1188++){
 c.block="k0n1";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["200","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","11"]),null]);
 c.block="wcf8";r.guard(c);
@@ -38505,7 +42199,7 @@ r.command(c,"show",[null]);
 c.block="m9ws";r.guard(c);
 r.command(c,"set_variable",["esrc","7",null]);
 c.block="cox9";r.guard(c);
-for(let i1165=0,n1165=Math.max(0,Math.floor(r.num("15")));i1165<n1165;i1165++){
+for(let i1189=0,n1189=Math.max(0,Math.floor(r.num("15")));i1189<n1189;i1189++){
 c.block="7rz0";r.guard(c);
 r.command(c,"locate",["lyal",null]);
 c.block="ex9j";r.guard(c);
@@ -38513,7 +42207,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r
 yield 1;
 }
 c.block="xzr4";r.guard(c);
-for(let i1166=0,n1166=Math.max(0,Math.floor(r.num("70")));i1166<n1166;i1166++){
+for(let i1190=0,n1190=Math.max(0,Math.floor(r.num("70")));i1190<n1190;i1190++){
 c.block="b5fa";r.guard(c);
 r.command(c,"see_angle_object",["n230",null]);
 c.block="bpzs";r.guard(c);
@@ -38572,7 +42266,7 @@ r.command(c,"set_scale_size",["30",null]);
 c.block="a9zl";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["bxck"]),null]);
 c.block="4n6c";r.guard(c);
-for(let i1167=0,n1167=Math.max(0,Math.floor(r.num("25")));i1167<n1167;i1167++){
+for(let i1191=0,n1191=Math.max(0,Math.floor(r.num("25")));i1191<n1191;i1191++){
 c.block="jbzo";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","13"]),null]);
 c.block="mlno";r.guard(c);
@@ -38588,7 +42282,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["bxck"]),null]);
 c.block="v6s6";r.guard(c);
 r.command(c,"set_scale_size",["10",null]);
 c.block="ys7v";r.guard(c);
-for(let i1168=0,n1168=Math.max(0,Math.floor(r.num("75")));i1168<n1168;i1168++){
+for(let i1192=0,n1192=Math.max(0,Math.floor(r.num("75")));i1192<n1192;i1192++){
 c.block="zo6k";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["200","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","11"]),null]);
 c.block="fomq";r.guard(c);
@@ -38631,7 +42325,7 @@ r.command(c,"set_variable",["5qjp",r.value(c,"calc_rand",[null,"1.3",null,"2.6",
 c.block="1iq9";r.guard(c);
 r.command(c,"set_variable",["r6ch",r.value(c,"calc_rand",[null,"1.3",null,"2.6",null]),null]);
 c.block="5et1";r.guard(c);
-for(let i1169=0,n1169=Math.max(0,Math.floor(r.num("85")));i1169<n1169;i1169++){
+for(let i1193=0,n1193=Math.max(0,Math.floor(r.num("85")));i1193<n1193;i1193++){
 c.block="r5tv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wlkh",null]),"EQUAL","1"]))){
 c.block="xwi3";r.guard(c);
@@ -38655,7 +42349,7 @@ r.command(c,"change_variable",["bqz6","0.6",null]);
 c.block="110f";r.guard(c);
 r.command(c,"locate_xy",[r.value(c,"get_variable",["vogg",null]),r.value(c,"get_variable",["bw1y",null]),null]);
 c.block="rxx7";r.guard(c);
-for(let i1170=0,n1170=Math.max(0,Math.floor(r.num("30")));i1170<n1170;i1170++){
+for(let i1194=0,n1194=Math.max(0,Math.floor(r.num("30")));i1194<n1194;i1194++){
 c.block="ra8n";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="v5vm";r.guard(c);
@@ -38694,7 +42388,7 @@ r.command(c,"set_scale_size",["19",null]);
 c.block="gx6l";r.guard(c);
 r.command(c,"set_variable",["r6ch","7",null]);
 c.block="5z2g";r.guard(c);
-for(let i1171=0,n1171=Math.max(0,Math.floor(r.num("15")));i1171<n1171;i1171++){
+for(let i1195=0,n1195=Math.max(0,Math.floor(r.num("15")));i1195<n1195;i1195++){
 c.block="7klm";r.guard(c);
 r.command(c,"locate",["lyal",null]);
 c.block="g5q1";r.guard(c);
@@ -38702,7 +42396,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r
 yield 1;
 }
 c.block="nf3k";r.guard(c);
-for(let i1172=0,n1172=Math.max(0,Math.floor(r.num("70")));i1172<n1172;i1172++){
+for(let i1196=0,n1196=Math.max(0,Math.floor(r.num("70")));i1196<n1196;i1196++){
 c.block="cs5q";r.guard(c);
 r.command(c,"see_angle_object",["n230",null]);
 c.block="2tgh";r.guard(c);
@@ -38759,7 +42453,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dluc",
 c.block="7ans";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["h895"]),null]);
 c.block="4qpj";r.guard(c);
-for(let i1173=0,n1173=Math.max(0,Math.floor(r.num("25")));i1173<n1173;i1173++){
+for(let i1197=0,n1197=Math.max(0,Math.floor(r.num("25")));i1197<n1197;i1197++){
 c.block="vstl";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="axzk";r.guard(c);
@@ -38777,7 +42471,7 @@ r.command(c,"set_scale_size",["10",null]);
 c.block="cicb";r.guard(c);
 r.command(c,"set_variable",["r6ch","7.5",null]);
 c.block="ec87";r.guard(c);
-for(let i1174=0,n1174=Math.max(0,Math.floor(r.num("75")));i1174<n1174;i1174++){
+for(let i1198=0,n1198=Math.max(0,Math.floor(r.num("75")));i1198<n1198;i1198++){
 c.block="mzvd";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["r6ch",null]),"MULTI","2"]),null]);
 c.block="7fij";r.guard(c);
@@ -38883,13 +42577,13 @@ if(r.truth(r.value(c,"is_press_some_key",["13",null]))){
 c.block="ajox";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["w0dd",null]),"LESS","0"]))){
 c.block="686r";r.guard(c);
-for(let i1175=0,n1175=Math.max(0,Math.floor(r.num("20")));i1175<n1175;i1175++){
+for(let i1199=0,n1199=Math.max(0,Math.floor(r.num("20")));i1199<n1199;i1199++){
 c.block="efth";r.guard(c);
 r.command(c,"set_variable",["qvkr","1",null]);
 c.block="7exr";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="6s2k";r.guard(c);
-for(let i1176=0,n1176=Math.max(0,Math.floor(r.num("6")));i1176<n1176;i1176++){
+for(let i1200=0,n1200=Math.max(0,Math.floor(r.num("6")));i1200<n1200;i1200++){
 c.block="xowm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="ffnt";r.guard(c);
@@ -38970,7 +42664,7 @@ r.command(c,"create_clone",["wswg",null]);
 c.block="47bn";r.guard(c);
 r.command(c,"create_clone",["lyal",null]);
 c.block="m1hd";r.guard(c);
-for(let i1177=0,n1177=Math.max(0,Math.floor(r.num("40")));i1177<n1177;i1177++){
+for(let i1201=0,n1201=Math.max(0,Math.floor(r.num("40")));i1201<n1201;i1201++){
 yield 1;
 }
 }
@@ -39005,7 +42699,7 @@ r.command(c,"set_variable",["aeuc",r.value(c,"calc_rand",[null,"1.3",null,"2.6",
 c.block="1iq9";r.guard(c);
 r.command(c,"set_variable",["ig4r",r.value(c,"calc_rand",[null,"1.3",null,"2.6",null]),null]);
 c.block="5et1";r.guard(c);
-for(let i1178=0,n1178=Math.max(0,Math.floor(r.num("85")));i1178<n1178;i1178++){
+for(let i1202=0,n1202=Math.max(0,Math.floor(r.num("85")));i1202<n1202;i1202++){
 c.block="r5tv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yoq7",null]),"EQUAL","1"]))){
 c.block="xwi3";r.guard(c);
@@ -39029,7 +42723,7 @@ r.command(c,"change_variable",["bqz6","0.6",null]);
 c.block="110f";r.guard(c);
 r.command(c,"locate_xy",[r.value(c,"get_variable",["vogg",null]),r.value(c,"get_variable",["bw1y",null]),null]);
 c.block="rxx7";r.guard(c);
-for(let i1179=0,n1179=Math.max(0,Math.floor(r.num("30")));i1179<n1179;i1179++){
+for(let i1203=0,n1203=Math.max(0,Math.floor(r.num("30")));i1203<n1203;i1203++){
 c.block="ra8n";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="v5vm";r.guard(c);
@@ -39068,7 +42762,7 @@ r.command(c,"set_scale_size",["19",null]);
 c.block="gx6l";r.guard(c);
 r.command(c,"set_variable",["ig4r","7",null]);
 c.block="5z2g";r.guard(c);
-for(let i1180=0,n1180=Math.max(0,Math.floor(r.num("15")));i1180<n1180;i1180++){
+for(let i1204=0,n1204=Math.max(0,Math.floor(r.num("15")));i1204<n1204;i1204++){
 c.block="7klm";r.guard(c);
 r.command(c,"locate",["clrp",null]);
 c.block="g5q1";r.guard(c);
@@ -39076,7 +42770,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r
 yield 1;
 }
 c.block="nf3k";r.guard(c);
-for(let i1181=0,n1181=Math.max(0,Math.floor(r.num("70")));i1181<n1181;i1181++){
+for(let i1205=0,n1205=Math.max(0,Math.floor(r.num("70")));i1205<n1205;i1205++){
 c.block="cs5q";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="2tgh";r.guard(c);
@@ -39133,7 +42827,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dluc",
 c.block="7ans";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["0rwt"]),null]);
 c.block="4qpj";r.guard(c);
-for(let i1182=0,n1182=Math.max(0,Math.floor(r.num("25")));i1182<n1182;i1182++){
+for(let i1206=0,n1206=Math.max(0,Math.floor(r.num("25")));i1206<n1206;i1206++){
 c.block="vstl";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="axzk";r.guard(c);
@@ -39151,7 +42845,7 @@ r.command(c,"set_scale_size",["10",null]);
 c.block="cicb";r.guard(c);
 r.command(c,"set_variable",["ig4r","7.5",null]);
 c.block="ec87";r.guard(c);
-for(let i1183=0,n1183=Math.max(0,Math.floor(r.num("75")));i1183<n1183;i1183++){
+for(let i1207=0,n1207=Math.max(0,Math.floor(r.num("75")));i1207<n1207;i1207++){
 c.block="mzvd";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ig4r",null]),"MULTI","2"]),null]);
 c.block="7fij";r.guard(c);
@@ -39257,13 +42951,13 @@ if(r.truth(r.value(c,"is_press_some_key",["69",null]))){
 c.block="ajox";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["w0dd",null]),"LESS","0"]))){
 c.block="686r";r.guard(c);
-for(let i1184=0,n1184=Math.max(0,Math.floor(r.num("20")));i1184<n1184;i1184++){
+for(let i1208=0,n1208=Math.max(0,Math.floor(r.num("20")));i1208<n1208;i1208++){
 c.block="efth";r.guard(c);
 r.command(c,"set_variable",["rr24","1",null]);
 c.block="7exr";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="6s2k";r.guard(c);
-for(let i1185=0,n1185=Math.max(0,Math.floor(r.num("6")));i1185<n1185;i1185++){
+for(let i1209=0,n1209=Math.max(0,Math.floor(r.num("6")));i1209<n1209;i1209++){
 c.block="xowm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="ffnt";r.guard(c);
@@ -39341,7 +43035,7 @@ r.command(c,"create_clone",["wswg",null]);
 c.block="47bn";r.guard(c);
 r.command(c,"create_clone",["clrp",null]);
 c.block="m1hd";r.guard(c);
-for(let i1186=0,n1186=Math.max(0,Math.floor(r.num("40")));i1186<n1186;i1186++){
+for(let i1210=0,n1210=Math.max(0,Math.floor(r.num("40")));i1210<n1210;i1210++){
 yield 1;
 }
 }
@@ -39364,9 +43058,9 @@ r.command(c,"change_effect_amount",["transparency","60",null]);
 c.block="n10z";r.guard(c);
 r.command(c,"show",[null]);
 c.block="ur1x";r.guard(c);
-for(let i1187=0,n1187=Math.max(0,Math.floor(r.num("6")));i1187<n1187;i1187++){
+for(let i1211=0,n1211=Math.max(0,Math.floor(r.num("6")));i1211<n1211;i1211++){
 c.block="54ff";r.guard(c);
-for(let i1188=0,n1188=Math.max(0,Math.floor(r.num("5")));i1188<n1188;i1188++){
+for(let i1212=0,n1212=Math.max(0,Math.floor(r.num("5")));i1212<n1212;i1212++){
 yield 1;
 }
 c.block="kb4x";r.guard(c);
@@ -39374,7 +43068,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="3viu";r.guard(c);
-for(let i1189=0,n1189=Math.max(0,Math.floor(r.num("15")));i1189<n1189;i1189++){
+for(let i1213=0,n1213=Math.max(0,Math.floor(r.num("15")));i1213<n1213;i1213++){
 c.block="39bs";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.45",null]);
 yield 1;
@@ -39412,7 +43106,7 @@ r.command(c,"set_variable",["3qwu","5",null]);
 c.block="6bap";r.guard(c);
 r.command(c,"move_direction",["10",null]);
 c.block="6pcw";r.guard(c);
-for(let i1190=0,n1190=Math.max(0,Math.floor(r.num("50")));i1190<n1190;i1190++){
+for(let i1214=0,n1214=Math.max(0,Math.floor(r.num("50")));i1214<n1214;i1214++){
 c.block="9d29";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["3qwu",null]),"DIVIDE","1.3"]),null]);
 c.block="3jz9";r.guard(c);
@@ -39454,7 +43148,7 @@ r.command(c,"set_scale_size",["20",null]);
 c.block="u6t7";r.guard(c);
 r.command(c,"sound_something_second_with_block",[r.value(c,"get_sounds",["254y"]),"1.3",null]);
 c.block="x7xi";r.guard(c);
-for(let i1191=0,n1191=Math.max(0,Math.floor(r.num("50")));i1191<n1191;i1191++){
+for(let i1215=0,n1215=Math.max(0,Math.floor(r.num("50")));i1215<n1215;i1215++){
 c.block="a8t8";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="mynd";r.guard(c);
@@ -39486,7 +43180,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="57lm";r.guard(c);
 r.command(c,"show",[null]);
 c.block="fj0m";r.guard(c);
-for(let i1192=0,n1192=Math.max(0,Math.floor(r.num("45")));i1192<n1192;i1192++){
+for(let i1216=0,n1216=Math.max(0,Math.floor(r.num("45")));i1216<n1216;i1216++){
 c.block="b3rq";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["19","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -39500,7 +43194,7 @@ r.command(c,"add_effect_amount",["transparency","0",null]);
 c.block="geue";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["m7ea"]),null]);
 c.block="1ngp";r.guard(c);
-for(let i1193=0,n1193=Math.max(0,Math.floor(r.num("50")));i1193<n1193;i1193++){
+for(let i1217=0,n1217=Math.max(0,Math.floor(r.num("50")));i1217<n1217;i1217++){
 c.block="vazr";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="f3xy";r.guard(c);
@@ -39544,9 +43238,9 @@ r.command(c,"rotate_absolute",["180",null]);
 c.block="yz5t";r.guard(c);
 r.command(c,"set_variable",["u3f8","4.3",null]);
 c.block="535x";r.guard(c);
-for(let i1194=0,n1194=Math.max(0,Math.floor(r.num("10")));i1194<n1194;i1194++){
+for(let i1218=0,n1218=Math.max(0,Math.floor(r.num("10")));i1218<n1218;i1218++){
 c.block="0yev";r.guard(c);
-for(let i1195=0,n1195=Math.max(0,Math.floor(r.num("5")));i1195<n1195;i1195++){
+for(let i1219=0,n1219=Math.max(0,Math.floor(r.num("5")));i1219<n1219;i1219++){
 c.block="77fj";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="3zug";r.guard(c);
@@ -39592,7 +43286,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="b3fu";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["9nbq"]),null]);
 c.block="ont2";r.guard(c);
-for(let i1196=0,n1196=Math.max(0,Math.floor(r.num("75")));i1196<n1196;i1196++){
+for(let i1220=0,n1220=Math.max(0,Math.floor(r.num("75")));i1220<n1220;i1220++){
 c.block="l1o4";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1.5",null]);
 c.block="el3b";r.guard(c);
@@ -39671,7 +43365,7 @@ r.command(c,"change_variable",["lgp6","-10",null]);
 c.block="s1yl";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="niod";r.guard(c);
-for(let i1197=0,n1197=Math.max(0,Math.floor(r.num("50")));i1197<n1197;i1197++){
+for(let i1221=0,n1221=Math.max(0,Math.floor(r.num("50")));i1221<n1221;i1221++){
 c.block="pzzu";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["40",null]))){
 c.block="dlsi";r.guard(c);
@@ -39690,7 +43384,7 @@ r.command(c,"show",[null]);
 c.block="rpun";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="lfzk";r.guard(c);
-for(let i1198=0,n1198=Math.max(0,Math.floor(r.num("45")));i1198<n1198;i1198++){
+for(let i1222=0,n1222=Math.max(0,Math.floor(r.num("45")));i1222<n1222;i1222++){
 c.block="1m2w";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["11.7","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="rt6v";r.guard(c);
@@ -39724,7 +43418,7 @@ r.command(c,"change_variable",["thom","-55",null]);
 c.block="2bzh";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="kyee";r.guard(c);
-for(let i1199=0,n1199=Math.max(0,Math.floor(r.num("155")));i1199<n1199;i1199++){
+for(let i1223=0,n1223=Math.max(0,Math.floor(r.num("155")));i1223<n1223;i1223++){
 yield 1;
 }
 c.block="kyjc";r.guard(c);
@@ -39732,7 +43426,7 @@ r.command(c,"show",[null]);
 c.block="ncek";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="tm5x";r.guard(c);
-for(let i1200=0,n1200=Math.max(0,Math.floor(r.num("45")));i1200<n1200;i1200++){
+for(let i1224=0,n1224=Math.max(0,Math.floor(r.num("45")));i1224<n1224;i1224++){
 c.block="db8z";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["11.7","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -39760,7 +43454,7 @@ if(r.truth(r.value(c,"is_press_some_key",["80",null]))){
 c.block="kcm1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER_OR_EQUAL","32"]))){
 c.block="cbt3";r.guard(c);
-for(let i1201=0,n1201=Math.max(0,Math.floor(r.num("1")));i1201<n1201;i1201++){
+for(let i1225=0,n1225=Math.max(0,Math.floor(r.num("1")));i1225<n1225;i1225++){
 yield 1;
 }
 c.block="kxpf";r.guard(c);
@@ -39770,7 +43464,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="7nk4";r.guard(c);
 r.command(c,"change_variable",["thom","-32",null]);
 c.block="y9wr";r.guard(c);
-for(let i1202=0,n1202=Math.max(0,Math.floor(r.num("100")));i1202<n1202;i1202++){
+for(let i1226=0,n1226=Math.max(0,Math.floor(r.num("100")));i1226<n1226;i1226++){
 yield 1;
 }
 }
@@ -39817,7 +43511,7 @@ r.command(c,"set_variable",["7pl6","5",null]);
 c.block="6bap";r.guard(c);
 r.command(c,"move_direction",["10",null]);
 c.block="6pcw";r.guard(c);
-for(let i1203=0,n1203=Math.max(0,Math.floor(r.num("50")));i1203<n1203;i1203++){
+for(let i1227=0,n1227=Math.max(0,Math.floor(r.num("50")));i1227<n1227;i1227++){
 c.block="rss2";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7pl6",null]),"DIVIDE","1.3"]),null]);
 c.block="6hrr";r.guard(c);
@@ -39839,7 +43533,7 @@ yield* r.call(c,"qy83",["-7",10,"1"]);
 c.block="1pb8";r.guard(c);
 r.command(c,"sound_something_second_with_block",[r.value(c,"get_sounds",["ch7w"]),"1.3",null]);
 c.block="vxuf";r.guard(c);
-for(let i1204=0,n1204=Math.max(0,Math.floor(r.num("50")));i1204<n1204;i1204++){
+for(let i1228=0,n1228=Math.max(0,Math.floor(r.num("50")));i1228<n1228;i1228++){
 c.block="uech";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="mq3x";r.guard(c);
@@ -39859,7 +43553,7 @@ r.command(c,"set_scale_size",["20",null]);
 c.block="0ncg";r.guard(c);
 r.command(c,"sound_something_second_with_block",[r.value(c,"get_sounds",["ch7w"]),"1.3",null]);
 c.block="c9s7";r.guard(c);
-for(let i1205=0,n1205=Math.max(0,Math.floor(r.num("50")));i1205<n1205;i1205++){
+for(let i1229=0,n1229=Math.max(0,Math.floor(r.num("50")));i1229<n1229;i1229++){
 c.block="ertz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="6l3s";r.guard(c);
@@ -39891,7 +43585,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ojon"]),null]);
 c.block="hltx";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="mabe";r.guard(c);
-for(let i1206=0,n1206=Math.max(0,Math.floor(r.num("45")));i1206<n1206;i1206++){
+for(let i1230=0,n1230=Math.max(0,Math.floor(r.num("45")));i1230<n1230;i1230++){
 c.block="04k4";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["19","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -39905,7 +43599,7 @@ r.command(c,"add_effect_amount",["transparency","0",null]);
 c.block="25yt";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["mnc8"]),null]);
 c.block="8mmv";r.guard(c);
-for(let i1207=0,n1207=Math.max(0,Math.floor(r.num("50")));i1207<n1207;i1207++){
+for(let i1231=0,n1231=Math.max(0,Math.floor(r.num("50")));i1231<n1231;i1231++){
 c.block="9gfd";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="306w";r.guard(c);
@@ -39949,9 +43643,9 @@ r.command(c,"rotate_absolute",["180",null]);
 c.block="wfer";r.guard(c);
 r.command(c,"set_variable",["wr8j","4.3",null]);
 c.block="hjum";r.guard(c);
-for(let i1208=0,n1208=Math.max(0,Math.floor(r.num("10")));i1208<n1208;i1208++){
+for(let i1232=0,n1232=Math.max(0,Math.floor(r.num("10")));i1232<n1232;i1232++){
 c.block="e5ah";r.guard(c);
-for(let i1209=0,n1209=Math.max(0,Math.floor(r.num("5")));i1209<n1209;i1209++){
+for(let i1233=0,n1233=Math.max(0,Math.floor(r.num("5")));i1233<n1233;i1233++){
 c.block="fkq6";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="i3b1";r.guard(c);
@@ -39997,7 +43691,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="lndx";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["5v37"]),null]);
 c.block="pfeu";r.guard(c);
-for(let i1210=0,n1210=Math.max(0,Math.floor(r.num("75")));i1210<n1210;i1210++){
+for(let i1234=0,n1234=Math.max(0,Math.floor(r.num("75")));i1234<n1234;i1234++){
 c.block="1mgp";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","1.5",null]);
 c.block="21yf";r.guard(c);
@@ -40076,7 +43770,7 @@ r.command(c,"change_variable",["c9o4","-10",null]);
 c.block="7oxo";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="wb5c";r.guard(c);
-for(let i1211=0,n1211=Math.max(0,Math.floor(r.num("50")));i1211<n1211;i1211++){
+for(let i1235=0,n1235=Math.max(0,Math.floor(r.num("50")));i1235<n1235;i1235++){
 c.block="jiw2";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["83",null]))){
 c.block="5gnq";r.guard(c);
@@ -40095,7 +43789,7 @@ r.command(c,"show",[null]);
 c.block="rpiz";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="zljy";r.guard(c);
-for(let i1212=0,n1212=Math.max(0,Math.floor(r.num("45")));i1212<n1212;i1212++){
+for(let i1236=0,n1236=Math.max(0,Math.floor(r.num("45")));i1236<n1236;i1236++){
 c.block="tiq2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["11.7","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="xlxh";r.guard(c);
@@ -40131,7 +43825,7 @@ r.command(c,"change_variable",["qn98","-55",null]);
 c.block="sfag";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="wpi3";r.guard(c);
-for(let i1213=0,n1213=Math.max(0,Math.floor(r.num("155")));i1213<n1213;i1213++){
+for(let i1237=0,n1237=Math.max(0,Math.floor(r.num("155")));i1237<n1237;i1237++){
 yield 1;
 }
 c.block="7290";r.guard(c);
@@ -40139,7 +43833,7 @@ r.command(c,"show",[null]);
 c.block="4e1u";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="kavf";r.guard(c);
-for(let i1214=0,n1214=Math.max(0,Math.floor(r.num("45")));i1214<n1214;i1214++){
+for(let i1238=0,n1238=Math.max(0,Math.floor(r.num("45")));i1238<n1238;i1238++){
 c.block="a9zj";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["11.7","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 yield 1;
@@ -40167,7 +43861,7 @@ if(r.truth(r.value(c,"is_press_some_key",["82",null]))){
 c.block="t71x";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER_OR_EQUAL","32"]))){
 c.block="80ai";r.guard(c);
-for(let i1215=0,n1215=Math.max(0,Math.floor(r.num("1")));i1215<n1215;i1215++){
+for(let i1239=0,n1239=Math.max(0,Math.floor(r.num("1")));i1239<n1239;i1239++){
 yield 1;
 }
 c.block="i8ju";r.guard(c);
@@ -40177,7 +43871,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="2cyu";r.guard(c);
 r.command(c,"change_variable",["qn98","-32",null]);
 c.block="2agf";r.guard(c);
-for(let i1216=0,n1216=Math.max(0,Math.floor(r.num("100")));i1216<n1216;i1216++){
+for(let i1240=0,n1240=Math.max(0,Math.floor(r.num("100")));i1240<n1240;i1240++){
 yield 1;
 }
 }
@@ -40216,7 +43910,7 @@ r.command(c,"set_variable",["cfmd","15",null]);
 c.block="76ce";r.guard(c);
 r.command(c,"set_variable",["jcf6","1",null]);
 c.block="pzko";r.guard(c);
-for(let i1217=0,n1217=Math.max(0,Math.floor(r.num("100")));i1217<n1217;i1217++){
+for(let i1241=0,n1241=Math.max(0,Math.floor(r.num("100")));i1241<n1241;i1241++){
 c.block="fa55";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["18","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="5hwh";r.guard(c);
@@ -40239,7 +43933,7 @@ break;
 yield 1;
 }
 c.block="4643";r.guard(c);
-for(let i1218=0,n1218=Math.max(0,Math.floor(r.num("260")));i1218<n1218;i1218++){
+for(let i1242=0,n1242=Math.max(0,Math.floor(r.num("260")));i1242<n1242;i1242++){
 c.block="bzcr";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="g1xo";r.guard(c);
@@ -40272,13 +43966,13 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="v8fm";r.guard(c);
 r.command(c,"set_variable",["fqlt","0",null]);
 c.block="wim5";r.guard(c);
-for(let i1219=0,n1219=Math.max(0,Math.floor(r.num("5")));i1219<n1219;i1219++){
+for(let i1243=0,n1243=Math.max(0,Math.floor(r.num("5")));i1243<n1243;i1243++){
 yield 1;
 }
 c.block="esfe";r.guard(c);
 r.command(c,"set_variable",["jcf6","0",null]);
 c.block="g1dd";r.guard(c);
-for(let i1220=0,n1220=Math.max(0,Math.floor(r.num("50")));i1220<n1220;i1220++){
+for(let i1244=0,n1244=Math.max(0,Math.floor(r.num("50")));i1244<n1244;i1244++){
 c.block="3kpk";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["120","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="g1vq";r.guard(c);
@@ -40294,13 +43988,13 @@ r.command(c,"set_variable",["cfmd","0",null]);
 c.block="jk94";r.guard(c);
 r.command(c,"set_variable",["fqlt","0",null]);
 c.block="1795";r.guard(c);
-for(let i1221=0,n1221=Math.max(0,Math.floor(r.num("5")));i1221<n1221;i1221++){
+for(let i1245=0,n1245=Math.max(0,Math.floor(r.num("5")));i1245<n1245;i1245++){
 yield 1;
 }
 c.block="f12z";r.guard(c);
 r.command(c,"set_variable",["jcf6","0",null]);
 c.block="min0";r.guard(c);
-for(let i1222=0,n1222=Math.max(0,Math.floor(r.num("20")));i1222<n1222;i1222++){
+for(let i1246=0,n1246=Math.max(0,Math.floor(r.num("20")));i1246<n1246;i1246++){
 c.block="ncqu";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","5"]),null]);
 yield 1;
@@ -40322,7 +44016,7 @@ r.command(c,"set_variable",["g4sc","15",null]);
 c.block="gqs0";r.guard(c);
 r.command(c,"set_variable",["ec6d","1",null]);
 c.block="6jec";r.guard(c);
-for(let i1223=0,n1223=Math.max(0,Math.floor(r.num("100")));i1223<n1223;i1223++){
+for(let i1247=0,n1247=Math.max(0,Math.floor(r.num("100")));i1247<n1247;i1247++){
 c.block="u24v";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["18","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="l2mr";r.guard(c);
@@ -40345,7 +44039,7 @@ break;
 yield 1;
 }
 c.block="xhek";r.guard(c);
-for(let i1224=0,n1224=Math.max(0,Math.floor(r.num("260")));i1224<n1224;i1224++){
+for(let i1248=0,n1248=Math.max(0,Math.floor(r.num("260")));i1248<n1248;i1248++){
 c.block="3bzw";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="sa28";r.guard(c);
@@ -40378,13 +44072,13 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="4cqn";r.guard(c);
 r.command(c,"set_variable",["fqlt","0",null]);
 c.block="58ai";r.guard(c);
-for(let i1225=0,n1225=Math.max(0,Math.floor(r.num("5")));i1225<n1225;i1225++){
+for(let i1249=0,n1249=Math.max(0,Math.floor(r.num("5")));i1249<n1249;i1249++){
 yield 1;
 }
 c.block="pyt9";r.guard(c);
 r.command(c,"set_variable",["ec6d","0",null]);
 c.block="vft5";r.guard(c);
-for(let i1226=0,n1226=Math.max(0,Math.floor(r.num("50")));i1226<n1226;i1226++){
+for(let i1250=0,n1250=Math.max(0,Math.floor(r.num("50")));i1250<n1250;i1250++){
 c.block="tpi7";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["120","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","7"]),null]);
 c.block="nxnl";r.guard(c);
@@ -40400,13 +44094,13 @@ r.command(c,"set_variable",["g4sc","0",null]);
 c.block="xhqc";r.guard(c);
 r.command(c,"set_variable",["fqlt","0",null]);
 c.block="6op9";r.guard(c);
-for(let i1227=0,n1227=Math.max(0,Math.floor(r.num("5")));i1227<n1227;i1227++){
+for(let i1251=0,n1251=Math.max(0,Math.floor(r.num("5")));i1251<n1251;i1251++){
 yield 1;
 }
 c.block="4lrp";r.guard(c);
 r.command(c,"set_variable",["ec6d","0",null]);
 c.block="rzza";r.guard(c);
-for(let i1228=0,n1228=Math.max(0,Math.floor(r.num("20")));i1228<n1228;i1228++){
+for(let i1252=0,n1252=Math.max(0,Math.floor(r.num("20")));i1252<n1252;i1252++){
 c.block="m7te";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","5"]),null]);
 yield 1;
@@ -40427,7 +44121,7 @@ while(true){
 c.block="1qy6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1vu0",null]),"LESS_OR_EQUAL","0"]))){
 c.block="nwnw";r.guard(c);
-for(let i1229=0,n1229=Math.max(0,Math.floor(r.num("10")));i1229<n1229;i1229++){
+for(let i1253=0,n1253=Math.max(0,Math.floor(r.num("10")));i1253<n1253;i1253++){
 c.block="46no";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -40467,7 +44161,7 @@ while(true){
 c.block="1qy6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["05ze",null]),"LESS_OR_EQUAL","0"]))){
 c.block="nwnw";r.guard(c);
-for(let i1230=0,n1230=Math.max(0,Math.floor(r.num("10")));i1230<n1230;i1230++){
+for(let i1254=0,n1254=Math.max(0,Math.floor(r.num("10")));i1254<n1254;i1254++){
 c.block="46no";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -40507,7 +44201,7 @@ while(true){
 c.block="2y8h";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1vu0",null]),"LESS_OR_EQUAL","0"]))){
 c.block="nua0";r.guard(c);
-for(let i1231=0,n1231=Math.max(0,Math.floor(r.num("10")));i1231<n1231;i1231++){
+for(let i1255=0,n1255=Math.max(0,Math.floor(r.num("10")));i1255<n1255;i1255++){
 c.block="5li7";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -40547,7 +44241,7 @@ while(true){
 c.block="2y8h";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["05ze",null]),"LESS_OR_EQUAL","0"]))){
 c.block="nua0";r.guard(c);
-for(let i1232=0,n1232=Math.max(0,Math.floor(r.num("10")));i1232<n1232;i1232++){
+for(let i1256=0,n1256=Math.max(0,Math.floor(r.num("10")));i1256<n1256;i1256++){
 c.block="5li7";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -40599,13 +44293,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-4",null,"4",null]),null]);
 c.block="37rg";r.guard(c);
 r.command(c,"show",[null]);
 c.block="bzen";r.guard(c);
-for(let i1233=0,n1233=Math.max(0,Math.floor(r.num("7")));i1233<n1233;i1233++){
+for(let i1257=0,n1257=Math.max(0,Math.floor(r.num("7")));i1257<n1257;i1257++){
 c.block="zc3x";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="as4n";r.guard(c);
-for(let i1234=0,n1234=Math.max(0,Math.floor(r.num("10")));i1234<n1234;i1234++){
+for(let i1258=0,n1258=Math.max(0,Math.floor(r.num("10")));i1258<n1258;i1258++){
 c.block="yy3n";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -40634,9 +44328,9 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="9ou5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="lywj";r.guard(c);
-for(let i1235=0,n1235=Math.max(0,Math.floor(r.num("7")));i1235<n1235;i1235++){
+for(let i1259=0,n1259=Math.max(0,Math.floor(r.num("7")));i1259<n1259;i1259++){
 c.block="5cjh";r.guard(c);
-for(let i1236=0,n1236=Math.max(0,Math.floor(r.num("1")));i1236<n1236;i1236++){
+for(let i1260=0,n1260=Math.max(0,Math.floor(r.num("1")));i1260<n1260;i1260++){
 yield 1;
 }
 c.block="vfxy";r.guard(c);
@@ -40644,7 +44338,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="k8hc";r.guard(c);
-for(let i1237=0,n1237=Math.max(0,Math.floor(r.num("4")));i1237<n1237;i1237++){
+for(let i1261=0,n1261=Math.max(0,Math.floor(r.num("4")));i1261<n1261;i1261++){
 c.block="kuj1";r.guard(c);
 r.command(c,"change_scale_size",["-2",null]);
 yield 1;
@@ -40672,9 +44366,9 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="9ou5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="lywj";r.guard(c);
-for(let i1238=0,n1238=Math.max(0,Math.floor(r.num("7")));i1238<n1238;i1238++){
+for(let i1262=0,n1262=Math.max(0,Math.floor(r.num("7")));i1262<n1262;i1262++){
 c.block="5cjh";r.guard(c);
-for(let i1239=0,n1239=Math.max(0,Math.floor(r.num("2")));i1239<n1239;i1239++){
+for(let i1263=0,n1263=Math.max(0,Math.floor(r.num("2")));i1263<n1263;i1263++){
 yield 1;
 }
 c.block="vfxy";r.guard(c);
@@ -40682,7 +44376,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="k8hc";r.guard(c);
-for(let i1240=0,n1240=Math.max(0,Math.floor(r.num("5")));i1240<n1240;i1240++){
+for(let i1264=0,n1264=Math.max(0,Math.floor(r.num("5")));i1264<n1264;i1264++){
 c.block="kuj1";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -40708,9 +44402,9 @@ r.command(c,"change_to_some_shape",["1",null]);
 c.block="9ou5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="lywj";r.guard(c);
-for(let i1241=0,n1241=Math.max(0,Math.floor(r.num("7")));i1241<n1241;i1241++){
+for(let i1265=0,n1265=Math.max(0,Math.floor(r.num("7")));i1265<n1265;i1265++){
 c.block="5cjh";r.guard(c);
-for(let i1242=0,n1242=Math.max(0,Math.floor(r.num("2")));i1242<n1242;i1242++){
+for(let i1266=0,n1266=Math.max(0,Math.floor(r.num("2")));i1266<n1266;i1266++){
 yield 1;
 }
 c.block="vfxy";r.guard(c);
@@ -40718,7 +44412,7 @@ r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="k8hc";r.guard(c);
-for(let i1243=0,n1243=Math.max(0,Math.floor(r.num("8")));i1243<n1243;i1243++){
+for(let i1267=0,n1267=Math.max(0,Math.floor(r.num("8")));i1267<n1267;i1267++){
 c.block="kuj1";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -40750,13 +44444,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-4",null,"4",null]),null]);
 c.block="37rg";r.guard(c);
 r.command(c,"show",[null]);
 c.block="bzen";r.guard(c);
-for(let i1244=0,n1244=Math.max(0,Math.floor(r.num("7")));i1244<n1244;i1244++){
+for(let i1268=0,n1268=Math.max(0,Math.floor(r.num("7")));i1268<n1268;i1268++){
 c.block="zc3x";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="as4n";r.guard(c);
-for(let i1245=0,n1245=Math.max(0,Math.floor(r.num("10")));i1245<n1245;i1245++){
+for(let i1269=0,n1269=Math.max(0,Math.floor(r.num("10")));i1269<n1269;i1269++){
 c.block="yy3n";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -40773,7 +44467,7 @@ r.register("bs52","when_scene_start",[null],function*(r,c){
 // 환술인형 / 7u9v
 r.register("7u9v","when_clone_start",[null],function*(r,c){
 c.block="z9ho";r.guard(c);
-for(let i1246=0,n1246=Math.max(0,Math.floor(r.num("30")));i1246<n1246;i1246++){
+for(let i1270=0,n1270=Math.max(0,Math.floor(r.num("30")));i1270<n1270;i1270++){
 c.block="iixq";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.33",null]);
 c.block="kxya";r.guard(c);
@@ -40810,7 +44504,7 @@ r.command(c,"locate",["ocqj",null]);
 }
 }
 c.block="qs1a";r.guard(c);
-for(let i1247=0,n1247=Math.max(0,Math.floor(r.num("45")));i1247<n1247;i1247++){
+for(let i1271=0,n1271=Math.max(0,Math.floor(r.num("45")));i1271<n1271;i1271++){
 yield 1;
 }
 c.block="3iee";r.guard(c);
@@ -40825,13 +44519,13 @@ r.command(c,"see_angle_object",["n230",null]);
 }
 }
 c.block="964v";r.guard(c);
-for(let i1248=0,n1248=Math.max(0,Math.floor(r.num("5")));i1248<n1248;i1248++){
+for(let i1272=0,n1272=Math.max(0,Math.floor(r.num("5")));i1272<n1272;i1272++){
 yield 1;
 }
 c.block="rok6";r.guard(c);
 r.command(c,"set_variable",["v4ws","0",null]);
 c.block="klok";r.guard(c);
-for(let i1249=0,n1249=Math.max(0,Math.floor(r.num("21")));i1249<n1249;i1249++){
+for(let i1273=0,n1273=Math.max(0,Math.floor(r.num("21")));i1273<n1273;i1273++){
 c.block="xxjs";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="09mj";r.guard(c);
@@ -40940,7 +44634,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["el9e"]),null]);
 c.block="bwhb";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="987g";r.guard(c);
-for(let i1250=0,n1250=Math.max(0,Math.floor(r.num("2")));i1250<n1250;i1250++){
+for(let i1274=0,n1274=Math.max(0,Math.floor(r.num("2")));i1274<n1274;i1274++){
 c.block="kjy0";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="n5t9";r.guard(c);
@@ -40957,7 +44651,7 @@ yield 1;
 c.block="s4h6";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["49fx"]),null]);
 c.block="jina";r.guard(c);
-for(let i1251=0,n1251=Math.max(0,Math.floor(r.num("25")));i1251<n1251;i1251++){
+for(let i1275=0,n1275=Math.max(0,Math.floor(r.num("25")));i1275<n1275;i1275++){
 c.block="br2s";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="yp0o";r.guard(c);
@@ -40979,7 +44673,7 @@ c.block="jghs";r.guard(c);
 r.command(c,"change_variable",["lgp6","20",null]);
 }
 c.block="t5ix";r.guard(c);
-for(let i1252=0,n1252=Math.max(0,Math.floor(r.num("30")));i1252<n1252;i1252++){
+for(let i1276=0,n1276=Math.max(0,Math.floor(r.num("30")));i1276<n1276;i1276++){
 c.block="rx76";r.guard(c);
 r.command(c,"change_variable",["hsae",r.value(c,"get_variable",["u9xr",null]),null]);
 c.block="bxfg";r.guard(c);
@@ -41004,7 +44698,7 @@ r.command(c,"set_variable",["u9xr","1.8",null]);
 c.block="95vw";r.guard(c);
 r.command(c,"set_variable",["tnju","0",null]);
 c.block="pcry";r.guard(c);
-for(let i1253=0,n1253=Math.max(0,Math.floor(r.num("30")));i1253<n1253;i1253++){
+for(let i1277=0,n1277=Math.max(0,Math.floor(r.num("30")));i1277<n1277;i1277++){
 c.block="hz30";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="ytbf";r.guard(c);
@@ -41070,7 +44764,7 @@ r.command(c,"message_cast",["tuhm",null]);
 yield 1;
 }
 c.block="1nrp";r.guard(c);
-for(let i1254=0,n1254=Math.max(0,Math.floor(r.num("40")));i1254<n1254;i1254++){
+for(let i1278=0,n1278=Math.max(0,Math.floor(r.num("40")));i1278<n1278;i1278++){
 c.block="whep";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="srjt";r.guard(c);
@@ -41085,7 +44779,7 @@ r.command(c,"set_variable",["od28","0",null]);
 c.block="gctr";r.guard(c);
 r.command(c,"set_variable",["hsae","0",null]);
 c.block="nn1y";r.guard(c);
-for(let i1255=0,n1255=Math.max(0,Math.floor(r.num("9")));i1255<n1255;i1255++){
+for(let i1279=0,n1279=Math.max(0,Math.floor(r.num("9")));i1279<n1279;i1279++){
 c.block="0awy";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="dsza";r.guard(c);
@@ -41114,7 +44808,7 @@ r.command(c,"set_variable",["u9xr","1",null]);
 c.block="oyzq";r.guard(c);
 r.command(c,"set_variable",["a5tc","1",null]);
 c.block="be5x";r.guard(c);
-for(let i1256=0,n1256=Math.max(0,Math.floor(r.num("20")));i1256<n1256;i1256++){
+for(let i1280=0,n1280=Math.max(0,Math.floor(r.num("20")));i1280<n1280;i1280++){
 c.block="zunx";r.guard(c);
 r.command(c,"change_variable",["tr7h",r.value(c,"get_variable",["u9xr",null]),null]);
 c.block="ftns";r.guard(c);
@@ -41127,7 +44821,7 @@ break;
 yield 1;
 }
 c.block="65hm";r.guard(c);
-for(let i1257=0,n1257=Math.max(0,Math.floor(r.num("1")));i1257<n1257;i1257++){
+for(let i1281=0,n1281=Math.max(0,Math.floor(r.num("1")));i1281<n1281;i1281++){
 c.block="wuvb";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="dx1b";r.guard(c);
@@ -41136,7 +44830,7 @@ break;
 yield 1;
 }
 c.block="m8el";r.guard(c);
-for(let i1258=0,n1258=Math.max(0,Math.floor(r.num("10")));i1258<n1258;i1258++){
+for(let i1282=0,n1282=Math.max(0,Math.floor(r.num("10")));i1282<n1282;i1282++){
 c.block="7ebo";r.guard(c);
 r.command(c,"change_variable",["tr7h",r.value(c,"get_variable",["u9xr",null]),null]);
 c.block="krf4";r.guard(c);
@@ -41186,7 +44880,7 @@ r.command(c,"message_cast",["q518",null]);
 c.block="ijme";r.guard(c);
 r.command(c,"set_variable",["a5tc","0",null]);
 c.block="mdz6";r.guard(c);
-for(let i1259=0,n1259=Math.max(0,Math.floor(r.num("40")));i1259<n1259;i1259++){
+for(let i1283=0,n1283=Math.max(0,Math.floor(r.num("40")));i1283<n1283;i1283++){
 c.block="12cm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="schq";r.guard(c);
@@ -41216,7 +44910,7 @@ if(r.truth(r.value(c,"is_press_some_key",["13",null]))){
 c.block="wtgg";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["el9e"]),null]);
 c.block="dzgy";r.guard(c);
-for(let i1260=0,n1260=Math.max(0,Math.floor(r.num("4")));i1260<n1260;i1260++){
+for(let i1284=0,n1284=Math.max(0,Math.floor(r.num("4")));i1284<n1284;i1284++){
 c.block="nl52";r.guard(c);
 r.command(c,"change_to_next_shape",["prev",null]);
 c.block="6t1c";r.guard(c);
@@ -41225,7 +44919,7 @@ c.block="vno7";r.guard(c);
 break;
 }
 c.block="uw7w";r.guard(c);
-for(let i1261=0,n1261=Math.max(0,Math.floor(r.num("1")));i1261<n1261;i1261++){
+for(let i1285=0,n1285=Math.max(0,Math.floor(r.num("1")));i1285<n1285;i1285++){
 c.block="yb6n";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="lswy";r.guard(c);
@@ -41236,7 +44930,7 @@ yield 1;
 yield 1;
 }
 c.block="sdrk";r.guard(c);
-for(let i1262=0,n1262=Math.max(0,Math.floor(r.num("15")));i1262<n1262;i1262++){
+for(let i1286=0,n1286=Math.max(0,Math.floor(r.num("15")));i1286<n1286;i1286++){
 c.block="qzgc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="u5hr";r.guard(c);
@@ -41247,7 +44941,7 @@ yield 1;
 c.block="vx01";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="qga6";r.guard(c);
-for(let i1263=0,n1263=Math.max(0,Math.floor(r.num("5")));i1263<n1263;i1263++){
+for(let i1287=0,n1287=Math.max(0,Math.floor(r.num("5")));i1287<n1287;i1287++){
 c.block="r7jd";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="bqsc";r.guard(c);
@@ -41289,7 +44983,7 @@ r.command(c,"set_variable",["05ze","0.5",null]);
 }
 }
 c.block="sczf";r.guard(c);
-for(let i1264=0,n1264=Math.max(0,Math.floor(r.num("30")));i1264<n1264;i1264++){
+for(let i1288=0,n1288=Math.max(0,Math.floor(r.num("30")));i1288<n1288;i1288++){
 c.block="tugx";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="efkb";r.guard(c);
@@ -41300,7 +44994,7 @@ yield 1;
 c.block="upwp";r.guard(c);
 r.command(c,"set_variable",["q9d0","0",null]);
 c.block="wdm7";r.guard(c);
-for(let i1265=0,n1265=Math.max(0,Math.floor(r.num("9")));i1265<n1265;i1265++){
+for(let i1289=0,n1289=Math.max(0,Math.floor(r.num("9")));i1289<n1289;i1289++){
 c.block="0vl3";r.guard(c);
 r.command(c,"change_to_next_shape",["prev",null]);
 c.block="psh6";r.guard(c);
@@ -41323,7 +45017,7 @@ yield 1;
 c.block="3fxo";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["el9e"]),null]);
 c.block="l7eh";r.guard(c);
-for(let i1266=0,n1266=Math.max(0,Math.floor(r.num("60")));i1266<n1266;i1266++){
+for(let i1290=0,n1290=Math.max(0,Math.floor(r.num("60")));i1290<n1290;i1290++){
 c.block="a67q";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["40",null]))){
 c.block="ovvr";r.guard(c);
@@ -41365,13 +45059,13 @@ r.command(c,"set_variable",["8w41","1",null]);
 c.block="20ki";r.guard(c);
 r.command(c,"set_variable",["du2p","1.3",null]);
 c.block="pyit";r.guard(c);
-for(let i1267=0,n1267=Math.max(0,Math.floor(r.num("30")));i1267<n1267;i1267++){
+for(let i1291=0,n1291=Math.max(0,Math.floor(r.num("30")));i1291<n1291;i1291++){
 c.block="bnzz";r.guard(c);
 r.command(c,"change_variable",["du2p","0.055",null]);
 yield 1;
 }
 c.block="e2v9";r.guard(c);
-for(let i1268=0,n1268=Math.max(0,Math.floor(r.num("40")));i1268<n1268;i1268++){
+for(let i1292=0,n1292=Math.max(0,Math.floor(r.num("40")));i1292<n1292;i1292++){
 c.block="lpqr";r.guard(c);
 r.command(c,"change_variable",["du2p","0.034",null]);
 yield 1;
@@ -41477,7 +45171,7 @@ r.command(c,"set_variable",["lgp6","0",null]);
 c.block="d4sa";r.guard(c);
 r.command(c,"set_variable",["u82p","3",null]);
 c.block="pxr9";r.guard(c);
-for(let i1269=0,n1269=Math.max(0,Math.floor(r.num("30")));i1269<n1269;i1269++){
+for(let i1293=0,n1293=Math.max(0,Math.floor(r.num("30")));i1293<n1293;i1293++){
 c.block="0qbx";r.guard(c);
 r.command(c,"change_variable",["zssf",r.value(c,"calc_basic",[r.value(c,"get_variable",["u82p",null]),"MULTI","0.1"]),null]);
 c.block="tk5l";r.guard(c);
@@ -41499,7 +45193,7 @@ r.command(c,"set_variable",["8fjk","0",null]);
 c.block="v255";r.guard(c);
 r.command(c,"set_variable",["zssf","0",null]);
 c.block="7p4i";r.guard(c);
-for(let i1270=0,n1270=Math.max(0,Math.floor(r.num("6")));i1270<n1270;i1270++){
+for(let i1294=0,n1294=Math.max(0,Math.floor(r.num("6")));i1294<n1294;i1294++){
 c.block="fk8c";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="qwn6";r.guard(c);
@@ -41583,7 +45277,7 @@ c.block="wf4c";r.guard(c);
 r.command(c,"set_variable",["lgp6","-6",null]);
 }
 c.block="2rg4";r.guard(c);
-for(let i1271=0,n1271=Math.max(0,Math.floor(r.num("24")));i1271<n1271;i1271++){
+for(let i1295=0,n1295=Math.max(0,Math.floor(r.num("24")));i1295<n1295;i1295++){
 yield 1;
 }
 c.block="6hfk";r.guard(c);
@@ -41607,7 +45301,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="x6y1";r.guard(c);
 r.command(c,"set_variable",["u82p","3",null]);
 c.block="bl0h";r.guard(c);
-for(let i1272=0,n1272=Math.max(0,Math.floor(r.num("10")));i1272<n1272;i1272++){
+for(let i1296=0,n1296=Math.max(0,Math.floor(r.num("10")));i1296<n1296;i1296++){
 c.block="dpbi";r.guard(c);
 r.command(c,"change_variable",["3hir",r.value(c,"get_variable",["u82p",null]),null]);
 c.block="bpf5";r.guard(c);
@@ -41630,7 +45324,7 @@ break;
 yield 1;
 }
 c.block="7lth";r.guard(c);
-for(let i1273=0,n1273=Math.max(0,Math.floor(r.num("3")));i1273<n1273;i1273++){
+for(let i1297=0,n1297=Math.max(0,Math.floor(r.num("3")));i1297<n1297;i1297++){
 yield 1;
 }
 c.block="52fg";r.guard(c);
@@ -41647,7 +45341,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="j6xt";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="xt32";r.guard(c);
-for(let i1274=0,n1274=Math.max(0,Math.floor(r.num("5")));i1274<n1274;i1274++){
+for(let i1298=0,n1298=Math.max(0,Math.floor(r.num("5")));i1298<n1298;i1298++){
 c.block="4v72";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="iv2m";r.guard(c);
@@ -41668,11 +45362,11 @@ break;
 yield 1;
 }
 c.block="m5m0";r.guard(c);
-for(let i1275=0,n1275=Math.max(0,Math.floor(r.num("3")));i1275<n1275;i1275++){
+for(let i1299=0,n1299=Math.max(0,Math.floor(r.num("3")));i1299<n1299;i1299++){
 yield 1;
 }
 c.block="yxw9";r.guard(c);
-for(let i1276=0,n1276=Math.max(0,Math.floor(r.num("30")));i1276<n1276;i1276++){
+for(let i1300=0,n1300=Math.max(0,Math.floor(r.num("30")));i1300<n1300;i1300++){
 c.block="n39y";r.guard(c);
 r.command(c,"change_variable",["3hir",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["3hir",null])]),"DIVIDE","7"]),null]);
 c.block="9y37";r.guard(c);
@@ -41779,7 +45473,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="4kv2";r.guard(c);
 r.command(c,"show",[null]);
 c.block="xgi1";r.guard(c);
-for(let i1277=0,n1277=Math.max(0,Math.floor(r.num("6")));i1277<n1277;i1277++){
+for(let i1301=0,n1301=Math.max(0,Math.floor(r.num("6")));i1301<n1301;i1301++){
 c.block="afs9";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="6kt6";r.guard(c);
@@ -41867,7 +45561,7 @@ r.command(c,"move_x",["12",null]);
 yield 1;
 }
 c.block="kqwr";r.guard(c);
-for(let i1278=0,n1278=Math.max(0,Math.floor(r.num("5")));i1278<n1278;i1278++){
+for(let i1302=0,n1302=Math.max(0,Math.floor(r.num("5")));i1302<n1302;i1302++){
 c.block="qrov";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -41950,7 +45644,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="1m2u";r.guard(c);
 r.command(c,"set_variable",["haay","3",null]);
 c.block="p8up";r.guard(c);
-for(let i1279=0,n1279=Math.max(0,Math.floor(r.num("10")));i1279<n1279;i1279++){
+for(let i1303=0,n1303=Math.max(0,Math.floor(r.num("10")));i1303<n1303;i1303++){
 c.block="gjel";r.guard(c);
 r.command(c,"change_variable",["1152",r.value(c,"calc_basic",[r.value(c,"get_variable",["haay",null]),"MULTI","0.5"]),null]);
 c.block="gv7s";r.guard(c);
@@ -41973,7 +45667,7 @@ break;
 yield 1;
 }
 c.block="joki";r.guard(c);
-for(let i1280=0,n1280=Math.max(0,Math.floor(r.num("3")));i1280<n1280;i1280++){
+for(let i1304=0,n1304=Math.max(0,Math.floor(r.num("3")));i1304<n1304;i1304++){
 yield 1;
 }
 c.block="mvi9";r.guard(c);
@@ -41983,7 +45677,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="ro2r";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="xjbz";r.guard(c);
-for(let i1281=0,n1281=Math.max(0,Math.floor(r.num("5")));i1281<n1281;i1281++){
+for(let i1305=0,n1305=Math.max(0,Math.floor(r.num("5")));i1305<n1305;i1305++){
 c.block="vr1v";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="9pua";r.guard(c);
@@ -42004,11 +45698,11 @@ break;
 yield 1;
 }
 c.block="1cvq";r.guard(c);
-for(let i1282=0,n1282=Math.max(0,Math.floor(r.num("3")));i1282<n1282;i1282++){
+for(let i1306=0,n1306=Math.max(0,Math.floor(r.num("3")));i1306<n1306;i1306++){
 yield 1;
 }
 c.block="lh1o";r.guard(c);
-for(let i1283=0,n1283=Math.max(0,Math.floor(r.num("30")));i1283<n1283;i1283++){
+for(let i1307=0,n1307=Math.max(0,Math.floor(r.num("30")));i1307<n1307;i1307++){
 c.block="4my5";r.guard(c);
 r.command(c,"change_variable",["1152",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["1152",null])]),"DIVIDE","7"]),null]);
 c.block="8zxe";r.guard(c);
@@ -42057,7 +45751,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="z5h7";r.guard(c);
 r.command(c,"show",[null]);
 c.block="ewcu";r.guard(c);
-for(let i1284=0,n1284=Math.max(0,Math.floor(r.num("6")));i1284<n1284;i1284++){
+for(let i1308=0,n1308=Math.max(0,Math.floor(r.num("6")));i1308<n1308;i1308++){
 c.block="qa5l";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="wnd7";r.guard(c);
@@ -42153,7 +45847,7 @@ r.command(c,"move_x",["19",null]);
 yield 1;
 }
 c.block="6kz0";r.guard(c);
-for(let i1285=0,n1285=Math.max(0,Math.floor(r.num("5")));i1285<n1285;i1285++){
+for(let i1309=0,n1309=Math.max(0,Math.floor(r.num("5")));i1309<n1309;i1309++){
 c.block="iyn6";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -42242,13 +45936,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="46yo";r.guard(c);
 r.command(c,"show",[null]);
 c.block="1dll";r.guard(c);
-for(let i1286=0,n1286=Math.max(0,Math.floor(r.num("7")));i1286<n1286;i1286++){
+for(let i1310=0,n1310=Math.max(0,Math.floor(r.num("7")));i1310<n1310;i1310++){
 c.block="8cxi";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="6ssd";r.guard(c);
-for(let i1287=0,n1287=Math.max(0,Math.floor(r.num("7")));i1287<n1287;i1287++){
+for(let i1311=0,n1311=Math.max(0,Math.floor(r.num("7")));i1311<n1311;i1311++){
 c.block="nhgo";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -42274,13 +45968,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="cshh";r.guard(c);
 r.command(c,"show",[null]);
 c.block="h1gp";r.guard(c);
-for(let i1288=0,n1288=Math.max(0,Math.floor(r.num("7")));i1288<n1288;i1288++){
+for(let i1312=0,n1312=Math.max(0,Math.floor(r.num("7")));i1312<n1312;i1312++){
 c.block="hj33";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="8see";r.guard(c);
-for(let i1289=0,n1289=Math.max(0,Math.floor(r.num("8")));i1289<n1289;i1289++){
+for(let i1313=0,n1313=Math.max(0,Math.floor(r.num("8")));i1313<n1313;i1313++){
 c.block="m66x";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -42306,13 +46000,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="el41";r.guard(c);
 r.command(c,"show",[null]);
 c.block="nle9";r.guard(c);
-for(let i1290=0,n1290=Math.max(0,Math.floor(r.num("7")));i1290<n1290;i1290++){
+for(let i1314=0,n1314=Math.max(0,Math.floor(r.num("7")));i1314<n1314;i1314++){
 c.block="lf2m";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="7iq8";r.guard(c);
-for(let i1291=0,n1291=Math.max(0,Math.floor(r.num("9")));i1291<n1291;i1291++){
+for(let i1315=0,n1315=Math.max(0,Math.floor(r.num("9")));i1315<n1315;i1315++){
 c.block="w7er";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -42330,7 +46024,7 @@ r.register("uxuo","when_message_cast",[null,"1qh6"],function*(r,c){
 c.block="x6y1";r.guard(c);
 r.command(c,"set_variable",["ks88","0",null]);
 c.block="bl0h";r.guard(c);
-for(let i1292=0,n1292=Math.max(0,Math.floor(r.num("10")));i1292<n1292;i1292++){
+for(let i1316=0,n1316=Math.max(0,Math.floor(r.num("10")));i1316<n1316;i1316++){
 c.block="heia";r.guard(c);
 r.command(c,"change_variable",["jyph",r.value(c,"calc_basic",[r.value(c,"get_variable",["ks88",null]),"DIVIDE","1.5"]),null]);
 c.block="75r3";r.guard(c);
@@ -42347,7 +46041,7 @@ r.command(c,"set_variable",["ks88","4",null]);
 c.block="rm0c";r.guard(c);
 r.command(c,"set_variable",["c5zi","0",null]);
 c.block="p8fb";r.guard(c);
-for(let i1293=0,n1293=Math.max(0,Math.floor(r.num("10")));i1293<n1293;i1293++){
+for(let i1317=0,n1317=Math.max(0,Math.floor(r.num("10")));i1317<n1317;i1317++){
 c.block="ikby";r.guard(c);
 r.command(c,"change_variable",["jyph",r.value(c,"calc_basic",[r.value(c,"get_variable",["ks88",null]),"MULTI","1"]),null]);
 c.block="dta1";r.guard(c);
@@ -42370,7 +46064,7 @@ break;
 yield 1;
 }
 c.block="2ilo";r.guard(c);
-for(let i1294=0,n1294=Math.max(0,Math.floor(r.num("20")));i1294<n1294;i1294++){
+for(let i1318=0,n1318=Math.max(0,Math.floor(r.num("20")));i1318<n1318;i1318++){
 c.block="cofx";r.guard(c);
 r.command(c,"change_variable",["jyph",r.value(c,"calc_basic",[r.value(c,"get_variable",["ks88",null]),"DIVIDE","2.2"]),null]);
 c.block="r9tg";r.guard(c);
@@ -42385,7 +46079,7 @@ yield 1;
 c.block="8odt";r.guard(c);
 r.command(c,"set_variable",["jyph","0",null]);
 c.block="wcdv";r.guard(c);
-for(let i1295=0,n1295=Math.max(0,Math.floor(r.num("5")));i1295<n1295;i1295++){
+for(let i1319=0,n1319=Math.max(0,Math.floor(r.num("5")));i1319<n1319;i1319++){
 c.block="n3k7";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="rszo";r.guard(c);
@@ -42401,7 +46095,7 @@ r.command(c,"set_variable",["4355","0",null]);
 c.block="a1av";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="loq5";r.guard(c);
-for(let i1296=0,n1296=Math.max(0,Math.floor(r.num("150")));i1296<n1296;i1296++){
+for(let i1320=0,n1320=Math.max(0,Math.floor(r.num("150")));i1320<n1320;i1320++){
 c.block="7r00";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="vmcj";r.guard(c);
@@ -42434,7 +46128,7 @@ r.command(c,"rotate_absolute",["270",null]);
 c.block="dmx5";r.guard(c);
 r.command(c,"set_variable",["4355","0",null]);
 c.block="vm83";r.guard(c);
-for(let i1297=0,n1297=Math.max(0,Math.floor(r.num("30")));i1297<n1297;i1297++){
+for(let i1321=0,n1321=Math.max(0,Math.floor(r.num("30")));i1321<n1321;i1321++){
 c.block="hpbo";r.guard(c);
 r.command(c,"rotate_relative",["12",null]);
 c.block="eqrx";r.guard(c);
@@ -42539,7 +46233,7 @@ r.command(c,"set_variable",["qvkr","2",null]);
 c.block="ct2h";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mswd";r.guard(c);
-for(let i1298=0,n1298=Math.max(0,Math.floor(r.num("150")));i1298<n1298;i1298++){
+for(let i1322=0,n1322=Math.max(0,Math.floor(r.num("150")));i1322<n1322;i1322++){
 c.block="8cho";r.guard(c);
 r.command(c,"set_variable",["bct6","-6",null]);
 c.block="v12p";r.guard(c);
@@ -42559,7 +46253,7 @@ r.command(c,"set_variable",["qvkr","4",null]);
 c.block="ugow";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="kp97";r.guard(c);
-for(let i1299=0,n1299=Math.max(0,Math.floor(r.num("1")));i1299<n1299;i1299++){
+for(let i1323=0,n1323=Math.max(0,Math.floor(r.num("1")));i1323<n1323;i1323++){
 yield 1;
 }
 c.block="blzu";r.guard(c);
@@ -42580,7 +46274,7 @@ r.command(c,"set_variable",["4eov","0",null]);
 c.block="2g1s";r.guard(c);
 r.command(c,"set_variable",["s3em","0",null]);
 c.block="g0vz";r.guard(c);
-for(let i1300=0,n1300=Math.max(0,Math.floor(r.num("30")));i1300<n1300;i1300++){
+for(let i1324=0,n1324=Math.max(0,Math.floor(r.num("30")));i1324<n1324;i1324++){
 c.block="hqt0";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="yhfd";r.guard(c);
@@ -42590,7 +46284,7 @@ r.command(c,"change_variable",["iblx","0.05",null]);
 yield 1;
 }
 c.block="2gws";r.guard(c);
-for(let i1301=0,n1301=Math.max(0,Math.floor(r.num("40")));i1301<n1301;i1301++){
+for(let i1325=0,n1325=Math.max(0,Math.floor(r.num("40")));i1325<n1325;i1325++){
 c.block="cnyq";r.guard(c);
 r.command(c,"change_variable",["du2p","0.034",null]);
 c.block="h2lj";r.guard(c);
@@ -42679,7 +46373,7 @@ r.command(c,"set_variable",["g8iy","0",null]);
 c.block="4htz";r.guard(c);
 r.command(c,"message_cast",["2fxk",null]);
 c.block="gipg";r.guard(c);
-for(let i1302=0,n1302=Math.max(0,Math.floor(r.num("30")));i1302<n1302;i1302++){
+for(let i1326=0,n1326=Math.max(0,Math.floor(r.num("30")));i1326<n1326;i1326++){
 c.block="gf8h";r.guard(c);
 r.command(c,"rotate_relative",["12",null]);
 c.block="ilkr";r.guard(c);
@@ -42719,7 +46413,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="x6y1";r.guard(c);
 r.command(c,"set_variable",["9c3g","0",null]);
 c.block="bl0h";r.guard(c);
-for(let i1303=0,n1303=Math.max(0,Math.floor(r.num("10")));i1303<n1303;i1303++){
+for(let i1327=0,n1327=Math.max(0,Math.floor(r.num("10")));i1327<n1327;i1327++){
 c.block="heia";r.guard(c);
 r.command(c,"change_variable",["uy2f",r.value(c,"calc_basic",[r.value(c,"get_variable",["9c3g",null]),"DIVIDE","1.5"]),null]);
 c.block="75r3";r.guard(c);
@@ -42738,7 +46432,7 @@ r.command(c,"set_variable",["g8iy","0",null]);
 c.block="fdnp";r.guard(c);
 r.command(c,"message_cast",["1qh6",null]);
 c.block="xt32";r.guard(c);
-for(let i1304=0,n1304=Math.max(0,Math.floor(r.num("10")));i1304<n1304;i1304++){
+for(let i1328=0,n1328=Math.max(0,Math.floor(r.num("10")));i1328<n1328;i1328++){
 c.block="68px";r.guard(c);
 r.command(c,"change_variable",["uy2f",r.value(c,"calc_basic",[r.value(c,"get_variable",["9c3g",null]),"DIVIDE","1.5"]),null]);
 c.block="a6sl";r.guard(c);
@@ -42761,7 +46455,7 @@ break;
 yield 1;
 }
 c.block="dx53";r.guard(c);
-for(let i1305=0,n1305=Math.max(0,Math.floor(r.num("20")));i1305<n1305;i1305++){
+for(let i1329=0,n1329=Math.max(0,Math.floor(r.num("20")));i1329<n1329;i1329++){
 c.block="nkil";r.guard(c);
 r.command(c,"change_variable",["uy2f",r.value(c,"calc_basic",[r.value(c,"get_variable",["9c3g",null]),"DIVIDE","4"]),null]);
 c.block="t6t8";r.guard(c);
@@ -42805,13 +46499,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="37rg";r.guard(c);
 r.command(c,"show",[null]);
 c.block="bzen";r.guard(c);
-for(let i1306=0,n1306=Math.max(0,Math.floor(r.num("7")));i1306<n1306;i1306++){
+for(let i1330=0,n1330=Math.max(0,Math.floor(r.num("7")));i1330<n1330;i1330++){
 c.block="zc3x";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="as4n";r.guard(c);
-for(let i1307=0,n1307=Math.max(0,Math.floor(r.num("7")));i1307<n1307;i1307++){
+for(let i1331=0,n1331=Math.max(0,Math.floor(r.num("7")));i1331<n1331;i1331++){
 c.block="yy3n";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -42837,13 +46531,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="46yo";r.guard(c);
 r.command(c,"show",[null]);
 c.block="1dll";r.guard(c);
-for(let i1308=0,n1308=Math.max(0,Math.floor(r.num("7")));i1308<n1308;i1308++){
+for(let i1332=0,n1332=Math.max(0,Math.floor(r.num("7")));i1332<n1332;i1332++){
 c.block="8cxi";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="6ssd";r.guard(c);
-for(let i1309=0,n1309=Math.max(0,Math.floor(r.num("11")));i1309<n1309;i1309++){
+for(let i1333=0,n1333=Math.max(0,Math.floor(r.num("11")));i1333<n1333;i1333++){
 c.block="nhgo";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -42869,13 +46563,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="8lb8";r.guard(c);
 r.command(c,"show",[null]);
 c.block="mjd1";r.guard(c);
-for(let i1310=0,n1310=Math.max(0,Math.floor(r.num("7")));i1310<n1310;i1310++){
+for(let i1334=0,n1334=Math.max(0,Math.floor(r.num("7")));i1334<n1334;i1334++){
 c.block="v2d5";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="nflc";r.guard(c);
-for(let i1311=0,n1311=Math.max(0,Math.floor(r.num("8")));i1311<n1311;i1311++){
+for(let i1335=0,n1335=Math.max(0,Math.floor(r.num("8")));i1335<n1335;i1335++){
 c.block="zebb";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -42901,13 +46595,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="h50e";r.guard(c);
 r.command(c,"show",[null]);
 c.block="eytq";r.guard(c);
-for(let i1312=0,n1312=Math.max(0,Math.floor(r.num("7")));i1312<n1312;i1312++){
+for(let i1336=0,n1336=Math.max(0,Math.floor(r.num("7")));i1336<n1336;i1336++){
 c.block="jnqm";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="wf2y";r.guard(c);
-for(let i1313=0,n1313=Math.max(0,Math.floor(r.num("11")));i1313<n1313;i1313++){
+for(let i1337=0,n1337=Math.max(0,Math.floor(r.num("11")));i1337<n1337;i1337++){
 c.block="zo03";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -42931,13 +46625,13 @@ r.command(c,"show",[null]);
 c.block="ppgm";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="ox9i";r.guard(c);
-for(let i1314=0,n1314=Math.max(0,Math.floor(r.num("30")));i1314<n1314;i1314++){
+for(let i1338=0,n1338=Math.max(0,Math.floor(r.num("30")));i1338<n1338;i1338++){
 c.block="uke9";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 yield 1;
 }
 c.block="3qkv";r.guard(c);
-for(let i1315=0,n1315=Math.max(0,Math.floor(r.num("10")));i1315<n1315;i1315++){
+for(let i1339=0,n1339=Math.max(0,Math.floor(r.num("10")));i1339<n1339;i1339++){
 c.block="xfar";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","6",null]);
 c.block="bvmd";r.guard(c);
@@ -43043,7 +46737,7 @@ r.command(c,"set_variable",["qvkr","2",null]);
 c.block="m2ii";r.guard(c);
 r.command(c,"set_variable",["kjn6","0",null]);
 c.block="19x0";r.guard(c);
-for(let i1316=0,n1316=Math.max(0,Math.floor(r.num("50")));i1316<n1316;i1316++){
+for(let i1340=0,n1340=Math.max(0,Math.floor(r.num("50")));i1340<n1340;i1340++){
 c.block="3kw9";r.guard(c);
 r.command(c,"change_variable",["797c","0.1",null]);
 c.block="opkw";r.guard(c);
@@ -43058,7 +46752,7 @@ r.command(c,"set_variable",["kjn6","4",null]);
 c.block="upbz";r.guard(c);
 r.command(c,"set_variable",["k2lk","0",null]);
 c.block="s2sg";r.guard(c);
-for(let i1317=0,n1317=Math.max(0,Math.floor(r.num("20")));i1317<n1317;i1317++){
+for(let i1341=0,n1341=Math.max(0,Math.floor(r.num("20")));i1341<n1341;i1341++){
 c.block="etwl";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"get_variable",["kjn6",null]),"DIVIDE","-1.25"]),null]);
 c.block="5i9g";r.guard(c);
@@ -43096,7 +46790,7 @@ break;
 yield 1;
 }
 c.block="d5qc";r.guard(c);
-for(let i1318=0,n1318=Math.max(0,Math.floor(r.num("65")));i1318<n1318;i1318++){
+for(let i1342=0,n1342=Math.max(0,Math.floor(r.num("65")));i1342<n1342;i1342++){
 c.block="r9kl";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["797c",null])]),"DIVIDE","12"]),null]);
 c.block="dxx2";r.guard(c);
@@ -43114,7 +46808,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["uh0p",
 c.block="15tw";r.guard(c);
 r.command(c,"set_variable",["kjn6","0",null]);
 c.block="htdv";r.guard(c);
-for(let i1319=0,n1319=Math.max(0,Math.floor(r.num("2")));i1319<n1319;i1319++){
+for(let i1343=0,n1343=Math.max(0,Math.floor(r.num("2")));i1343<n1343;i1343++){
 c.block="ipwt";r.guard(c);
 r.command(c,"change_variable",["797c","2",null]);
 c.block="hqon";r.guard(c);
@@ -43127,7 +46821,7 @@ yield 1;
 c.block="gvtf";r.guard(c);
 r.command(c,"message_cast",["w04c",null]);
 c.block="j3fu";r.guard(c);
-for(let i1320=0,n1320=Math.max(0,Math.floor(r.num("2")));i1320<n1320;i1320++){
+for(let i1344=0,n1344=Math.max(0,Math.floor(r.num("2")));i1344<n1344;i1344++){
 c.block="2y4q";r.guard(c);
 r.command(c,"set_variable",["kjn6","4",null]);
 c.block="3ggu";r.guard(c);
@@ -43137,7 +46831,7 @@ r.command(c,"set_variable",["9mon","0",null]);
 c.block="3g4a";r.guard(c);
 r.command(c,"create_clone",["wwgm",null]);
 c.block="recl";r.guard(c);
-for(let i1321=0,n1321=Math.max(0,Math.floor(r.num("4")));i1321<n1321;i1321++){
+for(let i1345=0,n1345=Math.max(0,Math.floor(r.num("4")));i1345<n1345;i1345++){
 c.block="9jjw";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"get_variable",["kjn6",null]),"DIVIDE","-1"]),null]);
 c.block="jsdu";r.guard(c);
@@ -43154,7 +46848,7 @@ r.command(c,"set_variable",["9mon","4",null]);
 c.block="2k1s";r.guard(c);
 r.command(c,"create_clone",["wwgm",null]);
 c.block="6nyu";r.guard(c);
-for(let i1322=0,n1322=Math.max(0,Math.floor(r.num("3")));i1322<n1322;i1322++){
+for(let i1346=0,n1346=Math.max(0,Math.floor(r.num("3")));i1346<n1346;i1346++){
 c.block="qk3v";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"get_variable",["kjn6",null]),"DIVIDE","-1"]),null]);
 c.block="r5th";r.guard(c);
@@ -43171,7 +46865,7 @@ r.command(c,"set_variable",["9mon","-4",null]);
 c.block="qq0r";r.guard(c);
 r.command(c,"create_clone",["wwgm",null]);
 c.block="53il";r.guard(c);
-for(let i1323=0,n1323=Math.max(0,Math.floor(r.num("4")));i1323<n1323;i1323++){
+for(let i1347=0,n1347=Math.max(0,Math.floor(r.num("4")));i1347<n1347;i1347++){
 c.block="b8u9";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["797c",null])]),"DIVIDE","3.5"]),null]);
 c.block="f2zl";r.guard(c);
@@ -43191,7 +46885,7 @@ r.command(c,"set_variable",["kjn6","0",null]);
 c.block="tez9";r.guard(c);
 r.command(c,"change_variable",["g4sc","17",null]);
 c.block="dinr";r.guard(c);
-for(let i1324=0,n1324=Math.max(0,Math.floor(r.num("10")));i1324<n1324;i1324++){
+for(let i1348=0,n1348=Math.max(0,Math.floor(r.num("10")));i1348<n1348;i1348++){
 c.block="wgpe";r.guard(c);
 r.command(c,"change_variable",["797c","0.4",null]);
 c.block="05j2";r.guard(c);
@@ -43206,7 +46900,7 @@ r.command(c,"set_variable",["kjn6","4",null]);
 c.block="aczt";r.guard(c);
 r.command(c,"set_variable",["k2lk","0",null]);
 c.block="rbbz";r.guard(c);
-for(let i1325=0,n1325=Math.max(0,Math.floor(r.num("10")));i1325<n1325;i1325++){
+for(let i1349=0,n1349=Math.max(0,Math.floor(r.num("10")));i1349<n1349;i1349++){
 c.block="q36h";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"get_variable",["kjn6",null]),"DIVIDE","-0.8"]),null]);
 c.block="iiox";r.guard(c);
@@ -43234,7 +46928,7 @@ yield 1;
 c.block="ejwx";r.guard(c);
 r.command(c,"message_cast",["rlbk",null]);
 c.block="hp6h";r.guard(c);
-for(let i1326=0,n1326=Math.max(0,Math.floor(r.num("10")));i1326<n1326;i1326++){
+for(let i1350=0,n1350=Math.max(0,Math.floor(r.num("10")));i1350<n1350;i1350++){
 c.block="jaj2";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["797c",null])]),"DIVIDE","3"]),null]);
 c.block="r1gi";r.guard(c);
@@ -43251,7 +46945,7 @@ r.command(c,"set_variable",["797c","0",null]);
 c.block="jifa";r.guard(c);
 r.command(c,"set_variable",["k2lk","0",null]);
 c.block="zy67";r.guard(c);
-for(let i1327=0,n1327=Math.max(0,Math.floor(r.num("10")));i1327<n1327;i1327++){
+for(let i1351=0,n1351=Math.max(0,Math.floor(r.num("10")));i1351<n1351;i1351++){
 c.block="vrw3";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"get_variable",["kjn6",null]),"DIVIDE","-0.8"]),null]);
 c.block="jw9x";r.guard(c);
@@ -43277,7 +46971,7 @@ break;
 yield 1;
 }
 c.block="kr3g";r.guard(c);
-for(let i1328=0,n1328=Math.max(0,Math.floor(r.num("40")));i1328<n1328;i1328++){
+for(let i1352=0,n1352=Math.max(0,Math.floor(r.num("40")));i1352<n1352;i1352++){
 c.block="ykck";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["797c",null])]),"DIVIDE","4"]),null]);
 c.block="2kvn";r.guard(c);
@@ -43304,7 +46998,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="w8zb";r.guard(c);
 r.command(c,"set_variable",["kjn6","0",null]);
 c.block="4k25";r.guard(c);
-for(let i1329=0,n1329=Math.max(0,Math.floor(r.num("20")));i1329<n1329;i1329++){
+for(let i1353=0,n1353=Math.max(0,Math.floor(r.num("20")));i1353<n1353;i1353++){
 c.block="92cf";r.guard(c);
 r.command(c,"change_variable",["797c","0.2",null]);
 c.block="4n3s";r.guard(c);
@@ -43319,7 +47013,7 @@ r.command(c,"set_variable",["kjn6","4",null]);
 c.block="on07";r.guard(c);
 r.command(c,"set_variable",["k2lk","0",null]);
 c.block="ibpt";r.guard(c);
-for(let i1330=0,n1330=Math.max(0,Math.floor(r.num("20")));i1330<n1330;i1330++){
+for(let i1354=0,n1354=Math.max(0,Math.floor(r.num("20")));i1354<n1354;i1354++){
 c.block="p09d";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"get_variable",["kjn6",null]),"DIVIDE","-1.25"]),null]);
 c.block="zcgb";r.guard(c);
@@ -43355,7 +47049,7 @@ break;
 yield 1;
 }
 c.block="0dje";r.guard(c);
-for(let i1331=0,n1331=Math.max(0,Math.floor(r.num("65")));i1331<n1331;i1331++){
+for(let i1355=0,n1355=Math.max(0,Math.floor(r.num("65")));i1355<n1355;i1355++){
 c.block="91sf";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["797c",null])]),"DIVIDE","12"]),null]);
 c.block="92pi";r.guard(c);
@@ -43375,7 +47069,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="f8b8";r.guard(c);
 r.command(c,"set_variable",["kjn6","0",null]);
 c.block="pxhl";r.guard(c);
-for(let i1332=0,n1332=Math.max(0,Math.floor(r.num("2")));i1332<n1332;i1332++){
+for(let i1356=0,n1356=Math.max(0,Math.floor(r.num("2")));i1356<n1356;i1356++){
 c.block="f0yk";r.guard(c);
 r.command(c,"change_variable",["797c","2",null]);
 c.block="2bzq";r.guard(c);
@@ -43390,7 +47084,7 @@ r.command(c,"set_variable",["kjn6","4",null]);
 c.block="691y";r.guard(c);
 r.command(c,"set_variable",["k2lk","0",null]);
 c.block="wu2j";r.guard(c);
-for(let i1333=0,n1333=Math.max(0,Math.floor(r.num("7")));i1333<n1333;i1333++){
+for(let i1357=0,n1357=Math.max(0,Math.floor(r.num("7")));i1357<n1357;i1357++){
 c.block="s55k";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"get_variable",["kjn6",null]),"DIVIDE","-0.6"]),null]);
 c.block="qz32";r.guard(c);
@@ -43416,7 +47110,7 @@ break;
 yield 1;
 }
 c.block="s54n";r.guard(c);
-for(let i1334=0,n1334=Math.max(0,Math.floor(r.num("5")));i1334<n1334;i1334++){
+for(let i1358=0,n1358=Math.max(0,Math.floor(r.num("5")));i1358<n1358;i1358++){
 c.block="b5f3";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["797c",null])]),"DIVIDE","3.5"]),null]);
 c.block="tn7q";r.guard(c);
@@ -43434,7 +47128,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="x6y1";r.guard(c);
 r.command(c,"set_variable",["kjn6","0",null]);
 c.block="bl0h";r.guard(c);
-for(let i1335=0,n1335=Math.max(0,Math.floor(r.num("10")));i1335<n1335;i1335++){
+for(let i1359=0,n1359=Math.max(0,Math.floor(r.num("10")));i1359<n1359;i1359++){
 c.block="dpbi";r.guard(c);
 r.command(c,"change_variable",["797c","0.4",null]);
 c.block="wyin";r.guard(c);
@@ -43449,7 +47143,7 @@ r.command(c,"set_variable",["kjn6","4",null]);
 c.block="dokw";r.guard(c);
 r.command(c,"set_variable",["k2lk","0",null]);
 c.block="xt32";r.guard(c);
-for(let i1336=0,n1336=Math.max(0,Math.floor(r.num("10")));i1336<n1336;i1336++){
+for(let i1360=0,n1360=Math.max(0,Math.floor(r.num("10")));i1360<n1360;i1360++){
 c.block="68px";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"get_variable",["kjn6",null]),"DIVIDE","-0.8"]),null]);
 c.block="a6sl";r.guard(c);
@@ -43475,7 +47169,7 @@ break;
 yield 1;
 }
 c.block="yxw9";r.guard(c);
-for(let i1337=0,n1337=Math.max(0,Math.floor(r.num("30")));i1337<n1337;i1337++){
+for(let i1361=0,n1361=Math.max(0,Math.floor(r.num("30")));i1361<n1361;i1361++){
 c.block="l6y0";r.guard(c);
 r.command(c,"change_variable",["797c",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["797c",null])]),"DIVIDE","6"]),null]);
 c.block="06s6";r.guard(c);
@@ -43541,7 +47235,7 @@ r.register("56e1","when_message_cast",[null,"98fz"],function*(r,c){
 c.block="y1ku";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="n0bd";r.guard(c);
-for(let i1338=0,n1338=Math.max(0,Math.floor(r.num("180")));i1338<n1338;i1338++){
+for(let i1362=0,n1362=Math.max(0,Math.floor(r.num("180")));i1362<n1362;i1362++){
 yield 1;
 }
 c.block="je9g";r.guard(c);
@@ -43601,7 +47295,7 @@ r.command(c,"set_variable",["2fao","4",null]);
 c.block="5tgq";r.guard(c);
 r.command(c,"set_variable",["hj64","0",null]);
 c.block="j6tt";r.guard(c);
-for(let i1339=0,n1339=Math.max(0,Math.floor(r.num("10")));i1339<n1339;i1339++){
+for(let i1363=0,n1363=Math.max(0,Math.floor(r.num("10")));i1363<n1363;i1363++){
 c.block="ix1y";r.guard(c);
 r.command(c,"change_variable",["8jz9",r.value(c,"calc_basic",[r.value(c,"get_variable",["2fao",null]),"DIVIDE","-1.5"]),null]);
 c.block="vbsi";r.guard(c);
@@ -43627,7 +47321,7 @@ break;
 yield 1;
 }
 c.block="rc43";r.guard(c);
-for(let i1340=0,n1340=Math.max(0,Math.floor(r.num("40")));i1340<n1340;i1340++){
+for(let i1364=0,n1364=Math.max(0,Math.floor(r.num("40")));i1364<n1364;i1364++){
 c.block="h1qx";r.guard(c);
 r.command(c,"change_variable",["8jz9",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["8jz9",null])]),"DIVIDE","9"]),null]);
 c.block="1u0b";r.guard(c);
@@ -43643,11 +47337,11 @@ r.command(c,"set_variable",["8jz9","0",null]);
 });
 r.register("t3w4","when_message_cast",[null,"w04c"],function*(r,c){
 c.block="473r";r.guard(c);
-for(let i1341=0,n1341=Math.max(0,Math.floor(r.num("7")));i1341<n1341;i1341++){
+for(let i1365=0,n1365=Math.max(0,Math.floor(r.num("7")));i1365<n1365;i1365++){
 yield 1;
 }
 c.block="6nmo";r.guard(c);
-for(let i1342=0,n1342=Math.max(0,Math.floor(r.num("2")));i1342<n1342;i1342++){
+for(let i1366=0,n1366=Math.max(0,Math.floor(r.num("2")));i1366<n1366;i1366++){
 c.block="925i";r.guard(c);
 r.command(c,"set_variable",["2fao","4",null]);
 c.block="ywnl";r.guard(c);
@@ -43655,7 +47349,7 @@ r.command(c,"set_variable",["hj64","0",null]);
 c.block="tzs5";r.guard(c);
 r.command(c,"set_variable",["8jz9","0",null]);
 c.block="wkxi";r.guard(c);
-for(let i1343=0,n1343=Math.max(0,Math.floor(r.num("7")));i1343<n1343;i1343++){
+for(let i1367=0,n1367=Math.max(0,Math.floor(r.num("7")));i1367<n1367;i1367++){
 c.block="bjwj";r.guard(c);
 r.command(c,"change_variable",["8jz9",r.value(c,"calc_basic",[r.value(c,"get_variable",["2fao",null]),"DIVIDE","-1.5"]),null]);
 c.block="ywp0";r.guard(c);
@@ -43668,7 +47362,7 @@ break;
 yield 1;
 }
 c.block="rw2d";r.guard(c);
-for(let i1344=0,n1344=Math.max(0,Math.floor(r.num("4")));i1344<n1344;i1344++){
+for(let i1368=0,n1368=Math.max(0,Math.floor(r.num("4")));i1368<n1368;i1368++){
 c.block="bvi2";r.guard(c);
 r.command(c,"change_variable",["8jz9",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["8jz9",null])]),"DIVIDE","3.5"]),null]);
 c.block="m4i7";r.guard(c);
@@ -43766,7 +47460,7 @@ r.command(c,"set_variable",["qvkr","2",null]);
 c.block="r0rd";r.guard(c);
 r.command(c,"set_variable",["h282","0",null]);
 c.block="jpxb";r.guard(c);
-for(let i1345=0,n1345=Math.max(0,Math.floor(r.num("20")));i1345<n1345;i1345++){
+for(let i1369=0,n1369=Math.max(0,Math.floor(r.num("20")));i1369<n1369;i1369++){
 c.block="ssiq";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","3"]),null]);
 c.block="85hj";r.guard(c);
@@ -43802,7 +47496,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="czrk";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="isi4";r.guard(c);
-for(let i1346=0,n1346=Math.max(0,Math.floor(r.num("10")));i1346<n1346;i1346++){
+for(let i1370=0,n1370=Math.max(0,Math.floor(r.num("10")));i1370<n1370;i1370++){
 c.block="6p15";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","1.5"]),null]);
 c.block="r7k6";r.guard(c);
@@ -43815,7 +47509,7 @@ break;
 yield 1;
 }
 c.block="ke8g";r.guard(c);
-for(let i1347=0,n1347=Math.max(0,Math.floor(r.num("20")));i1347<n1347;i1347++){
+for(let i1371=0,n1371=Math.max(0,Math.floor(r.num("20")));i1371<n1371;i1371++){
 c.block="j9lw";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","4"]),null]);
 c.block="lxcs";r.guard(c);
@@ -43836,7 +47530,7 @@ r.command(c,"show",[null]);
 c.block="uwcw";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="tso1";r.guard(c);
-for(let i1348=0,n1348=Math.max(0,Math.floor(r.num("10")));i1348<n1348;i1348++){
+for(let i1372=0,n1372=Math.max(0,Math.floor(r.num("10")));i1372<n1372;i1372++){
 c.block="fmqj";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["18","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","3"]),null]);
 yield 1;
@@ -43856,7 +47550,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="7kd7";r.guard(c);
 r.command(c,"set_variable",["h282","0",null]);
 c.block="d4zd";r.guard(c);
-for(let i1349=0,n1349=Math.max(0,Math.floor(r.num("20")));i1349<n1349;i1349++){
+for(let i1373=0,n1373=Math.max(0,Math.floor(r.num("20")));i1373<n1373;i1373++){
 c.block="jprm";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","3"]),null]);
 c.block="id1v";r.guard(c);
@@ -43902,7 +47596,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="rltw";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="f7qh";r.guard(c);
-for(let i1350=0,n1350=Math.max(0,Math.floor(r.num("10")));i1350<n1350;i1350++){
+for(let i1374=0,n1374=Math.max(0,Math.floor(r.num("10")));i1374<n1374;i1374++){
 c.block="u14q";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","1.5"]),null]);
 c.block="cc8e";r.guard(c);
@@ -43915,7 +47609,7 @@ break;
 yield 1;
 }
 c.block="7f28";r.guard(c);
-for(let i1351=0,n1351=Math.max(0,Math.floor(r.num("20")));i1351<n1351;i1351++){
+for(let i1375=0,n1375=Math.max(0,Math.floor(r.num("20")));i1375<n1375;i1375++){
 c.block="aapy";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","4"]),null]);
 c.block="sfaq";r.guard(c);
@@ -43934,7 +47628,7 @@ r.command(c,"show",[null]);
 c.block="xoak";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="fmdg";r.guard(c);
-for(let i1352=0,n1352=Math.max(0,Math.floor(r.num("10")));i1352<n1352;i1352++){
+for(let i1376=0,n1376=Math.max(0,Math.floor(r.num("10")));i1376<n1376;i1376++){
 c.block="6kyg";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["18","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","3"]),null]);
 yield 1;
@@ -43950,7 +47644,7 @@ r.command(c,"set_variable",["qvkr","0",null]);
 c.block="a23z";r.guard(c);
 r.command(c,"set_variable",["h282","0",null]);
 c.block="nqnj";r.guard(c);
-for(let i1353=0,n1353=Math.max(0,Math.floor(r.num("20")));i1353<n1353;i1353++){
+for(let i1377=0,n1377=Math.max(0,Math.floor(r.num("20")));i1377<n1377;i1377++){
 c.block="mo2m";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","3"]),null]);
 c.block="met7";r.guard(c);
@@ -43986,7 +47680,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="jwqi";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="h3zg";r.guard(c);
-for(let i1354=0,n1354=Math.max(0,Math.floor(r.num("10")));i1354<n1354;i1354++){
+for(let i1378=0,n1378=Math.max(0,Math.floor(r.num("10")));i1378<n1378;i1378++){
 c.block="sry2";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","1.5"]),null]);
 c.block="tkg8";r.guard(c);
@@ -43999,7 +47693,7 @@ break;
 yield 1;
 }
 c.block="f66g";r.guard(c);
-for(let i1355=0,n1355=Math.max(0,Math.floor(r.num("20")));i1355<n1355;i1355++){
+for(let i1379=0,n1379=Math.max(0,Math.floor(r.num("20")));i1379<n1379;i1379++){
 c.block="6wld";r.guard(c);
 r.command(c,"change_variable",["mwek",r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","4"]),null]);
 c.block="01bu";r.guard(c);
@@ -44018,7 +47712,7 @@ r.command(c,"show",[null]);
 c.block="5h64";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="hkt1";r.guard(c);
-for(let i1356=0,n1356=Math.max(0,Math.floor(r.num("10")));i1356<n1356;i1356++){
+for(let i1380=0,n1380=Math.max(0,Math.floor(r.num("10")));i1380<n1380;i1380++){
 c.block="n23a";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["18","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","3"]),null]);
 yield 1;
@@ -44075,7 +47769,7 @@ r.command(c,"set_variable",["1plw","1.5",null]);
 c.block="ez7f";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="2kvy";r.guard(c);
-for(let i1357=0,n1357=Math.max(0,Math.floor(r.num("130")));i1357<n1357;i1357++){
+for(let i1381=0,n1381=Math.max(0,Math.floor(r.num("130")));i1381<n1381;i1381++){
 c.block="x2tg";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="dze1";r.guard(c);
@@ -44107,7 +47801,7 @@ r.command(c,"set_variable",["k50y",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="fd54";r.guard(c);
 r.command(c,"change_variable",["l780","1",null]);
 c.block="1gx7";r.guard(c);
-for(let i1358=0,n1358=Math.max(0,Math.floor(r.num("770")));i1358<n1358;i1358++){
+for(let i1382=0,n1382=Math.max(0,Math.floor(r.num("770")));i1382<n1382;i1382++){
 c.block="5v2i";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="yre6";r.guard(c);
@@ -44124,7 +47818,7 @@ yield 1;
 c.block="lqk2";r.guard(c);
 r.command(c,"change_variable",["l780","-1",null]);
 c.block="e90c";r.guard(c);
-for(let i1359=0,n1359=Math.max(0,Math.floor(r.num("30")));i1359<n1359;i1359++){
+for(let i1383=0,n1383=Math.max(0,Math.floor(r.num("30")));i1383<n1383;i1383++){
 c.block="3qii";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44138,11 +47832,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="glxp";r.guard(c);
 r.command(c,"move_direction",["10",null]);
 c.block="cyyp";r.guard(c);
-for(let i1360=0,n1360=Math.max(0,Math.floor(r.num("111")));i1360<n1360;i1360++){
+for(let i1384=0,n1384=Math.max(0,Math.floor(r.num("111")));i1384<n1384;i1384++){
 yield 1;
 }
 c.block="z0fb";r.guard(c);
-for(let i1361=0,n1361=Math.max(0,Math.floor(r.num("30")));i1361<n1361;i1361++){
+for(let i1385=0,n1385=Math.max(0,Math.floor(r.num("30")));i1385<n1385;i1385++){
 c.block="5rn8";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44155,7 +47849,7 @@ yield 1;
 }
 }else{
 c.block="c8p5";r.guard(c);
-for(let i1362=0,n1362=Math.max(0,Math.floor(r.num("130")));i1362<n1362;i1362++){
+for(let i1386=0,n1386=Math.max(0,Math.floor(r.num("130")));i1386<n1386;i1386++){
 c.block="husl";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="agjz";r.guard(c);
@@ -44187,7 +47881,7 @@ r.command(c,"set_variable",["k50y",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="n2md";r.guard(c);
 r.command(c,"change_variable",["l780","1",null]);
 c.block="t2ju";r.guard(c);
-for(let i1363=0,n1363=Math.max(0,Math.floor(r.num("770")));i1363<n1363;i1363++){
+for(let i1387=0,n1387=Math.max(0,Math.floor(r.num("770")));i1387<n1387;i1387++){
 c.block="lcxt";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="s5s2";r.guard(c);
@@ -44204,7 +47898,7 @@ yield 1;
 c.block="0wj6";r.guard(c);
 r.command(c,"change_variable",["l780","-1",null]);
 c.block="8ek7";r.guard(c);
-for(let i1364=0,n1364=Math.max(0,Math.floor(r.num("30")));i1364<n1364;i1364++){
+for(let i1388=0,n1388=Math.max(0,Math.floor(r.num("30")));i1388<n1388;i1388++){
 c.block="skqx";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44218,11 +47912,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="5sym";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
 c.block="auye";r.guard(c);
-for(let i1365=0,n1365=Math.max(0,Math.floor(r.num("111")));i1365<n1365;i1365++){
+for(let i1389=0,n1389=Math.max(0,Math.floor(r.num("111")));i1389<n1389;i1389++){
 yield 1;
 }
 c.block="vkpr";r.guard(c);
-for(let i1366=0,n1366=Math.max(0,Math.floor(r.num("30")));i1366<n1366;i1366++){
+for(let i1390=0,n1390=Math.max(0,Math.floor(r.num("30")));i1390<n1390;i1390++){
 c.block="4c89";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44251,7 +47945,7 @@ r.command(c,"set_variable",["1plw",r.value(c,"get_variable",["pora",null]),null]
 c.block="1ycg";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="xyuf";r.guard(c);
-for(let i1367=0,n1367=Math.max(0,Math.floor(r.num("10")));i1367<n1367;i1367++){
+for(let i1391=0,n1391=Math.max(0,Math.floor(r.num("10")));i1391<n1391;i1391++){
 c.block="hf5p";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="w6uu";r.guard(c);
@@ -44265,11 +47959,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="n04t";r.guard(c);
 r.command(c,"move_direction",[10,null]);
 c.block="vxw8";r.guard(c);
-for(let i1368=0,n1368=Math.max(0,Math.floor(r.num("111")));i1368<n1368;i1368++){
+for(let i1392=0,n1392=Math.max(0,Math.floor(r.num("111")));i1392<n1392;i1392++){
 yield 1;
 }
 c.block="8dfj";r.guard(c);
-for(let i1369=0,n1369=Math.max(0,Math.floor(r.num("30")));i1369<n1369;i1369++){
+for(let i1393=0,n1393=Math.max(0,Math.floor(r.num("30")));i1393<n1393;i1393++){
 c.block="upwg";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44281,7 +47975,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="yjxi";r.guard(c);
-for(let i1370=0,n1370=Math.max(0,Math.floor(r.num("155")));i1370<n1370;i1370++){
+for(let i1394=0,n1394=Math.max(0,Math.floor(r.num("155")));i1394<n1394;i1394++){
 c.block="cn2e";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="gftt";r.guard(c);
@@ -44311,7 +48005,7 @@ r.command(c,"set_variable",["k50y",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="ln70";r.guard(c);
 r.command(c,"change_variable",["l780","1",null]);
 c.block="2zii";r.guard(c);
-for(let i1371=0,n1371=Math.max(0,Math.floor(r.num("770")));i1371<n1371;i1371++){
+for(let i1395=0,n1395=Math.max(0,Math.floor(r.num("770")));i1395<n1395;i1395++){
 c.block="08qe";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="pf9x";r.guard(c);
@@ -44323,7 +48017,7 @@ yield 1;
 c.block="ecq1";r.guard(c);
 r.command(c,"change_variable",["l780","-1",null]);
 c.block="i9a8";r.guard(c);
-for(let i1372=0,n1372=Math.max(0,Math.floor(r.num("30")));i1372<n1372;i1372++){
+for(let i1396=0,n1396=Math.max(0,Math.floor(r.num("30")));i1396<n1396;i1396++){
 c.block="v975";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44337,11 +48031,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="zapo";r.guard(c);
 r.command(c,"move_direction",[10,null]);
 c.block="j1vt";r.guard(c);
-for(let i1373=0,n1373=Math.max(0,Math.floor(r.num("111")));i1373<n1373;i1373++){
+for(let i1397=0,n1397=Math.max(0,Math.floor(r.num("111")));i1397<n1397;i1397++){
 yield 1;
 }
 c.block="ekn5";r.guard(c);
-for(let i1374=0,n1374=Math.max(0,Math.floor(r.num("30")));i1374<n1374;i1374++){
+for(let i1398=0,n1398=Math.max(0,Math.floor(r.num("30")));i1398<n1398;i1398++){
 c.block="zhb5";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44354,7 +48048,7 @@ yield 1;
 }
 }else{
 c.block="klku";r.guard(c);
-for(let i1375=0,n1375=Math.max(0,Math.floor(r.num("10")));i1375<n1375;i1375++){
+for(let i1399=0,n1399=Math.max(0,Math.floor(r.num("10")));i1399<n1399;i1399++){
 c.block="gkuz";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="0dll";r.guard(c);
@@ -44368,11 +48062,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="s5mq";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
 c.block="i5vf";r.guard(c);
-for(let i1376=0,n1376=Math.max(0,Math.floor(r.num("111")));i1376<n1376;i1376++){
+for(let i1400=0,n1400=Math.max(0,Math.floor(r.num("111")));i1400<n1400;i1400++){
 yield 1;
 }
 c.block="tn9w";r.guard(c);
-for(let i1377=0,n1377=Math.max(0,Math.floor(r.num("30")));i1377<n1377;i1377++){
+for(let i1401=0,n1401=Math.max(0,Math.floor(r.num("30")));i1401<n1401;i1401++){
 c.block="k1tp";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44384,7 +48078,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="wc0f";r.guard(c);
-for(let i1378=0,n1378=Math.max(0,Math.floor(r.num("155")));i1378<n1378;i1378++){
+for(let i1402=0,n1402=Math.max(0,Math.floor(r.num("155")));i1402<n1402;i1402++){
 c.block="ait2";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="i236";r.guard(c);
@@ -44414,7 +48108,7 @@ r.command(c,"set_variable",["k50y",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="fah9";r.guard(c);
 r.command(c,"change_variable",["l780","1",null]);
 c.block="cigc";r.guard(c);
-for(let i1379=0,n1379=Math.max(0,Math.floor(r.num("770")));i1379<n1379;i1379++){
+for(let i1403=0,n1403=Math.max(0,Math.floor(r.num("770")));i1403<n1403;i1403++){
 c.block="du99";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="guix";r.guard(c);
@@ -44426,7 +48120,7 @@ yield 1;
 c.block="htl7";r.guard(c);
 r.command(c,"change_variable",["l780","-1",null]);
 c.block="wdgv";r.guard(c);
-for(let i1380=0,n1380=Math.max(0,Math.floor(r.num("30")));i1380<n1380;i1380++){
+for(let i1404=0,n1404=Math.max(0,Math.floor(r.num("30")));i1404<n1404;i1404++){
 c.block="6cnu";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44440,11 +48134,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="anx9";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
 c.block="ww8d";r.guard(c);
-for(let i1381=0,n1381=Math.max(0,Math.floor(r.num("111")));i1381<n1381;i1381++){
+for(let i1405=0,n1405=Math.max(0,Math.floor(r.num("111")));i1405<n1405;i1405++){
 yield 1;
 }
 c.block="528m";r.guard(c);
-for(let i1382=0,n1382=Math.max(0,Math.floor(r.num("30")));i1382<n1382;i1382++){
+for(let i1406=0,n1406=Math.max(0,Math.floor(r.num("30")));i1406<n1406;i1406++){
 c.block="mp1c";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44469,7 +48163,7 @@ r.command(c,"set_variable",["1plw","1.5",null]);
 c.block="gfnk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="az08";r.guard(c);
-for(let i1383=0,n1383=Math.max(0,Math.floor(r.num("130")));i1383<n1383;i1383++){
+for(let i1407=0,n1407=Math.max(0,Math.floor(r.num("130")));i1407<n1407;i1407++){
 c.block="2g83";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="v95w";r.guard(c);
@@ -44501,7 +48195,7 @@ r.command(c,"set_variable",["k50y",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="90qs";r.guard(c);
 r.command(c,"change_variable",["l780","1",null]);
 c.block="ht84";r.guard(c);
-for(let i1384=0,n1384=Math.max(0,Math.floor(r.num("770")));i1384<n1384;i1384++){
+for(let i1408=0,n1408=Math.max(0,Math.floor(r.num("770")));i1408<n1408;i1408++){
 c.block="va7b";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="yttp";r.guard(c);
@@ -44513,7 +48207,7 @@ yield 1;
 c.block="8is5";r.guard(c);
 r.command(c,"change_variable",["l780","-1",null]);
 c.block="2ai0";r.guard(c);
-for(let i1385=0,n1385=Math.max(0,Math.floor(r.num("30")));i1385<n1385;i1385++){
+for(let i1409=0,n1409=Math.max(0,Math.floor(r.num("30")));i1409<n1409;i1409++){
 c.block="re5u";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44527,11 +48221,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="id13";r.guard(c);
 r.command(c,"move_direction",["10",null]);
 c.block="h41g";r.guard(c);
-for(let i1386=0,n1386=Math.max(0,Math.floor(r.num("111")));i1386<n1386;i1386++){
+for(let i1410=0,n1410=Math.max(0,Math.floor(r.num("111")));i1410<n1410;i1410++){
 yield 1;
 }
 c.block="xzdl";r.guard(c);
-for(let i1387=0,n1387=Math.max(0,Math.floor(r.num("30")));i1387<n1387;i1387++){
+for(let i1411=0,n1411=Math.max(0,Math.floor(r.num("30")));i1411<n1411;i1411++){
 c.block="ydfr";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44544,7 +48238,7 @@ yield 1;
 }
 }else{
 c.block="lfqk";r.guard(c);
-for(let i1388=0,n1388=Math.max(0,Math.floor(r.num("130")));i1388<n1388;i1388++){
+for(let i1412=0,n1412=Math.max(0,Math.floor(r.num("130")));i1412<n1412;i1412++){
 c.block="ti81";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="zftv";r.guard(c);
@@ -44576,7 +48270,7 @@ r.command(c,"set_variable",["k50y",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="5dt9";r.guard(c);
 r.command(c,"change_variable",["l780","1",null]);
 c.block="csbv";r.guard(c);
-for(let i1389=0,n1389=Math.max(0,Math.floor(r.num("770")));i1389<n1389;i1389++){
+for(let i1413=0,n1413=Math.max(0,Math.floor(r.num("770")));i1413<n1413;i1413++){
 c.block="8tgm";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="ios1";r.guard(c);
@@ -44588,7 +48282,7 @@ yield 1;
 c.block="yzkh";r.guard(c);
 r.command(c,"change_variable",["l780","-1",null]);
 c.block="edah";r.guard(c);
-for(let i1390=0,n1390=Math.max(0,Math.floor(r.num("30")));i1390<n1390;i1390++){
+for(let i1414=0,n1414=Math.max(0,Math.floor(r.num("30")));i1414<n1414;i1414++){
 c.block="i9ku";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44602,11 +48296,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="0ati";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
 c.block="xg7i";r.guard(c);
-for(let i1391=0,n1391=Math.max(0,Math.floor(r.num("111")));i1391<n1391;i1391++){
+for(let i1415=0,n1415=Math.max(0,Math.floor(r.num("111")));i1415<n1415;i1415++){
 yield 1;
 }
 c.block="fdfs";r.guard(c);
-for(let i1392=0,n1392=Math.max(0,Math.floor(r.num("30")));i1392<n1392;i1392++){
+for(let i1416=0,n1416=Math.max(0,Math.floor(r.num("30")));i1416<n1416;i1416++){
 c.block="xobo";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -44642,7 +48336,7 @@ r.command(c,"create_clone",["a4vm",null]);
 c.block="no6e";r.guard(c);
 r.command(c,"create_clone",["a4vm",null]);
 c.block="b5go";r.guard(c);
-for(let i1393=0,n1393=Math.max(0,Math.floor(r.num("150")));i1393<n1393;i1393++){
+for(let i1417=0,n1417=Math.max(0,Math.floor(r.num("150")));i1417<n1417;i1417++){
 yield 1;
 }
 }
@@ -44719,7 +48413,7 @@ r.command(c,"set_scale_size",["100",null]);
 c.block="w4cj";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="gftu";r.guard(c);
-for(let i1394=0,n1394=Math.max(0,Math.floor(r.num("20")));i1394<n1394;i1394++){
+for(let i1418=0,n1418=Math.max(0,Math.floor(r.num("20")));i1418<n1418;i1418++){
 c.block="bhkc";r.guard(c);
 r.command(c,"change_variable",["cbhw","1",null]);
 c.block="s9ye";r.guard(c);
@@ -44738,7 +48432,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 yield 1;
 }
 c.block="vwj5";r.guard(c);
-for(let i1395=0,n1395=Math.max(0,Math.floor(r.num("80")));i1395<n1395;i1395++){
+for(let i1419=0,n1419=Math.max(0,Math.floor(r.num("80")));i1419<n1419;i1419++){
 c.block="fjex";r.guard(c);
 r.command(c,"change_variable",["cbhw","1",null]);
 c.block="l8vh";r.guard(c);
@@ -44755,7 +48449,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 yield 1;
 }
 c.block="rgep";r.guard(c);
-for(let i1396=0,n1396=Math.max(0,Math.floor(r.num("90")));i1396<n1396;i1396++){
+for(let i1420=0,n1420=Math.max(0,Math.floor(r.num("90")));i1420<n1420;i1420++){
 c.block="faec";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0.4",null]);
 c.block="leab";r.guard(c);
@@ -44782,7 +48476,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="qhl7";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="td53";r.guard(c);
-for(let i1397=0,n1397=Math.max(0,Math.floor(r.num("50")));i1397<n1397;i1397++){
+for(let i1421=0,n1421=Math.max(0,Math.floor(r.num("50")));i1421<n1421;i1421++){
 c.block="7l5d";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="iz6e";r.guard(c);
@@ -44802,7 +48496,7 @@ r.command(c,"set_scale_size",["100",null]);
 c.block="b0an";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="mo59";r.guard(c);
-for(let i1398=0,n1398=Math.max(0,Math.floor(r.num("20")));i1398<n1398;i1398++){
+for(let i1422=0,n1422=Math.max(0,Math.floor(r.num("20")));i1422<n1422;i1422++){
 c.block="p7b6";r.guard(c);
 r.command(c,"change_variable",["cbhw","1",null]);
 c.block="537w";r.guard(c);
@@ -44821,7 +48515,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 yield 1;
 }
 c.block="qnkp";r.guard(c);
-for(let i1399=0,n1399=Math.max(0,Math.floor(r.num("80")));i1399<n1399;i1399++){
+for(let i1423=0,n1423=Math.max(0,Math.floor(r.num("80")));i1423<n1423;i1423++){
 c.block="e159";r.guard(c);
 r.command(c,"change_variable",["cbhw","1",null]);
 c.block="38ln";r.guard(c);
@@ -44838,7 +48532,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 yield 1;
 }
 c.block="b8af";r.guard(c);
-for(let i1400=0,n1400=Math.max(0,Math.floor(r.num("90")));i1400<n1400;i1400++){
+for(let i1424=0,n1424=Math.max(0,Math.floor(r.num("90")));i1424<n1424;i1424++){
 c.block="qm4s";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0.4",null]);
 c.block="36vg";r.guard(c);
@@ -44865,7 +48559,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="fl0r";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="rxfu";r.guard(c);
-for(let i1401=0,n1401=Math.max(0,Math.floor(r.num("50")));i1401<n1401;i1401++){
+for(let i1425=0,n1425=Math.max(0,Math.floor(r.num("50")));i1425<n1425;i1425++){
 c.block="80zj";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="4qo0";r.guard(c);
@@ -44897,7 +48591,7 @@ r.command(c,"locate",["n8fg",null]);
 c.block="ae4n";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","30",null]);
 c.block="rboz";r.guard(c);
-for(let i1402=0,n1402=Math.max(0,Math.floor(r.num("10")));i1402<n1402;i1402++){
+for(let i1426=0,n1426=Math.max(0,Math.floor(r.num("10")));i1426<n1426;i1426++){
 c.block="ayee";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.5",null]);
 c.block="4owy";r.guard(c);
@@ -44914,7 +48608,7 @@ r.command(c,"locate",["n8fg",null]);
 yield 1;
 }
 c.block="iij0";r.guard(c);
-for(let i1403=0,n1403=Math.max(0,Math.floor(r.num("10")));i1403<n1403;i1403++){
+for(let i1427=0,n1427=Math.max(0,Math.floor(r.num("10")));i1427<n1427;i1427++){
 c.block="stxs";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","3.5",null]);
 yield 1;
@@ -44981,7 +48675,7 @@ r.command(c,"show",[null]);
 c.block="prf8";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="jrde";r.guard(c);
-for(let i1404=0,n1404=Math.max(0,Math.floor(r.num("10")));i1404<n1404;i1404++){
+for(let i1428=0,n1428=Math.max(0,Math.floor(r.num("10")));i1428<n1428;i1428++){
 c.block="vcv7";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -45001,7 +48695,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rks6",
 c.block="v40b";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["fr6y"]),null]);
 c.block="2ege";r.guard(c);
-for(let i1405=0,n1405=Math.max(0,Math.floor(r.num("70")));i1405<n1405;i1405++){
+for(let i1429=0,n1429=Math.max(0,Math.floor(r.num("70")));i1429<n1429;i1429++){
 c.block="j32w";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["fr6y"]),null]);
 yield 1;
@@ -45014,7 +48708,7 @@ c.block="gzpn";r.guard(c);
 r.command(c,"stop_object",["otherThread",null]);
 if(c.thread.cancelled||c.e.dead)return;
 c.block="ksf4";r.guard(c);
-for(let i1406=0,n1406=Math.max(0,Math.floor(r.num("50")));i1406<n1406;i1406++){
+for(let i1430=0,n1430=Math.max(0,Math.floor(r.num("50")));i1430<n1430;i1430++){
 c.block="to3r";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["fr6y"]),null]);
 c.block="xb9z";r.guard(c);
@@ -45112,7 +48806,7 @@ r.command(c,"show",[null]);
 c.block="prf8";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="jrde";r.guard(c);
-for(let i1407=0,n1407=Math.max(0,Math.floor(r.num("10")));i1407<n1407;i1407++){
+for(let i1431=0,n1431=Math.max(0,Math.floor(r.num("10")));i1431<n1431;i1431++){
 c.block="vcv7";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -45132,7 +48826,7 @@ if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.v
 c.block="v40b";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["1hsp"]),null]);
 c.block="2ege";r.guard(c);
-for(let i1408=0,n1408=Math.max(0,Math.floor(r.num("70")));i1408<n1408;i1408++){
+for(let i1432=0,n1432=Math.max(0,Math.floor(r.num("70")));i1432<n1432;i1432++){
 c.block="j32w";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["1hsp"]),null]);
 yield 1;
@@ -45145,7 +48839,7 @@ c.block="gzpn";r.guard(c);
 r.command(c,"stop_object",["otherThread",null]);
 if(c.thread.cancelled||c.e.dead)return;
 c.block="ksf4";r.guard(c);
-for(let i1409=0,n1409=Math.max(0,Math.floor(r.num("50")));i1409<n1409;i1409++){
+for(let i1433=0,n1433=Math.max(0,Math.floor(r.num("50")));i1433<n1433;i1433++){
 c.block="to3r";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["1hsp"]),null]);
 c.block="xb9z";r.guard(c);
@@ -45225,7 +48919,7 @@ yield* r.call(c,"qy83",[r.value(c,"calc_basic",["-1","PLUS",r.value(c,"get_varia
 c.block="qr6s";r.guard(c);
 r.command(c,"change_variable",["8npo","-0.25",null]);
 c.block="fpxi";r.guard(c);
-for(let i1410=0,n1410=Math.max(0,Math.floor(r.num("10")));i1410<n1410;i1410++){
+for(let i1434=0,n1434=Math.max(0,Math.floor(r.num("10")));i1434<n1434;i1434++){
 yield 1;
 }
 }
@@ -45239,9 +48933,9 @@ r.register("ocqj","when_message_cast",[null,"t17p"],function*(r,c){
 c.block="34jj";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="xwlz";r.guard(c);
-for(let i1411=0,n1411=Math.max(0,Math.floor(r.num("4")));i1411<n1411;i1411++){
+for(let i1435=0,n1435=Math.max(0,Math.floor(r.num("4")));i1435<n1435;i1435++){
 c.block="rou0";r.guard(c);
-for(let i1412=0,n1412=Math.max(0,Math.floor(r.num("3")));i1412<n1412;i1412++){
+for(let i1436=0,n1436=Math.max(0,Math.floor(r.num("3")));i1436<n1436;i1436++){
 yield 1;
 }
 yield 1;
@@ -45254,11 +48948,11 @@ r.register("ocqj","when_message_cast",[null,"ql9c"],function*(r,c){
 c.block="spmp";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="1ys9";r.guard(c);
-for(let i1413=0,n1413=Math.max(0,Math.floor(r.num("28")));i1413<n1413;i1413++){
+for(let i1437=0,n1437=Math.max(0,Math.floor(r.num("28")));i1437<n1437;i1437++){
 c.block="cvcg";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="4pm7";r.guard(c);
-for(let i1414=0,n1414=Math.max(0,Math.floor(r.num("10")));i1414<n1414;i1414++){
+for(let i1438=0,n1438=Math.max(0,Math.floor(r.num("10")));i1438<n1438;i1438++){
 c.block="c4h6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ec6d",null]),"EQUAL","0"]))){
 c.block="ebc3";r.guard(c);
@@ -45271,11 +48965,11 @@ yield 1;
 c.block="sylt";r.guard(c);
 r.command(c,"set_variable",["j9vk","40",null]);
 c.block="v9sf";r.guard(c);
-for(let i1415=0,n1415=Math.max(0,Math.floor(r.num("10")));i1415<n1415;i1415++){
+for(let i1439=0,n1439=Math.max(0,Math.floor(r.num("10")));i1439<n1439;i1439++){
 c.block="qigk";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="y2ln";r.guard(c);
-for(let i1416=0,n1416=Math.max(0,Math.floor(r.num("10")));i1416<n1416;i1416++){
+for(let i1440=0,n1440=Math.max(0,Math.floor(r.num("10")));i1440<n1440;i1440++){
 c.block="ege3";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ec6d",null]),"EQUAL","0"]))){
 c.block="hb6f";r.guard(c);
@@ -45305,7 +48999,7 @@ r.command(c,"change_variable",["ziwi","-1",null]);
 c.block="omuk";r.guard(c);
 yield* r.call(c,"qy83",[r.value(c,"calc_basic",[r.value(c,"get_variable",["zk7l",null]),"MULTI","-1"]),"6","0"]);
 c.block="ug8j";r.guard(c);
-for(let i1417=0,n1417=Math.max(0,Math.floor(r.num("60")));i1417<n1417;i1417++){
+for(let i1441=0,n1441=Math.max(0,Math.floor(r.num("60")));i1441<n1441;i1441++){
 yield 1;
 }
 }
@@ -45394,7 +49088,7 @@ yield* r.call(c,"rz2k",[]);
 });
 r.register("ocqj","when_message_cast",[null,"1kqq"],function*(r,c){
 c.block="ebvi";r.guard(c);
-for(let i1418=0,n1418=Math.max(0,Math.floor(r.num("4")));i1418<n1418;i1418++){
+for(let i1442=0,n1442=Math.max(0,Math.floor(r.num("4")));i1442<n1442;i1442++){
 c.block="h1g9";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="0589";r.guard(c);
@@ -45407,7 +49101,7 @@ r.register("ocqj","when_clone_start",[null],function*(r,c){
 c.block="ztbk";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["sw3j"]),null]);
 c.block="gyp7";r.guard(c);
-for(let i1419=0,n1419=Math.max(0,Math.floor(r.num("10")));i1419<n1419;i1419++){
+for(let i1443=0,n1443=Math.max(0,Math.floor(r.num("10")));i1443<n1443;i1443++){
 c.block="ws14";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -45432,7 +49126,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["3n10"]),null]);
 c.block="y4e6";r.guard(c);
 r.command(c,"show",[null]);
 c.block="fmk2";r.guard(c);
-for(let i1420=0,n1420=Math.max(0,Math.floor(r.num("20")));i1420<n1420;i1420++){
+for(let i1444=0,n1444=Math.max(0,Math.floor(r.num("20")));i1444<n1444;i1444++){
 c.block="nux6";r.guard(c);
 r.command(c,"change_scale_size",["-0.5",null]);
 c.block="l5b5";r.guard(c);
@@ -45474,7 +49168,7 @@ r.command(c,"move_y",[r.value(c,"get_variable",["ig8h",null]),null]);
 yield 1;
 }
 c.block="7eqg";r.guard(c);
-for(let i1421=0,n1421=Math.max(0,Math.floor(r.num("20")));i1421<n1421;i1421++){
+for(let i1445=0,n1445=Math.max(0,Math.floor(r.num("20")));i1445<n1445;i1445++){
 c.block="rczp";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="fhpu";r.guard(c);
@@ -45514,7 +49208,7 @@ r.command(c,"move_direction",["5",null]);
 c.block="f5jo";r.guard(c);
 r.command(c,"set_variable",["0l1v","7.5",null]);
 c.block="zhm0";r.guard(c);
-for(let i1422=0,n1422=Math.max(0,Math.floor(r.num("25")));i1422<n1422;i1422++){
+for(let i1446=0,n1446=Math.max(0,Math.floor(r.num("25")));i1446<n1446;i1446++){
 c.block="osrr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["0l1v",null]),null]);
 c.block="qp7q";r.guard(c);
@@ -45522,7 +49216,7 @@ r.command(c,"change_variable",["0l1v","-0.2",null]);
 c.block="l1vw";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="pj6g";r.guard(c);
-for(let i1423=0,n1423=Math.max(0,Math.floor(r.num("1")));i1423<n1423;i1423++){
+for(let i1447=0,n1447=Math.max(0,Math.floor(r.num("1")));i1447<n1447;i1447++){
 yield 1;
 }
 c.block="515j";r.guard(c);
@@ -45550,7 +49244,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["a1jl"]),null]);
 c.block="elk8";r.guard(c);
 r.command(c,"set_variable",["0l1v","2.5",null]);
 c.block="o7un";r.guard(c);
-for(let i1424=0,n1424=Math.max(0,Math.floor(r.num("25")));i1424<n1424;i1424++){
+for(let i1448=0,n1448=Math.max(0,Math.floor(r.num("25")));i1448<n1448;i1448++){
 c.block="g9ed";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","4",null]);
 c.block="mc3c";r.guard(c);
@@ -45599,7 +49293,7 @@ r.command(c,"change_variable",["c9o4","-5",null]);
 }
 }
 c.block="fb0i";r.guard(c);
-for(let i1425=0,n1425=Math.max(0,Math.floor(r.num("1")));i1425<n1425;i1425++){
+for(let i1449=0,n1449=Math.max(0,Math.floor(r.num("1")));i1449<n1449;i1449++){
 yield 1;
 }
 c.block="94vj";r.guard(c);
@@ -45609,7 +49303,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="223g";r.guard(c);
 r.command(c,"set_scale_size",["40",null]);
 c.block="ta6x";r.guard(c);
-for(let i1426=0,n1426=Math.max(0,Math.floor(r.num("25")));i1426<n1426;i1426++){
+for(let i1450=0,n1450=Math.max(0,Math.floor(r.num("25")));i1450<n1450;i1450++){
 c.block="pq8v";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","4",null]);
 c.block="hz7b";r.guard(c);
@@ -45649,7 +49343,7 @@ r.command(c,"move_direction",["5",null]);
 c.block="s6wa";r.guard(c);
 r.command(c,"set_variable",["0l1v","6",null]);
 c.block="jtg5";r.guard(c);
-for(let i1427=0,n1427=Math.max(0,Math.floor(r.num("30")));i1427<n1427;i1427++){
+for(let i1451=0,n1451=Math.max(0,Math.floor(r.num("30")));i1451<n1451;i1451++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["0l1v",null]),null]);
 c.block="bin3";r.guard(c);
@@ -45691,7 +49385,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["b1ma"]),null]);
 c.block="x908";r.guard(c);
 r.command(c,"set_scale_size",["12",null]);
 c.block="xy0h";r.guard(c);
-for(let i1428=0,n1428=Math.max(0,Math.floor(r.num("10")));i1428<n1428;i1428++){
+for(let i1452=0,n1452=Math.max(0,Math.floor(r.num("10")));i1452<n1452;i1452++){
 c.block="u5zd";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["25","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="3wvt";r.guard(c);
@@ -45713,7 +49407,7 @@ r.command(c,"set_scale_size",["10",null]);
 c.block="0df5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="sdgk";r.guard(c);
-for(let i1429=0,n1429=Math.max(0,Math.floor(r.num("50")));i1429<n1429;i1429++){
+for(let i1453=0,n1453=Math.max(0,Math.floor(r.num("50")));i1453<n1453;i1453++){
 c.block="labk";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["240","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="ky6w";r.guard(c);
@@ -45727,7 +49421,7 @@ r.command(c,"locate",["n8fg",null]);
 yield 1;
 }
 c.block="91aj";r.guard(c);
-for(let i1430=0,n1430=Math.max(0,Math.floor(r.num("20")));i1430<n1430;i1430++){
+for(let i1454=0,n1454=Math.max(0,Math.floor(r.num("20")));i1454<n1454;i1454++){
 c.block="wqsj";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 c.block="am7n";r.guard(c);
@@ -45819,7 +49513,7 @@ r.command(c,"set_variable",["qvkr","1",null]);
 c.block="gr95";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="1an5";r.guard(c);
-for(let i1431=0,n1431=Math.max(0,Math.floor(r.num("50")));i1431<n1431;i1431++){
+for(let i1455=0,n1455=Math.max(0,Math.floor(r.num("50")));i1455<n1455;i1455++){
 c.block="va4c";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="zafr";r.guard(c);
@@ -45860,7 +49554,7 @@ r.command(c,"set_variable",["qvkr","3",null]);
 c.block="tij2";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="4w4e";r.guard(c);
-for(let i1432=0,n1432=Math.max(0,Math.floor(r.num("1")));i1432<n1432;i1432++){
+for(let i1456=0,n1456=Math.max(0,Math.floor(r.num("1")));i1456<n1456;i1456++){
 c.block="wp2b";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="hlad";r.guard(c);
@@ -45900,7 +49594,7 @@ c.block="brwr";r.guard(c);
 r.command(c,"create_clone",["hyk2",null]);
 }
 c.block="gl38";r.guard(c);
-for(let i1433=0,n1433=Math.max(0,Math.floor(r.num("30")));i1433<n1433;i1433++){
+for(let i1457=0,n1457=Math.max(0,Math.floor(r.num("30")));i1457<n1457;i1457++){
 c.block="n1ds";r.guard(c);
 r.command(c,"set_variable",["bct6","-4",null]);
 c.block="xgen";r.guard(c);
@@ -45922,7 +49616,7 @@ yield 1;
 c.block="g9xd";r.guard(c);
 r.command(c,"set_variable",["bct6","-3",null]);
 c.block="v426";r.guard(c);
-for(let i1434=0,n1434=Math.max(0,Math.floor(r.num("50")));i1434<n1434;i1434++){
+for(let i1458=0,n1458=Math.max(0,Math.floor(r.num("50")));i1458<n1458;i1458++){
 c.block="3bak";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="bk4y";r.guard(c);
@@ -45965,7 +49659,7 @@ c.block="hv3e";r.guard(c);
 r.command(c,"change_variable",["lgp6","-25",null]);
 }
 c.block="15zi";r.guard(c);
-for(let i1435=0,n1435=Math.max(0,Math.floor(r.num("1")));i1435<n1435;i1435++){
+for(let i1459=0,n1459=Math.max(0,Math.floor(r.num("1")));i1459<n1459;i1459++){
 yield 1;
 }
 }
@@ -45992,7 +49686,7 @@ c.block="unkn";r.guard(c);
 r.command(c,"change_variable",["lgp6","-13",null]);
 }
 c.block="6nvw";r.guard(c);
-for(let i1436=0,n1436=Math.max(0,Math.floor(r.num("1")));i1436<n1436;i1436++){
+for(let i1460=0,n1460=Math.max(0,Math.floor(r.num("1")));i1460<n1460;i1460++){
 yield 1;
 }
 }
@@ -46054,7 +49748,7 @@ r.command(c,"message_cast",["gg6a",null]);
 c.block="7for";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"picture_index"]),"PLUS","2"]),null]);
 c.block="zbpz";r.guard(c);
-for(let i1437=0,n1437=Math.max(0,Math.floor(r.num("50")));i1437<n1437;i1437++){
+for(let i1461=0,n1461=Math.max(0,Math.floor(r.num("50")));i1461<n1461;i1461++){
 c.block="d0ql";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["50","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="ogn0";r.guard(c);
@@ -46104,7 +49798,7 @@ r.command(c,"message_cast",["gg6a",null]);
 c.block="7for";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"picture_index"]),"PLUS","2"]),null]);
 c.block="zbpz";r.guard(c);
-for(let i1438=0,n1438=Math.max(0,Math.floor(r.num("50")));i1438<n1438;i1438++){
+for(let i1462=0,n1462=Math.max(0,Math.floor(r.num("50")));i1462<n1462;i1462++){
 c.block="d0ql";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["50","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="ogn0";r.guard(c);
@@ -46178,7 +49872,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["x5fk"]),null]);
 c.block="bwhb";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="987g";r.guard(c);
-for(let i1439=0,n1439=Math.max(0,Math.floor(r.num("2")));i1439<n1439;i1439++){
+for(let i1463=0,n1463=Math.max(0,Math.floor(r.num("2")));i1463<n1463;i1463++){
 c.block="kjy0";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="n5t9";r.guard(c);
@@ -46195,7 +49889,7 @@ yield 1;
 c.block="q5mt";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["x7qn"]),null]);
 c.block="jina";r.guard(c);
-for(let i1440=0,n1440=Math.max(0,Math.floor(r.num("25")));i1440<n1440;i1440++){
+for(let i1464=0,n1464=Math.max(0,Math.floor(r.num("25")));i1464<n1464;i1464++){
 c.block="sinn";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="rpk0";r.guard(c);
@@ -46217,7 +49911,7 @@ c.block="mr19";r.guard(c);
 r.command(c,"change_variable",["c9o4","20",null]);
 }
 c.block="t5ix";r.guard(c);
-for(let i1441=0,n1441=Math.max(0,Math.floor(r.num("30")));i1441<n1441;i1441++){
+for(let i1465=0,n1465=Math.max(0,Math.floor(r.num("30")));i1465<n1465;i1465++){
 c.block="rx76";r.guard(c);
 r.command(c,"change_variable",["hsae",r.value(c,"get_variable",["u9xr",null]),null]);
 c.block="bxfg";r.guard(c);
@@ -46242,7 +49936,7 @@ r.command(c,"set_variable",["u9xr","1.8",null]);
 c.block="95vw";r.guard(c);
 r.command(c,"set_variable",["uuq3","0",null]);
 c.block="pcry";r.guard(c);
-for(let i1442=0,n1442=Math.max(0,Math.floor(r.num("30")));i1442<n1442;i1442++){
+for(let i1466=0,n1466=Math.max(0,Math.floor(r.num("30")));i1466<n1466;i1466++){
 c.block="9jtj";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="03vq";r.guard(c);
@@ -46310,7 +50004,7 @@ r.command(c,"message_cast",["tuhm",null]);
 yield 1;
 }
 c.block="1nrp";r.guard(c);
-for(let i1443=0,n1443=Math.max(0,Math.floor(r.num("40")));i1443<n1443;i1443++){
+for(let i1467=0,n1467=Math.max(0,Math.floor(r.num("40")));i1467<n1467;i1467++){
 c.block="wkoe";r.guard(c);
 r.command(c,"set_variable",["hsae",r.value(c,"calc_basic",[r.value(c,"get_variable",["hsae",null]),"MULTI","0.94"]),null]);
 c.block="2bpc";r.guard(c);
@@ -46325,7 +50019,7 @@ r.command(c,"set_variable",["w5i0","0",null]);
 c.block="gctr";r.guard(c);
 r.command(c,"set_variable",["hsae","0",null]);
 c.block="nn1y";r.guard(c);
-for(let i1444=0,n1444=Math.max(0,Math.floor(r.num("9")));i1444<n1444;i1444++){
+for(let i1468=0,n1468=Math.max(0,Math.floor(r.num("9")));i1468<n1468;i1468++){
 c.block="2le2";r.guard(c);
 r.command(c,"change_to_next_shape",["prev",null]);
 c.block="icfi";r.guard(c);
@@ -46354,7 +50048,7 @@ r.command(c,"set_variable",["u9xr","1",null]);
 c.block="gs61";r.guard(c);
 r.command(c,"set_variable",["dqcb","1",null]);
 c.block="be5x";r.guard(c);
-for(let i1445=0,n1445=Math.max(0,Math.floor(r.num("20")));i1445<n1445;i1445++){
+for(let i1469=0,n1469=Math.max(0,Math.floor(r.num("20")));i1469<n1469;i1469++){
 c.block="zunx";r.guard(c);
 r.command(c,"change_variable",["tr7h",r.value(c,"get_variable",["u9xr",null]),null]);
 c.block="ftns";r.guard(c);
@@ -46367,7 +50061,7 @@ break;
 yield 1;
 }
 c.block="65hm";r.guard(c);
-for(let i1446=0,n1446=Math.max(0,Math.floor(r.num("1")));i1446<n1446;i1446++){
+for(let i1470=0,n1470=Math.max(0,Math.floor(r.num("1")));i1470<n1470;i1470++){
 c.block="xnrv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="slxg";r.guard(c);
@@ -46376,7 +50070,7 @@ break;
 yield 1;
 }
 c.block="m8el";r.guard(c);
-for(let i1447=0,n1447=Math.max(0,Math.floor(r.num("10")));i1447<n1447;i1447++){
+for(let i1471=0,n1471=Math.max(0,Math.floor(r.num("10")));i1471<n1471;i1471++){
 c.block="7ebo";r.guard(c);
 r.command(c,"change_variable",["tr7h",r.value(c,"get_variable",["u9xr",null]),null]);
 c.block="krf4";r.guard(c);
@@ -46426,7 +50120,7 @@ r.command(c,"message_cast",["xqge",null]);
 c.block="ug62";r.guard(c);
 r.command(c,"set_variable",["dqcb","0",null]);
 c.block="mdz6";r.guard(c);
-for(let i1448=0,n1448=Math.max(0,Math.floor(r.num("40")));i1448<n1448;i1448++){
+for(let i1472=0,n1472=Math.max(0,Math.floor(r.num("40")));i1472<n1472;i1472++){
 c.block="cy29";r.guard(c);
 r.command(c,"set_variable",["tr7h",r.value(c,"calc_basic",[r.value(c,"get_variable",["tr7h",null]),"MULTI","0.94"]),null]);
 c.block="oint";r.guard(c);
@@ -46458,11 +50152,11 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="wtgg";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["x5fk"]),null]);
 c.block="dzgy";r.guard(c);
-for(let i1449=0,n1449=Math.max(0,Math.floor(r.num("4")));i1449<n1449;i1449++){
+for(let i1473=0,n1473=Math.max(0,Math.floor(r.num("4")));i1473<n1473;i1473++){
 c.block="nl52";r.guard(c);
 r.command(c,"change_to_next_shape",["prev",null]);
 c.block="uw7w";r.guard(c);
-for(let i1450=0,n1450=Math.max(0,Math.floor(r.num("1")));i1450<n1450;i1450++){
+for(let i1474=0,n1474=Math.max(0,Math.floor(r.num("1")));i1474<n1474;i1474++){
 c.block="wjqv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="btje";r.guard(c);
@@ -46478,7 +50172,7 @@ break;
 yield 1;
 }
 c.block="sdrk";r.guard(c);
-for(let i1451=0,n1451=Math.max(0,Math.floor(r.num("15")));i1451<n1451;i1451++){
+for(let i1475=0,n1475=Math.max(0,Math.floor(r.num("15")));i1475<n1475;i1475++){
 c.block="dlc5";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="wqvc";r.guard(c);
@@ -46489,7 +50183,7 @@ yield 1;
 c.block="vx01";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="qga6";r.guard(c);
-for(let i1452=0,n1452=Math.max(0,Math.floor(r.num("5")));i1452<n1452;i1452++){
+for(let i1476=0,n1476=Math.max(0,Math.floor(r.num("5")));i1476<n1476;i1476++){
 c.block="r7jd";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 c.block="bqsc";r.guard(c);
@@ -46531,7 +50225,7 @@ r.command(c,"set_variable",["1vu0","0.5",null]);
 }
 }
 c.block="sczf";r.guard(c);
-for(let i1453=0,n1453=Math.max(0,Math.floor(r.num("30")));i1453<n1453;i1453++){
+for(let i1477=0,n1477=Math.max(0,Math.floor(r.num("30")));i1477<n1477;i1477++){
 c.block="ny2a";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="8av9";r.guard(c);
@@ -46542,7 +50236,7 @@ yield 1;
 c.block="upwp";r.guard(c);
 r.command(c,"set_variable",["q9d0","0",null]);
 c.block="wdm7";r.guard(c);
-for(let i1454=0,n1454=Math.max(0,Math.floor(r.num("9")));i1454<n1454;i1454++){
+for(let i1478=0,n1478=Math.max(0,Math.floor(r.num("9")));i1478<n1478;i1478++){
 c.block="0vl3";r.guard(c);
 r.command(c,"change_to_next_shape",["prev",null]);
 c.block="l6oc";r.guard(c);
@@ -46565,7 +50259,7 @@ yield 1;
 c.block="5krq";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["x5fk"]),null]);
 c.block="l7eh";r.guard(c);
-for(let i1455=0,n1455=Math.max(0,Math.floor(r.num("60")));i1455<n1455;i1455++){
+for(let i1479=0,n1479=Math.max(0,Math.floor(r.num("60")));i1479<n1479;i1479++){
 c.block="6gyk";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["83",null]))){
 c.block="x5t9";r.guard(c);
@@ -46607,13 +50301,13 @@ r.command(c,"set_variable",["wyyq","1",null]);
 c.block="20ki";r.guard(c);
 r.command(c,"set_variable",["iblx","1.3",null]);
 c.block="pyit";r.guard(c);
-for(let i1456=0,n1456=Math.max(0,Math.floor(r.num("30")));i1456<n1456;i1456++){
+for(let i1480=0,n1480=Math.max(0,Math.floor(r.num("30")));i1480<n1480;i1480++){
 c.block="bnzz";r.guard(c);
 r.command(c,"change_variable",["iblx","0.055",null]);
 yield 1;
 }
 c.block="e2v9";r.guard(c);
-for(let i1457=0,n1457=Math.max(0,Math.floor(r.num("40")));i1457<n1457;i1457++){
+for(let i1481=0,n1481=Math.max(0,Math.floor(r.num("40")));i1481<n1481;i1481++){
 c.block="fl8b";r.guard(c);
 r.command(c,"change_variable",["iblx","0.034",null]);
 yield 1;
@@ -46719,7 +50413,7 @@ r.command(c,"set_variable",["c9o4","0",null]);
 c.block="d4sa";r.guard(c);
 r.command(c,"set_variable",["w1k7","3",null]);
 c.block="pxr9";r.guard(c);
-for(let i1458=0,n1458=Math.max(0,Math.floor(r.num("30")));i1458<n1458;i1458++){
+for(let i1482=0,n1482=Math.max(0,Math.floor(r.num("30")));i1482<n1482;i1482++){
 c.block="0qbx";r.guard(c);
 r.command(c,"change_variable",["zssf",r.value(c,"calc_basic",[r.value(c,"get_variable",["w1k7",null]),"MULTI","0.1"]),null]);
 c.block="tk5l";r.guard(c);
@@ -46741,7 +50435,7 @@ r.command(c,"set_variable",["h98f","0",null]);
 c.block="v255";r.guard(c);
 r.command(c,"set_variable",["zssf","0",null]);
 c.block="7p4i";r.guard(c);
-for(let i1459=0,n1459=Math.max(0,Math.floor(r.num("6")));i1459<n1459;i1459++){
+for(let i1483=0,n1483=Math.max(0,Math.floor(r.num("6")));i1483<n1483;i1483++){
 c.block="fk8c";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="qwn6";r.guard(c);
@@ -46825,7 +50519,7 @@ c.block="b75b";r.guard(c);
 r.command(c,"set_variable",["c9o4","-6",null]);
 }
 c.block="2rg4";r.guard(c);
-for(let i1460=0,n1460=Math.max(0,Math.floor(r.num("24")));i1460<n1460;i1460++){
+for(let i1484=0,n1484=Math.max(0,Math.floor(r.num("24")));i1484<n1484;i1484++){
 yield 1;
 }
 c.block="6hfk";r.guard(c);
@@ -46849,7 +50543,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="x6y1";r.guard(c);
 r.command(c,"set_variable",["w1k7","3",null]);
 c.block="bl0h";r.guard(c);
-for(let i1461=0,n1461=Math.max(0,Math.floor(r.num("10")));i1461<n1461;i1461++){
+for(let i1485=0,n1485=Math.max(0,Math.floor(r.num("10")));i1485<n1485;i1485++){
 c.block="dpbi";r.guard(c);
 r.command(c,"change_variable",["3hir",r.value(c,"get_variable",["w1k7",null]),null]);
 c.block="bpf5";r.guard(c);
@@ -46872,7 +50566,7 @@ break;
 yield 1;
 }
 c.block="7lth";r.guard(c);
-for(let i1462=0,n1462=Math.max(0,Math.floor(r.num("3")));i1462<n1462;i1462++){
+for(let i1486=0,n1486=Math.max(0,Math.floor(r.num("3")));i1486<n1486;i1486++){
 yield 1;
 }
 c.block="52fg";r.guard(c);
@@ -46889,7 +50583,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="j6xt";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="xt32";r.guard(c);
-for(let i1463=0,n1463=Math.max(0,Math.floor(r.num("5")));i1463<n1463;i1463++){
+for(let i1487=0,n1487=Math.max(0,Math.floor(r.num("5")));i1487<n1487;i1487++){
 c.block="4v72";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="iv2m";r.guard(c);
@@ -46910,11 +50604,11 @@ break;
 yield 1;
 }
 c.block="m5m0";r.guard(c);
-for(let i1464=0,n1464=Math.max(0,Math.floor(r.num("3")));i1464<n1464;i1464++){
+for(let i1488=0,n1488=Math.max(0,Math.floor(r.num("3")));i1488<n1488;i1488++){
 yield 1;
 }
 c.block="yxw9";r.guard(c);
-for(let i1465=0,n1465=Math.max(0,Math.floor(r.num("30")));i1465<n1465;i1465++){
+for(let i1489=0,n1489=Math.max(0,Math.floor(r.num("30")));i1489<n1489;i1489++){
 c.block="n39y";r.guard(c);
 r.command(c,"change_variable",["3hir",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["3hir",null])]),"DIVIDE","7"]),null]);
 c.block="9y37";r.guard(c);
@@ -47021,7 +50715,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="4kv2";r.guard(c);
 r.command(c,"show",[null]);
 c.block="xgi1";r.guard(c);
-for(let i1466=0,n1466=Math.max(0,Math.floor(r.num("6")));i1466<n1466;i1466++){
+for(let i1490=0,n1490=Math.max(0,Math.floor(r.num("6")));i1490<n1490;i1490++){
 c.block="afs9";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="6kt6";r.guard(c);
@@ -47109,7 +50803,7 @@ r.command(c,"move_x",["12",null]);
 yield 1;
 }
 c.block="kqwr";r.guard(c);
-for(let i1467=0,n1467=Math.max(0,Math.floor(r.num("5")));i1467<n1467;i1467++){
+for(let i1491=0,n1491=Math.max(0,Math.floor(r.num("5")));i1491<n1491;i1491++){
 c.block="qrov";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -47190,7 +50884,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="1m2u";r.guard(c);
 r.command(c,"set_variable",["haay","3",null]);
 c.block="p8up";r.guard(c);
-for(let i1468=0,n1468=Math.max(0,Math.floor(r.num("10")));i1468<n1468;i1468++){
+for(let i1492=0,n1492=Math.max(0,Math.floor(r.num("10")));i1492<n1492;i1492++){
 c.block="gjel";r.guard(c);
 r.command(c,"change_variable",["1152",r.value(c,"calc_basic",[r.value(c,"get_variable",["haay",null]),"MULTI","0.5"]),null]);
 c.block="gv7s";r.guard(c);
@@ -47213,7 +50907,7 @@ break;
 yield 1;
 }
 c.block="joki";r.guard(c);
-for(let i1469=0,n1469=Math.max(0,Math.floor(r.num("3")));i1469<n1469;i1469++){
+for(let i1493=0,n1493=Math.max(0,Math.floor(r.num("3")));i1493<n1493;i1493++){
 yield 1;
 }
 c.block="mvi9";r.guard(c);
@@ -47223,7 +50917,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="ro2r";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="xjbz";r.guard(c);
-for(let i1470=0,n1470=Math.max(0,Math.floor(r.num("5")));i1470<n1470;i1470++){
+for(let i1494=0,n1494=Math.max(0,Math.floor(r.num("5")));i1494<n1494;i1494++){
 c.block="vr1v";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="9pua";r.guard(c);
@@ -47244,11 +50938,11 @@ break;
 yield 1;
 }
 c.block="1cvq";r.guard(c);
-for(let i1471=0,n1471=Math.max(0,Math.floor(r.num("3")));i1471<n1471;i1471++){
+for(let i1495=0,n1495=Math.max(0,Math.floor(r.num("3")));i1495<n1495;i1495++){
 yield 1;
 }
 c.block="lh1o";r.guard(c);
-for(let i1472=0,n1472=Math.max(0,Math.floor(r.num("30")));i1472<n1472;i1472++){
+for(let i1496=0,n1496=Math.max(0,Math.floor(r.num("30")));i1496<n1496;i1496++){
 c.block="4my5";r.guard(c);
 r.command(c,"change_variable",["1152",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["1152",null])]),"DIVIDE","7"]),null]);
 c.block="8zxe";r.guard(c);
@@ -47297,7 +50991,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="z5h7";r.guard(c);
 r.command(c,"show",[null]);
 c.block="ewcu";r.guard(c);
-for(let i1473=0,n1473=Math.max(0,Math.floor(r.num("6")));i1473<n1473;i1473++){
+for(let i1497=0,n1497=Math.max(0,Math.floor(r.num("6")));i1497<n1497;i1497++){
 c.block="qa5l";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="wnd7";r.guard(c);
@@ -47393,7 +51087,7 @@ r.command(c,"move_x",["19",null]);
 yield 1;
 }
 c.block="6kz0";r.guard(c);
-for(let i1474=0,n1474=Math.max(0,Math.floor(r.num("5")));i1474<n1474;i1474++){
+for(let i1498=0,n1498=Math.max(0,Math.floor(r.num("5")));i1498<n1498;i1498++){
 c.block="iyn6";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 yield 1;
@@ -47482,13 +51176,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="46yo";r.guard(c);
 r.command(c,"show",[null]);
 c.block="1dll";r.guard(c);
-for(let i1475=0,n1475=Math.max(0,Math.floor(r.num("7")));i1475<n1475;i1475++){
+for(let i1499=0,n1499=Math.max(0,Math.floor(r.num("7")));i1499<n1499;i1499++){
 c.block="8cxi";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="6ssd";r.guard(c);
-for(let i1476=0,n1476=Math.max(0,Math.floor(r.num("7")));i1476<n1476;i1476++){
+for(let i1500=0,n1500=Math.max(0,Math.floor(r.num("7")));i1500<n1500;i1500++){
 c.block="nhgo";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -47514,13 +51208,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="cshh";r.guard(c);
 r.command(c,"show",[null]);
 c.block="h1gp";r.guard(c);
-for(let i1477=0,n1477=Math.max(0,Math.floor(r.num("7")));i1477<n1477;i1477++){
+for(let i1501=0,n1501=Math.max(0,Math.floor(r.num("7")));i1501<n1501;i1501++){
 c.block="hj33";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="8see";r.guard(c);
-for(let i1478=0,n1478=Math.max(0,Math.floor(r.num("8")));i1478<n1478;i1478++){
+for(let i1502=0,n1502=Math.max(0,Math.floor(r.num("8")));i1502<n1502;i1502++){
 c.block="m66x";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -47546,13 +51240,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="el41";r.guard(c);
 r.command(c,"show",[null]);
 c.block="nle9";r.guard(c);
-for(let i1479=0,n1479=Math.max(0,Math.floor(r.num("7")));i1479<n1479;i1479++){
+for(let i1503=0,n1503=Math.max(0,Math.floor(r.num("7")));i1503<n1503;i1503++){
 c.block="lf2m";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="7iq8";r.guard(c);
-for(let i1480=0,n1480=Math.max(0,Math.floor(r.num("9")));i1480<n1480;i1480++){
+for(let i1504=0,n1504=Math.max(0,Math.floor(r.num("9")));i1504<n1504;i1504++){
 c.block="w7er";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -47570,7 +51264,7 @@ r.register("4mt9","when_message_cast",[null,"exxz"],function*(r,c){
 c.block="x6y1";r.guard(c);
 r.command(c,"set_variable",["bxn7","0",null]);
 c.block="bl0h";r.guard(c);
-for(let i1481=0,n1481=Math.max(0,Math.floor(r.num("10")));i1481<n1481;i1481++){
+for(let i1505=0,n1505=Math.max(0,Math.floor(r.num("10")));i1505<n1505;i1505++){
 c.block="heia";r.guard(c);
 r.command(c,"change_variable",["aau3",r.value(c,"calc_basic",[r.value(c,"get_variable",["bxn7",null]),"DIVIDE","1.5"]),null]);
 c.block="75r3";r.guard(c);
@@ -47587,7 +51281,7 @@ r.command(c,"set_variable",["bxn7","4",null]);
 c.block="rm0c";r.guard(c);
 r.command(c,"set_variable",["2u08","0",null]);
 c.block="p8fb";r.guard(c);
-for(let i1482=0,n1482=Math.max(0,Math.floor(r.num("10")));i1482<n1482;i1482++){
+for(let i1506=0,n1506=Math.max(0,Math.floor(r.num("10")));i1506<n1506;i1506++){
 c.block="ikby";r.guard(c);
 r.command(c,"change_variable",["aau3",r.value(c,"calc_basic",[r.value(c,"get_variable",["bxn7",null]),"MULTI","1"]),null]);
 c.block="dta1";r.guard(c);
@@ -47610,7 +51304,7 @@ break;
 yield 1;
 }
 c.block="h48r";r.guard(c);
-for(let i1483=0,n1483=Math.max(0,Math.floor(r.num("20")));i1483<n1483;i1483++){
+for(let i1507=0,n1507=Math.max(0,Math.floor(r.num("20")));i1507<n1507;i1507++){
 c.block="4swj";r.guard(c);
 r.command(c,"change_variable",["aau3",r.value(c,"calc_basic",[r.value(c,"get_variable",["bxn7",null]),"DIVIDE","2.2"]),null]);
 c.block="8h9h";r.guard(c);
@@ -47625,7 +51319,7 @@ yield 1;
 c.block="8odt";r.guard(c);
 r.command(c,"set_variable",["aau3","0",null]);
 c.block="wcdv";r.guard(c);
-for(let i1484=0,n1484=Math.max(0,Math.floor(r.num("5")));i1484<n1484;i1484++){
+for(let i1508=0,n1508=Math.max(0,Math.floor(r.num("5")));i1508<n1508;i1508++){
 c.block="n3k7";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="rszo";r.guard(c);
@@ -47641,7 +51335,7 @@ r.command(c,"set_variable",["hatx","0",null]);
 c.block="a1av";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="loq5";r.guard(c);
-for(let i1485=0,n1485=Math.max(0,Math.floor(r.num("150")));i1485<n1485;i1485++){
+for(let i1509=0,n1509=Math.max(0,Math.floor(r.num("150")));i1509<n1509;i1509++){
 c.block="7r00";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="vmcj";r.guard(c);
@@ -47674,7 +51368,7 @@ r.command(c,"rotate_absolute",["270",null]);
 c.block="dmx5";r.guard(c);
 r.command(c,"set_variable",["hatx","0",null]);
 c.block="vm83";r.guard(c);
-for(let i1486=0,n1486=Math.max(0,Math.floor(r.num("30")));i1486<n1486;i1486++){
+for(let i1510=0,n1510=Math.max(0,Math.floor(r.num("30")));i1510<n1510;i1510++){
 c.block="hpbo";r.guard(c);
 r.command(c,"rotate_relative",["12",null]);
 c.block="eqrx";r.guard(c);
@@ -47779,7 +51473,7 @@ r.command(c,"set_variable",["rr24","2",null]);
 c.block="ct2h";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mswd";r.guard(c);
-for(let i1487=0,n1487=Math.max(0,Math.floor(r.num("150")));i1487<n1487;i1487++){
+for(let i1511=0,n1511=Math.max(0,Math.floor(r.num("150")));i1511<n1511;i1511++){
 c.block="8cho";r.guard(c);
 r.command(c,"set_variable",["1g8o","-6",null]);
 c.block="v12p";r.guard(c);
@@ -47799,7 +51493,7 @@ r.command(c,"set_variable",["rr24","4",null]);
 c.block="ugow";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="kp97";r.guard(c);
-for(let i1488=0,n1488=Math.max(0,Math.floor(r.num("1")));i1488<n1488;i1488++){
+for(let i1512=0,n1512=Math.max(0,Math.floor(r.num("1")));i1512<n1512;i1512++){
 yield 1;
 }
 c.block="3ggq";r.guard(c);
@@ -47817,7 +51511,7 @@ r.command(c,"set_variable",["4eov","0",null]);
 c.block="1mux";r.guard(c);
 r.command(c,"set_variable",["7xfe","0",null]);
 c.block="0o3z";r.guard(c);
-for(let i1489=0,n1489=Math.max(0,Math.floor(r.num("30")));i1489<n1489;i1489++){
+for(let i1513=0,n1513=Math.max(0,Math.floor(r.num("30")));i1513<n1513;i1513++){
 c.block="u3ds";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="vihx";r.guard(c);
@@ -47827,7 +51521,7 @@ r.command(c,"change_variable",["iblx","0.05",null]);
 yield 1;
 }
 c.block="2gws";r.guard(c);
-for(let i1490=0,n1490=Math.max(0,Math.floor(r.num("40")));i1490<n1490;i1490++){
+for(let i1514=0,n1514=Math.max(0,Math.floor(r.num("40")));i1514<n1514;i1514++){
 c.block="g16s";r.guard(c);
 r.command(c,"change_variable",["du2p","0.034",null]);
 c.block="hcp0";r.guard(c);
@@ -47916,7 +51610,7 @@ r.command(c,"set_variable",["b9y7","0",null]);
 c.block="4htz";r.guard(c);
 r.command(c,"message_cast",["p9ac",null]);
 c.block="gipg";r.guard(c);
-for(let i1491=0,n1491=Math.max(0,Math.floor(r.num("30")));i1491<n1491;i1491++){
+for(let i1515=0,n1515=Math.max(0,Math.floor(r.num("30")));i1515<n1515;i1515++){
 c.block="gf8h";r.guard(c);
 r.command(c,"rotate_relative",["12",null]);
 c.block="ilkr";r.guard(c);
@@ -47956,7 +51650,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="x6y1";r.guard(c);
 r.command(c,"set_variable",["lle2","0",null]);
 c.block="bl0h";r.guard(c);
-for(let i1492=0,n1492=Math.max(0,Math.floor(r.num("10")));i1492<n1492;i1492++){
+for(let i1516=0,n1516=Math.max(0,Math.floor(r.num("10")));i1516<n1516;i1516++){
 c.block="heia";r.guard(c);
 r.command(c,"change_variable",["d9e9",r.value(c,"calc_basic",[r.value(c,"get_variable",["lle2",null]),"DIVIDE","1.5"]),null]);
 c.block="75r3";r.guard(c);
@@ -47975,7 +51669,7 @@ r.command(c,"set_variable",["b9y7","0",null]);
 c.block="fdnp";r.guard(c);
 r.command(c,"message_cast",["exxz",null]);
 c.block="xt32";r.guard(c);
-for(let i1493=0,n1493=Math.max(0,Math.floor(r.num("10")));i1493<n1493;i1493++){
+for(let i1517=0,n1517=Math.max(0,Math.floor(r.num("10")));i1517<n1517;i1517++){
 c.block="68px";r.guard(c);
 r.command(c,"change_variable",["d9e9",r.value(c,"calc_basic",[r.value(c,"get_variable",["lle2",null]),"DIVIDE","1.5"]),null]);
 c.block="a6sl";r.guard(c);
@@ -47998,7 +51692,7 @@ break;
 yield 1;
 }
 c.block="js0w";r.guard(c);
-for(let i1494=0,n1494=Math.max(0,Math.floor(r.num("20")));i1494<n1494;i1494++){
+for(let i1518=0,n1518=Math.max(0,Math.floor(r.num("20")));i1518<n1518;i1518++){
 c.block="nkil";r.guard(c);
 r.command(c,"change_variable",["d9e9",r.value(c,"calc_basic",[r.value(c,"get_variable",["lle2",null]),"DIVIDE","4"]),null]);
 c.block="t6t8";r.guard(c);
@@ -48042,13 +51736,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="37rg";r.guard(c);
 r.command(c,"show",[null]);
 c.block="bzen";r.guard(c);
-for(let i1495=0,n1495=Math.max(0,Math.floor(r.num("7")));i1495<n1495;i1495++){
+for(let i1519=0,n1519=Math.max(0,Math.floor(r.num("7")));i1519<n1519;i1519++){
 c.block="zc3x";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="as4n";r.guard(c);
-for(let i1496=0,n1496=Math.max(0,Math.floor(r.num("7")));i1496<n1496;i1496++){
+for(let i1520=0,n1520=Math.max(0,Math.floor(r.num("7")));i1520<n1520;i1520++){
 c.block="yy3n";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -48074,13 +51768,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="46yo";r.guard(c);
 r.command(c,"show",[null]);
 c.block="1dll";r.guard(c);
-for(let i1497=0,n1497=Math.max(0,Math.floor(r.num("7")));i1497<n1497;i1497++){
+for(let i1521=0,n1521=Math.max(0,Math.floor(r.num("7")));i1521<n1521;i1521++){
 c.block="8cxi";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="6ssd";r.guard(c);
-for(let i1498=0,n1498=Math.max(0,Math.floor(r.num("11")));i1498<n1498;i1498++){
+for(let i1522=0,n1522=Math.max(0,Math.floor(r.num("11")));i1522<n1522;i1522++){
 c.block="nhgo";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -48106,13 +51800,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="8lb8";r.guard(c);
 r.command(c,"show",[null]);
 c.block="mjd1";r.guard(c);
-for(let i1499=0,n1499=Math.max(0,Math.floor(r.num("7")));i1499<n1499;i1499++){
+for(let i1523=0,n1523=Math.max(0,Math.floor(r.num("7")));i1523<n1523;i1523++){
 c.block="v2d5";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="nflc";r.guard(c);
-for(let i1500=0,n1500=Math.max(0,Math.floor(r.num("8")));i1500<n1500;i1500++){
+for(let i1524=0,n1524=Math.max(0,Math.floor(r.num("8")));i1524<n1524;i1524++){
 c.block="zebb";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -48138,13 +51832,13 @@ r.command(c,"move_y",[r.value(c,"calc_rand",[null,"-2",null,"2",null]),null]);
 c.block="h50e";r.guard(c);
 r.command(c,"show",[null]);
 c.block="eytq";r.guard(c);
-for(let i1501=0,n1501=Math.max(0,Math.floor(r.num("7")));i1501<n1501;i1501++){
+for(let i1525=0,n1525=Math.max(0,Math.floor(r.num("7")));i1525<n1525;i1525++){
 c.block="jnqm";r.guard(c);
 r.command(c,"change_to_next_shape",["next",null]);
 yield 1;
 }
 c.block="wf2y";r.guard(c);
-for(let i1502=0,n1502=Math.max(0,Math.floor(r.num("11")));i1502<n1502;i1502++){
+for(let i1526=0,n1526=Math.max(0,Math.floor(r.num("11")));i1526<n1526;i1526++){
 c.block="zo03";r.guard(c);
 r.command(c,"change_scale_size",["-1",null]);
 yield 1;
@@ -48168,13 +51862,13 @@ r.command(c,"show",[null]);
 c.block="ppgm";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="ox9i";r.guard(c);
-for(let i1503=0,n1503=Math.max(0,Math.floor(r.num("30")));i1503<n1503;i1503++){
+for(let i1527=0,n1527=Math.max(0,Math.floor(r.num("30")));i1527<n1527;i1527++){
 c.block="uke9";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 yield 1;
 }
 c.block="3qkv";r.guard(c);
-for(let i1504=0,n1504=Math.max(0,Math.floor(r.num("10")));i1504<n1504;i1504++){
+for(let i1528=0,n1528=Math.max(0,Math.floor(r.num("10")));i1528<n1528;i1528++){
 c.block="xfar";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","6",null]);
 c.block="bvmd";r.guard(c);
@@ -48280,7 +51974,7 @@ r.command(c,"set_variable",["rr24","2",null]);
 c.block="m2ii";r.guard(c);
 r.command(c,"set_variable",["s087","0",null]);
 c.block="19x0";r.guard(c);
-for(let i1505=0,n1505=Math.max(0,Math.floor(r.num("50")));i1505<n1505;i1505++){
+for(let i1529=0,n1529=Math.max(0,Math.floor(r.num("50")));i1529<n1529;i1529++){
 c.block="3kw9";r.guard(c);
 r.command(c,"change_variable",["3mcq","0.1",null]);
 c.block="opkw";r.guard(c);
@@ -48295,7 +51989,7 @@ r.command(c,"set_variable",["s087","4",null]);
 c.block="upbz";r.guard(c);
 r.command(c,"set_variable",["v2t6","0",null]);
 c.block="s2sg";r.guard(c);
-for(let i1506=0,n1506=Math.max(0,Math.floor(r.num("20")));i1506<n1506;i1506++){
+for(let i1530=0,n1530=Math.max(0,Math.floor(r.num("20")));i1530<n1530;i1530++){
 c.block="etwl";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"get_variable",["s087",null]),"DIVIDE","-1.25"]),null]);
 c.block="5i9g";r.guard(c);
@@ -48333,7 +52027,7 @@ break;
 yield 1;
 }
 c.block="d5qc";r.guard(c);
-for(let i1507=0,n1507=Math.max(0,Math.floor(r.num("65")));i1507<n1507;i1507++){
+for(let i1531=0,n1531=Math.max(0,Math.floor(r.num("65")));i1531<n1531;i1531++){
 c.block="r9kl";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["3mcq",null])]),"DIVIDE","12"]),null]);
 c.block="dxx2";r.guard(c);
@@ -48351,7 +52045,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["uh0p",
 c.block="15tw";r.guard(c);
 r.command(c,"set_variable",["s087","0",null]);
 c.block="htdv";r.guard(c);
-for(let i1508=0,n1508=Math.max(0,Math.floor(r.num("2")));i1508<n1508;i1508++){
+for(let i1532=0,n1532=Math.max(0,Math.floor(r.num("2")));i1532<n1532;i1532++){
 c.block="ipwt";r.guard(c);
 r.command(c,"change_variable",["3mcq","2",null]);
 c.block="hqon";r.guard(c);
@@ -48364,7 +52058,7 @@ yield 1;
 c.block="gvtf";r.guard(c);
 r.command(c,"message_cast",["xwqe",null]);
 c.block="j3fu";r.guard(c);
-for(let i1509=0,n1509=Math.max(0,Math.floor(r.num("2")));i1509<n1509;i1509++){
+for(let i1533=0,n1533=Math.max(0,Math.floor(r.num("2")));i1533<n1533;i1533++){
 c.block="2y4q";r.guard(c);
 r.command(c,"set_variable",["s087","4",null]);
 c.block="3ggu";r.guard(c);
@@ -48374,7 +52068,7 @@ r.command(c,"set_variable",["9mon","0",null]);
 c.block="6wtx";r.guard(c);
 r.command(c,"create_clone",["wwgm",null]);
 c.block="6nyu";r.guard(c);
-for(let i1510=0,n1510=Math.max(0,Math.floor(r.num("4")));i1510<n1510;i1510++){
+for(let i1534=0,n1534=Math.max(0,Math.floor(r.num("4")));i1534<n1534;i1534++){
 c.block="qk3v";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"get_variable",["s087",null]),"DIVIDE","-1"]),null]);
 c.block="r5th";r.guard(c);
@@ -48391,7 +52085,7 @@ r.command(c,"set_variable",["9mon","4",null]);
 c.block="imr2";r.guard(c);
 r.command(c,"create_clone",["wwgm",null]);
 c.block="a5g4";r.guard(c);
-for(let i1511=0,n1511=Math.max(0,Math.floor(r.num("3")));i1511<n1511;i1511++){
+for(let i1535=0,n1535=Math.max(0,Math.floor(r.num("3")));i1535<n1535;i1535++){
 c.block="7wdw";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"get_variable",["s087",null]),"DIVIDE","-1"]),null]);
 c.block="xlqv";r.guard(c);
@@ -48408,7 +52102,7 @@ r.command(c,"set_variable",["9mon","-4",null]);
 c.block="itv1";r.guard(c);
 r.command(c,"create_clone",["wwgm",null]);
 c.block="53il";r.guard(c);
-for(let i1512=0,n1512=Math.max(0,Math.floor(r.num("4")));i1512<n1512;i1512++){
+for(let i1536=0,n1536=Math.max(0,Math.floor(r.num("4")));i1536<n1536;i1536++){
 c.block="b8u9";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["3mcq",null])]),"DIVIDE","2"]),null]);
 c.block="f2zl";r.guard(c);
@@ -48428,7 +52122,7 @@ r.command(c,"set_variable",["s087","0",null]);
 c.block="tez9";r.guard(c);
 r.command(c,"change_variable",["cfmd","17",null]);
 c.block="dinr";r.guard(c);
-for(let i1513=0,n1513=Math.max(0,Math.floor(r.num("10")));i1513<n1513;i1513++){
+for(let i1537=0,n1537=Math.max(0,Math.floor(r.num("10")));i1537<n1537;i1537++){
 c.block="wgpe";r.guard(c);
 r.command(c,"change_variable",["3mcq","0.4",null]);
 c.block="05j2";r.guard(c);
@@ -48443,7 +52137,7 @@ r.command(c,"set_variable",["s087","4",null]);
 c.block="aczt";r.guard(c);
 r.command(c,"set_variable",["v2t6","0",null]);
 c.block="rbbz";r.guard(c);
-for(let i1514=0,n1514=Math.max(0,Math.floor(r.num("10")));i1514<n1514;i1514++){
+for(let i1538=0,n1538=Math.max(0,Math.floor(r.num("10")));i1538<n1538;i1538++){
 c.block="q36h";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"get_variable",["s087",null]),"DIVIDE","-0.8"]),null]);
 c.block="iiox";r.guard(c);
@@ -48471,7 +52165,7 @@ yield 1;
 c.block="ejwx";r.guard(c);
 r.command(c,"message_cast",["azgj",null]);
 c.block="hp6h";r.guard(c);
-for(let i1515=0,n1515=Math.max(0,Math.floor(r.num("10")));i1515<n1515;i1515++){
+for(let i1539=0,n1539=Math.max(0,Math.floor(r.num("10")));i1539<n1539;i1539++){
 c.block="jaj2";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["3mcq",null])]),"DIVIDE","3"]),null]);
 c.block="r1gi";r.guard(c);
@@ -48488,7 +52182,7 @@ r.command(c,"set_variable",["3mcq","0",null]);
 c.block="jifa";r.guard(c);
 r.command(c,"set_variable",["v2t6","0",null]);
 c.block="zy67";r.guard(c);
-for(let i1516=0,n1516=Math.max(0,Math.floor(r.num("10")));i1516<n1516;i1516++){
+for(let i1540=0,n1540=Math.max(0,Math.floor(r.num("10")));i1540<n1540;i1540++){
 c.block="vrw3";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"get_variable",["s087",null]),"DIVIDE","-0.8"]),null]);
 c.block="jw9x";r.guard(c);
@@ -48514,7 +52208,7 @@ break;
 yield 1;
 }
 c.block="kr3g";r.guard(c);
-for(let i1517=0,n1517=Math.max(0,Math.floor(r.num("40")));i1517<n1517;i1517++){
+for(let i1541=0,n1541=Math.max(0,Math.floor(r.num("40")));i1541<n1541;i1541++){
 c.block="ykck";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["3mcq",null])]),"DIVIDE","4"]),null]);
 c.block="2kvn";r.guard(c);
@@ -48541,7 +52235,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="w8zb";r.guard(c);
 r.command(c,"set_variable",["s087","0",null]);
 c.block="4k25";r.guard(c);
-for(let i1518=0,n1518=Math.max(0,Math.floor(r.num("20")));i1518<n1518;i1518++){
+for(let i1542=0,n1542=Math.max(0,Math.floor(r.num("20")));i1542<n1542;i1542++){
 c.block="92cf";r.guard(c);
 r.command(c,"change_variable",["3mcq","0.2",null]);
 c.block="4n3s";r.guard(c);
@@ -48556,7 +52250,7 @@ r.command(c,"set_variable",["s087","4",null]);
 c.block="on07";r.guard(c);
 r.command(c,"set_variable",["v2t6","0",null]);
 c.block="ibpt";r.guard(c);
-for(let i1519=0,n1519=Math.max(0,Math.floor(r.num("20")));i1519<n1519;i1519++){
+for(let i1543=0,n1543=Math.max(0,Math.floor(r.num("20")));i1543<n1543;i1543++){
 c.block="p09d";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"get_variable",["s087",null]),"DIVIDE","-1.25"]),null]);
 c.block="zcgb";r.guard(c);
@@ -48592,7 +52286,7 @@ break;
 yield 1;
 }
 c.block="0dje";r.guard(c);
-for(let i1520=0,n1520=Math.max(0,Math.floor(r.num("65")));i1520<n1520;i1520++){
+for(let i1544=0,n1544=Math.max(0,Math.floor(r.num("65")));i1544<n1544;i1544++){
 c.block="91sf";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["3mcq",null])]),"DIVIDE","12"]),null]);
 c.block="92pi";r.guard(c);
@@ -48612,7 +52306,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="f8b8";r.guard(c);
 r.command(c,"set_variable",["s087","0",null]);
 c.block="pxhl";r.guard(c);
-for(let i1521=0,n1521=Math.max(0,Math.floor(r.num("2")));i1521<n1521;i1521++){
+for(let i1545=0,n1545=Math.max(0,Math.floor(r.num("2")));i1545<n1545;i1545++){
 c.block="f0yk";r.guard(c);
 r.command(c,"change_variable",["3mcq","2",null]);
 c.block="2bzq";r.guard(c);
@@ -48627,7 +52321,7 @@ r.command(c,"set_variable",["s087","4",null]);
 c.block="691y";r.guard(c);
 r.command(c,"set_variable",["v2t6","0",null]);
 c.block="wu2j";r.guard(c);
-for(let i1522=0,n1522=Math.max(0,Math.floor(r.num("7")));i1522<n1522;i1522++){
+for(let i1546=0,n1546=Math.max(0,Math.floor(r.num("7")));i1546<n1546;i1546++){
 c.block="s55k";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"get_variable",["s087",null]),"DIVIDE","-0.6"]),null]);
 c.block="qz32";r.guard(c);
@@ -48653,7 +52347,7 @@ break;
 yield 1;
 }
 c.block="s54n";r.guard(c);
-for(let i1523=0,n1523=Math.max(0,Math.floor(r.num("5")));i1523<n1523;i1523++){
+for(let i1547=0,n1547=Math.max(0,Math.floor(r.num("5")));i1547<n1547;i1547++){
 c.block="b5f3";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["3mcq",null])]),"DIVIDE","3.5"]),null]);
 c.block="tn7q";r.guard(c);
@@ -48671,7 +52365,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="x6y1";r.guard(c);
 r.command(c,"set_variable",["s087","0",null]);
 c.block="bl0h";r.guard(c);
-for(let i1524=0,n1524=Math.max(0,Math.floor(r.num("10")));i1524<n1524;i1524++){
+for(let i1548=0,n1548=Math.max(0,Math.floor(r.num("10")));i1548<n1548;i1548++){
 c.block="dpbi";r.guard(c);
 r.command(c,"change_variable",["3mcq","0.4",null]);
 c.block="wyin";r.guard(c);
@@ -48686,7 +52380,7 @@ r.command(c,"set_variable",["s087","4",null]);
 c.block="dokw";r.guard(c);
 r.command(c,"set_variable",["v2t6","0",null]);
 c.block="xt32";r.guard(c);
-for(let i1525=0,n1525=Math.max(0,Math.floor(r.num("10")));i1525<n1525;i1525++){
+for(let i1549=0,n1549=Math.max(0,Math.floor(r.num("10")));i1549<n1549;i1549++){
 c.block="68px";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"get_variable",["s087",null]),"DIVIDE","-0.8"]),null]);
 c.block="a6sl";r.guard(c);
@@ -48712,7 +52406,7 @@ break;
 yield 1;
 }
 c.block="yxw9";r.guard(c);
-for(let i1526=0,n1526=Math.max(0,Math.floor(r.num("30")));i1526<n1526;i1526++){
+for(let i1550=0,n1550=Math.max(0,Math.floor(r.num("30")));i1550<n1550;i1550++){
 c.block="l6y0";r.guard(c);
 r.command(c,"change_variable",["3mcq",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["3mcq",null])]),"DIVIDE","6"]),null]);
 c.block="06s6";r.guard(c);
@@ -48778,7 +52472,7 @@ r.register("f5xk","when_message_cast",[null,"2wes"],function*(r,c){
 c.block="y1ku";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="n0bd";r.guard(c);
-for(let i1527=0,n1527=Math.max(0,Math.floor(r.num("150")));i1527<n1527;i1527++){
+for(let i1551=0,n1551=Math.max(0,Math.floor(r.num("150")));i1551<n1551;i1551++){
 yield 1;
 }
 c.block="g8si";r.guard(c);
@@ -48809,7 +52503,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="lxqv";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["mv7s"]),null]);
 c.block="1h3b";r.guard(c);
-for(let i1528=0,n1528=Math.max(0,Math.floor(r.num("15")));i1528<n1528;i1528++){
+for(let i1552=0,n1552=Math.max(0,Math.floor(r.num("15")));i1552<n1552;i1552++){
 c.block="kms4";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="qr38";r.guard(c);
@@ -48904,7 +52598,7 @@ r.command(c,"set_variable",["fmwh","4",null]);
 c.block="5tgq";r.guard(c);
 r.command(c,"set_variable",["7yww","0",null]);
 c.block="j6tt";r.guard(c);
-for(let i1529=0,n1529=Math.max(0,Math.floor(r.num("10")));i1529<n1529;i1529++){
+for(let i1553=0,n1553=Math.max(0,Math.floor(r.num("10")));i1553<n1553;i1553++){
 c.block="ix1y";r.guard(c);
 r.command(c,"change_variable",["0ame",r.value(c,"calc_basic",[r.value(c,"get_variable",["fmwh",null]),"DIVIDE","-1.5"]),null]);
 c.block="vbsi";r.guard(c);
@@ -48930,7 +52624,7 @@ break;
 yield 1;
 }
 c.block="rc43";r.guard(c);
-for(let i1530=0,n1530=Math.max(0,Math.floor(r.num("40")));i1530<n1530;i1530++){
+for(let i1554=0,n1554=Math.max(0,Math.floor(r.num("40")));i1554<n1554;i1554++){
 c.block="h1qx";r.guard(c);
 r.command(c,"change_variable",["0ame",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["0ame",null])]),"DIVIDE","9"]),null]);
 c.block="kzr0";r.guard(c);
@@ -48946,11 +52640,11 @@ r.command(c,"set_variable",["0ame","0",null]);
 });
 r.register("npl8","when_message_cast",[null,"xwqe"],function*(r,c){
 c.block="473r";r.guard(c);
-for(let i1531=0,n1531=Math.max(0,Math.floor(r.num("7")));i1531<n1531;i1531++){
+for(let i1555=0,n1555=Math.max(0,Math.floor(r.num("7")));i1555<n1555;i1555++){
 yield 1;
 }
 c.block="6nmo";r.guard(c);
-for(let i1532=0,n1532=Math.max(0,Math.floor(r.num("2")));i1532<n1532;i1532++){
+for(let i1556=0,n1556=Math.max(0,Math.floor(r.num("2")));i1556<n1556;i1556++){
 c.block="925i";r.guard(c);
 r.command(c,"set_variable",["fmwh","4",null]);
 c.block="ywnl";r.guard(c);
@@ -48958,7 +52652,7 @@ r.command(c,"set_variable",["7yww","0",null]);
 c.block="tzs5";r.guard(c);
 r.command(c,"set_variable",["0ame","0",null]);
 c.block="wkxi";r.guard(c);
-for(let i1533=0,n1533=Math.max(0,Math.floor(r.num("7")));i1533<n1533;i1533++){
+for(let i1557=0,n1557=Math.max(0,Math.floor(r.num("7")));i1557<n1557;i1557++){
 c.block="bjwj";r.guard(c);
 r.command(c,"change_variable",["0ame",r.value(c,"calc_basic",[r.value(c,"get_variable",["fmwh",null]),"DIVIDE","-1.5"]),null]);
 c.block="ywp0";r.guard(c);
@@ -48971,7 +52665,7 @@ break;
 yield 1;
 }
 c.block="rw2d";r.guard(c);
-for(let i1534=0,n1534=Math.max(0,Math.floor(r.num("4")));i1534<n1534;i1534++){
+for(let i1558=0,n1558=Math.max(0,Math.floor(r.num("4")));i1558<n1558;i1558++){
 c.block="bvi2";r.guard(c);
 r.command(c,"change_variable",["0ame",r.value(c,"calc_basic",[r.value(c,"calc_basic",["0","MINUS",r.value(c,"get_variable",["0ame",null])]),"DIVIDE","3.5"]),null]);
 c.block="m4i7";r.guard(c);
@@ -49061,7 +52755,7 @@ r.command(c,"set_variable",["rr24","2",null]);
 c.block="r0rd";r.guard(c);
 r.command(c,"set_variable",["ud2t","0",null]);
 c.block="jpxb";r.guard(c);
-for(let i1535=0,n1535=Math.max(0,Math.floor(r.num("20")));i1535<n1535;i1535++){
+for(let i1559=0,n1559=Math.max(0,Math.floor(r.num("20")));i1559<n1559;i1559++){
 c.block="ssiq";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","3"]),null]);
 c.block="85hj";r.guard(c);
@@ -49097,7 +52791,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="czrk";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="isi4";r.guard(c);
-for(let i1536=0,n1536=Math.max(0,Math.floor(r.num("10")));i1536<n1536;i1536++){
+for(let i1560=0,n1560=Math.max(0,Math.floor(r.num("10")));i1560<n1560;i1560++){
 c.block="p92n";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","1.5"]),null]);
 c.block="r7k6";r.guard(c);
@@ -49110,7 +52804,7 @@ break;
 yield 1;
 }
 c.block="ke8g";r.guard(c);
-for(let i1537=0,n1537=Math.max(0,Math.floor(r.num("20")));i1537<n1537;i1537++){
+for(let i1561=0,n1561=Math.max(0,Math.floor(r.num("20")));i1561<n1561;i1561++){
 c.block="siqm";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","4"]),null]);
 c.block="lxcs";r.guard(c);
@@ -49131,7 +52825,7 @@ r.command(c,"show",[null]);
 c.block="uwcw";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="tso1";r.guard(c);
-for(let i1538=0,n1538=Math.max(0,Math.floor(r.num("10")));i1538<n1538;i1538++){
+for(let i1562=0,n1562=Math.max(0,Math.floor(r.num("10")));i1562<n1562;i1562++){
 c.block="fmqj";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["18","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","3"]),null]);
 yield 1;
@@ -49151,7 +52845,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="7kd7";r.guard(c);
 r.command(c,"set_variable",["ud2t","0",null]);
 c.block="d4zd";r.guard(c);
-for(let i1539=0,n1539=Math.max(0,Math.floor(r.num("20")));i1539<n1539;i1539++){
+for(let i1563=0,n1563=Math.max(0,Math.floor(r.num("20")));i1563<n1563;i1563++){
 c.block="jprm";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","3"]),null]);
 c.block="id1v";r.guard(c);
@@ -49197,7 +52891,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="rltw";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="f7qh";r.guard(c);
-for(let i1540=0,n1540=Math.max(0,Math.floor(r.num("10")));i1540<n1540;i1540++){
+for(let i1564=0,n1564=Math.max(0,Math.floor(r.num("10")));i1564<n1564;i1564++){
 c.block="u14q";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","1.5"]),null]);
 c.block="cc8e";r.guard(c);
@@ -49210,7 +52904,7 @@ break;
 yield 1;
 }
 c.block="7f28";r.guard(c);
-for(let i1541=0,n1541=Math.max(0,Math.floor(r.num("20")));i1541<n1541;i1541++){
+for(let i1565=0,n1565=Math.max(0,Math.floor(r.num("20")));i1565<n1565;i1565++){
 c.block="aapy";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","4"]),null]);
 c.block="sfaq";r.guard(c);
@@ -49229,7 +52923,7 @@ r.command(c,"show",[null]);
 c.block="xoak";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="fmdg";r.guard(c);
-for(let i1542=0,n1542=Math.max(0,Math.floor(r.num("10")));i1542<n1542;i1542++){
+for(let i1566=0,n1566=Math.max(0,Math.floor(r.num("10")));i1566<n1566;i1566++){
 c.block="6kyg";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["18","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","3"]),null]);
 yield 1;
@@ -49245,7 +52939,7 @@ r.command(c,"set_variable",["rr24","0",null]);
 c.block="a23z";r.guard(c);
 r.command(c,"set_variable",["ud2t","0",null]);
 c.block="nqnj";r.guard(c);
-for(let i1543=0,n1543=Math.max(0,Math.floor(r.num("20")));i1543<n1543;i1543++){
+for(let i1567=0,n1567=Math.max(0,Math.floor(r.num("20")));i1567<n1567;i1567++){
 c.block="mo2m";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","3"]),null]);
 c.block="met7";r.guard(c);
@@ -49281,7 +52975,7 @@ r.command(c,"create_clone",["self",null]);
 c.block="jwqi";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="h3zg";r.guard(c);
-for(let i1544=0,n1544=Math.max(0,Math.floor(r.num("10")));i1544<n1544;i1544++){
+for(let i1568=0,n1568=Math.max(0,Math.floor(r.num("10")));i1568<n1568;i1568++){
 c.block="sry2";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","1.5"]),null]);
 c.block="tkg8";r.guard(c);
@@ -49294,7 +52988,7 @@ break;
 yield 1;
 }
 c.block="f66g";r.guard(c);
-for(let i1545=0,n1545=Math.max(0,Math.floor(r.num("20")));i1545<n1545;i1545++){
+for(let i1569=0,n1569=Math.max(0,Math.floor(r.num("20")));i1569<n1569;i1569++){
 c.block="6wld";r.guard(c);
 r.command(c,"change_variable",["af7f",r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","4"]),null]);
 c.block="01bu";r.guard(c);
@@ -49313,7 +53007,7 @@ r.command(c,"show",[null]);
 c.block="5h64";r.guard(c);
 r.command(c,"set_scale_size",["0.1",null]);
 c.block="hkt1";r.guard(c);
-for(let i1546=0,n1546=Math.max(0,Math.floor(r.num("10")));i1546<n1546;i1546++){
+for(let i1570=0,n1570=Math.max(0,Math.floor(r.num("10")));i1570<n1570;i1570++){
 c.block="n23a";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["18","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","3"]),null]);
 yield 1;
@@ -49355,7 +53049,7 @@ r.command(c,"set_variable",["rix4","1.5",null]);
 c.block="ez7f";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="2kvy";r.guard(c);
-for(let i1547=0,n1547=Math.max(0,Math.floor(r.num("130")));i1547<n1547;i1547++){
+for(let i1571=0,n1571=Math.max(0,Math.floor(r.num("130")));i1571<n1571;i1571++){
 c.block="x2tg";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="dze1";r.guard(c);
@@ -49387,7 +53081,7 @@ r.command(c,"set_variable",["e5t2",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="fd54";r.guard(c);
 r.command(c,"change_variable",["ncjw","1",null]);
 c.block="1gx7";r.guard(c);
-for(let i1548=0,n1548=Math.max(0,Math.floor(r.num("770")));i1548<n1548;i1548++){
+for(let i1572=0,n1572=Math.max(0,Math.floor(r.num("770")));i1572<n1572;i1572++){
 c.block="5v2i";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="yre6";r.guard(c);
@@ -49404,7 +53098,7 @@ yield 1;
 c.block="lqk2";r.guard(c);
 r.command(c,"change_variable",["ncjw","-1",null]);
 c.block="e90c";r.guard(c);
-for(let i1549=0,n1549=Math.max(0,Math.floor(r.num("30")));i1549<n1549;i1549++){
+for(let i1573=0,n1573=Math.max(0,Math.floor(r.num("30")));i1573<n1573;i1573++){
 c.block="3qii";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49418,11 +53112,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="glxp";r.guard(c);
 r.command(c,"move_direction",["10",null]);
 c.block="80x1";r.guard(c);
-for(let i1550=0,n1550=Math.max(0,Math.floor(r.num("111")));i1550<n1550;i1550++){
+for(let i1574=0,n1574=Math.max(0,Math.floor(r.num("111")));i1574<n1574;i1574++){
 yield 1;
 }
 c.block="z0fb";r.guard(c);
-for(let i1551=0,n1551=Math.max(0,Math.floor(r.num("30")));i1551<n1551;i1551++){
+for(let i1575=0,n1575=Math.max(0,Math.floor(r.num("30")));i1575<n1575;i1575++){
 c.block="5rn8";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49435,7 +53129,7 @@ yield 1;
 }
 }else{
 c.block="c8p5";r.guard(c);
-for(let i1552=0,n1552=Math.max(0,Math.floor(r.num("130")));i1552<n1552;i1552++){
+for(let i1576=0,n1576=Math.max(0,Math.floor(r.num("130")));i1576<n1576;i1576++){
 c.block="husl";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="agjz";r.guard(c);
@@ -49467,7 +53161,7 @@ r.command(c,"set_variable",["e5t2",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="71ig";r.guard(c);
 r.command(c,"change_variable",["ncjw","1",null]);
 c.block="pbyk";r.guard(c);
-for(let i1553=0,n1553=Math.max(0,Math.floor(r.num("770")));i1553<n1553;i1553++){
+for(let i1577=0,n1577=Math.max(0,Math.floor(r.num("770")));i1577<n1577;i1577++){
 c.block="p0bl";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="4r5d";r.guard(c);
@@ -49484,7 +53178,7 @@ yield 1;
 c.block="iexr";r.guard(c);
 r.command(c,"change_variable",["ncjw","-1",null]);
 c.block="gzhq";r.guard(c);
-for(let i1554=0,n1554=Math.max(0,Math.floor(r.num("30")));i1554<n1554;i1554++){
+for(let i1578=0,n1578=Math.max(0,Math.floor(r.num("30")));i1578<n1578;i1578++){
 c.block="ur5n";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49498,11 +53192,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="5sym";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
 c.block="auye";r.guard(c);
-for(let i1555=0,n1555=Math.max(0,Math.floor(r.num("111")));i1555<n1555;i1555++){
+for(let i1579=0,n1579=Math.max(0,Math.floor(r.num("111")));i1579<n1579;i1579++){
 yield 1;
 }
 c.block="vkpr";r.guard(c);
-for(let i1556=0,n1556=Math.max(0,Math.floor(r.num("30")));i1556<n1556;i1556++){
+for(let i1580=0,n1580=Math.max(0,Math.floor(r.num("30")));i1580<n1580;i1580++){
 c.block="4c89";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49531,7 +53225,7 @@ r.command(c,"set_variable",["rix4",r.value(c,"get_variable",["wubx",null]),null]
 c.block="1ycg";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="xyuf";r.guard(c);
-for(let i1557=0,n1557=Math.max(0,Math.floor(r.num("10")));i1557<n1557;i1557++){
+for(let i1581=0,n1581=Math.max(0,Math.floor(r.num("10")));i1581<n1581;i1581++){
 c.block="hf5p";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="w6uu";r.guard(c);
@@ -49545,11 +53239,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="n04t";r.guard(c);
 r.command(c,"move_direction",[10,null]);
 c.block="vxw8";r.guard(c);
-for(let i1558=0,n1558=Math.max(0,Math.floor(r.num("111")));i1558<n1558;i1558++){
+for(let i1582=0,n1582=Math.max(0,Math.floor(r.num("111")));i1582<n1582;i1582++){
 yield 1;
 }
 c.block="8dfj";r.guard(c);
-for(let i1559=0,n1559=Math.max(0,Math.floor(r.num("30")));i1559<n1559;i1559++){
+for(let i1583=0,n1583=Math.max(0,Math.floor(r.num("30")));i1583<n1583;i1583++){
 c.block="upwg";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49561,7 +53255,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="yjxi";r.guard(c);
-for(let i1560=0,n1560=Math.max(0,Math.floor(r.num("155")));i1560<n1560;i1560++){
+for(let i1584=0,n1584=Math.max(0,Math.floor(r.num("155")));i1584<n1584;i1584++){
 c.block="cn2e";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="gftt";r.guard(c);
@@ -49591,7 +53285,7 @@ r.command(c,"set_variable",["e5t2",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="ln70";r.guard(c);
 r.command(c,"change_variable",["ncjw","1",null]);
 c.block="2zii";r.guard(c);
-for(let i1561=0,n1561=Math.max(0,Math.floor(r.num("770")));i1561<n1561;i1561++){
+for(let i1585=0,n1585=Math.max(0,Math.floor(r.num("770")));i1585<n1585;i1585++){
 c.block="08qe";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="pf9x";r.guard(c);
@@ -49603,7 +53297,7 @@ yield 1;
 c.block="ecq1";r.guard(c);
 r.command(c,"change_variable",["ncjw","-1",null]);
 c.block="i9a8";r.guard(c);
-for(let i1562=0,n1562=Math.max(0,Math.floor(r.num("30")));i1562<n1562;i1562++){
+for(let i1586=0,n1586=Math.max(0,Math.floor(r.num("30")));i1586<n1586;i1586++){
 c.block="v975";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49617,11 +53311,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="zapo";r.guard(c);
 r.command(c,"move_direction",[10,null]);
 c.block="j1vt";r.guard(c);
-for(let i1563=0,n1563=Math.max(0,Math.floor(r.num("111")));i1563<n1563;i1563++){
+for(let i1587=0,n1587=Math.max(0,Math.floor(r.num("111")));i1587<n1587;i1587++){
 yield 1;
 }
 c.block="ekn5";r.guard(c);
-for(let i1564=0,n1564=Math.max(0,Math.floor(r.num("30")));i1564<n1564;i1564++){
+for(let i1588=0,n1588=Math.max(0,Math.floor(r.num("30")));i1588<n1588;i1588++){
 c.block="zhb5";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49634,7 +53328,7 @@ yield 1;
 }
 }else{
 c.block="klku";r.guard(c);
-for(let i1565=0,n1565=Math.max(0,Math.floor(r.num("10")));i1565<n1565;i1565++){
+for(let i1589=0,n1589=Math.max(0,Math.floor(r.num("10")));i1589<n1589;i1589++){
 c.block="gkuz";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="0dll";r.guard(c);
@@ -49648,11 +53342,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="s5mq";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
 c.block="i5vf";r.guard(c);
-for(let i1566=0,n1566=Math.max(0,Math.floor(r.num("111")));i1566<n1566;i1566++){
+for(let i1590=0,n1590=Math.max(0,Math.floor(r.num("111")));i1590<n1590;i1590++){
 yield 1;
 }
 c.block="tn9w";r.guard(c);
-for(let i1567=0,n1567=Math.max(0,Math.floor(r.num("30")));i1567<n1567;i1567++){
+for(let i1591=0,n1591=Math.max(0,Math.floor(r.num("30")));i1591<n1591;i1591++){
 c.block="k1tp";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49664,7 +53358,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="wc0f";r.guard(c);
-for(let i1568=0,n1568=Math.max(0,Math.floor(r.num("155")));i1568<n1568;i1568++){
+for(let i1592=0,n1592=Math.max(0,Math.floor(r.num("155")));i1592<n1592;i1592++){
 c.block="ait2";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="i236";r.guard(c);
@@ -49694,7 +53388,7 @@ r.command(c,"set_variable",["e5t2",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="46bo";r.guard(c);
 r.command(c,"change_variable",["ncjw","1",null]);
 c.block="xnnc";r.guard(c);
-for(let i1569=0,n1569=Math.max(0,Math.floor(r.num("770")));i1569<n1569;i1569++){
+for(let i1593=0,n1593=Math.max(0,Math.floor(r.num("770")));i1593<n1593;i1593++){
 c.block="xvf5";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="5l8m";r.guard(c);
@@ -49706,7 +53400,7 @@ yield 1;
 c.block="cbtz";r.guard(c);
 r.command(c,"change_variable",["ncjw","-1",null]);
 c.block="1c1l";r.guard(c);
-for(let i1570=0,n1570=Math.max(0,Math.floor(r.num("30")));i1570<n1570;i1570++){
+for(let i1594=0,n1594=Math.max(0,Math.floor(r.num("30")));i1594<n1594;i1594++){
 c.block="hoqv";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49720,11 +53414,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="n2to";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
 c.block="nk5q";r.guard(c);
-for(let i1571=0,n1571=Math.max(0,Math.floor(r.num("111")));i1571<n1571;i1571++){
+for(let i1595=0,n1595=Math.max(0,Math.floor(r.num("111")));i1595<n1595;i1595++){
 yield 1;
 }
 c.block="3dzj";r.guard(c);
-for(let i1572=0,n1572=Math.max(0,Math.floor(r.num("30")));i1572<n1572;i1572++){
+for(let i1596=0,n1596=Math.max(0,Math.floor(r.num("30")));i1596<n1596;i1596++){
 c.block="d9jy";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49749,7 +53443,7 @@ r.command(c,"set_variable",["rix4","1.5",null]);
 c.block="gfnk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="az08";r.guard(c);
-for(let i1573=0,n1573=Math.max(0,Math.floor(r.num("130")));i1573<n1573;i1573++){
+for(let i1597=0,n1597=Math.max(0,Math.floor(r.num("130")));i1597<n1597;i1597++){
 c.block="2g83";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="v95w";r.guard(c);
@@ -49781,7 +53475,7 @@ r.command(c,"set_variable",["e5t2",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="6dot";r.guard(c);
 r.command(c,"change_variable",["ncjw","1",null]);
 c.block="fxh6";r.guard(c);
-for(let i1574=0,n1574=Math.max(0,Math.floor(r.num("770")));i1574<n1574;i1574++){
+for(let i1598=0,n1598=Math.max(0,Math.floor(r.num("770")));i1598<n1598;i1598++){
 c.block="rc7h";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="7dvg";r.guard(c);
@@ -49793,7 +53487,7 @@ yield 1;
 c.block="n8bi";r.guard(c);
 r.command(c,"change_variable",["ncjw","-1",null]);
 c.block="w2dp";r.guard(c);
-for(let i1575=0,n1575=Math.max(0,Math.floor(r.num("30")));i1575<n1575;i1575++){
+for(let i1599=0,n1599=Math.max(0,Math.floor(r.num("30")));i1599<n1599;i1599++){
 c.block="empr";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49807,11 +53501,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="no3u";r.guard(c);
 r.command(c,"move_direction",["10",null]);
 c.block="0e6m";r.guard(c);
-for(let i1576=0,n1576=Math.max(0,Math.floor(r.num("111")));i1576<n1576;i1576++){
+for(let i1600=0,n1600=Math.max(0,Math.floor(r.num("111")));i1600<n1600;i1600++){
 yield 1;
 }
 c.block="h76v";r.guard(c);
-for(let i1577=0,n1577=Math.max(0,Math.floor(r.num("30")));i1577<n1577;i1577++){
+for(let i1601=0,n1601=Math.max(0,Math.floor(r.num("30")));i1601<n1601;i1601++){
 c.block="ktcr";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49824,7 +53518,7 @@ yield 1;
 }
 }else{
 c.block="lfqk";r.guard(c);
-for(let i1578=0,n1578=Math.max(0,Math.floor(r.num("130")));i1578<n1578;i1578++){
+for(let i1602=0,n1602=Math.max(0,Math.floor(r.num("130")));i1602<n1602;i1602++){
 c.block="ti81";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="zftv";r.guard(c);
@@ -49856,7 +53550,7 @@ r.command(c,"set_variable",["e5t2",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="p672";r.guard(c);
 r.command(c,"change_variable",["ncjw","1",null]);
 c.block="8mpv";r.guard(c);
-for(let i1579=0,n1579=Math.max(0,Math.floor(r.num("770")));i1579<n1579;i1579++){
+for(let i1603=0,n1603=Math.max(0,Math.floor(r.num("770")));i1603<n1603;i1603++){
 c.block="pprk";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="t9iz";r.guard(c);
@@ -49868,7 +53562,7 @@ yield 1;
 c.block="mmdc";r.guard(c);
 r.command(c,"change_variable",["ncjw","-1",null]);
 c.block="dlhf";r.guard(c);
-for(let i1580=0,n1580=Math.max(0,Math.floor(r.num("30")));i1580<n1580;i1580++){
+for(let i1604=0,n1604=Math.max(0,Math.floor(r.num("30")));i1604<n1604;i1604++){
 c.block="0ypo";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49882,11 +53576,11 @@ if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="bqqc";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
 c.block="kx4f";r.guard(c);
-for(let i1581=0,n1581=Math.max(0,Math.floor(r.num("111")));i1581<n1581;i1581++){
+for(let i1605=0,n1605=Math.max(0,Math.floor(r.num("111")));i1605<n1605;i1605++){
 yield 1;
 }
 c.block="hu4s";r.guard(c);
-for(let i1582=0,n1582=Math.max(0,Math.floor(r.num("30")));i1582<n1582;i1582++){
+for(let i1606=0,n1606=Math.max(0,Math.floor(r.num("30")));i1606<n1606;i1606++){
 c.block="tbi2";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 yield 1;
@@ -49922,7 +53616,7 @@ r.command(c,"create_clone",["a4vm",null]);
 c.block="npeh";r.guard(c);
 r.command(c,"create_clone",["a4vm",null]);
 c.block="ddgn";r.guard(c);
-for(let i1583=0,n1583=Math.max(0,Math.floor(r.num("150")));i1583<n1583;i1583++){
+for(let i1607=0,n1607=Math.max(0,Math.floor(r.num("150")));i1607<n1607;i1607++){
 yield 1;
 }
 }
@@ -49967,7 +53661,7 @@ r.command(c,"show",[null]);
 c.block="3n69";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="h1hs";r.guard(c);
-for(let i1584=0,n1584=Math.max(0,Math.floor(r.num("10")));i1584<n1584;i1584++){
+for(let i1608=0,n1608=Math.max(0,Math.floor(r.num("10")));i1608<n1608;i1608++){
 c.block="ki68";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -50007,7 +53701,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rks6",
 c.block="lwrc";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ord1"]),null]);
 c.block="wvmc";r.guard(c);
-for(let i1585=0,n1585=Math.max(0,Math.floor(r.num("70")));i1585<n1585;i1585++){
+for(let i1609=0,n1609=Math.max(0,Math.floor(r.num("70")));i1609<n1609;i1609++){
 c.block="zqxo";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ord1"]),null]);
 yield 1;
@@ -50020,7 +53714,7 @@ c.block="5t3n";r.guard(c);
 r.command(c,"stop_object",["otherThread",null]);
 if(c.thread.cancelled||c.e.dead)return;
 c.block="moq0";r.guard(c);
-for(let i1586=0,n1586=Math.max(0,Math.floor(r.num("50")));i1586<n1586;i1586++){
+for(let i1610=0,n1610=Math.max(0,Math.floor(r.num("50")));i1610<n1610;i1610++){
 c.block="bfhd";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ord1"]),null]);
 c.block="99b6";r.guard(c);
@@ -50105,7 +53799,7 @@ r.command(c,"show",[null]);
 c.block="3n69";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="h1hs";r.guard(c);
-for(let i1587=0,n1587=Math.max(0,Math.floor(r.num("10")));i1587<n1587;i1587++){
+for(let i1611=0,n1611=Math.max(0,Math.floor(r.num("10")));i1611<n1611;i1611++){
 c.block="ki68";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","-10",null]);
 yield 1;
@@ -50145,7 +53839,7 @@ if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.v
 c.block="lwrc";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["9oy5"]),null]);
 c.block="wvmc";r.guard(c);
-for(let i1588=0,n1588=Math.max(0,Math.floor(r.num("70")));i1588<n1588;i1588++){
+for(let i1612=0,n1612=Math.max(0,Math.floor(r.num("70")));i1612<n1612;i1612++){
 c.block="zqxo";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["9oy5"]),null]);
 yield 1;
@@ -50158,7 +53852,7 @@ c.block="5t3n";r.guard(c);
 r.command(c,"stop_object",["otherThread",null]);
 if(c.thread.cancelled||c.e.dead)return;
 c.block="moq0";r.guard(c);
-for(let i1589=0,n1589=Math.max(0,Math.floor(r.num("50")));i1589<n1589;i1589++){
+for(let i1613=0,n1613=Math.max(0,Math.floor(r.num("50")));i1613<n1613;i1613++){
 c.block="bfhd";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["9oy5"]),null]);
 c.block="99b6";r.guard(c);
@@ -50238,7 +53932,7 @@ yield* r.call(c,"05j0",[r.value(c,"calc_basic",["-1","PLUS",r.value(c,"get_varia
 c.block="z9ug";r.guard(c);
 r.command(c,"change_variable",["8npo","-0.25",null]);
 c.block="j2bx";r.guard(c);
-for(let i1590=0,n1590=Math.max(0,Math.floor(r.num("10")));i1590<n1590;i1590++){
+for(let i1614=0,n1614=Math.max(0,Math.floor(r.num("10")));i1614<n1614;i1614++){
 yield 1;
 }
 }
@@ -50255,9 +53949,9 @@ r.register("n230","when_message_cast",[null,"ixj2"],function*(r,c){
 c.block="j439";r.guard(c);
 r.command(c,"hide",[null]);
 c.block="1d3p";r.guard(c);
-for(let i1591=0,n1591=Math.max(0,Math.floor(r.num("4")));i1591<n1591;i1591++){
+for(let i1615=0,n1615=Math.max(0,Math.floor(r.num("4")));i1615<n1615;i1615++){
 c.block="cwbt";r.guard(c);
-for(let i1592=0,n1592=Math.max(0,Math.floor(r.num("3")));i1592<n1592;i1592++){
+for(let i1616=0,n1616=Math.max(0,Math.floor(r.num("3")));i1616<n1616;i1616++){
 yield 1;
 }
 yield 1;
@@ -50270,11 +53964,11 @@ r.register("n230","when_message_cast",[null,"k6oc"],function*(r,c){
 c.block="i3qc";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="e1o0";r.guard(c);
-for(let i1593=0,n1593=Math.max(0,Math.floor(r.num("28")));i1593<n1593;i1593++){
+for(let i1617=0,n1617=Math.max(0,Math.floor(r.num("28")));i1617<n1617;i1617++){
 c.block="flps";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="5k55";r.guard(c);
-for(let i1594=0,n1594=Math.max(0,Math.floor(r.num("10")));i1594<n1594;i1594++){
+for(let i1618=0,n1618=Math.max(0,Math.floor(r.num("10")));i1618<n1618;i1618++){
 c.block="dscy";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jcf6",null]),"EQUAL","0"]))){
 c.block="2c6x";r.guard(c);
@@ -50287,11 +53981,11 @@ yield 1;
 c.block="z0yo";r.guard(c);
 r.command(c,"set_variable",["j9vk","40",null]);
 c.block="40fx";r.guard(c);
-for(let i1595=0,n1595=Math.max(0,Math.floor(r.num("10")));i1595<n1595;i1595++){
+for(let i1619=0,n1619=Math.max(0,Math.floor(r.num("10")));i1619<n1619;i1619++){
 c.block="4cxf";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","100",null]);
 c.block="lof2";r.guard(c);
-for(let i1596=0,n1596=Math.max(0,Math.floor(r.num("10")));i1596<n1596;i1596++){
+for(let i1620=0,n1620=Math.max(0,Math.floor(r.num("10")));i1620<n1620;i1620++){
 c.block="zstt";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jcf6",null]),"EQUAL","0"]))){
 c.block="vuj1";r.guard(c);
@@ -50321,7 +54015,7 @@ r.command(c,"change_variable",["td66","-1",null]);
 c.block="ryuv";r.guard(c);
 yield* r.call(c,"05j0",[r.value(c,"calc_basic",[r.value(c,"get_variable",["zk7l",null]),"MULTI","-1"]),"6","0"]);
 c.block="jb6u";r.guard(c);
-for(let i1597=0,n1597=Math.max(0,Math.floor(r.num("60")));i1597<n1597;i1597++){
+for(let i1621=0,n1621=Math.max(0,Math.floor(r.num("60")));i1621<n1621;i1621++){
 yield 1;
 }
 }
@@ -50412,7 +54106,7 @@ r.register("n230","when_clone_start",[null],function*(r,c){
 c.block="6rjx";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["4n4i"]),null]);
 c.block="tw0g";r.guard(c);
-for(let i1598=0,n1598=Math.max(0,Math.floor(r.num("10")));i1598<n1598;i1598++){
+for(let i1622=0,n1622=Math.max(0,Math.floor(r.num("10")));i1622<n1622;i1622++){
 c.block="9wc1";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 yield 1;
@@ -50424,7 +54118,7 @@ if(c.thread.cancelled||c.e.dead)return;
 });
 r.register("n230","when_message_cast",[null,"mm57"],function*(r,c){
 c.block="45zt";r.guard(c);
-for(let i1599=0,n1599=Math.max(0,Math.floor(r.num("4")));i1599<n1599;i1599++){
+for(let i1623=0,n1623=Math.max(0,Math.floor(r.num("4")));i1623<n1623;i1623++){
 c.block="8cad";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="7rz8";r.guard(c);
@@ -50463,7 +54157,7 @@ r.command(c,"move_y",[r.value(c,"get_variable",["ig8h",null]),null]);
 yield 1;
 }
 c.block="7eqg";r.guard(c);
-for(let i1600=0,n1600=Math.max(0,Math.floor(r.num("20")));i1600<n1600;i1600++){
+for(let i1624=0,n1624=Math.max(0,Math.floor(r.num("20")));i1624<n1624;i1624++){
 c.block="rczp";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="fhpu";r.guard(c);
@@ -50503,7 +54197,7 @@ r.command(c,"move_direction",["5",null]);
 c.block="f5jo";r.guard(c);
 r.command(c,"set_variable",["wpmb","7.5",null]);
 c.block="zhm0";r.guard(c);
-for(let i1601=0,n1601=Math.max(0,Math.floor(r.num("25")));i1601<n1601;i1601++){
+for(let i1625=0,n1625=Math.max(0,Math.floor(r.num("25")));i1625<n1625;i1625++){
 c.block="osrr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["wpmb",null]),null]);
 c.block="qp7q";r.guard(c);
@@ -50511,7 +54205,7 @@ r.command(c,"change_variable",["wpmb","-0.2",null]);
 c.block="l1vw";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="pj6g";r.guard(c);
-for(let i1602=0,n1602=Math.max(0,Math.floor(r.num("1")));i1602<n1602;i1602++){
+for(let i1626=0,n1626=Math.max(0,Math.floor(r.num("1")));i1626<n1626;i1626++){
 yield 1;
 }
 c.block="88c8";r.guard(c);
@@ -50539,7 +54233,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ga1x"]),null]);
 c.block="elk8";r.guard(c);
 r.command(c,"set_variable",["wpmb","2.5",null]);
 c.block="o7un";r.guard(c);
-for(let i1603=0,n1603=Math.max(0,Math.floor(r.num("25")));i1603<n1603;i1603++){
+for(let i1627=0,n1627=Math.max(0,Math.floor(r.num("25")));i1627<n1627;i1627++){
 c.block="g9ed";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","4",null]);
 c.block="mc3c";r.guard(c);
@@ -50588,7 +54282,7 @@ r.command(c,"change_variable",["lgp6","-5",null]);
 }
 }
 c.block="fb0i";r.guard(c);
-for(let i1604=0,n1604=Math.max(0,Math.floor(r.num("1")));i1604<n1604;i1604++){
+for(let i1628=0,n1628=Math.max(0,Math.floor(r.num("1")));i1628<n1628;i1628++){
 yield 1;
 }
 c.block="94vj";r.guard(c);
@@ -50598,7 +54292,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="223g";r.guard(c);
 r.command(c,"set_scale_size",["40",null]);
 c.block="ta6x";r.guard(c);
-for(let i1605=0,n1605=Math.max(0,Math.floor(r.num("25")));i1605<n1605;i1605++){
+for(let i1629=0,n1629=Math.max(0,Math.floor(r.num("25")));i1629<n1629;i1629++){
 c.block="pq8v";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","4",null]);
 c.block="hz7b";r.guard(c);
@@ -50638,7 +54332,7 @@ r.command(c,"move_direction",["5",null]);
 c.block="s6wa";r.guard(c);
 r.command(c,"set_variable",["wpmb","6",null]);
 c.block="jtg5";r.guard(c);
-for(let i1606=0,n1606=Math.max(0,Math.floor(r.num("30")));i1606<n1606;i1606++){
+for(let i1630=0,n1630=Math.max(0,Math.floor(r.num("30")));i1630<n1630;i1630++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["wpmb",null]),null]);
 c.block="bin3";r.guard(c);
@@ -50680,7 +54374,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["8ugv"]),null]);
 c.block="x908";r.guard(c);
 r.command(c,"set_scale_size",["12",null]);
 c.block="xy0h";r.guard(c);
-for(let i1607=0,n1607=Math.max(0,Math.floor(r.num("10")));i1607<n1607;i1607++){
+for(let i1631=0,n1631=Math.max(0,Math.floor(r.num("10")));i1631<n1631;i1631++){
 c.block="u5zd";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["25","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","6"]),null]);
 c.block="3wvt";r.guard(c);
@@ -50702,7 +54396,7 @@ r.command(c,"set_scale_size",["10",null]);
 c.block="0df5";r.guard(c);
 r.command(c,"show",[null]);
 c.block="sdgk";r.guard(c);
-for(let i1608=0,n1608=Math.max(0,Math.floor(r.num("50")));i1608<n1608;i1608++){
+for(let i1632=0,n1632=Math.max(0,Math.floor(r.num("50")));i1632<n1632;i1632++){
 c.block="labk";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["240","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="ky6w";r.guard(c);
@@ -50716,7 +54410,7 @@ r.command(c,"locate",["00h9",null]);
 yield 1;
 }
 c.block="91aj";r.guard(c);
-for(let i1609=0,n1609=Math.max(0,Math.floor(r.num("20")));i1609<n1609;i1609++){
+for(let i1633=0,n1633=Math.max(0,Math.floor(r.num("20")));i1633<n1633;i1633++){
 c.block="wqsj";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 c.block="cdmc";r.guard(c);
@@ -50808,7 +54502,7 @@ r.command(c,"set_variable",["rr24","1",null]);
 c.block="gr95";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="1an5";r.guard(c);
-for(let i1610=0,n1610=Math.max(0,Math.floor(r.num("50")));i1610<n1610;i1610++){
+for(let i1634=0,n1634=Math.max(0,Math.floor(r.num("50")));i1634<n1634;i1634++){
 c.block="va4c";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="zafr";r.guard(c);
@@ -50849,7 +54543,7 @@ r.command(c,"set_variable",["rr24","3",null]);
 c.block="tij2";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="4w4e";r.guard(c);
-for(let i1611=0,n1611=Math.max(0,Math.floor(r.num("1")));i1611<n1611;i1611++){
+for(let i1635=0,n1635=Math.max(0,Math.floor(r.num("1")));i1635<n1635;i1635++){
 c.block="wp2b";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="hlad";r.guard(c);
@@ -50889,7 +54583,7 @@ c.block="brwr";r.guard(c);
 r.command(c,"create_clone",["hyk2",null]);
 }
 c.block="gl38";r.guard(c);
-for(let i1612=0,n1612=Math.max(0,Math.floor(r.num("30")));i1612<n1612;i1612++){
+for(let i1636=0,n1636=Math.max(0,Math.floor(r.num("30")));i1636<n1636;i1636++){
 c.block="xdpf";r.guard(c);
 r.command(c,"set_variable",["1g8o","-4",null]);
 c.block="xgen";r.guard(c);
@@ -50911,7 +54605,7 @@ yield 1;
 c.block="4tdr";r.guard(c);
 r.command(c,"set_variable",["1g8o","-3",null]);
 c.block="v426";r.guard(c);
-for(let i1613=0,n1613=Math.max(0,Math.floor(r.num("50")));i1613<n1613;i1613++){
+for(let i1637=0,n1637=Math.max(0,Math.floor(r.num("50")));i1637<n1637;i1637++){
 c.block="3bak";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="bk4y";r.guard(c);
@@ -50954,7 +54648,7 @@ c.block="2p7f";r.guard(c);
 r.command(c,"change_variable",["c9o4","-25",null]);
 }
 c.block="ppn9";r.guard(c);
-for(let i1614=0,n1614=Math.max(0,Math.floor(r.num("1")));i1614<n1614;i1614++){
+for(let i1638=0,n1638=Math.max(0,Math.floor(r.num("1")));i1638<n1638;i1638++){
 yield 1;
 }
 }
@@ -50981,7 +54675,7 @@ c.block="a020";r.guard(c);
 r.command(c,"change_variable",["c9o4","-13",null]);
 }
 c.block="6nvw";r.guard(c);
-for(let i1615=0,n1615=Math.max(0,Math.floor(r.num("1")));i1615<n1615;i1615++){
+for(let i1639=0,n1639=Math.max(0,Math.floor(r.num("1")));i1639<n1639;i1639++){
 yield 1;
 }
 }
@@ -51021,7 +54715,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="mbkl";r.guard(c);
 r.command(c,"show",[null]);
 c.block="to7s";r.guard(c);
-for(let i1616=0,n1616=Math.max(0,Math.floor(r.num("15")));i1616<n1616;i1616++){
+for(let i1640=0,n1640=Math.max(0,Math.floor(r.num("15")));i1640<n1640;i1640++){
 c.block="na9a";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="fdqs";r.guard(c);
@@ -51033,7 +54727,7 @@ r.command(c,"set_variable",["1g8o","-3",null]);
 yield 1;
 }
 c.block="cl7b";r.guard(c);
-for(let i1617=0,n1617=Math.max(0,Math.floor(r.num("285")));i1617<n1617;i1617++){
+for(let i1641=0,n1641=Math.max(0,Math.floor(r.num("285")));i1641<n1641;i1641++){
 c.block="vywk";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="jjyi";r.guard(c);
@@ -51045,7 +54739,7 @@ r.command(c,"set_variable",["1g8o","-3",null]);
 yield 1;
 }
 c.block="ih7z";r.guard(c);
-for(let i1618=0,n1618=Math.max(0,Math.floor(r.num("25")));i1618<n1618;i1618++){
+for(let i1642=0,n1642=Math.max(0,Math.floor(r.num("25")));i1642<n1642;i1642++){
 c.block="27sr";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="w8nl";r.guard(c);
@@ -51063,7 +54757,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="zz5x";r.guard(c);
 r.command(c,"show",[null]);
 c.block="phiv";r.guard(c);
-for(let i1619=0,n1619=Math.max(0,Math.floor(r.num("15")));i1619<n1619;i1619++){
+for(let i1643=0,n1643=Math.max(0,Math.floor(r.num("15")));i1643<n1643;i1643++){
 c.block="te11";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="72d4";r.guard(c);
@@ -51075,7 +54769,7 @@ r.command(c,"set_variable",["bct6","-3",null]);
 yield 1;
 }
 c.block="a92p";r.guard(c);
-for(let i1620=0,n1620=Math.max(0,Math.floor(r.num("285")));i1620<n1620;i1620++){
+for(let i1644=0,n1644=Math.max(0,Math.floor(r.num("285")));i1644<n1644;i1644++){
 c.block="tobj";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="hylg";r.guard(c);
@@ -51087,7 +54781,7 @@ r.command(c,"set_variable",["bct6","-3",null]);
 yield 1;
 }
 c.block="ptbo";r.guard(c);
-for(let i1621=0,n1621=Math.max(0,Math.floor(r.num("25")));i1621<n1621;i1621++){
+for(let i1645=0,n1645=Math.max(0,Math.floor(r.num("25")));i1645<n1645;i1645++){
 c.block="tbjg";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="nu2z";r.guard(c);
@@ -51115,7 +54809,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["6dnn"]),null]);
 c.block="y4e6";r.guard(c);
 r.command(c,"show",[null]);
 c.block="fmk2";r.guard(c);
-for(let i1622=0,n1622=Math.max(0,Math.floor(r.num("20")));i1622<n1622;i1622++){
+for(let i1646=0,n1646=Math.max(0,Math.floor(r.num("20")));i1646<n1646;i1646++){
 c.block="nux6";r.guard(c);
 r.command(c,"change_scale_size",["-0.5",null]);
 c.block="l5b5";r.guard(c);
@@ -51153,7 +54847,7 @@ r.command(c,"add_effect_amount",["transparency","100",null]);
 c.block="10zu";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="o06s";r.guard(c);
-for(let i1623=0,n1623=Math.max(0,Math.floor(r.num("50")));i1623<n1623;i1623++){
+for(let i1647=0,n1647=Math.max(0,Math.floor(r.num("50")));i1647<n1647;i1647++){
 c.block="x1af";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["24","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="0njp";r.guard(c);
@@ -51180,7 +54874,7 @@ r.command(c,"set_scale_size",["24",null]);
 c.block="6ie2";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="kfyy";r.guard(c);
-for(let i1624=0,n1624=Math.max(0,Math.floor(r.num("50")));i1624<n1624;i1624++){
+for(let i1648=0,n1648=Math.max(0,Math.floor(r.num("50")));i1648<n1648;i1648++){
 c.block="ei80";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["60","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="s4so";r.guard(c);
@@ -51221,7 +54915,7 @@ r.command(c,"add_effect_amount",["transparency","100",null]);
 c.block="mzw0";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="hf5f";r.guard(c);
-for(let i1625=0,n1625=Math.max(0,Math.floor(r.num("50")));i1625<n1625;i1625++){
+for(let i1649=0,n1649=Math.max(0,Math.floor(r.num("50")));i1649<n1649;i1649++){
 c.block="enas";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["24","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="65pk";r.guard(c);
@@ -51248,7 +54942,7 @@ r.command(c,"set_scale_size",["24",null]);
 c.block="671z";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="gqs1";r.guard(c);
-for(let i1626=0,n1626=Math.max(0,Math.floor(r.num("50")));i1626<n1626;i1626++){
+for(let i1650=0,n1650=Math.max(0,Math.floor(r.num("50")));i1650<n1650;i1650++){
 c.block="aurf";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["60","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="fiub";r.guard(c);
@@ -51279,7 +54973,7 @@ r.command(c,"locate",["00h9",null]);
 c.block="8ehg";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iosq",null]),"EQUAL","0"]))){
 c.block="dl8g";r.guard(c);
-for(let i1627=0,n1627=Math.max(0,Math.floor(r.num("1200")));i1627<n1627;i1627++){
+for(let i1651=0,n1651=Math.max(0,Math.floor(r.num("1200")));i1651<n1651;i1651++){
 c.block="g2e0";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="xt0v";r.guard(c);
@@ -51297,7 +54991,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iosq",
 c.block="d2f5";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="ygc1";r.guard(c);
-for(let i1628=0,n1628=Math.max(0,Math.floor(r.num("120")));i1628<n1628;i1628++){
+for(let i1652=0,n1652=Math.max(0,Math.floor(r.num("120")));i1652<n1652;i1652++){
 c.block="qayn";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="rm7d";r.guard(c);
@@ -51324,7 +55018,7 @@ r.command(c,"locate",["n8fg",null]);
 c.block="1gat";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iosq",null]),"EQUAL","0"]))){
 c.block="f0sl";r.guard(c);
-for(let i1629=0,n1629=Math.max(0,Math.floor(r.num("1200")));i1629<n1629;i1629++){
+for(let i1653=0,n1653=Math.max(0,Math.floor(r.num("1200")));i1653<n1653;i1653++){
 c.block="ba5v";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="17qh";r.guard(c);
@@ -51342,7 +55036,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["iosq",
 c.block="g5ye";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="2kzx";r.guard(c);
-for(let i1630=0,n1630=Math.max(0,Math.floor(r.num("120")));i1630<n1630;i1630++){
+for(let i1654=0,n1654=Math.max(0,Math.floor(r.num("120")));i1654<n1654;i1654++){
 c.block="nkq9";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="hjxv";r.guard(c);
@@ -51442,7 +55136,7 @@ c.block="xvy8";r.guard(c);
 r.command(c,"set_variable",["tisl","2",null]);
 }
 c.block="lsan";r.guard(c);
-for(let i1631=0,n1631=Math.max(0,Math.floor(r.num("90")));i1631<n1631;i1631++){
+for(let i1655=0,n1655=Math.max(0,Math.floor(r.num("90")));i1655<n1655;i1655++){
 c.block="4gix";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ec6d",null]),"EQUAL","0"]))){
 c.block="pmso";r.guard(c);
@@ -51470,7 +55164,7 @@ c.block="8zk4";r.guard(c);
 r.command(c,"set_variable",["twfb","2",null]);
 }
 c.block="tm4n";r.guard(c);
-for(let i1632=0,n1632=Math.max(0,Math.floor(r.num("90")));i1632<n1632;i1632++){
+for(let i1656=0,n1656=Math.max(0,Math.floor(r.num("90")));i1656<n1656;i1656++){
 c.block="zjv3";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jcf6",null]),"EQUAL","0"]))){
 c.block="0iqf";r.guard(c);
@@ -51505,7 +55199,7 @@ r.command(c,"set_variable",["0ggq","15",null]);
 c.block="v0k9";r.guard(c);
 r.command(c,"set_variable",["lmco","1",null]);
 c.block="x9mq";r.guard(c);
-for(let i1633=0,n1633=Math.max(0,Math.floor(r.num("15")));i1633<n1633;i1633++){
+for(let i1657=0,n1657=Math.max(0,Math.floor(r.num("15")));i1657<n1657;i1657++){
 c.block="2p6r";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="fbqt";r.guard(c);
@@ -51518,7 +55212,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 yield 1;
 }
 c.block="5cxb";r.guard(c);
-for(let i1634=0,n1634=Math.max(0,Math.floor(r.num("285")));i1634<n1634;i1634++){
+for(let i1658=0,n1658=Math.max(0,Math.floor(r.num("285")));i1658<n1658;i1658++){
 c.block="h9u6";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="p2kl";r.guard(c);
@@ -51533,7 +55227,7 @@ yield 1;
 c.block="g6el";r.guard(c);
 r.command(c,"set_variable",["lmco","0",null]);
 c.block="74i5";r.guard(c);
-for(let i1635=0,n1635=Math.max(0,Math.floor(r.num("15")));i1635<n1635;i1635++){
+for(let i1659=0,n1659=Math.max(0,Math.floor(r.num("15")));i1659<n1659;i1659++){
 c.block="gbyp";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="5emd";r.guard(c);
@@ -51555,7 +55249,7 @@ r.command(c,"set_variable",["0ggq","15",null]);
 c.block="xn8m";r.guard(c);
 r.command(c,"set_variable",["lmco","1",null]);
 c.block="w6b7";r.guard(c);
-for(let i1636=0,n1636=Math.max(0,Math.floor(r.num("15")));i1636<n1636;i1636++){
+for(let i1660=0,n1660=Math.max(0,Math.floor(r.num("15")));i1660<n1660;i1660++){
 c.block="ojjk";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="t0nb";r.guard(c);
@@ -51568,7 +55262,7 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 yield 1;
 }
 c.block="rn6g";r.guard(c);
-for(let i1637=0,n1637=Math.max(0,Math.floor(r.num("285")));i1637<n1637;i1637++){
+for(let i1661=0,n1661=Math.max(0,Math.floor(r.num("285")));i1661<n1661;i1661++){
 c.block="i7k9";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="31oa";r.guard(c);
@@ -51583,7 +55277,7 @@ yield 1;
 c.block="fuxs";r.guard(c);
 r.command(c,"set_variable",["lmco","0",null]);
 c.block="muuz";r.guard(c);
-for(let i1638=0,n1638=Math.max(0,Math.floor(r.num("15")));i1638<n1638;i1638++){
+for(let i1662=0,n1662=Math.max(0,Math.floor(r.num("15")));i1662<n1662;i1662++){
 c.block="w7e2";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="plg4";r.guard(c);
@@ -51782,7 +55476,7 @@ yield* r.call(c,"qy83",["-1","5","1"]);
 c.block="hdq5";r.guard(c);
 r.command(c,"set_variable",["ahdg","2",null]);
 c.block="r4f5";r.guard(c);
-for(let i1639=0,n1639=Math.max(0,Math.floor(r.num("17")));i1639<n1639;i1639++){
+for(let i1663=0,n1663=Math.max(0,Math.floor(r.num("17")));i1663<n1663;i1663++){
 yield 1;
 }
 }else{
@@ -51806,7 +55500,7 @@ yield* r.call(c,"05j0",["-1","5","1"]);
 c.block="iyvx";r.guard(c);
 r.command(c,"set_variable",["zl6n","2",null]);
 c.block="3u04";r.guard(c);
-for(let i1640=0,n1640=Math.max(0,Math.floor(r.num("17")));i1640<n1640;i1640++){
+for(let i1664=0,n1664=Math.max(0,Math.floor(r.num("17")));i1664<n1664;i1664++){
 yield 1;
 }
 }else{
@@ -51841,7 +55535,7 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="z6n0";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["e1nh",null]),"LESS_OR_EQUAL","0"]))){
 c.block="351h";r.guard(c);
-for(let i1641=0,n1641=Math.max(0,Math.floor(r.num("4")));i1641<n1641;i1641++){
+for(let i1665=0,n1665=Math.max(0,Math.floor(r.num("4")));i1665<n1665;i1665++){
 c.block="xvkz";r.guard(c);
 r.command(c,"change_variable",["3zr2","-0.06",null]);
 c.block="6z5m";r.guard(c);
@@ -51879,7 +55573,7 @@ while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["e1
 c.block="z81w";r.guard(c);
 r.command(c,"create_clone",["h6v1",null]);
 c.block="w350";r.guard(c);
-for(let i1642=0,n1642=Math.max(0,Math.floor(r.num("3")));i1642<n1642;i1642++){
+for(let i1666=0,n1666=Math.max(0,Math.floor(r.num("3")));i1666<n1666;i1666++){
 yield 1;
 }
 yield 1;
@@ -52019,13 +55713,13 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["e1nh",
 c.block="93pe";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["xauh"]),null]);
 c.block="8np9";r.guard(c);
-for(let i1643=0,n1643=Math.max(0,Math.floor(r.num("3")));i1643<n1643;i1643++){
+for(let i1667=0,n1667=Math.max(0,Math.floor(r.num("3")));i1667<n1667;i1667++){
 yield 1;
 }
 c.block="zkvg";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["wwn7"]),null]);
 c.block="r22p";r.guard(c);
-for(let i1644=0,n1644=Math.max(0,Math.floor(r.num("3")));i1644<n1644;i1644++){
+for(let i1668=0,n1668=Math.max(0,Math.floor(r.num("3")));i1668<n1668;i1668++){
 yield 1;
 }
 }else{
@@ -52034,13 +55728,13 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["e1nh",
 c.block="kce7";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["xauh"]),null]);
 c.block="p3o5";r.guard(c);
-for(let i1645=0,n1645=Math.max(0,Math.floor(r.num("6")));i1645<n1645;i1645++){
+for(let i1669=0,n1669=Math.max(0,Math.floor(r.num("6")));i1669<n1669;i1669++){
 yield 1;
 }
 c.block="pk5y";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["wwn7"]),null]);
 c.block="2nfd";r.guard(c);
-for(let i1646=0,n1646=Math.max(0,Math.floor(r.num("6")));i1646<n1646;i1646++){
+for(let i1670=0,n1670=Math.max(0,Math.floor(r.num("6")));i1670<n1670;i1670++){
 yield 1;
 }
 }else{
@@ -52049,13 +55743,13 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["e1nh",
 c.block="zseg";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["xauh"]),null]);
 c.block="sp61";r.guard(c);
-for(let i1647=0,n1647=Math.max(0,Math.floor(r.num("10")));i1647<n1647;i1647++){
+for(let i1671=0,n1671=Math.max(0,Math.floor(r.num("10")));i1671<n1671;i1671++){
 yield 1;
 }
 c.block="3gg2";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["wwn7"]),null]);
 c.block="fxoi";r.guard(c);
-for(let i1648=0,n1648=Math.max(0,Math.floor(r.num("10")));i1648<n1648;i1648++){
+for(let i1672=0,n1672=Math.max(0,Math.floor(r.num("10")));i1672<n1672;i1672++){
 yield 1;
 }
 }else{
@@ -52064,13 +55758,13 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["e1nh",
 c.block="3hp6";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["xauh"]),null]);
 c.block="f075";r.guard(c);
-for(let i1649=0,n1649=Math.max(0,Math.floor(r.num("15")));i1649<n1649;i1649++){
+for(let i1673=0,n1673=Math.max(0,Math.floor(r.num("15")));i1673<n1673;i1673++){
 yield 1;
 }
 c.block="bptd";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["wwn7"]),null]);
 c.block="pug1";r.guard(c);
-for(let i1650=0,n1650=Math.max(0,Math.floor(r.num("45")));i1650<n1650;i1650++){
+for(let i1674=0,n1674=Math.max(0,Math.floor(r.num("45")));i1674<n1674;i1674++){
 yield 1;
 }
 }
@@ -52085,7 +55779,7 @@ yield 1;
 // 도화선 / ij4g
 r.register("ij4g","when_message_cast",[null,"uxlm"],function*(r,c){
 c.block="69pk";r.guard(c);
-for(let i1651=0,n1651=Math.max(0,Math.floor(r.num("1")));i1651<n1651;i1651++){
+for(let i1675=0,n1675=Math.max(0,Math.floor(r.num("1")));i1675<n1675;i1675++){
 yield 1;
 }
 c.block="n7o3";r.guard(c);
@@ -52144,7 +55838,7 @@ r.command(c,"set_color",["#000000",null]);
 c.block="97c4";r.guard(c);
 r.command(c,"set_variable",["rtoa","15",null]);
 c.block="571o";r.guard(c);
-for(let i1652=0,n1652=Math.max(0,Math.floor(r.num("50")));i1652<n1652;i1652++){
+for(let i1676=0,n1676=Math.max(0,Math.floor(r.num("50")));i1676<n1676;i1676++){
 c.block="ddr9";r.guard(c);
 r.command(c,"change_variable",["rtoa",r.value(c,"calc_basic",[r.value(c,"get_variable",["ejox",null]),"DIVIDE","80"]),null]);
 c.block="m05v";r.guard(c);
@@ -52183,9 +55877,9 @@ r.command(c,"set_variable",["rtoa","1",null]);
 c.block="10qv";r.guard(c);
 r.command(c,"set_variable",["ejox","50",null]);
 c.block="wp88";r.guard(c);
-for(let i1653=0,n1653=Math.max(0,Math.floor(r.num("2")));i1653<n1653;i1653++){
+for(let i1677=0,n1677=Math.max(0,Math.floor(r.num("2")));i1677<n1677;i1677++){
 c.block="vb12";r.guard(c);
-for(let i1654=0,n1654=Math.max(0,Math.floor(r.num("10")));i1654<n1654;i1654++){
+for(let i1678=0,n1678=Math.max(0,Math.floor(r.num("10")));i1678<n1678;i1678++){
 c.block="4ive";r.guard(c);
 r.command(c,"change_variable",["rtoa",r.value(c,"calc_basic",[r.value(c,"get_variable",["ejox",null]),"DIVIDE","14"]),null]);
 c.block="07qo";r.guard(c);
@@ -52211,9 +55905,9 @@ r.command(c,"message_cast",["gg6a",null]);
 yield 1;
 }
 c.block="0q95";r.guard(c);
-for(let i1655=0,n1655=Math.max(0,Math.floor(r.num("3")));i1655<n1655;i1655++){
+for(let i1679=0,n1679=Math.max(0,Math.floor(r.num("3")));i1679<n1679;i1679++){
 c.block="pmmk";r.guard(c);
-for(let i1656=0,n1656=Math.max(0,Math.floor(r.num("10")));i1656<n1656;i1656++){
+for(let i1680=0,n1680=Math.max(0,Math.floor(r.num("10")));i1680<n1680;i1680++){
 c.block="o0rc";r.guard(c);
 r.command(c,"change_variable",["rtoa",r.value(c,"calc_basic",[r.value(c,"get_variable",["ejox",null]),"DIVIDE","14"]),null]);
 c.block="10eb";r.guard(c);
@@ -52243,7 +55937,7 @@ r.command(c,"brush_erase_all",[null]);
 c.block="5r91";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="a33p";r.guard(c);
-for(let i1657=0,n1657=Math.max(0,Math.floor(r.num("50")));i1657<n1657;i1657++){
+for(let i1681=0,n1681=Math.max(0,Math.floor(r.num("50")));i1681<n1681;i1681++){
 c.block="agtm";r.guard(c);
 r.command(c,"change_brush_transparency",["2",null]);
 c.block="i7yp";r.guard(c);
@@ -52273,7 +55967,7 @@ r.command(c,"set_color",["#000000",null]);
 c.block="szft";r.guard(c);
 r.command(c,"set_variable",["rtoa","15",null]);
 c.block="xvar";r.guard(c);
-for(let i1658=0,n1658=Math.max(0,Math.floor(r.num("50")));i1658<n1658;i1658++){
+for(let i1682=0,n1682=Math.max(0,Math.floor(r.num("50")));i1682<n1682;i1682++){
 c.block="92co";r.guard(c);
 r.command(c,"change_variable",["rtoa",r.value(c,"calc_basic",[r.value(c,"get_variable",["ejox",null]),"DIVIDE","80"]),null]);
 c.block="wwvl";r.guard(c);
@@ -52312,9 +56006,9 @@ r.command(c,"set_variable",["rtoa","1",null]);
 c.block="7e6r";r.guard(c);
 r.command(c,"set_variable",["ejox","50",null]);
 c.block="vrfw";r.guard(c);
-for(let i1659=0,n1659=Math.max(0,Math.floor(r.num("2")));i1659<n1659;i1659++){
+for(let i1683=0,n1683=Math.max(0,Math.floor(r.num("2")));i1683<n1683;i1683++){
 c.block="90dr";r.guard(c);
-for(let i1660=0,n1660=Math.max(0,Math.floor(r.num("10")));i1660<n1660;i1660++){
+for(let i1684=0,n1684=Math.max(0,Math.floor(r.num("10")));i1684<n1684;i1684++){
 c.block="akg8";r.guard(c);
 r.command(c,"change_variable",["rtoa",r.value(c,"calc_basic",[r.value(c,"get_variable",["ejox",null]),"DIVIDE","14"]),null]);
 c.block="u9ha";r.guard(c);
@@ -52340,9 +56034,9 @@ r.command(c,"message_cast",["gg6a",null]);
 yield 1;
 }
 c.block="bq83";r.guard(c);
-for(let i1661=0,n1661=Math.max(0,Math.floor(r.num("3")));i1661<n1661;i1661++){
+for(let i1685=0,n1685=Math.max(0,Math.floor(r.num("3")));i1685<n1685;i1685++){
 c.block="w3yn";r.guard(c);
-for(let i1662=0,n1662=Math.max(0,Math.floor(r.num("10")));i1662<n1662;i1662++){
+for(let i1686=0,n1686=Math.max(0,Math.floor(r.num("10")));i1686<n1686;i1686++){
 c.block="m2mn";r.guard(c);
 r.command(c,"change_variable",["rtoa",r.value(c,"calc_basic",[r.value(c,"get_variable",["ejox",null]),"DIVIDE","14"]),null]);
 c.block="ezbn";r.guard(c);
@@ -52372,7 +56066,7 @@ r.command(c,"brush_erase_all",[null]);
 c.block="8f6s";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="1a1z";r.guard(c);
-for(let i1663=0,n1663=Math.max(0,Math.floor(r.num("50")));i1663<n1663;i1663++){
+for(let i1687=0,n1687=Math.max(0,Math.floor(r.num("50")));i1687<n1687;i1687++){
 c.block="u9e2";r.guard(c);
 r.command(c,"change_brush_transparency",["2",null]);
 c.block="rct1";r.guard(c);
@@ -52445,7 +56139,7 @@ r.command(c,"add_effect_amount",["transparency","100",null]);
 c.block="jog5";r.guard(c);
 r.command(c,"create_clone",["evir",null]);
 c.block="gcci";r.guard(c);
-for(let i1664=0,n1664=Math.max(0,Math.floor(r.num("4")));i1664<n1664;i1664++){
+for(let i1688=0,n1688=Math.max(0,Math.floor(r.num("4")));i1688<n1688;i1688++){
 c.block="szgl";r.guard(c);
 r.command(c,"set_variable",["lawa",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="ov4r";r.guard(c);
@@ -52453,7 +56147,7 @@ r.command(c,"set_variable",["98ft",r.value(c,"calc_basic",[r.value(c,"coordinate
 c.block="w782";r.guard(c);
 r.command(c,"create_clone",["byf9",null]);
 c.block="tf1n";r.guard(c);
-for(let i1665=0,n1665=Math.max(0,Math.floor(r.num("15")));i1665<n1665;i1665++){
+for(let i1689=0,n1689=Math.max(0,Math.floor(r.num("15")));i1689<n1689;i1689++){
 c.block="i2g9";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["88","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="4j96";r.guard(c);
@@ -52463,7 +56157,7 @@ yield 1;
 yield 1;
 }
 c.block="qpk7";r.guard(c);
-for(let i1666=0,n1666=Math.max(0,Math.floor(r.num("15")));i1666<n1666;i1666++){
+for(let i1690=0,n1690=Math.max(0,Math.floor(r.num("15")));i1690<n1690;i1690++){
 c.block="9cdx";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["88","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="n0j6";r.guard(c);
@@ -52471,7 +56165,7 @@ r.command(c,"add_effect_amount",["transparency","-2",null]);
 yield 1;
 }
 c.block="skwp";r.guard(c);
-for(let i1667=0,n1667=Math.max(0,Math.floor(r.num("2")));i1667<n1667;i1667++){
+for(let i1691=0,n1691=Math.max(0,Math.floor(r.num("2")));i1691<n1691;i1691++){
 c.block="pay8";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0.3",null]);
 yield 1;
@@ -52479,13 +56173,13 @@ yield 1;
 c.block="a32l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["bdka",null]),"EQUAL","1"]))){
 c.block="qolf";r.guard(c);
-for(let i1668=0,n1668=Math.max(0,Math.floor(r.num("83")));i1668<n1668;i1668++){
+for(let i1692=0,n1692=Math.max(0,Math.floor(r.num("83")));i1692<n1692;i1692++){
 c.block="n23w";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0.3",null]);
 yield 1;
 }
 c.block="ysna";r.guard(c);
-for(let i1669=0,n1669=Math.max(0,Math.floor(r.num("50")));i1669<n1669;i1669++){
+for(let i1693=0,n1693=Math.max(0,Math.floor(r.num("50")));i1693<n1693;i1693++){
 c.block="clwb";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="fkpm";r.guard(c);
@@ -52497,7 +56191,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="r8hr";r.guard(c);
-for(let i1670=0,n1670=Math.max(0,Math.floor(r.num("20")));i1670<n1670;i1670++){
+for(let i1694=0,n1694=Math.max(0,Math.floor(r.num("20")));i1694<n1694;i1694++){
 c.block="eehq";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 c.block="0r12";r.guard(c);
@@ -52662,7 +56356,7 @@ r.command(c,"move_x",[r.value(c,"get_variable",["30oi",null]),null]);
 c.block="54ro";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"coordinate_object",[null,"self",null,"y"]),"LESS_OR_EQUAL","-200"]))){
 c.block="t7dw";r.guard(c);
-for(let i1671=0,n1671=Math.max(0,Math.floor(r.num("30")));i1671<n1671;i1671++){
+for(let i1695=0,n1695=Math.max(0,Math.floor(r.num("30")));i1695<n1695;i1695++){
 yield 1;
 }
 c.block="xqxc";r.guard(c);
@@ -52685,7 +56379,7 @@ r.command(c,"set_variable",["bw1y",r.value(c,"coordinate_object",[null,"self",nu
 c.block="aros";r.guard(c);
 r.command(c,"create_clone",["vgw0",null]);
 c.block="it9b";r.guard(c);
-for(let i1672=0,n1672=Math.max(0,Math.floor(r.num("1")));i1672<n1672;i1672++){
+for(let i1696=0,n1696=Math.max(0,Math.floor(r.num("1")));i1696<n1696;i1696++){
 yield 1;
 }
 c.block="jlsq";r.guard(c);
@@ -52697,7 +56391,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["2d83"]),null]);
 c.block="nvm3";r.guard(c);
 r.command(c,"set_scale_size",["10",null]);
 c.block="02hb";r.guard(c);
-for(let i1673=0,n1673=Math.max(0,Math.floor(r.num("100")));i1673<n1673;i1673++){
+for(let i1697=0,n1697=Math.max(0,Math.floor(r.num("100")));i1697<n1697;i1697++){
 c.block="s56b";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["90","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="2uiy";r.guard(c);
@@ -52705,13 +56399,13 @@ r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["90","MINU
 yield 1;
 }
 c.block="4kdg";r.guard(c);
-for(let i1674=0,n1674=Math.max(0,Math.floor(r.num("600")));i1674<n1674;i1674++){
+for(let i1698=0,n1698=Math.max(0,Math.floor(r.num("600")));i1698<n1698;i1698++){
 yield 1;
 }
 c.block="ek9v";r.guard(c);
 r.command(c,"set_variable",["wo5a","0",null]);
 c.block="jz0a";r.guard(c);
-for(let i1675=0,n1675=Math.max(0,Math.floor(r.num("50")));i1675<n1675;i1675++){
+for(let i1699=0,n1699=Math.max(0,Math.floor(r.num("50")));i1699<n1699;i1699++){
 c.block="x66k";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","10"]),null]);
 c.block="if94";r.guard(c);
@@ -52778,7 +56472,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="zt9p";r.guard(c);
-for(let i1676=0,n1676=Math.max(0,Math.floor(r.num("60")));i1676<n1676;i1676++){
+for(let i1700=0,n1700=Math.max(0,Math.floor(r.num("60")));i1700<n1700;i1700++){
 c.block="wm4p";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["582","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 yield 1;
@@ -52786,11 +56480,11 @@ yield 1;
 c.block="2n5a";r.guard(c);
 r.command(c,"set_scale_size",["582",null]);
 c.block="wy7w";r.guard(c);
-for(let i1677=0,n1677=Math.max(0,Math.floor(r.num("420")));i1677<n1677;i1677++){
+for(let i1701=0,n1701=Math.max(0,Math.floor(r.num("420")));i1701<n1701;i1701++){
 yield 1;
 }
 c.block="m657";r.guard(c);
-for(let i1678=0,n1678=Math.max(0,Math.floor(r.num("60")));i1678<n1678;i1678++){
+for(let i1702=0,n1702=Math.max(0,Math.floor(r.num("60")));i1702<n1702;i1702++){
 c.block="f2hq";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["1","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 yield 1;
@@ -53045,7 +56739,7 @@ r.command(c,"set_variable",["s3em","0",null]);
 c.block="ufg7";r.guard(c);
 r.command(c,"set_variable",["iblx","2.5",null]);
 c.block="6e1w";r.guard(c);
-for(let i1679=0,n1679=Math.max(0,Math.floor(r.num("2")));i1679<n1679;i1679++){
+for(let i1703=0,n1703=Math.max(0,Math.floor(r.num("2")));i1703<n1703;i1703++){
 yield 1;
 }
 c.block="re42";r.guard(c);
@@ -53072,7 +56766,7 @@ yield 1;
 });
 r.register("n8fg","when_message_cast",[null,"jz7o"],function*(r,c){
 c.block="llz0";r.guard(c);
-for(let i1680=0,n1680=Math.max(0,Math.floor(r.num("4")));i1680<n1680;i1680++){
+for(let i1704=0,n1704=Math.max(0,Math.floor(r.num("4")));i1704<n1704;i1704++){
 c.block="ujj9";r.guard(c);
 r.command(c,"move_y",["3",null]);
 yield 1;
@@ -53140,7 +56834,7 @@ r.command(c,"set_variable",["8w48",r.value(c,"calc_basic",[r.value(c,"calc_basic
 c.block="413p";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="cwf4";r.guard(c);
-for(let i1681=0,n1681=Math.max(0,Math.floor(r.num("200")));i1681<n1681;i1681++){
+for(let i1705=0,n1705=Math.max(0,Math.floor(r.num("200")));i1705<n1705;i1705++){
 c.block="a7ci";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="44s5";r.guard(c);
@@ -53162,9 +56856,9 @@ r.register("n8fg","when_message_cast",[null,"cwzf"],function*(r,c){
 c.block="fp69";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL","7"]))){
 c.block="3ja5";r.guard(c);
-for(let i1682=0,n1682=Math.max(0,Math.floor(r.num("7")));i1682<n1682;i1682++){
+for(let i1706=0,n1706=Math.max(0,Math.floor(r.num("7")));i1706<n1706;i1706++){
 c.block="zlmg";r.guard(c);
-for(let i1683=0,n1683=Math.max(0,Math.floor(r.num("10")));i1683<n1683;i1683++){
+for(let i1707=0,n1707=Math.max(0,Math.floor(r.num("10")));i1707<n1707;i1707++){
 c.block="o2kr";r.guard(c);
 r.command(c,"locate",["n230",null]);
 yield 1;
@@ -53172,7 +56866,7 @@ yield 1;
 yield 1;
 }
 c.block="b0b9";r.guard(c);
-for(let i1684=0,n1684=Math.max(0,Math.floor(r.num("5")));i1684<n1684;i1684++){
+for(let i1708=0,n1708=Math.max(0,Math.floor(r.num("5")));i1708<n1708;i1708++){
 c.block="7qrl";r.guard(c);
 r.command(c,"locate",["n230",null]);
 yield 1;
@@ -53186,7 +56880,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vus7",
 c.block="y30c";r.guard(c);
 while(true){
 c.block="gumq";r.guard(c);
-for(let i1685=0,n1685=Math.max(0,Math.floor(r.num("3")));i1685<n1685;i1685++){
+for(let i1709=0,n1709=Math.max(0,Math.floor(r.num("3")));i1709<n1709;i1709++){
 yield 1;
 }
 c.block="xm8r";r.guard(c);
@@ -53194,7 +56888,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="r7ff";r.guard(c);
 r.command(c,"locate",["hfmk",null]);
 c.block="2af5";r.guard(c);
-for(let i1686=0,n1686=Math.max(0,Math.floor(r.num("180")));i1686<n1686;i1686++){
+for(let i1710=0,n1710=Math.max(0,Math.floor(r.num("180")));i1710<n1710;i1710++){
 yield 1;
 }
 }
@@ -53203,7 +56897,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="bp79";r.guard(c);
 r.command(c,"locate",["dja5",null]);
 c.block="8fun";r.guard(c);
-for(let i1687=0,n1687=Math.max(0,Math.floor(r.num("180")));i1687<n1687;i1687++){
+for(let i1711=0,n1711=Math.max(0,Math.floor(r.num("180")));i1711<n1711;i1711++){
 yield 1;
 }
 }
@@ -53218,7 +56912,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vus7",
 c.block="08gf";r.guard(c);
 while(true){
 c.block="8lco";r.guard(c);
-for(let i1688=0,n1688=Math.max(0,Math.floor(r.num("3")));i1688<n1688;i1688++){
+for(let i1712=0,n1712=Math.max(0,Math.floor(r.num("3")));i1712<n1712;i1712++){
 yield 1;
 }
 c.block="r8ch";r.guard(c);
@@ -53226,7 +56920,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="hzn7";r.guard(c);
 r.command(c,"locate",["bf1f",null]);
 c.block="fjzx";r.guard(c);
-for(let i1689=0,n1689=Math.max(0,Math.floor(r.num("180")));i1689<n1689;i1689++){
+for(let i1713=0,n1713=Math.max(0,Math.floor(r.num("180")));i1713<n1713;i1713++){
 yield 1;
 }
 }
@@ -53235,7 +56929,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="twaw";r.guard(c);
 r.command(c,"locate",["mg0d",null]);
 c.block="kthh";r.guard(c);
-for(let i1690=0,n1690=Math.max(0,Math.floor(r.num("180")));i1690<n1690;i1690++){
+for(let i1714=0,n1714=Math.max(0,Math.floor(r.num("180")));i1714<n1714;i1714++){
 yield 1;
 }
 }
@@ -53267,7 +56961,7 @@ r.command(c,"locate_x",["-233",null]);
 });
 r.register("n8fg","when_message_cast",[null,"1kqq"],function*(r,c){
 c.block="vvbi";r.guard(c);
-for(let i1691=0,n1691=Math.max(0,Math.floor(r.num("1")));i1691<n1691;i1691++){
+for(let i1715=0,n1715=Math.max(0,Math.floor(r.num("1")));i1715<n1715;i1715++){
 yield 1;
 }
 c.block="jhpw";r.guard(c);
@@ -53302,7 +56996,7 @@ r.command(c,"set_variable",["cb26","1",null]);
 c.block="p2ds";r.guard(c);
 r.command(c,"set_variable",["iblx","3.5",null]);
 c.block="365e";r.guard(c);
-for(let i1692=0,n1692=Math.max(0,Math.floor(r.num("35")));i1692<n1692;i1692++){
+for(let i1716=0,n1716=Math.max(0,Math.floor(r.num("35")));i1716<n1716;i1716++){
 c.block="ijeo";r.guard(c);
 r.command(c,"set_variable",["1vu0","2",null]);
 c.block="nvkb";r.guard(c);
@@ -53310,7 +57004,7 @@ r.command(c,"set_variable",["tisl","0",null]);
 yield 1;
 }
 c.block="628j";r.guard(c);
-for(let i1693=0,n1693=Math.max(0,Math.floor(r.num("50")));i1693<n1693;i1693++){
+for(let i1717=0,n1717=Math.max(0,Math.floor(r.num("50")));i1717<n1717;i1717++){
 c.block="vi7e";r.guard(c);
 r.command(c,"set_variable",["iblx","0.1",null]);
 c.block="89sw";r.guard(c);
@@ -53351,11 +57045,11 @@ r.command(c,"message_cast",["tuhm",null]);
 });
 r.register("n8fg","when_message_cast",[null,"vmzu"],function*(r,c){
 c.block="h5mr";r.guard(c);
-for(let i1694=0,n1694=Math.max(0,Math.floor(r.num("12")));i1694<n1694;i1694++){
+for(let i1718=0,n1718=Math.max(0,Math.floor(r.num("12")));i1718<n1718;i1718++){
 c.block="21k1";r.guard(c);
 r.command(c,"create_clone",["9xsm",null]);
 c.block="nfpx";r.guard(c);
-for(let i1695=0,n1695=Math.max(0,Math.floor(r.num("10")));i1695<n1695;i1695++){
+for(let i1719=0,n1719=Math.max(0,Math.floor(r.num("10")));i1719<n1719;i1719++){
 yield 1;
 }
 yield 1;
@@ -53478,7 +57172,7 @@ r.command(c,"set_variable",["7xfe","0",null]);
 c.block="ufg7";r.guard(c);
 r.command(c,"set_variable",["du2p","2.5",null]);
 c.block="6e1w";r.guard(c);
-for(let i1696=0,n1696=Math.max(0,Math.floor(r.num("2")));i1696<n1696;i1696++){
+for(let i1720=0,n1720=Math.max(0,Math.floor(r.num("2")));i1720<n1720;i1720++){
 yield 1;
 }
 c.block="ocn3";r.guard(c);
@@ -53518,7 +57212,7 @@ yield 1;
 });
 r.register("00h9","when_message_cast",[null,"nkv8"],function*(r,c){
 c.block="ow6o";r.guard(c);
-for(let i1697=0,n1697=Math.max(0,Math.floor(r.num("4")));i1697<n1697;i1697++){
+for(let i1721=0,n1721=Math.max(0,Math.floor(r.num("4")));i1721<n1721;i1721++){
 c.block="szmb";r.guard(c);
 r.command(c,"move_y",["3",null]);
 yield 1;
@@ -53745,7 +57439,7 @@ r.command(c,"set_variable",["8w48",r.value(c,"calc_basic",[r.value(c,"calc_basic
 c.block="dgtg";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="59xe";r.guard(c);
-for(let i1698=0,n1698=Math.max(0,Math.floor(r.num("200")));i1698<n1698;i1698++){
+for(let i1722=0,n1722=Math.max(0,Math.floor(r.num("200")));i1722<n1722;i1722++){
 c.block="kbeu";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["a72j",null]),null]);
 c.block="y710";r.guard(c);
@@ -53764,9 +57458,9 @@ r.register("00h9","when_message_cast",[null,"cwzf"],function*(r,c){
 c.block="ytc3";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","7"]))){
 c.block="q31t";r.guard(c);
-for(let i1699=0,n1699=Math.max(0,Math.floor(r.num("7")));i1699<n1699;i1699++){
+for(let i1723=0,n1723=Math.max(0,Math.floor(r.num("7")));i1723<n1723;i1723++){
 c.block="fvx3";r.guard(c);
-for(let i1700=0,n1700=Math.max(0,Math.floor(r.num("10")));i1700<n1700;i1700++){
+for(let i1724=0,n1724=Math.max(0,Math.floor(r.num("10")));i1724<n1724;i1724++){
 c.block="68uf";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 yield 1;
@@ -53774,7 +57468,7 @@ yield 1;
 yield 1;
 }
 c.block="10hf";r.guard(c);
-for(let i1701=0,n1701=Math.max(0,Math.floor(r.num("5")));i1701<n1701;i1701++){
+for(let i1725=0,n1725=Math.max(0,Math.floor(r.num("5")));i1725<n1725;i1725++){
 c.block="kiuj";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 yield 1;
@@ -53788,7 +57482,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vus7",
 c.block="3j3d";r.guard(c);
 while(true){
 c.block="ozmx";r.guard(c);
-for(let i1702=0,n1702=Math.max(0,Math.floor(r.num("3")));i1702<n1702;i1702++){
+for(let i1726=0,n1726=Math.max(0,Math.floor(r.num("3")));i1726<n1726;i1726++){
 yield 1;
 }
 c.block="764s";r.guard(c);
@@ -53796,7 +57490,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="23xa";r.guard(c);
 r.command(c,"locate",["hfmk",null]);
 c.block="jtmb";r.guard(c);
-for(let i1703=0,n1703=Math.max(0,Math.floor(r.num("180")));i1703<n1703;i1703++){
+for(let i1727=0,n1727=Math.max(0,Math.floor(r.num("180")));i1727<n1727;i1727++){
 yield 1;
 }
 }
@@ -53805,7 +57499,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="f50y";r.guard(c);
 r.command(c,"locate",["dja5",null]);
 c.block="appw";r.guard(c);
-for(let i1704=0,n1704=Math.max(0,Math.floor(r.num("180")));i1704<n1704;i1704++){
+for(let i1728=0,n1728=Math.max(0,Math.floor(r.num("180")));i1728<n1728;i1728++){
 yield 1;
 }
 }
@@ -53820,7 +57514,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vus7",
 c.block="neko";r.guard(c);
 while(true){
 c.block="83j7";r.guard(c);
-for(let i1705=0,n1705=Math.max(0,Math.floor(r.num("3")));i1705<n1705;i1705++){
+for(let i1729=0,n1729=Math.max(0,Math.floor(r.num("3")));i1729<n1729;i1729++){
 yield 1;
 }
 c.block="t7ad";r.guard(c);
@@ -53828,7 +57522,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="rvoq";r.guard(c);
 r.command(c,"locate",["bf1f",null]);
 c.block="h4n2";r.guard(c);
-for(let i1706=0,n1706=Math.max(0,Math.floor(r.num("180")));i1706<n1706;i1706++){
+for(let i1730=0,n1730=Math.max(0,Math.floor(r.num("180")));i1730<n1730;i1730++){
 yield 1;
 }
 }
@@ -53837,7 +57531,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[n
 c.block="uv0x";r.guard(c);
 r.command(c,"locate",["mg0d",null]);
 c.block="04e1";r.guard(c);
-for(let i1707=0,n1707=Math.max(0,Math.floor(r.num("180")));i1707<n1707;i1707++){
+for(let i1731=0,n1731=Math.max(0,Math.floor(r.num("180")));i1731<n1731;i1731++){
 yield 1;
 }
 }
@@ -53869,7 +57563,7 @@ r.command(c,"locate_x",["-233",null]);
 });
 r.register("00h9","when_message_cast",[null,"mm57"],function*(r,c){
 c.block="qw7q";r.guard(c);
-for(let i1708=0,n1708=Math.max(0,Math.floor(r.num("1")));i1708<n1708;i1708++){
+for(let i1732=0,n1732=Math.max(0,Math.floor(r.num("1")));i1732<n1732;i1732++){
 yield 1;
 }
 c.block="x9i0";r.guard(c);
@@ -53952,7 +57646,7 @@ r.command(c,"set_variable",["cb26","1",null]);
 c.block="j9s9";r.guard(c);
 r.command(c,"set_variable",["du2p","3.5",null]);
 c.block="vsw5";r.guard(c);
-for(let i1709=0,n1709=Math.max(0,Math.floor(r.num("35")));i1709<n1709;i1709++){
+for(let i1733=0,n1733=Math.max(0,Math.floor(r.num("35")));i1733<n1733;i1733++){
 c.block="v4rj";r.guard(c);
 r.command(c,"set_variable",["05ze","2",null]);
 c.block="5r69";r.guard(c);
@@ -53960,7 +57654,7 @@ r.command(c,"set_variable",["twfb","0",null]);
 yield 1;
 }
 c.block="o7fm";r.guard(c);
-for(let i1710=0,n1710=Math.max(0,Math.floor(r.num("50")));i1710<n1710;i1710++){
+for(let i1734=0,n1734=Math.max(0,Math.floor(r.num("50")));i1734<n1734;i1734++){
 c.block="x17p";r.guard(c);
 r.command(c,"set_variable",["du2p","0.1",null]);
 c.block="eph7";r.guard(c);
@@ -54001,11 +57695,11 @@ r.command(c,"message_cast",["tuhm",null]);
 });
 r.register("00h9","when_message_cast",[null,"vk2s"],function*(r,c){
 c.block="ny82";r.guard(c);
-for(let i1711=0,n1711=Math.max(0,Math.floor(r.num("12")));i1711<n1711;i1711++){
+for(let i1735=0,n1735=Math.max(0,Math.floor(r.num("12")));i1735<n1735;i1735++){
 c.block="lyul";r.guard(c);
 r.command(c,"create_clone",["9xsm",null]);
 c.block="n2et";r.guard(c);
-for(let i1712=0,n1712=Math.max(0,Math.floor(r.num("10")));i1712<n1712;i1712++){
+for(let i1736=0,n1736=Math.max(0,Math.floor(r.num("10")));i1736<n1736;i1736++){
 yield 1;
 }
 yield 1;
@@ -54091,7 +57785,7 @@ r.command(c,"show",[null]);
 c.block="9v1z";r.guard(c);
 r.command(c,"set_variable",["byko",r.value(c,"calc_rand",[null,"0.7",null,"2",null]),null]);
 c.block="tvu2";r.guard(c);
-for(let i1713=0,n1713=Math.max(0,Math.floor(r.num("250")));i1713<n1713;i1713++){
+for(let i1737=0,n1737=Math.max(0,Math.floor(r.num("250")));i1737<n1737;i1737++){
 c.block="lkt9";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["byko",null]),null]);
 c.block="pdmy";r.guard(c);
@@ -54410,7 +58104,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vus7",
 c.block="zbxo";r.guard(c);
 r.command(c,"set_variable",["kq01","0",null]);
 c.block="d5os";r.guard(c);
-for(let i1714=0,n1714=Math.max(0,Math.floor(r.num("240")));i1714<n1714;i1714++){
+for(let i1738=0,n1738=Math.max(0,Math.floor(r.num("240")));i1738<n1738;i1738++){
 yield 1;
 }
 c.block="ik2j";r.guard(c);
@@ -54428,7 +58122,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ecnd",
 c.block="biu3";r.guard(c);
 r.command(c,"message_cast",["uxlm",null]);
 c.block="77la";r.guard(c);
-for(let i1715=0,n1715=Math.max(0,Math.floor(r.num("10")));i1715<n1715;i1715++){
+for(let i1739=0,n1739=Math.max(0,Math.floor(r.num("10")));i1739<n1739;i1739++){
 yield 1;
 }
 c.block="t5bp";r.guard(c);
@@ -54439,7 +58133,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ecnd",
 c.block="iafd";r.guard(c);
 r.command(c,"message_cast",["vjac",null]);
 c.block="xwyp";r.guard(c);
-for(let i1716=0,n1716=Math.max(0,Math.floor(r.num("90")));i1716<n1716;i1716++){
+for(let i1740=0,n1740=Math.max(0,Math.floor(r.num("90")));i1740<n1740;i1740++){
 yield 1;
 }
 c.block="mitk";r.guard(c);
@@ -54461,7 +58155,7 @@ r.command(c,"message_cast",["gg6a",null]);
 c.block="ufzu";r.guard(c);
 r.command(c,"set_variable",["vgs3","1",null]);
 c.block="g1oy";r.guard(c);
-for(let i1717=0,n1717=Math.max(0,Math.floor(r.num("1200")));i1717<n1717;i1717++){
+for(let i1741=0,n1741=Math.max(0,Math.floor(r.num("1200")));i1741<n1741;i1741++){
 yield 1;
 }
 c.block="guu9";r.guard(c);
@@ -54480,7 +58174,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ecnd",
 c.block="gnl1";r.guard(c);
 r.command(c,"set_variable",["vx5n","1",null]);
 c.block="otp6";r.guard(c);
-for(let i1718=0,n1718=Math.max(0,Math.floor(r.num("1080")));i1718<n1718;i1718++){
+for(let i1742=0,n1742=Math.max(0,Math.floor(r.num("1080")));i1742<n1742;i1742++){
 yield 1;
 }
 c.block="tojv";r.guard(c);
@@ -54491,14 +58185,14 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ecnd",
 c.block="nfub";r.guard(c);
 r.command(c,"set_variable",["gj41","1",null]);
 c.block="1h9r";r.guard(c);
-for(let i1719=0,n1719=Math.max(0,Math.floor(r.num("1000")));i1719<n1719;i1719++){
+for(let i1743=0,n1743=Math.max(0,Math.floor(r.num("1000")));i1743<n1743;i1743++){
 yield 1;
 }
 c.block="q3co";r.guard(c);
 r.command(c,"set_variable",["gj41","0",null]);
 }
 c.block="v9t5";r.guard(c);
-for(let i1720=0,n1720=Math.max(0,Math.floor(r.num("180")));i1720<n1720;i1720++){
+for(let i1744=0,n1744=Math.max(0,Math.floor(r.num("180")));i1744<n1744;i1744++){
 yield 1;
 }
 yield 1;
@@ -54577,7 +58271,7 @@ r.command(c,"show",[null]);
 c.block="1yxd";r.guard(c);
 r.command(c,"set_visible_project_timer",[null,"HIDE",null,null]);
 c.block="g8qt";r.guard(c);
-for(let i1721=0,n1721=Math.max(0,Math.floor(r.num("7")));i1721<n1721;i1721++){
+for(let i1745=0,n1745=Math.max(0,Math.floor(r.num("7")));i1745<n1745;i1745++){
 c.block="gcju";r.guard(c);
 r.command(c,"change_variable",["xsab","1",null]);
 c.block="byhr";r.guard(c);
@@ -54587,7 +58281,7 @@ r.command(c,"move_x",["37.5",null]);
 yield 1;
 }
 c.block="1jz0";r.guard(c);
-for(let i1722=0,n1722=Math.max(0,Math.floor(r.num("6")));i1722<n1722;i1722++){
+for(let i1746=0,n1746=Math.max(0,Math.floor(r.num("6")));i1746<n1746;i1746++){
 c.block="3mia";r.guard(c);
 r.command(c,"change_variable",["xsab","1",null]);
 c.block="f5ng";r.guard(c);
@@ -55038,7 +58732,7 @@ r.command(c,"set_variable",["foic","1",null]);
 c.block="6fo4";r.guard(c);
 while(true){
 c.block="grhn";r.guard(c);
-for(let i1723=0,n1723=Math.max(0,Math.floor(r.num("1")));i1723<n1723;i1723++){
+for(let i1747=0,n1747=Math.max(0,Math.floor(r.num("1")));i1747<n1747;i1747++){
 c.block="eguw";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL","10"]))){
 c.block="hlr0";r.guard(c);
@@ -55126,7 +58820,7 @@ r.register("m9cz","when_message_cast",[null,"9nh6"],function*(r,c){
 c.block="cmje";r.guard(c);
 r.command(c,"set_variable",["e8l1","1",null]);
 c.block="1kv6";r.guard(c);
-for(let i1724=0,n1724=Math.max(0,Math.floor(r.num("360")));i1724<n1724;i1724++){
+for(let i1748=0,n1748=Math.max(0,Math.floor(r.num("360")));i1748<n1748;i1748++){
 c.block="15qv";r.guard(c);
 r.command(c,"set_variable",["e8l1","1",null]);
 c.block="umo1";r.guard(c);
@@ -55141,7 +58835,7 @@ r.register("m9cz","when_message_cast",[null,"medy"],function*(r,c){
 c.block="lteh";r.guard(c);
 r.command(c,"set_variable",["7vqa","1",null]);
 c.block="g39r";r.guard(c);
-for(let i1725=0,n1725=Math.max(0,Math.floor(r.num("360")));i1725<n1725;i1725++){
+for(let i1749=0,n1749=Math.max(0,Math.floor(r.num("360")));i1749<n1749;i1749++){
 c.block="i02s";r.guard(c);
 r.command(c,"set_variable",["7vqa","1",null]);
 c.block="alo9";r.guard(c);
@@ -55156,7 +58850,7 @@ r.register("m9cz","when_message_cast",[null,"9zvs"],function*(r,c){
 c.block="y3bs";r.guard(c);
 r.command(c,"set_variable",["7vqa","1",null]);
 c.block="z67b";r.guard(c);
-for(let i1726=0,n1726=Math.max(0,Math.floor(r.num("60")));i1726<n1726;i1726++){
+for(let i1750=0,n1750=Math.max(0,Math.floor(r.num("60")));i1750<n1750;i1750++){
 c.block="uxh6";r.guard(c);
 r.command(c,"set_variable",["7vqa","1",null]);
 c.block="w2wc";r.guard(c);
@@ -55173,7 +58867,7 @@ r.register("m9cz","when_message_cast",[null,"iqkm"],function*(r,c){
 c.block="4gs3";r.guard(c);
 r.command(c,"set_variable",["e8l1","1",null]);
 c.block="06t3";r.guard(c);
-for(let i1727=0,n1727=Math.max(0,Math.floor(r.num("60")));i1727<n1727;i1727++){
+for(let i1751=0,n1751=Math.max(0,Math.floor(r.num("60")));i1751<n1751;i1751++){
 c.block="vaz7";r.guard(c);
 r.command(c,"set_variable",["e8l1","1",null]);
 c.block="vkyy";r.guard(c);
@@ -55190,7 +58884,7 @@ r.register("m9cz","when_message_cast",[null,"ne7o"],function*(r,c){
 c.block="tco4";r.guard(c);
 r.command(c,"set_variable",["7vqa","1",null]);
 c.block="uojj";r.guard(c);
-for(let i1728=0,n1728=Math.max(0,Math.floor(r.num("150")));i1728<n1728;i1728++){
+for(let i1752=0,n1752=Math.max(0,Math.floor(r.num("150")));i1752<n1752;i1752++){
 c.block="ezp8";r.guard(c);
 r.command(c,"set_variable",["nccn","0.2",null]);
 c.block="e0ur";r.guard(c);
@@ -55205,7 +58899,7 @@ r.register("m9cz","when_message_cast",[null,"9y28"],function*(r,c){
 c.block="3faw";r.guard(c);
 r.command(c,"set_variable",["e8l1","1",null]);
 c.block="d0sq";r.guard(c);
-for(let i1729=0,n1729=Math.max(0,Math.floor(r.num("150")));i1729<n1729;i1729++){
+for(let i1753=0,n1753=Math.max(0,Math.floor(r.num("150")));i1753<n1753;i1753++){
 c.block="vphv";r.guard(c);
 r.command(c,"set_variable",["9af4","0.2",null]);
 c.block="wisx";r.guard(c);
@@ -55254,7 +58948,7 @@ yield 1;
 });
 r.register("m9cz","when_message_cast",[null,"17uu"],function*(r,c){
 c.block="dr2p";r.guard(c);
-for(let i1730=0,n1730=Math.max(0,Math.floor(r.num("3")));i1730<n1730;i1730++){
+for(let i1754=0,n1754=Math.max(0,Math.floor(r.num("3")));i1754<n1754;i1754++){
 c.block="f3uh";r.guard(c);
 yield* r.call(c,"05j0",["-1","4","10"]);
 c.block="vsv7";r.guard(c);
@@ -55263,7 +58957,7 @@ c.block="ugry";r.guard(c);
 r.command(c,"change_variable",["9af4","8",null]);
 }
 c.block="pew1";r.guard(c);
-for(let i1731=0,n1731=Math.max(0,Math.floor(r.num("60")));i1731<n1731;i1731++){
+for(let i1755=0,n1755=Math.max(0,Math.floor(r.num("60")));i1755<n1755;i1755++){
 yield 1;
 }
 yield 1;
@@ -55272,7 +58966,7 @@ yield 1;
 });
 r.register("m9cz","when_message_cast",[null,"087p"],function*(r,c){
 c.block="41k3";r.guard(c);
-for(let i1732=0,n1732=Math.max(0,Math.floor(r.num("3")));i1732<n1732;i1732++){
+for(let i1756=0,n1756=Math.max(0,Math.floor(r.num("3")));i1756<n1756;i1756++){
 c.block="hska";r.guard(c);
 yield* r.call(c,"qy83",["-1","4",10]);
 c.block="hy3t";r.guard(c);
@@ -55281,7 +58975,7 @@ c.block="2z2i";r.guard(c);
 r.command(c,"change_variable",["nccn","8",null]);
 }
 c.block="mntf";r.guard(c);
-for(let i1733=0,n1733=Math.max(0,Math.floor(r.num("60")));i1733<n1733;i1733++){
+for(let i1757=0,n1757=Math.max(0,Math.floor(r.num("60")));i1757<n1757;i1757++){
 yield 1;
 }
 yield 1;
@@ -55292,7 +58986,7 @@ r.register("m9cz","when_message_cast",[null,"dyam"],function*(r,c){
 c.block="i5lr";r.guard(c);
 r.command(c,"set_variable",["nccn","90",null]);
 c.block="5x7b";r.guard(c);
-for(let i1734=0,n1734=Math.max(0,Math.floor(r.num("90")));i1734<n1734;i1734++){
+for(let i1758=0,n1758=Math.max(0,Math.floor(r.num("90")));i1758<n1758;i1758++){
 c.block="nmuj";r.guard(c);
 r.command(c,"change_variable",["nccn","-0.9",null]);
 yield 1;
@@ -55303,7 +58997,7 @@ r.register("m9cz","when_message_cast",[null,"zhl5"],function*(r,c){
 c.block="084q";r.guard(c);
 r.command(c,"set_variable",["9af4","90",null]);
 c.block="qmtp";r.guard(c);
-for(let i1735=0,n1735=Math.max(0,Math.floor(r.num("90")));i1735<n1735;i1735++){
+for(let i1759=0,n1759=Math.max(0,Math.floor(r.num("90")));i1759<n1759;i1759++){
 c.block="jv4d";r.guard(c);
 r.command(c,"change_variable",["9af4","-0.9",null]);
 yield 1;
@@ -55316,7 +59010,7 @@ r.command(c,"set_variable",["wyyq","1",null]);
 c.block="hk7q";r.guard(c);
 r.command(c,"set_variable",["iblx","1.7",null]);
 c.block="avox";r.guard(c);
-for(let i1736=0,n1736=Math.max(0,Math.floor(r.num("80")));i1736<n1736;i1736++){
+for(let i1760=0,n1760=Math.max(0,Math.floor(r.num("80")));i1760<n1760;i1760++){
 yield 1;
 }
 c.block="05fr";r.guard(c);
@@ -55329,7 +59023,7 @@ r.command(c,"set_variable",["8w41","1",null]);
 c.block="ttkv";r.guard(c);
 r.command(c,"set_variable",["du2p","0.9",null]);
 c.block="2rth";r.guard(c);
-for(let i1737=0,n1737=Math.max(0,Math.floor(r.num("70")));i1737<n1737;i1737++){
+for(let i1761=0,n1761=Math.max(0,Math.floor(r.num("70")));i1761<n1761;i1761++){
 c.block="1xdg";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","0"]))){
 c.block="tnsz";r.guard(c);
@@ -55347,7 +59041,7 @@ r.command(c,"set_variable",["wyyq","1",null]);
 c.block="idaz";r.guard(c);
 r.command(c,"set_variable",["iblx","0.9",null]);
 c.block="18jc";r.guard(c);
-for(let i1738=0,n1738=Math.max(0,Math.floor(r.num("70")));i1738<n1738;i1738++){
+for(let i1762=0,n1762=Math.max(0,Math.floor(r.num("70")));i1762<n1762;i1762++){
 c.block="ev9a";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","0"]))){
 c.block="89d0";r.guard(c);
@@ -55365,7 +59059,7 @@ r.command(c,"set_variable",["8w41","1",null]);
 c.block="t71d";r.guard(c);
 r.command(c,"set_variable",["du2p","1.7",null]);
 c.block="ke9h";r.guard(c);
-for(let i1739=0,n1739=Math.max(0,Math.floor(r.num("80")));i1739<n1739;i1739++){
+for(let i1763=0,n1763=Math.max(0,Math.floor(r.num("80")));i1763<n1763;i1763++){
 yield 1;
 }
 c.block="qi7b";r.guard(c);
@@ -55376,7 +59070,7 @@ r.register("m9cz","when_message_cast",[null,"hcrg"],function*(r,c){
 c.block="1hjv";r.guard(c);
 r.command(c,"set_variable",["bct6","-11",null]);
 c.block="bgyp";r.guard(c);
-for(let i1740=0,n1740=Math.max(0,Math.floor(r.num("100")));i1740<n1740;i1740++){
+for(let i1764=0,n1764=Math.max(0,Math.floor(r.num("100")));i1764<n1764;i1764++){
 c.block="salb";r.guard(c);
 r.command(c,"change_variable",["bct6","0.11",null]);
 yield 1;
@@ -55386,13 +59080,13 @@ r.command(c,"set_variable",["bct6","0",null]);
 c.block="l9zx";r.guard(c);
 r.command(c,"set_variable",["nccn","0",null]);
 c.block="6lov";r.guard(c);
-for(let i1741=0,n1741=Math.max(0,Math.floor(r.num("45")));i1741<n1741;i1741++){
+for(let i1765=0,n1765=Math.max(0,Math.floor(r.num("45")));i1765<n1765;i1765++){
 c.block="508d";r.guard(c);
 r.command(c,"change_variable",["nccn","1",null]);
 yield 1;
 }
 c.block="h9x5";r.guard(c);
-for(let i1742=0,n1742=Math.max(0,Math.floor(r.num("45")));i1742<n1742;i1742++){
+for(let i1766=0,n1766=Math.max(0,Math.floor(r.num("45")));i1766<n1766;i1766++){
 c.block="60cx";r.guard(c);
 r.command(c,"set_variable",["7vqa","1",null]);
 c.block="q72v";r.guard(c);
@@ -55404,7 +59098,7 @@ r.command(c,"set_variable",["7vqa","0",null]);
 c.block="uev2";r.guard(c);
 r.command(c,"set_variable",["wyyq","1",null]);
 c.block="nbtd";r.guard(c);
-for(let i1743=0,n1743=Math.max(0,Math.floor(r.num("240")));i1743<n1743;i1743++){
+for(let i1767=0,n1767=Math.max(0,Math.floor(r.num("240")));i1767<n1767;i1767++){
 yield 1;
 }
 c.block="0nck";r.guard(c);
@@ -55417,7 +59111,7 @@ r.register("m9cz","when_message_cast",[null,"h4k2"],function*(r,c){
 c.block="75kh";r.guard(c);
 r.command(c,"set_variable",["1g8o","-11",null]);
 c.block="mugh";r.guard(c);
-for(let i1744=0,n1744=Math.max(0,Math.floor(r.num("100")));i1744<n1744;i1744++){
+for(let i1768=0,n1768=Math.max(0,Math.floor(r.num("100")));i1768<n1768;i1768++){
 c.block="hws3";r.guard(c);
 r.command(c,"change_variable",["1g8o","0.11",null]);
 yield 1;
@@ -55427,13 +59121,13 @@ r.command(c,"set_variable",["1g8o","0",null]);
 c.block="ue42";r.guard(c);
 r.command(c,"set_variable",["9af4","0",null]);
 c.block="w8f0";r.guard(c);
-for(let i1745=0,n1745=Math.max(0,Math.floor(r.num("45")));i1745<n1745;i1745++){
+for(let i1769=0,n1769=Math.max(0,Math.floor(r.num("45")));i1769<n1769;i1769++){
 c.block="s53u";r.guard(c);
 r.command(c,"change_variable",["9af4","1",null]);
 yield 1;
 }
 c.block="nzb3";r.guard(c);
-for(let i1746=0,n1746=Math.max(0,Math.floor(r.num("45")));i1746<n1746;i1746++){
+for(let i1770=0,n1770=Math.max(0,Math.floor(r.num("45")));i1770<n1770;i1770++){
 c.block="91sk";r.guard(c);
 r.command(c,"set_variable",["e8l1","1",null]);
 c.block="l8oq";r.guard(c);
@@ -55445,7 +59139,7 @@ r.command(c,"set_variable",["e8l1","0",null]);
 c.block="u28e";r.guard(c);
 r.command(c,"set_variable",["8w41","1",null]);
 c.block="2ajv";r.guard(c);
-for(let i1747=0,n1747=Math.max(0,Math.floor(r.num("240")));i1747<n1747;i1747++){
+for(let i1771=0,n1771=Math.max(0,Math.floor(r.num("240")));i1771<n1771;i1771++){
 yield 1;
 }
 c.block="j3uo";r.guard(c);
@@ -55456,4 +59150,72 @@ r.command(c,"set_variable",["9af4","0",null]);
 });
 
 // 랙 / yj6w
+
+// 음악8 / pnw6
+r.register("pnw6","when_scene_start",[null],function*(r,c){
+c.block="e88h";r.guard(c);
+r.command(c,"set_visible_project_timer",[null,"HIDE",null,null]);
+c.block="eqjo";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"START",null,null]);
+c.block="x7px";r.guard(c);
+r.command(c,"sound_volume_set",["15",null]);
+c.block="1rif";r.guard(c);
+while(true){
+c.block="075l";r.guard(c);
+r.command(c,"sound_silent_all",["all",null]);
+c.block="h03c";r.guard(c);
+yield* r.soundWait(c,r.value(c,"get_sounds",["djtu"]),r.value(c,"get_project_timer_value",[null,null]),r.value(c,"get_sound_duration",[null,"djtu",null]));
+c.block="bsn5";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"STOP",null,null]);
+c.block="vit5";r.guard(c);
+r.command(c,"choose_project_timer_action",[null,"RESET",null,null]);
+yield 1;
+}
+
+});
+
+// 엑스 버튼4 / 0pp1
+r.register("0pp1","when_scene_start",[null],function*(r,c){
+c.block="z2l9";r.guard(c);
+r.command(c,"show",[null]);
+c.block="kqco";r.guard(c);
+while(true){
+c.block="a2tz";r.guard(c);
+while(!r.truth(r.value(c,"reach_something",[null,"mouse",null]))){yield 1;}
+c.block="bsfh";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","46",null]);
+c.block="153g";r.guard(c);
+while(!r.truth(r.value(c,"boolean_not",[null,r.value(c,"reach_something",[null,"mouse",null]),null]))){yield 1;}
+c.block="zr2s";r.guard(c);
+r.command(c,"change_effect_amount",["brightness","0",null]);
+yield 1;
+}
+
+});
+r.register("0pp1","when_object_click",[null],function*(r,c){
+c.block="jruc";r.guard(c);
+r.command(c,"start_scene",["qc29",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
+
+// 1P4 / i58p
+r.register("i58p","when_scene_start",[null],function*(r,c){
+c.block="0p7q";r.guard(c);
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ezjz",null]),"EQUAL","1"]))){
+c.block="c4tw";r.guard(c);
+r.command(c,"move_y",["5",null]);
+}
+
+});
+
+// 1P3 / 1zdj
+
+// 배경4 / q79u
+r.register("q79u","when_run_button_click",[null],function*(r,c){
+c.block="p4q8";r.guard(c);
+r.command(c,"start_scene",["1323",null]);
+if(c.thread.cancelled||c.e.dead)return;
+
+});
 }

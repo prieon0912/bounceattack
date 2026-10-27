@@ -100,7 +100,7 @@ export function createOnlineServer({ local = false, store = null } = {}) {
             msg = JSON.parse(String(raw));
             if (!msg || typeof msg.type !== "string")
               throw new RoomError("올바르지 않은 요청이에요.");
-            if (["create", "join", "resume"].includes(msg.type)) {
+            if (["create", "join", "resume", "matchmake"].includes(msg.type)) {
               if (ctx.code) throw new RoomError("이미 방에 접속해 있어요.");
               await attach(await hub[msg.type](ctx, msg));
             } else if (msg.type === "ping") {

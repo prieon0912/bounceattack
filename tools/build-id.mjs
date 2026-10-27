@@ -8,6 +8,10 @@ for (const path of [
   "public/src/frame-sync.js",
   "public/src/online.js",
   "public/src/app.js",
+  "public/src/entry-app.js",
+  "public/src/renderer.js",
+  "public/index.html",
+  "public/entry.css",
   "public/src/assets.js",
   "source/assets-manifest.json",
 ])

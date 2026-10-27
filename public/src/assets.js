@@ -43,10 +43,10 @@ export class Assets {
     const task = (async () => {
       let image;
       try {
-        image = await this.decode(picture.fileurl);
+        image = await this.decode(picture.fileurl.endsWith(".svg") ? picture.fileurl.replace(/\.svg$/, ".png") : picture.fileurl);
       } catch (error) {
         if (!picture.fileurl.endsWith(".svg")) throw error;
-        image = await this.decode(picture.fileurl.replace(/\.svg$/, ".png"));
+        image = await this.decode(picture.fileurl);
       }
       const width = Math.max(1, Math.round(picture.dimension.width));
       const height = Math.max(1, Math.round(picture.dimension.height));

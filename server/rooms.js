@@ -136,6 +136,64 @@ export class RoomHub {
     ctx.code = code;
     return room;
   }
+  async matchmake(ctx, msg) {
+    this.validateBuild(msg.build);
+    if (!validInt(msg.character, 1, 34))
+      throw new RoomError("캐릭터를 선택해 주세요.");
+    const own = await this.create(ctx, { ...msg, map: 1 });
+    const ownContext = { ...ctx };
+    const key = prefix + "matchmaking:" + msg.build;
+    for (let attempt = 0; attempt < 32; attempt++) {
+      const old = await this.store.get(key);
+      const entries = old
+        ? JSON.parse(old).filter((e) => e.expires > Date.now())
+        : [];
+      let candidate = null;
+      for (const entry of entries) {
+        if (entry.character === msg.character) continue;
+        try {
+          const room = await this.state(entry.code);
+          if (
+            room.phase === "lobby" &&
+            room.players[0]?.connected &&
+            !room.players[1]
+          ) {
+            candidate = entry;
+            break;
+          }
+        } catch {}
+      }
+      const next = candidate
+        ? entries.filter((e) => e !== candidate)
+        : [
+            ...entries,
+            {
+              code: own.code,
+              character: msg.character,
+              expires: Date.now() + TTL * 1000,
+            },
+          ];
+      const encoded = JSON.stringify(next);
+      const won =
+        old === null
+          ? await this.store.create(key, encoded, TTL)
+          : await this.store.cas(key, old, encoded, TTL);
+      if (!won) continue;
+      if (!candidate) return own;
+      try {
+        await this.join(ctx, { ...msg, code: candidate.code });
+        await this.update(ctx.code, (room) => {
+          room.players[0].ready = true;
+        });
+        return await this.action(ctx, { type: "ready", ready: true });
+      } catch {
+        Object.assign(ctx, ownContext);
+        // A disconnected candidate cannot consume this player's ticket.
+        continue;
+      }
+    }
+    throw new RoomError("접속이 몰리고 있어요. 다시 상대를 찾아 주세요.");
+  }
   async resume(ctx, msg) {
     const code = String(msg.code || "").toUpperCase();
     if (

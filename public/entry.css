@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #eee;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+main {
+  width: min(100%, 960px);
+  margin: 24px auto;
+}
+canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: white;
+  touch-action: none;
+  outline: none;
+}
+nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: #fff;
+  flex-wrap: wrap;
+}
+button,
+a {
+  font: 14px Arial;
+  color: #444;
+}
+button {
+  padding: 7px 12px;
+  background: #f7f7f7;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  cursor: pointer;
+}
+a {
+  margin-left: auto;
+}
+#status {
+  font-size: 13px;
+  padding: 6px 10px;
+  background: #fff;
+}
+canvas:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background: #000;
+}
+@media (max-width: 960px) {
+  main {
+    margin: 0;
+  }
+}
+#game {
+  position: relative;
+}
+#main-menu {
+  position: absolute;
+  z-index: 2;
+  right: 3%;
+  top: 9%;
+  width: 25%;
+  display: grid;
+  gap: 10px;
+}
+#main-menu[hidden],
+#match-panel[hidden] {
+  display: none;
+}
+#main-menu button {
+  font-family: SDComicStencil, Arial;
+  font-size: clamp(16px, 3vw, 30px);
+  border: 5px solid #7580ff;
+  color: #6572f6;
+  background: #fff;
+  border-radius: 5px;
+  padding: 10px 2px;
+  box-shadow: 0 0 0 2px #fff;
+}
+#main-menu button:hover {
+  background: #e7ebff;
+}
+#match-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: #ffffffec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: SDComicStencil, Arial;
+  font-size: clamp(20px, 4vw, 34px);
+  text-align: center;
+}
+#match-panel button {
+  font-family: inherit;
+  font-size: 22px;
+  border: 3px solid #7580ff;
+  color: #6572f6;
+}

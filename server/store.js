@@ -18,7 +18,8 @@ export class MemoryStore {
     return item.value;
   }
   async create(key, value, ttl) {
-    if (await this.get(key)) return false;
+    const existing = this.data.get(key);
+    if (existing && existing.expires >= Date.now()) return false;
     this.data.set(key, { value, expires: Date.now() + ttl * 1000 });
     return true;
   }
