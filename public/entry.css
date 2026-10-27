@@ -164,7 +164,9 @@ canvas:fullscreen {
   color: #e23c4c;
 }
 
-/* Online character select: opponent slot (2P preview) shown as "?". */
+/* Online character select: opponent slot (2P preview) shown as "?",
+   drawn like the original previews (thick black ring) in the UI blue with
+   white lettering, matching the 1P/2P banners. */
 #unknown-p2 {
   position: absolute;
   z-index: 1;
@@ -176,16 +178,15 @@ canvas:fullscreen {
   display: grid;
   place-items: center;
   box-sizing: border-box;
-  border: solid #000;
-  border-width: max(3px, 0.95cqw);
+  border: max(4px, 1.35cqw) solid #000;
   border-radius: 50%;
-  background: #d9dcf5;
+  background: #6b80f7;
+  box-shadow: inset 0 -0.7cqw 0 rgba(0, 0, 0, 0.12);
   color: #fff;
   font-family: SDComicStencil, Arial, sans-serif;
-  font-size: 5.6cqw;
+  font-size: 5.4cqw;
   line-height: 1;
-  -webkit-text-stroke: max(1.5px, 0.45cqw) #000;
-  paint-order: stroke fill;
+  padding-top: 0.3cqw;
   pointer-events: none;
   user-select: none;
 }

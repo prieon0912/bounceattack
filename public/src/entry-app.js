@@ -24,6 +24,8 @@ const menu = document.getElementById("main-menu"),
   panel = document.getElementById("match-panel"),
   message = document.getElementById("match-message");
 function stopOnline() {
+  // Leaving a running match forfeits it, so the opponent wins.
+  if (sync) connection?.gameplay({ type: "forfeit" });
   connection?.close();
   connection = null;
   sync = null;
@@ -33,6 +35,7 @@ function stopOnline() {
 }
 function home() {
   stopOnline();
+  forfeitWin = false;
   onlineMode = false;
   for (const a of runtime?.playing || []) a.pause();
   runtime?.startProject();
@@ -56,6 +59,31 @@ function sceneUI() {
     }
   }
 }
+// Opponent left (forfeit message) or sent nothing for FORFEIT_AFTER ms:
+// end the lockstep match and finish it locally with the opponent's HP at 0,
+// so the original "승리" ending plays for this player.
+const FORFEIT_AFTER = 15000;
+let forfeitWin = false,
+  forfeitHp = null;
+function winByForfeit() {
+  if (!sync || !connection) return;
+  const role = connection.identity.role;
+  sync = null;
+  epoch = null;
+  connection.close();
+  connection = null;
+  forfeitWin = true;
+  heldOnline.clear();
+  runtime.keys.clear();
+  runtime.paused = false;
+  // The original ends the round when HP drops *below* 0 (2P 체력 7ir2 / 1P 체력 akf6).
+  forfeitHp = role === 0 ? "7ir2" : "akf6";
+  elapsed = 0;
+  status.textContent = "상대가 나가서 승리했어요!";
+}
+window.addEventListener("pagehide", () => {
+  if (sync) connection?.gameplay({ type: "forfeit" });
+});
 function search() {
   if (searching) return;
   searching = true;
@@ -70,6 +98,7 @@ function search() {
       if (room.phase === "playing" && room.match?.epoch !== epoch) {
         const match = room.match;
         epoch = match.epoch;
+        forfeitWin = false;
         searching = false;
         panel.hidden = true;
         runtime.start(match);
@@ -92,7 +121,8 @@ function search() {
     },
     onGameplay: (msg) => {
       if (!sync) return;
-      if (msg.type === "input") sync.receive(msg.role, msg.frames);
+      if (msg.type === "forfeit") winByForfeit();
+      else if (msg.type === "input") sync.receive(msg.role, msg.frames);
       else if (msg.type === "checksum") sync.checksum(msg.frame, msg.hash);
       else if (msg.type === "sync") connection.replay(sync.replay(msg.from));
     },
@@ -180,7 +210,7 @@ function onlineMask() {
   return mask;
 }
 window.addEventListener("keydown", (event) => {
-  if (!ready || !runtime || event.target.tagName === "BUTTON" || searching) return;
+  if (!ready || !runtime || event.target.tagName === "BUTTON" || searching || forfeitWin) return;
   if (sync) {
     if (onlineBit(event.keyCode) >= 0) {
       event.preventDefault();
@@ -235,6 +265,7 @@ function frame(now) {
           hash: sync.checkpoint(runtime),
         });
     } else if (!searching) {
+      if (forfeitWin) runtime.globals.set(forfeitHp, -1);
       runtime.step();
       if (
         onlineMode &&
@@ -245,8 +276,9 @@ function frame(now) {
     }
     elapsed -= 1000 / 60;
   }
-  if (sync && now - lastProgress > 800) {
-    status.textContent = "상대 연결을 기다리고 있어요…";
+  if (sync && now - lastProgress > FORFEIT_AFTER) winByForfeit();
+  else if (sync && now - lastProgress > 800) {
+    status.textContent = `상대 연결을 기다리고 있어요… (${Math.ceil((FORFEIT_AFTER - (now - lastProgress)) / 1000)}초 후 승리 처리)`;
     if (now - lastRequest > 1500) {
       lastRequest = now;
       connection.gameplay({ type: "sync", from: runtime.tick + 1 });
@@ -271,9 +303,10 @@ try {
   const response = await fetch("data/project.json");
   if (!response.ok) throw Error("원본 자료 불러오기 실패");
   const project = await response.json();
-  // Display-only: HP damage/heal pop-up numbers use the game's main font.
+  // Display-only: HP damage/heal pop-up numbers and the character-select
+  // 1P/2P banner labels use the game's main font.
   for (const o of project.objects)
-    if (["5c3y", "w3fb"].includes(o.id) && o.entity?.font)
+    if (["5c3y", "w3fb", "4u9z", "6zak"].includes(o.id) && o.entity?.font)
       o.entity.font = o.entity.font.replace("SDCinemaTheater", "SDComicStencil");
   build = await (await fetch("data/build.json")).json();
   // Fonts are optional: never let a slow/blocked font CDN hold the game.
@@ -298,6 +331,12 @@ try {
   });
   runtime.originalUI = true;
   runtime.beforeScene = (id) => {
+    if (forfeitWin) {
+      status.textContent =
+        "상대가 나가서 승리했어요 · 처음부터 버튼으로 다시 플레이할 수 있어요.";
+      runtime.running = false;
+      return false;
+    }
     if (sync) {
       status.textContent =
         "대전 종료 · 처음부터 버튼으로 다시 플레이할 수 있어요.";

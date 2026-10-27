@@ -117,7 +117,7 @@ export function createOnlineServer({ local = false, store = null } = {}) {
                   message: room.notice,
                 });
             } else if (
-              ["signal", "input", "checksum", "sync", "pause"].includes(
+              ["signal", "input", "checksum", "sync", "pause", "forfeit"].includes(
                 msg.type,
               )
             ) {

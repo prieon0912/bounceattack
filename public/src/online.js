@@ -174,7 +174,7 @@ export class OnlineConnection {
       return;
     }
     if (
-      ["input", "checksum", "sync", "pause"].includes(msg.type) &&
+      ["input", "checksum", "sync", "pause", "forfeit"].includes(msg.type) &&
       msg.epoch === this.room?.match?.epoch &&
       msg.role !== this.identity?.role
     )

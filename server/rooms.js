@@ -294,6 +294,8 @@ export class RoomHub {
         out.hash = msg.hash;
       } else if (msg.type === "pause") {
         out.paused = !!msg.paused;
+      } else if (msg.type === "forfeit") {
+        // The sender left the match; the opponent is declared the winner.
       } else throw new RoomError("지원하지 않는 대전 요청이에요.");
     }
     await this.publish(ctx.code, out);
