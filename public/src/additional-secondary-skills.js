@@ -1,7 +1,7 @@
 // Stage units and tick timing match the original Entry game (60 ticks/second).
-export const HEALING_POTION = Object.freeze({ manaCost: 45, radius: 40, durationTicks: 180, intervalTicks: 60, healing: 2 });
+export const HEALING_POTION = Object.freeze({ manaCost: 43, radius: 40, expandTicks: 18, durationTicks: 180, intervalTicks: 60, healing: 2 });
 export const SWORD_WAVE = Object.freeze({ manaCost: 30, charges: 3, damage: 3, speed: 4, durationTicks: 35 });
-export const BARRAGE = Object.freeze({ manaCost: 50, durationTicks: 180, offset: 3 });
+export const BARRAGE = Object.freeze({ manaCost: 56, durationTicks: 180, offset: 3 });
 const bodyId = side => side === 1 ? "00h9" : "n8fg";
 const prepare = function(project) {
   const icons = project.objects.find(o => o.id === "o9rj").sprite.pictures;
@@ -28,24 +28,25 @@ export const smokeHealingPotion = {
   character: 16, name: "치유 포션", manaCost: HEALING_POTION.manaCost, cooldownTicks: 0, lockVariable: false,
   icon: "assets/secondary/smoke-healing-icon.svg", secondaryPictureId: "smoke-healing-icon", prepare,
   description: "자신의 자리에 치유 포션을 설치합니다. 영역 안에 있으면 3초간 초당 HP를 2 회복합니다.",
-  effectPictures: [["smoke-healing-potion", "assets/secondary/smoke-healing-potion.svg", { width: 340, height: 512 }],
-    ["smoke-healing-area", "assets/secondary/smoke-healing-area.svg", { width: 100, height: 100 }]],
+  effectPictures: [["smoke-healing-area", "assets/secondary/smoke-healing-area.svg", { width: 100, height: 100 }]],
   *cast(r, c, { side, caster, state }) {
     const cfg = HEALING_POTION, x = caster.x, y = caster.y;
-    const area = visual(r, side, "smoke-healing-area", x, y, cfg.radius * 2, "smoke-healing-area");
-    const potion = visual(r, side, "smoke-healing-potion", x, y, 16, "smoke-healing-potion");
+    const area = visual(r, side, "smoke-healing-area", x, y, 2, "smoke-healing-area");
     const hp = side === 1 ? "akf6" : "7ir2", max = side === 1 ? "xr74" : "67ko";
     state.healingArea = { x, y, endsAt: r.tick + cfg.durationTicks };
     try {
       for (let tick = 1; tick <= cfg.durationTicks; tick++) {
         yield 1;
         if (Number(r.globals.get("r71b")) !== 0 || caster.dead || r.num(r.globals.get(hp)) <= 0) break;
+        // Expand smoothly from the cast position; the healing window stays three seconds.
+        const progress = tick >= cfg.expandTicks ? 1 :
+          (1 - Math.pow(.85, tick)) / (1 - Math.pow(.85, cfg.expandTicks));
+        r.setSize(area, 2 + (cfg.radius * 2 - 2) * progress);
         if (tick % cfg.intervalTicks === 0 && Math.hypot(caster.x - x, caster.y - y) <= cfg.radius)
           r.globals.set(hp, Math.min(r.num(r.globals.get(max)), r.num(r.globals.get(hp)) + cfg.healing));
         area.effects.transparency = tick > 160 ? (tick - 160) * 5 : 0;
-        potion.effects.transparency = area.effects.transparency;
       }
-    } finally { area.dead = potion.dead = true; delete state.healingArea; }
+    } finally { area.dead = true; delete state.healingArea; }
   },
 };
 export const atlenSwordWave = {
