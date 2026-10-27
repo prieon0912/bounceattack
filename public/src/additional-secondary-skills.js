@@ -1,7 +1,7 @@
 // Stage units and tick timing match the original Entry game (60 ticks/second).
-export const HEALING_POTION = Object.freeze({ manaCost: 43, radius: 40, expandTicks: 18, durationTicks: 180, intervalTicks: 60, healing: 2 });
+export const HEALING_POTION = Object.freeze({ manaCost: 39, radius: 40, expandTicks: 18, durationTicks: 180, intervalTicks: 60, healing: 2 });
 export const SWORD_WAVE = Object.freeze({ manaCost: 30, charges: 3, damage: 3, speed: 4, durationTicks: 35 });
-export const BARRAGE = Object.freeze({ manaCost: 56, durationTicks: 180, offset: 3 });
+export const BARRAGE = Object.freeze({ manaCost: 54, durationTicks: 180, offset: 3 });
 const bodyId = side => side === 1 ? "00h9" : "n8fg";
 const prepare = function(project) {
   const icons = project.objects.find(o => o.id === "o9rj").sprite.pictures;
@@ -27,7 +27,7 @@ function visual(r, side, pictureId, x, y, size, label) {
 export const smokeHealingPotion = {
   character: 16, name: "치유 포션", manaCost: HEALING_POTION.manaCost, cooldownTicks: 0, lockVariable: false,
   icon: "assets/secondary/smoke-healing-icon.svg", secondaryPictureId: "smoke-healing-icon", prepare,
-  description: "자신의 자리에 치유 포션을 설치합니다. 영역 안에 있으면 3초간 초당 HP를 2 회복합니다.",
+  description: "치유 포션을 투척해 자신을 치유하는 오라를 생성합니다.",
   effectPictures: [["smoke-healing-area", "assets/secondary/smoke-healing-area.svg", { width: 100, height: 100 }]],
   *cast(r, c, { side, caster, state }) {
     const cfg = HEALING_POTION, x = caster.x, y = caster.y;
@@ -55,7 +55,7 @@ export const smokeHealingPotion = {
 export const atlenSwordWave = {
   character: 7, name: "검기", manaCost: SWORD_WAVE.manaCost, cooldownTicks: 0, lockVariable: false,
   icon: "assets/secondary/atlen-sword-wave-icon.svg", secondaryPictureId: "atlen-sword-wave-icon", prepare,
-  description: "다음 3회의 일반 공격에 전방으로 날아가 피해를 3 주는 검기가 추가됩니다.",
+  description: "다음 3타의 일반공격이 검기를 일으킵니다.",
   effectPictures: [["atlen-sword-wave", "assets/secondary/atlen-sword-wave.svg", { width: 24, height: 44 }],
     ["atlen-sword-wind", "assets/secondary/atlen-sword-wind.svg", { width: 48, height: 44 }]],
   canCast(r, side) { return !(r.secondarySkills.state(side).charges > 0); },
@@ -96,7 +96,7 @@ export const atlenSwordWave = {
 export const brookeBarrage = {
   character: 10, name: "탄막", manaCost: BARRAGE.manaCost, cooldownTicks: 0, lockVariable: false,
   icon: "assets/secondary/brooke-barrage-icon.svg", secondaryPictureId: "brooke-barrage-icon", prepare,
-  description: "3초간 일반 공격의 총알을 위아래로 2개씩 동시에 발사합니다.",
+  description: "몇 초 동안 총알을 동시에 두 개씩 발사합니다.",
   *cast(r, c, { state }) { state.barrageEndsAt = r.tick + BARRAGE.durationTicks; yield BARRAGE.durationTicks; },
   onClone(r, c, child, side, state) {
     if (r.tick >= (state.barrageEndsAt || 0) || c.e.clone || c.block !== "qptm" ||

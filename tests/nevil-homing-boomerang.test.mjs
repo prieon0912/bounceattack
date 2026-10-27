@@ -69,7 +69,7 @@ test("Nevil skill switches only in original blurred description and commits inde
  const r=game();r.loadScene("1ckl");r.globals.set("jx38",1);r.globals.set("16fh",3);r.globals.set("yraj",1);
  r.secondarySkills.syncSelection();assert.equal(r.originals.get("o9rj").picture.id,"pcgv");
  assert.ok(r.secondarySkills.selectKey(82));assert.equal(r.originals.get("o9rj").picture.id,"nevil-secondary-icon");
- assert.match(r.originals.get("3my6").text,/일반 부메랑처럼/);
+ assert.equal(r.originals.get("3my6").text,"적을 추적하는 부메랑을 던집니다.");
  r.globals.set("y75t",3);r.command({e:r.originals.get("o9rj")},"set_variable",["jx38",2]);r.secondarySkills.syncSelection();
  assert.equal(r.secondarySkills.choice(1),"secondary");assert.equal(r.secondarySkills.selectionInfo(2).name,"3환 부메랑");
  r.globals.set("yraj",0);assert.equal(r.secondarySkills.selectKey(80),false);

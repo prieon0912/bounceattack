@@ -10,7 +10,7 @@ export const nevilHomingBoomerang = {
   primaryIcon: "assets/temp/2e/8c/image/2e8c27c5mvpihd8500064431d38w1lae.svg",
   icon: "assets/secondary/nevil-homing-boomerang-icon.svg",
   primaryPictureId: "pcgv", secondaryPictureId: "nevil-secondary-icon",
-  description: "적을 추적하며 평타와 같은 피해를 줍니다. 돌아올 때는 일반 부메랑처럼 자신을 따라 돌아옵니다.",
+  description: "적을 추적하는 부메랑을 던집니다.",
   prepare(project) {
     const pictures = project.objects.find(o => o.id === "o9rj")?.sprite.pictures;
     if (pictures && !pictures.some(p => p.id === this.secondaryPictureId))

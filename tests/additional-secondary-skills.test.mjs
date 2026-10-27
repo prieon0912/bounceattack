@@ -22,7 +22,7 @@ function freeze(r){for(const t of [...r.threads,...r.pending])if(["00h9","n8fg"]
 test("healing potion heals owner 2 per second, max 6, never enemy, and expires for both sides",()=>{
  for(const side of [1,2]){const r=game(side===1?16:2,side===2?16:2,side===1?["secondary","primary"]:["primary","secondary"]);freeze(r);
  r.s(`${side}P 체력`,50);const foe=side===1?2:1,enemy=r.g(`${foe}P 체력`);
- r.run(1,[side===1?82:80]);assert.ok(Math.abs(r.g(`${side}P MP`)-57)<.5);
+ r.run(1,[side===1?82:80]);assert.ok(Math.abs(r.g(`${side}P MP`)-61)<.5);
  r.run(59);assert.equal(r.g(`${side}P 체력`),50);
  r.run(1);assert.equal(r.g(`${side}P 체력`),52);
  r.run(120);assert.equal(r.g(`${side}P 체력`),56);assert.equal(r.g(`${foe}P 체력`),enemy);
@@ -30,7 +30,7 @@ test("healing potion heals owner 2 per second, max 6, never enemy, and expires f
  }
 });
 test("healing requires small stationary area, cannot overheal or stack",()=>{
- const r=game(16);freeze(r);r.s("1P 체력",50);r.run(1,[82]);r.run(1);r.run(1,[82]);assert.ok(Math.abs(r.g("1P MP")-57)<.5);
+ const r=game(16);freeze(r);r.s("1P 체력",50);r.run(1,[82]);r.run(1);r.run(1,[82]);assert.ok(Math.abs(r.g("1P MP")-61)<.5);
  const caster=r.originals.get("00h9"),zone=r.secondarySkills.state(1).healingArea;caster.x=zone.x+41;
  r.run(58);assert.equal(r.g("1P 체력"),50);caster.x=zone.x;
  r.s("1P 체력",r.g("1P 최대체력")-1);r.run(60);assert.equal(r.g("1P 체력"),r.g("1P 최대체력"));
@@ -50,7 +50,7 @@ test("sword wave flies forward, hits airborne targets once for 3, respects steal
 });
 test("barrage doubles real original bullets at upper/lower offsets for three seconds, on either side",()=>{
  for(const side of [1,2]){const r=game(side===1?10:2,side===2?10:2,side===1?["secondary","primary"]:["primary","secondary"]);freeze(r);
- r.run(1,[side===1?82:80]);assert.ok(Math.abs(r.g(`${side}P MP`)-44)<.5);r.run(2,[side===1?69:13]);
+ r.run(1,[side===1?82:80]);assert.ok(Math.abs(r.g(`${side}P MP`)-46)<.5);r.run(2,[side===1?69:13]);
  const rounds=r.entities.filter(e=>e.clone&&e.objectId===(side===1?"5h1u":"xcmn"));assert.equal(rounds.length,2);
  assert.deepEqual(rounds.map(e=>e.barrageOffset).sort((a,b)=>a-b),[-3,3]);assert.ok(Math.abs(Math.abs(rounds[0].y-rounds[1].y)-6)<1e-9);
  r.run(200);r.run(2,[side===1?69:13]);const after=r.entities.filter(e=>e.clone&&e.objectId===(side===1?"5h1u":"xcmn"));assert.equal(after.length,1);assert.ok(!after[0].barrageOffset);assert.deepEqual(r.faults,[]);
