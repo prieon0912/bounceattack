@@ -19,15 +19,35 @@ export class Renderer {
     c.clip();
     for (const e of runtime.entities.slice().reverse()) {
       if (e.dead) continue;
-      for (const p of e.pen?.paths || []) {
+      // Entry's brush has flat (butt) ends; round caps made the HP/MP bars
+      // poke out of the slanted (trapezoid) frame. Consecutive segments with
+      // the same style are stroked as one polyline so corners stay joined.
+      const paths = e.pen?.paths || [];
+      for (let i = 0; i < paths.length; ) {
+        const p = paths[i];
         c.save();
         c.globalAlpha = p.alpha;
         c.strokeStyle = p.color;
         c.lineWidth = p.width;
-        c.lineCap = "round";
+        c.lineCap = "butt";
+        c.lineJoin = "miter";
         c.beginPath();
         c.moveTo(p.x1, -p.y1);
         c.lineTo(p.x2, -p.y2);
+        let last = p;
+        for (i++; i < paths.length; i++) {
+          const q = paths[i];
+          if (
+            q.x1 !== last.x2 ||
+            q.y1 !== last.y2 ||
+            q.color !== p.color ||
+            q.width !== p.width ||
+            q.alpha !== p.alpha
+          )
+            break;
+          c.lineTo(q.x2, -q.y2);
+          last = q;
+        }
         c.stroke();
         c.restore();
       }

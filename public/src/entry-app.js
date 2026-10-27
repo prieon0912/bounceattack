@@ -248,6 +248,10 @@ try {
   const response = await fetch("data/project.json");
   if (!response.ok) throw Error("원본 자료 불러오기 실패");
   const project = await response.json();
+  // Display-only: HP damage/heal pop-up numbers use the game's main font.
+  for (const o of project.objects)
+    if (["5c3y", "w3fb"].includes(o.id) && o.entity?.font)
+      o.entity.font = o.entity.font.replace("SDCinemaTheater", "SDComicStencil");
   build = await (await fetch("data/build.json")).json();
   // Fonts are optional: never let a slow/blocked font CDN hold the game.
   const fonts = Promise.race([
