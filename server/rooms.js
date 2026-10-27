@@ -12,6 +12,13 @@ const TTL = 7200,
   channel = (c) => prefix + "events:" + c;
 const hash = (s) => createHash("sha256").update(String(s)).digest("hex");
 const validInt = (n, min, max) => Number.isInteger(n) && n >= min && n <= max;
+const skillChoice = (character, choice) => {
+  if (choice !== undefined && choice !== "primary" && choice !== "secondary")
+    throw new RoomError("스킬 선택을 확인해 주세요.");
+  if (choice === "secondary" && character !== 1)
+    throw new RoomError("이 캐릭터는 아직 세컨드 스킬이 없어요.");
+  return choice || "primary";
+};
 const same = (a, b) =>
   typeof a === "string" &&
   typeof b === "string" &&
@@ -79,6 +86,7 @@ export class RoomHub {
     this.validateBuild(msg.build);
     if (!validInt(msg.character, 1, 34) || !validInt(msg.map, 1, 6))
       throw new RoomError("캐릭터와 전장을 확인해 주세요.");
+    skillChoice(msg.character, msg.skill);
     ctx.token = randomBytes(24).toString("hex");
     ctx.role = 0;
     ctx.session = randomUUID();
@@ -95,6 +103,7 @@ export class RoomHub {
               token: hash(ctx.token),
               session: ctx.session,
               character: msg.character,
+              skill: skillChoice(msg.character, msg.skill),
               ready: false,
               connected: true,
             },
@@ -114,6 +123,7 @@ export class RoomHub {
     const code = String(msg.code || "").toUpperCase();
     if (!/^[A-F0-9]{8}$/.test(code) || !validInt(msg.character, 1, 34))
       throw new RoomError("8자리 방 코드를 확인해 주세요.");
+    skillChoice(msg.character, msg.skill);
     ctx.token = randomBytes(24).toString("hex");
     ctx.role = 1;
     ctx.session = randomUUID();
@@ -129,6 +139,7 @@ export class RoomHub {
         token: hash(ctx.token),
         session: ctx.session,
         character: msg.character,
+        skill: skillChoice(msg.character, msg.skill),
         ready: false,
         connected: true,
       };
@@ -230,6 +241,7 @@ export class RoomHub {
       } else if (msg.type === "pick") {
         if (r.phase !== "lobby" || !validInt(msg.character, 1, 34))
           throw new RoomError("지금은 캐릭터를 바꿀 수 없어요.");
+        p.skill = skillChoice(msg.character, msg.skill);
         p.character = msg.character;
         p.ready = false;
       } else if (msg.type === "map") {
@@ -248,6 +260,7 @@ export class RoomHub {
             seed: randomInt(0, 0x100000000),
             p1: r.players[0].character,
             p2: r.players[1].character,
+            skills: r.players.map(player => player.skill || "primary"),
             map: r.map,
             // Starting input delay (3 frames = 50 ms); each client then adapts
             // its own delay to the measured ping (entry-app.js adaptDelay).

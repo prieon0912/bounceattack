@@ -7,7 +7,6 @@ for (const path of [
   "public/src/runtime.js",
   "public/src/secondary-skills.js",
   "public/src/brand-fire-zone.js",
-  "public/assets/secondary/brand-fire-zone.svg",
   "public/assets/secondary/brand-fire-zone-icon.svg",
   "public/src/frame-sync.js",
   "public/src/online.js",

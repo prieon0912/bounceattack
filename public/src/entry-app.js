@@ -216,6 +216,7 @@ function search() {
     build: build.id,
     character: Number(runtime.globals.get("y75t")),
     map: 6,
+    skill: runtime.secondarySkills.choice(1),
   });
 }
 document.getElementById("play-offline").onclick = () => {
@@ -294,6 +295,12 @@ window.addEventListener("keydown", (event) => {
     event.preventDefault();
   else if (onButton) return;
   if (!ready || !runtime || searching || forfeitWin || postMatch) return;
+  if (runtime.scene === "1ckl" && [82, 80].includes(event.keyCode)) {
+    event.preventDefault();
+    if (!event.repeat) runtime.secondarySkills.selectKey(event.keyCode, onlineMode ? 1 : null);
+    sceneUI();
+    return;
+  }
   if (sync) {
     if (onlineBit(event.keyCode) >= 0) {
       event.preventDefault();

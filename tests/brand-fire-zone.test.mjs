@@ -6,9 +6,9 @@ import { registerOriginal } from "../public/src/original-program.js";
 import { applyInputs, stateHash } from "../public/src/frame-sync.js";
 import { FIRE_ZONE } from "../public/src/brand-fire-zone.js";
 const project = JSON.parse(fs.readFileSync(new URL("../public/data/project.json", import.meta.url)));
-function game(p1 = 1, p2 = 2) {
+function game(p1 = 1, p2 = 2, skills = [p1, p2].map(ch => ch === 1 ? "secondary" : "primary")) {
   const r = new Runtime(structuredClone(project), { headless: true });
-  registerOriginal(r); r.start({ p1, p2, seed: 19 });
+  registerOriginal(r); r.start({ p1, p2, seed: 19, skills });
   for (let t = 0; t < 240; t++) r.step();
   for (const thread of [...r.threads, ...r.pending])
     if (["00h9", "n8fg"].includes(thread.e.objectId)) thread.cancelled = true;
@@ -81,10 +81,131 @@ test("P works for second player; simultaneous mirror fields stay deterministic a
 test("original selector uses the new icon and matching skill description", () => {
   const r = game();
   const first = id => r.project.variables.find(v => v.id === id).array[0].data;
-  assert.equal(first("x7mx"), "화염지대");
-  assert.match(first("gsve"), /1초마다 5/);
-  assert.match(r.defs.get("o9rj").sprite.pictures[0].fileurl, /brand-fire-zone-icon/);
-  assert.ok(r.defs.get("hb4u").sprite.pictures.some(p => p.id === "brand-fire-zone-area"));
+  assert.equal(first("x7mx"), "폭발표식");
+  assert.match(first("gsve"), /적의 위치에 표식/);
+  assert.ok(!r.defs.get("o9rj").sprite.pictures[0].fileurl.includes("secondary"));
+  assert.ok(r.defs.get("o9rj").sprite.pictures.some(p => p.id === "brand-secondary-icon"));
+  assert.ok(!r.defs.get("hb4u").sprite.pictures.some(p => p.id === "brand-fire-zone-area"));
   const names = project.objects.find(o => o.id === "hb4u").sprite.pictures;
   assert.ok(!names.some(p => p.id === "brand-fire-zone-area"), "archived metadata is not modified on disk");
+});
+
+test("primary loadout repeatedly uses original mark; combat R/P never toggles skill", () => {
+  for (const [p1, p2, side] of [[1, 2, 1], [2, 1, 2], [1, 1, 1], [1, 1, 2]]) {
+    const r = game(p1, p2, ["primary", "primary"]), key = side === 1 ? 82 : 80;
+    const mana = side === 1 ? "qn98" : "thom";
+    for (let cast = 0; cast < 2; cast++) {
+      r.globals.set(mana, 100); r.keys.add(key); r.step(); r.step();
+      assert.equal(r.secondarySkills.state(side).mode, "primary");
+      assert.equal(r.secondarySkills.state(side).zone, undefined);
+      assert.ok(r.entities.some(e => e.clone && e.objectId === (side === 1 ? "m9km" : "iaqy")), "original mark exists");
+      assert.equal(r.secondarySkills.selectKey(key), false, "cannot change loadout in combat");
+      r.keys.clear(); for (let i = 0; i < 110; i++) r.step();
+    }
+    assert.deepEqual(r.faults, []);
+  }
+});
+test("secondary loadout stays secondary for repeated casts and cannot fire original mark", () => {
+  const r = game();
+  for (let cast = 0; cast < 2; cast++) {
+    r.globals.set("qn98", 100); step(r, 16); step(r);
+    assert.ok(r.secondarySkills.state(1).zone);
+    assert.equal(r.secondarySkills.state(1).mode, "secondary");
+    assert.ok(!r.entities.some(e => e.clone && e.objectId === "m9km"));
+    for (let i = 0; i < 485; i++) step(r);
+  }
+  assert.deepEqual(r.faults, []);
+});
+test("only original blurred description accepts R/P; 1P commit resets 2P draft without losing 1P choice", () => {
+  const r = game(1, 1); r.loadScene("1ckl");
+  r.globals.set("y75t", 1); r.globals.set("s5vb", 1);
+  r.globals.set("16fh", 1); r.globals.set("jx38", 1); r.globals.set("yraj", 0);
+  assert.equal(r.secondarySkills.selectKey(82), false, "plain roster is not the skill picker");
+  r.globals.set("yraj", 1); r.secondarySkills.syncSelection();
+  assert.equal(r.secondarySkills.selectionInfo(1).name, "폭발표식");
+  assert.equal(r.secondarySkills.selectKey(80), false, "P cannot edit the inactive player");
+  assert.equal(r.secondarySkills.selectKey(82), true);
+  assert.equal(r.originals.get("o9rj").picture.id, "brand-secondary-icon");
+  assert.match(r.originals.get("3my6").text, /1초마다 5/);
+  assert.deepEqual(r.secondarySkills.loadout(), ["primary", "primary"], "preview is not committed yet");
+  r.globals.set("skill-loadout:2:1", "secondary"); // stale previous preview must never bleed into 2P
+  r.command({ e:r.originals.get("o9rj") }, "set_variable", ["jx38", 2]);
+  r.secondarySkills.syncSelection();
+  assert.deepEqual(r.secondarySkills.loadout(), ["secondary", "primary"]);
+  assert.equal(r.secondarySkills.selectionInfo(2).name, "폭발표식");
+  assert.equal(r.originals.get("o9rj").picture.id, "lexo");
+  assert.equal(r.secondarySkills.selectKey(82), false);
+  assert.equal(r.secondarySkills.selectKey(80), true);
+  r.command({ e:r.originals.get("o9rj") }, "set_variable", ["jx38", 0]);
+  r.loadScene("s27s"); r.loadScene("7dwq");
+  assert.equal(r.secondarySkills.state(1).mode, "secondary");
+  assert.equal(r.secondarySkills.state(2).mode, "secondary");
+  assert.equal(r.secondarySkills.selectKey(82), false);
+  r.loadScene("1ckl");
+  assert.deepEqual(r.secondarySkills.loadout(), ["primary", "primary"]);
+});
+test("previewing another character resets original-skill default; extra selection UI is removed", () => {
+  const r = game(); r.loadScene("1ckl");
+  r.globals.set("jx38", 1); r.globals.set("yraj", 1); r.globals.set("16fh", 1);
+  r.secondarySkills.syncSelection(); r.secondarySkills.selectKey(82);
+  r.globals.set("16fh", 2); r.secondarySkills.syncSelection();
+  assert.equal(r.secondarySkills.selectKey(82), false);
+  r.globals.set("16fh", 1); r.secondarySkills.syncSelection();
+  assert.equal(r.secondarySkills.selectionInfo(1).name, "폭발표식");
+  for (const file of ["../public/index.html", "../public/entry.css", "../public/src/entry-app.js"])
+    assert.ok(!fs.readFileSync(new URL(file, import.meta.url), "utf8").includes("skill-selection"), "no added selection panel: " + file);
+});
+test("real original roster click commits 1P skill and presents fresh 2P default on the same character", () => {
+  const r = game(); r.loadScene("1ckl"); r.globals.set("jx38",1);
+  for (let i=0;i<120;i++) r.step();
+  const tile = r.entities.find(e => e.objectId === "3y3g" && e.clone && Number(r.get(e,"9k0l")) === 1);
+  assert.ok(tile, "original Brand roster clone exists");
+  Object.assign(r.mouse,{x:tile.x,y:tile.y});
+  for (let i=0;i<30;i++) r.step();
+  assert.equal(Number(r.globals.get("yraj")),1);
+  assert.equal(Number(r.globals.get("16fh")),1);
+  assert.equal(r.secondarySkills.selectKey(82),true);
+  r.click(tile.x,tile.y);
+  for (let i=0;i<45;i++) r.step();
+  assert.equal(Number(r.globals.get("jx38")),2);
+  assert.equal(r.secondarySkills.choice(1),"secondary");
+  assert.equal(r.secondarySkills.selectionInfo(2).name,"폭발표식");
+  assert.equal(r.originals.get("o9rj").picture.id,"lexo");
+  assert.equal(r.secondarySkills.selectKey(80),true);
+  // Confirm a different original roster character for 2P; its skill starts at primary.
+  const secondTile = r.entities.find(e => e.objectId === "3y3g" && e.clone && Number(r.get(e,"9k0l")) === 2);
+  Object.assign(r.mouse,{x:secondTile.x,y:secondTile.y});
+  for (let i=0;i<30;i++) r.step();
+  assert.equal(r.secondarySkills.selectKey(80),false);
+  r.click(secondTile.x,secondTile.y);
+  for (let i=0;i<45;i++) r.step();
+  assert.equal(r.secondarySkills.choice(1),"secondary");
+  assert.equal(r.secondarySkills.choice(2),"primary");
+  assert.deepEqual(r.faults,[]);
+});
+test("zone particles use untouched original Brand pictures, no custom ring or rounded flame drawing", () => {
+  const r = game(); step(r, 16); step(r);
+  const originals = new Set([...r.defs.get("m9km").sprite.pictures, ...r.defs.get("iaqy").sprite.pictures].map(p => p.fileurl));
+  const effects = r.entities.filter(e => e.secondaryEffect === "brand-fire-zone");
+  assert.equal(effects.length, 18);
+  assert.ok(effects.every(e => originals.has(e.picture.fileurl)));
+});
+
+test("online clients receive identical mixed mirror loadouts and never exchange skills during combat", () => {
+  const options = { p1: 1, p2: 1, map: 6, seed: 731, skills: ["primary", "secondary"] };
+  const a = game(1, 1, options.skills), b = game(1, 1, options.skills);
+  for (const r of [a, b]) {
+    r.start(JSON.parse(JSON.stringify(options)));
+    for (let i = 0; i < 240; i++) r.step();
+    for (const id of ["qn98", "thom"]) r.globals.set(id, 100);
+  }
+  for (let frame = 0; frame < 180; frame++) {
+    for (const r of [a, b]) step(r, frame === 0 || frame === 120 ? 16 : 0, frame === 0 || frame === 120 ? 16 : 0);
+    assert.equal(stateHash(a), stateHash(b));
+    assert.equal(a.secondarySkills.state(1).mode, "primary");
+    assert.equal(a.secondarySkills.state(2).mode, "secondary");
+  }
+  assert.ok(a.entities.some(e => e.secondaryEffect === "brand-fire-zone" && e.combatSide === 2));
+  assert.ok(!a.entities.some(e => e.secondaryEffect === "brand-fire-zone" && e.combatSide === 1));
+  assert.deepEqual(a.faults, []);
 });

@@ -17,7 +17,7 @@ const sample = {
 };
 function game(definitions = [sample], p1 = 1, p2 = 2) {
   const r = new Runtime(project, { headless: true, secondarySkills: definitions });
-  registerOriginal(r); r.start({ p1, p2, seed: 12 });
+  registerOriginal(r); r.start({ p1, p2, seed: 12, skills: [p1, p2].map(ch => definitions.some(d => d.character === ch) ? "secondary" : "primary") });
   for (let i = 0; i < 240; i++) r.step();
   r.originals.get("00h9").x = -180; r.originals.get("n8fg").x = 180;
   for (const id of ["qn98", "thom"]) r.globals.set(id, 100);
@@ -35,7 +35,7 @@ test("empty registry leaves both original skill keys and combat state unchanged"
 test("R executes the registered effect, replaces only R, and respects mana, hold and cooldown", () => {
   const r = game(); const hp = r.num(r.globals.get("7ir2"));
   r.globals.set("qn98", 5); step(r, 16);
-  assert.equal(r.secondarySkills.state(1).mode, "primary");
+  assert.equal(r.secondarySkills.state(1).mode, "secondary");
   r.globals.set("qn98", 100); step(r); step(r, 16);
   assert.equal(r.secondarySkills.state(1).mode, "secondary");
   assert.equal(r.globals.get("7ir2"), hp - 7);
@@ -53,11 +53,11 @@ test("R executes the registered effect, replaces only R, and respects mana, hold
 test("stun, existing action, pause and cooldown prevent secondary activation", () => {
   const r = game();
   r.globals.set("8w41", 1); step(r, 16);
-  assert.equal(r.secondarySkills.state(1).mode, "primary");
+  assert.equal(r.secondarySkills.state(1).mode, "secondary");
   step(r); r.globals.set("8w41", 0); r.globals.set("rr24", 2); step(r, 16);
-  assert.equal(r.secondarySkills.state(1).mode, "primary");
+  assert.equal(r.secondarySkills.state(1).mode, "secondary");
   step(r); r.globals.set("rr24", 0); r.paused = true; step(r, 16);
-  assert.equal(r.secondarySkills.state(1).mode, "primary");
+  assert.equal(r.secondarySkills.state(1).mode, "secondary");
   r.paused = false; step(r, 16);
   const ready = r.secondarySkills.state(1).readyAt;
   step(r); step(r, 16);

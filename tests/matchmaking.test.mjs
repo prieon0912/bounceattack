@@ -55,3 +55,13 @@ test("concurrent matchmaking never assigns three players to one match", async ()
   assert.equal(groups.size, 5);
   assert.ok([...groups.values()].every((n) => n === 2));
 });
+
+test("matchmaking preserves different skill loadouts in a mirror match without leaking lobby choices", async () => {
+  const hub = new RoomHub(new MemoryStore()), a = {}, b = {};
+  await hub.matchmake(a, { build, character: 1, skill: "secondary" });
+  const match = await hub.matchmake(b, { build, character: 1, skill: "primary" });
+  assert.deepEqual(match.match.skills, ["secondary", "primary"]);
+  assert.ok(!("skill" in hub.public(match).players[0]));
+  await assert.rejects(hub.matchmake({}, { build, character: 2, skill: "secondary" }));
+  await assert.rejects(hub.matchmake({}, { build, character: 1, skill: "invalid" }));
+});

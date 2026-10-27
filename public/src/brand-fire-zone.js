@@ -3,22 +3,25 @@ export const FIRE_ZONE = Object.freeze({
   durationTicks: 300, radius: 90, intervalTicks: 60, damage: 5,
   slow: 8, manaCost: 32, cooldownTicks: 480, castTicks: 12,
 });
-const AREA_PICTURE = "brand-fire-zone-area";
 export const brandFireZone = {
   character: 1, name: "화염지대", manaCost: FIRE_ZONE.manaCost, cooldownTicks: FIRE_ZONE.cooldownTicks,
-  description: "자신의 주변에 5초간 유지되는 넓은 화염지대를 설치합니다. 영역 안의 적은 1초마다 5의 피해를 입고 이동속도가 느려집니다.",
+  lockVariable: false, // Brand uses the legacy skill variable as a clone mode, not a busy flag.
+  primaryName: "폭발표식",
+  primaryDescription: "적의 위치에 표식을 남기고 몇초뒤 표식 위치에서 폭발이 일어납니다.",
+  primaryIcon: "assets/temp/1e/2e/image/1e2e8c27mvpihd8500064431d38w0i4x.svg",
+  icon: "assets/secondary/brand-fire-zone-icon.svg",
+  description: "5초간 화염지대 설치. 영역 내 적에게 1초마다 5 피해와 둔화를 줍니다.",
   prepare(project) {
-    for (const [id, text] of [["x7mx", this.name], ["gsve", this.description]]) {
-      const item = project.variables.find(v => v.id === id)?.array?.[0];
-      if (item) item.data = text;
+    const name = project.variables.find(v => v.id === "x7mx")?.array?.[0];
+    const description = project.variables.find(v => v.id === "gsve")?.array?.[0];
+    if (name) name.data = this.primaryName;
+    if (description) description.data = this.primaryDescription;
+    const pictures = project.objects.find(o => o.id === "o9rj")?.sprite.pictures;
+    if (pictures) {
+      pictures[0].fileurl = this.primaryIcon;
+      if (!pictures.some(p => p.id === "brand-secondary-icon"))
+        pictures.push({ ...structuredClone(pictures[0]), id: "brand-secondary-icon", name: this.name, fileurl: this.icon });
     }
-    const icon = project.objects.find(o => o.id === "o9rj")?.sprite.pictures[0];
-    if (icon) icon.fileurl = "assets/secondary/brand-fire-zone-icon.svg";
-    const pictures = project.objects.find(o => o.id === "hb4u")?.sprite.pictures;
-    if (pictures && !pictures.some(p => p.id === AREA_PICTURE)) pictures.push({
-      id: AREA_PICTURE, name: "화염지대", fileurl: "assets/secondary/brand-fire-zone.svg",
-      dimension: { width: 200, height: 200 },
-    });
   },
   slowValue(r, e, id, raw, state, side) {
     const targetSide = side === 1 ? 2 : 1;
@@ -32,16 +35,30 @@ export const brandFireZone = {
     const config = FIRE_ZONE;
     const z = { x: caster.x, y: caster.y, radius: config.radius, startsAt: r.tick, endsAt: r.tick + config.durationTicks };
     state.zone = z;
-    // A visual-only entity reuses the original effect object's rendering path.
-    // Do not dispatch its original clone scripts (those belong to another attack).
-    const area = r.makeEntity(r.defs.get("hb4u"));
-    area.clone = true; area.combatSide = side; area.secondaryEffect = "brand-fire-zone";
-    r.setPicture(area, AREA_PICTURE);
-    Object.assign(area, { x: z.x, y: z.y, regX: 100, regY: 100,
-      rotation: 0, direction: 90, scaleX: config.radius / 100, scaleY: config.radius / 100, visible: true });
-    // Put the area behind fighters and in front of the existing map/background.
-    const back = r.entities.findIndex(e => ["00h9", "n8fg"].includes(e.objectId));
-    r.entities.splice(back < 0 ? r.entities.length : back + 1, 0, area);
+    // Reuse only original Brand drawings, on visual-only entities with no original clone scripts.
+    const effectDef = r.defs.get("hb4u");
+    const originalFlames = r.defs.get(side === 1 ? "m9km" : "iaqy").sprite.pictures;
+    const visuals = [];
+    const addVisual = (picture, x, y, size, transparency) => {
+      const e = r.makeEntity(effectDef);
+      e.clone = true; e.combatSide = side; e.secondaryEffect = "brand-fire-zone";
+      Object.assign(e, { picture, width: picture.dimension.width, height: picture.dimension.height,
+        regX: picture.dimension.width / 2, regY: picture.dimension.height / 2,
+        x, y, rotation: 0, direction: 90, scaleX: 1, scaleY: 1, visible: true });
+      r.setSize(e, size); e.effects.transparency = transparency;
+      const back = r.entities.findIndex(body => ["00h9", "n8fg"].includes(body.objectId));
+      r.entities.splice(back < 0 ? r.entities.length : back + 1, 0, e);
+      visuals.push(e);
+      return e;
+    };
+    // The original circular explosion drawing forms a faint filled boundary (no new ring).
+    const area = addVisual(originalFlames[3], z.x, z.y, config.radius * 2, 85);
+    for (let i = 0; i < 12; i++) {
+      const angle = i * Math.PI * 2 / 12;
+      addVisual(originalFlames[0], z.x + Math.cos(angle) * 68, z.y + Math.sin(angle) * 68, 16, 12);
+    }
+    for (const [x, y] of [[0, 0], [-26, -24], [26, -24], [-26, 24], [26, 24]])
+      addVisual(originalFlames[0], z.x + x, z.y + y, 17, 12);
     r.spawn(area, function*(runtime, effectContext) {
       try {
         while (runtime.tick <= z.endsAt) {
@@ -54,11 +71,22 @@ export const brandFireZone = {
             yield* runtime.call(effectContext, side === 1 ? "qy83" : "05j0", [-config.damage, 0, 3]);
           }
           if (elapsed === config.durationTicks) break;
-          area.effects.transparency = elapsed < 282 ? 2 + 3 * Math.sin(elapsed * Math.PI / 15) : (elapsed - 282) / 18 * 100;
+          const fade = elapsed < 282 ? 0 : (elapsed - 282) / 18;
+          area.effects.transparency = 85 + fade * 15;
+          for (let i = 1; i < visuals.length; i++) {
+            const flame = visuals[i];
+            const picture = originalFlames[Math.floor((elapsed + i * 3) / 9) % 3];
+            flame.picture = picture;
+            flame.width = picture.dimension.width; flame.height = picture.dimension.height;
+            flame.regX = flame.width / 2; flame.regY = flame.height / 2;
+            flame.scaleX = flame.scaleY = 1;
+            runtime.setSize(flame, 16 + 2 * Math.sin((elapsed + i * 4) / 7));
+            flame.effects.transparency = 12 + fade * 88;
+          }
           yield 1;
         }
       } finally {
-        area.dead = true;
+        for (const e of visuals) e.dead = true;
         if (state.zone === z) delete state.zone;
       }
     }, "secondary_skill_effect");
