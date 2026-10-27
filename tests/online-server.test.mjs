@@ -137,7 +137,7 @@ test("room ownership, full rooms, build mismatch and reconnect authentication ar
   a.send({ type: "pick", character: 3 });
   assert.match((await a.wait((m) => m.type === "error")).message, /만료/);
 });
-test("same character choices do not start a broken mirror match", async (t) => {
+test("same character choices start an online mirror match", async (t) => {
   const { client } = await setup(t),
     a = await client(0),
     b = await client(1);
@@ -147,8 +147,9 @@ test("same character choices do not start a broken mirror match", async (t) => {
   await b.wait((m) => m.type === "joined");
   a.send({ type: "ready", ready: true });
   b.send({ type: "ready", ready: true });
-  assert.match(
-    (await a.wait((m) => m.type === "notice")).message,
-    /같은 캐릭터/,
+  const started = await a.wait(
+    (m) => m.type === "room" && m.room.phase === "playing",
   );
+  assert.equal(started.room.match.p1, 14);
+  assert.equal(started.room.match.p2, 14);
 });

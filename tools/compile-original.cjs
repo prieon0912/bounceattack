@@ -15,6 +15,17 @@ for(const file of fs.readdirSync(configDir).filter(f=>f.endsWith('.json')).sort(
   object.script=JSON.stringify(stacks);
  }
 }
+// Mirror matches isolate the original effects that were shared by both players.
+const sharedCore=new Set(['m0id','ocqj','n230','n8fg','00h9','m9cz']);
+for(const object of project.objects){
+ if(object.scene!=='7dwq')continue;
+ const selectors=new Set();
+ const visit=x=>{if(!x||typeof x!=='object')return;if(x.type==='get_variable'&&['y75t','s5vb'].includes(x.params?.[0]))selectors.add(x.params[0]);if(Array.isArray(x))x.forEach(visit);else Object.values(x).forEach(visit);};
+ visit(JSON.parse(object.script));
+ object.combatSide=['n230','00h9'].includes(object.id)?1:['ocqj','n8fg'].includes(object.id)?2:selectors.size===1?(selectors.has('y75t')?1:2):null;
+ object.mirrorShared=selectors.size===2&&!sharedCore.has(object.id);
+ object.sharedCore=sharedCore.has(object.id);
+}
 const metadata={...project,objects:project.objects.map(({script,...rest})=>structuredClone(rest)),functions:[]};
 for(const o of metadata.objects)for(const asset of [...o.sprite.pictures,...o.sprite.sounds])if(asset.fileurl?.startsWith('temp/'))asset.fileurl='assets/'+asset.fileurl;
 fs.writeFileSync(path.join(root,'public/data/project.json'),JSON.stringify(metadata));

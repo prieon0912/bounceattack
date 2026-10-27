@@ -35,7 +35,7 @@ function home() {
   onlineMode = false;
   for (const a of runtime?.playing || []) a.pause();
   runtime?.startProject();
-  status.textContent="";
+  status.textContent = "";
 }
 function sceneUI() {
   menu.hidden = runtime.scene !== "qc29";
@@ -119,7 +119,7 @@ document.getElementById("play-online").onclick = () => {
   runtime.globals.set("rks6", 0);
   runtime.loadScene("1ckl");
   status.textContent =
-    "캐릭터를 고르면 자동으로 상대를 찾아요. 같은 캐릭터끼리는 매칭하지 않아요.";
+    "캐릭터를 고르면 자동으로 상대를 찾아요. 같은 캐릭터끼리도 대전할 수 있어요.";
   sceneUI();
 };
 document.getElementById("how-to").onclick = () => {

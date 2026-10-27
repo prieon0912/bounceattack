@@ -18,7 +18,7 @@ test("matchmaking pairs waiting players across hubs and starts automatically", a
   assert.equal(match.match.p2, 2);
   assert.ok(!("character" in a.public(match).players[0]));
 });
-test("matchmaking skips mirrors, disconnected tickets and other builds", async () => {
+test("matchmaking allows mirrors and skips disconnected tickets and other builds", async () => {
   const store = new MemoryStore(),
     hub = new RoomHub(store),
     a = {},
@@ -28,10 +28,13 @@ test("matchmaking skips mirrors, disconnected tickets and other builds", async (
     e = {};
   await hub.matchmake(a, { build, character: 1 });
   await hub.matchmake(b, { build, character: 1 });
-  assert.notEqual(a.code, b.code);
-  await hub.leave(a);
+  assert.equal(a.code, b.code);
+  assert.equal((await hub.state(a.code)).phase, "playing");
+  const stale = {};
+  await hub.matchmake(stale, { build, character: 3 });
+  await hub.leave(stale);
   await hub.matchmake(c, { build, character: 2 });
-  assert.equal(c.code, b.code);
+  assert.notEqual(c.code, stale.code);
   await hub.matchmake(d, { build: "b".repeat(64), character: 3 });
   await hub.matchmake(e, { build, character: 4 });
   assert.notEqual(d.code, e.code);

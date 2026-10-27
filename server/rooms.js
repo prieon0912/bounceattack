@@ -150,7 +150,6 @@ export class RoomHub {
         : [];
       let candidate = null;
       for (const entry of entries) {
-        if (entry.character === msg.character) continue;
         try {
           const room = await this.state(entry.code);
           if (
@@ -234,22 +233,16 @@ export class RoomHub {
         if (r.phase !== "lobby") throw new RoomError("이미 시작한 대전이에요.");
         p.ready = !!msg.ready;
         if (r.players.every((x) => x?.ready && x.connected)) {
-          if (r.players[0].character === r.players[1].character) {
-            for (const player of r.players) player.ready = false;
-            r.notice =
-              "같은 캐릭터가 선택됐어요. 서로 다른 캐릭터로 다시 준비해 주세요.";
-          } else {
-            r.notice = null;
-            r.phase = "playing";
-            r.match = {
-              epoch: randomUUID(),
-              seed: randomInt(0, 0x100000000),
-              p1: r.players[0].character,
-              p2: r.players[1].character,
-              map: r.map,
-              delay: 3,
-            };
-          }
+          r.notice = null;
+          r.phase = "playing";
+          r.match = {
+            epoch: randomUUID(),
+            seed: randomInt(0, 0x100000000),
+            p1: r.players[0].character,
+            p2: r.players[1].character,
+            map: r.map,
+            delay: 3,
+          };
         }
       } else if (msg.type === "rematch") {
         r.phase = "lobby";
