@@ -5,6 +5,7 @@ import {
   createHash,
   timingSafeEqual,
 } from "node:crypto";
+const ONLINE_MAP = 6;
 const TTL = 7200,
   prefix = "bounce:v1:",
   roomKey = (c) => prefix + "room:" + c,
@@ -140,7 +141,8 @@ export class RoomHub {
     this.validateBuild(msg.build);
     if (!validInt(msg.character, 1, 34))
       throw new RoomError("캐릭터를 선택해 주세요.");
-    const own = await this.create(ctx, { ...msg, map: 1 });
+    // Online matchmaking always plays on 미션존 (map 6) for now.
+    const own = await this.create(ctx, { ...msg, map: ONLINE_MAP });
     const ownContext = { ...ctx };
     const key = prefix + "matchmaking:" + msg.build;
     for (let attempt = 0; attempt < 32; attempt++) {

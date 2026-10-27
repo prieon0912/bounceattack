@@ -156,9 +156,42 @@ canvas:fullscreen {
   justify-content: space-between;
   gap: 6px;
   margin-top: 0.8cqw;
+  white-space: nowrap;
   font-size: clamp(11px, 2.1cqw, 21px);
 }
 #loading.error .loading-box {
   border-color: #ff5d6c;
   color: #e23c4c;
+}
+
+/* Online character select: opponent slot (2P preview) shown as "?". */
+#unknown-p2 {
+  position: absolute;
+  z-index: 1;
+  left: 75.6%;
+  top: 24.1%;
+  width: 9.4%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  border: solid #000;
+  border-width: max(3px, 0.95cqw);
+  border-radius: 50%;
+  background: #d9dcf5;
+  color: #fff;
+  font-family: SDComicStencil, Arial, sans-serif;
+  font-size: 5.6cqw;
+  line-height: 1;
+  -webkit-text-stroke: max(1.5px, 0.45cqw) #000;
+  paint-order: stroke fill;
+  pointer-events: none;
+  user-select: none;
+}
+#unknown-p2[hidden] {
+  display: none;
+}
+#game {
+  container-type: inline-size;
 }

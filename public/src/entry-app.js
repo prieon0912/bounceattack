@@ -38,8 +38,17 @@ function home() {
   runtime?.startProject();
   status.textContent = "";
 }
+// Online character select: the opponent is not known yet, so the 2P preview
+// (character, weapon, cannon) is replaced by a "?" slot.
+const unknownP2 = document.getElementById("unknown-p2");
+const P2_PREVIEW = new Set(["zyy3", "mimn", "pe89"]);
 function sceneUI() {
   menu.hidden = !ready || runtime.scene !== "qc29";
+  const hideP2 = onlineMode && !sync && runtime.scene === "1ckl";
+  unknownP2.hidden = !hideP2;
+  if (hideP2)
+    for (const e of runtime.entities)
+      if (P2_PREVIEW.has(e.objectId)) e.visible = false;
   if (runtime.scene === "qc29") {
     for (const id of ["syvy", "3amf"]) {
       const e = runtime.originals.get(id);
@@ -76,7 +85,7 @@ function search() {
         elapsed = 0;
         lastProgress = performance.now();
         connection.gameplay({ type: "sync", from: 1 });
-        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · A/D 이동, W 점프, E/R/S 공격`;
+        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · A/D·←/→ 이동, W·↑ 점프, E/R/S·O/P/↓ 공격`;
       } else if (sync && room.players.some((p) => !p?.connected)) {
         status.textContent = "상대 연결을 기다리고 있어요…";
       }
@@ -106,7 +115,7 @@ function search() {
     type: "matchmake",
     build: build.id,
     character: Number(runtime.globals.get("y75t")),
-    map: 1,
+    map: 6,
   });
 }
 document.getElementById("play-offline").onclick = () => {
@@ -155,13 +164,28 @@ window.addEventListener("pointerup", () => {
     runtime.mouseRelease = runtime.tick + 2;
   }
 });
+// Online: the local player may use either the 1P (A/D/W, E/R/S) or the 2P
+// (arrows, O/P/↓) key set, whichever side the match assigns them.
+const heldOnline = new Set();
+function onlineBit(code) {
+  const bit = KEYS[0].indexOf(code);
+  return bit >= 0 ? bit : KEYS[1].indexOf(code);
+}
+function onlineMask() {
+  let mask = 0;
+  for (const code of heldOnline) {
+    const bit = onlineBit(code);
+    if (bit >= 0) mask |= 1 << bit;
+  }
+  return mask;
+}
 window.addEventListener("keydown", (event) => {
   if (!ready || !runtime || event.target.tagName === "BUTTON" || searching) return;
   if (sync) {
-    const bit = KEYS[0].indexOf(event.keyCode);
-    if (bit >= 0) {
+    if (onlineBit(event.keyCode) >= 0) {
       event.preventDefault();
-      sync.mask |= 1 << bit;
+      heldOnline.add(event.keyCode);
+      sync.mask = onlineMask();
     }
     return;
   }
@@ -174,13 +198,12 @@ window.addEventListener("keydown", (event) => {
 });
 window.addEventListener("keyup", (event) => {
   runtime?.keys.delete(event.keyCode);
-  if (sync) {
-    const bit = KEYS[0].indexOf(event.keyCode);
-    if (bit >= 0) sync.mask &= ~(1 << bit);
-  }
+  heldOnline.delete(event.keyCode);
+  if (sync) sync.mask = onlineMask();
 });
 window.addEventListener("blur", () => {
   runtime?.keys.clear();
+  heldOnline.clear();
   if (sync) sync.mask = 0;
   if (runtime) runtime.mouse.down = false;
 });
