@@ -26,6 +26,15 @@
           <p id="match-message">상대를 찾고 있어요…</p>
           <button id="cancel-match">취소</button>
         </div>
+        <div id="loading" aria-hidden="true">
+          <div class="loading-box">
+            <div class="loading-bar"><div id="loading-fill"></div></div>
+            <div class="loading-text">
+              <span id="loading-label">불러오는 중</span
+              ><span id="loading-percent">0%</span>
+            </div>
+          </div>
+        </div>
         <canvas
           id="stage"
           aria-label="원본 바운스어택 게임 화면"

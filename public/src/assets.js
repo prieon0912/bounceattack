@@ -1,3 +1,37 @@
+const TIMEOUT = 20000;
+
+function withTimeout(promise, ms, label) {
+  let timer;
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      timer = setTimeout(() => reject(Error(label + " timeout")), ms);
+    }),
+  ]).finally(() => clearTimeout(timer));
+}
+
+// HTMLImageElement.decode()/onload can stall indefinitely while the tab is in
+// the background (minimised window, another tab in front). fetch +
+// createImageBitmap keeps working there, so it is the primary path.
+async function decodeBitmap(url) {
+  const response = await withTimeout(fetch(url), TIMEOUT, "Fetch");
+  if (!response.ok) throw Error("HTTP " + response.status);
+  const blob = await response.blob();
+  return withTimeout(createImageBitmap(blob), TIMEOUT, "Bitmap decode");
+}
+
+// Fallback for formats createImageBitmap cannot read from a Blob (SVG in Chrome).
+async function decodeElement(url) {
+  const image = new Image();
+  const loaded = new Promise((resolve, reject) => {
+    image.onload = resolve;
+    image.onerror = () => reject(Error("Image load error"));
+  });
+  image.src = url;
+  await withTimeout(loaded, TIMEOUT, "Image load");
+  return image;
+}
+
 export class Assets {
   constructor() {
     this.cache = new Map();
@@ -10,28 +44,22 @@ export class Assets {
   async decode(url) {
     let lastError;
     for (let attempt = 0; attempt < 2; attempt++) {
-      const image = new Image();
-      image.src = url;
-      let timer;
       try {
-        await Promise.race([
-          image.decode(),
-          new Promise((_, reject) => {
-            timer = setTimeout(
-              () => reject(Error("Image decode timeout")),
-              60000,
-            );
-          }),
-        ]);
-        if (!image.naturalWidth || !image.naturalHeight)
-          throw Error("Empty image");
+        let image;
+        try {
+          image = await decodeBitmap(url);
+        } catch (error) {
+          if (!url.endsWith(".svg")) throw error;
+          image = await decodeElement(url);
+        }
+        const w = image.naturalWidth ?? image.width,
+          h = image.naturalHeight ?? image.height;
+        if (!w || !h) throw Error("Empty image");
         return image;
       } catch (error) {
         lastError = error;
         // Empty SVG exports have a companion PNG; retrying that SVG cannot help.
         if (url.endsWith(".svg")) break;
-      } finally {
-        clearTimeout(timer);
       }
     }
     throw lastError;
@@ -43,16 +71,21 @@ export class Assets {
     const task = (async () => {
       let image;
       try {
-        image = await this.decode(picture.fileurl.endsWith(".svg") ? picture.fileurl.replace(/\.svg$/, ".png") : picture.fileurl);
+        image = await this.decode(
+          picture.fileurl.endsWith(".svg")
+            ? picture.fileurl.replace(/\.svg$/, ".png")
+            : picture.fileurl,
+        );
       } catch (error) {
         if (!picture.fileurl.endsWith(".svg")) throw error;
         image = await this.decode(picture.fileurl);
       }
       const width = Math.max(1, Math.round(picture.dimension.width));
       const height = Math.max(1, Math.round(picture.dimension.height));
-      const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
+      const canvas =
+        typeof OffscreenCanvas === "function"
+          ? new OffscreenCanvas(width, height)
+          : Object.assign(document.createElement("canvas"), { width, height });
       const ctx = canvas.getContext("2d", { willReadFrequently: true });
       ctx.drawImage(image, 0, 0, width, height);
       const rgba = ctx.getImageData(0, 0, width, height).data;
@@ -83,14 +116,22 @@ export class Assets {
     ];
     let next = 0,
       done = 0;
-    // Bound decode concurrency: two players may load the entire original atlas at once.
+    // One broken picture must not stop the others: previously a rejection
+    // silently killed its worker, and once all workers had died the progress
+    // counter froze (e.g. "1052 / 1511") with no error shown.
     await Promise.all(
-      Array.from({ length: 4 }, async () => {
+      Array.from({ length: 8 }, async () => {
         while (next < pictures.length) {
-          await this.load(pictures[next++]);
-          onProgress(++done, pictures.length);
+          const picture = pictures[next++];
+          try {
+            await this.load(picture);
+          } catch (error) {
+            console.warn("이미지 불러오기 실패", error);
+          }
+          onProgress(++done, pictures.length, this.failures.length);
         }
       }),
     );
+    return this.failures;
   }
 }

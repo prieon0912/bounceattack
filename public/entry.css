@@ -106,3 +106,59 @@ canvas:fullscreen {
   border: 3px solid #7580ff;
   color: #6572f6;
 }
+
+/* Loading: the real original main screen is drawn on the canvas underneath;
+   this only adds a progress box styled like the original menu buttons, in the
+   same spot where those buttons appear once loading is finished. */
+#loading {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  container-type: inline-size;
+  background: #fff;
+  transition: opacity 0.35s ease;
+}
+#loading.ready {
+  background: transparent;
+}
+#loading.done {
+  opacity: 0;
+  pointer-events: none;
+}
+.loading-box {
+  position: absolute;
+  right: 3%;
+  top: 9%;
+  width: 25%;
+  padding: 1.3cqw 1.2cqw 1.1cqw;
+  font-family: SDComicStencil, Arial, sans-serif;
+  color: #6572f6;
+  background: #fff;
+  border: 5px solid #7580ff;
+  border-radius: 5px;
+  box-shadow: 0 0 0 2px #fff;
+}
+.loading-bar {
+  height: 1.6cqw;
+  min-height: 6px;
+  background: #e7ebff;
+  border-radius: 2px;
+  overflow: hidden;
+}
+#loading-fill {
+  width: 0;
+  height: 100%;
+  background: #7580ff;
+  transition: width 0.2s ease-out;
+}
+.loading-text {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 0.8cqw;
+  font-size: clamp(11px, 2.1cqw, 21px);
+}
+#loading.error .loading-box {
+  border-color: #ff5d6c;
+  color: #e23c4c;
+}

@@ -18,7 +18,8 @@ let runtime,
   epoch = null,
   searching = false,
   lastProgress = 0,
-  lastRequest = 0;
+  lastRequest = 0,
+  ready = false;
 const menu = document.getElementById("main-menu"),
   panel = document.getElementById("match-panel"),
   message = document.getElementById("match-message");
@@ -38,7 +39,7 @@ function home() {
   status.textContent = "";
 }
 function sceneUI() {
-  menu.hidden = runtime.scene !== "qc29";
+  menu.hidden = !ready || runtime.scene !== "qc29";
   if (runtime.scene === "qc29") {
     for (const id of ["syvy", "3amf"]) {
       const e = runtime.originals.get(id);
@@ -143,7 +144,7 @@ canvas.addEventListener("pointermove", (event) => {
 canvas.addEventListener("pointerdown", (event) => {
   event.preventDefault();
   canvas.focus();
-  if (runtime && !searching && !sync) {
+  if (ready && runtime && !searching && !sync) {
     runtime.click(...position(event));
     runtime.mouseRelease = null;
     canvas.setPointerCapture(event.pointerId);
@@ -155,7 +156,7 @@ window.addEventListener("pointerup", () => {
   }
 });
 window.addEventListener("keydown", (event) => {
-  if (!runtime || event.target.tagName === "BUTTON" || searching) return;
+  if (!ready || !runtime || event.target.tagName === "BUTTON" || searching) return;
   if (sync) {
     const bit = KEYS[0].indexOf(event.keyCode);
     if (bit >= 0) {
@@ -233,19 +234,34 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 
+const loading = document.getElementById("loading"),
+  loadingFill = document.getElementById("loading-fill"),
+  loadingLabel = document.getElementById("loading-label"),
+  loadingPercent = document.getElementById("loading-percent");
+function showProgress(ratio) {
+  const percent = Math.floor(ratio * 100);
+  loadingFill.style.width = percent + "%";
+  loadingPercent.textContent = percent + "%";
+}
+
 try {
   const response = await fetch("data/project.json");
   if (!response.ok) throw Error("원본 자료 불러오기 실패");
   const project = await response.json();
   build = await (await fetch("data/build.json")).json();
-  await Promise.all([
-    document.fonts.load("20px SDComicStencil"),
-    document.fonts.load("20px SDCinemaTheater"),
+  // Fonts are optional: never let a slow/blocked font CDN hold the game.
+  const fonts = Promise.race([
+    Promise.all([
+      document.fonts.load("20px SDComicStencil"),
+      document.fonts.load("20px SDCinemaTheater"),
+    ]).catch(() => {}),
+    new Promise((resolve) => setTimeout(resolve, 5000)),
   ]);
-  await assets.preload(
-    project.objects,
-    (done, total) => (status.textContent = `원본 이미지 ${done} / ${total}`),
-  );
+  // 1) Only the original main screen's pictures, so the real title screen
+  //    can be shown as the loading background right away.
+  const mainObjects = project.objects.filter((o) => o.scene === "qc29");
+  await assets.preload(mainObjects);
+  await fonts;
   runtime = new Runtime(project, {
     assets,
     onFault: (f) => {
@@ -271,7 +287,22 @@ try {
   runtime.startProject();
   status.textContent = "";
   requestAnimationFrame(frame);
+  loading.classList.add("ready");
+  // 2) Everything else, while the original main screen is already playing.
+  const failures = await assets.preload(project.objects, (done, total, failed) => {
+    showProgress(done / total);
+    status.textContent =
+      `원본 이미지 ${done} / ${total}` + (failed ? ` (실패 ${failed})` : "");
+  });
+  if (failures.length) console.warn("불러오지 못한 이미지", failures);
+  status.textContent = failures.length
+    ? `그림 ${failures.length}개를 불러오지 못했어요. 새로고침하면 다시 시도해요.`
+    : "";
+  ready = true;
+  loading.classList.add("done");
 } catch (error) {
   status.textContent = "불러오기 실패: " + error;
+  loading.classList.add("error");
+  loadingLabel.textContent = "불러오기 실패 · 새로고침해 주세요";
   console.error(error);
 }
