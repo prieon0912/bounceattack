@@ -10,7 +10,7 @@ export const brandFireZone = {
   primaryDescription: "적의 위치에 표식을 남기고 몇초뒤 표식 위치에서 폭발이 일어납니다.",
   primaryIcon: "assets/temp/1e/2e/image/1e2e8c27mvpihd8500064431d38w0i4x.svg",
   icon: "assets/secondary/brand-fire-zone-icon.svg",
-  description: "5초간 화염지대 설치. 영역 내 적에게 1초마다 5 피해와 둔화를 줍니다.",
+  description: "자신의 자리에 몇 초간 적에게 피해와 둔화를 주는 화염지대를 설치합니다.",
   prepare(project) {
     const name = project.variables.find(v => v.id === "x7mx")?.array?.[0];
     const description = project.variables.find(v => v.id === "gsve")?.array?.[0];
