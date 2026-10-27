@@ -1,7 +1,7 @@
 // Brand's second skill. All gameplay sizes use Entry's 480 x 270 stage units.
 export const FIRE_ZONE = Object.freeze({
   durationTicks: 300, radius: 110, intervalTicks: 60, damage: 5,
-  slow: 8, manaCost: 32, cooldownTicks: 480, castTicks: 12,
+  slow: 8, manaCost: 32, cooldownTicks: 300, castTicks: 12,
 });
 export const brandFireZone = {
   character: 1, name: "화염지대", manaCost: FIRE_ZONE.manaCost, cooldownTicks: FIRE_ZONE.cooldownTicks,
@@ -52,7 +52,7 @@ export const brandFireZone = {
       return e;
     };
     // The original circular explosion drawing forms a faint filled boundary (no new ring).
-    const area = addVisual(originalFlames[3], z.x, z.y, config.radius * 2, 75);
+    const area = addVisual(originalFlames[3], z.x, z.y, config.radius * 2, 60);
     r.spawn(area, function*(runtime, effectContext) {
       try {
         while (runtime.tick <= z.endsAt) {
@@ -66,7 +66,7 @@ export const brandFireZone = {
           }
           if (elapsed === config.durationTicks) break;
           const fade = elapsed < 282 ? 0 : (elapsed - 282) / 18;
-          area.effects.transparency = 75 + fade * 25;
+          area.effects.transparency = 60 + fade * 40;
           yield 1;
         }
       } finally {

@@ -110,9 +110,10 @@ test("secondary loadout stays secondary for repeated casts and cannot fire origi
   for (let cast = 0; cast < 2; cast++) {
     r.globals.set("qn98", 100); step(r, 16); step(r);
     assert.ok(r.secondarySkills.state(1).zone);
+    assert.equal(r.secondarySkills.state(1).readyAt - r.secondarySkills.state(1).zone.startsAt, 300);
     assert.equal(r.secondarySkills.state(1).mode, "secondary");
     assert.ok(!r.entities.some(e => e.clone && e.objectId === "m9km"));
-    for (let i = 0; i < 485; i++) step(r);
+    for (let i = 0; i < 305; i++) step(r);
   }
   assert.deepEqual(r.faults, []);
 });
@@ -188,7 +189,7 @@ test("zone shows only the original red circle, without flame particles", () => {
   const originals = new Set([...r.defs.get("m9km").sprite.pictures, ...r.defs.get("iaqy").sprite.pictures].map(p => p.fileurl));
   const effects = r.entities.filter(e => e.secondaryEffect === "brand-fire-zone");
   assert.equal(effects.length, 1);
-  assert.equal(effects[0].effects.transparency, 75);
+  assert.equal(effects[0].effects.transparency, 60);
   assert.equal(r.size(effects[0]), 220);
   assert.ok(effects.every(e => originals.has(e.picture.fileurl)));
 });
