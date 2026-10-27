@@ -28,6 +28,7 @@ export const brandFireZone = {
     const targetSide = side === 1 ? 2 : 1;
     if (e.objectId !== (targetSide === 1 ? "00h9" : "n8fg") ||
         id !== (targetSide === 1 ? "9af4" : "nccn")) return raw;
+    if (r.num(r.globals.get(targetSide === 1 ? "ob2m" : "rav6")) !== 0) return raw;
     const inside = (state.zones || (state.zone ? [state.zone] : [])).some(z =>
       r.tick < z.endsAt && Math.hypot(e.x - z.x, e.y - z.y) <= z.radius);
     return inside
@@ -94,6 +95,7 @@ export const brandFireZone = {
           runtime.setSize(area, size);
           z.radius = size / 2;
           if (elapsed > 0 && elapsed % config.intervalTicks === 0 && !target.dead &&
+              runtime.num(runtime.globals.get(side === 1 ? "rav6" : "ob2m")) === 0 &&
               Math.hypot(target.x - z.x, target.y - z.y) <= config.radius &&
               runtime.num(runtime.globals.get(side === 1 ? "7ir2" : "akf6")) > 0) {
             // Original damage functions preserve shields, mitigation and on-hit interactions.

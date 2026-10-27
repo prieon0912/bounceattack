@@ -328,3 +328,30 @@ test("fire zone grows smoothly from the original explosion size and its radius m
  assert.equal(last,200);assert.equal(z.radius,100);
  assert.deepEqual(r.faults,[]);
 });
+
+
+test("fire zone skips stealthed targets and resumes damage/slow after reveal on both sides", () => {
+  for (const side of [1, 2]) {
+    const r = game(side === 1 ? 1 : 2, side === 2 ? 1 : 2);
+    const target = r.originals.get(side === 1 ? "n8fg" : "00h9");
+    const hpId = side === 1 ? "7ir2" : "akf6", stealth = side === 1 ? "rav6" : "ob2m";
+    const slow = side === 1 ? "nccn" : "9af4", hp = r.num(r.globals.get(hpId));
+    installZone(r, side);
+    r.globals.set(stealth, 1);
+    for (let t = 0; t < 60; t++) step(r);
+    assert.equal(r.num(r.globals.get(hpId)), hp);
+    assert.equal(r.num(r.get(target, slow)), 0);
+    r.globals.set(slow, 15);
+    assert.equal(r.num(r.get(target, slow)), 15, "unrelated slow is preserved");
+    r.globals.set(slow, 0);
+    r.globals.set(stealth, 0);
+    assert.equal(r.num(r.get(target, slow)), FIRE_ZONE.slow);
+    for (let t = 0; t < 60; t++) step(r);
+    assert.equal(r.num(r.globals.get(hpId)), hp - 5, "skipped damage never catches up");
+    r.globals.set(stealth, 1);
+    for (let t = 0; t < 60; t++) step(r);
+    assert.equal(r.num(r.globals.get(hpId)), hp - 5);
+    assert.equal(r.num(r.get(target, slow)), 0);
+    assert.deepEqual(r.faults, []);
+  }
+});
