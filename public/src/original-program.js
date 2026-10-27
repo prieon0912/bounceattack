@@ -6845,16 +6845,16 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",
 c.block="mxdl";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="et78";r.guard(c);
-r.command(c,"move_x",[r.value(c,"get_variable",["eopq",null]),null]);
+r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"n230",null,"x"])]),null]);
 c.block="77fn";r.guard(c);
-r.command(c,"move_y",[r.value(c,"get_variable",["ig8h",null]),null]);
+r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"n230",null,"y"])]),null]);
 }else{
 c.block="pi2j";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="kilr";r.guard(c);
-r.command(c,"move_x",[r.value(c,"get_variable",["eopq",null]),null]);
+r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"ocqj",null,"x"])]),null]);
 c.block="803l";r.guard(c);
-r.command(c,"move_y",[r.value(c,"get_variable",["ig8h",null]),null]);
+r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"ocqj",null,"y"])]),null]);
 }
 c.block="fq43";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
@@ -49376,9 +49376,9 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 c.block="hbo4";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="cga3";r.guard(c);
-r.command(c,"move_x",[r.value(c,"get_variable",["eopq",null]),null]);
+r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"x"])]),null]);
 c.block="ovjz";r.guard(c);
-r.command(c,"move_y",[r.value(c,"get_variable",["ig8h",null]),null]);
+r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"y"])]),null]);
 yield 1;
 }
 c.block="7eqg";r.guard(c);
@@ -49386,9 +49386,9 @@ for(let i1445=0,n1445=Math.max(0,Math.floor(r.num("20")));i1445<n1445;i1445++){
 c.block="rczp";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="fhpu";r.guard(c);
-r.command(c,"move_x",[r.value(c,"get_variable",["eopq",null]),null]);
+r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"x"])]),null]);
 c.block="ipoe";r.guard(c);
-r.command(c,"move_y",[r.value(c,"get_variable",["ig8h",null]),null]);
+r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"y"])]),null]);
 c.block="onuz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -49734,8 +49734,6 @@ c.block="24ml";r.guard(c);
 r.command(c,"set_variable",["fu65","1",null]);
 c.block="7nc2";r.guard(c);
 r.command(c,"set_variable",["qvkr","1",null]);
-c.block="gr95";r.guard(c);
-r.command(c,"create_clone",["self",null]);
 c.block="1an5";r.guard(c);
 for(let i1455=0,n1455=Math.max(0,Math.floor(r.num("50")));i1455<n1455;i1455++){
 c.block="va4c";r.guard(c);
@@ -54369,9 +54367,9 @@ r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",
 c.block="hbo4";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="cga3";r.guard(c);
-r.command(c,"move_x",[r.value(c,"get_variable",["eopq",null]),null]);
+r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"x"])]),null]);
 c.block="ovjz";r.guard(c);
-r.command(c,"move_y",[r.value(c,"get_variable",["ig8h",null]),null]);
+r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"y"])]),null]);
 yield 1;
 }
 c.block="7eqg";r.guard(c);
@@ -54379,9 +54377,9 @@ for(let i1624=0,n1624=Math.max(0,Math.floor(r.num("20")));i1624<n1624;i1624++){
 c.block="rczp";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="fhpu";r.guard(c);
-r.command(c,"move_x",[r.value(c,"get_variable",["eopq",null]),null]);
+r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"x"])]),null]);
 c.block="ipoe";r.guard(c);
-r.command(c,"move_y",[r.value(c,"get_variable",["ig8h",null]),null]);
+r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"y"])]),null]);
 c.block="onuz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -54727,8 +54725,6 @@ c.block="24ml";r.guard(c);
 r.command(c,"set_variable",["ri3z","1",null]);
 c.block="7nc2";r.guard(c);
 r.command(c,"set_variable",["rr24","1",null]);
-c.block="gr95";r.guard(c);
-r.command(c,"create_clone",["self",null]);
 c.block="1an5";r.guard(c);
 for(let i1634=0,n1634=Math.max(0,Math.floor(r.num("50")));i1634<n1634;i1634++){
 c.block="va4c";r.guard(c);

@@ -234,3 +234,60 @@ test("캐논 미러: 두 캐논이 동시에 궁을 써도 각자 상대를 겨�
     assert.equal(r.entities.filter((e) => e.clone && !e.dead && ["plg8", "cvkh"].includes(e.objectId)).length, 0);
   }
 });
+
+// 좌표를 독립적으로 움직여 시전자 추적과 상대 추적을 구별한다.
+test("캐논 궁: 움직이는 상대를 조준하고 큰 파란 원은 생성하지 않는다 (양쪽·미러전)", () => {
+  for (const [p1, p2] of [[32, 2], [2, 32], [32, 32]]) {
+    const r = game(p1, p2);
+    // 착탄 넉백을 제외하고 추적 좌표만 검증한다.
+    r.collisionProvider = () => false;
+    const command = r.command;
+    r.command = function(c, type, args) {
+      const result = command.call(this, c, type, args);
+      // 조준 갱신 직후 검사한다. 기존 발사 반동 메시지의 별도 시각 이동은 제외한다.
+      if (["ovjz", "ipoe"].includes(c.block) && ["plg8", "cvkh"].includes(c.e.objectId)) {
+        const side = c.e.objectId === "plg8" ? 1 : 2;
+        const target = this.originals.get(side === 1 ? "n8fg" : "00h9");
+        assert.ok(Math.abs(c.e.x - target.x) < 0.001, `aim x side ${side}`);
+        assert.ok(Math.abs(c.e.y - target.y) < 0.001, `aim y side ${side}`);
+        rings[side]++;
+      }
+      return result;
+    };
+    for (const t of [...r.threads, ...r.pending])
+      if (["00h9", "n8fg"].includes(t.e.objectId)) t.cancelled = true;
+    r.s("1P MP", 100); r.s("2P MP", 100);
+    r.s("1P 체력", 1000); r.s("2P 체력", 1000);
+    for (const name of ["정수갯수", "초과정수"]) {
+      r.s(name, 3);
+      if (r.mirror) r.s2(name, 3);
+    }
+    const seen = new Set(), count = { 1: 0, 2: 0 }, rings = { 1: 0, 2: 0 };
+    for (let t = 0; t < 260; t++) {
+      const a = r.originals.get("00h9"), b = r.originals.get("n8fg");
+      a.x = -180 + t * 0.35; a.y = -60 + t * 0.1;
+      b.x = 170 - t * 0.15; b.y = 40 - t * 0.2;
+      r.run(1, t < 2 ? [...(p1 === 32 ? [83] : []), ...(p2 === 32 ? [40] : [])] : []);
+      for (const e of r.entities) {
+        if (!e.clone || e.dead) continue;
+        if (["plg8", "cvkh"].includes(e.objectId)) {
+          assert.ok(!["o1dk", "be9x"].includes(e.picture?.id), "large blue circle must not exist");
+
+        }
+        if (e.objectId === "hyk2" && !seen.has(e.uid)) {
+          seen.add(e.uid);
+          const side = r.mirror ? e.combatSide : p1 === 32 ? 1 : 2;
+          const target = side === 1 ? b : a;
+          assert.ok(Math.abs(e.x - target.x) < 0.001, `shot x side ${side}`);
+          assert.ok(Math.abs(e.y - target.y) < 0.001, `shot y side ${side}`);
+          count[side]++;
+        }
+      }
+    }
+    for (const side of [1, 2]) if ((side === 1 ? p1 : p2) === 32) {
+      assert.equal(count[side], 3, `three shots side ${side}`);
+      assert.ok(rings[side] > 30, `target indicator observed side ${side}`);
+    }
+    assert.deepEqual(r.faults, []);
+  }
+});

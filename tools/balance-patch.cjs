@@ -380,6 +380,31 @@ module.exports = function applyBalancePatch(project) {
     if (!done) throw Error("Balance patch: airborne stun generation missing");
   }
 
+  // 캐논 궁 조준: 저장된 거리 차 대신 매번 상대의 현재 좌표를 사용한다.
+  // 기존 locate 기준을 유지하여 미러전의 양쪽 역할 판별도 그대로 보존한다.
+  const coordinate = (objectId, axis) => blk("coordinate_object", [null, objectId, null, axis]);
+  const followTarget = (objectId, blockId, origin, target, axis) => {
+    const b = locate(objectId, blockId).block;
+    if (b.type !== `move_${axis}` || b.params[0]?.type !== "get_variable" ||
+        b.params[0].params[0] !== V(axis === "x" ? "대공포격x" : "대공포격y"))
+      throw Error(`Balance patch: cannon tracking ${objectId}/${blockId}`);
+    b.params[0] = calc(coordinate(target, axis), "MINUS", coordinate(origin, axis));
+  };
+  for (const [o, origin, target] of [["plg8", "00h9", "n8fg"], ["cvkh", "n8fg", "00h9"]]) {
+    // 큰 파란 원 전용 복제본은 생성하지 않는다. 실제 조준 표식은 유지한다.
+    const ring = locate(o, "gr95");
+    if (ring.block.type !== "create_clone" || ring.block.params[0] !== "self")
+      throw Error("Balance patch: cannon large ring " + o);
+    ring.list.splice(ring.index, 1);
+    for (const b of ["cga3", "fhpu"]) followTarget(o, b, origin, target, "x");
+    for (const b of ["ovjz", "ipoe"]) followTarget(o, b, origin, target, "y");
+  }
+  // 각 포격의 착탄 위치는 해당 발사 시점의 상대 위치에서 결정한다.
+  for (const [origin, target, bx, by] of [["n230", "n8fg", "et78", "77fn"], ["ocqj", "00h9", "kilr", "803l"]]) {
+    followTarget("hyk2", bx, origin, target, "x");
+    followTarget("hyk2", by, origin, target, "y");
+  }
+
   for (const [objectId, stacks] of scripts) objects.get(objectId).script = JSON.stringify(stacks);
   return project;
 };
