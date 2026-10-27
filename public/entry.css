@@ -5,7 +5,7 @@ body {
   margin: 0;
   background: #eee;
   color: #333;
-  font-family: Arial, sans-serif;
+  font-family: SDComicStencil, Arial, sans-serif;
 }
 main {
   width: min(100%, 960px);
@@ -27,23 +27,28 @@ nav {
   background: #fff;
   flex-wrap: wrap;
 }
+/* Page UI uses the game's font and the original menu-button look. */
 button,
 a {
-  font: 14px Arial;
-  color: #444;
+  font: 15px SDComicStencil, Arial, sans-serif;
+  color: #6572f6;
 }
 button {
-  padding: 7px 12px;
-  background: #f7f7f7;
-  border: 1px solid #bbb;
-  border-radius: 3px;
+  padding: 6px 14px;
+  background: #fff;
+  border: 3px solid #7580ff;
+  border-radius: 5px;
   cursor: pointer;
+}
+button:hover {
+  background: #e7ebff;
 }
 a {
   margin-left: auto;
 }
 #status {
-  font-size: 13px;
+  font-size: 14px;
+  color: #4b56d8;
   padding: 6px 10px;
   background: #fff;
 }

@@ -36,6 +36,7 @@ function stopOnline() {
 function home() {
   stopOnline();
   forfeitWin = false;
+  postMatch = false;
   onlineMode = false;
   for (const a of runtime?.playing || []) a.pause();
   runtime?.startProject();
@@ -65,6 +66,32 @@ function sceneUI() {
 const FORFEIT_AFTER = 15000;
 let forfeitWin = false,
   forfeitHp = null;
+const MAX_BACKLOG = (1000 / 60) * 4;
+// Adaptive input delay: as small as the connection allows (3 frames ≈ 50 ms
+// for ping ≤ ~40 ms), growing only while ping is high or spiky.
+const FRAME_MS = 1000 / 60;
+let recentPings = [];
+function adaptDelay(mode, ping) {
+  recentPings = [...recentPings.slice(-3), ping];
+  const rtt = Math.max(...recentPings);
+  // Direct: peer round trip, so one-way ≈ rtt/2. Relay: ping is to the
+  // server only; the path to the opponent is ≈ both legs plus 33 ms batching.
+  const oneWay = mode === "direct" ? rtt / 2 : rtt + 33;
+  const frames = Math.ceil((oneWay + 10) / FRAME_MS) + 1;
+  sync.setDelay(Math.max(3, Math.min(8, frames)));
+}
+let postMatch = false;
+function endMatch() {
+  if (!sync) return;
+  sync = null;
+  epoch = null;
+  connection?.close();
+  connection = null;
+  postMatch = true;
+  heldOnline.clear();
+  runtime.keys.clear();
+  status.textContent = "대전 종료 · 뒤로가기를 누르면 처음 화면으로 돌아가요.";
+}
 function winByForfeit() {
   if (!sync || !connection) return;
   const role = connection.identity.role;
@@ -73,6 +100,7 @@ function winByForfeit() {
   connection.close();
   connection = null;
   forfeitWin = true;
+  postMatch = true;
   heldOnline.clear();
   runtime.keys.clear();
   runtime.paused = false;
@@ -99,10 +127,12 @@ function search() {
         const match = room.match;
         epoch = match.epoch;
         forfeitWin = false;
+        postMatch = false;
         searching = false;
         panel.hidden = true;
         runtime.start(match);
         runtime.originalUI = true;
+        recentPings = [];
         sync = new FrameSync(connection.identity.role, {
           delay: match.delay,
           onSend: (frames) => connection.input(frames),
@@ -137,8 +167,9 @@ function search() {
       status.textContent = text;
     },
     onStatus: (s) => {
+      if (sync && s.ping !== undefined) adaptDelay(s.mode, s.ping);
       if (sync && s.ping !== undefined)
-        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · ${Math.round(s.ping)}ms`;
+        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · ${Math.round(s.ping)}ms · ${s.mode === "direct" ? "직접 연결" : "서버 중계"} · 입력 지연 ${Math.round(sync.delay * FRAME_MS)}ms`;
     },
   });
   connection.command({
@@ -210,7 +241,7 @@ function onlineMask() {
   return mask;
 }
 window.addEventListener("keydown", (event) => {
-  if (!ready || !runtime || event.target.tagName === "BUTTON" || searching || forfeitWin) return;
+  if (!ready || !runtime || event.target.tagName === "BUTTON" || searching || forfeitWin || postMatch) return;
   if (sync) {
     if (onlineBit(event.keyCode) >= 0) {
       event.preventDefault();
@@ -253,8 +284,17 @@ function frame(now) {
   last = now;
   while (elapsed >= 1000 / 60) {
     if (sync) {
+      // The original sets 게임 끝 (r71b) when a fighter falls. Both clients
+      // reach that frame identically, so lockstep can end here: the ending
+      // plays locally and 뒤로가기 works right away (no forfeit / timeout).
+      if (Number(runtime.globals.get("r71b")) === 1) {
+        endMatch();
+        continue;
+      }
       if (!sync.advance(runtime)) {
-        elapsed = 0;
+        // Waiting for the opponent's input: keep a short backlog instead of
+        // discarding the time, so play catches up smoothly when it arrives.
+        elapsed = Math.min(elapsed, MAX_BACKLOG);
         break;
       }
       lastProgress = now;
@@ -303,10 +343,10 @@ try {
   const response = await fetch("data/project.json");
   if (!response.ok) throw Error("원본 자료 불러오기 실패");
   const project = await response.json();
-  // Display-only: HP damage/heal pop-up numbers and the character-select
-  // 1P/2P banner labels use the game's main font.
+  // Display-only: every original text box uses the game's main font
+  // (the few SDCinemaTheater ones were the odd ones out).
   for (const o of project.objects)
-    if (["5c3y", "w3fb", "4u9z", "6zak"].includes(o.id) && o.entity?.font)
+    if (o.entity?.font)
       o.entity.font = o.entity.font.replace("SDCinemaTheater", "SDComicStencil");
   build = await (await fetch("data/build.json")).json();
   // Fonts are optional: never let a slow/blocked font CDN hold the game.
@@ -331,10 +371,9 @@ try {
   });
   runtime.originalUI = true;
   runtime.beforeScene = (id) => {
-    if (forfeitWin) {
-      status.textContent =
-        "상대가 나가서 승리했어요 · 처음부터 버튼으로 다시 플레이할 수 있어요.";
-      runtime.running = false;
+    // After an online match (normal end or forfeit) 뒤로가기 returns home.
+    if (postMatch || forfeitWin) {
+      setTimeout(home);
       return false;
     }
     if (sync) {

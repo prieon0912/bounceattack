@@ -13,7 +13,8 @@ export class OnlineConnection {
     this.inputQueue = [];
     this.mode = "relay";
     this.timer = setInterval(() => this.flush(), 33);
-    this.pinger = setInterval(() => this.ping(), 3000);
+    // Ping every second so the input delay can follow ping changes quickly.
+    this.pinger = setInterval(() => this.ping(), 1000);
     this.reconnectDelay = 500;
     this.leaseTimer = setInterval(
       () => {
@@ -342,6 +343,9 @@ export class OnlineConnection {
   }
   input(frames) {
     this.inputQueue.push(...frames);
+    // Direct (WebRTC) link: send every frame immediately instead of waiting
+    // for the 33 ms batch timer, which used up most of the input delay.
+    if (this.directReady()) this.flush();
   }
   flush() {
     if (this.inputQueue.length) {

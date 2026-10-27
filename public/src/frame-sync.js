@@ -63,6 +63,7 @@ export class FrameSync {
     this.failed = false;
     this.lastFrame = 0;
     this.lastVerifiedFrame = 0;
+    this.lastSent = delay;
     for (let f = 1; f <= delay; f++) {
       this.inputs[0].set(f, 0);
       this.inputs[1].set(f, 0);
@@ -102,11 +103,20 @@ export class FrameSync {
   }
   advance(runtime) {
     if (this.failed || runtime.paused || !runtime.running) return false;
+    // Local input is scheduled `delay` frames ahead. The delay may change
+    // during a match (setDelay): raising it fills the skipped frames with the
+    // current input; lowering it simply waits until the schedule catches up.
+    // The opponent only needs one input per frame, so no agreement is needed.
     const target = runtime.tick + this.delay + 1;
-    if (!this.history.has(target)) {
-      this.history.set(target, this.mask);
-      this.inputs[this.role].set(target, this.mask);
-      this.onSend([[target, this.mask]]);
+    if (target > this.lastSent) {
+      const out = [];
+      for (let f = this.lastSent + 1; f <= target; f++) {
+        this.history.set(f, this.mask);
+        this.inputs[this.role].set(f, this.mask);
+        out.push([f, this.mask]);
+      }
+      this.lastSent = target;
+      this.onSend(out);
     }
     const frame = runtime.tick + 1;
     if (!this.inputs.every((m) => m.has(frame))) return false;
@@ -120,6 +130,9 @@ export class FrameSync {
     if (this.history.size > 4096)
       this.history.delete(this.history.keys().next().value);
     return true;
+  }
+  setDelay(delay) {
+    if (Number.isInteger(delay)) this.delay = Math.max(1, Math.min(12, delay));
   }
   replay(from) {
     if (from < this.lastFrame - 4095) {

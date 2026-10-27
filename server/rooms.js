@@ -243,6 +243,8 @@ export class RoomHub {
             p1: r.players[0].character,
             p2: r.players[1].character,
             map: r.map,
+            // Starting input delay (3 frames = 50 ms); each client then adapts
+            // its own delay to the measured ping (entry-app.js adaptDelay).
             delay: 3,
           };
         }
