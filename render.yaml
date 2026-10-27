@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: bounceattack
-    runtime: static
-    buildCommand: npm run build
-    staticPublishPath: ./public

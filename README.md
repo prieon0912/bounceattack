@@ -19,9 +19,24 @@ npm start
 - Esc: 일시정지. 다른 창으로 이동하면 자동으로 일시정지합니다.
 - 현재 같은 컴퓨터에서 같은 키보드로 하는 2인 대전입니다. 인터넷 원격 대전은 구현하지 않았습니다.
 
-## Render 배포
+## Vercel 배포
 
-저장소에 `render.yaml`이 있습니다. Render의 **New → Blueprint**에서 이 GitHub 저장소를 연결하면 Static Site 설정을 읽습니다. 직접 Static Site로 만들 경우 Build Command는 `npm run build`, Publish Directory는 `public`입니다. 웹 서버 프로세스와 데이터베이스가 필요 없는 정적 웹사이트입니다. 이 작업에서는 배포 파일과 Git 저장소를 준비하며 Render 계정을 대신 만들거나 유료 서비스를 신청하지 않습니다.
+1. Vercel에서 **Add New → Project**를 선택하고 `prieon0912/bounceattack` 저장소를 연결합니다.
+2. Root Directory는 저장소 루트로 둡니다. `vercel.json`이 아래 설정을 지정하므로 별도 프레임워크를 선택할 필요가 없습니다.
+3. **Deploy**를 누릅니다. 이후 연결한 브랜치에 푸시하면 자동 재배포됩니다.
+
+| 설정 | 값 |
+| --- | --- |
+| Framework Preset | Other (`framework: null`) |
+| Build Command | `npm run build` |
+| Output Directory | `public` |
+| 환경 변수 | 현재 필요 없음 |
+
+정적 파일을 배포하므로 `npm start`로 서버를 계속 실행할 필요가 없습니다. `source/`와 `tools/`는 빌드에 사용하고 `public/`만 사이트로 공개합니다. HTML·JS·JSON·SVG·PNG·음악 파일의 경로는 그대로 유지합니다.
+
+`regions: ["icn1"]`은 향후 Vercel 서버 함수를 추가할 경우 서울에서 실행하도록 지정합니다. 현재 게임은 정적 사이트이며, 파일은 Vercel CDN이 제공합니다. 이 설정만으로 온라인 대전이나 대전 서버가 생기지는 않습니다. 현재는 같은 키보드로 하는 로컬 2인 대전입니다.
+
+로컬 확인은 기존처럼 `npm start`로 합니다. Vercel CLI를 사용하는 경우 프로젝트 루트에서 `vercel`로 미리보기 배포하고 `vercel --prod`로 운영 배포할 수도 있습니다. Vercel 로그인과 프로젝트 연결이 필요합니다.
 
 ## 수정할 위치
 
