@@ -1,7 +1,10 @@
 // Add future character skills here: { character, manaCost, cooldownTicks, *cast(r, c, context) }.
 import { brandFireZone } from "./brand-fire-zone.js";
-export const SECONDARY_SKILLS = [brandFireZone];
+import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
+export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
+  const eclipse = project.variables.find(v => v.id === "gsve")?.array?.[3];
+  if (eclipse) eclipse.data = "패시브의 사정거리, 공전속도, 피해량을 증가시킵니다. 끄고 킬 수 있습니다.";
   for (const definition of definitions) definition.prepare?.(project);
 }
 const PREFIX = "secondary-skill:";
@@ -42,6 +45,19 @@ export class SecondarySkillSystem {
     if (!SIDES[side]) throw Error("Invalid player side");
     return this.runtime.globals.get(PREFIX + side) ?? { mode: "primary", pressed: false, active: false, readyAt: 0 };
   }
+  onClone(c, child) {
+    if (this.runtime.scene !== "7dwq") return;
+    for (const side of [1, 2]) {
+      const definition = this.definition(side), state = this.state(side);
+      if (state.mode === "secondary") definition?.onClone?.(this.runtime, c, child, side, state);
+    }
+  }
+  onCommand(c, type, args) {
+    const side = c.e.fireZoneOwner;
+    if (!side) return;
+    const definition = this.definition(side);
+    definition?.onCommand?.(this.runtime, c, type, args, side, this.state(side));
+  }
   selectionSide() {
     const turn = Number(this.runtime.globals.get("jx38"));
     return this.runtime.scene === "1ckl" && [1, 2].includes(turn) ? turn : null;
@@ -66,7 +82,8 @@ export class SecondarySkillSystem {
     const title = r.originals.get("c72k"), detail = r.originals.get("3my6"), icon = r.originals.get("o9rj");
     if (title) title.text = "스킬 : " + name;
     if (detail) detail.text = description;
-    if (icon && character === 1) r.setPicture(icon, secondary ? "brand-secondary-icon" : "lexo");
+    if (icon && definition.primaryPictureId && definition.secondaryPictureId)
+      r.setPicture(icon, secondary ? definition.secondaryPictureId : definition.primaryPictureId);
   }
   choice(side) {
     const character = Number(this.runtime.globals.get(SIDES[side]?.character));
@@ -139,7 +156,8 @@ export class SecondarySkillSystem {
       if (!trigger || state.active || r.tick < state.readyAt || !body || body.dead ||
           !body.visible || Number(r.globals.get(ids.hp)) <= 0 || Number(r.globals.get("r71b")) !== 0 ||
           Number(r.globals.get(ids.stun)) !== 0 || (definition.lockVariable !== false && Number(r.globals.get(ids.busy)) !== 0) ||
-          Number(r.globals.get(ids.mana)) < definition.manaCost) continue;
+          Number(r.globals.get(ids.mana)) < definition.manaCost ||
+          (definition.canCast && !definition.canCast(r, side))) continue;
       state.active = true;
       state.readyAt = r.tick + definition.cooldownTicks;
       r.globals.set(ids.mana, r.num(r.globals.get(ids.mana)) - definition.manaCost);

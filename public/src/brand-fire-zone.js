@@ -1,16 +1,17 @@
 // Brand's second skill. All gameplay sizes use Entry's 480 x 270 stage units.
 export const FIRE_ZONE = Object.freeze({
-  durationTicks: 300, radius: 110, intervalTicks: 60, damage: 5,
+  durationTicks: 300, radius: 100, intervalTicks: 60, damage: 5,
   slow: 8, manaCost: 32, cooldownTicks: 300, castTicks: 12,
 });
 export const brandFireZone = {
   character: 1, name: "화염지대", manaCost: FIRE_ZONE.manaCost, cooldownTicks: FIRE_ZONE.cooldownTicks,
   lockVariable: false, // Brand uses the legacy skill variable as a clone mode, not a busy flag.
+  primaryPictureId: "lexo", secondaryPictureId: "brand-secondary-icon",
   primaryName: "폭발표식",
   primaryDescription: "적의 위치에 표식을 남기고 몇초뒤 표식 위치에서 폭발이 일어납니다.",
   primaryIcon: "assets/temp/1e/2e/image/1e2e8c27mvpihd8500064431d38w0i4x.svg",
   icon: "assets/secondary/brand-fire-zone-icon.svg",
-  description: "자신의 자리에 몇 초간 적에게 피해와 둔화를 주는 화염지대를 설치합니다.",
+  description: "다음 일반 공격이 맞거나 폭발한 자리에 몇 초간 적에게 피해와 둔화를 주는 화염지대를 설치합니다.",
   prepare(project) {
     const name = project.variables.find(v => v.id === "x7mx")?.array?.[0];
     const description = project.variables.find(v => v.id === "gsve")?.array?.[0];
@@ -27,14 +28,40 @@ export const brandFireZone = {
     const targetSide = side === 1 ? 2 : 1;
     if (e.objectId !== (targetSide === 1 ? "00h9" : "n8fg") ||
         id !== (targetSide === 1 ? "9af4" : "nccn")) return raw;
-    const z = state.zone;
-    return z && r.tick < z.endsAt && Math.hypot(e.x - z.x, e.y - z.y) <= z.radius
+    const inside = (state.zones || (state.zone ? [state.zone] : [])).some(z =>
+      r.tick < z.endsAt && Math.hypot(e.x - z.x, e.y - z.y) <= z.radius);
+    return inside
       ? Math.max(r.num(raw), FIRE_ZONE.slow) : raw;
   },
-  *cast(r, c, { side, caster, target, state }) {
+  canCast(r, side) {
+    const state = r.secondarySkills.state(side);
+    return !state.armed && !state.pendingShot;
+  },
+  *cast(r, c, { state }) {
+    state.armed = true;
+    yield FIRE_ZONE.castTicks;
+  },
+  onClone(r, c, child, side, state) {
+    const object = side === 1 ? "m9km" : "iaqy", block = side === 1 ? "jntz" : "qrc5";
+    if (!state.armed || c.e.objectId !== object || c.e.clone || c.block !== block) return;
+    state.armed = false;
+    state.pendingShot = child.uid;
+    child.fireZoneOwner = side;
+  },
+  onCommand(r, c, type, args, side, state) {
+    const shape = side === 1 ? "1v1m" : "x49z";
+    if (c.e.fireZoneOwner !== side || state.pendingShot !== c.e.uid ||
+        type !== "change_to_some_shape" || args[0] !== shape) return;
+    delete c.e.fireZoneOwner;
+    delete state.pendingShot;
+    this.install(r, c, { side, state }, { x: c.e.x, y: c.e.y });
+  },
+  install(r, c, { side, state }, point) {
+    const target = r.originals.get(side === 1 ? "n8fg" : "00h9");
     const config = FIRE_ZONE;
-    const z = { x: caster.x, y: caster.y, radius: config.radius, startsAt: r.tick, endsAt: r.tick + config.durationTicks };
+    const z = { x: point.x, y: point.y, radius: config.radius, startsAt: r.tick, endsAt: r.tick + config.durationTicks };
     state.zone = z;
+    (state.zones ??= []).push(z);
     // Reuse only original Brand drawings, on visual-only entities with no original clone scripts.
     const effectDef = r.defs.get("hb4u");
     const originalFlames = r.defs.get(side === 1 ? "m9km" : "iaqy").sprite.pictures;
@@ -52,7 +79,7 @@ export const brandFireZone = {
       return e;
     };
     // The original circular explosion drawing forms a faint filled boundary (no new ring).
-    const area = addVisual(originalFlames[3], z.x, z.y, config.radius * 2, 60);
+    const area = addVisual(originalFlames[3], z.x, z.y, config.radius * 2, 30);
     r.spawn(area, function*(runtime, effectContext) {
       try {
         while (runtime.tick <= z.endsAt) {
@@ -66,15 +93,18 @@ export const brandFireZone = {
           }
           if (elapsed === config.durationTicks) break;
           const fade = elapsed < 282 ? 0 : (elapsed - 282) / 18;
-          area.effects.transparency = 60 + fade * 40;
+          area.effects.transparency = 30 + fade * 70;
           yield 1;
         }
       } finally {
         for (const e of visuals) e.dead = true;
-        if (state.zone === z) delete state.zone;
+        state.zones = (state.zones || []).filter(zone => zone !== z);
+        if (state.zone === z) {
+          if (state.zones.length) state.zone = state.zones[state.zones.length - 1];
+          else delete state.zone;
+        }
+        if (!state.zones.length) delete state.zones;
       }
     }, "secondary_skill_effect");
-    // Only the short placement motion locks the caster; the installed area is independent.
-    yield config.castTicks;
   },
 };

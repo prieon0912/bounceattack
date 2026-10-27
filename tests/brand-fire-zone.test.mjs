@@ -18,10 +18,24 @@ function game(p1 = 1, p2 = 2, skills = [p1, p2].map(ch => ch === 1 ? "secondary"
   return r;
 }
 function step(r, p1 = 0, p2 = 0) { applyInputs(r, [p1, p2]); r.step(); }
+// Isolate area ticks from the normal fireball damage by delivering its real spawn/impact hooks.
+function installZone(r, side = 1) {
+  step(r, side === 1 ? 16 : 0, side === 2 ? 16 : 0);
+  const owner = r.originals.get(side === 1 ? "m9km" : "iaqy");
+  const c = { e: owner, block: side === 1 ? "jntz" : "qrc5", args: {}, thread: { cancelled: false } };
+  r.command(c, "create_clone", ["self"]);
+  const shot = r.entities.find(e => e.uid === r.secondarySkills.state(side).pendingShot);
+  assert.ok(shot);
+  const body = r.originals.get(side === 1 ? "00h9" : "n8fg");
+  Object.assign(shot, { x: body.x, y: body.y });
+  r.command({ ...c, e: shot }, "change_to_some_shape", [side === 1 ? "1v1m" : "x49z"]);
+  shot.dead = true;
+}
+
 test("Brand fire zone deals 5 every second, five times, and cleans up after five seconds", () => {
   const r = game(), hp = r.globals.get("7ir2");
-  step(r, 16); const zone = r.secondarySkills.state(1).zone;
-  assert.deepEqual([zone.x, zone.y, zone.radius], [0, 0, 110]);
+  installZone(r); const zone = r.secondarySkills.state(1).zone;
+  assert.deepEqual([zone.x, zone.y, zone.radius], [0, 0, 100]);
   assert.ok(r.num(r.globals.get("qn98")) < 69);
   for (let t = 1; t <= 301; t++) {
     step(r);
@@ -34,21 +48,21 @@ test("Brand fire zone deals 5 every second, five times, and cleans up after five
 });
 test("installed area stays put; slow applies only inside and preserves other slows", () => {
   const r = game(), target = r.originals.get("n8fg");
-  step(r, 16);
+  installZone(r);
   r.originals.get("00h9").x = -150;
   step(r);
   assert.equal(r.secondarySkills.state(1).zone.x, 0);
   assert.equal(r.get(target, "nccn"), FIRE_ZONE.slow);
   assert.equal(r.num(r.globals.get("nccn")), 0, "secondary slow does not contaminate original decay state");
-  target.x = 111; assert.equal(r.num(r.get(target, "nccn")), 0);
-  target.x = 0; target.y = 111; assert.equal(r.num(r.get(target, "nccn")), 0);
-  target.y = 0; target.x = 110; assert.equal(r.get(target, "nccn"), FIRE_ZONE.slow);
+  target.x = 101; assert.equal(r.num(r.get(target, "nccn")), 0);
+  target.x = 0; target.y = 101; assert.equal(r.num(r.get(target, "nccn")), 0);
+  target.y = 0; target.x = 100; assert.equal(r.get(target, "nccn"), FIRE_ZONE.slow);
   r.globals.set("nccn", 15); assert.equal(r.get(target, "nccn"), 15);
   target.x = 150; assert.equal(r.get(target, "nccn"), 15);
 });
 test("outside players take no damage; entering and leaving changes subsequent ticks", () => {
   const r = game(), target = r.originals.get("n8fg"), hp = r.globals.get("7ir2");
-  target.x = 120; step(r, 16);
+  target.x = 120; installZone(r);
   for (let t = 1; t <= 60; t++) step(r);
   assert.equal(r.globals.get("7ir2"), hp);
   target.x = 50;
@@ -60,7 +74,7 @@ test("outside players take no damage; entering and leaving changes subsequent ti
 });
 test("fire zone damage uses original shield handling", () => {
   const r = game(), hp = r.globals.get("7ir2");
-  r.globals.set("g4sc", 10); step(r, 16);
+  r.globals.set("g4sc", 10); installZone(r);
   for (let t = 0; t < 60; t++) step(r);
   assert.equal(r.globals.get("7ir2"), hp);
   assert.equal(r.num(r.globals.get("g4sc")), 5);
@@ -69,8 +83,9 @@ test("P works for second player; simultaneous mirror fields stay deterministic a
   for (const [p1, p2] of [[2, 1], [1, 1]]) {
     const a = game(p1, p2), b = game(p1, p2);
     const hp = [a.globals.get("akf6"), a.globals.get("7ir2")];
+    for (const r of [a, b]) { if (p1 === 1) installZone(r, 1); installZone(r, 2); }
     for (let t = 0; t <= 301; t++) {
-      for (const r of [a, b]) step(r, t === 0 && p1 === 1 ? 16 : 0, t === 0 ? 16 : 0);
+      for (const r of [a, b]) step(r);
       assert.equal(stateHash(a), stateHash(b));
     }
     assert.equal(a.num(a.globals.get("akf6")), hp[0] - 25);
@@ -108,7 +123,7 @@ test("primary loadout repeatedly uses original mark; combat R/P never toggles sk
 test("secondary loadout stays secondary for repeated casts and cannot fire original mark", () => {
   const r = game();
   for (let cast = 0; cast < 2; cast++) {
-    r.globals.set("qn98", 100); step(r, 16); step(r);
+    r.globals.set("qn98", 100); installZone(r); step(r);
     assert.ok(r.secondarySkills.state(1).zone);
     assert.equal(r.secondarySkills.state(1).readyAt - r.secondarySkills.state(1).zone.startsAt, 300);
     assert.equal(r.secondarySkills.state(1).mode, "secondary");
@@ -127,7 +142,7 @@ test("only original blurred description accepts R/P; 1P commit resets 2P draft w
   assert.equal(r.secondarySkills.selectKey(80), false, "P cannot edit the inactive player");
   assert.equal(r.secondarySkills.selectKey(82), true);
   assert.equal(r.originals.get("o9rj").picture.id, "brand-secondary-icon");
-  assert.equal(r.originals.get("3my6").text, "자신의 자리에 몇 초간 적에게 피해와 둔화를 주는 화염지대를 설치합니다.");
+  assert.equal(r.originals.get("3my6").text, "다음 일반 공격이 맞거나 폭발한 자리에 몇 초간 적에게 피해와 둔화를 주는 화염지대를 설치합니다.");
   assert.deepEqual(r.secondarySkills.loadout(), ["primary", "primary"], "preview is not committed yet");
   r.globals.set("skill-loadout:2:1", "secondary"); // stale previous preview must never bleed into 2P
   r.command({ e:r.originals.get("o9rj") }, "set_variable", ["jx38", 2]);
@@ -185,12 +200,12 @@ test("real original roster click commits 1P skill and presents fresh 2P default 
   assert.deepEqual(r.faults,[]);
 });
 test("zone shows only the original red circle, without flame particles", () => {
-  const r = game(); step(r, 16); step(r);
+  const r = game(); installZone(r); step(r);
   const originals = new Set([...r.defs.get("m9km").sprite.pictures, ...r.defs.get("iaqy").sprite.pictures].map(p => p.fileurl));
   const effects = r.entities.filter(e => e.secondaryEffect === "brand-fire-zone");
   assert.equal(effects.length, 1);
-  assert.equal(effects[0].effects.transparency, 60);
-  assert.equal(r.size(effects[0]), 220);
+  assert.equal(effects[0].effects.transparency, 30);
+  assert.equal(r.size(effects[0]), 200);
   assert.ok(effects.every(e => originals.has(e.picture.fileurl)));
 });
 
@@ -203,7 +218,7 @@ test("online clients receive identical mixed mirror loadouts and never exchange 
     for (const id of ["qn98", "thom"]) r.globals.set(id, 100);
   }
   for (let frame = 0; frame < 180; frame++) {
-    for (const r of [a, b]) step(r, frame === 0 || frame === 120 ? 16 : 0, frame === 0 || frame === 120 ? 16 : 0);
+    for (const r of [a, b]) step(r, frame === 0 || frame === 120 ? 16 : 0, frame === 0 ? 16 : frame === 2 || frame === 3 ? 8 : 0);
     assert.equal(stateHash(a), stateHash(b));
     assert.equal(a.secondarySkills.state(1).mode, "primary");
     assert.equal(a.secondarySkills.state(2).mode, "secondary");
@@ -211,4 +226,64 @@ test("online clients receive identical mixed mirror loadouts and never exchange 
   assert.ok(a.entities.some(e => e.secondaryEffect === "brand-fire-zone" && e.combatSide === 2));
   assert.ok(!a.entities.some(e => e.secondaryEffect === "brand-fire-zone" && e.combatSide === 1));
   assert.deepEqual(a.faults, []);
+});
+
+test("fire zone arms first, follows the next actual basic fireball, and installs at its impact/explosion point", () => {
+  for (const [p1, p2, side, collide] of [[1,2,1,true],[1,2,1,false],[2,1,2,true],[2,1,2,false]]) {
+    const r = game(p1,p2), body = r.originals.get(side===1?"00h9":"n8fg");
+    const castPoint = {x:body.x,y:body.y};
+    if (!collide) r.collisionProvider = () => false;
+    step(r,side===1?16:0,side===2?16:0);
+    const state = r.secondarySkills.state(side), armedAt = r.tick;
+    assert.equal(state.armed,true); assert.equal(state.zone,undefined);
+    assert.equal(state.readyAt,armedAt+300);
+    body.x += side===1 ? -30 : 30;
+    step(r); step(r,side===1?8:0,side===2?8:0); step(r,side===1?8:0,side===2?8:0);
+    let impact = null;
+    const command = r.command;
+    r.command = function(c,type,args) {
+      if(c.e.fireZoneOwner===side && type==="change_to_some_shape" && args[0]===(side===1?"1v1m":"x49z")) impact={x:c.e.x,y:c.e.y};
+      return command.call(this,c,type,args);
+    };
+    for(let i=0;i<100&&!state.zone;i++) step(r);
+    assert.ok(state.zone,`side ${side}, collision ${collide}`);
+    assert.deepEqual({x:state.zone.x,y:state.zone.y},impact);
+    assert.notDeepEqual(impact,castPoint);
+    assert.notEqual(state.zone.x,body.x,"area is not at the caster's current position");
+    assert.equal(state.armed,false); assert.equal(state.pendingShot,undefined);
+    const zones = state.zones.length;
+    for(let i=0;i<30;i++)step(r);
+    assert.equal(state.zones.length,zones,"one fireball installs only one area");
+    assert.deepEqual(r.faults,[]);
+  }
+});
+test("already flying fireball does not consume armed zone; subsequent basic does",()=>{
+  const r=game();r.collisionProvider=()=>false;
+  step(r,8);step(r,8);step(r);
+  assert.ok(r.entities.some(e=>e.clone&&e.objectId==="m9km"));
+  step(r,16);for(let i=0;i<110;i++)step(r);
+  const state=r.secondarySkills.state(1);
+  assert.equal(state.armed,true);assert.equal(state.zone,undefined);
+  r.globals.set("qn98",100);const mana=r.num(r.globals.get("qn98"));
+  for(let i=0;i<310;i++)step(r);step(r,16);
+  assert.ok(r.num(r.globals.get("qn98"))>=mana,"rearming an unconsumed skill does not spend mana");
+  step(r);step(r,8);step(r,8);for(let i=0;i<100&&!state.zone;i++)step(r);
+  assert.ok(state.zone);assert.equal(state.armed,false);assert.deepEqual(r.faults,[]);
+});
+test("Eclipse skill description matches requested wording",()=>{
+  const r=game();
+  assert.equal(r.project.variables.find(v=>v.id==="gsve").array[3].data,"패시브의 사정거리, 공전속도, 피해량을 증가시킵니다. 끄고 킬 수 있습니다.");
+});
+
+test("simultaneous real mirror fireballs install independent zones on both clients",()=>{
+ const a=game(1,1),b=game(1,1);
+ for(let frame=0;frame<180;frame++){
+  for(const r of [a,b])step(r,frame===0?16:frame===2||frame===3?8:0,frame===0?16:frame===2||frame===3?8:0);
+  assert.equal(stateHash(a),stateHash(b));
+ }
+ assert.ok(a.secondarySkills.state(1).zone);
+ assert.ok(a.secondarySkills.state(2).zone);
+ assert.notEqual(a.secondarySkills.state(1).zone,a.secondarySkills.state(2).zone);
+ assert.equal(a.entities.filter(e=>e.secondaryEffect==="brand-fire-zone").length,2);
+ assert.deepEqual(a.faults,[]);
 });

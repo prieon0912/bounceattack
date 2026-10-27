@@ -72,7 +72,18 @@ export class Renderer {
         c.textAlign = ["center", "left", "right"][e.textAlign ?? 0] || "center";
         c.fillStyle = e.colour || "#fff";
         const text = String(e.text ?? e.def.text ?? "");
-        if (!e.lineBreak) c.fillText(text, 0, 0);
+        if (!e.lineBreak && e.objectId === "3my6" && runtime.scene === "1ckl" &&
+            [1, 4].includes(Number(runtime.globals.get("16fh")))) {
+          // Fit the changed descriptions inside their original slot, with no new UI.
+          const limit = (230 - e.x) / Math.max(.01, Math.abs(e.scaleX));
+          const lines = []; let line = "";
+          for (const char of text) {
+            if (line && c.measureText(line + char).width > limit) { lines.push(line); line = ""; }
+            line += char;
+          }
+          lines.push(line);
+          lines.forEach((value, i) => c.fillText(value, 0, i * ((parseFloat(e.font) || 20) + 2)));
+        } else if (!e.lineBreak) c.fillText(text, 0, 0);
         else {
           const lines = [];
           for (const paragraph of text.split("\n")) {
