@@ -1,7 +1,8 @@
 // Add future character skills here: { character, manaCost, cooldownTicks, *cast(r, c, context) }.
 import { brandFireZone } from "./brand-fire-zone.js";
 import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
-export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang];
+import { smokeHealingPotion, atlenSwordWave, brookeBarrage } from "./additional-secondary-skills.js";
+export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
   // Nevil's archived 1P body references a black/green variant; use the same orange
   // body as 2P and the original selector, preserving picture id, size and hit geometry.
@@ -63,10 +64,11 @@ export class SecondarySkillSystem {
     }
   }
   onCommand(c, type, args) {
-    const side = c.e.fireZoneOwner;
-    if (!side) return;
-    const definition = this.definition(side);
-    definition?.onCommand?.(this.runtime, c, type, args, side, this.state(side));
+    if (this.runtime.scene !== "7dwq") return;
+    for (const side of [1, 2]) {
+      const definition = this.definition(side), state = this.state(side);
+      if (state.mode === "secondary") definition?.onCommand?.(this.runtime, c, type, args, side, state);
+    }
   }
   selectionSide() {
     const turn = Number(this.runtime.globals.get("jx38"));

@@ -73,7 +73,7 @@ export class Renderer {
         c.fillStyle = e.colour || "#fff";
         const text = String(e.text ?? e.def.text ?? "");
         if (!e.lineBreak && e.objectId === "3my6" && runtime.scene === "1ckl" &&
-            [1, 4].includes(Number(runtime.globals.get("16fh")))) {
+            [1, 4, 7, 10, 16].includes(Number(runtime.globals.get("16fh")))) {
           // Fit the changed descriptions inside their original slot, with no new UI.
           const limit = (230 - e.x) / Math.max(.01, Math.abs(e.scaleX));
           const lines = []; let line = "";
