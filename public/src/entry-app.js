@@ -170,6 +170,7 @@ function search() {
         panel.hidden = true;
         runtime.start(match);
         runtime.originalUI = true;
+        Object.assign(runtime.mouse, { x: -9999, y: -9999, down: false });
         recentPings = [];
         sync = new FrameSync(connection.identity.role, {
           delay: match.delay,
@@ -244,7 +245,9 @@ function position(event) {
   ];
 }
 canvas.addEventListener("pointermove", (event) => {
-  if (runtime) {
+  // The mouse is local to each player; in an online match it stays pinned
+  // off-screen on both clients so mouse checks can't desync the simulation.
+  if (runtime && !sync) {
     const [x, y] = position(event);
     Object.assign(runtime.mouse, { x, y });
   }
@@ -433,6 +436,19 @@ try {
   const response = await fetch("data/project.json");
   if (!response.ok) throw Error("원본 자료 불러오기 실패");
   const project = await response.json();
+  // Character descriptions (select screen hover): keep the original wording,
+  // only correct numbers that no longer match the balance-patched code.
+  const DESCRIPTION_FIXES = [
+    // [list id, character no., from, to]
+    ["dw8v", 33, "6의 피해", "7의 피해"], // 성 미카엘 패시브: 기절 추가 피해 7
+    ["gsve", 12, "5초간 둔화", "6초간 둔화"], // 뉴크 스킬: 접착 360프레임
+    ["9m7u", 12, "보호막 20", "보호막 15"], // 뉴크 궁극기: 방어력 15
+  ];
+  for (const [id, no, from, to] of DESCRIPTION_FIXES) {
+    const item = project.variables.find((v) => v.id === id)?.array?.[no - 1];
+    if (item && String(item.data).includes(from))
+      item.data = String(item.data).replace(from, to);
+  }
   // Display-only: every original text box uses the game's main font
   // (the few SDCinemaTheater ones were the odd ones out).
   for (const o of project.objects)
