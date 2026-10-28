@@ -1,8 +1,9 @@
+import { NEW_SECONDARY_SKILLS, restorePresentation } from './expanded-secondary-skills.js';
 // Add future character skills here: { character, manaCost, cooldownTicks, *cast(r, c, context) }.
 import { brandFireZone } from "./brand-fire-zone.js";
 import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
 import { smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic } from "./additional-secondary-skills.js";
-export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic];
+export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
   // Nevil's archived 1P body references a black/green variant; use the same orange
   // body as 2P and the original selector, preserving picture id, size and hit geometry.
@@ -67,14 +68,14 @@ export class SecondarySkillSystem {
     if (this.runtime.scene !== "7dwq") return;
     for (const side of [1, 2]) {
       const definition = this.definition(side), state = this.state(side);
-      if (state.mode === "secondary") definition?.onCommand?.(this.runtime, c, type, args, side, state);
+      if (state.mode === "secondary") if (definition?.onCommand?.(this.runtime, c, type, args, side, state) === false) return false;
     }
   }
   onFunction(c, id, args) {
     if (this.runtime.scene !== "7dwq") return;
     for (const side of [1, 2]) {
       const definition = this.definition(side), state = this.state(side);
-      if (state.mode === "secondary") definition?.onFunction?.(this.runtime, c, id, args, side, state);
+      if (state.mode === "secondary") if (definition?.onFunction?.(this.runtime, c, id, args, side, state) === false) return false;
     }
   }
   onHealthChange(e, id, before, after) {
@@ -162,8 +163,21 @@ export class SecondarySkillSystem {
       icon: secondary ? definition.icon : definition.primaryIcon };
   }
   // The match loadout is frozen; pressing R/P can never change it in combat.
+  eachHook(name, ...args) {
+    if (this.runtime.scene !== "7dwq") return false;
+    for (const side of [1, 2]) { const state=this.state(side), def=this.definition(side);
+      if(state.mode === "secondary" && def?.[name]?.(this.runtime,...args,side,state)) return true;
+    } return false;
+  }
+  beforeStep() { restorePresentation(this.runtime); }
+  afterStep() { this.eachHook("afterStep"); }
+  hidden(e) { return this.eachHook("hidden",e); }
+  blocksCollision(e) { return this.eachHook("blocksCollision",e); }
+  skipThread(t) { return this.eachHook("skipThread",t); }
+  distanceValue(c,id,value) { for(const side of [1,2]) {const st=this.state(side),def=this.definition(side);if(st.mode==="secondary"&&def?.distanceValue)value=def.distanceValue(this.runtime,c,id,value,side,st);}return value; }
   replacesKey(key) {
     if (this.runtime.scene !== "7dwq") return false;
+    if(this.eachHook("blocksKey",key)) return true;
     const side = key === 82 ? 1 : key === 80 ? 2 : null;
     return side !== null && !!this.definition(side) && this.state(side).mode === "secondary";
   }
@@ -178,6 +192,7 @@ export class SecondarySkillSystem {
       const trigger = pressed && !state.pressed;
       state.pressed = pressed;
       if (state.mode === "primary") continue;
+      definition.tick?.(r,side,state);
       const body = r.originals.get(ids.body);
       if (!trigger || state.active || r.tick < state.readyAt || !body || body.dead ||
           !body.visible || Number(r.globals.get(ids.hp)) <= 0 || Number(r.globals.get("r71b")) !== 0 ||

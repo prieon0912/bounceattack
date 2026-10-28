@@ -18,7 +18,7 @@ export class Renderer {
     c.rect(-240, -135, 480, 270);
     c.clip();
     for (const e of runtime.entities.slice().reverse()) {
-      if (e.dead) continue;
+      if (e.dead || runtime.secondarySkills.hidden(e)) continue;
       // Entry's brush has flat (butt) ends; round caps made the HP/MP bars
       // poke out of the slanted (trapezoid) frame. Consecutive segments with
       // the same style are stroked as one polyline so corners stay joined.
@@ -73,7 +73,7 @@ export class Renderer {
         c.fillStyle = e.colour || "#fff";
         const text = String(e.text ?? e.def.text ?? "");
         if (!e.lineBreak && e.objectId === "3my6" && runtime.scene === "1ckl" &&
-            [1, 4, 7, 10, 12, 16, 18].includes(Number(runtime.globals.get("16fh")))) {
+            [1, 3, 4, 6, 7, 10, 12, 14, 16, 18, 20, 27, 30, 32].includes(Number(runtime.globals.get("16fh")))) {
           // Fit the changed descriptions inside their original slot, with no new UI.
           const limit = (230 - e.x) / Math.max(.01, Math.abs(e.scaleX));
           const lines = []; let line = "";

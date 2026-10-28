@@ -15,7 +15,7 @@ const validInt = (n, min, max) => Number.isInteger(n) && n >= min && n <= max;
 const skillChoice = (character, choice) => {
   if (choice !== undefined && choice !== "primary" && choice !== "secondary")
     throw new RoomError("스킬 선택을 확인해 주세요.");
-  if (choice === "secondary" && ![1, 3, 7, 10, 12, 16, 18].includes(character))
+  if (choice === "secondary" && ![1, 3, 4, 6, 7, 10, 12, 14, 16, 18, 20, 27, 30, 32].includes(character))
     throw new RoomError("이 캐릭터는 아직 세컨드 스킬이 없어요.");
   return choice || "primary";
 };

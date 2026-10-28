@@ -168,3 +168,5 @@ export const matrixReversalMagic = {
     } finally { r.secondarySkills.reflecting = false; }
   },
 };
+
+export { prepare as prepareSkill, visual as skillVisual };
