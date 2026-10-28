@@ -29,16 +29,21 @@ test('Cannon all gear tiers use ceil(current/2), spent+5 damage and exact two-se
 });
 test('all seven choices retain original blurred selector and reset 2P default',()=>{for(const character of [4,6,14,20,27,30,32]){const r=new Runtime(structuredClone(project),{headless:true});registerOriginal(r);r.startProject();r.loadScene('1ckl');r.globals.set('jx38',1);r.globals.set('yraj',1);r.globals.set('16fh',character);r.secondarySkills.syncSelection();assert.equal(r.secondarySkills.selectionInfo(1).secondary,false);assert.equal(r.secondarySkills.selectKey(82),true);assert.equal(r.secondarySkills.selectionInfo(1).secondary,true);r.globals.set('y75t',character);r.secondarySkills.onSelectionCommand('set_variable',['jx38',2]);r.globals.set('jx38',2);r.secondarySkills.syncSelection();assert.equal(r.secondarySkills.selectionInfo(2).secondary,false);assert.equal(r.secondarySkills.choice(1),'secondary');}});
 test('real native Guard basic consumes the charge on a miss and returns body to original size',()=>{for(const side of [1,2]){const r=new Runtime(structuredClone(project),{headless:true});registerOriginal(r);r.start({p1:side===1?14:2,p2:side===2?14:2,skills:side===1?['secondary','primary']:['primary','secondary']});for(let i=0;i<240;i++)r.step();r.globals.set(side===1?'qn98':'thom',100);r.keys.add(side===1?82:80);r.step();r.keys.clear();for(let i=0;i<15;i++)r.step();r.keys.add(side===1?69:13);for(let i=0;i<100;i++)r.step();assert.equal(r.secondarySkills.state(side).armed,false);assert.equal(r.secondarySkills.state(side).striking,false);assert.equal(r.secondarySkills.state(side).shrinkAt,undefined);assert.deepEqual(r.faults,[]);}});
-test('Eclipse launches immediately from visible orbit positions without gathering or rotating',()=>{
+test('Eclipse turns at each existing position, samples enemy only on release, and flies to that exact point without a range cap',()=>{
  for(const side of [1,2]){const r=game(4,side),orbitId=side===1?'q6zw':'kxwh',native=r.entities.filter(e=>e.objectId===orbitId&&e.clone&&!e.dead);assert.equal(native.length,3);
-  const target=body(r,3-side);target.x=180;target.y=70;
-  const origins=native.map(e=>{const b=r.bounds(e);return {x:(b.left+b.right)/2,y:(b.bottom+b.top)/2,rotation:e.rotation,width:e.width,height:e.height};});
-  // Native entity coordinates are the caster/pivot, NOT the drawn sword position.
+  const target=body(r,3-side);target.x=120;target.y=70;
+  const origins=native.map(e=>{const b=r.bounds(e);return {x:(b.left+b.right)/2,y:(b.bottom+b.top)/2,rotation:e.rotation};});
   assert.ok(origins.some((p,i)=>Math.hypot(p.x-native[i].x,p.y-native[i].y)>10));
   r.run(1,[side===1?82:80]);const blades=r.entities.filter(e=>e.secondaryEffect==='eclipse-flying-sword'&&!e.dead).sort((a,b)=>a.uid-b.uid);assert.equal(blades.length,3);
-  for(let i=0;i<3;i++){const p=origins[i],e=blades[i],dx=target.x-p.x,dy=target.y-p.y,len=Math.hypot(dx,dy);assert.ok(Math.abs(e.x-(p.x+dx/len*5))<1e-8);assert.ok(Math.abs(e.y-(p.y+dy/len*5))<1e-8);assert.equal(e.rotation,p.rotation);assert.equal(e.regX,e.width/2);assert.equal(e.regY,e.height/2);}
-  r.run(3);for(let i=0;i<3;i++){const p=origins[i],e=blades[i],dx=target.x-p.x,dy=target.y-p.y,len=Math.hypot(dx,dy);assert.ok(Math.abs(e.x-(p.x+dx/len*20))<1e-8);assert.ok(Math.abs(e.y-(p.y+dy/len*20))<1e-8);assert.equal(e.rotation,p.rotation);}
-  r.run(150);assert.ok(blades.every(e=>e.dead));assert.equal(r.secondarySkills.state(side).swordAway,false);assert.deepEqual(r.faults,[]);
+  r.run(10);for(let i=0;i<3;i++){assert.ok(Math.abs(blades[i].x-origins[i].x)<1e-8);assert.ok(Math.abs(blades[i].y-origins[i].y)<1e-8);assert.equal(blades[i].secondaryDestination,undefined);}
+  // Move during aiming: all blades must select this later point, not cast-time coordinates.
+  target.x=310;target.y=111;const destination={x:target.x,y:target.y};r.run(1);
+  for(let i=0;i<3;i++){const p=origins[i],e=blades[i],dx=destination.x-p.x,dy=destination.y-p.y,len=Math.hypot(dx,dy);assert.deepEqual(e.secondaryDestination,destination);assert.ok(Math.abs(e.x-(p.x+dx/len*5))<1e-8);assert.ok(Math.abs(e.y-(p.y+dy/len*5))<1e-8);const expected=45-Math.atan2(dy,dx)*180/Math.PI;assert.ok(Math.abs(((e.rotation-expected+540)%360)-180)<1e-8);assert.equal(e.regX,e.width/2);assert.equal(e.regY,e.height/2);}
+  // Move after launch: no homing, and the old 130-unit cap must not turn blades back.
+  target.x=-220;target.y=-80;r.run(26);
+  for(let i=0;i<3;i++){const p=origins[i],e=blades[i],dx=destination.x-p.x,dy=destination.y-p.y,len=Math.hypot(dx,dy);assert.ok(len>135);assert.ok(Math.abs(e.x-(p.x+dx/len*135))<1e-8);assert.ok(Math.abs(e.y-(p.y+dy/len*135))<1e-8);}
+  let arrived=new Set();for(let tick=0;tick<150&&!blades.every(e=>e.dead);tick++){for(const e of blades)if(!e.dead&&Math.hypot(e.x-destination.x,e.y-destination.y)<1e-8)arrived.add(e.uid);r.run(1);}
+  assert.equal(arrived.size,3);assert.ok(blades.every(e=>e.dead));r.run(20);assert.equal(r.secondarySkills.state(side).swordAway,false);assert.deepEqual(r.faults,[]);
  }
 });
 test('Kenen costs 39 MP and lasts exactly 180 ticks; Enril cooldown is exactly 60 ticks',()=>{

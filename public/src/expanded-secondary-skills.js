@@ -94,31 +94,43 @@ export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure
    const bounds=r.bounds(e);return {x:(bounds.left+bounds.right)/2,y:(bounds.bottom+bounds.top)/2,
     objectId:e.objectId,pictureId:e.picture.id,width:e.width,height:e.height,scaleX:e.scaleX,scaleY:e.scaleY,rotation:e.rotation};
   });
-  const target=body(r,3-s);state.swordTarget={x:target.x,y:target.y};state.swordAway=true;
+  state.swordAway=true;
  },
  prepare(project){this.effectPictures=[nativePicture(project,'q6zw','eclipse-flying-sword')];prepare.call(this,project);},
  blocksCollision(r,e,s,st){return !!st.swordAway&&orbit(e,s);},
  hidden(r,e,s,st){return !!st.swordAway&&!st.orbitReturnAt&&orbit(e,s);},
  afterStep(r,s,st){if(!st.orbitReturnAt)return;const p=Math.min(1,(r.tick-st.orbitReturnAt)/18),caster=body(r,s);for(const e of r.entities)if(orbit(e,s)&&e.clone&&!e.dead){savePresentation(e);e.x=caster.x+(e.x-caster.x)*p;e.y=caster.y+(e.y-caster.y)*p;e.scaleX*=p;e.scaleY*=p;}},
  *cast(r,c,{side,caster,target,state}){
-  const origins=state.swordLaunch||[],aim=state.swordTarget||target;
+  const origins=state.swordLaunch||[];
   const swords=origins.map(origin=>{
    const blade=visual(r,side,'eclipse-flying-sword',origin.x,origin.y,24,'eclipse-flying-sword');
    blade.picture=r.defs.get(origin.objectId).sprite.pictures.find(p=>p.id===origin.pictureId);
    Object.assign(blade,{width:origin.width,height:origin.height,regX:origin.width/2,regY:origin.height/2,scaleX:origin.scaleX,scaleY:origin.scaleY,rotation:origin.rotation});
-   const dx=aim.x-origin.x,dy=aim.y-origin.y,len=Math.hypot(dx,dy)||1;
-   return {blade,dx:dx/len,dy:dy/len,phase:'outbound',distance:0};
+   return {blade,startRotation:origin.rotation,phase:'aim'};
   });
-  delete state.swordLaunch;delete state.swordTarget;
+  delete state.swordLaunch;
   if(!swords.length){state.swordAway=false;return;}
   let struck=false;
   try{
+   // Turn about each blade's own centre, without moving its world position.
+   // Track the enemy during the turn, then freeze one shared destination at release.
+   for(let tick=1;tick<=12;tick++){
+    for(const entry of swords){const e=entry.blade,angle=45-Math.atan2(target.y-e.y,target.x-e.x)*180/Math.PI,
+     delta=((angle-entry.startRotation+540)%360)-180;e.rotation=entry.startRotation+delta*tick/12;}
+    if(tick<12)yield 1;
+   }
+   const destination={x:target.x,y:target.y};
+   for(const entry of swords){const e=entry.blade,dx=destination.x-e.x,dy=destination.y-e.y,len=Math.hypot(dx,dy);
+    entry.dx=len?dx/len:0;entry.dy=len?dy/len:0;entry.remaining=len;entry.phase='outbound';
+    e.secondaryDestination={...destination};
+   }
    while(swords.some(entry=>entry.phase!=='caught')&&alive(r,side)){
     for(const entry of swords){const e=entry.blade;if(entry.phase==='caught')continue;
-     if(entry.phase==='outbound'){e.x+=entry.dx*5;e.y+=entry.dy*5;entry.distance+=5;
-      if(Math.hypot(e.x-target.x,e.y-target.y)<=18&&visibleTarget(r,side)){if(!struck){struck=true;yield* hit(r,c,side,9,'slow',6,60);}entry.phase='return';}
-      if(entry.distance>=130)entry.phase='return';
-     }else{const dx=caster.x-e.x,dy=caster.y-e.y,len=Math.hypot(dx,dy);if(len<=8){entry.phase='caught';e.dead=true;continue;}e.x+=dx/len*Math.min(7,len);e.y+=dy/len*Math.min(7,len);e.rotation=90-Math.atan2(dy,dx)*180/Math.PI;}
+     if(entry.phase==='outbound'){
+      const step=Math.min(5,entry.remaining);e.x+=entry.dx*step;e.y+=entry.dy*step;entry.remaining-=step;
+      if(!struck&&Math.hypot(e.x-target.x,e.y-target.y)<=18&&visibleTarget(r,side)){struck=true;yield* hit(r,c,side,9,'slow',6,60);}
+      if(entry.remaining<=1e-8){e.x=destination.x;e.y=destination.y;entry.phase='return';}
+     }else{const dx=caster.x-e.x,dy=caster.y-e.y,len=Math.hypot(dx,dy);if(len<=8){entry.phase='caught';e.dead=true;continue;}e.x+=dx/len*Math.min(7,len);e.y+=dy/len*Math.min(7,len);e.rotation=45-Math.atan2(dy,dx)*180/Math.PI;}
     }yield 1;
    }
    state.orbitReturnAt=r.tick;yield 18;
