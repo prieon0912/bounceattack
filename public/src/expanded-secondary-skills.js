@@ -41,14 +41,14 @@ export const nationTransplant=definition(30,'옮겨심기',32,'nation-transplant
   r.spawn(seed,function*(rt){let velocity=0;try{while(!seed.dead&&seed.y>-205&&alive(rt,side)){velocity=Math.max(-5,velocity-.06);let landed=false;for(let i=0;i<Math.ceil(-velocity);i++){const y=seed.y;seed.y+=velocity/Math.ceil(-velocity);if(rt.reach(seed,'6tzq')){seed.y=y;landed=true;break;}}rt.set(seed,'vogg',seed.x);rt.set(seed,'bw1y',seed.y);if(landed)break;yield 1;}}finally{seed.transplantFalling=false;}},'secondary_seed_fall');
  }
 });
-export const glamsRush=definition(20,'돌진 / 점멸 / 박치기',32,'glams-rush','크기에 따라 방어막을 얻고 돌진하거나, 점멸하거나, 적을 기절시키며 돌진합니다.',{
+export const glamsRush=definition(20,'돌진 / 점멸 / 박치기',32,'glams-rush','방어막을 얻으며 돌진/앞 방향으로 순간이동/기절시키며 돌진을 합니다.',{
  *cast(r,c,{side,caster,target}){const owner=context(r,side),size=r.num(r.get(owner,'uh0p')),direction=dir(r,side);
   if(size===1){const start=caster.x;let found=false;for(let d=70;d>=0;d--){caster.x=Math.max(-232,Math.min(232,start+direction*d));if(!r.reach(caster,'6tzq')){found=true;break;}}if(!found)caster.x=start;return;}
   if(size===0){const id=ids(side,'cfmd','g4sc'),before=r.num(r.get(caster,id)),grant=Math.max(0,8-before);if(grant){r.add(caster,id,grant);r.spawn(caster,function*(rt){yield 120;rt.set(caster,id,Math.max(0,rt.num(rt.get(caster,id))-grant));},'secondary_shield');}}
   let struck=false;for(let i=0;i<12&&alive(r,side)&&r.num(r.globals.get(ids(side,'8w41','wyyq')))===0;i++){safeMove(r,caster,direction*70/12);if(size===2&&!struck&&Math.hypot(caster.x-target.x,caster.y-target.y)<=28&&visibleTarget(r,side)){struck=true;yield* hit(r,c,side,8,'stun',0,60);}yield 1;}
  }
 });
-export const guardGiantStrike=definition(14,'거인의 일격',28,'guard-giant','몸집을 키워 다음 일반공격의 범위와 피해량, 속박 시간을 증가시킵니다.',{
+export const guardGiantStrike=definition(14,'거인의 일격',28,'guard-giant','몸집을 키워 다음 일반 공격을 강화합니다.',{
  canCast(r,s){const st=r.secondarySkills.state(s);return !st.armed&&!st.striking&&!st.shrinkAt;},
  *cast(r,c,{state}){state.armed=true;state.growAt=r.tick;},
  blocksKey(r,key,s,st){return key===ids(s,69,13)&&st.armed&&r.tick-st.growAt<12;},
@@ -64,7 +64,7 @@ export const guardGiantStrike=definition(14,'거인의 일격',28,'guard-giant',
 });
 function savePresentation(e){e.secondaryPresentation={x:e.x,y:e.y,scaleX:e.scaleX,scaleY:e.scaleY};}
 export function restorePresentation(r){for(const e of r.entities)if(e.secondaryPresentation){Object.assign(e,e.secondaryPresentation);delete e.secondaryPresentation;}}
-export const kenenShadow=definition(6,'그림자 속으로',39,'kenen-shadow','주변 적에게 피해와 둔화를 주고 3초간 그림자 속에 숨습니다. 은신 중 공격과 궁극기를 사용할 수 없습니다.',{
+export const kenenShadow=definition(6,'그림자 속으로',39,'kenen-shadow','주변에 피해와 둔화를 주며 그림자 속으로 몇 초간 숨습니다.',{
  canCast(r,s){return r.num(r.globals.get(ids(s,'ob2m','rav6')))===0;},
  *cast(r,c,{side,caster,target,state}){if(Math.hypot(caster.x-target.x,caster.y-target.y)<=45)yield* hit(r,c,side,4,'slow',5,60);
   const id=ids(side,'ob2m','rav6');state.shadowUntil=r.tick+180;r.set(caster,id,1);try{yield 180;}finally{r.set(caster,id,0);state.shadowUntil=0;}},
@@ -72,7 +72,7 @@ export const kenenShadow=definition(6,'그림자 속으로',39,'kenen-shadow','�
  onFunction(r,c,id,args,s,st){if(st.shadowUntil>r.tick&&c.e.combatSide===s&&id===ids(s,'qy83','05j0'))return false;},
  hidden(r,e,s,st){return st.shadowUntil>r.tick&&([ids(s,'00h9','n8fg'),ids(s,'n230','ocqj'),ids(s,'zlk5','79eo'),ids(s,'aadi','0y61')].includes(e.objectId)||(['0oxa','siav','5c3y','w3fb'].includes(e.objectId)&&e.combatSide===s));}
 });
-export const cannonGrenade=definition(32,'유탄',72,'cannon-grenade','기어의 절반을 소모해 유도탄을 발사합니다. 소모한 기어에 따라 피해와 부가 효과가 증가합니다.',{
+export const cannonGrenade=definition(32,'유탄',72,'cannon-grenade','기어의 절반을 소모하며 적에게 유도되는 유도탄을 발사합니다.',{
  effectPictures:[],
  prepare(project){this.effectPictures=[nativePicture(project,'plg8','cannon-grenade-projectile', '4zk0')];prepare.call(this,project);},
  *cast(r,c,{side,caster,target,state}){const owner=context(r,side),held=Math.max(0,Math.min(10,Math.floor(r.num(r.get(owner,'ck61'))))),spent=Math.ceil(held/2);r.set(owner,'ck61',held-spent);r.set(owner,'7rns',Math.max(0,r.num(r.get(owner,'7rns'))-spent));state.lastGearsSpent=spent;
@@ -85,7 +85,7 @@ export const cannonGrenade=definition(32,'유탄',72,'cannon-grenade','기어의
 });
 function nativePicture(project,object,id,pictureId=null){const pictures=project.objects.find(o=>o.id===object).sprite.pictures;const p=pictures.find(p=>p.id===pictureId)||pictures[0];return [id,p.fileurl,p.dimension];}
 const orbit=(e,s)=>e.objectId===ids(s,'q6zw','kxwh');
-export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure','공전 중인 회전검 3개를 적 방향으로 발사합니다. 적중 시 피해와 둔화를 주며, 돌아오는 동안 회전검을 사용할 수 없습니다.',{
+export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure','회전검을 적에게 발사합니다.',{
  canCast(r,s){return r.entities.some(e=>orbit(e,s)&&e.clone&&!e.dead);},
  onActivate(r,s,state){
   // Original blades orbit by using a pivot outside the image. Capture their visible
@@ -106,11 +106,10 @@ export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure
    const blade=visual(r,side,'eclipse-flying-sword',origin.x,origin.y,24,'eclipse-flying-sword');
    blade.picture=r.defs.get(origin.objectId).sprite.pictures.find(p=>p.id===origin.pictureId);
    Object.assign(blade,{width:origin.width,height:origin.height,regX:origin.width/2,regY:origin.height/2,scaleX:origin.scaleX,scaleY:origin.scaleY,rotation:origin.rotation});
-   return {blade,startRotation:origin.rotation,phase:'aim'};
+   return {blade,startRotation:origin.rotation,phase:'aim',struck:false};
   });
   delete state.swordLaunch;
   if(!swords.length){state.swordAway=false;return;}
-  let struck=false;
   try{
    // Turn about each blade's own centre, without moving its world position.
    // Track the enemy during the turn, then freeze one shared destination at release.
@@ -121,15 +120,16 @@ export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure
    }
    const destination={x:target.x,y:target.y};
    for(const entry of swords){const e=entry.blade,dx=destination.x-e.x,dy=destination.y-e.y,len=Math.hypot(dx,dy);
-    entry.dx=len?dx/len:0;entry.dy=len?dy/len:0;entry.remaining=len;entry.phase='outbound';
-    e.secondaryDestination={...destination};
+    entry.dx=len?dx/len:0;entry.dy=len?dy/len:0;entry.remaining=len+10;entry.phase='outbound';
+    entry.destination={x:destination.x+entry.dx*10,y:destination.y+entry.dy*10};
+    e.secondaryDestination={...entry.destination};
    }
    while(swords.some(entry=>entry.phase!=='caught')&&alive(r,side)){
     for(const entry of swords){const e=entry.blade;if(entry.phase==='caught')continue;
      if(entry.phase==='outbound'){
       const step=Math.min(5,entry.remaining);e.x+=entry.dx*step;e.y+=entry.dy*step;entry.remaining-=step;
-      if(!struck&&Math.hypot(e.x-target.x,e.y-target.y)<=18&&visibleTarget(r,side)){struck=true;yield* hit(r,c,side,9,'slow',6,60);}
-      if(entry.remaining<=1e-8){e.x=destination.x;e.y=destination.y;entry.phase='return';}
+      if(!entry.struck&&Math.hypot(e.x-target.x,e.y-target.y)<=18&&visibleTarget(r,side)){entry.struck=true;yield* hit(r,c,side,4,'slow',6,60);}
+      if(entry.remaining<=1e-8){e.x=entry.destination.x;e.y=entry.destination.y;entry.phase='return';}
      }else{const dx=caster.x-e.x,dy=caster.y-e.y,len=Math.hypot(dx,dy);if(len<=8){entry.phase='caught';e.dead=true;continue;}e.x+=dx/len*Math.min(7,len);e.y+=dy/len*Math.min(7,len);e.rotation=45-Math.atan2(dy,dx)*180/Math.PI;}
     }yield 1;
    }
@@ -138,10 +138,8 @@ export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure
  }
 
 });
-export const enrilUpdraft=definition(27,'상승기류',16,'enril-updraft','즉시 점프합니다. 재사용 대기시간은 1초이며 공중에서는 두 번까지, 두 번째는 낙하 중에 사용할 수 있습니다.',{
+export const enrilUpdraft=definition(27,'상승기류',16,'enril-updraft','즉시 점프합니다.',{
  cooldownTicks:60,
- tick(r,s,st){const e=body(r,s);if(!e)return;const velocity=r.num(r.globals.get(ids(s,'du2p','iblx')));if(velocity>0){st.airborne=true;return;}const y=e.y,clear=!r.reach(e,'6tzq');let grounded=false;try{e.y-=.6;grounded=clear&&r.reach(e,'6tzq');}finally{e.y=y;}if(grounded&&st.airborne){st.airUses=0;st.airborne=false;}else if(!grounded)st.airborne=true;},
- canCast(r,s){const st=r.secondarySkills.state(s),e=body(r,s),vy=r.num(r.globals.get(ids(s,'du2p','iblx')));return (st.airUses||0)<2&&(!(st.airUses>0)||vy<0)&&r.num(r.globals.get(ids(s,'05ze','1vu0')))<=0&&r.num(r.globals.get(ids(s,'f7zw','932j')))===0&&e.y<125;},
- *cast(r,c,{side,state}){state.airUses=(state.airUses||0)+1;state.airborne=true;r.globals.set(ids(side,'du2p','iblx'),2.5);}
+ *cast(r,c,{side}){if(r.num(r.globals.get(ids(side,'05ze','1vu0')))>0)return;r.globals.set(ids(side,'du2p','iblx'),2.5);}
 });
 export const NEW_SECONDARY_SKILLS=[nationTransplant,glamsRush,guardGiantStrike,kenenShadow,cannonGrenade,eclipseDeparture,enrilUpdraft];

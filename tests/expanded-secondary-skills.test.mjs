@@ -14,7 +14,11 @@ for(const side of [1,2]){
  test(`Eclipse side ${side}: original passive cannot hit while sword away; restores after return`,()=>{const r=game(4,side),orbit=r.makeEntity(r.defs.get(side===1?'q6zw':'kxwh'));orbit.clone=true;r.entities.push(orbit);r.run(1,[side===1?82:80]);assert.equal(r.secondarySkills.blocksCollision(orbit),true);r.run(100);assert.equal(r.secondarySkills.blocksCollision(orbit),false);assert.equal(r.secondarySkills.state(side).swordAway,false);assert.deepEqual(r.faults,[]);});
  test(`Guard side ${side}: next basic gets 2x range, +5 damage and 0.8 root then consumes`,()=>{const r=game(14,side);r.run(1,[side===1?82:80]);r.run(12);const st=r.secondarySkills.state(side),e=r.originals.get(side===1?'sn6j':'rlr8'),c={e,block:side===1?'1yiq':'81a1'};r.secondarySkills.onCommand(c,'change_to_some_shape',[]);assert.equal(st.armed,false);assert.equal(st.striking,true);assert.equal(r.secondarySkills.distanceValue(c,'gvza',60),30);const args=[-10,12,2];c.block=side===1?'62cf':'2gar';r.secondarySkills.onFunction(c,side===1?'qy83':'05j0',args);assert.equal(args[0],-15);c.block='0sez';const root=[side===1?'1vu0':'05ze',.62];r.secondarySkills.onCommand(c,'set_variable',root);assert.equal(root[1],.8);c.block=side===1?'5krq':'3fxo';r.secondarySkills.onCommand(c,'change_to_some_shape',[]);assert.equal(st.striking,false);r.run(13);assert.equal(st.shrinkAt,undefined);});
 }
-test('Enril: velocity overwrite, one-second cooldown, second use only falling, max two until landing',()=>{const r=game(27),st=r.secondarySkills.state(1);r.collisionProvider=()=>false;r.globals.set('du2p',-3);r.run(1,[82]);assert.equal(r.globals.get('du2p'),2.5);assert.equal(st.airUses,1);r.run(1);r.run(1,[82]);assert.equal(st.airUses,1);r.run(180);r.run(1,[82]);assert.equal(st.airUses,1);r.run(1);r.globals.set('du2p',-1);r.run(1,[82]);assert.equal(st.airUses,2);r.run(180);r.globals.set('du2p',-1);r.run(1,[82]);assert.equal(st.airUses,2);r.run(1);r.collisionProvider=(e,id)=>id==='6tzq'&&e.y<0;r.globals.set('du2p',0);r.run(1);assert.equal(st.airUses,0);assert.deepEqual(r.faults,[]);});
+test('Enril only uses the one-second cooldown, without airborne, falling, height or jump restrictions',()=>{
+ const r=game(27);r.collisionProvider=()=>false;body(r,1).y=200;r.globals.set('05ze',0);r.globals.set('f7zw',1);
+ for(let cast=0;cast<5;cast++){r.globals.set('qn98',100);r.globals.set('du2p',2);r.run(1,[82]);assert.equal(r.globals.get('du2p'),2.5);assert.equal(r.globals.get('qn98'),84);r.run(1);r.globals.set('du2p',-5);r.run(1,[82]);assert.equal(r.globals.get('du2p'),-5);r.run(57);}
+ assert.deepEqual(r.faults,[]);
+});
 test('No seed: transplantation does not spend MP',()=>{const r=game(30);r.run(1,[82]);assert.equal(r.globals.get('qn98'),100);});
 import test from 'node:test';
 import {stateHash} from '../public/src/frame-sync.js';
@@ -29,7 +33,7 @@ test('Cannon all gear tiers use ceil(current/2), spent+5 damage and exact two-se
 });
 test('all seven choices retain original blurred selector and reset 2P default',()=>{for(const character of [4,6,14,20,27,30,32]){const r=new Runtime(structuredClone(project),{headless:true});registerOriginal(r);r.startProject();r.loadScene('1ckl');r.globals.set('jx38',1);r.globals.set('yraj',1);r.globals.set('16fh',character);r.secondarySkills.syncSelection();assert.equal(r.secondarySkills.selectionInfo(1).secondary,false);assert.equal(r.secondarySkills.selectKey(82),true);assert.equal(r.secondarySkills.selectionInfo(1).secondary,true);r.globals.set('y75t',character);r.secondarySkills.onSelectionCommand('set_variable',['jx38',2]);r.globals.set('jx38',2);r.secondarySkills.syncSelection();assert.equal(r.secondarySkills.selectionInfo(2).secondary,false);assert.equal(r.secondarySkills.choice(1),'secondary');}});
 test('real native Guard basic consumes the charge on a miss and returns body to original size',()=>{for(const side of [1,2]){const r=new Runtime(structuredClone(project),{headless:true});registerOriginal(r);r.start({p1:side===1?14:2,p2:side===2?14:2,skills:side===1?['secondary','primary']:['primary','secondary']});for(let i=0;i<240;i++)r.step();r.globals.set(side===1?'qn98':'thom',100);r.keys.add(side===1?82:80);r.step();r.keys.clear();for(let i=0;i<15;i++)r.step();r.keys.add(side===1?69:13);for(let i=0;i<100;i++)r.step();assert.equal(r.secondarySkills.state(side).armed,false);assert.equal(r.secondarySkills.state(side).striking,false);assert.equal(r.secondarySkills.state(side).shrinkAt,undefined);assert.deepEqual(r.faults,[]);}});
-test('Eclipse turns at each existing position, samples enemy only on release, and flies to that exact point without a range cap',()=>{
+test('Eclipse turns at each existing position, samples enemy only on release, and flies ten units past that point without a range cap',()=>{
  for(const side of [1,2]){const r=game(4,side),orbitId=side===1?'q6zw':'kxwh',native=r.entities.filter(e=>e.objectId===orbitId&&e.clone&&!e.dead);assert.equal(native.length,3);
   const target=body(r,3-side);target.x=120;target.y=70;
   const origins=native.map(e=>{const b=r.bounds(e);return {x:(b.left+b.right)/2,y:(b.bottom+b.top)/2,rotation:e.rotation};});
@@ -38,17 +42,17 @@ test('Eclipse turns at each existing position, samples enemy only on release, an
   r.run(10);for(let i=0;i<3;i++){assert.ok(Math.abs(blades[i].x-origins[i].x)<1e-8);assert.ok(Math.abs(blades[i].y-origins[i].y)<1e-8);assert.equal(blades[i].secondaryDestination,undefined);}
   // Move during aiming: all blades must select this later point, not cast-time coordinates.
   target.x=310;target.y=111;const destination={x:target.x,y:target.y};r.run(1);
-  for(let i=0;i<3;i++){const p=origins[i],e=blades[i],dx=destination.x-p.x,dy=destination.y-p.y,len=Math.hypot(dx,dy);assert.deepEqual(e.secondaryDestination,destination);assert.ok(Math.abs(e.x-(p.x+dx/len*5))<1e-8);assert.ok(Math.abs(e.y-(p.y+dy/len*5))<1e-8);const expected=45-Math.atan2(dy,dx)*180/Math.PI;assert.ok(Math.abs(((e.rotation-expected+540)%360)-180)<1e-8);assert.equal(e.regX,e.width/2);assert.equal(e.regY,e.height/2);}
+  for(let i=0;i<3;i++){const p=origins[i],e=blades[i],dx=destination.x-p.x,dy=destination.y-p.y,len=Math.hypot(dx,dy);assert.ok(Math.abs(e.secondaryDestination.x-(destination.x+dx/len*10))<1e-8);assert.ok(Math.abs(e.secondaryDestination.y-(destination.y+dy/len*10))<1e-8);assert.ok(Math.abs(e.x-(p.x+dx/len*5))<1e-8);assert.ok(Math.abs(e.y-(p.y+dy/len*5))<1e-8);const expected=45-Math.atan2(dy,dx)*180/Math.PI;assert.ok(Math.abs(((e.rotation-expected+540)%360)-180)<1e-8);assert.equal(e.regX,e.width/2);assert.equal(e.regY,e.height/2);}
   // Move after launch: no homing, and the old 130-unit cap must not turn blades back.
   target.x=-220;target.y=-80;r.run(26);
   for(let i=0;i<3;i++){const p=origins[i],e=blades[i],dx=destination.x-p.x,dy=destination.y-p.y,len=Math.hypot(dx,dy);assert.ok(len>135);assert.ok(Math.abs(e.x-(p.x+dx/len*135))<1e-8);assert.ok(Math.abs(e.y-(p.y+dy/len*135))<1e-8);}
-  let arrived=new Set();for(let tick=0;tick<150&&!blades.every(e=>e.dead);tick++){for(const e of blades)if(!e.dead&&Math.hypot(e.x-destination.x,e.y-destination.y)<1e-8)arrived.add(e.uid);r.run(1);}
+  let arrived=new Set();for(let tick=0;tick<150&&!blades.every(e=>e.dead);tick++){for(const e of blades)if(!e.dead&&Math.hypot(e.x-e.secondaryDestination.x,e.y-e.secondaryDestination.y)<1e-8)arrived.add(e.uid);r.run(1);}
   assert.equal(arrived.size,3);assert.ok(blades.every(e=>e.dead));r.run(20);assert.equal(r.secondarySkills.state(side).swordAway,false);assert.deepEqual(r.faults,[]);
  }
 });
 test('Kenen costs 39 MP and lasts exactly 180 ticks; Enril cooldown is exactly 60 ticks',()=>{
  const r=game(6);r.run(1,[82]);assert.equal(r.globals.get('qn98'),61);r.run(179);assert.equal(r.secondarySkills.hidden(body(r,1)),true);r.run(1);assert.equal(r.secondarySkills.hidden(body(r,1)),false);assert.equal(r.globals.get('ob2m'),0);
- const e=game(27);e.collisionProvider=()=>false;e.run(1,[82]);e.run(58);e.globals.set('du2p',-1);e.run(1,[82]);assert.equal(e.secondarySkills.state(1).airUses,1);e.run(1);e.run(1,[82]);assert.equal(e.secondarySkills.state(1).airUses,2);
+ const e=game(27);e.collisionProvider=()=>false;e.run(1,[82]);e.run(58);e.globals.set('du2p',-1);e.run(1,[82]);assert.equal(e.globals.get('qn98'),84);e.run(1);e.run(1,[82]);assert.equal(e.globals.get('qn98'),68);
 });
 test('Cannon spending releases the creation cap and native basic attacks can earn gears again',()=>{
  for(const side of [1,2]){const r=game(32,side,true),owner=r.originals.get(side===1?'plg8':'cvkh');r.set(owner,'ck61',10);r.set(owner,'7rns',10);r.run(1,[side===1?82:80]);assert.equal(r.get(owner,'ck61'),5);assert.equal(r.get(owner,'7rns'),5);r.run(25);
@@ -58,4 +62,16 @@ test('Cannon spending releases the creation cap and native basic attacks can ear
 });
 test('Cannon reuses the original blue bullet and displays each status effect on the victim',()=>{
  for(const side of [1,2])for(const [gears,type] of [[4,'slow'],[6,'root'],[10,'stun']]){const r=game(32,side),owner=r.originals.get(side===1?'plg8':'cvkh');r.set(owner,'ck61',gears);r.set(owner,'7rns',gears);r.run(1,[side===1?82:80]);const missile=r.entities.find(e=>e.secondaryEffect==='cannon-grenade');const original=r.defs.get('plg8').sprite.pictures.find(p=>p.id==='4zk0');assert.equal(missile.picture.fileurl,original.fileurl);r.run(20);const marker=r.entities.find(e=>e.secondaryEffect===`secondary-${type}`&&!e.dead);assert.ok(marker,`${type} marker side ${side}`);assert.equal(marker.x,body(r,3-side).x);body(r,3-side).x+=30;r.run(1);assert.equal(marker.x,body(r,3-side).x);r.run(121);assert.ok(marker.dead);assert.deepEqual(r.faults,[]);}
+});
+
+test('Eclipse deals four damage once per blade, for three independently hitting swords',()=>{
+ for(const side of [1,2]){const r=game(4,side),target=body(r,3-side);target.x=0;target.y=0;const calls=[],original=r.call.bind(r);r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))calls.push(args[0]);yield* original(c,id,args);};r.run(1,[side===1?82:80]);r.run(150);assert.deepEqual(calls,[-4,-4,-4]);assert.deepEqual(r.faults,[]);}
+});
+
+test('Enril while rooted spends 16 MP and the one-second cooldown without changing velocity, on either side',()=>{
+ for(const side of [1,2]){const r=game(27,side),root=side===1?'05ze':'1vu0',velocity=side===1?'du2p':'iblx',mana=side===1?'qn98':'thom',key=side===1?82:80;
+  r.globals.set(root,2);r.globals.set(velocity,-1.25);r.run(1,[key]);assert.equal(r.globals.get(mana),84);assert.equal(r.globals.get(velocity),-1.25);const readyAt=r.secondarySkills.state(side).readyAt;assert.equal(readyAt,r.tick+60);
+  r.globals.set(root,0);r.run(1);r.run(1,[key]);assert.equal(r.globals.get(mana),84);assert.equal(r.globals.get(velocity),-1.25);
+  r.run(57);r.run(1,[key]);assert.equal(r.globals.get(mana),68);assert.equal(r.globals.get(velocity),2.5);assert.deepEqual(r.faults,[]);
+ }
 });
