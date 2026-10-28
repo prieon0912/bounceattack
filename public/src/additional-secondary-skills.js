@@ -115,7 +115,7 @@ export const brookeBarrage = {
 };
 
 
-export const MAX_FIREPOWER = Object.freeze({ manaCost: 40, damage: 4 });
+export const MAX_FIREPOWER = Object.freeze({ manaCost: 54, damage: 5 });
 export const REVERSAL_MAGIC = Object.freeze({ manaCost: 65 });
 function empoweredFlames(r, side) {
   return r.entities.filter(e => !e.dead && e.maximumFirepowerOwner === side);
@@ -151,7 +151,7 @@ export const nukeMaximumFirepower = {
 export const matrixReversalMagic = {
   character: 18, name: "반전 마술", manaCost: REVERSAL_MAGIC.manaCost, cooldownTicks: 0, lockVariable: false,
   icon: "assets/secondary/matrix-reversal-magic-icon.svg", secondaryPictureId: "matrix-reversal-magic-icon", prepare,
-  description: "다음에 받는 피해를 적에게도 같은 양만큼 줍니다.",
+  description: "다음에 받는 피해량을 상대에게도 돌려줍니다.",
   canCast(r, side) { return !r.secondarySkills.state(side).reversalArmed; },
   *cast(r, c, { state }) { state.reversalArmed = true; },
   onHealthChange(r, e, id, before, after, side, state) {

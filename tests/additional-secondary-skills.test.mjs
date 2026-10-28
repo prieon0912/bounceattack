@@ -144,17 +144,17 @@ function directDamage(r, side, amount) {
  const c={e:r.originals.get(side===1?"n8fg":"00h9"),args:{},thread:{cancelled:false},block:"test-damage"};
  const call=r.call(c,side===1?"05j0":"qy83",[-amount,0,0]);while(!call.next().done){}
 }
-test("maximum firepower empowers one complete real basic burst to 4 per hit, with original mitigation",()=>{
+test("maximum firepower empowers one complete real basic burst to 5 per hit, with original mitigation",()=>{
  for(const side of [1,2]){
  const r=game(side===1?12:2,side===2?12:2,side===1?["secondary","primary"]:["primary","secondary"]);freeze(r);
  r.s(`${side===1?2:1}P 체력`,10000);r.s(`${side===1?2:1}P 피해감소량`,.5);
  const oldOverlap=r.overlap.bind(r);r.overlap=(a,b)=>b.maximumFirepowerOwner===side||oldOverlap(a,b);
  r.collisionProvider=(e,id)=>id==="v5v4"&&r.entities.some(v=>v.clone&&v.objectId==="v5v4"&&!v.dead);
- r.run(1,[side===1?82:80]);assert.ok(Math.abs(r.g(`${side}P MP`)-60)<.5);
- r.run(1);r.run(1,[side===1?82:80]);assert.ok(Math.abs(r.g(`${side}P MP`)-60)<.5);
+ r.run(1,[side===1?82:80]);assert.ok(Math.abs(r.g(`${side}P MP`)-46)<.5);
+ r.run(1);r.run(1,[side===1?82:80]);assert.ok(Math.abs(r.g(`${side}P MP`)-46)<.5);
  const before=r.g(`${side===1?2:1}P 체력`);r.run(1,[side===1?69:13]);r.run(20);
  assert.ok(r.entities.some(e=>e.maximumFirepowerOwner===side));
- const damage=before-r.g(`${side===1?2:1}P 체력`);assert.ok(damage>=2);assert.equal(damage%2,0);
+ const damage=before-r.g(`${side===1?2:1}P 체력`);assert.ok(damage>=2.5);assert.equal(damage%2.5,0);
  r.run(350);assert.ok(!r.entities.some(e=>e.maximumFirepowerOwner===side));
  assert.equal(r.secondarySkills.state(side).maximumArmed,false);assert.equal(r.secondarySkills.state(side).maximumBurst,false);
  const normal=r.g(`${side===1?2:1}P 체력`);r.run(1,[side===1?69:13]);r.run(1);
