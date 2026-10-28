@@ -7,10 +7,26 @@ const dir=(r,s)=>r.num(r.globals.get(ids(s,'etjn','846x')))===1?1:-1;
 const context=(r,s)=>r.originals.get(({20:ids(s,'f5xk','t3w4'),30:ids(s,'0dj2','5tsu'),32:ids(s,'plg8','cvkh')})[r.num(r.globals.get(ids(s,'y75t','s5vb')))])||body(r,s);
 function status(r,s,type,amount,ticks){
  const foe=3-s,e=body(r,foe);if(r.num(r.globals.get(ids(foe,'jcf6','ec6d')))!==0)return;
+ statusVisual(r,s,type,ticks);
  if(type==='root'){const id=ids(foe,'05ze','1vu0');r.set(e,id,Math.max(r.num(r.get(e,id)),ticks/60));return;}
  if(type==='slow'){const st=r.secondarySkills.state(s);st.slow={side:foe,value:amount,until:r.tick+ticks};return;}
  const id=ids(foe,'8w41','wyyq'),generation=ids(foe,'bpv0','bpv5');r.add(e,generation,1);const token=r.get(e,generation);r.set(e,id,1);
  r.spawn(e,function*(rt){yield ticks;if(rt.get(e,generation)===token)rt.set(e,id,0);},'secondary_status');
+}
+// Use the original status artwork even when its native script is character-gated.
+function statusVisual(r,s,type,ticks){
+ const foe=3-s,object=type==='root'?ids(foe,'n095','2eo3'):type==='slow'?ids(foe,'5kuy','t0fv'):ids(foe,'hk0k','j2qx');
+ const original=r.originals.get(object),picture=original.def.sprite.pictures[type==='slow'?1:0];
+ const marker=r.makeEntity(r.defs.get('hb4u'));Object.assign(marker,{clone:true,combatSide:foe,secondaryEffect:`secondary-${type}`,picture,width:picture.dimension.width,height:picture.dimension.height,regX:picture.dimension.width/2,regY:picture.dimension.height/2,x:body(r,foe).x,y:body(r,foe).y,visible:true,scaleX:1,scaleY:1,rotation:0});
+ r.setSize(marker,type==='stun'?18:type==='root'?26:22);r.entities.unshift(marker);
+ r.spawn(marker,function*(rt){try{for(let tick=0;tick<ticks&&alive(rt,foe);tick++){
+  if(type==='root'&&rt.num(rt.globals.get(ids(foe,'05ze','1vu0')))<=0)break;
+  if(type==='stun'&&rt.num(rt.globals.get(ids(foe,'8w41','wyyq')))===0)break;
+  const target=body(rt,foe);marker.x=target.x;marker.y=target.y+(type==='stun'?15:type==='slow'?-7:0);marker.visible=visibleTarget(rt,s)&&!(type==='stun'&&original.visible);
+  if(type==='stun')marker.rotation=Math.sin(tick/6)*12;
+  if(type==='slow')marker.effects.transparency=20+30*(tick%20)/20;
+  yield 1;
+ }}finally{marker.dead=true;}},'secondary_status_visual');
 }
 function slowValue(r,e,id,raw,state){return state.slow?.until>r.tick&&id===ids(state.slow.side,'9af4','nccn')?Math.max(Number(raw),state.slow.value):raw;}
 function* hit(r,c,s,damage,type=null,amount=0,ticks=0){if(!visibleTarget(r,s))return;yield* r.call(c,ids(s,'qy83','05j0'),[-damage,0,1]);if(type)status(r,s,type,amount,ticks);}
@@ -48,18 +64,18 @@ export const guardGiantStrike=definition(14,'거인의 일격',28,'guard-giant',
 });
 function savePresentation(e){e.secondaryPresentation={x:e.x,y:e.y,scaleX:e.scaleX,scaleY:e.scaleY};}
 export function restorePresentation(r){for(const e of r.entities)if(e.secondaryPresentation){Object.assign(e,e.secondaryPresentation);delete e.secondaryPresentation;}}
-export const kenenShadow=definition(6,'그림자 속으로',40,'kenen-shadow','주변 적에게 피해와 둔화를 주고 5초간 그림자 속에 숨습니다. 은신 중 공격과 궁극기를 사용할 수 없습니다.',{
+export const kenenShadow=definition(6,'그림자 속으로',39,'kenen-shadow','주변 적에게 피해와 둔화를 주고 3초간 그림자 속에 숨습니다. 은신 중 공격과 궁극기를 사용할 수 없습니다.',{
  canCast(r,s){return r.num(r.globals.get(ids(s,'ob2m','rav6')))===0;},
  *cast(r,c,{side,caster,target,state}){if(Math.hypot(caster.x-target.x,caster.y-target.y)<=45)yield* hit(r,c,side,4,'slow',5,60);
-  const id=ids(side,'ob2m','rav6');state.shadowUntil=r.tick+300;r.set(caster,id,1);try{yield 300;}finally{r.set(caster,id,0);state.shadowUntil=0;}},
+  const id=ids(side,'ob2m','rav6');state.shadowUntil=r.tick+180;r.set(caster,id,1);try{yield 180;}finally{r.set(caster,id,0);state.shadowUntil=0;}},
  blocksKey(r,key,s,st){return st.shadowUntil>r.tick&&[ids(s,69,13),ids(s,83,40)].includes(key);},
  onFunction(r,c,id,args,s,st){if(st.shadowUntil>r.tick&&c.e.combatSide===s&&id===ids(s,'qy83','05j0'))return false;},
  hidden(r,e,s,st){return st.shadowUntil>r.tick&&([ids(s,'00h9','n8fg'),ids(s,'n230','ocqj'),ids(s,'zlk5','79eo'),ids(s,'aadi','0y61')].includes(e.objectId)||(['0oxa','siav','5c3y','w3fb'].includes(e.objectId)&&e.combatSide===s));}
 });
 export const cannonGrenade=definition(32,'유탄',72,'cannon-grenade','기어의 절반을 소모해 유도탄을 발사합니다. 소모한 기어에 따라 피해와 부가 효과가 증가합니다.',{
  effectPictures:[],
- prepare(project){this.effectPictures=[nativePicture(project,'hyk2','cannon-grenade-projectile')];prepare.call(this,project);},
- *cast(r,c,{side,caster,target,state}){const owner=context(r,side),held=Math.max(0,Math.min(10,Math.floor(r.num(r.get(owner,'ck61'))))),spent=Math.ceil(held/2);r.set(owner,'ck61',held-spent);state.lastGearsSpent=spent;
+ prepare(project){this.effectPictures=[nativePicture(project,'plg8','cannon-grenade-projectile', '4zk0')];prepare.call(this,project);},
+ *cast(r,c,{side,caster,target,state}){const owner=context(r,side),held=Math.max(0,Math.min(10,Math.floor(r.num(r.get(owner,'ck61'))))),spent=Math.ceil(held/2);r.set(owner,'ck61',held-spent);r.set(owner,'7rns',Math.max(0,r.num(r.get(owner,'7rns'))-spent));state.lastGearsSpent=spent;
   const missile=visual(r,side,'cannon-grenade-projectile',caster.x,caster.y,16,'cannon-grenade');
   try{for(let i=0;i<120&&alive(r,side);i++){const dx=target.x-missile.x,dy=target.y-missile.y,d=Math.hypot(dx,dy);missile.rotation=-Math.atan2(dy,dx)*180/Math.PI;
    if(d<=12&&visibleTarget(r,side)){yield* hit(r,c,side,spent+5,spent===5?'stun':spent>=3?'root':spent===2?'slow':null,8,120);return;}
@@ -67,22 +83,37 @@ export const cannonGrenade=definition(32,'유탄',72,'cannon-grenade','기어의
   }finally{missile.dead=true;}
  }
 });
-function nativePicture(project,object,id){const p=project.objects.find(o=>o.id===object).sprite.pictures[0];return [id,p.fileurl,p.dimension];}
+function nativePicture(project,object,id,pictureId=null){const pictures=project.objects.find(o=>o.id===object).sprite.pictures;const p=pictures.find(p=>p.id===pictureId)||pictures[0];return [id,p.fileurl,p.dimension];}
 const orbit=(e,s)=>e.objectId===ids(s,'q6zw','kxwh');
-export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure','회전검을 적 방향으로 발사합니다. 적중 시 피해와 둔화를 주며, 돌아오는 동안 회전검을 사용할 수 없습니다.',{
+export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure','공전 중인 회전검 3개를 적 방향으로 발사합니다. 적중 시 피해와 둔화를 주며, 돌아오는 동안 회전검을 사용할 수 없습니다.',{
  prepare(project){this.effectPictures=[nativePicture(project,'q6zw','eclipse-flying-sword')];prepare.call(this,project);},
  blocksCollision(r,e,s,st){return !!st.swordAway&&orbit(e,s);},
  hidden(r,e,s,st){return !!st.swordAway&&!st.orbitReturnAt&&orbit(e,s);},
  afterStep(r,s,st){if(!st.orbitReturnAt)return;const p=Math.min(1,(r.tick-st.orbitReturnAt)/18),caster=body(r,s);for(const e of r.entities)if(orbit(e,s)&&e.clone&&!e.dead){savePresentation(e);e.x=caster.x+(e.x-caster.x)*p;e.y=caster.y+(e.y-caster.y)*p;e.scaleX*=p;e.scaleY*=p;}},
- *cast(r,c,{side,caster,target,state}){state.swordAway=true;const sword=visual(r,side,'eclipse-flying-sword',caster.x,caster.y,24,'eclipse-flying-sword');const dx=target.x-caster.x,dy=target.y-caster.y,d=Math.hypot(dx,dy)||1;let struck=false;
-  try{for(let distance=0;distance<130&&alive(r,side);distance+=5){sword.x+=dx/d*5;sword.y+=dy/d*5;sword.rotation+=25;if(!struck&&Math.hypot(sword.x-target.x,sword.y-target.y)<=18&&visibleTarget(r,side)){struck=true;yield* hit(r,c,side,9,'slow',6,60);break;}yield 1;}
-   while(alive(r,side)&&Math.hypot(sword.x-caster.x,sword.y-caster.y)>8){const x=caster.x-sword.x,y=caster.y-sword.y,len=Math.hypot(x,y);sword.x+=x/len*Math.min(7,len);sword.y+=y/len*Math.min(7,len);sword.rotation+=25;yield 1;}
-   sword.dead=true;state.orbitReturnAt=r.tick;yield 18;
-  }finally{sword.dead=true;state.swordAway=false;delete state.orbitReturnAt;}
+ *cast(r,c,{side,caster,target,state}){
+  const native=r.entities.filter(e=>orbit(e,side)&&e.clone&&!e.dead);
+  const swords=native.map(e=>{const blade=visual(r,side,'eclipse-flying-sword',e.x,e.y,r.size(e),'eclipse-flying-sword');blade.picture=e.picture;blade.width=e.width;blade.height=e.height;blade.regX=e.regX;blade.regY=e.regY;blade.scaleX=e.scaleX;blade.scaleY=e.scaleY;blade.rotation=e.rotation;return {blade,startRotation:e.rotation,phase:'aim',distance:0};});
+  if(!swords.length)return;
+  state.swordAway=true;let struck=false;
+  try{
+   // Aim the three existing orbit positions before launching. No blade spawns at the body.
+   for(let tick=1;tick<=12;tick++){for(const entry of swords){const e=entry.blade,angle=90-Math.atan2(target.y-e.y,target.x-e.x)*180/Math.PI,delta=((angle-entry.startRotation+540)%360)-180;e.rotation=entry.startRotation+delta*tick/12;}yield 1;}
+   for(const entry of swords){const e=entry.blade,dx=target.x-e.x,dy=target.y-e.y,len=Math.hypot(dx,dy)||1;entry.dx=dx/len;entry.dy=dy/len;entry.phase='outbound';}
+   while(swords.some(entry=>entry.phase!=='caught')&&alive(r,side)){
+    for(const entry of swords){const e=entry.blade;if(entry.phase==='caught')continue;
+     if(entry.phase==='outbound'){e.x+=entry.dx*5;e.y+=entry.dy*5;entry.distance+=5;
+      if(Math.hypot(e.x-target.x,e.y-target.y)<=18&&visibleTarget(r,side)){if(!struck){struck=true;yield* hit(r,c,side,9,'slow',6,60);}entry.phase='return';}
+      if(entry.distance>=130)entry.phase='return';
+     }else{const dx=caster.x-e.x,dy=caster.y-e.y,len=Math.hypot(dx,dy);if(len<=8){entry.phase='caught';e.dead=true;continue;}e.x+=dx/len*Math.min(7,len);e.y+=dy/len*Math.min(7,len);e.rotation=90-Math.atan2(dy,dx)*180/Math.PI;}
+    }yield 1;
+   }
+   state.orbitReturnAt=r.tick;yield 18;
+  }finally{for(const {blade} of swords)blade.dead=true;state.swordAway=false;delete state.orbitReturnAt;}
  }
+
 });
-export const enrilUpdraft=definition(27,'상승기류',16,'enril-updraft','즉시 점프합니다. 재사용 대기시간은 3초이며 공중에서는 두 번까지, 두 번째는 낙하 중에 사용할 수 있습니다.',{
- cooldownTicks:180,
+export const enrilUpdraft=definition(27,'상승기류',16,'enril-updraft','즉시 점프합니다. 재사용 대기시간은 1초이며 공중에서는 두 번까지, 두 번째는 낙하 중에 사용할 수 있습니다.',{
+ cooldownTicks:60,
  tick(r,s,st){const e=body(r,s);if(!e)return;const velocity=r.num(r.globals.get(ids(s,'du2p','iblx')));if(velocity>0){st.airborne=true;return;}const y=e.y,clear=!r.reach(e,'6tzq');let grounded=false;try{e.y-=.6;grounded=clear&&r.reach(e,'6tzq');}finally{e.y=y;}if(grounded&&st.airborne){st.airUses=0;st.airborne=false;}else if(!grounded)st.airborne=true;},
  canCast(r,s){const st=r.secondarySkills.state(s),e=body(r,s),vy=r.num(r.globals.get(ids(s,'du2p','iblx')));return (st.airUses||0)<2&&(!(st.airUses>0)||vy<0)&&r.num(r.globals.get(ids(s,'05ze','1vu0')))<=0&&r.num(r.globals.get(ids(s,'f7zw','932j')))===0&&e.y<125;},
  *cast(r,c,{side,state}){state.airUses=(state.airUses||0)+1;state.airborne=true;r.globals.set(ids(side,'du2p','iblx'),2.5);}
