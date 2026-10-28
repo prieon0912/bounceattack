@@ -1,8 +1,8 @@
 // Add future character skills here: { character, manaCost, cooldownTicks, *cast(r, c, context) }.
 import { brandFireZone } from "./brand-fire-zone.js";
 import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
-import { smokeHealingPotion, atlenSwordWave, brookeBarrage } from "./additional-secondary-skills.js";
-export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage];
+import { smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic } from "./additional-secondary-skills.js";
+export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
   // Nevil's archived 1P body references a black/green variant; use the same orange
   // body as 2P and the original selector, preserving picture id, size and hit geometry.
@@ -69,6 +69,20 @@ export class SecondarySkillSystem {
       const definition = this.definition(side), state = this.state(side);
       if (state.mode === "secondary") definition?.onCommand?.(this.runtime, c, type, args, side, state);
     }
+  }
+  onFunction(c, id, args) {
+    if (this.runtime.scene !== "7dwq") return;
+    for (const side of [1, 2]) {
+      const definition = this.definition(side), state = this.state(side);
+      if (state.mode === "secondary") definition?.onFunction?.(this.runtime, c, id, args, side, state);
+    }
+  }
+  onHealthChange(e, id, before, after) {
+    if (this.reflecting || this.runtime.scene !== "7dwq" || Number(this.runtime.globals.get("r71b")) !== 0) return;
+    const side = id === "akf6" ? 1 : id === "7ir2" ? 2 : null;
+    if (!side) return;
+    const definition = this.definition(side), state = this.state(side);
+    if (state.mode === "secondary") definition?.onHealthChange?.(this.runtime, e, id, before, after, side, state);
   }
   selectionSide() {
     const turn = Number(this.runtime.globals.get("jx38"));
