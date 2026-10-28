@@ -86,19 +86,33 @@ export const cannonGrenade=definition(32,'유탄',72,'cannon-grenade','기어의
 function nativePicture(project,object,id,pictureId=null){const pictures=project.objects.find(o=>o.id===object).sprite.pictures;const p=pictures.find(p=>p.id===pictureId)||pictures[0];return [id,p.fileurl,p.dimension];}
 const orbit=(e,s)=>e.objectId===ids(s,'q6zw','kxwh');
 export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure','공전 중인 회전검 3개를 적 방향으로 발사합니다. 적중 시 피해와 둔화를 주며, 돌아오는 동안 회전검을 사용할 수 없습니다.',{
+ canCast(r,s){return r.entities.some(e=>orbit(e,s)&&e.clone&&!e.dead);},
+ onActivate(r,s,state){
+  // Original blades orbit by using a pivot outside the image. Capture their visible
+  // world centres BEFORE native threads advance, then detach each blade's pivot.
+  state.swordLaunch=r.entities.filter(e=>orbit(e,s)&&e.clone&&!e.dead).map(e=>{
+   const bounds=r.bounds(e);return {x:(bounds.left+bounds.right)/2,y:(bounds.bottom+bounds.top)/2,
+    objectId:e.objectId,pictureId:e.picture.id,width:e.width,height:e.height,scaleX:e.scaleX,scaleY:e.scaleY,rotation:e.rotation};
+  });
+  const target=body(r,3-s);state.swordTarget={x:target.x,y:target.y};state.swordAway=true;
+ },
  prepare(project){this.effectPictures=[nativePicture(project,'q6zw','eclipse-flying-sword')];prepare.call(this,project);},
  blocksCollision(r,e,s,st){return !!st.swordAway&&orbit(e,s);},
  hidden(r,e,s,st){return !!st.swordAway&&!st.orbitReturnAt&&orbit(e,s);},
  afterStep(r,s,st){if(!st.orbitReturnAt)return;const p=Math.min(1,(r.tick-st.orbitReturnAt)/18),caster=body(r,s);for(const e of r.entities)if(orbit(e,s)&&e.clone&&!e.dead){savePresentation(e);e.x=caster.x+(e.x-caster.x)*p;e.y=caster.y+(e.y-caster.y)*p;e.scaleX*=p;e.scaleY*=p;}},
  *cast(r,c,{side,caster,target,state}){
-  const native=r.entities.filter(e=>orbit(e,side)&&e.clone&&!e.dead);
-  const swords=native.map(e=>{const blade=visual(r,side,'eclipse-flying-sword',e.x,e.y,r.size(e),'eclipse-flying-sword');blade.picture=e.picture;blade.width=e.width;blade.height=e.height;blade.regX=e.regX;blade.regY=e.regY;blade.scaleX=e.scaleX;blade.scaleY=e.scaleY;blade.rotation=e.rotation;return {blade,startRotation:e.rotation,phase:'aim',distance:0};});
-  if(!swords.length)return;
-  state.swordAway=true;let struck=false;
+  const origins=state.swordLaunch||[],aim=state.swordTarget||target;
+  const swords=origins.map(origin=>{
+   const blade=visual(r,side,'eclipse-flying-sword',origin.x,origin.y,24,'eclipse-flying-sword');
+   blade.picture=r.defs.get(origin.objectId).sprite.pictures.find(p=>p.id===origin.pictureId);
+   Object.assign(blade,{width:origin.width,height:origin.height,regX:origin.width/2,regY:origin.height/2,scaleX:origin.scaleX,scaleY:origin.scaleY,rotation:origin.rotation});
+   const dx=aim.x-origin.x,dy=aim.y-origin.y,len=Math.hypot(dx,dy)||1;
+   return {blade,dx:dx/len,dy:dy/len,phase:'outbound',distance:0};
+  });
+  delete state.swordLaunch;delete state.swordTarget;
+  if(!swords.length){state.swordAway=false;return;}
+  let struck=false;
   try{
-   // Aim the three existing orbit positions before launching. No blade spawns at the body.
-   for(let tick=1;tick<=12;tick++){for(const entry of swords){const e=entry.blade,angle=90-Math.atan2(target.y-e.y,target.x-e.x)*180/Math.PI,delta=((angle-entry.startRotation+540)%360)-180;e.rotation=entry.startRotation+delta*tick/12;}yield 1;}
-   for(const entry of swords){const e=entry.blade,dx=target.x-e.x,dy=target.y-e.y,len=Math.hypot(dx,dy)||1;entry.dx=dx/len;entry.dy=dy/len;entry.phase='outbound';}
    while(swords.some(entry=>entry.phase!=='caught')&&alive(r,side)){
     for(const entry of swords){const e=entry.blade;if(entry.phase==='caught')continue;
      if(entry.phase==='outbound'){e.x+=entry.dx*5;e.y+=entry.dy*5;entry.distance+=5;

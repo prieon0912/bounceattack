@@ -203,6 +203,7 @@ export class SecondarySkillSystem {
       state.readyAt = r.tick + definition.cooldownTicks;
       r.globals.set(ids.mana, r.num(r.globals.get(ids.mana)) - definition.manaCost);
       if (definition.lockVariable !== false) r.globals.set(ids.busy, 1);
+      definition.onActivate?.(r, side, state);
       r.spawn(body, function*(runtime, c) {
         try {
           // Use runtime ticks/yields and seeded runtime.random for deterministic online play.
