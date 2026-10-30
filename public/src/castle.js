@@ -86,7 +86,7 @@ export class CastleSystem{
    const target=body(rt,3-s);if(homing&&rt.num(rt.globals.get(info(3-s).stealth))===0)a=angle(target.x-e.x,target.y-e.y);e.rotation=90-a*180/Math.PI;
    const step=Math.min(speed,range-distance),parts=Math.max(1,Math.ceil(step));
    for(let i=0;i<parts;i++){e.x+=Math.cos(a)*step/parts;e.y+=Math.sin(a)*step/parts;distance+=step/parts;
-    if(Math.abs(e.x)>254||e.y>205||e.y<-205||rt.reach(e,'6tzq'))return;
+    if(Math.abs(e.x)>254||e.y>205||e.y<-205)return;
     if(rt.castle.canHit(s)&&Math.hypot(e.x-target.x,e.y-target.y)<=size*.5+8){yield* rt.castle.hit(c,s,damage,attack,effect);return;}
    }yield 1;
   }}finally{e.dead=true;}},'castle_projectile');return e;

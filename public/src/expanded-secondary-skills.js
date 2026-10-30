@@ -41,7 +41,7 @@ export const nationTransplant=definition(30,'옮겨심기',32,'nation-transplant
   r.spawn(seed,function*(rt){let velocity=0;try{while(!seed.dead&&seed.y>-205&&alive(rt,side)){velocity=Math.max(-5,velocity-.06);let landed=false;for(let i=0;i<Math.ceil(-velocity);i++){const y=seed.y;seed.y+=velocity/Math.ceil(-velocity);if(rt.reach(seed,'6tzq')){seed.y=y;landed=true;break;}}rt.set(seed,'vogg',seed.x);rt.set(seed,'bw1y',seed.y);if(landed)break;yield 1;}}finally{seed.transplantFalling=false;}},'secondary_seed_fall');
  }
 });
-export const glamsRush=definition(20,'돌진 / 점멸 / 박치기',32,'glams-rush','방어막을 얻으며 돌진/앞 방향으로 순간이동/기절시키며 돌진을 합니다.',{
+export const glamsRush=definition(20,'돌진 / 점멸 / 박치기',43,'glams-rush','방어막을 얻으며 돌진/앞 방향으로 순간이동/기절시키며 돌진을 합니다.',{
  *cast(r,c,{side,caster,target}){const owner=context(r,side),size=r.num(r.get(owner,'uh0p')),direction=dir(r,side);
   if(size===1){const start=caster.x;let found=false;for(let d=70;d>=0;d--){caster.x=Math.max(-232,Math.min(232,start+direction*d));if(!r.reach(caster,'6tzq')){found=true;break;}}if(!found)caster.x=start;return;}
   if(size===0){const id=ids(side,'cfmd','g4sc'),before=r.num(r.get(caster,id)),grant=Math.max(0,8-before);if(grant){r.add(caster,id,grant);r.spawn(caster,function*(rt){yield 120;rt.set(caster,id,Math.max(0,rt.num(rt.get(caster,id))-grant));},'secondary_shield');}}
@@ -73,13 +73,16 @@ export const kenenShadow=definition(6,'그림자 속으로',39,'kenen-shadow','�
  hidden(r,e,s,st){return st.shadowUntil>r.tick&&([ids(s,'00h9','n8fg'),ids(s,'n230','ocqj'),ids(s,'zlk5','79eo'),ids(s,'aadi','0y61')].includes(e.objectId)||(['0oxa','siav','5c3y','w3fb'].includes(e.objectId)&&e.combatSide===s));}
 });
 export const cannonGrenade=definition(32,'유탄',72,'cannon-grenade','기어의 절반을 소모하며 적에게 유도되는 유도탄을 발사합니다.',{
+ range:150,
  effectPictures:[],
  prepare(project){this.effectPictures=[nativePicture(project,'plg8','cannon-grenade-projectile', '4zk0')];prepare.call(this,project);},
  *cast(r,c,{side,caster,target,state}){const owner=context(r,side),held=Math.max(0,Math.min(10,Math.floor(r.num(r.get(owner,'ck61'))))),spent=Math.ceil(held/2);r.set(owner,'ck61',held-spent);r.set(owner,'7rns',Math.max(0,r.num(r.get(owner,'7rns'))-spent));state.lastGearsSpent=spent;
   const missile=visual(r,side,'cannon-grenade-projectile',caster.x,caster.y,16,'cannon-grenade');
-  try{for(let i=0;i<120&&alive(r,side);i++){const dx=target.x-missile.x,dy=target.y-missile.y,d=Math.hypot(dx,dy);missile.rotation=-Math.atan2(dy,dx)*180/Math.PI;
+  let traveled=0;try{for(let i=0;i<120&&alive(r,side);i++){const dx=target.x-missile.x,dy=target.y-missile.y,d=Math.hypot(dx,dy);missile.rotation=-Math.atan2(dy,dx)*180/Math.PI;
    if(d<=12&&visibleTarget(r,side)){yield* hit(r,c,side,spent+5,spent===5?'stun':spent>=3?'root':spent===2?'slow':null,8,120);return;}
-   if(d>0){missile.x+=dx/d*Math.min(4,d);missile.y+=dy/d*Math.min(4,d);}yield 1;}
+   if(traveled>=cannonGrenade.range)return;if(d===0){yield 1;continue;}
+   const step=Math.min(4,d,cannonGrenade.range-traveled);
+   missile.x+=dx/d*step;missile.y+=dy/d*step;traveled+=step;yield 1;}
   }finally{missile.dead=true;}
  }
 });
