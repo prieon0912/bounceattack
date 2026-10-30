@@ -2723,7 +2723,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qrm8",
 c.block="cs3q";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","1"]))){
 c.block="xyep";r.guard(c);
-r.command(c,"set_variable",["y75t",r.value(c,"calc_rand",[null,"1",null,"34",null]),null]);
+r.command(c,"set_variable",["y75t",r.value(c,"calc_rand",[null,"1",null,35,null]),null]);
 c.block="0hnl";r.guard(c);
 r.command(c,"set_variable",["jx38","2",null]);
 c.block="rl20";r.guard(c);
@@ -2736,7 +2736,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",
 c.block="mei4";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["s5vb",null]),"EQUAL",r.value(c,"get_variable",["uzz4",null])]))){
 c.block="ti1w";r.guard(c);
-r.command(c,"set_variable",["uzz4",r.value(c,"calc_rand",[null,"1",null,"34",null]),null]);
+r.command(c,"set_variable",["uzz4",r.value(c,"calc_rand",[null,"1",null,35,null]),null]);
 c.block="lc92";r.guard(c);
 if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["uzz4",null])]),null]))){
 c.block="gxmr";r.guard(c);
@@ -2844,6 +2844,8 @@ c.block="wbrk";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="2kmy";r.guard(c);
 r.command(c,"create_clone",["self",null]);
+c.block="castle-select-create";r.guard(c);
+r.command(c,"create_clone",["self",null]);
 
 });
 r.register("ncwe","when_clone_start",[null],function*(r,c){
@@ -2911,7 +2913,7 @@ r.command(c,"set_variable",["y75t",r.value(c,"get_variable",["eti2",null]),null]
 c.block="xpy1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
 c.block="eqs9";r.guard(c);
-if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),null]))){
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),null]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["eti2",null]),"EQUAL",35])]))){
 c.block="qpl5";r.guard(c);
 r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["eti2",null]),null]);
 }
@@ -2926,7 +2928,7 @@ r.register("ncwe","when_clone_start",[null],function*(r,c){
 c.block="u24d";r.guard(c);
 while(true){
 c.block="1zel";r.guard(c);
-if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),"AND",r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["s5vb",null])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"])])]))){
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),"AND",r.value(c,"boolean_and_or",[r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["s5vb",null])]),"AND",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"])])]),"AND",r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["eti2",null]),"EQUAL",35]),null])]))){
 c.block="moq7";r.guard(c);
 r.command(c,"change_variable",["s5vb","1",null]);
 }
@@ -2959,7 +2961,7 @@ r.command(c,"create_clone",["j5y7",null]);
 c.block="owxa";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jx38",null]),"EQUAL","2"]))){
 c.block="kff7";r.guard(c);
-if(r.truth(r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),null]))){
+if(r.truth(r.value(c,"boolean_and_or",[r.value(c,"boolean_not",[null,r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y75t",null]),"EQUAL",r.value(c,"get_variable",["eti2",null])]),null]),"OR",r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["eti2",null]),"EQUAL",35])]))){
 c.block="55ci";r.guard(c);
 r.command(c,"set_variable",["s5vb",r.value(c,"get_variable",["eti2",null]),null]);
 c.block="deze";r.guard(c);

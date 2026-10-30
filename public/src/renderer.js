@@ -73,7 +73,7 @@ export class Renderer {
         c.fillStyle = e.colour || "#fff";
         const text = String(e.text ?? e.def.text ?? "");
         if (!e.lineBreak && e.objectId === "3my6" && runtime.scene === "1ckl" &&
-            [1, 3, 4, 6, 7, 10, 12, 14, 16, 18, 20, 27, 30, 32].includes(Number(runtime.globals.get("16fh")))) {
+            [1, 3, 4, 6, 7, 10, 12, 14, 16, 18, 20, 27, 30, 32, 35].includes(Number(runtime.globals.get("16fh")))) {
           // Fit the changed descriptions inside their original slot, with no new UI.
           const limit = (230 - e.x) / Math.max(.01, Math.abs(e.scaleX));
           const lines = []; let line = "";
@@ -115,6 +115,7 @@ export class Renderer {
       }
       c.restore();
     }
+    runtime.castle?.draw(c);
     c.restore();
   }
 }

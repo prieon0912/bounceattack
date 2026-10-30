@@ -15,13 +15,13 @@ function menu() {
   for (let i = 0; i < 15; i++) r.step();
   return r;
 }
-test("original selector initializes all 34 clone positions before shared counters are reused", () => {
+test("original selector initializes all 35 clone positions before shared counters are reused", () => {
   const r = menu(),
     groups = ["3y3g", "k089", "646h", "a091", "ncwe"];
   const tiles = r.entities.filter(
     (e) => e.clone && groups.includes(e.objectId),
   );
-  assert.equal(tiles.length, 34);
+  assert.equal(tiles.length, 35);
   for (const id of groups) {
     const row = tiles.filter((e) => e.objectId === id);
     assert.equal(new Set(row.map((e) => e.x)).size, row.length);

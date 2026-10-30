@@ -143,3 +143,5 @@ export const enrilUpdraft=definition(27,'상승기류',16,'enril-updraft','즉�
  *cast(r,c,{side}){if(r.num(r.globals.get(ids(side,'05ze','1vu0')))>0)return;r.globals.set(ids(side,'du2p','iblx'),2.5);}
 });
 export const NEW_SECONDARY_SKILLS=[nationTransplant,glamsRush,guardGiantStrike,kenenShadow,cannonGrenade,eclipseDeparture,enrilUpdraft];
+
+export { statusVisual as showStatusVisual };
