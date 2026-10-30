@@ -83,11 +83,16 @@ export class CastleSystem{
   }
  }
  afterStep(){const r=this.r;
-  // Suppress stale preview weapons when the new ball-only character is selected.
-  if(r.scene==='1ckl'){for(const [s,weapon]of [[1,'31us'],[2,'mimn']]){const e=r.originals.get(weapon);if(!e)continue;if(r.num(r.globals.get(info(s).character))===35){e.visible=false;e.castlePreviewHidden=true;}else if(e.castlePreviewHidden){e.visible=true;delete e.castlePreviewHidden;}}return;}
+  // Castle uses the same separate held-weapon arrangement as the original roster.
+  if(r.scene==='1ckl'){for(const [s,weapon]of [[1,'31us'],[2,'mimn']]){const e=r.originals.get(weapon);if(!e)continue;if(r.num(r.globals.get(info(s).character))===35){const ball=r.originals.get(sid(s,'j5y7','zyy3'));r.setPicture(e,'castle-held-pawn-'+weapon);r.setSize(e,25);e.x=ball.x+(s===1?1:-1)*19;e.y=ball.y-6;e.rotation=0;e.scaleX=Math.abs(e.scaleX)*(s===1?1:-1);e.visible=ball.visible;e.castlePreviewHidden=true;}else if(e.castlePreviewHidden){e.visible=true;delete e.castlePreviewHidden;}}return;}
   for(const s of [1,2]){if(!this.active(s))continue;const state=this.state(s);if(!state)continue;if(!state.initialized){r.globals.set(info(s).mana,20);state.initialized=true;}
    if(state.promotionUntil){body(r,s).x=state.lockX;body(r,s).y=state.lockY;}
    const e=r.originals.get(sid(s,'n230','ocqj'));if(e){r.setPicture(e,`castle-${state.form}-${e.objectId}`);r.setSize(e,16);e.rotation=0;}
+   let held=r.entities.find(e=>!e.dead&&e.castleEffect==='held'&&e.combatSide===s);
+   if(!held)held=this.visual(s,'castle-held-'+state.form,0,0,9,'held');
+   r.setPicture(held,'castle-held-'+state.form);r.setSize(held,9);const base=body(r,s),direction=turn(r,s);
+   held.x=base.x+direction*7;held.y=base.y-2;held.rotation=0;held.scaleX=Math.abs(held.scaleX)*direction;
+   held.visible=this.alive(s)&&r.num(r.globals.get(info(s).stealth))===0;
   }
  }
  blocksKey(key){for(const s of [1,2])if(this.active(s)){if([sid(s,69,13),sid(s,82,80),sid(s,83,40)].includes(key))return true;if(this.state(s)?.promotionUntil&&[...(s===1?[65,68,87]:[37,39,38])].includes(key))return true;}return false;}
