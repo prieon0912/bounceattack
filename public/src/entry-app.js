@@ -86,7 +86,6 @@ const FORFEIT_AFTER = 15000;
 let claimSent = false;
 let forfeitWin = false,
   forfeitHp = null;
-const MAX_BACKLOG = (1000 / 60) * 4;
 // Adaptive input delay: as small as the connection allows (3 frames ≈ 50 ms
 // for ping ≤ ~40 ms), growing only while ping is high or spiky.
 const FRAME_MS = 1000 / 60;
@@ -339,9 +338,10 @@ document.getElementById("fullscreen").onclick = () =>
   canvas.requestFullscreen();
 function update(now) {
   if (!last) last = now;
-  elapsed += Math.min(now - last, 100);
+  // Keep real elapsed time when drawing is suspended; dropping it extended timed skills.
+  elapsed += Math.max(0, now - last);
   last = now;
-  while (elapsed >= 1000 / 60) {
+  while (elapsed + 1e-7 >= 1000 / 60) {
     if (sync) {
       // The original sets 게임 끝 (r71b) when a fighter falls. Both clients
       // reach that frame identically, so lockstep can end here: the ending
@@ -351,9 +351,8 @@ function update(now) {
         continue;
       }
       if (!sync.advance(runtime)) {
-        // Waiting for the opponent's input: keep a short backlog instead of
-        // discarding the time, so play catches up smoothly when it arrives.
-        elapsed = Math.min(elapsed, MAX_BACKLOG);
+        // Keep the elapsed backlog until shared input arrives. Never advance
+        // one client's skill timers independently of the other client.
         break;
       }
       lastProgress = now;
@@ -373,7 +372,7 @@ function update(now) {
       )
         search();
     }
-    elapsed -= 1000 / 60;
+    elapsed = Math.max(0, elapsed - 1000 / 60);
   }
   const stalled = sync ? now - lastProgress : 0;
   if (sync && stalled > 600) {
@@ -408,9 +407,8 @@ function frame(now) {
   renderer.draw(runtime);
 }
 // Browsers pause requestAnimationFrame while the tab is hidden or the window
-// is minimised. During an online match that froze this player's simulation
-// (and inputs), so the opponent saw a disconnect. A worker timer keeps the
-// match running in the background; drawing resumes when the tab is visible.
+// is minimised. Continue both offline and online battles in a worker-driven
+// loop. Any suspended worker time is caught up on resume, before drawing.
 try {
   const ticker = new Worker(
     URL.createObjectURL(
@@ -420,7 +418,7 @@ try {
     ),
   );
   ticker.onmessage = () => {
-    if (document.hidden && runtime && sync)
+    if (document.hidden && runtime && (sync || runtime.scene === "7dwq"))
       try {
         update(performance.now());
       } catch (error) {

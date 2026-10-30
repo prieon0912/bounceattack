@@ -1,10 +1,10 @@
 import { showStatusVisual } from './expanded-secondary-skills.js';
 // Castle's values are kept together so each piece can be tuned independently.
-export const CASTLE = Object.freeze({id:35,startMana:20,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,ultimateCooldown:360});
+export const CASTLE = Object.freeze({id:35,startMana:20,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,ultimateCooldown:360,heldSize:11.25,previewHeldSize:31.25});
 export const PIECES = Object.freeze({
- pawn:{name:'폰',damage:4,range:25,interval:33},knight:{name:'나이트',damage:6,range:55,interval:39},
- bishop:{name:'비숍',damage:6,range:110,interval:39},rook:{name:'룩',damage:8,range:120,interval:42},
- queen:{name:'퀸',damage:9,range:140,interval:36},king:{name:'킹',damage:11,range:140,interval:39}
+ pawn:{name:'폰',damage:4,range:62.5,interval:33},knight:{name:'나이트',damage:6,range:55,interval:39},
+ bishop:{name:'비숍',damage:6,range:110,interval:39},rook:{name:'룩',damage:8,range:132,interval:42},
+ queen:{name:'퀸',damage:9,range:154,interval:36},king:{name:'킹',damage:11,range:140,interval:39}
 });
 export function promotedPiece(random){const n=random()*100;return n<30?'knight':n<60?'bishop':n<80?'rook':n<95?'queen':'king';}
 const sid=(s,a,b)=>s===1?a:b,body=(r,s)=>r.originals.get(sid(s,'00h9','n8fg'));
@@ -24,39 +24,56 @@ export class CastleSystem{
  mana(s,delta){const r=this.r,id=info(s).mana;r.globals.set(id,Math.min(100,Math.max(0,r.num(r.globals.get(id))+delta)));}
  alive(s){const r=this.r;return r.scene==='7dwq'&&r.num(r.globals.get(info(s).hp))>0&&r.num(r.globals.get('r71b'))===0;}
  blocked(s){return this.r.num(this.r.globals.get(info(s).stun))!==0;}
- reward(s,attack){if(attack.rewarded)return;attack.rewarded=true;this.mana(s,attack.kind==='basic'?(attack.form==='pawn'?20:10):(attack.form==='pawn'?30:20));}
+ reward(s,attack){if(attack.rewarded)return;attack.rewarded=true;
+  // Match native passive regeneration ratios (0.05 / 0.08 / 0.15), with mode 2 as the existing baseline.
+  const rate=({1:.05,2:.08,3:.15})[this.r.num(this.r.globals.get('75q1'))]??.08;
+  this.mana(s,(attack.kind==='basic'?(attack.form==='pawn'?20:10):(attack.form==='pawn'?30:20))*rate/.08);
+ }
  *hit(c,s,damage,attack,effect=null){const r=this.r,foe=3-s;if(!this.alive(s)||!this.alive(foe)||r.num(r.globals.get(info(foe).stealth))!==0)return false;
   yield* r.call(c,s===1?'qy83':'05j0',[-damage,0,1]);this.reward(s,attack);if(effect)this.status(foe,effect);return true;
  }
  status(s,effect){const r=this.r,e=body(r,s);if(r.num(r.globals.get(sid(s,'jcf6','ec6d')))!==0)return;
   if(effect.root){r.set(e,info(s).root,Math.max(r.num(r.get(e,info(s).root)),effect.root*.02+.02));showStatusVisual(r,3-s,'root',effect.root);}
-  if(effect.push)this.move(s,effect.push,0);
+  if(effect.push)this.knockback(s,effect.push);
   if(effect.slow){const state=this.state(3-s);if(state)state.slow={side:s,value:effect.slow,until:r.tick+(effect.ticks||60)};showStatusVisual(r,3-s,'slow',effect.ticks||60);}
  }
  slowValue(id,raw){for(const s of [1,2]){const slow=this.state(s)?.slow;if(this.active(s)&&slow?.until>this.r.tick&&id===sid(slow.side,'9af4','nccn'))raw=Math.max(Number(raw),slow.value);}return raw;}
  move(s,dx,dy){const r=this.r,e=body(r,s);if(r.num(r.globals.get(info(s).root))>0)return;const steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)));for(let i=0;i<steps;i++){const x=e.x,y=e.y;e.x+=dx/steps;e.y+=dy/steps;if(Math.abs(e.x)>232||e.y>130||r.reach(e,'6tzq')){e.x=x;e.y=y;break;}}}
+ knockback(s,distance){const r=this.r,e=body(r,s);
+  // Native recoil: each frame applies impulse * .96 / 15, so .625 preserves total travel.
+  r.add(e,sid(s,'c9o4','lgp6'),distance*.625);
+ }
  blink(s,dx,dy){const r=this.r,e=body(r,s);if(r.num(r.globals.get(info(s).root))>0)return;const x=e.x,y=e.y;for(let t=1;t>=0;t-=.025){e.x=Math.max(-232,Math.min(232,x+dx*t));e.y=Math.min(125,y+dy*t);if(!r.reach(e,'6tzq'))return;}e.x=x;e.y=y;}
- shield(s,amount,ticks){const r=this.r,e=body(r,s),id=info(s).shield,before=r.num(r.get(e,id)),grant=Math.max(0,amount-before);if(!grant)return;r.add(e,id,grant);const state=this.state(s);state.shieldUntil=r.tick+ticks;r.spawn(e,function*(rt){yield ticks;rt.set(e,id,Math.max(0,rt.num(rt.get(e,id))-grant));},'castle_shield');}
- visual(s,pictureId,x,y,size,label){const r=this.r,picture=r.defs.get('hb4u').sprite.pictures.find(p=>p.id===pictureId),e=r.makeEntity(r.defs.get('hb4u'));Object.assign(e,{clone:true,combatSide:s,castleEffect:label,picture,width:picture.dimension.width,height:picture.dimension.height,regX:picture.dimension.width/2,regY:picture.dimension.height/2,x,y,rotation:0,scaleX:1,scaleY:1,visible:true});r.setSize(e,size);r.entities.unshift(e);return e;}
+ shield(s,amount,ticks){const r=this.r,e=body(r,s),id=info(s).shield,before=r.num(r.get(e,id)),grant=Math.max(0,amount-before);if(!grant)return;r.add(e,id,grant);const state=this.state(s);state.shieldUntil=r.tick+ticks;
+  r.spawn(e,function*(rt){yield ticks;rt.set(e,id,Math.max(0,rt.num(rt.get(e,id))-grant));},'castle_shield');
+  const picture=r.defs.get('5eu9').sprite.pictures[0],marker=this.visual(s,picture,e.x,e.y,1,'native-shield');marker.effects.transparency=45;
+  r.spawn(marker,function*(rt){try{while(rt.castle.alive(s)){
+   const protectedNow=rt.num(rt.get(e,id))>0&&rt.tick<state.shieldUntil;
+   rt.setSize(marker,rt.size(marker)+((protectedNow?24:1)-rt.size(marker))/10);
+   marker.x=e.x;marker.y=e.y;marker.visible=rt.num(rt.globals.get(info(s).stealth))===0;
+   if(!protectedNow&&rt.size(marker)<1.1)break;yield 1;
+  }}finally{marker.dead=true;}},'castle_native_shield');
+ }
+ visual(s,pictureId,x,y,size,label){const r=this.r,picture=typeof pictureId==='string'?r.defs.get('hb4u').sprite.pictures.find(p=>p.id===pictureId):pictureId,e=r.makeEntity(r.defs.get('hb4u'));Object.assign(e,{clone:true,combatSide:s,castleEffect:label,picture,width:picture.dimension.width,height:picture.dimension.height,regX:picture.dimension.width/2,regY:picture.dimension.height/2,x,y,rotation:0,scaleX:1,scaleY:1,visible:true});r.setSize(e,size);r.entities.unshift(e);return e;}
  shot(s,attack,{x=body(this.r,s).x,y=body(this.r,s).y,a,speed=5,range,damage,size=12,effect=null}){
   const r=this.r,e=this.visual(s,'castle-shot-'+attack.form,x,y,size,'projectile');e.rotation=90-a*180/Math.PI;
   r.spawn(e,function*(rt,c){let distance=0;try{while(distance<range&&rt.castle.alive(s)){const step=Math.min(speed,range-distance);e.x+=Math.cos(a)*step;e.y+=Math.sin(a)*step;distance+=step;const target=body(rt,3-s);
    if(Math.hypot(e.x-target.x,e.y-target.y)<=size*.5+8&&rt.num(rt.globals.get(info(3-s).stealth))===0){yield* rt.castle.hit(c,s,damage,attack,effect);break;}yield 1;}
   }finally{e.dead=true;}},'castle_projectile');
  }
- *melee(c,s,attack,{range,damage,dash=0,ticks=6,height=20,effect=null}){const r=this.r,e=body(r,s),direction=turn(r,s),slash=this.visual(s,'castle-slash',e.x+direction*range*.5,e.y,range,'melee');slash.scaleX*=direction;let struck=false;
-  try{for(let t=0;t<ticks&&this.alive(s)&&!this.blocked(s);t++){if(dash)this.move(s,direction*dash/ticks,0);slash.x=e.x+direction*range*.5;slash.y=e.y;slash.effects.transparency=t/ticks*85;const target=body(r,3-s),dx=(target.x-e.x)*direction;
-   if(!struck&&dx>=-8&&dx<=range&&Math.abs(target.y-e.y)<=height&&r.num(r.globals.get(info(3-s).stealth))===0){struck=true;yield* this.hit(c,s,damage,attack,effect);}yield 1;}
+ *melee(c,s,attack,{range,damage,dash=0,ticks=6,height=20,effect=null,centered=false}){const r=this.r,e=body(r,s),direction=turn(r,s),slash=this.visual(s,r.defs.get('hpfj').sprite.pictures[0],e.x+direction*range*.5,e.y,range,'melee');slash.scaleX*=direction;slash.scaleY*=Math.min(28,height*2)/range;let struck=false;
+  try{for(let t=0;t<ticks&&this.alive(s)&&!this.blocked(s);t++){if(dash)this.move(s,direction*dash/ticks,0);slash.x=e.x+(centered?0:direction*range*.5);slash.y=e.y;slash.effects.transparency=t/ticks*85;const target=body(r,3-s),dx=(target.x-e.x)*direction;
+   if(!struck&&dx>=(centered?-range:-8)&&dx<=range&&Math.abs(target.y-e.y)<=height&&r.num(r.globals.get(info(3-s).stealth))===0){struck=true;yield* this.hit(c,s,damage,attack,effect);}yield 1;}
   }finally{slash.dead=true;}
  }
- basic(s){const r=this.r,state=this.state(s),form=state.form,piece=PIECES[form],attack={kind:'basic',form,rewarded:false},e=body(r,s),foe=body(r,3-s),direction=turn(r,s);state.attackAt=r.tick+piece.interval;
-  if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+6;r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?25:20,damage:piece.damage,dash:form==='knight'?35:0});},'castle_basic');return;}
+ basic(s){const r=this.r,state=this.state(s),form=state.form,piece=PIECES[form],attack={kind:'basic',form,rewarded:false},e=body(r,s),foe=body(r,3-s),direction=turn(r,s);state.attackAt=r.tick+piece.interval;state.attackVisualAt=r.tick;
+  if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+6;r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?piece.range:20,damage:piece.damage,dash:form==='knight'?35:0});},'castle_basic');return;}
   if(form==='bishop'){for(const dy of [-1,1])this.shot(s,attack,{a:angle(direction,dy),range:110,damage:6});return;}
   this.shot(s,attack,{a:form==='rook'?angle(direction,0):angle(foe.x-e.x,foe.y-e.y),range:piece.range,damage:piece.damage,size:form==='rook'?20:form==='king'?22:14,speed:form==='rook'?4:form==='king'?5:6,effect:form==='king'?{slow:4,ticks:24}:null});
  }
  skill(s){const r=this.r,state=this.state(s),form=state.form,e=body(r,s),foe=body(r,3-s),direction=turn(r,s),defensive=r.secondarySkills.state(s).mode==='secondary';
-  if(r.tick<state.skillAt||r.num(r.globals.get(info(s).mana))<40)return;this.mana(s,-40);state.skillAt=r.tick+((defensive&&['rook','queen','king'].includes(form))?360:300);
-  if(defensive){
+  if(r.tick<state.skillAt||r.num(r.globals.get(info(s).mana))<40)return;this.mana(s,-40);state.skillVisualAt=r.tick;state.skillAt=r.tick+((defensive&&['rook','queen','king'].includes(form))?360:300);
+  if(defensive){state.castlingVisualAt=r.tick;
    if(form==='pawn')this.shield(s,3,60);
    if(form==='knight'){state.actionUntil=r.tick+10;r.spawn(e,function*(rt){for(let i=0;i<10&&rt.castle.alive(s)&&!rt.castle.blocked(s);i++){rt.castle.move(s,-direction*4.5,i<5?2:-2);yield 1;}},'castle_retreat');}
    if(form==='bishop')this.blink(s,direction*50/Math.SQRT2,50/Math.SQRT2);
@@ -65,10 +82,10 @@ export class CastleSystem{
    return;
   }
   const attack={kind:'skill',form,rewarded:false};
-  if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+8;r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?15:22,damage:form==='pawn'?3:8,dash:form==='pawn'?25:40,ticks:8});if(form==='knight'&&rt.castle.alive(s))yield* rt.castle.melee(c,s,attack,{range:24,damage:3,ticks:4,height:38});},'castle_check');return;}
+  if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+(form==='knight'?12:8);r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?26.25:22,damage:form==='pawn'?3:8,dash:form==='pawn'?43.75:40,ticks:8});if(form==='knight'&&rt.castle.alive(s))yield* rt.castle.melee(c,s,attack,{range:24,damage:3,ticks:4,height:38,centered:true});},'castle_check');return;}
   if(form==='bishop'){const x=e.x,y=e.y;for(const sign of [-1,1])this.shot(s,attack,{x,y:y+sign*50,a:angle(direction,-sign),range:140,damage:5,size:12});return;}
-  if(form==='rook'){this.shot(s,attack,{a:angle(direction,0),range:140,damage:11,size:24,speed:4,effect:{push:direction*15}});return;}
-  if(form==='queen'){const a=angle(foe.x-e.x,foe.y-e.y);state.actionUntil=r.tick+12;r.spawn(e,function*(rt){for(let i=0;i<3&&rt.castle.alive(s)&&!rt.castle.blocked(s);i++){rt.castle.shot(s,attack,{a,range:150,damage:5,size:14,speed:6});yield 4;}},'castle_volley');return;}
+  if(form==='rook'){this.shot(s,attack,{a:angle(direction,0),range:154,damage:11,size:24,speed:4,effect:{push:direction*15}});return;}
+  if(form==='queen'){const a=angle(foe.x-e.x,foe.y-e.y);state.actionUntil=r.tick+12;r.spawn(e,function*(rt){for(let i=0;i<3&&rt.castle.alive(s)&&!rt.castle.blocked(s);i++){rt.castle.shot(s,attack,{a,range:165,damage:5,size:14,speed:6});yield 4;}},'castle_volley');return;}
   this.shot(s,attack,{a:angle(foe.x-e.x,foe.y-e.y),range:150,damage:15,size:26,speed:5,effect:{root:36}});
  }
  step(){const r=this.r;if(r.scene!=='7dwq')return;
@@ -84,19 +101,17 @@ export class CastleSystem{
  }
  afterStep(){const r=this.r;
   // Castle uses the same separate held-weapon arrangement as the original roster.
-  if(r.scene==='1ckl'){for(const [s,weapon]of [[1,'31us'],[2,'mimn']]){const e=r.originals.get(weapon);if(!e)continue;if(r.num(r.globals.get(info(s).character))===35){const ball=r.originals.get(sid(s,'j5y7','zyy3'));r.setPicture(e,'castle-held-pawn-'+weapon);r.setSize(e,25);e.x=ball.x+(s===1?1:-1)*19;e.y=ball.y-6;e.rotation=0;e.scaleX=Math.abs(e.scaleX)*(s===1?1:-1);e.visible=ball.visible;e.castlePreviewHidden=true;}else if(e.castlePreviewHidden){e.visible=true;delete e.castlePreviewHidden;}}return;}
+  if(r.scene==='1ckl'){for(const [s,weapon]of [[1,'31us'],[2,'mimn']]){const e=r.originals.get(weapon);if(!e)continue;if(r.num(r.globals.get(info(s).character))===35){const ball=r.originals.get(sid(s,'j5y7','zyy3'));r.setPicture(e,'castle-held-pawn-'+weapon);r.setSize(e,CASTLE.previewHeldSize);e.x=ball.x+(s===1?1:-1)*19;e.y=ball.y-6;e.rotation=0;e.scaleX=Math.abs(e.scaleX)*(s===1?1:-1);e.visible=ball.visible;e.castlePreviewHidden=true;}else if(e.castlePreviewHidden){e.visible=true;delete e.castlePreviewHidden;}}return;}
   for(const s of [1,2]){if(!this.active(s))continue;const state=this.state(s);if(!state)continue;if(!state.initialized){r.globals.set(info(s).mana,20);state.initialized=true;}
    if(state.promotionUntil){body(r,s).x=state.lockX;body(r,s).y=state.lockY;}
    const e=r.originals.get(sid(s,'n230','ocqj'));if(e){r.setPicture(e,`castle-${state.form}-${e.objectId}`);r.setSize(e,16);e.rotation=0;}
    let held=r.entities.find(e=>!e.dead&&e.castleEffect==='held'&&e.combatSide===s);
-   if(!held)held=this.visual(s,'castle-held-'+state.form,0,0,9,'held');
-   r.setPicture(held,'castle-held-'+state.form);r.setSize(held,9);const base=body(r,s),direction=turn(r,s);
-   held.x=base.x+direction*7;held.y=base.y-2;held.rotation=0;held.scaleX=Math.abs(held.scaleX)*direction;
+   if(!held)held=this.visual(s,'castle-held-'+state.form,0,0,CASTLE.heldSize,'held');
+   r.setPicture(held,'castle-held-'+state.form);r.setSize(held,CASTLE.heldSize);const base=body(r,s),direction=turn(r,s);
+   held.x=base.x+direction*7;held.y=base.y-2;const motionAge=r.tick-Math.max(state.skillVisualAt??-100,state.attackVisualAt??-100);held.rotation=motionAge<12?direction*Math.sin(motionAge/12*Math.PI)*-25:0;held.scaleX=Math.abs(held.scaleX)*direction;
    held.visible=this.alive(s)&&r.num(r.globals.get(info(s).stealth))===0;
   }
  }
  blocksKey(key){for(const s of [1,2])if(this.active(s)){if([sid(s,69,13),sid(s,82,80),sid(s,83,40)].includes(key))return true;if(this.state(s)?.promotionUntil&&[...(s===1?[65,68,87]:[37,39,38])].includes(key))return true;}return false;}
- draw(c){const r=this.r;for(const s of [1,2]){if(!this.active(s)||!this.alive(s))continue;const state=this.state(s),e=body(r,s);if(!state||r.num(r.globals.get(info(s).stealth)))continue;
-  if(state.shieldUntil>r.tick&&r.num(r.globals.get(info(s).shield))>0){c.save();c.lineWidth=1.4;c.strokeStyle='#97b9e0';c.beginPath();c.arc(e.x,-e.y,12,0,Math.PI*2);c.stroke();c.restore();}
- }}
+ draw(){}
 }
