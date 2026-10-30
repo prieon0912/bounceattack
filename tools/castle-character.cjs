@@ -1,10 +1,11 @@
 // Adds Castle without modifying the archived Entry project or any original image.
 module.exports=function(project){
  const picture=(id,file,width=100,height=100)=>({id,name:id,fileurl:'assets/castle/'+file,dimension:{width,height},imageType:'svg'});
- const arrays={'5pvu':'캐슬','xxgw':'체스의 지휘자','of7a':'기물 전환','dw8v':'적중으로만 마나를 회복합니다. 비폰 기물은 10초 후 폰으로 돌아갑니다.','twcx':'기물 공격','wynm':'현재 기물에 따라 공격 방식이 달라집니다.','x7mx':'체크','gsve':'현재 기물의 공격 전술을 사용합니다.','74ed':'프로모션','9m7u':'폰에서 무작위 비폰 기물로 10초간 변신합니다. 변신 중에는 사용할 수 없습니다.'};
+ const arrays={'5pvu':'체크메이트','xxgw':'체스의 영혼','of7a':'기물 전환','dw8v':'공격을 적중시켜 마나를 획득합니다. 획득한 마나로 비폰 기물로 프로모션합니다.','twcx':'템포','wynm':'기물에 맞게 적을 공격합니다.','x7mx':'체크','gsve':'현재 기물의 공격 전술을 사용합니다.','74ed':'프로모션','9m7u':'무작위 비폰 기물로 변신합니다. 변신 상태는 몇 초 뒤 해제됩니다.'};
  for(const [id,data]of Object.entries(arrays)){const list=project.variables.find(v=>v.id===id).array;while(list.length<35)list.push({data:0});list[34]={...list[34],data};}
  for(const id of ['j5y7','zyy3','n230','ocqj']){const o=project.objects.find(o=>o.id===id);o.sprite.pictures.splice(34,0,picture('castle-pawn-'+id,'pawn.svg',180,180));if(['n230','ocqj'].includes(id))for(const form of ['knight','bishop','rook','queen','king'])o.sprite.pictures.push(picture('castle-'+form+'-'+id,form+'.svg',180,180));}
- for(const [id,key]of [['o9rj','check'],['4ffm','promotion'],['pyez','portrait']])project.objects.find(o=>o.id===id).sprite.pictures.splice(34,0,picture('castle-'+key+'-'+id,key+'-icon.svg',380,380));
+ // 평타 아이콘(템포)은 캐릭터 아이콘과 다른 체스 시계 그림.
+ for(const [id,key]of [['o9rj','check'],['4ffm','promotion'],['pyez','tempo']])project.objects.find(o=>o.id===id).sprite.pictures.splice(34,0,picture('castle-'+key+'-'+id,key+'-icon.svg',380,380));
  for(const id of ['afvb','8svk'])project.objects.find(o=>o.id===id).sprite.pictures.splice(34,0,picture('castle-profile-'+id,'profile.svg',500,500));
  for(const id of ['31us','mimn'])project.objects.find(o=>o.id===id).sprite.pictures.push(picture('castle-held-pawn-'+id,'pawn-held.svg'));
  const effect=project.objects.find(o=>o.id==='hb4u');for(const form of ['pawn','knight','bishop','rook','queen','king'])effect.sprite.pictures.push(picture('castle-shot-'+form,form+'-shot.svg'));for(const form of ['pawn','knight','bishop','rook','queen','king'])effect.sprite.pictures.push(picture('castle-held-'+form,form+'-held.svg'));

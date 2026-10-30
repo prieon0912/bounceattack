@@ -39,7 +39,7 @@ export class CastleSystem{
   if(effect.slow){const state=this.state(3-s);if(state)state.slow={side:s,value:effect.slow,until:r.tick+(effect.ticks||60)};showStatusVisual(r,3-s,'slow',effect.ticks||60);}
  }
  canHit(s){const r=this.r;return this.alive(s)&&this.alive(3-s)&&r.num(r.globals.get(info(s).stealth))===0&&r.num(r.globals.get(info(3-s).stealth))===0;}
- hidden(e){for(const side of [1,2])if(this.active(side)&&this.state(side)?.stealthUntil>this.r.tick&&([sid(side,'00h9','n8fg'),sid(side,'n230','ocqj')].includes(e.objectId)||(e.combatSide===side&&['held','native-shield'].includes(e.castleEffect))))return true;return false;}
+ hidden(e){for(const side of [1,2])if(this.active(side)&&this.state(side)?.stealthUntil>this.r.tick&&([sid(side,'00h9','n8fg'),sid(side,'n230','ocqj'),sid(side,'zlk5','79eo'),sid(side,'aadi','0y61')].includes(e.objectId)||(e.combatSide===side&&['held','native-shield'].includes(e.castleEffect))))return true;return false;}
  blocksAttackCollision(a,b){return (this.hidden(a)&&b.combatSide&&b.combatSide!==a.combatSide)||(this.hidden(b)&&a.combatSide&&a.combatSide!==b.combatSide);}
  onDamage(side,source){const st=this.state(side);if(this.active(side)&&source===3-side&&st?.crown)st.crown=null;}
  slowValue(id,raw){for(const side of [1,2]){const st=this.state(side);if(!this.active(side)||!st)continue;const slow=st.slow;if(slow?.until>this.r.tick&&id===sid(slow.side,'9af4','nccn'))raw=Math.max(Number(raw),slow.value);
@@ -66,7 +66,7 @@ export class CastleSystem{
  move(s,dx,dy){const r=this.r,e=body(r,s);if(r.num(r.globals.get(info(s).root))>0)return;const steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)));for(let i=0;i<steps;i++){const x=e.x,y=e.y;e.x+=dx/steps;e.y+=dy/steps;if(Math.abs(e.x)>232||e.y>130||r.reach(e,'6tzq')){e.x=x;e.y=y;break;}}}
  knockback(s,distance,settleTicks=0){const r=this.r,e=body(r,s);
   // Native recoil: each frame applies impulse * .96 / 15, so .625 preserves total travel.
-  r.add(e,sid(s,'c9o4','lgp6'),distance*(settleTicks?.6/(.96*(1-.96**settleTicks)):.625));
+  r.add(e,sid(s,'c9o4','lgp6'),distance*(settleTicks ? .6/(.96*(1-.96**settleTicks)) : .625));
  }
  blink(s,dx,dy){const r=this.r,e=body(r,s);if(r.num(r.globals.get(info(s).root))>0)return;const x=e.x,y=e.y;for(let t=1;t>=0;t-=.025){e.x=Math.max(-232,Math.min(232,x+dx*t));e.y=Math.min(125,y+dy*t);if(!r.reach(e,'6tzq'))return;}e.x=x;e.y=y;}
  shield(s,amount,ticks){const r=this.r,e=body(r,s),id=info(s).shield,before=r.num(r.get(e,id)),grant=Math.max(0,amount-before);if(!grant)return;r.add(e,id,grant);const state=this.state(s);state.shieldUntil=r.tick+ticks;
@@ -108,7 +108,7 @@ export class CastleSystem{
    if(form==='pawn')this.shield(s,3,300);
    if(form==='knight'){state.actionUntil=r.tick+10;r.spawn(e,function*(rt){for(let i=0;i<10&&rt.castle.alive(s)&&!rt.castle.blocked(s);i++){rt.castle.move(s,-direction*4.5,i<5?2:-2);yield 1;}},'castle_retreat');}
    if(form==='bishop')this.conceal(s);
-   if(form==='rook'){this.shield(s,12,300);if(this.canHit(s)&&Math.hypot(e.x-foe.x,e.y-foe.y)<=45){const attack={kind:'defense',form,rewarded:true};r.spawn(e,function*(rt,c){yield* rt.castle.hit(c,s,4,attack,{push:Math.sign(foe.x-e.x||direction)*15});},'castle_rook_defense');}}
+   if(form==='rook'){this.shield(s,12,300);if(this.canHit(s)&&r.num(r.globals.get(sid(3-s,'jcf6','ec6d')))===0&&Math.hypot(e.x-foe.x,e.y-foe.y)<=45){const attack={kind:'defense',form,rewarded:true};r.spawn(e,function*(rt,c){yield* rt.castle.hit(c,s,4,attack,{push:Math.sign(foe.x-e.x||direction)*15});},'castle_rook_defense');}}
    if(form==='queen')this.conceal(s,true);
    if(form==='king')this.recall(s);
    return;
@@ -126,9 +126,8 @@ export class CastleSystem{
    if(state.form!=='pawn'&&r.tick>=state.until){state.form='pawn';state.until=0;state.crown=null;}
    if(state.stealthUntil&&r.tick>=state.stealthUntil)this.endConceal(s);
    const skill=r.keys.has(s===1?82:80),ultimate=r.keys.has(s===1?83:40),skillEdge=skill&&!state.skillDown,ultimateEdge=ultimate&&!state.ultimateDown;state.skillDown=skill;state.ultimateDown=ultimate;
-   if(!this.alive(s)||this.blocked(s)||state.promotionUntil||r.tick<state.actionUntil)continue;
+   if(!this.alive(s)||this.blocked(s)||state.promotionUntil||state.stealthUntil>r.tick||r.tick<state.actionUntil)continue;
    if(ultimateEdge&&state.form==='pawn'&&r.tick>=state.ultimateAt&&r.num(r.globals.get(info(s).mana))>=60){this.mana(s,-60);state.promotionUntil=r.tick+18;state.ultimateAt=r.tick+360;state.lockX=body(r,s).x;state.lockY=body(r,s).y;continue;}
-   if(state.stealthUntil>r.tick)continue;
    if(skillEdge){this.skill(s);continue;}
    if(r.keys.has(s===1?69:13)&&r.tick>=state.attackAt)this.basic(s);
   }

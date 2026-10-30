@@ -27,6 +27,7 @@ for (const path of [
   "public/assets/castle/pawn.svg",
   "public/assets/castle/portrait-icon.svg",
   "public/assets/castle/promotion-icon.svg",
+  "public/assets/castle/tempo-icon.svg",
   "public/assets/castle/queen-shot.svg",
   "public/assets/castle/queen.svg",
   "public/assets/castle/rook-shot.svg",
