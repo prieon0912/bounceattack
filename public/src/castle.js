@@ -1,6 +1,6 @@
 import { showStatusVisual } from './expanded-secondary-skills.js';
 // Castle's values are kept together so each piece can be tuned independently.
-export const CASTLE = Object.freeze({id:35,startMana:20,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:1200,promotionTicks:18,ultimateCooldown:360});
+export const CASTLE = Object.freeze({id:35,startMana:20,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,ultimateCooldown:360});
 export const PIECES = Object.freeze({
  pawn:{name:'폰',damage:4,range:25,interval:33},knight:{name:'나이트',damage:6,range:55,interval:39},
  bishop:{name:'비숍',damage:6,range:110,interval:39},rook:{name:'룩',damage:8,range:120,interval:42},
@@ -73,7 +73,7 @@ export class CastleSystem{
  }
  step(){const r=this.r;if(r.scene!=='7dwq')return;
   for(const s of [1,2]){if(!this.active(s))continue;let state=this.state(s);if(!state){state={initialized:false,form:'pawn',until:0,attackAt:0,skillAt:0,ultimateAt:0,actionUntil:0,promotionUntil:0,skillDown:false,ultimateDown:false};r.globals.set(`castle:${s}`,state);}if(!state.initialized)continue;
-   if(state.promotionUntil&&r.tick>=state.promotionUntil){state.promotionUntil=0;state.form=promotedPiece(r.random);state.until=r.tick+1200;}
+   if(state.promotionUntil&&r.tick>=state.promotionUntil){state.promotionUntil=0;state.form=promotedPiece(r.random);state.until=r.tick+CASTLE.transformTicks;}
    if(state.form!=='pawn'&&r.tick>=state.until){state.form='pawn';state.until=0;}
    const skill=r.keys.has(s===1?82:80),ultimate=r.keys.has(s===1?83:40),skillEdge=skill&&!state.skillDown,ultimateEdge=ultimate&&!state.ultimateDown;state.skillDown=skill;state.ultimateDown=ultimate;
    if(!this.alive(s)||this.blocked(s)||state.promotionUntil||r.tick<state.actionUntil)continue;
@@ -87,9 +87,11 @@ export class CastleSystem{
   if(r.scene==='1ckl'){for(const [s,weapon]of [[1,'31us'],[2,'mimn']]){const e=r.originals.get(weapon);if(!e)continue;if(r.num(r.globals.get(info(s).character))===35){e.visible=false;e.castlePreviewHidden=true;}else if(e.castlePreviewHidden){e.visible=true;delete e.castlePreviewHidden;}}return;}
   for(const s of [1,2]){if(!this.active(s))continue;const state=this.state(s);if(!state)continue;if(!state.initialized){r.globals.set(info(s).mana,20);state.initialized=true;}
    if(state.promotionUntil){body(r,s).x=state.lockX;body(r,s).y=state.lockY;}
-   const e=r.originals.get(sid(s,'n230','ocqj'));if(e){r.setPicture(e,`castle-${state.form}-${e.objectId}`);r.setSize(e,20);e.rotation=0;}
+   const e=r.originals.get(sid(s,'n230','ocqj'));if(e){r.setPicture(e,`castle-${state.form}-${e.objectId}`);r.setSize(e,16);e.rotation=0;}
   }
  }
  blocksKey(key){for(const s of [1,2])if(this.active(s)){if([sid(s,69,13),sid(s,82,80),sid(s,83,40)].includes(key))return true;if(this.state(s)?.promotionUntil&&[...(s===1?[65,68,87]:[37,39,38])].includes(key))return true;}return false;}
- draw(c){const r=this.r;for(const s of [1,2]){if(!this.active(s)||!this.alive(s))continue;const state=this.state(s),e=body(r,s);if(!state||r.num(r.globals.get(info(s).stealth)))continue;c.save();c.lineWidth=1.4;c.strokeStyle='#c69c35';if(state.form!=='pawn'){c.beginPath();c.arc(e.x,-e.y,14,-Math.PI/2,-Math.PI/2+Math.PI*2*Math.max(0,state.until-r.tick)/1200);c.stroke();}if(state.shieldUntil>r.tick&&r.num(r.globals.get(info(s).shield))>0){c.strokeStyle='#97b9e0';c.beginPath();c.arc(e.x,-e.y,12,0,Math.PI*2);c.stroke();}c.font='bold 5px sans-serif';c.textAlign='center';c.lineWidth=1.2;c.strokeStyle='#fff';c.fillStyle='#333';c.strokeText(PIECES[state.form].name,e.x,-e.y+21);c.fillText(PIECES[state.form].name,e.x,-e.y+21);c.restore();}}
+ draw(c){const r=this.r;for(const s of [1,2]){if(!this.active(s)||!this.alive(s))continue;const state=this.state(s),e=body(r,s);if(!state||r.num(r.globals.get(info(s).stealth)))continue;
+  if(state.shieldUntil>r.tick&&r.num(r.globals.get(info(s).shield))>0){c.save();c.lineWidth=1.4;c.strokeStyle='#97b9e0';c.beginPath();c.arc(e.x,-e.y,12,0,Math.PI*2);c.stroke();c.restore();}
+ }}
 }
