@@ -18,7 +18,7 @@ export class Renderer {
     c.rect(-240, -135, 480, 270);
     c.clip();
     for (const e of runtime.entities.slice().reverse()) {
-      if (e.dead || runtime.secondarySkills.hidden(e)) continue;
+      if (e.dead || runtime.secondarySkills.hidden(e) || runtime.castle.hidden(e)) continue;
       // Entry's brush has flat (butt) ends; round caps made the HP/MP bars
       // poke out of the slanted (trapezoid) frame. Consecutive segments with
       // the same style are stroked as one polyline so corners stay joined.

@@ -8,6 +8,7 @@ module.exports=function(project){
  for(const id of ['afvb','8svk'])project.objects.find(o=>o.id===id).sprite.pictures.splice(34,0,picture('castle-profile-'+id,'profile.svg',500,500));
  for(const id of ['31us','mimn'])project.objects.find(o=>o.id===id).sprite.pictures.push(picture('castle-held-pawn-'+id,'pawn-held.svg'));
  const effect=project.objects.find(o=>o.id==='hb4u');for(const form of ['pawn','knight','bishop','rook','queen','king'])effect.sprite.pictures.push(picture('castle-shot-'+form,form+'-shot.svg'));for(const form of ['pawn','knight','bishop','rook','queen','king'])effect.sprite.pictures.push(picture('castle-held-'+form,form+'-held.svg'));
+ effect.sprite.pictures.push(picture('castle-crown','crown.svg',100,80));
  const tile=project.objects.find(o=>o.id==='ncwe');tile.sprite.pictures[2]=picture('castle-select','portrait-icon.svg',380,380);const stacks=JSON.parse(tile.script),init=stacks.find(s=>s[0]?.id==='ndxn');init.push({id:'castle-select-create',type:'create_clone',params:['self',null],statements:[]});tile.script=JSON.stringify(stacks);
  // A dimmed tile is a confirmed choice, not merely the currently hovered preview.
  // Apply the same lock to every selector row; online matchmaking still permits mirrors.

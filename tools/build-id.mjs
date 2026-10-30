@@ -7,6 +7,7 @@ for (const path of [
   "public/src/runtime.js",
   "public/src/castle.js",
   "public/assets/castle/profile.svg",
+  "public/assets/castle/crown.svg",
   "public/assets/castle/pawn-held.svg",
   "public/assets/castle/knight-held.svg",
   "public/assets/castle/bishop-held.svg",
