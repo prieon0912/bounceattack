@@ -21,13 +21,10 @@ export const logitechRageQuit=definition(34,'빡종',RAGE_QUIT,'logitech-rage-qu
   const direction=Math.sign(target.x-caster.x)||(r.num(r.globals.get(id(side,'etjn','846x')))===1?1:-1);r.add(target,id(3-side,'c9o4','lgp6'),direction*cfg.push*.625);state.slow={side:3-side,value:cfg.slow,until:r.tick+cfg.slowTicks};showStatusVisual(r,side,'slow',cfg.slowTicks);
  }
 });
-export const amazonesHuntingTrap=definition(9,'사냥용 덫',HUNTING_TRAP,'amazones-hunting-trap','다음 일반 공격으로 그물 덫을 포물선으로 던집니다. 땅에 펼쳐진 그물에 닿은 적을 속박합니다.',{
+export const amazonesHuntingTrap=definition(9,'사냥용 덫',HUNTING_TRAP,'amazones-hunting-trap','적을 속박시키는 그물 덫을 발사합니다.',{
  effectPictures:[['hunting-net','assets/secondary/amazones-net.svg',{width:100,height:100}]],
- canCast(r,s){const st=r.secondarySkills.state(s);return !st.armed&&!st.netUid;},
- *cast(r,c,{state}){state.armed=true;},
- onClone(r,c,child,side,state){if(!state.armed||c.e.clone||c.e.objectId!==id(side,'5rp3','6xoo')||c.block!=='7jk9'||!visible(r,side))return;
-  state.armed=false;child.dead=true;this.launch(r,side,state,child);
- },
+ canCast(r,s){return !r.secondarySkills.state(s).netUid;},
+ *cast(r,c,{side,caster,state}){this.launch(r,side,state,{x:caster.x,y:caster.y+4});},
  launch(r,side,state,origin){const cfg=HUNTING_TRAP,caster=body(r,side),target=body(r,3-side),direction=r.num(r.globals.get(id(side,'etjn','846x')))===1?1:-1,net=visual(r,side,'hunting-net',origin?.x??caster.x,origin?.y??caster.y,12,'hunting-net');state.netUid=net.uid;
   r.spawn(net,function*(rt){let landed=false,landedAt=0,speed=cfg.initialSpeed,tilt=cfg.initialTilt;try{for(let age=0;age<cfg.flightTicks+cfg.durationTicks+20&&alive(rt,side);age++){
    if(!landed){if(age>=cfg.flightTicks||net.y < -155||Math.abs(net.x)>255)return;
@@ -44,7 +41,7 @@ export const amazonesHuntingTrap=definition(9,'사냥용 덫',HUNTING_TRAP,'amaz
  }
 
 });
-export const boomTurret=definition(23,'터렛',TURRET,'boom-turret','터렛을 설치해 3초마다 앞뒤로 바주카를 발사합니다. 적이 접근하면 남은 탄환에 비례한 피해와 넉백, 둔화를 주고 파괴됩니다.',{
+export const boomTurret=definition(23,'터렛',TURRET,'boom-turret','앞뒤로 바주카를 발사합니다. 적이 접근한다면 자폭하며 적에게 피해를 줍니다.',{
  effectPictures:[],prepare(p){this.effectPictures=[['boom-turret-body','assets/secondary/boom-turret.svg',{width:240,height:180}],alias(p,'6115','turret-original-explosion',4)];prepare.call(this,p);},
  slowValue:logitechRageQuit.slowValue,
  canCast(r,s){return !r.secondarySkills.state(s).turretUid;},
