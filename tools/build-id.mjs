@@ -38,6 +38,11 @@ for (const path of [
   "public/assets/secondary/creation-move-icon.svg",
   "public/assets/secondary/pangram-hell-gate-icon.svg",
   "public/assets/secondary/pangram-hell-door.svg",
+  "public/assets/secondary/pangram-hell-door-opening-0.svg",
+  "public/assets/secondary/pangram-hell-door-opening-1.svg",
+  "public/assets/secondary/pangram-hell-door-opening-2.svg",
+  "public/assets/secondary/pangram-hell-door-opening-3.svg",
+
   "public/assets/secondary/logitech-rage-quit-icon.svg",
   "public/assets/secondary/amazones-hunting-trap-icon.svg",
   "public/assets/secondary/amazones-net.svg",
