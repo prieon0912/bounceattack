@@ -1,7 +1,7 @@
 // Adds Castle without modifying the archived Entry project or any original image.
 module.exports=function(project){
  const picture=(id,file,width=100,height=100)=>({id,name:id,fileurl:'assets/castle/'+file,dimension:{width,height},imageType:'svg'});
- const arrays={'5pvu':'체크메티트','xxgw':'체스의 영혼','of7a':'기물 전환','dw8v':'공격을 적중시켜 마나를 획득합니다. 획득한 마나로 비폰 기물로 프로모션합니다.','twcx':'템포','wynm':'기물에 맞게 적을 공격합니다.','x7mx':'체크','gsve':'현재 기물의 공격 전술을 사용합니다.','74ed':'프로모션','9m7u':'무작위 비폰 기물로 변신합니다. 변신 상태는 몇 초 뒤 해제됩니다.'};
+ const arrays={'5pvu':'체크메티트','xxgw':'체스의 영혼','of7a':'기물 전환','dw8v':'마나 자동 수급량이 줄어드나, 공격을 적중시키면 마나를 획득합니다.','twcx':'템포','wynm':'기물에 맞게 적을 공격합니다.','x7mx':'체크','gsve':'현재 기물의 공격 전술을 사용합니다.','74ed':'프로모션','9m7u':'무작위 비폰 기물로 변신합니다. 변신 상태는 몇 초 뒤 해제됩니다.'};
  for(const [id,data]of Object.entries(arrays)){const list=project.variables.find(v=>v.id===id).array;while(list.length<35)list.push({data:0});list[34]={...list[34],data};}
  for(const id of ['j5y7','zyy3','n230','ocqj']){const o=project.objects.find(o=>o.id===id);o.sprite.pictures.splice(34,0,picture('castle-pawn-'+id,'pawn.svg',180,180));if(['n230','ocqj'].includes(id))for(const form of ['knight','bishop','rook','queen','king'])o.sprite.pictures.push(picture('castle-'+form+'-'+id,form+'.svg',180,180));}
  // 평타 아이콘(템포)은 캐릭터 아이콘과 다른 체스 시계 그림.

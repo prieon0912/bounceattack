@@ -1,9 +1,10 @@
+import BigNumber from './vendor/bignumber.mjs';
 import { showStatusVisual } from './expanded-secondary-skills.js';
 // Castle's values are kept together so each piece can be tuned independently.
 export const CASTLE = Object.freeze({id:35,startMana:20,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,ultimateCooldown:360,heldSize:11.25,previewHeldSize:31.25});
 export const PIECES = Object.freeze({
- pawn:{name:'폰',damage:4,range:62.5,interval:33},knight:{name:'나이트',damage:6,range:82.5,interval:39},
- bishop:{name:'비숍',damage:6,range:110,interval:39},rook:{name:'룩',damage:8,range:158.4,interval:42},
+ pawn:{name:'폰',damage:4,range:62.5,interval:33},knight:{name:'나이트',damage:6,range:96.1125,dash:54.8625,interval:39},
+ bishop:{name:'비숍',damage:7,range:110,interval:39},rook:{name:'룩',damage:8,range:158.4,interval:42},
  queen:{name:'퀸',damage:10,range:184.8,interval:36},king:{name:'킹',damage:12,range:140,interval:39}
 });
 export function promotedPiece(random){const n=random()*100;return n<30?'knight':n<60?'bishop':n<80?'rook':n<95?'queen':'king';}
@@ -21,12 +22,13 @@ export class CastleSystem{
  active(s){return this.r.scene==='7dwq'&&this.r.num(this.r.globals.get(info(s).character))===35;}
  state(s){return this.r.globals.get(`castle:${s}`);}
  manaWrite(id,value){const s=id==='qn98'?1:id==='thom'?2:0;if(!s||!this.active(s)||!this.state(s)?.initialized)return value;const old=this.r.num(this.r.globals.get(id));return Math.min(CASTLE.maxMana,Math.max(0,Math.min(old,this.r.num(value))));}
- mana(s,delta){const r=this.r,id=info(s).mana;r.globals.set(id,Math.min(100,Math.max(0,r.num(r.globals.get(id))+delta)));}
+ mana(s,delta){const r=this.r,id=info(s).mana;r.globals.set(id,Math.min(100,Math.max(0,new BigNumber(r.num(r.globals.get(id))).plus(delta).toNumber())));}
  alive(s){const r=this.r;return r.scene==='7dwq'&&r.num(r.globals.get(info(s).hp))>0&&r.num(r.globals.get('r71b'))===0;}
+ manaRate(){return ({1:.05,2:.08,3:.15})[this.r.num(this.r.globals.get('75q1'))]??.08;}
  blocked(s){return this.r.num(this.r.globals.get(info(s).stun))!==0;}
  reward(s,attack){if(attack.rewarded)return;attack.rewarded=true;
   // Match native passive regeneration ratios (0.05 / 0.08 / 0.15), with mode 2 as the existing baseline.
-  const rate=({1:.05,2:.08,3:.15})[this.r.num(this.r.globals.get('75q1'))]??.08;
+  const rate=this.manaRate();
   this.mana(s,(attack.kind==='basic'?(attack.form==='pawn'?20:10):(attack.form==='pawn'?30:20))*rate/.08);
  }
  *hit(c,s,damage,attack,effect=null){const r=this.r,foe=3-s;if(!this.canHit(s))return false;
@@ -98,8 +100,8 @@ export class CastleSystem{
   }finally{slash.dead=true;}
  }
  basic(s){const r=this.r,state=this.state(s),form=state.form,piece=PIECES[form],attack={kind:'basic',form,rewarded:false},e=body(r,s),foe=body(r,3-s),direction=turn(r,s);state.attackAt=r.tick+piece.interval;state.attackVisualAt=r.tick;
-  if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+6;r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?piece.range:41.25,damage:piece.damage,dash:form==='knight'?41.25:0});},'castle_basic');return;}
-  if(form==='bishop'){for(const dy of [-1,1])this.shot(s,attack,{a:angle(direction,dy),range:110,damage:6,size:16});return;}
+  if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+6;r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?piece.range:41.25,damage:piece.damage,dash:form==='knight'?piece.dash:0});},'castle_basic');return;}
+  if(form==='bishop'){for(const dy of [-1,1])this.shot(s,attack,{a:angle(direction,dy),range:110,damage:piece.damage,size:24});return;}
   this.shot(s,attack,{a:form==='rook'?angle(direction,0):angle(foe.x-e.x,foe.y-e.y),range:piece.range,damage:piece.damage,size:form==='rook'?18:form==='king'?22:12.6,speed:form==='rook'?4:form==='king'?5:6,homing:form==='queen'||form==='king',effect:form==='king'?{slow:4,ticks:24}:null});
  }
  skill(s){const r=this.r,state=this.state(s),form=state.form,e=body(r,s),foe=body(r,3-s),direction=turn(r,s),defensive=r.secondarySkills.state(s).mode==='secondary';
@@ -114,15 +116,18 @@ export class CastleSystem{
    return;
   }
   const attack={kind:'skill',form,rewarded:false};
-  if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+(form==='knight'?12:8);r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?8:22,damage:form==='pawn'?4:8,dash:form==='pawn'?80:40,ticks:8,omni:form==='pawn'});if(form==='knight'&&rt.castle.alive(s))yield* rt.castle.melee(c,s,attack,{range:24,damage:4,ticks:4,height:38,centered:true});},'castle_check');return;}
-  if(form==='bishop'){const x=e.x,y=e.y;for(const sign of [-1,1])this.shot(s,attack,{x,y:y+sign*50,a:angle(direction,-sign),range:140,damage:5,size:16});return;}
+  if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+(form==='knight'?12:8);r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?8:22,damage:form==='pawn'?4:8,dash:form==='pawn'?80:53.2,ticks:8,omni:form==='pawn'});if(form==='knight'&&rt.castle.alive(s))yield* rt.castle.melee(c,s,attack,{range:24,damage:4,ticks:4,height:38,centered:true});},'castle_check');return;}
+  if(form==='bishop'){const x=e.x,y=e.y;for(const sign of [-1,1])this.shot(s,attack,{x,y:y+sign*50,a:angle(direction,-sign),range:140,damage:5,size:24});return;}
   if(form==='rook'){this.shot(s,attack,{a:angle(direction,0),range:184.8,damage:12,size:21.6,speed:4,effect:{push:direction*15,root:30}});return;}
-  if(form==='queen'){for(let i=0;i<8;i++){const cardinal=i%2===0;this.shot(s,attack,{a:i*Math.PI/4,range:cardinal?PIECES.rook.range:PIECES.bishop.range,damage:5,size:cardinal?18:16,speed:cardinal?4:5,art:cardinal?'rook':'bishop'});}return;}
+  if(form==='queen'){for(let i=0;i<8;i++){const cardinal=i%2===0;this.shot(s,attack,{a:i*Math.PI/4,range:cardinal?PIECES.rook.range:PIECES.bishop.range,damage:5,size:cardinal?18:24,speed:cardinal?4:5,art:cardinal?'rook':'bishop'});}return;}
   this.crown(s);
  }
  step(){const r=this.r;if(r.scene!=='7dwq')return;
   for(const s of [1,2]){if(!this.active(s))continue;let state=this.state(s);if(!state){state={initialized:false,form:'pawn',until:0,attackAt:0,skillAt:0,ultimateAt:0,actionUntil:0,promotionUntil:0,skillDown:false,ultimateDown:false};r.globals.set(`castle:${s}`,state);}if(!state.initialized)continue;
    if(state.promotionUntil&&r.tick>=state.promotionUntil){state.promotionUntil=0;state.form=promotedPiece(r.random);state.until=r.tick+CASTLE.transformTicks;}
+   // Only hidden Bishop/Queen time is excluded; cooldowns and the real-time clock keep advancing.
+   if(['bishop','queen'].includes(state.form)&&state.stealthUntil>0&&r.tick<=state.stealthUntil&&r.num(r.globals.get(info(s).stealth))>0&&this.alive(s))state.until++;
+   if(this.alive(s)&&r.num(r.globals.get(sid(s,'dqcb','a5tc')))===0)this.mana(s,this.manaRate()*.5);
    if(state.form!=='pawn'&&r.tick>=state.until){state.form='pawn';state.until=0;state.crown=null;}
    if(state.stealthUntil&&r.tick>=state.stealthUntil)this.endConceal(s);
    const skill=r.keys.has(s===1?82:80),ultimate=r.keys.has(s===1?83:40),skillEdge=skill&&!state.skillDown,ultimateEdge=ultimate&&!state.ultimateDown;state.skillDown=skill;state.ultimateDown=ultimate;

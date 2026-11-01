@@ -33,6 +33,13 @@ for (const path of [
   "public/assets/castle/rook-shot.svg",
   "public/assets/castle/rook.svg",
   "public/src/secondary-skills.js",
+  "public/src/tactical-secondary-skills.js",
+  "public/assets/secondary/logitech-rage-quit-icon.svg",
+  "public/assets/secondary/amazones-hunting-trap-icon.svg",
+  "public/assets/secondary/amazones-net.svg",
+  "public/assets/secondary/boom-turret-icon.svg",
+  "public/assets/secondary/boom-turret.svg",
+
   "public/src/brand-fire-zone.js",
   "public/src/nevil-homing-boomerang.js",
   "public/src/additional-secondary-skills.js",
