@@ -1,3 +1,4 @@
+import { STRATEGIC_SECONDARY_SKILLS } from './strategic-secondary-skills.js';
 import { TACTICAL_SECONDARY_SKILLS } from './tactical-secondary-skills.js';
 import { castleCastling } from './castle.js';
 import { NEW_SECONDARY_SKILLS, restorePresentation } from './expanded-secondary-skills.js';
@@ -5,7 +6,7 @@ import { NEW_SECONDARY_SKILLS, restorePresentation } from './expanded-secondary-
 import { brandFireZone } from "./brand-fire-zone.js";
 import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
 import { smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic } from "./additional-secondary-skills.js";
-export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, castleCastling];
+export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, ...STRATEGIC_SECONDARY_SKILLS, castleCastling];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
   // Nevil's archived 1P body references a black/green variant; use the same orange
   // body as 2P and the original selector, preserving picture id, size and hit geometry.
@@ -54,6 +55,11 @@ export class SecondarySkillSystem {
         value = definition.slowValue(this.runtime, e, id, value, this.state(side), side);
     }
     return value;
+  }
+  damageMultiplier(id, value) {
+    for (const side of [1, 2]) { const state=this.state(side),definition=this.definition(side);
+      if(state.mode==='secondary'&&definition?.damageMultiplier) value=definition.damageMultiplier(this.runtime,id,value,side,state);
+    } return value;
   }
   state(side) {
     if (!SIDES[side]) throw Error("Invalid player side");
