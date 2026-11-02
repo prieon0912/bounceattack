@@ -101,7 +101,7 @@ export class CastleSystem{
  }
  basic(s){const r=this.r,state=this.state(s),form=state.form,piece=PIECES[form],attack={kind:'basic',form,rewarded:false},e=body(r,s),foe=body(r,3-s),direction=turn(r,s);state.attackAt=r.tick+piece.interval;state.attackVisualAt=r.tick;
   if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+6;r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?piece.range:41.25,damage:piece.damage,dash:form==='knight'?piece.dash:0});},'castle_basic');return;}
-  if(form==='bishop'){for(const dy of [-1,1])this.shot(s,attack,{a:angle(direction,dy),range:110,damage:piece.damage,size:24});return;}
+  if(form==='bishop'){for(const dy of [-1,1])this.shot(s,attack,{a:angle(direction,dy),range:110,damage:piece.damage,size:18});return;}
   this.shot(s,attack,{a:form==='rook'?angle(direction,0):angle(foe.x-e.x,foe.y-e.y),range:piece.range,damage:piece.damage,size:form==='rook'?18:form==='king'?22:12.6,speed:form==='rook'?4:form==='king'?5:6,homing:form==='queen'||form==='king',effect:form==='king'?{slow:4,ticks:24}:null});
  }
  skill(s){const r=this.r,state=this.state(s),form=state.form,e=body(r,s),foe=body(r,3-s),direction=turn(r,s),defensive=r.secondarySkills.state(s).mode==='secondary';
@@ -117,9 +117,9 @@ export class CastleSystem{
   }
   const attack={kind:'skill',form,rewarded:false};
   if(form==='pawn'||form==='knight'){state.actionUntil=r.tick+(form==='knight'?12:8);r.spawn(e,function*(rt,c){yield* rt.castle.melee(c,s,attack,{range:form==='pawn'?8:22,damage:form==='pawn'?4:8,dash:form==='pawn'?80:53.2,ticks:8,omni:form==='pawn'});if(form==='knight'&&rt.castle.alive(s))yield* rt.castle.melee(c,s,attack,{range:24,damage:4,ticks:4,height:38,centered:true});},'castle_check');return;}
-  if(form==='bishop'){const x=e.x,y=e.y;for(const sign of [-1,1])this.shot(s,attack,{x,y:y+sign*50,a:angle(direction,-sign),range:140,damage:5,size:24});return;}
+  if(form==='bishop'){const x=e.x,y=e.y;for(const sign of [-1,1])this.shot(s,attack,{x,y:y+sign*50,a:angle(direction,-sign),range:140,damage:5,size:18});return;}
   if(form==='rook'){this.shot(s,attack,{a:angle(direction,0),range:184.8,damage:12,size:21.6,speed:4,effect:{push:direction*15,root:30}});return;}
-  if(form==='queen'){for(let i=0;i<8;i++){const cardinal=i%2===0;this.shot(s,attack,{a:i*Math.PI/4,range:cardinal?PIECES.rook.range:PIECES.bishop.range,damage:5,size:cardinal?18:24,speed:cardinal?4:5,art:cardinal?'rook':'bishop'});}return;}
+  if(form==='queen'){for(let i=0;i<8;i++){const cardinal=i%2===0;this.shot(s,attack,{a:i*Math.PI/4,range:cardinal?PIECES.rook.range:PIECES.bishop.range,damage:5,size:18,speed:cardinal?4:5,art:cardinal?'rook':'bishop'});}return;}
   this.crown(s);
  }
  step(){const r=this.r;if(r.scene!=='7dwq')return;

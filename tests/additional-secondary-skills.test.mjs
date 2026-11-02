@@ -43,10 +43,10 @@ test("sword wave consumes exactly three actual basic attacks, not held frames, a
  r.run(2,[side===1?69:13]);r.run(110);assert.equal(r.secondarySkills.state(side).charges,0);assert.deepEqual(r.faults,[]);
  }
 });
-test("sword wave flies forward, hits airborne targets once for 3, respects stealth",()=>{
+test("sword wave flies forward, hits airborne targets once for 5, respects stealth",()=>{
  for(const hidden of [false,true]){const r=game(7);freeze(r);r.s("1P 방향",1);r.originals.get("n8fg").x=80;r.originals.get("n8fg").y=20;
  const hp=r.g("2P 체력");r.globals.set("rav6",hidden?1:0);r.run(1,[82]);r.run(1);r.run(2,[69]);r.run(60);
- assert.equal(hp-r.g("2P 체력"),hidden?0:3);assert.ok(!r.entities.some(e=>e.secondaryEffect==="atlen-sword-wave"));}
+ assert.equal(hp-r.g("2P 체력"),hidden?0:5);assert.ok(!r.entities.some(e=>e.secondaryEffect==="atlen-sword-wave"));}
 });
 test("barrage doubles real original bullets at upper/lower offsets for three seconds, on either side",()=>{
  for(const side of [1,2]){const r=game(side===1?10:2,side===2?10:2,side===1?["secondary","primary"]:["primary","secondary"]);freeze(r);
@@ -167,7 +167,7 @@ test("maximum firepower never upgrades flames already in flight or the remainder
  r.run(1,[82]);r.run(50);assert.ok(!r.entities.some(e=>e.maximumFirepowerOwner));assert.equal(r.secondarySkills.state(1).maximumArmed,true);
  r.run(300);r.run(2,[69]);assert.ok(r.entities.some(e=>e.maximumFirepowerOwner===1));
 });
-test("reversal reflects the next actual HP loss once, preserves own damage, and does not trigger on heals or full shields",()=>{
+test("reversal reflects 80% of the next actual HP loss once, preserves own damage, and does not trigger on heals or full shields",()=>{
  for(const side of [1,2]){
  const r=game(side===1?18:2,side===2?18:2,side===1?["secondary","primary"]:["primary","secondary"]);freeze(r);
  r.run(1,[side===1?82:80]);assert.ok(Math.abs(r.g(`${side}P MP`)-35)<.5);
@@ -176,17 +176,17 @@ test("reversal reflects the next actual HP loss once, preserves own damage, and 
  assert.equal(r.secondarySkills.state(side).reversalArmed,true);
  r.s(`${side}P 방어력`,10);directDamage(r,side,4);assert.equal(r.secondarySkills.state(side).reversalArmed,true);assert.equal(r.g(`${foe}P 체력`),foeHP);
  r.s(`${side}P 방어력`,2);r.s(`${side}P 피해감소량`,.5);directDamage(r,side,10);
- assert.equal(r.g(`${side}P 체력`),ownHP+1-3);assert.equal(r.g(`${foe}P 체력`),foeHP-3);
- assert.equal(r.secondarySkills.state(side).reversalArmed,false);directDamage(r,side,2);assert.equal(r.g(`${foe}P 체력`),foeHP-3);
+ assert.equal(r.g(`${side}P 체력`),ownHP+1-3);assert.equal(r.g(`${foe}P 체력`),foeHP-2.4);
+ assert.equal(r.secondarySkills.state(side).reversalArmed,false);directDamage(r,side,2);assert.equal(r.g(`${foe}P 체력`),foeHP-2.4);
  assert.deepEqual(r.faults,[]);
  }
 });
 test("mirror reversal cannot bounce recursively or consume the other player's armed reversal",()=>{
  const r=game(18,18,["secondary","secondary"]);freeze(r);r.run(1,[82,80]);
  const a=r.g("1P 체력"),b=r.g("2P 체력");directDamage(r,1,7);
- assert.equal(r.g("1P 체력"),a-7);assert.equal(r.g("2P 체력"),b-7);
+ assert.equal(r.g("1P 체력"),a-7);assert.equal(r.g("2P 체력"),b-5.6);
  assert.equal(r.secondarySkills.state(1).reversalArmed,false);assert.equal(r.secondarySkills.state(2).reversalArmed,true);
- directDamage(r,2,3);assert.equal(r.g("1P 체력"),a-10);assert.equal(r.g("2P 체력"),b-10);assert.equal(r.secondarySkills.state(2).reversalArmed,false);
+ directDamage(r,2,3);assert.equal(r.g("1P 체력"),a-9.4);assert.equal(r.g("2P 체력"),b-8.6);assert.equal(r.secondarySkills.state(2).reversalArmed,false);
  assert.deepEqual(r.faults,[]);
 });
 test("new firepower/reversal skills use original selector and matchmaking supports both",async()=>{

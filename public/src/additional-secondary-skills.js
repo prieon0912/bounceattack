@@ -1,6 +1,6 @@
 // Stage units and tick timing match the original Entry game (60 ticks/second).
 export const HEALING_POTION = Object.freeze({ manaCost: 39, radius: 40, expandTicks: 18, durationTicks: 180, intervalTicks: 60, healing: 2 });
-export const SWORD_WAVE = Object.freeze({ manaCost: 30, charges: 3, damage: 3, speed: 4, durationTicks: 35 });
+export const SWORD_WAVE = Object.freeze({ manaCost: 30, charges: 3, damage: 5, speed: 4, durationTicks: 42 });
 export const BARRAGE = Object.freeze({ manaCost: 54, durationTicks: 180, offset: 3 });
 const bodyId = side => side === 1 ? "00h9" : "n8fg";
 const prepare = function(project) {
@@ -151,16 +151,16 @@ export const nukeMaximumFirepower = {
 export const matrixReversalMagic = {
   character: 18, name: "반전 마술", manaCost: REVERSAL_MAGIC.manaCost, cooldownTicks: 0, lockVariable: false,
   icon: "assets/secondary/matrix-reversal-magic-icon.svg", secondaryPictureId: "matrix-reversal-magic-icon", prepare,
-  description: "다음에 받는 피해량을 상대에게도 돌려줍니다.",
+  description: "다음에 받는 피해량을 상대에게 일부 돌려줍니다.",
   canCast(r, side) { return !r.secondarySkills.state(side).reversalArmed; },
   *cast(r, c, { state }) { state.reversalArmed = true; },
   onHealthChange(r, e, id, before, after, side, state) {
     if (!state.reversalArmed || id !== (side === 1 ? "akf6" : "7ir2") || after >= before || before <= 0) return;
     state.reversalArmed = false;
-    const amount = before - after, targetHP = side === 1 ? "7ir2" : "akf6";
+    const amount = (before - after) * .8, targetHP = side === 1 ? "7ir2" : "akf6";
     const target = r.originals.get(bodyId(side === 1 ? 2 : 1));
     if (!target || target.dead || r.num(r.globals.get(targetHP)) <= 0) return;
-    // Reflect the final HP loss exactly once, with no second mitigation pass or reflection loop.
+    // Reflect 80% of the final HP loss exactly once, with no second mitigation pass or reflection loop.
     r.secondarySkills.reflecting = true;
     try {
       r.add(target, targetHP, -amount);

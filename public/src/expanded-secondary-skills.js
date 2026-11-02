@@ -73,7 +73,7 @@ export const kenenShadow=definition(6,'그림자 속으로',39,'kenen-shadow','�
  hidden(r,e,s,st){return st.shadowUntil>r.tick&&([ids(s,'00h9','n8fg'),ids(s,'n230','ocqj'),ids(s,'zlk5','79eo'),ids(s,'aadi','0y61')].includes(e.objectId)||(['0oxa','siav','5c3y','w3fb'].includes(e.objectId)&&e.combatSide===s));}
 });
 export const cannonGrenade=definition(32,'유탄',72,'cannon-grenade','기어의 절반을 소모하며 적에게 유도되는 유도탄을 발사합니다.',{
- range:150,
+ range:130,
  effectPictures:[],
  prepare(project){this.effectPictures=[nativePicture(project,'plg8','cannon-grenade-projectile', '4zk0')];prepare.call(this,project);},
  *cast(r,c,{side,caster,target,state}){const owner=context(r,side),held=Math.max(0,Math.min(10,Math.floor(r.num(r.get(owner,'ck61'))))),spent=Math.ceil(held/2);r.set(owner,'ck61',held-spent);r.set(owner,'7rns',Math.max(0,r.num(r.get(owner,'7rns'))-spent));state.lastGearsSpent=spent;

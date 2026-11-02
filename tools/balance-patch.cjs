@@ -409,6 +409,18 @@ module.exports = function applyBalancePatch(project) {
     followTarget("hyk2", by, origin, target, "y");
   }
 
+  // 2026-11-02: reduce both phases of Devil Mage's actual ultimate dash by 7.5%.
+  for (const [o,before,blocks] of [
+    ["dg09",100,["ilh4","88lb"]],["dg09",150,["dwf9","wwpu"]],
+    ["zzbm",150,["ilh4","88lb"]],["zzbm",150,["05e8","5qgr"]],
+  ]) for(const [index,b] of blocks.entries()) setNumber(o,b,[1],index===0?-before:before,(index===0?-before:before)*.925);
+  // Exact-zero HP must take the same native defeat/result path as overkill.
+  for(const [o,b] of [["tw3p","li0g"],["vrl3","wy03"]]){
+    const condition=locate(o,b).block.params[0];
+    if(condition.type!=="boolean_basic_operator"||condition.params[1]!=="LESS")throw Error("Unexpected defeat condition "+o);
+    condition.params[1]="LESS_OR_EQUAL";
+  }
+
   for (const [objectId, stacks] of scripts) objects.get(objectId).script = JSON.stringify(stacks);
   return project;
 };
