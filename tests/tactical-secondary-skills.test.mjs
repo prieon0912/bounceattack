@@ -76,13 +76,13 @@ for(const side of [1,2])test(`Elemental Sword Arts side ${side}: all forms deal 
   const received=[],native=r.functions.get(side===1?'qy83':'05j0'),param=native.params[0];
   r.functions.set(side===1?'qy83':'05j0',{...native,fn:function*(rt,c){received.push(c.args[param]);yield* native.fn(rt,c);}});
   const start=r.tick;r.run(12,[key]);assert.deepEqual(received,[[-8,-7,-6][form]]);
-  assert.equal(r.globals.get(side===1?'qn98':'thom'),63);
-  assert.equal(r.secondarySkills.state(side).readyAt-start,form===1?91:241);
-  if(form===0){assert.ok(r.secondarySkills.state(side).slow.until>r.tick);r.run(185);assert.deepEqual(received,[-8,-1,-1,-1]);}
+  assert.equal(r.globals.get(side===1?'qn98':'thom'),59);
+  assert.equal(r.secondarySkills.state(side).readyAt-start,form===2?241:61);
+  if(form===0){assert.ok(r.secondarySkills.state(side).slow.until>r.tick);r.run(185);assert.deepEqual(received,[-8,-2,-2,-2]);}
   if(form===1){const stun=side===1?'wyyq':'8w41';assert.equal(r.num(r.globals.get(stun)),1);r.run(35);assert.equal(r.num(r.globals.get(stun)),0);}
   if(form===2){
    const fire=()=>r.spawn(e,function*(rt,c){yield* rt.call(c,side===1?'qy83':'05j0',[-5,0,1]);},'test_water_boost');
-   const x=e.x;e.x=x+41;fire();r.run(1);assert.equal(received.at(-1),-5);
+   const x=e.x;e.x=x+45;fire();r.run(1);assert.equal(received.at(-1),-5);
    e.x=x;fire();r.run(1);assert.equal(received.at(-1),-6);
    r.run(173);assert.equal(r.num(r.globals.get(hp)),93);
    fire();r.run(1);assert.equal(received.at(-1),-5);

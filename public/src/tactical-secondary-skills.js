@@ -143,7 +143,7 @@ export const wartWaterPillar=definition(21,'물기둥',PILLAR,'wart-water-pillar
        if(rt.num(rt.globals.get(vy))<=0){
         if(vulnerable(rt,3-side)){
          state.slow={side:3-side,value:PILLAR.slow,until:rt.tick+PILLAR.slowTicks};
-         showStatusVisual(rt,side,'slow',PILLAR.slowTicks);
+         // The native slow emitter reads slowValue and draws its usual particles.
         }return;
        }
        yield 1;
@@ -155,16 +155,18 @@ export const wartWaterPillar=definition(21,'물기둥',PILLAR,'wart-water-pillar
   }}finally{effect.dead=true;for(const drop of spray)drop.dead=true;}
  }
 });
-const ELEMENT={manaCost:37,cooldownTicks:240,electricCooldownTicks:90};
+const ELEMENT={manaCost:41,cooldownTicks:240,attackCooldownTicks:60};
 const elementOf=(r,s)=>r.num(r.get(body(r,s),'arfp'));
 const stunKey=s=>id(s,'8w41','wyyq');
-const areaRadius=40;
+const areaRadius=44;
 export const elementSwordArts=definition(24,'원소술',ELEMENT,'element-sword-arts','현재 강화 속성에 맞는 검술을 사용합니다.',{
  prepare(p){
   this.effectPictures=[0,1,2].map(i=>alias(p,'4cof','element-art-'+i,i));
+  this.effectPictures.push(alias(p,'m54n','element-fire-sword',0));
   this.effectPictures.push(['element-water-area','assets/secondary/element-water-area.svg',{width:100,height:100}]);
   prepare.call(this,p);
  },
+ hidden(r,e,side,state){return !!state.fireSwing&&!e.clone&&e.objectId===id(side,'m54n','rj41');},
  tick(r,side,state){if(state.waterBoost&&(r.tick>=state.waterBoost.until||elementOf(r,side)!==2))delete state.waterBoost;},
  blocksKey(r,key,side,state){return !!state.elementSwing&&[id(side,69,13),id(side,83,40)].includes(key);},
  slowValue(r,e,variable,raw,state){return logitechRageQuit.slowValue(r,e,variable,raw,state);},
@@ -175,8 +177,9 @@ export const elementSwordArts=definition(24,'원소술',ELEMENT,'element-sword-a
  },
  *cast(r,c,{side,caster,target,state}){
   const element=elementOf(r,side),dir=facing(r,side),x=caster.x,y=caster.y;
-  if(element===1)state.readyAt=r.tick+ELEMENT.electricCooldownTicks;
-  const slash=visual(r,side,'element-art-'+element,x,y,element===0?57:element===1?36:29,'element-slash');
+  if(element!==2)state.readyAt=r.tick+ELEMENT.attackCooldownTicks;
+  const slash=visual(r,side,element===0?'element-fire-sword':'element-art-'+element,x,y,element===0?47:element===1?36:29,'element-slash');
+  if(element===0){slash.regX=106;slash.regY=279;state.fireSwing=true;}
   let hit=false;state.elementSwing=true;
   try{
    if(element===2){
@@ -197,10 +200,10 @@ export const elementSwordArts=definition(24,'원소술',ELEMENT,'element-sword-a
      for(let step=0;step<6;step++){const old=caster.x;caster.x+=dir;if(Math.abs(caster.x)>232||r.reach(caster,'6tzq')){caster.x=old;break;}}
     }
     const angle=dir*(frame/11*2*Math.PI);
-    slash.x=caster.x+(element===2?Math.cos(angle)*22:dir*(element===0?22:13));
+    slash.x=caster.x+(element===2?Math.cos(angle)*22:dir*(element===0?6:13));
     slash.y=caster.y+(element===2?Math.sin(angle)*22:0);
     slash.scaleX=Math.abs(slash.scaleX)*dir;
-    slash.rotation=element===2?-angle*180/Math.PI:element===0?dir*(45-frame*8):0;
+    slash.rotation=element===2?-angle*180/Math.PI:element===0?dir*(-63+frame*13):0;
     slash.effects.transparency=Math.max(0,frame-8)*22;
     const dx=(target.x-caster.x)*dir,dy=target.y-caster.y;
     const inRange=element===2?Math.hypot(target.x-x,target.y-y)<=areaRadius:
@@ -209,13 +212,20 @@ export const elementSwordArts=definition(24,'원소술',ELEMENT,'element-sword-a
     if(!hit&&inRange&&canStrike(r,side)){
      hit=true;yield* r.call(c,id(side,'qy83','05j0'),[-[8,7,5][element],0,1]);
      if(element===0){
-      if(vulnerable(r,3-side)){
-       state.slow={side:3-side,value:8,until:r.tick+180};showStatusVisual(r,side,'slow',180);
+      if(vulnerable(r,3-side))state.slow={side:3-side,value:8,until:r.tick+180};
+      if(state.burn)state.burn.until=r.tick+180;
+      else{
+       const burn=state.burn={until:r.tick+180};
+       let nextBurn=r.tick+60;
+       r.spawn(caster,function*(rt,ctx){
+        try{while(alive(rt,side)&&alive(rt,3-side)){
+         yield Math.max(1,nextBurn-rt.tick);nextBurn+=60;
+         if(rt.tick>burn.until||!alive(rt,side)||!alive(rt,3-side))return;
+         if(canStrike(rt,side))yield* rt.call(ctx,id(side,'qy83','05j0'),[-2,0,1]);
+         if(rt.tick>=burn.until)return;
+        }}finally{if(state.burn===burn)delete state.burn;}
+       },'element_burn');
       }
-      r.spawn(caster,function*(rt,ctx){
-       for(let tick=0;tick<3;tick++){yield 60;if(!alive(rt,side)||!alive(rt,3-side))return;
-        if(canStrike(rt,side))yield* rt.call(ctx,id(side,'qy83','05j0'),[-1,0,1]);}
-      },'element_burn');
      }
      if(element===1&&vulnerable(r,3-side)){
       const key=stunKey(3-side),gen=id(side,'bpv5','bpv0');
@@ -226,7 +236,7 @@ export const elementSwordArts=definition(24,'원소술',ELEMENT,'element-sword-a
     }
     yield 1;
    }
-  }finally{slash.dead=true;delete state.elementSwing;}
+  }finally{slash.dead=true;delete state.elementSwing;delete state.fireSwing;}
  }
 });
 export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts];
