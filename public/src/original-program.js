@@ -43409,7 +43409,7 @@ r.command(c,"set_scale_size",["1",null]);
 c.block="57lm";r.guard(c);
 r.command(c,"show",[null]);
 c.block="fj0m";r.guard(c);
-for(let i1216=0,n1216=Math.max(0,Math.floor(r.num("45")));i1216<n1216;i1216++){
+for(let i1216=0,n1216=Math.max(0,Math.floor(r.num("48")));i1216<n1216;i1216++){
 c.block="b3rq";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["19","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -43417,7 +43417,7 @@ yield 1;
 c.block="cypf";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["x49z"]),null]);
 c.block="rbsn";r.guard(c);
-r.command(c,"set_scale_size",["20",null]);
+r.command(c,"set_scale_size",["21.517241379310345",null]);
 c.block="npld";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0",null]);
 c.block="geue";r.guard(c);
@@ -43427,13 +43427,13 @@ for(let i1217=0,n1217=Math.max(0,Math.floor(r.num("50")));i1217<n1217;i1217++){
 c.block="vazr";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="f3xy";r.guard(c);
-r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["145","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","14"]),null]);
+r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["156","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","14"]),null]);
 c.block="5cai";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="g5td";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["7nlr",null]),"EQUAL","0"]))){
 c.block="or82";r.guard(c);
-yield* r.call(c,"05j0",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["150","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","-10"]),10,"1"]);
+yield* r.call(c,"05j0",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["150","MINUS",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"DIVIDE","1.0758620689655172"])]),"DIVIDE","-10"]),10,"1"]);
 c.block="qr9i";r.guard(c);
 r.command(c,"set_variable",["7nlr","1",null]);
 }
@@ -43814,7 +43814,7 @@ r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["ojon"]),null]);
 c.block="hltx";r.guard(c);
 r.command(c,"set_scale_size",["1",null]);
 c.block="mabe";r.guard(c);
-for(let i1230=0,n1230=Math.max(0,Math.floor(r.num("45")));i1230<n1230;i1230++){
+for(let i1230=0,n1230=Math.max(0,Math.floor(r.num("48")));i1230<n1230;i1230++){
 c.block="04k4";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["19","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 yield 1;
@@ -43822,7 +43822,7 @@ yield 1;
 c.block="4yid";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["1v1m"]),null]);
 c.block="kl6v";r.guard(c);
-r.command(c,"set_scale_size",["20",null]);
+r.command(c,"set_scale_size",["21.517241379310345",null]);
 c.block="hemr";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","0",null]);
 c.block="25yt";r.guard(c);
@@ -43832,13 +43832,13 @@ for(let i1231=0,n1231=Math.max(0,Math.floor(r.num("50")));i1231<n1231;i1231++){
 c.block="9gfd";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","2",null]);
 c.block="306w";r.guard(c);
-r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["145","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","14"]),null]);
+r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["156","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","14"]),null]);
 c.block="iiuk";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="fjtq";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["46dv",null]),"EQUAL","0"]))){
 c.block="ivss";r.guard(c);
-yield* r.call(c,"qy83",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["150","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","-10"]),10,"1"]);
+yield* r.call(c,"qy83",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["150","MINUS",r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"DIVIDE","1.0758620689655172"])]),"DIVIDE","-10"]),10,"1"]);
 c.block="r4h2";r.guard(c);
 r.command(c,"set_variable",["46dv","1",null]);
 }

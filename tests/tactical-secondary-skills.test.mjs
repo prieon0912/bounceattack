@@ -43,7 +43,7 @@ for (const side of [1,2]) {
  const key=side===1?82:80,dir=side===1?1:-1;
  test(`Jab side ${side}: strikes in front once without moving the caster`,()=>{
   const r=game(8,side),caster=body(r,side),target=body(r,3-side),x=caster.x;
-  target.x=x+dir*32;r.globals.set(side===1?'etjn':'846x',side===1?1:0);
+  target.x=x+dir*42;r.globals.set(side===1?'etjn':'846x',side===1?1:0);
   const hits=[],call=r.call.bind(r);
   r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push(args[0]);yield*call(c,id,args);};
   r.run(12,[key]);assert.deepEqual(hits,[-5]);assert.equal(caster.x,x);assert.deepEqual(r.faults,[]);
@@ -59,6 +59,36 @@ for (const side of [1,2]) {
   r.run(1,[key]);const effect=r.entities.find(e=>e.secondaryEffect==='wart-water-pillar');
   assert.ok(effect);assert.ok(Math.abs(effect.y+12)<.02);assert.equal(effect.regY,effect.height);
   r.run(22);assert.deepEqual(hits,[-4]);assert.equal(r.globals.get(mana),74);
-  assert.equal(r.num(r.globals.get(side===1?'iblx':'du2p')),1.35);assert.deepEqual(r.faults,[]);
+  const vy=side===1?'iblx':'du2p',state=r.secondarySkills.state(side);
+  assert.equal(r.num(r.globals.get(vy)),1.35);assert.equal(state.slow,undefined);
+  r.globals.set(vy,-.1);r.run(1);assert.equal(state.slow.until-r.tick,120);
+  assert.equal(state.slow.side,3-side);assert.deepEqual(r.faults,[]);
  });
 }
+
+for(const side of [1,2])test(`Elemental Sword Arts side ${side}: all forms deal damage and apply their distinct effects`,()=>{
+ for(const form of [0,1,2]){
+  const r=game(24,side,true),e=body(r,side),foe=body(r,3-side),key=side===1?82:80;
+  r.set(e,'arfp',form);r.globals.set(side===1?'etjn':'846x',side===1?1:0);
+  r.collisionProvider=()=>false;foe.x=e.x+(side===1?25:-25);
+  const hp=side===1?'akf6':'7ir2',max=side===1?'xr74':'67ko';
+  r.globals.set(max,100);r.globals.set(hp,90);
+  const received=[],native=r.functions.get(side===1?'qy83':'05j0'),param=native.params[0];
+  r.functions.set(side===1?'qy83':'05j0',{...native,fn:function*(rt,c){received.push(c.args[param]);yield* native.fn(rt,c);}});
+  const start=r.tick;r.run(12,[key]);assert.deepEqual(received,[[-8,-7,-6][form]]);
+  assert.equal(r.globals.get(side===1?'qn98':'thom'),63);
+  assert.equal(r.secondarySkills.state(side).readyAt-start,form===1?91:241);
+  if(form===0){assert.ok(r.secondarySkills.state(side).slow.until>r.tick);r.run(185);assert.deepEqual(received,[-8,-1,-1,-1]);}
+  if(form===1){const stun=side===1?'wyyq':'8w41';assert.equal(r.num(r.globals.get(stun)),1);r.run(35);assert.equal(r.num(r.globals.get(stun)),0);}
+  if(form===2){
+   const fire=()=>r.spawn(e,function*(rt,c){yield* rt.call(c,side===1?'qy83':'05j0',[-5,0,1]);},'test_water_boost');
+   const x=e.x;e.x=x+41;fire();r.run(1);assert.equal(received.at(-1),-5);
+   e.x=x;fire();r.run(1);assert.equal(received.at(-1),-6);
+   r.run(173);assert.equal(r.num(r.globals.get(hp)),93);
+   fire();r.run(1);assert.equal(received.at(-1),-5);
+   r.set(e,'arfp',0);r.run(1);r.set(e,'arfp',2);
+   assert.equal(r.secondarySkills.state(side).waterBoost,undefined);
+  }
+  assert.deepEqual(r.faults,[]);
+ }
+});

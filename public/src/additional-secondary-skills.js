@@ -96,7 +96,7 @@ export const atlenSwordWave = {
 export const brookeBarrage = {
   character: 10, name: "탄막", manaCost: BARRAGE.manaCost, cooldownTicks: 0, lockVariable: false,
   icon: "assets/secondary/brooke-barrage-icon.svg", secondaryPictureId: "brooke-barrage-icon", prepare,
-  description: "몇 초 동안 총알을 동시에 두 개씩 발사합니다.",
+  description: "3초 동안 총알을 동시에 두 개씩 발사합니다.",
   *cast(r, c, { state }) { state.barrageEndsAt = r.tick + BARRAGE.durationTicks; yield BARRAGE.durationTicks; },
   onClone(r, c, child, side, state) {
     if (r.tick >= (state.barrageEndsAt || 0) || c.e.clone || c.block !== "qptm" ||

@@ -64,7 +64,7 @@ export const guardGiantStrike=definition(14,'거인의 일격',28,'guard-giant',
 });
 function savePresentation(e){e.secondaryPresentation={x:e.x,y:e.y,scaleX:e.scaleX,scaleY:e.scaleY};}
 export function restorePresentation(r){for(const e of r.entities)if(e.secondaryPresentation){Object.assign(e,e.secondaryPresentation);delete e.secondaryPresentation;}}
-export const kenenShadow=definition(6,'그림자 속으로',39,'kenen-shadow','주변에 피해와 둔화를 주며 그림자 속으로 몇 초간 숨습니다.',{
+export const kenenShadow=definition(6,'그림자 속으로',39,'kenen-shadow','주변에 피해와 둔화를 주며 그림자 속으로 3초간 숨습니다.',{
  canCast(r,s){return r.num(r.globals.get(ids(s,'ob2m','rav6')))===0;},
  *cast(r,c,{side,caster,target,state}){if(Math.hypot(caster.x-target.x,caster.y-target.y)<=45)yield* hit(r,c,side,4,'slow',5,60);
   const id=ids(side,'ob2m','rav6');state.shadowUntil=r.tick+180;r.set(caster,id,1);try{yield 180;}finally{r.set(caster,id,0);state.shadowUntil=0;}},

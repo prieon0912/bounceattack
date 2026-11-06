@@ -61,24 +61,34 @@ export const boomTurret=definition(23,'터렛',TURRET,'boom-turret','앞뒤로 �
  fire(r,side,x,y,direction){const owner=r.originals.get(id(side,'6115','g1va')),shot=r.makeEntity(owner.def,owner);Object.assign(shot,{clone:true,combatSide:side,secondaryEffect:'turret-rocket',turretOrigin:{side,x,y},nativeSkillVariables:{[id(side,'rr24','qvkr')]:0,[id(side,'etjn','846x')]:direction>0?1:0},x,y,rotation:direction>0?0:180});r.entities.unshift(shot);r.dispatchEntity(shot,'when_clone_start');return shot;},
  onCommand(r,c,type,args,side){if(c.e.turretOrigin?.side!==side||type!=='locate'||args[0]!==id(side,'00h9','n8fg'))return;c.e.x=c.e.turretOrigin.x;c.e.y=c.e.turretOrigin.y;return false;}
 });
-const JAB={manaCost:18,cooldownTicks:48,range:34,damage:5};
-const PILLAR={manaCost:26,cooldownTicks:180,offset:24,width:24,height:56,damage:4,lift:1.35};
+const JAB={manaCost:18,cooldownTicks:48,range:44.2,damage:5};
+const PILLAR={manaCost:26,cooldownTicks:180,offset:24,width:24,height:56,damage:4,lift:1.35,slow:8,slowTicks:120};
 const canStrike=(r,s)=>[s,3-s].every(p=>alive(r,p)&&visible(r,p)&&!r.secondarySkills.hidden(body(r,p))&&!r.castle.hidden(body(r,p)));
 const facing=(r,s)=>r.num(r.globals.get(id(s,'etjn','846x')))===1?1:-1;
-export const kanJab=definition(8,'잽',JAB,'kan-jab','앞쪽으로 주먹을 빠르게 뻗습니다. 훅보다 피해가 낮지만 가로로 조금 더 멀리 닿습니다.',{
+export const kanJab=definition(8,'잽',JAB,'kan-jab','앞쪽으로 주먹을 빠르게 뻗습니다.',{
  prepare(p){this.effectPictures=[alias(p,'ri23','kan-jab-fist')];prepare.call(this,p);},
- *cast(r,c,{side,caster,target}){
-  const dir=facing(r,side),fist=visual(r,side,'kan-jab-fist',caster.x,caster.y,10,'kan-jab');
-  try{for(let frame=0;frame<9;frame++){
-   fist.x=caster.x+dir*(frame<4?9+frame*6:27-(frame-4)*4);
-   fist.y=caster.y;fist.scaleX=Math.abs(fist.scaleX)*dir;
+ hidden(r,e,side,state){return state.jabHand===e.objectId&&!e.clone;},
+ blocksKey(r,key,side,state){return !!state.jabHand&&key===id(side,69,13);},
+ *cast(r,c,{side,caster,target,state}){
+  const dir=facing(r,side);
+  const hands=id(side,['ri23','4mt9'],['uxuo','m2p4']).map(key=>r.originals.get(key));
+  const hand=hands.reduce((front,e)=>dir*(e.x-front.x)>0?e:front);
+  const start=Math.max(5,(hand.x-caster.x)*dir),height=hand.y-caster.y;
+  const size=r.size(hand),fist=visual(r,side,'kan-jab-fist',hand.x,hand.y,size,'kan-jab');
+  Object.assign(fist,{picture:hand.picture,width:hand.width,height:hand.height,regX:hand.regX,regY:hand.regY,scaleX:hand.scaleX,scaleY:hand.scaleY,rotation:hand.rotation});
+  state.jabHand=hand.objectId;
+  try{for(let frame=0;frame<=10&&alive(r,side);frame++){
+   const progress=frame<=3?1-(1-frame/3)**2:(1-(frame-3)/7)**2;
+   const reach=JAB.range-size/2;
+   fist.x=caster.x+dir*(start+(reach-start)*progress);
+   fist.y=caster.y+height*(1-progress);
    if(frame===3&&canStrike(r,side)){
     const dx=(target.x-caster.x)*dir;
     if(dx>=0&&dx<=JAB.range&&Math.abs(target.y-caster.y)<=10)
       yield* r.call(c,id(side,'qy83','05j0'),[-JAB.damage,0,1]);
    }
    yield 1;
-  }}finally{fist.dead=true;}
+  }}finally{fist.dead=true;delete state.jabHand;}
  }
 });
 function pillarFloor(r,caster,x){
@@ -96,8 +106,9 @@ function pillarFloor(r,caster,x){
  }
  return null;
 }
-export const wartWaterPillar=definition(21,'물기둥',PILLAR,'wart-water-pillar','앞쪽 바닥에서 물기둥을 솟게 해 적에게 피해를 주고 살짝 띄웁니다.',{
- prepare(p){this.effectPictures=[alias(p,'xaca','wart-pillar-water',3)];prepare.call(this,p);},
+export const wartWaterPillar=definition(21,'물기둥',PILLAR,'wart-water-pillar','앞쪽 바닥에서 물기둥을 솟게 합니다. 물기둥에 닿은 적은 피해를 받으며 떠오릅니다.',{
+ prepare(p){this.effectPictures=[alias(p,'f9zp','wart-pillar-water',2),alias(p,'o3uq','wart-pillar-spray',2)];prepare.call(this,p);},
+ slowValue(r,e,variable,raw,state){return logitechRageQuit.slowValue(r,e,variable,raw,state);},
  canCast(r,side){
   const caster=body(r,side),x=caster.x+facing(r,side)*PILLAR.offset;
   if(Math.abs(x)>228)return false;
@@ -109,18 +120,113 @@ export const wartWaterPillar=definition(21,'물기둥',PILLAR,'wart-water-pillar
   const origin=state.pillarOrigin;delete state.pillarOrigin;if(!origin)return;
   const effect=visual(r,side,'wart-pillar-water',origin.x,origin.y,1,'wart-water-pillar');
   effect.regY=effect.height;
+  const spray=Array.from({length:5},(_,i)=>visual(r,side,'wart-pillar-spray',origin.x,origin.y,4+i%2,'wart-water-spray'));
   let hit=false;
   try{for(let frame=0;frame<18&&alive(r,side);frame++){
-   const height=PILLAR.height*Math.min(1,(frame+1)/6);
+   const rise=Math.min(1,(frame+1)/6);
+   const height=PILLAR.height*(frame<10?rise:Math.max(.08,1-((frame-9)/9)**2));
+   spray.forEach((drop,i)=>{
+    const t=frame/17, spread=(i-2)*5;
+    drop.x=origin.x+spread*(.5+t*1.6);
+    drop.y=origin.y+Math.max(0,(PILLAR.height+i*3)*4*t*(1-t));
+    drop.rotation=i*18+frame*4;drop.effects.transparency=Math.max(0,(frame-10)*13);
+   });
    effect.scaleX=PILLAR.width/effect.width;effect.scaleY=height/effect.height;
    effect.effects.transparency=Math.max(0,frame-9)*11;
    if(!hit&&frame<10&&canStrike(r,side)&&Math.abs(target.x-origin.x)<=PILLAR.width/2+7&&target.y>=origin.y&&target.y<=origin.y+height){
     hit=true;
     yield* r.call(c,id(side,'qy83','05j0'),[-PILLAR.damage,0,1]);
-    if(vulnerable(r,3-side)){const vy=id(side,'iblx','du2p');r.globals.set(vy,Math.max(PILLAR.lift,r.num(r.globals.get(vy))));}
+    if(vulnerable(r,3-side)){
+     const vy=id(side,'iblx','du2p');r.globals.set(vy,Math.max(PILLAR.lift,r.num(r.globals.get(vy))));
+     r.spawn(target,function*(rt){
+      for(let tick=0;tick<180&&alive(rt,3-side)&&alive(rt,side);tick++){
+       if(rt.num(rt.globals.get(vy))<=0){
+        if(vulnerable(rt,3-side)){
+         state.slow={side:3-side,value:PILLAR.slow,until:rt.tick+PILLAR.slowTicks};
+         showStatusVisual(rt,side,'slow',PILLAR.slowTicks);
+        }return;
+       }
+       yield 1;
+      }
+     },'wart_pillar_slow_on_descent');
+    }
    }
    yield 1;
-  }}finally{effect.dead=true;}
+  }}finally{effect.dead=true;for(const drop of spray)drop.dead=true;}
  }
 });
-export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar];
+const ELEMENT={manaCost:37,cooldownTicks:240,electricCooldownTicks:90};
+const elementOf=(r,s)=>r.num(r.get(body(r,s),'arfp'));
+const stunKey=s=>id(s,'8w41','wyyq');
+const areaRadius=40;
+export const elementSwordArts=definition(24,'원소술',ELEMENT,'element-sword-arts','현재 강화 속성에 맞는 검술을 사용합니다.',{
+ prepare(p){
+  this.effectPictures=[0,1,2].map(i=>alias(p,'4cof','element-art-'+i,i));
+  this.effectPictures.push(['element-water-area','assets/secondary/element-water-area.svg',{width:100,height:100}]);
+  prepare.call(this,p);
+ },
+ tick(r,side,state){if(state.waterBoost&&(r.tick>=state.waterBoost.until||elementOf(r,side)!==2))delete state.waterBoost;},
+ blocksKey(r,key,side,state){return !!state.elementSwing&&[id(side,69,13),id(side,83,40)].includes(key);},
+ slowValue(r,e,variable,raw,state){return logitechRageQuit.slowValue(r,e,variable,raw,state);},
+ onFunction(r,c,fn,args,side,state){
+  const area=state.waterBoost,caster=body(r,side);
+  if(area&&r.tick<area.until&&Math.hypot(caster.x-area.x,caster.y-area.y)<=areaRadius&&alive(r,side)&&elementOf(r,side)===2&&fn===id(side,'qy83','05j0')&&c.e!==body(r,3-side)&&r.num(args[0])<0)
+   args[0]=r.num(args[0])*1.2;
+ },
+ *cast(r,c,{side,caster,target,state}){
+  const element=elementOf(r,side),dir=facing(r,side),x=caster.x,y=caster.y;
+  if(element===1)state.readyAt=r.tick+ELEMENT.electricCooldownTicks;
+  const slash=visual(r,side,'element-art-'+element,x,y,element===0?57:element===1?36:29,'element-slash');
+  let hit=false;state.elementSwing=true;
+  try{
+   if(element===2){
+    state.waterBoost={x,y,until:r.tick+180};
+    const area=visual(r,side,'element-water-area',x,y,areaRadius*2,'element-water-area');
+    r.spawn(area,function*(rt,ctx){try{for(let n=1;n<=180;n++){
+     yield 1;if(!alive(rt,side))return;
+     if(n%60===0&&Math.hypot(caster.x-x,caster.y-y)<=areaRadius){
+      const hp=id(side,'akf6','7ir2'),max=id(side,'xr74','67ko');
+      const amount=Math.min(1,rt.num(rt.globals.get(max))-rt.num(rt.globals.get(hp)));
+      if(amount>0)yield* rt.call(ctx,id(side,'albn','41z4'),[amount]);
+     }
+     area.effects.transparency=Math.max(0,n-164)*6;
+    }}finally{area.dead=true;}},'element_water_heal');
+   }
+   for(let frame=0;frame<12&&alive(r,side)&&!r.num(r.globals.get(stunKey(side)));frame++){
+    if(element===1&&frame<8&&!r.num(r.globals.get(id(side,'05ze','1vu0')))){
+     for(let step=0;step<6;step++){const old=caster.x;caster.x+=dir;if(Math.abs(caster.x)>232||r.reach(caster,'6tzq')){caster.x=old;break;}}
+    }
+    const angle=dir*(frame/11*2*Math.PI);
+    slash.x=caster.x+(element===2?Math.cos(angle)*22:dir*(element===0?22:13));
+    slash.y=caster.y+(element===2?Math.sin(angle)*22:0);
+    slash.scaleX=Math.abs(slash.scaleX)*dir;
+    slash.rotation=element===2?-angle*180/Math.PI:element===0?dir*(45-frame*8):0;
+    slash.effects.transparency=Math.max(0,frame-8)*22;
+    const dx=(target.x-caster.x)*dir,dy=target.y-caster.y;
+    const inRange=element===2?Math.hypot(target.x-x,target.y-y)<=areaRadius:
+      element===1?dx>=-8&&dx<=26&&Math.abs(dy)<=16:
+      frame>=3&&frame<=8&&dx>=-4&&dx<=48&&Math.abs(dy)<=24;
+    if(!hit&&inRange&&canStrike(r,side)){
+     hit=true;yield* r.call(c,id(side,'qy83','05j0'),[-[8,7,5][element],0,1]);
+     if(element===0){
+      if(vulnerable(r,3-side)){
+       state.slow={side:3-side,value:8,until:r.tick+180};showStatusVisual(r,side,'slow',180);
+      }
+      r.spawn(caster,function*(rt,ctx){
+       for(let tick=0;tick<3;tick++){yield 60;if(!alive(rt,side)||!alive(rt,3-side))return;
+        if(canStrike(rt,side))yield* rt.call(ctx,id(side,'qy83','05j0'),[-1,0,1]);}
+      },'element_burn');
+     }
+     if(element===1&&vulnerable(r,3-side)){
+      const key=stunKey(3-side),gen=id(side,'bpv5','bpv0');
+      r.add(target,gen,1);const token=r.get(target,gen);r.set(target,key,1);
+      showStatusVisual(r,side,'stun',30);
+      r.spawn(target,function*(rt){yield 30;if(rt.get(target,gen)===token)rt.set(target,key,0);},'element_stun');
+     }
+    }
+    yield 1;
+   }
+  }finally{slash.dead=true;delete state.elementSwing;}
+ }
+});
+export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts];

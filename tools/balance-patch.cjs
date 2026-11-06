@@ -131,6 +131,7 @@ module.exports = function applyBalancePatch(project) {
   // 기본 피해 5 → 7; 궁극기 강화 추가 피해는 유지.
   setNumber("z4wa", "1mm1", [0], -5, -7);
   setNumber("l8ny", "wqwk", [0], -5, -7);
+  project.variables.find(v => v.id === "gsve").array[0].data = "적의 위치에 표식을 남기고 0.8초 뒤 표식 위치에서 폭발이 일어납니다.";
   project.variables.find(v => v.id === "gsve").array[21].data = "적을 끌어당기며 띄우고 강하게 찌릅니다";
   //  - 기본 이동 분모 20 → 17, 접근 보정 −7.7 → −4.7 (접근 중 분모 12.3 유지)
   setNumber("m9cz", "se3v", [1], 20, 17);
@@ -419,6 +420,17 @@ module.exports = function applyBalancePatch(project) {
     const condition=locate(o,b).block.params[0];
     if(condition.type!=="boolean_basic_operator"||condition.params[1]!=="LESS")throw Error("Unexpected defeat condition "+o);
     condition.params[1]="LESS_OR_EQUAL";
+  }
+
+  // Explosion Mark only: 48 ticks and a blast target of 156 instead of 145, with the original damage curve.
+  for(const [o,wait,initial,grow,hit] of [
+    ["m9km","mabe","kl6v","306w","ivss"],["iaqy","fj0m","rbsn","f3xy","or82"],
+  ]){
+    setNumber(o,wait,[0],45,48);
+    setNumber(o,initial,[0],20,20*156/145);
+    setNumber(o,grow,[0,0,0],145,156);
+    const damage=locate(o,hit).block.params[0].params[0];
+    damage.params[2]=calc(damage.params[2],"DIVIDE",num(156/145));
   }
 
   for (const [objectId, stacks] of scripts) objects.get(objectId).script = JSON.stringify(stacks);

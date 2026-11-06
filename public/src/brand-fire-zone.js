@@ -8,10 +8,10 @@ export const brandFireZone = {
   lockVariable: false, // Brand uses the legacy skill variable as a clone mode, not a busy flag.
   primaryPictureId: "lexo", secondaryPictureId: "brand-secondary-icon",
   primaryName: "폭발표식",
-  primaryDescription: "적의 위치에 표식을 남기고 몇초뒤 표식 위치에서 폭발이 일어납니다.",
+  primaryDescription: "적의 위치에 표식을 남기고 0.8초 뒤 표식 위치에서 폭발이 일어납니다.",
   primaryIcon: "assets/temp/1e/2e/image/1e2e8c27mvpihd8500064431d38w0i4x.svg",
   icon: "assets/secondary/brand-fire-zone-icon.svg",
-  description: "다음 일반 공격이 맞거나 폭발한 자리에 몇 초간 적에게 피해와 둔화를 주는 화염지대를 설치합니다.",
+  description: "다음 일반 공격이 맞거나 폭발한 자리에 5초간 적에게 피해와 둔화를 주는 화염지대를 설치합니다.",
   prepare(project) {
     const name = project.variables.find(v => v.id === "x7mx")?.array?.[0];
     const description = project.variables.find(v => v.id === "gsve")?.array?.[0];

@@ -34,6 +34,8 @@ for (const path of [
   "public/assets/castle/rook.svg",
   "public/src/secondary-skills.js",
   "public/src/tactical-secondary-skills.js",
+  "public/assets/secondary/element-sword-arts-icon.svg",
+  "public/assets/secondary/element-water-area.svg",
   "public/assets/secondary/kan-jab-icon.svg",
   "public/assets/secondary/wart-water-pillar-icon.svg",
   "public/src/strategic-secondary-skills.js",

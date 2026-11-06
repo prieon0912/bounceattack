@@ -142,7 +142,7 @@ test("only original blurred description accepts R/P; 1P commit resets 2P draft w
   assert.equal(r.secondarySkills.selectKey(80), false, "P cannot edit the inactive player");
   assert.equal(r.secondarySkills.selectKey(82), true);
   assert.equal(r.originals.get("o9rj").picture.id, "brand-secondary-icon");
-  assert.equal(r.originals.get("3my6").text, "다음 일반 공격이 맞거나 폭발한 자리에 몇 초간 적에게 피해와 둔화를 주는 화염지대를 설치합니다.");
+  assert.equal(r.originals.get("3my6").text, "다음 일반 공격이 맞거나 폭발한 자리에 5초간 적에게 피해와 둔화를 주는 화염지대를 설치합니다.");
   assert.deepEqual(r.secondarySkills.loadout(), ["primary", "primary"], "preview is not committed yet");
   r.globals.set("skill-loadout:2:1", "secondary"); // stale previous preview must never bleed into 2P
   r.command({ e:r.originals.get("o9rj") }, "set_variable", ["jx38", 2]);

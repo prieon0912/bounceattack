@@ -10,7 +10,7 @@ function zeroMomentum(r,s){for(const key of [id(s,'du2p','iblx'),id(s,'utbg','j8
 export const creationMove={
  character:11,name:'명령: 이동',manaCost:MAGNET_COMMAND.manaCost,cooldownTicks:MAGNET_COMMAND.cooldownTicks,lockVariable:false,prepare,
  secondaryPictureId:'creation-move-icon',icon:'assets/secondary/creation-move-icon.svg',
- description:'몇 초간 자신 대신 자석을 조종합니다.',
+ description:'3초간 자신 대신 자석을 조종합니다.',
  canCast(r,s){return !!magnet(r,s)&&!r.secondarySkills.state(s).control;},
  damageMultiplier(r,variable,value,side,state){return variable===id(side,'mm0r','nmkh')&&state.control&&r.tick<state.control.until&&alive(r,side)?r.num(value)*.5:value;},
  *cast(r,c,{side,caster,state}){
