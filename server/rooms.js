@@ -15,7 +15,7 @@ const validInt = (n, min, max) => Number.isInteger(n) && n >= min && n <= max;
 const skillChoice = (character, choice) => {
   if (choice !== undefined && choice !== "primary" && choice !== "secondary")
     throw new RoomError("스킬 선택을 확인해 주세요.");
-  if (choice === "secondary" && ![1, 3, 4, 6, 7, 9, 10, 11, 12, 14, 16, 18, 20, 23, 27, 30, 31, 32, 34, 35].includes(character))
+  if (choice === "secondary" && ![1, 3, 4, 6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 20, 21, 23, 27, 30, 31, 32, 34, 35].includes(character))
     throw new RoomError("이 캐릭터는 아직 세컨드 스킬이 없어요.");
   return choice || "primary";
 };
@@ -275,15 +275,16 @@ export class RoomHub {
     });
   }
   async relay(ctx, msg) {
-    const r = await this.state(ctx.code);
-    this.authorize(r, ctx);
+    const fast = msg.type === "input" && this.store.publishMatchInput;
+    const r = fast ? null : await this.state(ctx.code);
+    if (!fast) this.authorize(r, ctx);
     const out = { type: msg.type, role: ctx.role };
     if (msg.type === "signal") {
       if (!msg.data || JSON.stringify(msg.data).length > 18000)
         throw new RoomError("연결 요청이 너무 커요.");
       out.data = msg.data;
     } else {
-      if (r.phase !== "playing" || msg.epoch !== r.match.epoch)
+      if (!fast && (r.phase !== "playing" || msg.epoch !== r.match.epoch))
         throw new RoomError("종료된 대전의 입력이에요.");
       out.epoch = msg.epoch;
       if (msg.type === "input") {
@@ -318,6 +319,13 @@ export class RoomHub {
       } else if (msg.type === "forfeit") {
         // The sender left the match; the opponent is declared the winner.
       } else throw new RoomError("지원하지 않는 대전 요청이에요.");
+    }
+    if (fast) {
+      const result = await this.store.publishMatchInput(roomKey(ctx.code), channel(ctx.code),
+        ctx.role, hash(ctx.token), ctx.session, msg.epoch, JSON.stringify(out));
+      if (result === 1) return;
+      if (result === -1) throw new RoomError("접속이 만료됐거나 다른 창에서 다시 연결했어요.");
+      throw new RoomError("종료되었거나 만료된 대전의 입력이에요.");
     }
     await this.publish(ctx.code, out);
   }

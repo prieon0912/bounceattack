@@ -12,7 +12,6 @@ export class OnlineConnection {
     this.iceQueue = [];
     this.inputQueue = [];
     this.mode = "relay";
-    this.timer = setInterval(() => this.flush(), 33);
     // Ping every second so the input delay can follow ping changes quickly.
     this.pinger = setInterval(() => this.ping(), 1000);
     this.reconnectDelay = 500;
@@ -343,14 +342,16 @@ export class OnlineConnection {
   }
   input(frames) {
     this.inputQueue.push(...frames);
-    // Direct (WebRTC) link: send every frame immediately instead of waiting
-    // for the 33 ms batch timer, which used up most of the input delay.
-    if (this.directReady()) this.flush();
+    if (this.flushQueued) return;
+    this.flushQueued = true;
+    queueMicrotask(() => {
+      this.flushQueued = false;
+      if (!this.closed) this.flush();
+    });
   }
   flush() {
-    if (this.inputQueue.length) {
-      const frames = this.inputQueue.splice(0, 24);
-      this.gameplay({ type: "input", frames });
+    while (this.inputQueue.length) {
+      this.gameplay({ type: "input", frames: this.inputQueue.splice(0, 24) });
     }
   }
   replay(frames) {
@@ -365,7 +366,6 @@ export class OnlineConnection {
   }
   close() {
     this.closed = true;
-    clearInterval(this.timer);
     clearInterval(this.pinger);
     clearInterval(this.leaseTimer);
     for (const key of ["retryTimer", "detachTimer", "peerFailure"])

@@ -17,7 +17,16 @@ export class Renderer {
     c.beginPath();
     c.rect(-240, -135, 480, 270);
     c.clip();
-    for (const e of runtime.entities.slice().reverse()) {
+    const drawOrder = runtime.entities.slice().reverse();
+    const gates = drawOrder.filter(e => e.secondaryEffect === "hell-gate");
+    if (gates.length) {
+      const foreground = drawOrder.filter(e => e.secondaryEffect !== "hell-gate");
+      const firstBody = foreground.findIndex(e => e.objectId === "n230" || e.objectId === "ocqj");
+      if (firstBody >= 0) foreground.splice(firstBody, 0, ...gates);
+      else foreground.push(...gates);
+      drawOrder.splice(0, drawOrder.length, ...foreground);
+    }
+    for (const e of drawOrder) {
       if (e.dead || runtime.secondarySkills.hidden(e) || runtime.castle.hidden(e)) continue;
       // Entry's brush has flat (butt) ends; round caps made the HP/MP bars
       // poke out of the slanted (trapezoid) frame. Consecutive segments with

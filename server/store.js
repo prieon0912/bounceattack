@@ -80,6 +80,21 @@ export class RedisStore {
   async touch(k, ttl) {
     await this.redis.expire(k, ttl);
   }
+  async publishMatchInput(key, channel, role, token, session, epoch, message) {
+    // Validate the current session and epoch atomically with publishing, in one round trip.
+    return this.redis.eval(`
+      local raw = redis.call('GET', KEYS[1])
+      if not raw then return 0 end
+      local room = cjson.decode(raw)
+      local player = room.players[tonumber(ARGV[2]) + 1]
+      if not player or player == cjson.null or player.token ~= ARGV[3]
+          or player.session ~= ARGV[4] then return -1 end
+      if room.phase ~= 'playing' or not room.match
+          or room.match.epoch ~= cjson.decode(ARGV[5]) then return 0 end
+      redis.call('PUBLISH', ARGV[1], ARGV[6])
+      return 1
+    `, 1, key, channel, role, token, session, JSON.stringify(epoch ?? null), message);
+  }
   async publish(c, v) {
     await this.redis.publish(c, v);
   }

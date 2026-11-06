@@ -60,8 +60,8 @@ export function createOnlineServer({ local = false, store = null } = {}) {
       };
     let unwatch = null,
       queue = Promise.resolve(),
-      windowStart = Date.now(),
-      messages = 0,
+      lastMessageAt = Date.now(),
+      messageBudget = 160,
       lastPulse = 0;
     const attach = async (room) => {
       let attached = false;
@@ -85,19 +85,20 @@ export function createOnlineServer({ local = false, store = null } = {}) {
       await hub.publish(ctx.code, { type: "room", room: hub.public(room) });
     };
     ws.on("message", (raw) => {
-      if (Date.now() - windowStart > 1000) {
-        windowStart = Date.now();
-        messages = 0;
-      }
-      if (++messages > 80) {
+      const now = Date.now();
+      messageBudget = Math.min(160, messageBudget + (now - lastMessageAt) * .08);
+      lastMessageAt = now;
+      if (--messageBudget < 0) {
         ws.close(1008, "Too many messages");
         return;
       }
+      let msg;
+      try { msg = JSON.parse(String(raw)); } catch {}
+      // Report socket RTT separately from the Redis relay queue.
+      if (msg?.type === "ping") send({ type: "pong", at: msg.at });
       queue = queue
         .then(async () => {
-          let msg;
           try {
-            msg = JSON.parse(String(raw));
             if (!msg || typeof msg.type !== "string")
               throw new RoomError("올바르지 않은 요청이에요.");
             if (["create", "join", "resume", "matchmake"].includes(msg.type)) {
@@ -108,7 +109,6 @@ export function createOnlineServer({ local = false, store = null } = {}) {
                 lastPulse = Date.now();
                 await store.touch("bounce:v1:room:" + ctx.code, 7200);
               }
-              send({ type: "pong", at: msg.at });
             } else if (["pick", "map", "ready", "rematch", "claim"].includes(msg.type)) {
               const room = await hub.action(ctx, msg);
               if (room.notice)

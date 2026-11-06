@@ -38,3 +38,27 @@ test('Matchmaking accepts all three secondaries, including same-character matche
 for(const side of [1,2])test(`Turret side ${side}: proximity destroys turret for remaining missiles times three, native CC, MP60`,()=>{for(const elapsed of [0,180,360]){const r=game(23,side),st=r.secondarySkills.state(side),caster=body(r,side),target=body(r,3-side),calls=[];r.collisionProvider=()=>false;target.x=caster.x+120;const original=r.call.bind(r);r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))calls.push(args[0]);yield*original(c,id,args);};r.run(1,[side===1?82:80]);assert.equal(r.globals.get(side===1?'qn98':'thom'),40);r.run(elapsed);const shots=st.turretShots,turret=r.entities.find(e=>e.uid===st.turretUid);target.x=turret.x+10;target.y=turret.y;r.run(2);assert.deepEqual(calls,[-(6-shots)*3]);assert.equal(st.turretBurstDamage,(6-shots)*3);assert.equal(turret.dead,true);assert.equal(st.turretUid,undefined);assert.equal(st.turretShots,shots);assert.equal(st.slow.value,8);assert.ok(r.num(r.globals.get(side===1?'lgp6':'c9o4'))>0);r.run(200);assert.equal(st.turretShots,shots);assert.deepEqual(r.faults,[]);}});
 
 test('Turret proximity does not reveal stealth and respects CC immunity',()=>{for(const side of [1,2])for(const hidden of [true,false]){const r=game(23,side),foe=3-side,st=r.secondarySkills.state(side);body(r,foe).x=body(r,side).x+10;r.globals.set(hidden?(foe===1?'ob2m':'rav6'):(foe===1?'jcf6':'ec6d'),1);r.run(3,[side===1?82:80]);if(hidden){assert.ok(st.turretUid);assert.equal(st.turretBurstDamage,undefined);}else{assert.equal(st.turretUid,undefined);assert.equal(st.turretBurstDamage,18);assert.equal(st.slow,undefined);assert.equal(r.num(r.globals.get(foe===1?'c9o4':'lgp6')),0);}assert.deepEqual(r.faults,[]);}});
+
+for (const side of [1,2]) {
+ const key=side===1?82:80,dir=side===1?1:-1;
+ test(`Jab side ${side}: strikes in front once without moving the caster`,()=>{
+  const r=game(8,side),caster=body(r,side),target=body(r,3-side),x=caster.x;
+  target.x=x+dir*32;r.globals.set(side===1?'etjn':'846x',side===1?1:0);
+  const hits=[],call=r.call.bind(r);
+  r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push(args[0]);yield*call(c,id,args);};
+  r.run(12,[key]);assert.deepEqual(hits,[-5]);assert.equal(caster.x,x);assert.deepEqual(r.faults,[]);
+ });
+ test(`Water Pillar side ${side}: anchored to ground, hits and lifts once; no floor costs no MP`,()=>{
+  const r=game(21,side),caster=body(r,side),target=body(r,3-side);
+  r.globals.set(side===1?'etjn':'846x',side===1?1:0);
+  target.x=caster.x+dir*24;target.y=22;
+  const mana=side===1?'qn98':'thom',hits=[],call=r.call.bind(r);
+  r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push(args[0]);yield*call(c,id,args);};
+  r.collisionProvider=()=>false;r.run(1,[key]);assert.equal(r.globals.get(mana),100);
+  r.run(1);r.collisionProvider=(e,id)=>id==='6tzq'&&r.bounds(e).bottom<-12;
+  r.run(1,[key]);const effect=r.entities.find(e=>e.secondaryEffect==='wart-water-pillar');
+  assert.ok(effect);assert.ok(Math.abs(effect.y+12)<.02);assert.equal(effect.regY,effect.height);
+  r.run(22);assert.deepEqual(hits,[-4]);assert.equal(r.globals.get(mana),74);
+  assert.equal(r.num(r.globals.get(side===1?'iblx':'du2p')),1.35);assert.deepEqual(r.faults,[]);
+ });
+}

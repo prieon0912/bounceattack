@@ -94,10 +94,10 @@ function adaptDelay(mode, ping) {
   recentPings = [...recentPings.slice(-3), ping];
   const rtt = Math.max(...recentPings);
   // Direct: peer round trip, so one-way ≈ rtt/2. Relay: ping is to the
-  // server only; the path to the opponent is ≈ both legs plus 33 ms batching.
-  const oneWay = mode === "direct" ? rtt / 2 : rtt + 33;
+  // server only; the path to the opponent is ≈ both legs plus the Redis relay.
+  const oneWay = mode === "direct" ? rtt / 2 : rtt + 12;
   const frames = Math.ceil((oneWay + 10) / FRAME_MS) + 1;
-  sync.setDelay(Math.max(3, Math.min(8, frames)));
+  sync.setDelay(Math.max(3, Math.min(12, frames)));
 }
 let postMatch = false;
 function endMatch() {
@@ -207,7 +207,7 @@ function search() {
     onStatus: (s) => {
       if (sync && s.ping !== undefined) adaptDelay(s.mode, s.ping);
       if (sync && s.ping !== undefined)
-        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · ${Math.round(s.ping)}ms · ${s.mode === "direct" ? "직접 연결" : "서버 중계"} · 입력 지연 ${Math.round(sync.delay * FRAME_MS)}ms`;
+        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · ${s.mode === "direct" ? "상대 핑" : "서버 핑"} ${Math.round(s.ping)}ms · ${s.mode === "direct" ? "직접 연결" : "서버 중계"} · 입력 지연 ${Math.round(sync.delay * FRAME_MS)}ms`;
     },
   });
   connection.command({

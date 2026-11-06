@@ -61,4 +61,66 @@ export const boomTurret=definition(23,'터렛',TURRET,'boom-turret','앞뒤로 �
  fire(r,side,x,y,direction){const owner=r.originals.get(id(side,'6115','g1va')),shot=r.makeEntity(owner.def,owner);Object.assign(shot,{clone:true,combatSide:side,secondaryEffect:'turret-rocket',turretOrigin:{side,x,y},nativeSkillVariables:{[id(side,'rr24','qvkr')]:0,[id(side,'etjn','846x')]:direction>0?1:0},x,y,rotation:direction>0?0:180});r.entities.unshift(shot);r.dispatchEntity(shot,'when_clone_start');return shot;},
  onCommand(r,c,type,args,side){if(c.e.turretOrigin?.side!==side||type!=='locate'||args[0]!==id(side,'00h9','n8fg'))return;c.e.x=c.e.turretOrigin.x;c.e.y=c.e.turretOrigin.y;return false;}
 });
-export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret];
+const JAB={manaCost:18,cooldownTicks:48,range:34,damage:5};
+const PILLAR={manaCost:26,cooldownTicks:180,offset:24,width:24,height:56,damage:4,lift:1.35};
+const canStrike=(r,s)=>[s,3-s].every(p=>alive(r,p)&&visible(r,p)&&!r.secondarySkills.hidden(body(r,p))&&!r.castle.hidden(body(r,p)));
+const facing=(r,s)=>r.num(r.globals.get(id(s,'etjn','846x')))===1?1:-1;
+export const kanJab=definition(8,'잽',JAB,'kan-jab','앞쪽으로 주먹을 빠르게 뻗습니다. 훅보다 피해가 낮지만 가로로 조금 더 멀리 닿습니다.',{
+ prepare(p){this.effectPictures=[alias(p,'ri23','kan-jab-fist')];prepare.call(this,p);},
+ *cast(r,c,{side,caster,target}){
+  const dir=facing(r,side),fist=visual(r,side,'kan-jab-fist',caster.x,caster.y,10,'kan-jab');
+  try{for(let frame=0;frame<9;frame++){
+   fist.x=caster.x+dir*(frame<4?9+frame*6:27-(frame-4)*4);
+   fist.y=caster.y;fist.scaleX=Math.abs(fist.scaleX)*dir;
+   if(frame===3&&canStrike(r,side)){
+    const dx=(target.x-caster.x)*dir;
+    if(dx>=0&&dx<=JAB.range&&Math.abs(target.y-caster.y)<=10)
+      yield* r.call(c,id(side,'qy83','05j0'),[-JAB.damage,0,1]);
+   }
+   yield 1;
+  }}finally{fist.dead=true;}
+ }
+});
+function pillarFloor(r,caster,x){
+ const probe=r.makeEntity(caster.def,caster);
+ Object.assign(probe,{x,visible:true,rotation:0,regX:probe.width/2,regY:probe.height/2,scaleX:1/probe.width,scaleY:1/probe.height});
+ const solid=()=>r.reach(probe,'6tzq')||r.reach(probe,'2bx4');
+ const start=Math.min(134,r.bounds(caster).bottom+10);
+ probe.y=start;
+ if(solid())return null;
+ for(let y=start-1;y>=-134;y--){
+  probe.y=y;if(!solid())continue;
+  let lo=y,hi=y+1;
+  for(let i=0;i<6;i++){probe.y=(lo+hi)/2;if(solid())lo=probe.y;else hi=probe.y;}
+  return (lo+hi)/2-.5;
+ }
+ return null;
+}
+export const wartWaterPillar=definition(21,'물기둥',PILLAR,'wart-water-pillar','앞쪽 바닥에서 물기둥을 솟게 해 적에게 피해를 주고 살짝 띄웁니다.',{
+ prepare(p){this.effectPictures=[alias(p,'xaca','wart-pillar-water',3)];prepare.call(this,p);},
+ canCast(r,side){
+  const caster=body(r,side),x=caster.x+facing(r,side)*PILLAR.offset;
+  if(Math.abs(x)>228)return false;
+  const y=pillarFloor(r,caster,x);
+  if(y===null)return false;
+  r.secondarySkills.state(side).pillarOrigin={x,y};return true;
+ },
+ *cast(r,c,{side,state,target}){
+  const origin=state.pillarOrigin;delete state.pillarOrigin;if(!origin)return;
+  const effect=visual(r,side,'wart-pillar-water',origin.x,origin.y,1,'wart-water-pillar');
+  effect.regY=effect.height;
+  let hit=false;
+  try{for(let frame=0;frame<18&&alive(r,side);frame++){
+   const height=PILLAR.height*Math.min(1,(frame+1)/6);
+   effect.scaleX=PILLAR.width/effect.width;effect.scaleY=height/effect.height;
+   effect.effects.transparency=Math.max(0,frame-9)*11;
+   if(!hit&&frame<10&&canStrike(r,side)&&Math.abs(target.x-origin.x)<=PILLAR.width/2+7&&target.y>=origin.y&&target.y<=origin.y+height){
+    hit=true;
+    yield* r.call(c,id(side,'qy83','05j0'),[-PILLAR.damage,0,1]);
+    if(vulnerable(r,3-side)){const vy=id(side,'iblx','du2p');r.globals.set(vy,Math.max(PILLAR.lift,r.num(r.globals.get(vy))));}
+   }
+   yield 1;
+  }}finally{effect.dead=true;}
+ }
+});
+export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar];
