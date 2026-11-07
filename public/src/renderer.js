@@ -1,3 +1,16 @@
+function drawNightSky(c) {
+  c.fillStyle = "rgba(8, 15, 51, .76)";
+  c.fillRect(-240, -135, 480, 270);
+  c.fillStyle = "#f3e6b2";
+  c.beginPath();
+  c.arc(166, -88, 17, 0, 2 * Math.PI);
+  c.fill();
+  c.fillStyle = "#c3d6ff";
+  for (const [x, y, size] of [[-190,-88,2],[-143,-111,1],[-84,-67,2],[-33,-97,1],[32,-77,2],[79,-113,1],[117,-62,2],[211,-108,1]]) {
+    c.fillRect(x, y, size, size);
+  }
+}
+
 export class Renderer {
   constructor(canvas, assets) {
     this.canvas = canvas;
@@ -26,6 +39,10 @@ export class Renderer {
       else foreground.push(...gates);
       drawOrder.splice(0, drawOrder.length, ...foreground);
     }
+    const night = runtime.scene === "7dwq" &&
+      [1, 2].some(side => runtime.secondarySkills.state(side).darkUntil > runtime.tick);
+    const arenaBackground = night && drawOrder.find(e => e.objectId === "m9cz" && e.visible && !e.dead);
+    if (night && !arenaBackground) drawNightSky(c);
     for (const e of drawOrder) {
       if (e.dead || runtime.secondarySkills.hidden(e) || runtime.castle.hidden(e)) continue;
       // Entry's brush has flat (butt) ends; round caps made the HP/MP bars
@@ -82,7 +99,7 @@ export class Renderer {
         c.fillStyle = e.colour || "#fff";
         const text = String(e.text ?? e.def.text ?? "");
         if (!e.lineBreak && e.objectId === "3my6" && runtime.scene === "1ckl" &&
-            [1, 3, 4, 6, 7, 10, 12, 14, 16, 18, 20, 27, 30, 32, 35].includes(Number(runtime.globals.get("16fh")))) {
+            [1, 3, 4, 6, 7, 10, 12, 14, 16, 18, 20, 25, 27, 29, 30, 32, 33, 35].includes(Number(runtime.globals.get("16fh")))) {
           // Fit the changed descriptions inside their original slot, with no new UI.
           const limit = (230 - e.x) / Math.max(.01, Math.abs(e.scaleX));
           const lines = []; let line = "";
@@ -123,6 +140,7 @@ export class Renderer {
           c.drawImage(asset.image, -e.regX, -e.regY, e.width, e.height);
       }
       c.restore();
+      if (e === arenaBackground) drawNightSky(c);
     }
     runtime.castle?.draw(c);
     c.restore();

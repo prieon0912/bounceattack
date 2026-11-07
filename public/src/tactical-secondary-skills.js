@@ -258,7 +258,7 @@ function cleanse(r,side,caster){
  for(const t of [...r.threads,...r.pending])if(t.fn===originalFear)t.cancelled=true;
 }
 const BLESSING={manaCost:42,cooldownTicks:600,ticks:180};
-export const michaelBlessing=definition(33,'대 천사의 축복',BLESSING,'michael-blessing','모든 부정적인 효과를 제거하고, 3초간 받는 피해가 30% 감소하며 공격력이 30% 증가합니다.',{
+export const michaelBlessing=definition(33,'대 천사의 축복',BLESSING,'michael-blessing','천사의 축복을 받아 부정적인 효과들을 제거하고 각성합니다.',{
  castWhileStunned:true,
  prepare(p){this.effectPictures=[alias(p,'q4lr','michael-blessing-light')];prepare.call(this,p);},
  damageMultiplier(r,key,value,side,state){
@@ -276,8 +276,7 @@ export const michaelBlessing=definition(33,'대 천사의 축복',BLESSING,'mich
  }
 });
 const DARKNESS={manaCost:50,cooldownTicks:540,ticks:300,slow:7,fearTicks:48};
-export const lycanDarkness=definition(29,'어둠',DARKNESS,'lycan-darkness','5초에 걸쳐 초당 에너지 8%를 충전하고 적을 둔화시킵니다. 어둠 중 늑대의 공격에 맞은 적은 도망갑니다.',{
- prepare(p){this.effectPictures=[alias(p,'x1zv','lycan-darkness-eyes')];prepare.call(this,p);},
+export const lycanDarkness=definition(29,'어둠',DARKNESS,'lycan-darkness','5초 동안 어둠이 온 세상을 뒤덮게 합니다.',{
  slowValue(r,e,key,raw,state){return logitechRageQuit.slowValue(r,e,key,raw,state);},
  onFunction(r,c,fn,args,side,state){
   if(!(state.darkUntil>r.tick)||fn!==id(side,'qy83','05j0')||r.num(args[0])>=0||
@@ -306,20 +305,18 @@ export const lycanDarkness=definition(29,'어둠',DARKNESS,'lycan-darkness','5�
   const start=r.tick,mana=id(side,'qn98','thom');
   state.darkUntil=start+DARKNESS.ticks;
   if(vulnerable(r,3-side))state.slow={side:3-side,value:DARKNESS.slow,until:state.darkUntil};
-  const eyes=visual(r,side,'lycan-darkness-eyes',caster.x,caster.y+9,20,'lycan-darkness');
   let awarded=0;
   try{while(alive(r,side)){
    const elapsed=r.tick-start,earned=Math.min(5,Math.floor(elapsed/60));
    if(earned>awarded){r.set(caster,mana,Math.min(100,r.num(r.get(caster,mana))+8*(earned-awarded)));awarded=earned;}
    if(elapsed>=DARKNESS.ticks)break;
-   eyes.x=caster.x;eyes.y=caster.y+9;eyes.effects.transparency=22+Math.sin(elapsed/9)*16;
    yield 1;
-  }}finally{eyes.dead=true;delete state.darkUntil;}
+  }}finally{delete state.darkUntil;}
  }
 });
-const FIREWORK={manaCost:39,cooldownTicks:270,speed:9,range:180,radius:31};
-export const artenesFirework=definition(25,'폭죽 사냥',FIREWORK,'artenes-firework','범위 피해를 주는 폭죽을 발사합니다. 화살에 적중하면 그 자리에서 즉시 폭발합니다.',{
- prepare(p){this.effectPictures=[alias(p,'hctz','artenes-firework-arrow',4),alias(p,'6115','artenes-firework-blast',4)];prepare.call(this,p);},
+const FIREWORK={manaCost:39,cooldownTicks:270,speed:9,range:180,radius:45};
+export const artenesFirework=definition(25,'폭죽 사냥',FIREWORK,'artenes-firework','공중에서 터지는 폭죽을 발사합니다.',{
+ prepare(p){this.effectPictures=[['artenes-firework-arrow','assets/secondary/artenes-firework-rocket.svg',{width:90,height:40}],alias(p,'6115','artenes-firework-blast',4)];prepare.call(this,p);},
  *cast(r,c,{side,caster,target}){
   const dir=facing(r,side),arrow=visual(r,side,'artenes-firework-arrow',caster.x,caster.y,19,'firework-arrow');
   arrow.scaleX=Math.abs(arrow.scaleX)*dir;
@@ -338,7 +335,7 @@ export const artenesFirework=definition(25,'폭죽 사냥',FIREWORK,'artenes-fir
    const splash=canStrike(r,side)&&Math.hypot(arrow.x-target.x,arrow.y-target.y)<=FIREWORK.radius;
    if(marked&&(direct||splash))r.set(caster,'zxd6',0);
    const blast=visual(r,side,'artenes-firework-blast',arrow.x,arrow.y,16,'firework-blast');arrow.dead=true;
-   r.spawn(blast,function*(rt){try{for(let n=0;n<16;n++){rt.setSize(blast,16+46*(1-(1-n/15)**2));blast.effects.transparency=n/15*100;yield 1;}}finally{blast.dead=true;}},'firework_blast');
+   r.spawn(blast,function*(rt){try{for(let n=0;n<16;n++){rt.setSize(blast,16+(FIREWORK.radius*2-16)*(1-(1-n/15)**2));blast.effects.transparency=n/15*100;yield 1;}}finally{blast.dead=true;}},'firework_blast');
    const fn=id(side,'qy83','05j0'),bonus=marked?3:0;
    if(direct)yield* r.call(c,fn,[-(5+bonus),0,1]);
    if(splash)yield* r.call(c,fn,[-(9+bonus),0,1]);
