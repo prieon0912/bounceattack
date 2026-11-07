@@ -372,4 +372,113 @@ export const invaderPulse=definition(13,'공명 파열',INVADER_PULSE,'invader-p
   yield* r.call(c,id(side,'qy83','05j0'),[-(cfg.damage+bars*cfg.damagePerBar),0,1]);
  }
 });
-export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts,michaelBlessing,lycanDarkness,artenesFirework,invaderPulse];
+export const REAPER_MARCH=Object.freeze({manaCost:32,cooldownTicks:60,distance:100,dashTicks:18,radius:35,dashDamage:5,slashDamage:3,rootTicks:60});
+export const chronosReaperMarch=definition(15,'사신의 행차',REAPER_MARCH,'chronos-reaper-march','돌진에 닿은 적을 밀고 가 속박시킨 뒤 주변을 낫으로 벱니다.',{
+ prepare(p){this.effectPictures=[alias(p,'c6xa','reaper-march-scythe')];prepare.call(this,p);},
+ canCast(r,side){return r.num(r.get(body(r,side),id(side,'05ze','1vu0')))<=0;},
+ blocksKey(r,key,side,state){return state.reaperDashing&&(side===1?[65,68,87,69,83]:[37,39,38,13,40]).includes(key);},
+ *cast(r,c,{side,caster,target,state}){
+  const cfg=REAPER_MARCH,direction=facing(r,side),startX=caster.x,y=caster.y;
+  let safeX=startX,completed=false,caught=false,carrying=false,targetSafe=null;state.reaperDashing=true;
+  const bodyArt=r.originals.get(id(side,'n230','ocqj')),transparency=bodyArt.effects.transparency||0;
+  bodyArt.effects.transparency=Math.max(transparency,45);
+  try{
+   for(let age=1;age<=cfg.dashTicks&&alive(r,side);age++){
+    if(r.num(r.get(caster,stunKey(side)))>0||r.num(r.get(caster,id(side,'05ze','1vu0')))>0)break;
+    const goal=Math.max(-232,Math.min(232,startX+direction*cfg.distance*age/cfg.dashTicks));
+    const from=caster.x,steps=Math.max(1,Math.ceil(Math.abs(goal-from)));
+    for(let step=1;step<=steps;step++){
+     caster.x=from+(goal-from)*step/steps;caster.y=y;
+     if(!r.reach(caster,'6tzq')&&!r.reach(caster,'2bx4'))safeX=caster.x;
+     if(!caught&&canStrike(r,side)&&Math.hypot(caster.x-target.x,caster.y-target.y)<=20){
+      caught=true;carrying=vulnerable(r,3-side);targetSafe={x:target.x,y:target.y};
+     }
+     if(carrying){
+      target.x=Math.max(-232,Math.min(232,caster.x+direction*18));target.y=y;
+      if(!r.reach(target,'6tzq')&&!r.reach(target,'2bx4'))targetSafe={x:target.x,y:target.y};
+     }
+    }
+    yield 1;
+   }
+   completed=alive(r,side)&&r.num(r.get(caster,stunKey(side)))===0&&r.num(r.get(caster,id(side,'05ze','1vu0')))<=0;
+  }finally{
+   caster.x=safeX;caster.y=y;
+   if(carrying&&targetSafe){target.x=targetSafe.x;target.y=targetSafe.y;}
+   delete state.reaperDashing;
+   // Preserve a transparency change made by another effect during the dash.
+   if(bodyArt.effects.transparency===Math.max(transparency,45))bodyArt.effects.transparency=transparency;
+  }
+  if(!completed)return;
+  const slash=visual(r,side,'reaper-march-scythe',caster.x,caster.y,cfg.radius*2,'reaper-march-slash');
+  r.spawn(slash,function*(rt){try{for(let age=0;age<12;age++){slash.x=caster.x;slash.y=caster.y;slash.rotation=direction*(-120+age/11*360);slash.effects.transparency=age/12*100;yield 1;}}finally{slash.dead=true;}},'reaper_march_slash');
+  const hitContext={...c,e:slash},damageFunction=id(side,'qy83','05j0');
+  if(caught&&canStrike(r,side)){
+   r.add(slash,'ha8n',1);r.set(slash,'lq8z',1);
+   yield* r.call(hitContext,damageFunction,[-cfg.dashDamage,0,1]);
+   root(r,side,cfg.rootTicks);
+  }
+  if(canStrike(r,side)&&Math.hypot(caster.x-target.x,caster.y-target.y)<=cfg.radius){
+   r.add(slash,'ha8n',1);r.set(slash,'lq8z',1);
+   yield* r.call(hitContext,damageFunction,[-cfg.slashDamage,0,1]);
+  }
+ }
+});
+export const AXE_RAGE=Object.freeze({manaCost:45,cooldownTicks:60,ticks:300,speedMultiplier:1.25,pullMultiplier:1.5,basicBonus:2,slow:8,slowTicks:60});
+export const axeRage=definition(5,'분노',AXE_RAGE,'axe-rage','5초 동안 이동 속도와 일반 공격 피해가 증가하며, 적을 더 강하게 끌어당기고 둔화시킵니다.',{
+ slowValue:logitechRageQuit.slowValue,
+ onFunction(r,c,fn,args,side,state){
+  if(!(state.rageUntil>r.tick)||!alive(r,side)||c.e.objectId!==id(side,'f5gc','45b6')||fn!==id(side,'qy83','05j0')||r.num(args[0])>=0)return;
+  if((side===1?['tuno','w035']:['l4jj','lnuw']).includes(c.block))args[0]=r.num(args[0])-AXE_RAGE.basicBonus;
+  if(canStrike(r,side)&&vulnerable(r,3-side)){
+   state.slow={side:3-side,value:AXE_RAGE.slow,until:r.tick+AXE_RAGE.slowTicks};
+   showStatusVisual(r,side,'slow',AXE_RAGE.slowTicks);
+  }
+ },
+ onCommand(r,c,type,args,side,state){
+  if(!(state.rageUntil>r.tick)||!alive(r,side))return;
+  if(type==='move_x'&&c.e===body(r,side)&&['afct','i0j3','zwdh','xcn9'].includes(c.block))args[0]=r.num(args[0])*AXE_RAGE.speedMultiplier;
+  if(type==='change_variable'&&c.e.objectId===id(side,'f5gc','45b6')&&[id(side,'lgp6','c9o4'),'91k5'].includes(args[0])&&canStrike(r,side)&&vulnerable(r,3-side))args[1]=r.num(args[1])*AXE_RAGE.pullMultiplier;
+ },
+ *cast(r,c,{side,state}){
+  state.rageUntil=r.tick+AXE_RAGE.ticks;
+  try{while(state.rageUntil>r.tick&&alive(r,side))yield 1;}
+  finally{delete state.rageUntil;}
+ }
+});
+export const TESLA_PRISM=Object.freeze({manaCost:24,cooldownTicks:60,halfAngle:25,damageMultiplier:.9});
+export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다음 일반 공격이 부채꼴로 퍼지지만 피해량이 10% 감소합니다.',{
+ effectPictures:[['tesla-prism-fan','assets/secondary/tesla-prism-fan.svg',{width:100,height:100}]],
+ canCast(r,side){return !r.secondarySkills.state(side).prismArmed;},
+ *cast(r,c,{state}){state.prismArmed=true;},
+ onClone(r,c,child,side,state){
+  if(!state.prismArmed||c.e.objectId!==id(side,'5c1h','8rb4')||child.objectId!==c.e.objectId||!['cowr','f7j2'].includes(c.block))return;
+  state.prismArmed=false;child.dead=true;
+  const enhanced=r.num(r.get(c.e,id(side,'rr24','qvkr')))===1;
+  this.fire(r,side,enhanced);
+ },
+ fire(r,side,enhanced){
+  const caster=body(r,side),target=body(r,3-side),direction=facing(r,side),x=caster.x,y=caster.y-4.5;
+  const fan=visual(r,side,'tesla-prism-fan',x,y,2,'tesla-prism');
+  const slope=Math.tan(TESLA_PRISM.halfAngle*Math.PI/180),range=enhanced?596:548,steps=enhanced?36:33;
+  r.spawn(fan,function*(rt,c){let hit=false;try{
+   for(let age=0;age<steps&&alive(rt,side);age++){
+    const radius=Math.min(range,20+(age+1)*16);
+    fan.x=x+direction*radius/2;fan.y=y;fan.scaleX=direction*radius/fan.width;
+    fan.scaleY=2*radius*slope/fan.height;fan.effects.transparency=20;
+    const dx=(target.x-x)*direction,dy=target.y-y;
+    if(!hit&&canStrike(rt,side)&&dx>=-8&&Math.hypot(dx,dy)<=radius+8&&Math.abs(dy)<=Math.max(0,dx)*slope+8){
+     hit=true;
+     const rooted=rt.num(rt.get(target,id(3-side,'05ze','1vu0')))>0;
+     const base=enhanced?(rooted?41:27):(rooted?26:17);
+     yield* rt.call(c,id(side,'qy83','05j0'),[-base*TESLA_PRISM.damageMultiplier,10,2]);
+     rt.add(target,id(3-side,'c9o4','lgp6'),direction*20);
+     if(enhanced)rt.set(target,id(3-side,'9af4','nccn'),18);
+     break;
+    }
+    yield 1;
+   }
+   for(let age=1;age<=8&&alive(rt,side);age++){fan.effects.transparency=20+age*10;yield 1;}
+  }finally{fan.dead=true;}},'tesla_prism');
+ }
+});
+export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts,michaelBlessing,lycanDarkness,artenesFirework,invaderPulse,chronosReaperMarch,axeRage,teslaPrism];

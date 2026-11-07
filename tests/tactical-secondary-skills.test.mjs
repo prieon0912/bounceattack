@@ -153,3 +153,89 @@ for(const side of [1,2]){
   }
  });
 }
+
+for(const side of [1,2]){
+ const key=side===1?82:80,dir=side===1?1:-1;
+ test(`Reaper March side ${side}: dash 100, carries foe, roots and hits for 5 plus 3`,()=>{
+  const r=game(15,side,true),caster=body(r,side),target=body(r,3-side),start=caster.x;
+  r.collisionProvider=()=>false;r.globals.set(side===1?'etjn':'846x',dir>0?1:0);
+  target.x=start+dir*100;
+  const hits=[],call=r.call.bind(r);r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push(args[0]);yield*call(c,id,args);};
+  r.run(19,[key]);assert.equal(caster.x,start+dir*100);assert.equal(caster.y,0);
+  assert.deepEqual(hits,[-5,-3]);assert.equal(target.x,caster.x+dir*18);assert.ok(r.num(r.globals.get(side===1?'1vu0':'05ze'))>=1);assert.equal(r.globals.get(side===1?'qn98':'thom'),68);
+  const slash=r.entities.find(e=>e.secondaryEffect==='reaper-march-slash');assert.equal(r.num(r.get(slash,'ha8n')),2);
+  assert.equal(r.secondarySkills.state(side).reaperDashing,undefined);assert.deepEqual(r.faults,[]);
+ });
+ test(`Reaper March side ${side}: exits walls at safe position and respects stealth`,()=>{
+  const r=game(15,side),caster=body(r,side),start=caster.x;r.globals.set(side===1?'etjn':'846x',1);
+  r.collisionProvider=(e,id)=>id==='6tzq'&&e.x>=start+60;
+  r.run(19,[key]);assert.ok(caster.x<start+60&&caster.x>=start+59);assert.equal(r.secondarySkills.state(side).reaperDashing,undefined);assert.deepEqual(r.faults,[]);
+  const hidden=game(15,side);hidden.collisionProvider=()=>false;hidden.globals.set(side===1?'etjn':'846x',1);
+  body(hidden,3-side).x=body(hidden,side).x+100;hidden.globals.set(side===1?'rav6':'ob2m',1);
+  hidden.run(19,[key]);assert.equal(hidden.num(hidden.globals.get('ha8n')),0);assert.deepEqual(hidden.faults,[]);
+ });
+}
+
+for(const side of [1,2]){
+ test(`Axe Rage side ${side}: five seconds, basic-only bonus, speed, passive pull and slow`,()=>{
+  const r=game(5,side,true),key=side===1?82:80,caster=body(r,side),axe=r.originals.get(side===1?'f5gc':'45b6'),state=r.secondarySkills.state(side);
+  r.run(1,[key]);assert.equal(r.globals.get(side===1?'qn98':'thom'),55);
+  const basic=[-10,10,1],ultimate=[-3,10,1],fn=side===1?'qy83':'05j0';
+  r.secondarySkills.onFunction({e:axe,block:side===1?'tuno':'l4jj'},fn,basic);
+  r.secondarySkills.onFunction({e:axe,block:side===1?'ooe9':'jg3c'},fn,ultimate);
+  assert.equal(basic[0],-12);assert.equal(ultimate[0],-3);assert.equal(state.slow.value,8);
+  const x=caster.x;r.command({e:caster,block:'afct'},'move_x',[2]);assert.equal(caster.x,x+2.5);
+  const force=side===1?'lgp6':'c9o4';r.globals.set(force,0);
+  r.command({e:axe,block:'kr83'},'change_variable',[force,-10]);assert.equal(r.globals.get(force),-15);
+  const other=body(r,3-side),ox=other.x;r.command({e:other,block:'afct'},'move_x',[2]);assert.equal(other.x,ox+2);
+  r.run(300);assert.equal(state.rageUntil,undefined);
+  const plain=[-10,10,1];r.secondarySkills.onFunction({e:axe,block:side===1?'tuno':'l4jj'},fn,plain);assert.equal(plain[0],-10);
+  const ex=caster.x;r.command({e:caster,block:'afct'},'move_x',[2]);assert.equal(caster.x,ex+2);
+  assert.deepEqual(r.faults,[]);
+ });
+}
+
+for(const side of [1,2]){
+ const key=side===1?82:80,dir=side===1?1:-1;
+ test(`Tesla Prism side ${side}: next native shot only, fan hit, normal/enhanced and rooted damage reduced ten percent`,()=>{
+  for(const enhanced of [false,true])for(const rooted of [false,true]){
+   const r=game(17,side,true),caster=body(r,side),target=body(r,3-side),weapon=r.originals.get(side===1?'5c1h':'8rb4');
+   r.collisionProvider=()=>false;r.globals.set(side===1?'etjn':'846x',dir>0?1:0);
+   target.x=caster.x+dir*60;target.y=caster.y+15;
+   r.globals.set(side===1?'1vu0':'05ze',rooted?1:0);r.run(1,[key]);
+   assert.equal(r.globals.get(side===1?'qn98':'thom'),76);assert.equal(r.secondarySkills.state(side).prismArmed,true);
+   r.globals.set(side===1?'rr24':'qvkr',enhanced?1:0);
+   const hits=[],call=r.call.bind(r);r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push(args[0]);yield*call(c,id,args);};
+   r.command({e:weapon,block:enhanced?'cowr':'f7j2'},'create_clone',['self']);
+   assert.equal(r.secondarySkills.state(side).prismArmed,false);r.run(45);
+   const base=enhanced?(rooted?41:27):(rooted?26:17);
+   assert.equal(hits.length,1);assert.ok(Math.abs(hits[0]+base*.9)<1e-9);
+   assert.equal(r.num(r.globals.get(side===1?'lgp6':'c9o4')),dir*20);
+   if(enhanced)assert.equal(r.num(r.globals.get(side===1?'nccn':'9af4')),18);
+   const next=r.makeEntity(weapon.def,weapon);r.secondarySkills.onClone({e:weapon,block:'f7j2'},next);assert.equal(next.dead,false);
+   assert.deepEqual(r.faults,[]);
+  }
+ });
+ test(`Tesla Prism side ${side}: rear, outside fan and hidden target are excluded`,()=>{
+  for(const mode of ['behind','above','hidden']){
+   const r=game(17,side),caster=body(r,side),target=body(r,3-side),weapon=r.originals.get(side===1?'5c1h':'8rb4');
+   r.collisionProvider=()=>false;r.globals.set(side===1?'etjn':'846x',dir>0?1:0);
+   target.x=caster.x+dir*(mode==='behind'?-60:60);target.y=mode==='above'?100:0;
+   if(mode==='hidden')r.globals.set(side===1?'rav6':'ob2m',1);
+   r.run(1,[key]);const hp=r.globals.get(side===1?'7ir2':'akf6');
+   r.command({e:weapon,block:'f7j2'},'create_clone',['self']);r.run(50);
+   assert.equal(r.globals.get(side===1?'7ir2':'akf6'),hp);assert.deepEqual(r.faults,[]);
+  }
+ });
+}
+
+for(const side of [1,2]){
+ test(`Tesla Prism side ${side}: normal attack input retains original wind-up and consumes armed skill on firing`,()=>{
+  const r=game(17,side),key=side===1?82:80,weapon=r.originals.get(side===1?'5c1h':'8rb4');
+  r.collisionProvider=()=>false;r.run(1,[key]);
+  r.dispatchEntity(weapon,'when_scene_start');
+  r.run(30,[side===1?69:13]);assert.equal(r.secondarySkills.state(side).prismArmed,true);
+  r.run(28,[side===1?69:13]);assert.equal(r.secondarySkills.state(side).prismArmed,false);
+  assert.ok(r.entities.some(e=>e.secondaryEffect==='tesla-prism'));assert.deepEqual(r.faults,[]);
+ });
+}
