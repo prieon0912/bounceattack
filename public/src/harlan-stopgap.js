@@ -21,7 +21,7 @@ function finish(r,state){
 export const harlanStopgap={
  character:26,name:'임시방편',manaCost:STOPGAP.manaCost,cooldownTicks:STOPGAP.cooldownTicks,
  lockVariable:false,icon:'assets/secondary/harlan-stopgap-icon.svg',secondaryPictureId:'harlan-stopgap-icon',
- description:'다음 5초간 지속되는 임시 칼을 사용합니다. 이 칼은 던지지는 않고 휘두르며 공격하며, 기존 검을 회수한다면 즉시 임시 칼 사용을 멈춥니다.',
+ description:'다음 5초간 임시 칼을 사용합니다. 검을 줍는다면 즉시 임시 칼 사용을 멈춥니다.',
  prepare(project){
   const picture=project.objects.find(o=>o.id==='nijg').sprite.pictures[0];
   this.effectPictures=[
