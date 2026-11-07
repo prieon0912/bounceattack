@@ -65,6 +65,15 @@ function destroy(r,wall) {
     },'barricade_break');
   }
 }
+export function damageInstallationsInRadius(r,side,point,radius,damage) {
+  for(const target of installations(r)){
+    if(!canHitInstallation({combatSide:side},target))continue;
+    const bounds=r.bounds(target);
+    const dx=Math.max(bounds.left-point.x,0,point.x-bounds.right);
+    const dy=Math.max(bounds.bottom-point.y,0,point.y-bounds.top);
+    if(Math.hypot(dx,dy)<=radius)hurt(r,target,damage);
+  }
+}
 function hurt(r, wall, damage) {
   if(['boom-turret','prince-flag'].includes(wall.secondaryEffect)){
     wall.installationHealth=Math.max(0,wall.installationHealth-damage);
@@ -263,6 +272,7 @@ export const stenBarricade = {
     return distance;
   },
   blocksFunction(r,c,id,args) {
+    if(c.e.installationAreaDamage)return;
     const targetSide=id==='qy83'?2:id==='05j0'?1:0;
     if(!targetSide || r.num(args[0])>=0 || !installations(r).length) return;
     const target=r.originals.get(bodyId(targetSide));

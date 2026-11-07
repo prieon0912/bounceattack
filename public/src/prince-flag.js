@@ -21,7 +21,7 @@ export const princeRoyalFlag={
  character:22,name:'왕실의 깃발',manaCost:ROYAL_FLAG.manaCost,
  cooldownTicks:ROYAL_FLAG.cooldownTicks,lockVariable:false,
  icon:'assets/secondary/prince-royal-flag-icon.svg',secondaryPictureId:'prince-royal-flag-icon',
- description:'10초 동안 유지되는 깃발을 설치합니다. 주변에서 이동이 빨라지고 일반 공격 적중 시 보호막을 얻습니다.',
+ description:'10초간 유지되는 깃발을 설치합니다. 깃발 주위에 있으면 사기가 올라갑니다.',
  effectPictures:[
   ['prince-royal-flag','assets/secondary/prince-royal-flag.svg',{width:60,height:90}],
   ['prince-royal-flag-radius','assets/secondary/prince-royal-flag-radius.svg',{width:100,height:100}],

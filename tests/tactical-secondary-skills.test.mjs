@@ -350,3 +350,32 @@ test('Turret explosion radius is 70, twice its previous radius',()=>{
   assert.deepEqual(r.faults,[]);
  }
 });
+
+for(const side of [1,2]){
+ const key=side===1?82:80,dir=side===1?1:-1;
+ test(`Alpha Light Surge side ${side}: MP26, fixed origin, nine-tick spacing and three separate four-damage hits`,()=>{
+  const r=game(28,side,true),caster=body(r,side),target=body(r,3-side),origin={x:caster.x,y:caster.y};
+  r.globals.set(side===1?'etjn':'846x',dir>0?1:0);r.collisionProvider=()=>false;
+  const hits=[],call=r.call.bind(r);
+  r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push({tick:r.tick,damage:args[0],x:c.e.x,y:c.e.y});yield*call(c,id,args);};
+  target.x=origin.x+dir*30;r.run(1,[key]);assert.equal(r.globals.get(side===1?'qn98':'thom'),74);
+  caster.x+=200;caster.y+=60;r.globals.set(side===1?'etjn':'846x',dir>0?0:1);
+  target.x=origin.x+dir*65;target.y=origin.y;r.run(9);
+  target.x=origin.x+dir*100;r.run(9);
+  assert.deepEqual(hits.map(h=>h.damage),[-4,-4,-4]);
+  assert.deepEqual(hits.map(h=>h.x),[30,65,100].map(x=>origin.x+dir*x));
+  assert.equal(hits[1].tick-hits[0].tick,9);assert.equal(hits[2].tick-hits[1].tick,9);
+  assert.ok(hits.every(h=>h.y===origin.y));assert.equal(r.secondarySkills.state(side).slow.value,6);
+  r.run(50);assert.ok(!r.entities.some(e=>e.secondaryEffect==='alpha-light-surge'&&!e.dead));assert.deepEqual(r.faults,[]);
+ });
+ test(`Alpha Light Surge side ${side}: stealth excludes damage; CC immunity excludes slow`,()=>{
+  for(const hidden of [true,false]){
+   const r=game(28,side),caster=body(r,side),target=body(r,3-side);
+   r.globals.set(side===1?'etjn':'846x',1);target.x=caster.x+30;
+   r.globals.set(hidden?(side===1?'rav6':'ob2m'):(side===1?'ec6d':'jcf6'),1);
+   const hp=side===1?'7ir2':'akf6',before=r.num(r.globals.get(hp));r.run(20,[key]);
+   assert.equal(r.secondarySkills.state(side).slow,undefined);
+   assert.equal(r.num(r.globals.get(hp)),hidden?before:before-4);assert.deepEqual(r.faults,[]);
+  }
+ });
+}
