@@ -145,3 +145,8 @@ test('Destroyed barricade emits three matching non-colliding fragments and clean
  r.run(5);assert.notDeepEqual(pieces.map(e=>[e.x,e.y,e.rotation]),positions);
  r.run(22);assert.ok(pieces.every(e=>e.dead));assert.deepEqual(r.faults,[]);
 });
+
+test('Previous deployed barricade image path remains available with the same current artwork',()=>{
+ const root=new URL('../public/assets/secondary/',import.meta.url);
+ assert.deepEqual(fs.readFileSync(new URL('sten-barricade.svg',root)),fs.readFileSync(new URL('sten-barricade-wall.svg',root)));
+});

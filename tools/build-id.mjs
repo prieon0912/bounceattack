@@ -36,6 +36,7 @@ for (const path of [
   "public/src/tactical-secondary-skills.js",
   "public/src/barricade.js",
   "public/assets/secondary/sten-barricade-wall.svg",
+  "public/assets/secondary/sten-barricade.svg",
   "public/assets/secondary/sten-barricade-piece-0.svg",
   "public/assets/secondary/sten-barricade-piece-1.svg",
   "public/assets/secondary/sten-barricade-piece-2.svg",
