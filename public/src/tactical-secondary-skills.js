@@ -251,15 +251,8 @@ function cleanse(r,side,caster){
  const chess=r.castle.state(foe);
  if(chess?.slow?.side===side)delete chess.slow;
  if(chess?.crown?.target===side)chess.crown=null;
- const enemy=body(r,foe);
+ // Preserve offensive marks and stacks that are earned through hits.
  const enemyCharacter=r.num(r.globals.get(id(foe,'y75t','s5vb')));
- if(enemyCharacter===25){
-  r.set(enemy,'zxd6',0);
-  for(const mark of r.entities)if(mark.objectId==='z46k'){
-   if(mark.clone)mark.dead=true;
-   else mark.visible=false;
-  }
- }
  if(enemyCharacter===17)r.set(caster,'ndo3',0);
  const fearObject=id(side,'e7ip','nijg'),fearMessage=id(side,'w9n1','smzv');
  const originalFear=r.events.get(fearObject)?.find(e=>e.type==='when_message_cast'&&e.params[1]===fearMessage)?.fn;
