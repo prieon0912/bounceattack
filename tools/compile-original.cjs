@@ -38,7 +38,7 @@ for(const object of project.objects){
 // Mirror matches: the cannon's globals (ult target, ult state, shard counts, cooldowns)
 // were shared by 1P 대포 and 2P 대포, so two cannons overwrote each other's ult target
 // and range circle. In a mirror match the 2P side gets its own copy (runtime.sideKey).
-project.mirrorSideGlobals=['대공포격','대공포격x','대공포격y','초과정수','정수갯수','대포좌우','공허공격딜레이','공허스킬딜레이','폭격 X','폭격 Y','원소','늑대모드','늑대궁사용중','석궁표식','파열중첩','파열중첩 초기화'].map(n=>{const v=project.variables.filter(v=>v.name===n&&!v.object);if(v.length!==1)throw Error('Mirror side global '+n);return v[0].id;});
+project.mirrorSideGlobals=['대공포격','대공포격x','대공포격y','초과정수','정수갯수','대포좌우','공허공격딜레이','공허스킬딜레이','폭격 X','폭격 Y','원소','늑대모드','늑대궁사용중','석궁표식','파열중첩','파열중첩 초기화','어둠중첩','중첩 초기화'].map(n=>{const v=project.variables.filter(v=>v.name===n&&!v.object);if(v.length!==1)throw Error('Mirror side global '+n);return v[0].id;});
 const metadata={...project,objects:project.objects.map(({script,...rest})=>structuredClone(rest)),functions:[]};
 for(const o of metadata.objects)for(const asset of [...o.sprite.pictures,...o.sprite.sounds])if(asset.fileurl?.startsWith('temp/'))asset.fileurl='assets/'+asset.fileurl;
 fs.writeFileSync(path.join(root,'public/data/project.json'),JSON.stringify(metadata));
