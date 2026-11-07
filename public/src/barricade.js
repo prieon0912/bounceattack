@@ -11,10 +11,10 @@ const sid = (side, first, second) => side === 1 ? first : second;
 function walls(r) { return r.entities.filter(e => !e.dead && e.secondaryEffect === 'sten-barricade'); }
 function installations(r) {
   return r.entities.filter(e=>!e.dead&&(e.secondaryEffect==='sten-barricade'||
-    (e.secondaryEffect==='boom-turret'&&e.installationHealth>0)));
+    (['boom-turret','prince-flag'].includes(e.secondaryEffect)&&e.installationHealth>0)));
 }
 function canHitInstallation(e,target) {
-  return target.secondaryEffect!=='boom-turret'||target.installationOwner!==e.combatSide;
+  return !['boom-turret','prince-flag'].includes(target.secondaryEffect)||target.installationOwner!==e.combatSide;
 }
 
 function location(r, side) {
@@ -66,7 +66,7 @@ function destroy(r,wall) {
   }
 }
 function hurt(r, wall, damage) {
-  if(wall.secondaryEffect==='boom-turret'){
+  if(['boom-turret','prince-flag'].includes(wall.secondaryEffect)){
     wall.installationHealth=Math.max(0,wall.installationHealth-damage);
     return;
   }
