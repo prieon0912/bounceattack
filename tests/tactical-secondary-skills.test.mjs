@@ -92,3 +92,33 @@ for(const side of [1,2])test(`Elemental Sword Arts side ${side}: all forms deal 
   assert.deepEqual(r.faults,[]);
  }
 });
+
+for(const side of [1,2]){
+ const key=side===1?82:80,fn=side===1?'qy83':'05j0',stun=side===1?'8w41':'wyyq',root=side===1?'05ze':'1vu0';
+ test(`Blessing side ${side}: cleanses through stun, then modifies attack and defense for three seconds`,()=>{
+  const r=game(33,side),actor=body(r,side),def=side===1?'mm0r':'nmkh';
+  r.globals.set(stun,1);r.globals.set(root,2);r.globals.set(def,1);
+  r.run(1,[key]);assert.equal(r.num(r.globals.get(stun)),0);assert.equal(r.num(r.globals.get(root)),0);assert.equal(r.get(actor,def),.7);
+  const args=[-10,0,1];r.secondarySkills.onFunction({e:actor},fn,args);assert.equal(args[0],-13);
+  r.run(180);assert.equal(r.get(actor,def),1);assert.deepEqual(r.faults,[]);
+ });
+ test(`Darkness side ${side}: charges 40 energy and only wolf hits cause fear`,()=>{
+  const r=game(29,side,true),wolf=r.originals.get(side===1?'jk2d':'5isi'),mana=side===1?'qn98':'thom',fear=side===1?'mnus':'mfr0';
+  r.globals.set(mana,60);r.run(1,[key]);assert.equal(r.globals.get(mana),10);
+  r.set(wolf,'0m2d',0);r.secondarySkills.onFunction({e:wolf},fn,[-7,0,1]);assert.equal(r.secondarySkills.state(side).fear,undefined);
+  r.set(wolf,'0m2d',1);r.secondarySkills.onFunction({e:wolf},fn,[-7,0,1]);assert.equal(r.num(r.globals.get(fear)),1);
+  r.run(50);assert.equal(r.num(r.globals.get(fear)),0);
+  r.run(250);assert.equal(r.globals.get(mana),50);assert.deepEqual(r.faults,[]);
+ });
+ test(`Firework side ${side}: separate direct and explosion damage, both gain the original mark bonus`,()=>{
+  for(const marked of [false,true]){
+   const r=game(25,side,true),caster=body(r,side);r.collisionProvider=()=>false;
+   r.globals.set(side===1?'etjn':'846x',side===1?1:0);r.set(caster,'zxd6',marked?1.8:0);
+   const hits=[],call=r.call.bind(r);r.call=function*(c,id,args){if(id===fn)hits.push(args[0]);yield*call(c,id,args);};
+   r.run(10,[key]);assert.deepEqual(hits,marked?[-8,-12]:[-5,-9]);
+   assert.equal(r.num(r.get(caster,'zxd6')),0);
+   assert.ok(r.entities.some(e=>e.secondaryEffect==='firework-blast'));
+   assert.ok(!r.entities.some(e=>e.secondaryEffect==='firework-arrow'));assert.deepEqual(r.faults,[]);
+  }
+ });
+}

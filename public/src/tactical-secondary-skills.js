@@ -239,4 +239,110 @@ export const elementSwordArts=definition(24,'원소술',ELEMENT,'element-sword-a
   }finally{slash.dead=true;delete state.elementSwing;delete state.fireSwing;}
  }
 });
-export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts];
+function cleanse(r,side,caster){
+ const foe=3-side,opponent=r.secondarySkills.state(foe);
+ const keys=side===1?['8w41','05ze','9af4','mfr0','td66','bpvc','v5ew','f7zw','omu7','wr8j','96zg']:
+   ['wyyq','1vu0','nccn','mnus','ziwi','bpvd','f1dk','932j','igdl','u3f8','7rtf'];
+ for(const key of keys)r.set(caster,key,['96zg','7rtf'].includes(key)?1:0);
+ r.add(caster,id(side,'bpv0','bpv5'),1);
+ if(opponent.slow?.side===side)delete opponent.slow;
+ if(opponent.burn)opponent.burn.until=r.tick-1;
+ if(opponent.fear)opponent.fear.until=r.tick-1;
+ const chess=r.castle.state(foe);
+ if(chess?.slow?.side===side)delete chess.slow;
+ if(chess?.crown?.target===side)chess.crown=null;
+ const enemy=body(r,foe);
+ if(r.num(r.globals.get(id(foe,'y75t','s5vb')))===25)r.set(enemy,'zxd6',0);
+ const fearObject=id(side,'e7ip','nijg'),fearMessage=id(side,'w9n1','smzv');
+ const originalFear=r.events.get(fearObject)?.find(e=>e.type==='when_message_cast'&&e.params[1]===fearMessage)?.fn;
+ for(const t of [...r.threads,...r.pending])if(t.fn===originalFear)t.cancelled=true;
+}
+const BLESSING={manaCost:42,cooldownTicks:600,ticks:180};
+export const michaelBlessing=definition(33,'대 천사의 축복',BLESSING,'michael-blessing','모든 부정적인 효과를 제거하고, 3초간 받는 피해가 30% 감소하며 공격력이 30% 증가합니다.',{
+ castWhileStunned:true,
+ prepare(p){this.effectPictures=[alias(p,'q4lr','michael-blessing-light')];prepare.call(this,p);},
+ damageMultiplier(r,key,value,side,state){
+  return key===id(side,'mm0r','nmkh')&&state.blessingUntil>r.tick&&alive(r,side)?r.num(value)*.7:value;
+ },
+ onFunction(r,c,fn,args,side,state){
+  if(state.blessingUntil>r.tick&&alive(r,side)&&fn===id(side,'qy83','05j0')&&c.e!==body(r,3-side)&&r.num(args[0])<0)args[0]=r.num(args[0])*1.3;
+ },
+ *cast(r,c,{side,caster,state}){
+  cleanse(r,side,caster);state.blessingUntil=r.tick+BLESSING.ticks;
+  const light=visual(r,side,'michael-blessing-light',caster.x,caster.y,35,'michael-blessing');
+  try{while(state.blessingUntil>r.tick&&alive(r,side)){
+   light.x=caster.x;light.y=caster.y;light.effects.transparency=66+Math.sin(r.tick/7)*12;yield 1;
+  }}finally{light.dead=true;delete state.blessingUntil;}
+ }
+});
+const DARKNESS={manaCost:50,cooldownTicks:540,ticks:300,slow:7,fearTicks:48};
+export const lycanDarkness=definition(29,'어둠',DARKNESS,'lycan-darkness','5초에 걸쳐 초당 에너지 8%를 충전하고 적을 둔화시킵니다. 어둠 중 늑대의 공격에 맞은 적은 도망갑니다.',{
+ prepare(p){this.effectPictures=[alias(p,'x1zv','lycan-darkness-eyes')];prepare.call(this,p);},
+ slowValue(r,e,key,raw,state){return logitechRageQuit.slowValue(r,e,key,raw,state);},
+ onFunction(r,c,fn,args,side,state){
+  if(!(state.darkUntil>r.tick)||fn!==id(side,'qy83','05j0')||r.num(args[0])>=0||
+    !id(side,['jk2d','dsht'],['5isi','qdoq']).includes(c.e.objectId)||r.num(r.get(c.e,'0m2d'))!==1||
+    !canStrike(r,side)||!vulnerable(r,3-side))return;
+  if(state.fear&&state.fear.until>=r.tick){state.fear.until=r.tick+DARKNESS.fearTicks;return;}
+  const target=body(r,3-side),caster=body(r,side),fear=state.fear={until:r.tick+DARKNESS.fearTicks};
+  const flag=id(side,'mnus','mfr0'),turn=id(side,'846x','etjn'),speed=id(side,'j88w','utbg');
+  const nativeFearObject=id(side,'nijg','e7ip'),nativeFearMsg=id(side,'smzv','w9n1');
+  r.set(target,flag,1);
+  r.spawn(target,function*(rt){try{
+   while(rt.tick<fear.until&&alive(rt,side)&&alive(rt,3-side)&&vulnerable(rt,3-side)){
+    // Same forced facing and acceleration as Harlan's original fear.
+    const direction=Math.sign(target.x-caster.x)||facing(rt,side);
+    rt.set(target,turn,direction>0?1:0);rt.add(target,speed,direction*.15);yield 1;
+   }
+  }finally{
+   if(state.fear===fear){
+    delete state.fear;
+    const native=rt.events.get(nativeFearObject)?.find(e=>e.params[1]===nativeFearMsg)?.fn;
+    if(!rt.threads.some(t=>!t.cancelled&&t.fn===native))rt.set(target,flag,0);
+   }
+  }},'lycan_darkness_fear');
+ },
+ *cast(r,c,{side,caster,state}){
+  const start=r.tick,mana=id(side,'qn98','thom');
+  state.darkUntil=start+DARKNESS.ticks;
+  if(vulnerable(r,3-side))state.slow={side:3-side,value:DARKNESS.slow,until:state.darkUntil};
+  const eyes=visual(r,side,'lycan-darkness-eyes',caster.x,caster.y+9,20,'lycan-darkness');
+  let awarded=0;
+  try{while(alive(r,side)){
+   const elapsed=r.tick-start,earned=Math.min(5,Math.floor(elapsed/60));
+   if(earned>awarded){r.set(caster,mana,Math.min(100,r.num(r.get(caster,mana))+8*(earned-awarded)));awarded=earned;}
+   if(elapsed>=DARKNESS.ticks)break;
+   eyes.x=caster.x;eyes.y=caster.y+9;eyes.effects.transparency=22+Math.sin(elapsed/9)*16;
+   yield 1;
+  }}finally{eyes.dead=true;delete state.darkUntil;}
+ }
+});
+const FIREWORK={manaCost:39,cooldownTicks:270,speed:9,range:180,radius:31};
+export const artenesFirework=definition(25,'폭죽 사냥',FIREWORK,'artenes-firework','범위 피해를 주는 폭죽을 발사합니다. 화살에 적중하면 그 자리에서 즉시 폭발합니다.',{
+ prepare(p){this.effectPictures=[alias(p,'hctz','artenes-firework-arrow',4),alias(p,'6115','artenes-firework-blast',4)];prepare.call(this,p);},
+ *cast(r,c,{side,caster,target}){
+  const dir=facing(r,side),arrow=visual(r,side,'artenes-firework-arrow',caster.x,caster.y,19,'firework-arrow');
+  arrow.scaleX=Math.abs(arrow.scaleX)*dir;
+  let direct=false;
+  try{
+   flight:for(let traveled=0;traveled<FIREWORK.range&&alive(r,side);){
+    for(let i=0;i<FIREWORK.speed&&traveled<FIREWORK.range;i++,traveled++){
+     const old=arrow.x;arrow.x+=dir;
+     if(Math.abs(arrow.x)>239||r.reach(arrow,'6tzq')||r.reach(arrow,'2bx4')){arrow.x=old;break flight;}
+     if(canStrike(r,side)&&Math.hypot(arrow.x-target.x,arrow.y-target.y)<=10){direct=true;break flight;}
+    }
+    yield 1;
+   }
+   if(!alive(r,side))return;
+   const marked=r.num(r.get(caster,'zxd6'))>0;
+   const splash=canStrike(r,side)&&Math.hypot(arrow.x-target.x,arrow.y-target.y)<=FIREWORK.radius;
+   if(marked&&(direct||splash))r.set(caster,'zxd6',0);
+   const blast=visual(r,side,'artenes-firework-blast',arrow.x,arrow.y,16,'firework-blast');arrow.dead=true;
+   r.spawn(blast,function*(rt){try{for(let n=0;n<16;n++){rt.setSize(blast,16+46*(1-(1-n/15)**2));blast.effects.transparency=n/15*100;yield 1;}}finally{blast.dead=true;}},'firework_blast');
+   const fn=id(side,'qy83','05j0'),bonus=marked?3:0;
+   if(direct)yield* r.call(c,fn,[-(5+bonus),0,1]);
+   if(splash)yield* r.call(c,fn,[-(9+bonus),0,1]);
+  }finally{arrow.dead=true;}
+ }
+});
+export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts,michaelBlessing,lycanDarkness,artenesFirework];
