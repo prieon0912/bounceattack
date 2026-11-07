@@ -1,4 +1,6 @@
-function drawNightSky(c) {
+function drawNightSky(c, opacity) {
+  c.save();
+  c.globalAlpha = opacity;
   c.fillStyle = "rgba(8, 15, 51, .76)";
   c.fillRect(-240, -135, 480, 270);
   c.fillStyle = "#f3e6b2";
@@ -9,6 +11,7 @@ function drawNightSky(c) {
   for (const [x, y, size] of [[-190,-88,2],[-143,-111,1],[-84,-67,2],[-33,-97,1],[32,-77,2],[79,-113,1],[117,-62,2],[211,-108,1]]) {
     c.fillRect(x, y, size, size);
   }
+  c.restore();
 }
 
 export class Renderer {
@@ -39,10 +42,14 @@ export class Renderer {
       else foreground.push(...gates);
       drawOrder.splice(0, drawOrder.length, ...foreground);
     }
-    const night = runtime.scene === "7dwq" &&
-      [1, 2].some(side => runtime.secondarySkills.state(side).darkUntil > runtime.tick);
+    const night = runtime.scene === "7dwq" ? Math.max(0, ...[1, 2].map(side => {
+      const { darkStartedAt, darkUntil } = runtime.secondarySkills.state(side);
+      if (darkUntil <= runtime.tick || darkStartedAt === undefined) return 0;
+      const fade = Math.min(1, (runtime.tick - darkStartedAt) / 30, (darkUntil - runtime.tick) / 30);
+      return fade * fade * (3 - 2 * fade);
+    })) : 0;
     const arenaBackground = night && drawOrder.find(e => e.objectId === "m9cz" && e.visible && !e.dead);
-    if (night && !arenaBackground) drawNightSky(c);
+    if (night && !arenaBackground) drawNightSky(c, night);
     for (const e of drawOrder) {
       if (e.dead || runtime.secondarySkills.hidden(e) || runtime.castle.hidden(e)) continue;
       // Entry's brush has flat (butt) ends; round caps made the HP/MP bars
@@ -140,7 +147,7 @@ export class Renderer {
           c.drawImage(asset.image, -e.regX, -e.regY, e.width, e.height);
       }
       c.restore();
-      if (e === arenaBackground) drawNightSky(c);
+      if (e === arenaBackground) drawNightSky(c, night);
     }
     runtime.castle?.draw(c);
     c.restore();

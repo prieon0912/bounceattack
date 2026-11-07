@@ -204,7 +204,7 @@ export class SecondarySkillSystem {
       const body = r.originals.get(ids.body);
       if (!trigger || state.active || r.tick < state.readyAt || !body || body.dead ||
           !body.visible || Number(r.globals.get(ids.hp)) <= 0 || Number(r.globals.get("r71b")) !== 0 ||
-          Number(r.globals.get(ids.stun)) !== 0 || (definition.lockVariable !== false && Number(r.globals.get(ids.busy)) !== 0) ||
+          (!definition.castWhileStunned && Number(r.globals.get(ids.stun)) !== 0) || (definition.lockVariable !== false && Number(r.globals.get(ids.busy)) !== 0) ||
           Number(r.globals.get(ids.mana)) < definition.manaCost ||
           (definition.canCast && !definition.canCast(r, side))) continue;
       state.active = true;

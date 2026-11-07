@@ -37,6 +37,7 @@ for (const path of [
   "public/src/renderer.js",
   "public/assets/secondary/artenes-firework-rocket.svg",
   "public/assets/secondary/michael-blessing-icon.svg",
+  "public/assets/secondary/michael-blessing-aura.svg",
   "public/assets/secondary/lycan-darkness-icon.svg",
   "public/assets/secondary/artenes-firework-icon.svg",
 

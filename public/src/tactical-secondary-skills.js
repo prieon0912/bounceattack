@@ -252,7 +252,15 @@ function cleanse(r,side,caster){
  if(chess?.slow?.side===side)delete chess.slow;
  if(chess?.crown?.target===side)chess.crown=null;
  const enemy=body(r,foe);
- if(r.num(r.globals.get(id(foe,'y75t','s5vb')))===25)r.set(enemy,'zxd6',0);
+ const enemyCharacter=r.num(r.globals.get(id(foe,'y75t','s5vb')));
+ if(enemyCharacter===25){
+  r.set(enemy,'zxd6',0);
+  for(const mark of r.entities)if(mark.objectId==='z46k'){
+   if(mark.clone)mark.dead=true;
+   else mark.visible=false;
+  }
+ }
+ if(enemyCharacter===17)r.set(caster,'ndo3',0);
  const fearObject=id(side,'e7ip','nijg'),fearMessage=id(side,'w9n1','smzv');
  const originalFear=r.events.get(fearObject)?.find(e=>e.type==='when_message_cast'&&e.params[1]===fearMessage)?.fn;
  for(const t of [...r.threads,...r.pending])if(t.fn===originalFear)t.cancelled=true;
@@ -260,19 +268,27 @@ function cleanse(r,side,caster){
 const BLESSING={manaCost:42,cooldownTicks:600,ticks:180};
 export const michaelBlessing=definition(33,'대 천사의 축복',BLESSING,'michael-blessing','천사의 축복을 받아 부정적인 효과들을 제거하고 각성합니다.',{
  castWhileStunned:true,
- prepare(p){this.effectPictures=[alias(p,'q4lr','michael-blessing-light')];prepare.call(this,p);},
+ prepare(p){this.effectPictures=[['michael-blessing-light','assets/secondary/michael-blessing-aura.svg',{width:100,height:100}]];prepare.call(this,p);},
  damageMultiplier(r,key,value,side,state){
   return key===id(side,'mm0r','nmkh')&&state.blessingUntil>r.tick&&alive(r,side)?r.num(value)*.7:value;
  },
  onFunction(r,c,fn,args,side,state){
   if(state.blessingUntil>r.tick&&alive(r,side)&&fn===id(side,'qy83','05j0')&&c.e!==body(r,3-side)&&r.num(args[0])<0)args[0]=r.num(args[0])*1.3;
  },
+ onHealthChange(r,e,id,before,after,side,state){
+  if(after<before&&state.blessingUntil>r.tick)state.blessingHitAt=r.tick;
+ },
  *cast(r,c,{side,caster,state}){
   cleanse(r,side,caster);state.blessingUntil=r.tick+BLESSING.ticks;
-  const light=visual(r,side,'michael-blessing-light',caster.x,caster.y,35,'michael-blessing');
+  const start=r.tick,light=visual(r,side,'michael-blessing-light',caster.x,caster.y,19,'michael-blessing');
   try{while(state.blessingUntil>r.tick&&alive(r,side)){
-   light.x=caster.x;light.y=caster.y;light.effects.transparency=66+Math.sin(r.tick/7)*12;yield 1;
-  }}finally{light.dead=true;delete state.blessingUntil;}
+   const age=r.tick-start,hit=Math.max(0,1-(r.tick-(state.blessingHitAt??-100))/12);
+   const fade=Math.min(1,(age+1)/9,(state.blessingUntil-r.tick)/12);
+   light.x=caster.x;light.y=caster.y;
+   r.setSize(light,19+13*Math.min(1,age/12)+5*hit);
+   light.effects.transparency=100-fade*(66+30*hit);
+   yield 1;
+  }}finally{light.dead=true;delete state.blessingUntil;delete state.blessingHitAt;}
  }
 });
 const DARKNESS={manaCost:50,cooldownTicks:540,ticks:300,slow:7,fearTicks:48};
@@ -303,6 +319,7 @@ export const lycanDarkness=definition(29,'어둠',DARKNESS,'lycan-darkness','5�
  },
  *cast(r,c,{side,caster,state}){
   const start=r.tick,mana=id(side,'qn98','thom');
+  state.darkStartedAt=start;
   state.darkUntil=start+DARKNESS.ticks;
   if(vulnerable(r,3-side))state.slow={side:3-side,value:DARKNESS.slow,until:state.darkUntil};
   let awarded=0;
@@ -311,10 +328,10 @@ export const lycanDarkness=definition(29,'어둠',DARKNESS,'lycan-darkness','5�
    if(earned>awarded){r.set(caster,mana,Math.min(100,r.num(r.get(caster,mana))+8*(earned-awarded)));awarded=earned;}
    if(elapsed>=DARKNESS.ticks)break;
    yield 1;
-  }}finally{delete state.darkUntil;}
+  }}finally{delete state.darkStartedAt;delete state.darkUntil;}
  }
 });
-const FIREWORK={manaCost:39,cooldownTicks:270,speed:9,range:180,radius:45};
+const FIREWORK={manaCost:39,cooldownTicks:54,speed:9,range:180,radius:45};
 export const artenesFirework=definition(25,'폭죽 사냥',FIREWORK,'artenes-firework','공중에서 터지는 폭죽을 발사합니다.',{
  prepare(p){this.effectPictures=[['artenes-firework-arrow','assets/secondary/artenes-firework-rocket.svg',{width:90,height:40}],alias(p,'6115','artenes-firework-blast',4)];prepare.call(this,p);},
  *cast(r,c,{side,caster,target}){

@@ -98,7 +98,12 @@ for(const side of [1,2]){
  test(`Blessing side ${side}: cleanses through stun, then modifies attack and defense for three seconds`,()=>{
   const r=game(33,side),actor=body(r,side),def=side===1?'mm0r':'nmkh';
   r.globals.set(stun,1);r.globals.set(root,2);r.globals.set(def,1);
-  r.run(1,[key]);assert.equal(r.num(r.globals.get(stun)),0);assert.equal(r.num(r.globals.get(root)),0);assert.equal(r.get(actor,def),.7);
+  const enemy=body(r,3-side),mark=r.originals.get('z46k');
+  r.globals.set(side===1?'s5vb':'y75t',25);r.set(enemy,'zxd6',1.8);mark.visible=true;
+  r.run(1,[key]);assert.equal(r.get(enemy,'zxd6'),0);assert.equal(mark.visible,false);
+  r.set(actor,side===1?'akf6':'7ir2',95);
+  assert.equal(r.secondarySkills.state(side).blessingHitAt,r.tick);
+  assert.equal(r.num(r.globals.get(stun)),0);assert.equal(r.num(r.globals.get(root)),0);assert.equal(r.get(actor,def),.7);
   const args=[-10,0,1];r.secondarySkills.onFunction({e:actor},fn,args);assert.equal(args[0],-13);
   r.run(180);assert.equal(r.get(actor,def),1);assert.deepEqual(r.faults,[]);
  });
