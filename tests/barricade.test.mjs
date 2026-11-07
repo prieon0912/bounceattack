@@ -150,3 +150,57 @@ test('Previous deployed barricade image path remains available with the same cur
  const root=new URL('../public/assets/secondary/',import.meta.url);
  assert.deepEqual(fs.readFileSync(new URL('sten-barricade.svg',root)),fs.readFileSync(new URL('sten-barricade-wall.svg',root)));
 });
+
+for(const owner of [1,2]){
+ for(const character of [1,23]){
+  test(`Native endpoint explosion survives barricade collision: wall side ${owner}, attacker ${character}`,()=>{
+   const r=game(owner),shooter=3-owner;r.run(1,[owner===1?82:80]);const barrier=wall(r);
+   const gunner=r.originals.get(shooter===1?'00h9':'n8fg'),victim=r.originals.get(owner===1?'00h9':'n8fg');
+   gunner.x=barrier.x+80;gunner.y=barrier.y+3;victim.x=barrier.x-100;victim.y=barrier.y;
+   const victimArt=r.originals.get(owner===1?'n230':'ocqj');victimArt.x=victim.x;victimArt.y=victim.y;
+   r.globals.set(shooter===1?'y75t':'s5vb',character);r.globals.set(shooter===1?'etjn':'846x',0);
+   r.globals.set(shooter===1?'rr24':'qvkr',0);
+   const object=character===23?(shooter===1?'6115':'g1va'):(shooter===1?'m9km':'iaqy');
+   const source=r.originals.get(object),shot=r.makeEntity(source.def,source);shot.clone=true;shot.combatSide=shooter;
+   r.entities.push(shot);r.secondarySkills.onClone({e:source},shot);r.dispatchEntity(shot,'when_clone_start');
+   const hp=r.globals.get(owner===1?'akf6':'7ir2');
+   r.run(40);
+   assert.equal(shot.barricadeEndpointMode,true);assert.equal(shot.dead,false);
+   assert.ok(Math.abs(shot.x-barrier.x)<30);
+   assert.notEqual(shot.picture.id,shot.def.sprite.pictures[0].id);
+   const damage=shot.barricadeProjectileDamage;
+   assert.equal(barrier.barricadeHealth,30-damage);
+   r.run(20);assert.equal(r.globals.get(owner===1?'akf6':'7ir2'),hp);
+   assert.equal(barrier.barricadeHealth,29-damage);
+   r.run(100);assert.equal(shot.dead,true);assert.deepEqual(r.faults,[]);
+  });
+ }
+}
+
+test('An endpoint explosion can damage an enemy within its original splash area behind the impacted barricade',()=>{
+ const r=game();r.run(1,[82]);const barrier=wall(r),victim=r.originals.get('00h9'),art=r.originals.get('n230'),gunner=r.originals.get('n8fg');
+ victim.x=barrier.x-25;victim.y=barrier.y;art.x=victim.x;art.y=victim.y;
+ gunner.x=barrier.x+80;gunner.y=barrier.y+3;r.globals.set('s5vb',23);r.globals.set('846x',0);r.globals.set('qvkr',0);
+ const floor=r.collisionProvider;r.collisionProvider=(e,id)=>id==='n230'?r.overlap(e,art):floor(e,id);
+ const source=r.originals.get('g1va'),shot=r.makeEntity(source.def,source);
+ shot.clone=true;shot.combatSide=2;r.entities.push(shot);
+ r.secondarySkills.onClone({e:source},shot);r.dispatchEntity(shot,'when_clone_start');
+ const hp=r.num(r.globals.get('akf6'));r.run(60);
+ assert.equal(shot.barricadeEndpointMode,true);
+ assert.equal(r.num(r.globals.get('akf6')),hp-5);assert.deepEqual(r.faults,[]);
+});
+
+test('Brand fire zone attached to a fireball is installed at its barricade impact point',()=>{
+ const r=game();r.run(1,[82]);const barrier=wall(r),brand=r.originals.get('n8fg');
+ brand.x=barrier.x+80;brand.y=barrier.y;r.globals.set('846x',0);r.globals.set('qvkr',0);
+ {
+  const victim=r.originals.get('00h9');victim.x=barrier.x-150;
+ }
+ const state=r.secondarySkills.state(2);state.mode='secondary';state.armed=true;
+ const source=r.originals.get('iaqy'),shot=r.makeEntity(source.def,source);shot.clone=true;shot.combatSide=2;
+ r.entities.push(shot);r.secondarySkills.onClone({e:source,block:'qrc5'},shot);r.dispatchEntity(shot,'when_clone_start');
+ r.run(40);
+ assert.equal(shot.barricadeEndpointMode,true);assert.ok(state.zone);
+ assert.equal(state.zone.x,shot.x);assert.equal(state.zone.y,shot.y);
+ assert.equal(state.pendingShot,undefined);assert.deepEqual(r.faults,[]);
+});

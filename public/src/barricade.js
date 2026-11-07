@@ -105,10 +105,10 @@ const targetVariables = side => new Set([
   sid(side,'td66','ziwi'),sid(side,'mfr0','mnus'),sid(side,'f7zw','932j'),
   '91k5','ha8n','lq8z','oafg','s9yw','zxd6','ndo3',
 ]);
-function lineContact(r, from, to) {
+function lineContact(r, from, to, ignoredWall=null) {
   let nearest = null;
   for (const wall of installations(r)) {
-    if(!wall.visible||!canHitInstallation(from,wall))continue;
+    if(!wall.visible||wall.uid===ignoredWall||!canHitInstallation(from,wall))continue;
     const b = r.bounds(wall), dx = to.x-from.x, dy = to.y-from.y;
     let low = 0, high = 1;
     for (const [p,q] of [[-dx,from.x-b.left],[dx,b.right-from.x],[-dy,from.y-b.bottom],[dy,b.top-from.y]]) {
@@ -221,7 +221,8 @@ export const stenBarricade = {
     if(damage>0)child.barricadeProjectileDamage=damage;
   },
   blocksMove(r,e,dx,dy) {
-    if (e.dead || e.secondaryEffect==='sten-barricade') return false;
+    if (e.dead || e.barricadeEndpointMode || e.secondaryEffect==='sten-barricade') return false;
+    if(e.barricadeImpact)return true;
     const side = e.objectId==='00h9'?1:e.objectId==='n8fg'?2:0;
     const damage = e.clone && (e.barricadeProjectileDamage ?? e.def.barricadeDamage?.[r.num(r.get(e,sid(e.combatSide||1,'rr24','qvkr')))]);
     if (!(side && dx && !dy) && !(damage>0)) return false;
@@ -231,7 +232,12 @@ export const stenBarricade = {
       e.x += dx*hit.fraction;
       wallSlam(r,e,side);
     } else {
-      hurt(r,hit.wall,damage); e.dead=true;
+      hurt(r,hit.wall,damage);
+      const nativeFlight=e.def.barricadeEndpoint&&[...r.threads,...r.pending].some(t=>t.e===e&&!t.cancelled&&t.event==='when_clone_start');
+      if(nativeFlight){
+        e.x+=dx*hit.fraction;e.y+=dy*hit.fraction;
+        e.barricadeImpact=true;e.barricadeImpactWall=hit.wall.uid;
+      }else e.dead=true;
     }
     return true;
   },
@@ -264,7 +270,7 @@ export const stenBarricade = {
     const selected=c.barricadeHitTarget;
     delete c.barricadeHitTarget;
     const wall=(selected?.tick===r.tick&&installations(r).find(w=>w.uid===selected.uid))||
-      lineContact(r,c.e.projectileOrigin?{...c.e.projectileOrigin,combatSide:c.e.combatSide}:c.e,target);
+      lineContact(r,c.e.projectileOrigin?{...c.e.projectileOrigin,combatSide:c.e.combatSide}:c.e,target,c.e.barricadeEndpointMode?c.e.barricadeImpactWall:null);
     if(!wall)return;
     hurt(r,wall,-r.num(args[0]));
     c.barricadeBlocked={tick:r.tick,side:targetSide};

@@ -43,6 +43,31 @@ module.exports = function annotateProjectiles(project) {
       scan(clones, mode, result);
       if (result.moves && result.damage.length) modes[mode] = Math.min(...result.damage);
     }
-    if (Object.keys(modes).length) object.barricadeDamage = modes;
+    if (Object.keys(modes).length) {
+      object.barricadeDamage = modes;
+      function containsMovement(node) {
+        if(!node||typeof node!=="object")return false;
+        if(["move_direction","move_to_angle","move_x","move_y"].includes(node.type))return true;
+        return Object.values(node).some(containsMovement);
+      }
+      function markFlight(node,insideFlight=false) {
+        if(!node||typeof node!=="object")return;
+        let flight=insideFlight;
+        if(node.type==="repeat_basic"&&!insideFlight&&containsMovement(node.statements)){
+          node.barricadeFlight=true;object.barricadeEndpoint=true;flight=true;
+        }
+        Object.values(node).forEach(value=>{
+          if(Array.isArray(value))value.forEach(child=>markFlight(child,flight));
+          else if(value&&typeof value==="object")markFlight(value,flight);
+        });
+      }
+      clones.forEach(stack=>stack.forEach(block=>markFlight(block)));
+      // The annotated loops are consumed by the compiler, not the archived source.
+      const stacks=JSON.parse(object.script);
+      for(let i=0;i<stacks.length;i++)if(stacks[i][0]?.type==="when_clone_start"){
+        stacks[i]=clones.shift();
+      }
+      object.script=JSON.stringify(stacks);
+    }
   }
 };

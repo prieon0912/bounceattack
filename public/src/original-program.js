@@ -6688,7 +6688,7 @@ yield 1;
 c.block="7xla";r.guard(c);
 r.command(c,"set_variable",["nqdf","0.001",null]);
 c.block="n2th";r.guard(c);
-for(let i82=0,n82=Math.max(0,Math.floor(r.num("100")));i82<n82;i82++){
+impact82:for(let i82=0,n82=Math.max(0,Math.floor(r.num("100")));i82<n82;i82++){
 c.block="0sk4";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cxgg",null]),"EQUAL","0"]))){
 c.block="eztp";r.guard(c);
@@ -6703,6 +6703,7 @@ r.command(c,"set_variable",["1vu0","6",null]);
 }
 c.block="46of";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["nqdf",null]),"DIVIDE","1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact82;}
 c.block="1j1n";r.guard(c);
 r.command(c,"change_variable",["nqdf",r.value(c,"calc_basic",[r.value(c,"get_variable",["nqdf",null]),"MULTI","0.2"]),null]);
 c.block="nll7";r.guard(c);
@@ -6788,7 +6789,7 @@ yield 1;
 c.block="tfh1";r.guard(c);
 r.command(c,"set_variable",["nqdf","0.001",null]);
 c.block="vbjw";r.guard(c);
-for(let i85=0,n85=Math.max(0,Math.floor(r.num("100")));i85<n85;i85++){
+impact85:for(let i85=0,n85=Math.max(0,Math.floor(r.num("100")));i85<n85;i85++){
 c.block="fcru";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cxgg",null]),"EQUAL","0"]))){
 c.block="arpw";r.guard(c);
@@ -6803,6 +6804,7 @@ r.command(c,"set_variable",["05ze","6",null]);
 }
 c.block="f2t7";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["nqdf",null]),"DIVIDE","1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact85;}
 c.block="zcmg";r.guard(c);
 r.command(c,"change_variable",["nqdf",r.value(c,"calc_basic",[r.value(c,"get_variable",["nqdf",null]),"MULTI","0.2"]),null]);
 c.block="te60";r.guard(c);
@@ -10787,11 +10789,12 @@ r.command(c,"show",[null]);
 c.block="nryx";r.guard(c);
 r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="y4z3";r.guard(c);
-for(let i232=0,n232=Math.max(0,Math.floor(r.num("60")));i232<n232;i232++){
+impact232:for(let i232=0,n232=Math.max(0,Math.floor(r.num("60")));i232<n232;i232++){
 c.block="wjwt";r.guard(c);
 r.command(c,"change_variable",["hbch","0.02",null]);
 c.block="shde";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["hbch",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact232;}
 yield 1;
 }
 c.block="02vk";r.guard(c);
@@ -11381,13 +11384,14 @@ r.command(c,"set_scale_size",["14",null]);
 c.block="z5ml";r.guard(c);
 r.command(c,"set_variable",["aapa","0",null]);
 c.block="0mwh";r.guard(c);
-for(let i258=0,n258=Math.max(0,Math.floor(r.num("11")));i258<n258;i258++){
+impact258:for(let i258=0,n258=Math.max(0,Math.floor(r.num("11")));i258<n258;i258++){
 c.block="e69r";r.guard(c);
 r.command(c,"change_variable",["aapa","15",null]);
 c.block="f6o8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wfid",null]),"EQUAL","1"]))){
 c.block="0uxn";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["aapa",null]),null,"cos"]),"MULTI","-8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact258;}
 c.block="j6n9";r.guard(c);
 r.command(c,"set_variable",["yek3",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="xrku";r.guard(c);
@@ -11397,6 +11401,7 @@ r.command(c,"create_clone",["8odl",null]);
 }else{
 c.block="oaq2";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["aapa",null]),null,"cos"]),"MULTI","8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact258;}
 c.block="cho6";r.guard(c);
 r.command(c,"set_variable",["owbw",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="assx";r.guard(c);
@@ -11408,9 +11413,11 @@ c.block="tuab";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["k03j",null]),"EQUAL","1"]))){
 c.block="whbi";r.guard(c);
 r.command(c,"move_x",["7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact258;}
 }else{
 c.block="digc";r.guard(c);
 r.command(c,"move_x",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact258;}
 }
 c.block="my7i";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS_OR_EQUAL","15"]))){
@@ -11420,13 +11427,14 @@ break;
 yield 1;
 }
 c.block="5s62";r.guard(c);
-for(let i259=0,n259=Math.max(0,Math.floor(r.num("25")));i259<n259;i259++){
+impact259:for(let i259=0,n259=Math.max(0,Math.floor(r.num("25")));i259<n259;i259++){
 c.block="5x18";r.guard(c);
 r.command(c,"change_variable",["aapa","15",null]);
 c.block="sm3g";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wfid",null]),"EQUAL","1"]))){
 c.block="1k29";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["aapa",null]),null,"cos"]),"MULTI","-2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact259;}
 c.block="lqfk";r.guard(c);
 r.command(c,"set_variable",["yek3",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="hvwx";r.guard(c);
@@ -11436,6 +11444,7 @@ r.command(c,"create_clone",["8odl",null]);
 }else{
 c.block="yk5p";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["aapa",null]),null,"cos"]),"MULTI","2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact259;}
 c.block="qp0s";r.guard(c);
 r.command(c,"set_variable",["owbw",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="yyxz";r.guard(c);
@@ -11447,9 +11456,11 @@ c.block="m9c9";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["k03j",null]),"EQUAL","1"]))){
 c.block="60vs";r.guard(c);
 r.command(c,"move_x",["7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact259;}
 }else{
 c.block="hfou";r.guard(c);
 r.command(c,"move_x",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact259;}
 }
 c.block="4tlk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS_OR_EQUAL","15"]))){
@@ -11520,13 +11531,14 @@ r.command(c,"set_scale_size",["14",null]);
 c.block="dawy";r.guard(c);
 r.command(c,"set_variable",["aapa","0",null]);
 c.block="k8y7";r.guard(c);
-for(let i261=0,n261=Math.max(0,Math.floor(r.num("11")));i261<n261;i261++){
+impact261:for(let i261=0,n261=Math.max(0,Math.floor(r.num("11")));i261<n261;i261++){
 c.block="0odi";r.guard(c);
 r.command(c,"change_variable",["aapa","15",null]);
 c.block="z5yd";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wfid",null]),"EQUAL","1"]))){
 c.block="v4nr";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["aapa",null]),null,"cos"]),"MULTI","-8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact261;}
 c.block="dg1j";r.guard(c);
 r.command(c,"set_variable",["yek3",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="foug";r.guard(c);
@@ -11536,6 +11548,7 @@ r.command(c,"create_clone",["8odl",null]);
 }else{
 c.block="3sof";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["aapa",null]),null,"cos"]),"MULTI","8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact261;}
 c.block="rans";r.guard(c);
 r.command(c,"set_variable",["owbw",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="qbbm";r.guard(c);
@@ -11547,9 +11560,11 @@ c.block="pe1w";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["k03j",null]),"EQUAL","1"]))){
 c.block="ve95";r.guard(c);
 r.command(c,"move_x",["7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact261;}
 }else{
 c.block="gfp0";r.guard(c);
 r.command(c,"move_x",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact261;}
 }
 c.block="6quf";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS_OR_EQUAL","15"]))){
@@ -11559,13 +11574,14 @@ break;
 yield 1;
 }
 c.block="j4c2";r.guard(c);
-for(let i262=0,n262=Math.max(0,Math.floor(r.num("25")));i262<n262;i262++){
+impact262:for(let i262=0,n262=Math.max(0,Math.floor(r.num("25")));i262<n262;i262++){
 c.block="dy6i";r.guard(c);
 r.command(c,"change_variable",["aapa","15",null]);
 c.block="nczv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wfid",null]),"EQUAL","1"]))){
 c.block="hysa";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["aapa",null]),null,"cos"]),"MULTI","-2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact262;}
 c.block="4nks";r.guard(c);
 r.command(c,"set_variable",["yek3",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="zj85";r.guard(c);
@@ -11575,6 +11591,7 @@ r.command(c,"create_clone",["8odl",null]);
 }else{
 c.block="vxcv";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"calc_operation",[null,r.value(c,"get_variable",["aapa",null]),null,"cos"]),"MULTI","2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact262;}
 c.block="j9uu";r.guard(c);
 r.command(c,"set_variable",["owbw",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="zaa9";r.guard(c);
@@ -11586,9 +11603,11 @@ c.block="j4dq";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["k03j",null]),"EQUAL","1"]))){
 c.block="awc2";r.guard(c);
 r.command(c,"move_x",["7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact262;}
 }else{
 c.block="qqv2";r.guard(c);
 r.command(c,"move_x",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact262;}
 }
 c.block="wv7v";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS_OR_EQUAL","15"]))){
@@ -12029,7 +12048,7 @@ c.block="lphr";r.guard(c);
 r.command(c,"move_x",["8",null]);
 }
 c.block="m9ku";r.guard(c);
-for(let i274=0,n274=Math.max(0,Math.floor(r.num("45")));i274<n274;i274++){
+impact274:for(let i274=0,n274=Math.max(0,Math.floor(r.num("45")));i274<n274;i274++){
 c.block="qmks";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["lwv2",null]),"LESS_OR_EQUAL","0"]))){
 c.block="mcd5";r.guard(c);
@@ -12052,9 +12071,11 @@ c.block="96g1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["b2im",null]),"EQUAL","1"]))){
 c.block="qbfr";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7q2l",null]),"MULTI","0.8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact274;}
 }else{
 c.block="19rc";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7q2l",null]),"MULTI","-0.8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact274;}
 }
 c.block="f6uo";r.guard(c);
 r.command(c,"change_variable",["7q2l","-0.2",null]);
@@ -12093,7 +12114,7 @@ c.block="4ahy";r.guard(c);
 r.command(c,"move_x",["8",null]);
 }
 c.block="1yxr";r.guard(c);
-for(let i276=0,n276=Math.max(0,Math.floor(r.num("45")));i276<n276;i276++){
+impact276:for(let i276=0,n276=Math.max(0,Math.floor(r.num("45")));i276<n276;i276++){
 c.block="dioz";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["lwv2",null]),"LESS_OR_EQUAL","0"]))){
 c.block="oax0";r.guard(c);
@@ -12116,9 +12137,11 @@ c.block="1uph";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["b2im",null]),"EQUAL","1"]))){
 c.block="8civ";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7q2l",null]),"MULTI","0.8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact276;}
 }else{
 c.block="vp3e";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7q2l",null]),"MULTI","-0.8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact276;}
 }
 c.block="dft6";r.guard(c);
 r.command(c,"change_variable",["7q2l","-0.2",null]);
@@ -12192,13 +12215,15 @@ c.block="xamd";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 }
 c.block="mr79";r.guard(c);
-for(let i278=0,n278=Math.max(0,Math.floor(r.num("15")));i278<n278;i278++){
+impact278:for(let i278=0,n278=Math.max(0,Math.floor(r.num("15")));i278<n278;i278++){
 c.block="3yyr";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="ifp1";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["lmdh",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact278;}
 c.block="8tp8";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["vqs5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact278;}
 c.block="adxr";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="y179";r.guard(c);
@@ -12251,13 +12276,15 @@ c.block="5m0z";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 }
 c.block="1h3b";r.guard(c);
-for(let i279=0,n279=Math.max(0,Math.floor(r.num("15")));i279<n279;i279++){
+impact279:for(let i279=0,n279=Math.max(0,Math.floor(r.num("15")));i279<n279;i279++){
 c.block="kms4";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="qr38";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["lmdh",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact279;}
 c.block="ketb";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["vqs5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact279;}
 c.block="ujgp";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="2gj4";r.guard(c);
@@ -12979,21 +13006,25 @@ r.command(c,"set_variable",["t59l",r.value(c,"get_variable",["t59l",null]),null]
 c.block="tp8r";r.guard(c);
 r.command(c,"set_variable",["rmx4","4",null]);
 c.block="u6mt";r.guard(c);
-for(let i307=0,n307=Math.max(0,Math.floor(r.num("20")));i307<n307;i307++){
+impact307:for(let i307=0,n307=Math.max(0,Math.floor(r.num("20")));i307<n307;i307++){
 c.block="255b";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["t59l",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact307;}
 c.block="b623";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["rmx4",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact307;}
 c.block="6ker";r.guard(c);
 r.command(c,"change_variable",["rmx4",r.value(c,"calc_basic",["8","DIVIDE","-100"]),null]);
 yield 1;
 }
 c.block="s7y2";r.guard(c);
-for(let i308=0,n308=Math.max(0,Math.floor(r.num("80")));i308<n308;i308++){
+impact308:for(let i308=0,n308=Math.max(0,Math.floor(r.num("80")));i308<n308;i308++){
 c.block="2x5m";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["t59l",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact308;}
 c.block="2tc3";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["rmx4",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact308;}
 c.block="7lzr";r.guard(c);
 r.command(c,"change_variable",["rmx4",r.value(c,"calc_basic",["8","DIVIDE","-100"]),null]);
 c.block="gtps";r.guard(c);
@@ -13066,21 +13097,25 @@ r.command(c,"set_variable",["t59l",r.value(c,"get_variable",["t59l",null]),null]
 c.block="iorx";r.guard(c);
 r.command(c,"set_variable",["rmx4","4",null]);
 c.block="50nj";r.guard(c);
-for(let i310=0,n310=Math.max(0,Math.floor(r.num("20")));i310<n310;i310++){
+impact310:for(let i310=0,n310=Math.max(0,Math.floor(r.num("20")));i310<n310;i310++){
 c.block="dukx";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["t59l",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact310;}
 c.block="889s";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["rmx4",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact310;}
 c.block="q8t9";r.guard(c);
 r.command(c,"change_variable",["rmx4",r.value(c,"calc_basic",["8","DIVIDE","-100"]),null]);
 yield 1;
 }
 c.block="a584";r.guard(c);
-for(let i311=0,n311=Math.max(0,Math.floor(r.num("80")));i311<n311;i311++){
+impact311:for(let i311=0,n311=Math.max(0,Math.floor(r.num("80")));i311<n311;i311++){
 c.block="i01k";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["t59l",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact311;}
 c.block="bi2x";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["rmx4",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact311;}
 c.block="sm43";r.guard(c);
 r.command(c,"change_variable",["rmx4",r.value(c,"calc_basic",["8","DIVIDE","-100"]),null]);
 c.block="rpfu";r.guard(c);
@@ -13613,9 +13648,10 @@ r.command(c,"rotate_relative",["90",null]);
 c.block="7cim";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8yy6",null]),"EQUAL","1"]))){yield 1;}
 c.block="ehzr";r.guard(c);
-for(let i328=0,n328=Math.max(0,Math.floor(r.num("60")));i328<n328;i328++){
+impact328:for(let i328=0,n328=Math.max(0,Math.floor(r.num("60")));i328<n328;i328++){
 c.block="q0j3";r.guard(c);
 r.command(c,"move_direction",["3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact328;}
 c.block="0asm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS_OR_EQUAL","12"]))){
 c.block="rd10";r.guard(c);
@@ -13640,9 +13676,10 @@ r.command(c,"rotate_relative",["-90",null]);
 c.block="a5za";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8yy6",null]),"EQUAL","1"]))){yield 1;}
 c.block="jz7r";r.guard(c);
-for(let i329=0,n329=Math.max(0,Math.floor(r.num("60")));i329<n329;i329++){
+impact329:for(let i329=0,n329=Math.max(0,Math.floor(r.num("60")));i329<n329;i329++){
 c.block="kg9t";r.guard(c);
 r.command(c,"move_direction",["3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact329;}
 c.block="q328";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS_OR_EQUAL","12"]))){
 c.block="84fd";r.guard(c);
@@ -13675,9 +13712,10 @@ r.command(c,"rotate_relative",["90",null]);
 c.block="33ky";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8yy6",null]),"EQUAL","1"]))){yield 1;}
 c.block="8bs0";r.guard(c);
-for(let i330=0,n330=Math.max(0,Math.floor(r.num("60")));i330<n330;i330++){
+impact330:for(let i330=0,n330=Math.max(0,Math.floor(r.num("60")));i330<n330;i330++){
 c.block="scr7";r.guard(c);
 r.command(c,"move_direction",["3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact330;}
 c.block="efni";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS_OR_EQUAL","12"]))){
 c.block="duhu";r.guard(c);
@@ -13699,9 +13737,10 @@ r.command(c,"rotate_relative",["-90",null]);
 c.block="849a";r.guard(c);
 while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8yy6",null]),"EQUAL","1"]))){yield 1;}
 c.block="amse";r.guard(c);
-for(let i331=0,n331=Math.max(0,Math.floor(r.num("60")));i331<n331;i331++){
+impact331:for(let i331=0,n331=Math.max(0,Math.floor(r.num("60")));i331<n331;i331++){
 c.block="d10l";r.guard(c);
 r.command(c,"move_direction",["3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact331;}
 c.block="194d";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS_OR_EQUAL","12"]))){
 c.block="ctit";r.guard(c);
@@ -13823,7 +13862,7 @@ r.command(c,"rotate_absolute",["90",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i335=0,n335=Math.max(0,Math.floor(r.num("15")));i335<n335;i335++){
+impact335:for(let i335=0,n335=Math.max(0,Math.floor(r.num("15")));i335<n335;i335++){
 c.block="noob";r.guard(c);
 r.command(c,"set_variable",["zt2t",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="tkqf";r.guard(c);
@@ -13834,6 +13873,7 @@ c.block="9xg1";r.guard(c);
 for(let i336=0,n336=Math.max(0,Math.floor(r.num("5")));i336<n336;i336++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",["3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact335;}
 c.block="gvza";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS_OR_EQUAL","9"]))){
 c.block="r8c0";r.guard(c);
@@ -14108,7 +14148,7 @@ r.command(c,"rotate_absolute",["90",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i342=0,n342=Math.max(0,Math.floor(r.num("15")));i342<n342;i342++){
+impact342:for(let i342=0,n342=Math.max(0,Math.floor(r.num("15")));i342<n342;i342++){
 c.block="noob";r.guard(c);
 r.command(c,"set_variable",["zt2t",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="tkqf";r.guard(c);
@@ -14119,6 +14159,7 @@ c.block="9xg1";r.guard(c);
 for(let i343=0,n343=Math.max(0,Math.floor(r.num("5")));i343<n343;i343++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",["3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact342;}
 c.block="gvza";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS_OR_EQUAL","9"]))){
 c.block="1e9t";r.guard(c);
@@ -14946,14 +14987,16 @@ c.block="b2mt";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="4ajd";r.guard(c);
-for(let i371=0,n371=Math.max(0,Math.floor(r.num("40")));i371<n371;i371++){
+impact371:for(let i371=0,n371=Math.max(0,Math.floor(r.num("40")));i371<n371;i371++){
 c.block="vz1j";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vrg7",null]),"EQUAL","1"]))){
 c.block="yyql";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["9ays",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact371;}
 }else{
 c.block="eakv";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["9ays",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact371;}
 }
 c.block="23hg";r.guard(c);
 r.command(c,"change_variable",["9ays","-0.2",null]);
@@ -14985,16 +15028,18 @@ r.command(c,"message_cast",["p724",null]);
 yield 1;
 }
 c.block="qjy8";r.guard(c);
-for(let i372=0,n372=Math.max(0,Math.floor(r.num("5")));i372<n372;i372++){
+impact372:for(let i372=0,n372=Math.max(0,Math.floor(r.num("5")));i372<n372;i372++){
 c.block="x37t";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="dbe9";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vrg7",null]),"EQUAL","1"]))){
 c.block="7wjp";r.guard(c);
 r.command(c,"move_x",["0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact372;}
 }else{
 c.block="lxsc";r.guard(c);
 r.command(c,"move_x",["-0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact372;}
 }
 c.block="0k29";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
@@ -15071,14 +15116,16 @@ c.block="g9mx";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="tujg";r.guard(c);
-for(let i373=0,n373=Math.max(0,Math.floor(r.num("40")));i373<n373;i373++){
+impact373:for(let i373=0,n373=Math.max(0,Math.floor(r.num("40")));i373<n373;i373++){
 c.block="3a71";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vrg7",null]),"EQUAL","1"]))){
 c.block="f8cl";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["9ays",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact373;}
 }else{
 c.block="q0cv";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["9ays",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact373;}
 }
 c.block="kw38";r.guard(c);
 r.command(c,"change_variable",["9ays","-0.2",null]);
@@ -15110,16 +15157,18 @@ r.command(c,"message_cast",["p724",null]);
 yield 1;
 }
 c.block="z6y4";r.guard(c);
-for(let i374=0,n374=Math.max(0,Math.floor(r.num("5")));i374<n374;i374++){
+impact374:for(let i374=0,n374=Math.max(0,Math.floor(r.num("5")));i374<n374;i374++){
 c.block="b9lm";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="h8ym";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["vrg7",null]),"EQUAL","1"]))){
 c.block="s07i";r.guard(c);
 r.command(c,"move_x",["0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact374;}
 }else{
 c.block="7c9z";r.guard(c);
 r.command(c,"move_x",["-0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact374;}
 }
 c.block="6t6e";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
@@ -15245,14 +15294,16 @@ r.command(c,"set_variable",["k94b","3",null]);
 c.block="rmos";r.guard(c);
 r.command(c,"set_variable",["glap",r.value(c,"get_variable",["846x",null]),null]);
 c.block="vvuf";r.guard(c);
-for(let i380=0,n380=Math.max(0,Math.floor(r.num("20")));i380<n380;i380++){
+impact380:for(let i380=0,n380=Math.max(0,Math.floor(r.num("20")));i380<n380;i380++){
 c.block="5s3l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["glap",null]),"EQUAL","1"]))){
 c.block="bwes";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["k94b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact380;}
 }else{
 c.block="7ja1";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["k94b",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact380;}
 }
 c.block="wbwg";r.guard(c);
 r.command(c,"change_variable",["k94b","-0.15",null]);
@@ -15379,11 +15430,12 @@ c.block="t07e";r.guard(c);
 r.command(c,"rotate_relative",["-90",null]);
 }
 c.block="8um3";r.guard(c);
-for(let i386=0,n386=Math.max(0,Math.floor(r.num("60")));i386<n386;i386++){
+impact386:for(let i386=0,n386=Math.max(0,Math.floor(r.num("60")));i386<n386;i386++){
 c.block="1wys";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="aj6o";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact386;}
 c.block="b6gh";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["zcnn",null]),"EQUAL","1"]))){
 c.block="kexc";r.guard(c);
@@ -15411,13 +15463,15 @@ c.block="2m0i";r.guard(c);
 r.command(c,"change_variable",["gfu7","-7",null]);
 }
 c.block="i73i";r.guard(c);
-for(let i387=0,n387=Math.max(0,Math.floor(r.num("10")));i387<n387;i387++){
+impact387:for(let i387=0,n387=Math.max(0,Math.floor(r.num("10")));i387<n387;i387++){
 c.block="o4vo";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="m1rs";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["gfu7",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact387;}
 c.block="ocuk";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["4dc7",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact387;}
 c.block="ptce";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ktq9",null]),"EQUAL","0"]))){
 c.block="cl9b";r.guard(c);
@@ -15485,14 +15539,16 @@ r.command(c,"show",[null]);
 c.block="7jfz";r.guard(c);
 r.command(c,"set_variable",["k94b","4.5",null]);
 c.block="qkke";r.guard(c);
-for(let i389=0,n389=Math.max(0,Math.floor(r.num("20")));i389<n389;i389++){
+impact389:for(let i389=0,n389=Math.max(0,Math.floor(r.num("20")));i389<n389;i389++){
 c.block="ic8n";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["glap",null]),"EQUAL","1"]))){
 c.block="da5l";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["k94b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact389;}
 }else{
 c.block="lo13";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["k94b",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact389;}
 }
 c.block="an80";r.guard(c);
 r.command(c,"change_variable",["k94b","-0.225",null]);
@@ -15812,14 +15868,16 @@ r.command(c,"set_variable",["sykd","3",null]);
 c.block="tqeu";r.guard(c);
 r.command(c,"set_variable",["nr1n",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="1h6j";r.guard(c);
-for(let i399=0,n399=Math.max(0,Math.floor(r.num("20")));i399<n399;i399++){
+impact399:for(let i399=0,n399=Math.max(0,Math.floor(r.num("20")));i399<n399;i399++){
 c.block="nlz5";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["nr1n",null]),"EQUAL","1"]))){
 c.block="unnk";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["sykd",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact399;}
 }else{
 c.block="bf4s";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["sykd",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact399;}
 }
 c.block="pkm6";r.guard(c);
 r.command(c,"change_variable",["sykd","-0.15",null]);
@@ -15946,11 +16004,12 @@ c.block="t07e";r.guard(c);
 r.command(c,"rotate_relative",["-90",null]);
 }
 c.block="8um3";r.guard(c);
-for(let i405=0,n405=Math.max(0,Math.floor(r.num("60")));i405<n405;i405++){
+impact405:for(let i405=0,n405=Math.max(0,Math.floor(r.num("60")));i405<n405;i405++){
 c.block="1wys";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="gppq";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact405;}
 c.block="b6gh";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["zcnn",null]),"EQUAL","1"]))){
 c.block="kexc";r.guard(c);
@@ -15978,13 +16037,15 @@ c.block="2m0i";r.guard(c);
 r.command(c,"change_variable",["fodd","-7",null]);
 }
 c.block="i73i";r.guard(c);
-for(let i406=0,n406=Math.max(0,Math.floor(r.num("10")));i406<n406;i406++){
+impact406:for(let i406=0,n406=Math.max(0,Math.floor(r.num("10")));i406<n406;i406++){
 c.block="o4vo";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="m1rs";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["fodd",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact406;}
 c.block="ocuk";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["x8fh",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact406;}
 c.block="ptce";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ktq9",null]),"EQUAL","0"]))){
 c.block="cl9b";r.guard(c);
@@ -16052,14 +16113,16 @@ r.command(c,"show",[null]);
 c.block="qdsl";r.guard(c);
 r.command(c,"set_variable",["sykd","4.5",null]);
 c.block="ihvk";r.guard(c);
-for(let i408=0,n408=Math.max(0,Math.floor(r.num("20")));i408<n408;i408++){
+impact408:for(let i408=0,n408=Math.max(0,Math.floor(r.num("20")));i408<n408;i408++){
 c.block="4xyi";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["nr1n",null]),"EQUAL","1"]))){
 c.block="ifq7";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["sykd",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact408;}
 }else{
 c.block="ccs0";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["sykd",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact408;}
 }
 c.block="ze3m";r.guard(c);
 r.command(c,"change_variable",["sykd","-0.225",null]);
@@ -16612,7 +16675,7 @@ r.command(c,"set_variable",["zgtb","7.7",null]);
 c.block="56ka";r.guard(c);
 r.command(c,"set_variable",["91xd",r.value(c,"get_variable",["846x",null]),null]);
 c.block="9buu";r.guard(c);
-for(let i430=0,n430=Math.max(0,Math.floor(r.num("14")));i430<n430;i430++){
+impact430:for(let i430=0,n430=Math.max(0,Math.floor(r.num("14")));i430<n430;i430++){
 c.block="x40d";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["d8kc",null]),"EQUAL","0"]))){
 c.block="r4cp";r.guard(c);
@@ -16629,9 +16692,11 @@ c.block="yt69";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["91xd",null]),"EQUAL","1"]))){
 c.block="wqjg";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["zgtb",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact430;}
 }else{
 c.block="35wm";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["zgtb",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact430;}
 }
 yield 1;
 }
@@ -16662,13 +16727,14 @@ r.command(c,"set_variable",["91xd",r.value(c,"get_variable",["846x",null]),null]
 c.block="ncpe";r.guard(c);
 r.command(c,"set_variable",["9x2t","0",null]);
 c.block="zgum";r.guard(c);
-for(let i432=0,n432=Math.max(0,Math.floor(r.num("60")));i432<n432;i432++){
+impact432:for(let i432=0,n432=Math.max(0,Math.floor(r.num("60")));i432<n432;i432++){
 c.block="v52y";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["16","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="rplq";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="rf48";r.guard(c);
 r.command(c,"move_y",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact432;}
 c.block="prvs";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"MULTI","2.5"]),null]);
 c.block="55c7";r.guard(c);
@@ -16714,7 +16780,7 @@ r.command(c,"set_variable",["du2p","2",null]);
 c.block="soa9";r.guard(c);
 r.command(c,"set_variable",["e8l1","1",null]);
 c.block="hnba";r.guard(c);
-for(let i433=0,n433=Math.max(0,Math.floor(r.num("45")));i433<n433;i433++){
+impact433:for(let i433=0,n433=Math.max(0,Math.floor(r.num("45")));i433<n433;i433++){
 c.block="n412";r.guard(c);
 r.command(c,"set_variable",["9af4","7",null]);
 c.block="531n";r.guard(c);
@@ -16723,6 +16789,7 @@ c.block="40n8";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="fdyb";r.guard(c);
 r.command(c,"move_y",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact433;}
 c.block="hrd9";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"MULTI","2.5"]),null]);
 yield 1;
@@ -16737,13 +16804,14 @@ if(c.thread.cancelled||c.e.dead)return;
 c.block="ohg1";r.guard(c);
 r.command(c,"set_variable",["e8l1","0",null]);
 c.block="e9r9";r.guard(c);
-for(let i434=0,n434=Math.max(0,Math.floor(r.num("10")));i434<n434;i434++){
+impact434:for(let i434=0,n434=Math.max(0,Math.floor(r.num("10")));i434<n434;i434++){
 c.block="n5ru";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="eg1k";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="j897";r.guard(c);
 r.command(c,"move_y",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact434;}
 c.block="6km8";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"MULTI","2.5"]),null]);
 yield 1;
@@ -17085,7 +17153,7 @@ r.command(c,"set_variable",["5jyv","7.7",null]);
 c.block="56ka";r.guard(c);
 r.command(c,"set_variable",["y2ih",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="9buu";r.guard(c);
-for(let i449=0,n449=Math.max(0,Math.floor(r.num("14")));i449<n449;i449++){
+impact449:for(let i449=0,n449=Math.max(0,Math.floor(r.num("14")));i449<n449;i449++){
 c.block="x40d";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["3crt",null]),"EQUAL","0"]))){
 c.block="r4cp";r.guard(c);
@@ -17102,9 +17170,11 @@ c.block="yt69";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["y2ih",null]),"EQUAL","1"]))){
 c.block="wqjg";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["5jyv",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact449;}
 }else{
 c.block="35wm";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["5jyv",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact449;}
 }
 yield 1;
 }
@@ -17135,13 +17205,14 @@ r.command(c,"set_variable",["y2ih",r.value(c,"get_variable",["etjn",null]),null]
 c.block="ncpe";r.guard(c);
 r.command(c,"set_variable",["9x2t","0",null]);
 c.block="zgum";r.guard(c);
-for(let i451=0,n451=Math.max(0,Math.floor(r.num("60")));i451<n451;i451++){
+impact451:for(let i451=0,n451=Math.max(0,Math.floor(r.num("60")));i451<n451;i451++){
 c.block="v52y";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["16","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","9"]),null]);
 c.block="rplq";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="rf48";r.guard(c);
 r.command(c,"move_y",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact451;}
 c.block="prvs";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"MULTI","2.5"]),null]);
 c.block="55c7";r.guard(c);
@@ -17187,7 +17258,7 @@ r.command(c,"set_variable",["iblx","2",null]);
 c.block="soa9";r.guard(c);
 r.command(c,"set_variable",["7vqa","1",null]);
 c.block="hnba";r.guard(c);
-for(let i452=0,n452=Math.max(0,Math.floor(r.num("45")));i452<n452;i452++){
+impact452:for(let i452=0,n452=Math.max(0,Math.floor(r.num("45")));i452<n452;i452++){
 c.block="n412";r.guard(c);
 r.command(c,"set_variable",["nccn","7",null]);
 c.block="531n";r.guard(c);
@@ -17196,6 +17267,7 @@ c.block="40n8";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="fdyb";r.guard(c);
 r.command(c,"move_y",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact452;}
 c.block="hrd9";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"MULTI","2.5"]),null]);
 yield 1;
@@ -17210,13 +17282,14 @@ if(c.thread.cancelled||c.e.dead)return;
 c.block="ycin";r.guard(c);
 r.command(c,"set_variable",["7vqa","0",null]);
 c.block="e9r9";r.guard(c);
-for(let i453=0,n453=Math.max(0,Math.floor(r.num("10")));i453<n453;i453++){
+impact453:for(let i453=0,n453=Math.max(0,Math.floor(r.num("10")));i453<n453;i453++){
 c.block="n5ru";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="eg1k";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="j897";r.guard(c);
 r.command(c,"move_y",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact453;}
 c.block="6km8";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"self",null,"size"]),"MULTI","2.5"]),null]);
 yield 1;
@@ -17617,14 +17690,16 @@ c.block="uyzx";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="9buu";r.guard(c);
-for(let i466=0,n466=Math.max(0,Math.floor(r.num("25")));i466<n466;i466++){
+impact466:for(let i466=0,n466=Math.max(0,Math.floor(r.num("25")));i466<n466;i466++){
 c.block="yt69";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cs5i",null]),"EQUAL","1"]))){
 c.block="wqjg";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["en1a",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact466;}
 }else{
 c.block="35wm";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["en1a",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact466;}
 }
 c.block="89yi";r.guard(c);
 r.command(c,"change_variable",["en1a","-0.5",null]);
@@ -17668,14 +17743,16 @@ c.block="bzzy";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="yxy5";r.guard(c);
-for(let i469=0,n469=Math.max(0,Math.floor(r.num("25")));i469<n469;i469++){
+impact469:for(let i469=0,n469=Math.max(0,Math.floor(r.num("25")));i469<n469;i469++){
 c.block="z0tu";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cs5i",null]),"EQUAL","1"]))){
 c.block="lkql";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["en1a",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact469;}
 }else{
 c.block="z1p0";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["en1a",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact469;}
 }
 c.block="e89z";r.guard(c);
 r.command(c,"change_variable",["en1a","-0.4",null]);
@@ -17724,14 +17801,16 @@ c.block="jnqw";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="ljwa";r.guard(c);
-for(let i472=0,n472=Math.max(0,Math.floor(r.num("25")));i472<n472;i472++){
+impact472:for(let i472=0,n472=Math.max(0,Math.floor(r.num("25")));i472<n472;i472++){
 c.block="7l0m";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["cs5i",null]),"EQUAL","1"]))){
 c.block="ze1v";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["en1a",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact472;}
 }else{
 c.block="gynn";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["en1a",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact472;}
 }
 c.block="te0d";r.guard(c);
 r.command(c,"change_variable",["en1a","-0.6",null]);
@@ -17787,9 +17866,10 @@ r.command(c,"rotate_relative",[r.value(c,"get_variable",["sv2a",null]),null]);
 c.block="zi19";r.guard(c);
 r.command(c,"change_variable",["sv2a","9",null]);
 c.block="6h4f";r.guard(c);
-for(let i475=0,n475=Math.max(0,Math.floor(r.num("25")));i475<n475;i475++){
+impact475:for(let i475=0,n475=Math.max(0,Math.floor(r.num("25")));i475<n475;i475++){
 c.block="sa11";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["en1a",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact475;}
 c.block="3roo";r.guard(c);
 r.command(c,"change_variable",["en1a","-0.4",null]);
 c.block="gb7m";r.guard(c);
@@ -17844,9 +17924,10 @@ r.command(c,"rotate_relative",[r.value(c,"get_variable",["sv2a",null]),null]);
 c.block="8m6l";r.guard(c);
 r.command(c,"change_variable",["sv2a","6",null]);
 c.block="ehh5";r.guard(c);
-for(let i478=0,n478=Math.max(0,Math.floor(r.num("30")));i478<n478;i478++){
+impact478:for(let i478=0,n478=Math.max(0,Math.floor(r.num("30")));i478<n478;i478++){
 c.block="scxg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["en1a",null]),"MULTI","0.8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact478;}
 c.block="jofa";r.guard(c);
 r.command(c,"change_variable",["en1a","-0.4",null]);
 c.block="wbe5";r.guard(c);
@@ -18215,14 +18296,16 @@ c.block="uyzx";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="9buu";r.guard(c);
-for(let i492=0,n492=Math.max(0,Math.floor(r.num("25")));i492<n492;i492++){
+impact492:for(let i492=0,n492=Math.max(0,Math.floor(r.num("25")));i492<n492;i492++){
 c.block="yt69";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1xs3",null]),"EQUAL","1"]))){
 c.block="wqjg";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["evu6",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact492;}
 }else{
 c.block="35wm";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["evu6",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact492;}
 }
 c.block="89yi";r.guard(c);
 r.command(c,"change_variable",["evu6","-0.5",null]);
@@ -18266,14 +18349,16 @@ c.block="bzzy";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="yxy5";r.guard(c);
-for(let i495=0,n495=Math.max(0,Math.floor(r.num("20")));i495<n495;i495++){
+impact495:for(let i495=0,n495=Math.max(0,Math.floor(r.num("20")));i495<n495;i495++){
 c.block="z0tu";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1xs3",null]),"EQUAL","1"]))){
 c.block="lkql";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["evu6",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact495;}
 }else{
 c.block="z1p0";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["evu6",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact495;}
 }
 c.block="e89z";r.guard(c);
 r.command(c,"change_variable",["evu6","-0.5",null]);
@@ -18322,14 +18407,16 @@ c.block="jnqw";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="ljwa";r.guard(c);
-for(let i498=0,n498=Math.max(0,Math.floor(r.num("25")));i498<n498;i498++){
+impact498:for(let i498=0,n498=Math.max(0,Math.floor(r.num("25")));i498<n498;i498++){
 c.block="7l0m";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["1xs3",null]),"EQUAL","1"]))){
 c.block="ze1v";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["evu6",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact498;}
 }else{
 c.block="gynn";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["evu6",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact498;}
 }
 c.block="te0d";r.guard(c);
 r.command(c,"change_variable",["evu6","-0.6",null]);
@@ -18385,9 +18472,10 @@ r.command(c,"rotate_relative",[r.value(c,"get_variable",["sv2a",null]),null]);
 c.block="zi19";r.guard(c);
 r.command(c,"change_variable",["sv2a","9",null]);
 c.block="6h4f";r.guard(c);
-for(let i501=0,n501=Math.max(0,Math.floor(r.num("25")));i501<n501;i501++){
+impact501:for(let i501=0,n501=Math.max(0,Math.floor(r.num("25")));i501<n501;i501++){
 c.block="sa11";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["evu6",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact501;}
 c.block="3roo";r.guard(c);
 r.command(c,"change_variable",["evu6","-0.4",null]);
 c.block="ydd2";r.guard(c);
@@ -18442,9 +18530,10 @@ r.command(c,"rotate_relative",[r.value(c,"get_variable",["sv2a",null]),null]);
 c.block="8m6l";r.guard(c);
 r.command(c,"change_variable",["sv2a","6",null]);
 c.block="ehh5";r.guard(c);
-for(let i504=0,n504=Math.max(0,Math.floor(r.num("30")));i504<n504;i504++){
+impact504:for(let i504=0,n504=Math.max(0,Math.floor(r.num("30")));i504<n504;i504++){
 c.block="scxg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["evu6",null]),"MULTI","0.8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact504;}
 c.block="jofa";r.guard(c);
 r.command(c,"change_variable",["evu6","-0.4",null]);
 c.block="to8q";r.guard(c);
@@ -18530,7 +18619,7 @@ r.command(c,"set_thickness",["1",null]);
 c.block="iknn";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ob2m",null]),"EQUAL","0"]))){
 c.block="c5bd";r.guard(c);
-for(let i507=0,n507=Math.max(0,Math.floor(r.num("20")));i507<n507;i507++){
+impact507:for(let i507=0,n507=Math.max(0,Math.floor(r.num("20")));i507<n507;i507++){
 c.block="06ns";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="ljgf";r.guard(c);
@@ -18545,60 +18634,70 @@ c.block="4hxv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="61jj";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="fn29";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="cexu";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="nuq0";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="81q8";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="slsi";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="qhqr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="icwa";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="na2k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="8ycn";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="241j";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="20c1";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"31",null]),null]);
 c.block="r490";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="rymm";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="3ynf";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-31",null]),null]);
 c.block="wggb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="5ze2";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="2ywn";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="q12t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="dv7y";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="9b2u";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="sb9m";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="g4m3";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="9yfx";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="2bt1";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="ufhg";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="hi9q";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="udra";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact507;}
 c.block="sje5";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="hrx3";r.guard(c);
@@ -18628,7 +18727,7 @@ r.command(c,"show",[null]);
 c.block="dt6p";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="dq2o";r.guard(c);
-for(let i508=0,n508=Math.max(0,Math.floor(r.num("100")));i508<n508;i508++){
+impact508:for(let i508=0,n508=Math.max(0,Math.floor(r.num("100")));i508<n508;i508++){
 c.block="1yxk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="cpnk";r.guard(c);
@@ -18640,6 +18739,7 @@ c.block="64gh";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"coordinate_object",[null,"6r3z",null,"rotation"]),null]);
 c.block="1vuf";r.guard(c);
 r.command(c,"move_direction",["11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="n965";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="aql3";r.guard(c);
@@ -18662,60 +18762,70 @@ c.block="feuj";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-20",null,"20",null]),null]);
 c.block="bns8";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="aav3";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="tt9q";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"20",null,"-20",null]),null]);
 c.block="jgrx";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="u052";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="o7t7";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="kxvi";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="h7nh";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="ci84";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="yp4g";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="dsi8";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="nk2d";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="pdkm";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="cm94";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="hqpz";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="85r4";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="hbwo";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="w62s";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="lvxa";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="a22x";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="nld4";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="xt0k";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="fzqv";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="ks5q";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="89zl";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="mmmm";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="60y0";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="gbip";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact508;}
 c.block="dc1r";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 }
@@ -18744,7 +18854,7 @@ r.command(c,"show",[null]);
 c.block="dump";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="f3pt";r.guard(c);
-for(let i510=0,n510=Math.max(0,Math.floor(r.num("100")));i510<n510;i510++){
+impact510:for(let i510=0,n510=Math.max(0,Math.floor(r.num("100")));i510<n510;i510++){
 c.block="t4ek";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="ckkl";r.guard(c);
@@ -18756,6 +18866,7 @@ c.block="3ch9";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"coordinate_object",[null,"6r3z",null,"rotation"]),null]);
 c.block="vyfk";r.guard(c);
 r.command(c,"move_direction",["-11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="1zm5";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="nhh6";r.guard(c);
@@ -18778,60 +18889,70 @@ c.block="az7j";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-20",null,"20",null]),null]);
 c.block="olge";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="5fs7";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="znio";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"20",null,"-20",null]),null]);
 c.block="7ziu";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="yspt";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="qy2j";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="b945";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="z29r";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="uowv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="t1ow";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="2ljy";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="j9tt";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="5q5a";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="63z7";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="iy11";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="j9zi";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="41uz";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="zk9d";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="d7i7";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="xtij";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="y8ee";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="9fp4";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="emmx";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="19zs";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="cshm";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="12u1";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="5dvf";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="6skj";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact510;}
 c.block="b6d7";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 }
@@ -18870,7 +18991,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="jb4h";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="w3t4";r.guard(c);
-for(let i512=0,n512=Math.max(0,Math.floor(r.num("5")));i512<n512;i512++){
+impact512:for(let i512=0,n512=Math.max(0,Math.floor(r.num("5")));i512<n512;i512++){
 c.block="ee60";r.guard(c);
 r.command(c,"change_variable",["oafg","0.8",null]);
 c.block="pu5v";r.guard(c);
@@ -18887,120 +19008,140 @@ c.block="c0mu";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="gsow";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="grpg";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="p2ap";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="fmji";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="lyt7";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="serx";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="g2ut";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="qeg1";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="q99f";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="oy9q";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="f4xk";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="sgiw";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="n1uw";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="46cl";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="o6k4";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="ml65";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="tizt";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="v21o";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="3v1q";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="0aef";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="8m0a";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="sonp";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="4g99";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="thzm";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="qvm8";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="brhp";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="fm7k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="srra";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="d6eq";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="1go5";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="g1nc";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="zq9t";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="wt74";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="lvyl";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="byqw";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="655y";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="13t2";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="o4ix";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="9orz";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="1hl9";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="qlvr";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="bm4v";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="lbhe";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="4485";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="dbed";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="t11h";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="nqik";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="tr4p";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="11j4";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="izd8";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="9x38";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="a8ry";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="3s9l";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="qlvo";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="so06";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="awu4";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mlad";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="99js";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="th29";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="snef";r.guard(c);
@@ -19015,120 +19156,140 @@ c.block="ubi2";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="0rjk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="u2b2";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vv53";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="oljk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="wgbx";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="lf73";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="hrkl";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="8hmo";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mmgd";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="no6g";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="g7ck";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="l7v7";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="nfn3";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="yqaz";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="4dhb";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="mc8n";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="swmc";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="xprm";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="p1m2";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="ba6j";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="hk7k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="y4cz";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="zx6h";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="5u9l";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="6cl6";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="1ze0";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="ph52";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="1frg";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="pdtj";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="6jz7";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="ms38";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="awkw";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="2ce2";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="5jrq";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="yelq";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="6m7k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="ukhu";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="p6x2";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="96k2";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="ffir";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="uukm";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mlri";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="iwtk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="01kb";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="kr0p";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="xp01";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="t04p";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="js34";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="5ht8";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="fqk4";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="gpub";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="9gxd";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="knwn";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="njpc";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="fjhq";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="kefo";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="11ox";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="qaea";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact512;}
 c.block="x8tv";r.guard(c);
 for(let i513=0,n513=Math.max(0,Math.floor(r.num("2")));i513<n513;i513++){
 yield 1;
@@ -19136,7 +19297,7 @@ yield 1;
 yield 1;
 }
 c.block="9d85";r.guard(c);
-for(let i514=0,n514=Math.max(0,Math.floor(r.num("3")));i514<n514;i514++){
+impact514:for(let i514=0,n514=Math.max(0,Math.floor(r.num("3")));i514<n514;i514++){
 c.block="y1ul";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="5v90";r.guard(c);
@@ -19151,120 +19312,140 @@ c.block="mtk3";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="3zqm";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="qdqn";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="99y4";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="kb18";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="gj7g";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="e6he";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="a1k4";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="u80c";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="6vz9";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="4hu5";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="s78s";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="0pjm";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="7ymt";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="lq4c";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vngs";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="75fz";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="oj65";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vg1m";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="zfjm";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="tfj5";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="1szc";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="i60l";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="0282";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="n0z2";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="8kev";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="skag";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="ec5p";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="igms";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="7rjx";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="el0k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="l5pe";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="raen";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="bexh";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="zxk9";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="ccom";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="9dbl";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="pulv";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="w7do";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="b75e";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="drom";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="fzkx";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="86z7";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="nrxa";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="11hb";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="iu0w";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="xs4e";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="llhq";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="0hru";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="wtec";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="958a";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="m0s1";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="jgxe";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="8vmn";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="90hj";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="1f50";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="irjs";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="b6ib";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="mk1i";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="alpg";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="8gm7";r.guard(c);
@@ -19279,120 +19460,140 @@ c.block="nx4v";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="92nn";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="5ion";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="ve66";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="hyd7";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="d4na";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="b7c9";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="qp7m";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="hsuq";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="caot";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="kz8w";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="8vem";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="cfl1";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="pd77";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="7lz6";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="ckyv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="akkk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="22ie";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="p6cl";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="h2ah";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="iy25";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="sx8h";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="g6ki";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="5u2s";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="abwd";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="iyc3";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="5ebx";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vk7z";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="lcfm";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="msys";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="p7mp";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="f0ku";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="ezlj";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mcks";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="8918";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="00j0";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vs2f";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="kfmq";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="efdl";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="9y9h";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="a1kk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="td7i";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="q52i";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="i2d9";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="jd0n";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="5fh5";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="kywi";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="15y9";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="hc2y";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="ugu8";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="ar3r";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="z6z4";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="w8g4";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="tx73";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="xsf0";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="13kj";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="lpv0";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="w27a";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="98ej";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact514;}
 c.block="xe64";r.guard(c);
 for(let i515=0,n515=Math.max(0,Math.floor(r.num("2")));i515<n515;i515++){
 yield 1;
@@ -19626,7 +19827,7 @@ r.command(c,"set_thickness",["1",null]);
 c.block="cv8l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rav6",null]),"EQUAL","0"]))){
 c.block="c5bd";r.guard(c);
-for(let i520=0,n520=Math.max(0,Math.floor(r.num("20")));i520<n520;i520++){
+impact520:for(let i520=0,n520=Math.max(0,Math.floor(r.num("20")));i520<n520;i520++){
 c.block="06ns";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="ljgf";r.guard(c);
@@ -19641,60 +19842,70 @@ c.block="4hxv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="61jj";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="5j91";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="cexu";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="nuq0";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="6akx";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="slsi";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="qhqr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="n7ea";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="na2k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="8ycn";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="zmhj";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="20c1";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"31",null]),null]);
 c.block="r490";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="wlcl";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="3ynf";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-31",null]),null]);
 c.block="wggb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="rxac";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="2ywn";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="q12t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="iabl";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="9b2u";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="sb9m";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="03vr";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="9yfx";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="2bt1";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="eond";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="hi9q";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="udra";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact520;}
 c.block="sje5";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="hrx3";r.guard(c);
@@ -19724,7 +19935,7 @@ r.command(c,"show",[null]);
 c.block="dt6p";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="dq2o";r.guard(c);
-for(let i521=0,n521=Math.max(0,Math.floor(r.num("100")));i521<n521;i521++){
+impact521:for(let i521=0,n521=Math.max(0,Math.floor(r.num("100")));i521<n521;i521++){
 c.block="1yxk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="cpnk";r.guard(c);
@@ -19736,6 +19947,7 @@ c.block="64gh";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"coordinate_object",[null,"wkk5",null,"rotation"]),null]);
 c.block="1vuf";r.guard(c);
 r.command(c,"move_direction",["11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="n965";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="aql3";r.guard(c);
@@ -19758,60 +19970,70 @@ c.block="feuj";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-20",null,"20",null]),null]);
 c.block="bns8";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="v5ys";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="tt9q";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"20",null,"-20",null]),null]);
 c.block="jgrx";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="rdrz";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="o7t7";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="kxvi";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="h2m4";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="ci84";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="yp4g";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="m6m1";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="nk2d";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="pdkm";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="xhbv";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="hqpz";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="85r4";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="wu48";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="w62s";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="lvxa";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="jhqi";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="nld4";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="xt0k";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="kucf";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="ks5q";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="89zl";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="0b93";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="60y0";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="gbip";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact521;}
 c.block="dc1r";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 }
@@ -19840,7 +20062,7 @@ r.command(c,"show",[null]);
 c.block="lmwn";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="u3p5";r.guard(c);
-for(let i523=0,n523=Math.max(0,Math.floor(r.num("100")));i523<n523;i523++){
+impact523:for(let i523=0,n523=Math.max(0,Math.floor(r.num("100")));i523<n523;i523++){
 c.block="z6hr";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="qfvm";r.guard(c);
@@ -19852,6 +20074,7 @@ c.block="kcp6";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"coordinate_object",[null,"wkk5",null,"rotation"]),null]);
 c.block="6m6c";r.guard(c);
 r.command(c,"move_direction",["-11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="xgel";r.guard(c);
 r.command(c,"brush_erase_all",[null]);
 c.block="juhj";r.guard(c);
@@ -19874,60 +20097,70 @@ c.block="c4st";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-20",null,"20",null]),null]);
 c.block="wvnd";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="kaut";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="ernp";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"20",null,"-20",null]),null]);
 c.block="5ywv";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="mcvk";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="6eov";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="90p7";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="lhlw";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="m49s";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="ao8j";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="xt5j";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="9ran";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="n8go";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="2frl";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="40gl";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="6fl6";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="apvx";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="q1yt";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="7fzn";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="klwg";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="fd2z";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="wim8";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="btvd";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="syfn";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="t0wo";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="39rd";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="h8ut";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="5pxb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["2bs6",null]),"DIVIDE","10"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact523;}
 c.block="1cy7";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 }
@@ -19966,7 +20199,7 @@ r.command(c,"message_cast",["tuhm",null]);
 c.block="8w9q";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="w3t4";r.guard(c);
-for(let i525=0,n525=Math.max(0,Math.floor(r.num("5")));i525<n525;i525++){
+impact525:for(let i525=0,n525=Math.max(0,Math.floor(r.num("5")));i525<n525;i525++){
 c.block="ee60";r.guard(c);
 r.command(c,"change_variable",["oafg","0.8",null]);
 c.block="pu5v";r.guard(c);
@@ -19983,120 +20216,140 @@ c.block="c0mu";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="gsow";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="grpg";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="p2ap";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="fmji";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="lyt7";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="serx";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="g2ut";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="qeg1";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="q99f";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="oy9q";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="f4xk";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="sgiw";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="n1uw";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="46cl";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="o6k4";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="ml65";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="tizt";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="v21o";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="3v1q";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="0aef";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="8m0a";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="sonp";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="4g99";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="thzm";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="qvm8";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="brhp";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="fm7k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="srra";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="d6eq";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="1go5";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="g1nc";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="zq9t";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="wt74";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="lvyl";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="byqw";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="655y";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="13t2";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="o4ix";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="9orz";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="1hl9";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="qlvr";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="bm4v";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="lbhe";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="4485";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="dbed";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="t11h";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="nqik";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="tr4p";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="11j4";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="izd8";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="9x38";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="a8ry";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="3s9l";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="qlvo";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="so06";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="awu4";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mlad";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="99js";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="th29";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="snef";r.guard(c);
@@ -20111,120 +20364,140 @@ c.block="ubi2";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="0rjk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="u2b2";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vv53";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="oljk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="wgbx";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="lf73";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="hrkl";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="8hmo";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mmgd";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="no6g";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="g7ck";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="l7v7";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="nfn3";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="yqaz";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="4dhb";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="mc8n";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="swmc";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="xprm";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="p1m2";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="ba6j";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="hk7k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="y4cz";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="zx6h";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="5u9l";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="6cl6";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="1ze0";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="ph52";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="1frg";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="pdtj";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="6jz7";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="ms38";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="awkw";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="2ce2";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="5jrq";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="yelq";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="6m7k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="ukhu";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="p6x2";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="96k2";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="ffir";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="uukm";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mlri";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="iwtk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="01kb";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="kr0p";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="xp01";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="t04p";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="js34";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="5ht8";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="fqk4";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="gpub";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="9gxd";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="knwn";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="njpc";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="fjhq";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="kefo";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="11ox";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="qaea";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact525;}
 c.block="x8tv";r.guard(c);
 for(let i526=0,n526=Math.max(0,Math.floor(r.num("2")));i526<n526;i526++){
 yield 1;
@@ -20232,7 +20505,7 @@ yield 1;
 yield 1;
 }
 c.block="9d85";r.guard(c);
-for(let i527=0,n527=Math.max(0,Math.floor(r.num("3")));i527<n527;i527++){
+impact527:for(let i527=0,n527=Math.max(0,Math.floor(r.num("3")));i527<n527;i527++){
 c.block="y1ul";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="5v90";r.guard(c);
@@ -20247,120 +20520,140 @@ c.block="mtk3";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="3zqm";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="qdqn";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="99y4";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="kb18";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="gj7g";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="e6he";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="a1k4";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="u80c";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="6vz9";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="4hu5";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="s78s";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="0pjm";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="7ymt";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="lq4c";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vngs";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="75fz";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="oj65";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vg1m";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="zfjm";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="tfj5";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="1szc";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="i60l";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="0282";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="n0z2";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="8kev";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="skag";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="ec5p";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="igms";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="7rjx";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="el0k";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="l5pe";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="raen";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="bexh";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="zxk9";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="ccom";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="9dbl";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="pulv";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="w7do";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="b75e";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="drom";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="fzkx";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="86z7";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="nrxa";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="11hb";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="iu0w";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="xs4e";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="llhq";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="0hru";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="wtec";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="958a";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="m0s1";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="jgxe";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="8vmn";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="90hj";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="1f50";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="irjs";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="b6ib";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="mk1i";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="alpg";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="8gm7";r.guard(c);
@@ -20375,120 +20668,140 @@ c.block="nx4v";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="92nn";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="5ion";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="ve66";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="hyd7";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="d4na";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="b7c9";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="qp7m";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="hsuq";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="caot";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="kz8w";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="8vem";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="cfl1";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="pd77";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="7lz6";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="ckyv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="akkk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="22ie";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="p6cl";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="h2ah";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="iy25";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="sx8h";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="g6ki";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="5u2s";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="abwd";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="iyc3";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="5ebx";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vk7z";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="lcfm";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="msys";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="p7mp";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="f0ku";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="ezlj";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="mcks";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="8918";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="00j0";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="vs2f";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="kfmq";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="efdl";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="9y9h";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"17",null,"-17",null]),null]);
 c.block="a1kk";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="td7i";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="q52i";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"31",null]),null]);
 c.block="i2d9";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="jd0n";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="5fh5";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"0",null,"-31",null]),null]);
 c.block="kywi";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="15y9";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="hc2y";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"22",null,"-22",null]),null]);
 c.block="ugu8";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="ar3r";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="z6z4";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-22",null,"22",null]),null]);
 c.block="w8g4";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="tx73";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="xsf0";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"10",null,"41",null]),null]);
 c.block="13kj";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="lpv0";r.guard(c);
 r.command(c,"rotate_absolute",["270",null]);
 c.block="w27a";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_rand",[null,"-10",null,"-41",null]),null]);
 c.block="98ej";r.guard(c);
 r.command(c,"move_direction",["15",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact527;}
 c.block="xe64";r.guard(c);
 for(let i528=0,n528=Math.max(0,Math.floor(r.num("2")));i528<n528;i528++){
 yield 1;
@@ -21741,13 +22054,14 @@ r.command(c,"set_variable",["vhcu","6",null]);
 c.block="w6s5";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="zek8";r.guard(c);
-for(let i557=0,n557=Math.max(0,Math.floor(r.num("14")));i557<n557;i557++){
+impact557:for(let i557=0,n557=Math.max(0,Math.floor(r.num("14")));i557<n557;i557++){
 c.block="ssvb";r.guard(c);
 r.command(c,"bounce_wall",[null]);
 c.block="hgpm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="c4kn";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["vhcu",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="lu8f";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","3"]),null]);
 c.block="9jlb";r.guard(c);
@@ -21755,6 +22069,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="es87";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="kagy";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-3"]),null]);
 c.block="9rt2";r.guard(c);
@@ -21801,12 +22116,14 @@ c.block="ij5f";r.guard(c);
 for(let i558=0,n558=Math.max(0,Math.floor(r.num("10")));i558<n558;i558++){
 c.block="kurc";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="noxn";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="bcmy";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="sqsb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="hwf6";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","5"]),null]);
 c.block="3xdt";r.guard(c);
@@ -21814,6 +22131,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="95lv";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="7h9a";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-5"]),null]);
 c.block="sudg";r.guard(c);
@@ -21832,12 +22150,14 @@ break;
 }
 c.block="u2gi";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="ol3m";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="dkto";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="uv2v";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="robb";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","5"]),null]);
 c.block="lfus";r.guard(c);
@@ -21845,6 +22165,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="ste3";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="90t0";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-5"]),null]);
 c.block="uh38";r.guard(c);
@@ -21863,12 +22184,14 @@ break;
 }
 c.block="po87";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="b3s0";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="5lam";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="vm20";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="fpo8";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","5"]),null]);
 c.block="xa21";r.guard(c);
@@ -21876,6 +22199,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="0zh4";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="z3or";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-5"]),null]);
 c.block="1s20";r.guard(c);
@@ -21901,12 +22225,14 @@ break;
 }
 c.block="pdh0";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="362r";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="po8t";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="r24q";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="9dfs";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","5"]),null]);
 c.block="0pw0";r.guard(c);
@@ -21914,6 +22240,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="usjr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="7jt0";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-5"]),null]);
 c.block="a8g2";r.guard(c);
@@ -21937,12 +22264,14 @@ break;
 }
 c.block="gvbf";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="0we1";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="luac";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="8m7b";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="k7jy";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-3"]),null]);
 c.block="i1jr";r.guard(c);
@@ -21950,6 +22279,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="z6wl";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact557;}
 c.block="otrx";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","3"]),null]);
 c.block="afko";r.guard(c);
@@ -21976,7 +22306,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="qiau";r.guard(c);
-for(let i561=0,n561=Math.max(0,Math.floor(r.num("36")));i561<n561;i561++){
+impact561:for(let i561=0,n561=Math.max(0,Math.floor(r.num("36")));i561<n561;i561++){
 c.block="2sf7";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n8fg",null]),"LESS","30"]))){
 c.block="tecc";r.guard(c);
@@ -21988,6 +22318,7 @@ c.block="2p7c";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="mfv9";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["vhcu",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="0uu3";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","3"]),null]);
 c.block="a1s8";r.guard(c);
@@ -21995,6 +22326,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="268o";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="w663";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-3"]),null]);
 c.block="1jns";r.guard(c);
@@ -22041,12 +22373,14 @@ c.block="ffz6";r.guard(c);
 for(let i562=0,n562=Math.max(0,Math.floor(r.num("10")));i562<n562;i562++){
 c.block="k1l0";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="k3g0";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="6whk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="r0rw";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="yczj";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","5"]),null]);
 c.block="t5qi";r.guard(c);
@@ -22054,6 +22388,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="1yfi";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="cwk7";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-5"]),null]);
 c.block="v6cv";r.guard(c);
@@ -22072,12 +22407,14 @@ break;
 }
 c.block="lzca";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="vsbo";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="gc4i";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="lm87";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="2i43";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","5"]),null]);
 c.block="kype";r.guard(c);
@@ -22085,6 +22422,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="j8fr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="b5fr";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-5"]),null]);
 c.block="9cpr";r.guard(c);
@@ -22103,12 +22441,14 @@ break;
 }
 c.block="3yaj";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="mikn";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="zikh";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="bi01";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="haqm";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","5"]),null]);
 c.block="za3w";r.guard(c);
@@ -22116,6 +22456,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="3b83";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="2o06";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-5"]),null]);
 c.block="d0xd";r.guard(c);
@@ -22141,12 +22482,14 @@ break;
 }
 c.block="kosj";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="gyha";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="9d69";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="u4yk";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="419p";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","5"]),null]);
 c.block="5376";r.guard(c);
@@ -22154,6 +22497,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="czkd";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="s2g2";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-5"]),null]);
 c.block="wi1n";r.guard(c);
@@ -22177,12 +22521,14 @@ break;
 }
 c.block="6tqk";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["m2e5",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="1999";r.guard(c);
 r.command(c,"change_variable",["m2e5","-0.13333",null]);
 c.block="m7tp";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="box3";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="xjkh";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-3"]),null]);
 c.block="41xf";r.guard(c);
@@ -22190,6 +22536,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="9qvh";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","-0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact561;}
 c.block="oykm";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhcu",null]),"MULTI","3"]),null]);
 c.block="mhg8";r.guard(c);
@@ -22507,13 +22854,14 @@ r.command(c,"set_variable",["7z7n","6",null]);
 c.block="w6s5";r.guard(c);
 r.command(c,"rotate_absolute",["0",null]);
 c.block="zek8";r.guard(c);
-for(let i570=0,n570=Math.max(0,Math.floor(r.num("14")));i570<n570;i570++){
+impact570:for(let i570=0,n570=Math.max(0,Math.floor(r.num("14")));i570<n570;i570++){
 c.block="ssvb";r.guard(c);
 r.command(c,"bounce_wall",[null]);
 c.block="hgpm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="c4kn";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["7z7n",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="lu8f";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","3"]),null]);
 c.block="9jlb";r.guard(c);
@@ -22521,6 +22869,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="es87";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="kagy";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-3"]),null]);
 c.block="9rt2";r.guard(c);
@@ -22567,12 +22916,14 @@ c.block="ij5f";r.guard(c);
 for(let i571=0,n571=Math.max(0,Math.floor(r.num("10")));i571<n571;i571++){
 c.block="kurc";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="noxn";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="bcmy";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="sqsb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="hwf6";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","5"]),null]);
 c.block="3xdt";r.guard(c);
@@ -22580,6 +22931,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="95lv";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="7h9a";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-5"]),null]);
 c.block="sudg";r.guard(c);
@@ -22598,12 +22950,14 @@ break;
 }
 c.block="u2gi";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="ol3m";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="dkto";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="uv2v";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="robb";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","5"]),null]);
 c.block="lfus";r.guard(c);
@@ -22611,6 +22965,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="ste3";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="90t0";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-5"]),null]);
 c.block="uh38";r.guard(c);
@@ -22629,12 +22984,14 @@ break;
 }
 c.block="po87";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="b3s0";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="5lam";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="vm20";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="fpo8";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","5"]),null]);
 c.block="xa21";r.guard(c);
@@ -22642,6 +22999,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="0zh4";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="z3or";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-5"]),null]);
 c.block="1s20";r.guard(c);
@@ -22667,12 +23025,14 @@ break;
 }
 c.block="pdh0";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="362r";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="po8t";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="r24q";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="9dfs";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","5"]),null]);
 c.block="0pw0";r.guard(c);
@@ -22680,6 +23040,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="usjr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="7jt0";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-5"]),null]);
 c.block="a8g2";r.guard(c);
@@ -22703,12 +23064,14 @@ break;
 }
 c.block="gvbf";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="0we1";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="luac";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="8m7b";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="k7jy";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-3"]),null]);
 c.block="i1jr";r.guard(c);
@@ -22716,6 +23079,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="z6wl";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact570;}
 c.block="otrx";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","3"]),null]);
 c.block="afko";r.guard(c);
@@ -22742,7 +23106,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="qiau";r.guard(c);
-for(let i574=0,n574=Math.max(0,Math.floor(r.num("36")));i574<n574;i574++){
+impact574:for(let i574=0,n574=Math.max(0,Math.floor(r.num("36")));i574<n574;i574++){
 c.block="2sf7";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"00h9",null]),"LESS","30"]))){
 c.block="tecc";r.guard(c);
@@ -22754,6 +23118,7 @@ c.block="t017";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="5lax";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["7z7n",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="ds2f";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","3"]),null]);
 c.block="sojb";r.guard(c);
@@ -22761,6 +23126,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="tugp";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="qppi";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-3"]),null]);
 c.block="6lmd";r.guard(c);
@@ -22807,12 +23173,14 @@ c.block="9fks";r.guard(c);
 for(let i575=0,n575=Math.max(0,Math.floor(r.num("10")));i575<n575;i575++){
 c.block="yxzn";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="xdhl";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="8lf6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="5onb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="ezdu";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","5"]),null]);
 c.block="9wco";r.guard(c);
@@ -22820,6 +23188,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="8vec";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="avzl";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-5"]),null]);
 c.block="oex7";r.guard(c);
@@ -22838,12 +23207,14 @@ break;
 }
 c.block="sfta";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="qrcq";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="aprg";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="8e2b";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="rsyn";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","5"]),null]);
 c.block="2pj1";r.guard(c);
@@ -22851,6 +23222,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="06k9";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="of0s";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-5"]),null]);
 c.block="wf3z";r.guard(c);
@@ -22869,12 +23241,14 @@ break;
 }
 c.block="uomt";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="xy5k";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="4viy";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="saxj";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="50xx";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","5"]),null]);
 c.block="e8jh";r.guard(c);
@@ -22882,6 +23256,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="a687";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="6yua";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-5"]),null]);
 c.block="b540";r.guard(c);
@@ -22907,12 +23282,14 @@ break;
 }
 c.block="2wgl";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="0dwd";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="dvxm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="mvw8";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="nhlr";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","5"]),null]);
 c.block="96rv";r.guard(c);
@@ -22920,6 +23297,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="9qlg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="h76n";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-5"]),null]);
 c.block="65re";r.guard(c);
@@ -22943,12 +23321,14 @@ break;
 }
 c.block="kizt";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["2t0b",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="w5wk";r.guard(c);
 r.command(c,"change_variable",["2t0b","-0.13333",null]);
 c.block="0h2q";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="p6tf";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="6iy3";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-3"]),null]);
 c.block="7i9v";r.guard(c);
@@ -22956,6 +23336,7 @@ r.command(c,"direction_relative",[r.value(c,"calc_basic",[r.value(c,"get_variabl
 }else{
 c.block="g9v8";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","-0.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact574;}
 c.block="0asp";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7z7n",null]),"MULTI","3"]),null]);
 c.block="ce3z";r.guard(c);
@@ -23228,14 +23609,16 @@ c.block="avbt";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="b09i";r.guard(c);
-for(let i582=0,n582=Math.max(0,Math.floor(r.num("20")));i582<n582;i582++){
+impact582:for(let i582=0,n582=Math.max(0,Math.floor(r.num("20")));i582<n582;i582++){
 c.block="necz";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="s4v9";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["kv7g",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact582;}
 }else{
 c.block="j0jq";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kv7g",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact582;}
 }
 c.block="ks86";r.guard(c);
 r.command(c,"change_variable",["kv7g","-0.4",null]);
@@ -23252,16 +23635,18 @@ yield* r.call(c,"qy83",["-2","7","0"]);
 yield 1;
 }
 c.block="tn88";r.guard(c);
-for(let i583=0,n583=Math.max(0,Math.floor(r.num("5")));i583<n583;i583++){
+impact583:for(let i583=0,n583=Math.max(0,Math.floor(r.num("5")));i583<n583;i583++){
 c.block="w7gw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="arze";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="3q4b";r.guard(c);
 r.command(c,"move_x",["0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact583;}
 }else{
 c.block="n5eq";r.guard(c);
 r.command(c,"move_x",["-0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact583;}
 }
 c.block="e7fl";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
@@ -23305,14 +23690,16 @@ c.block="207q";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="ou60";r.guard(c);
-for(let i584=0,n584=Math.max(0,Math.floor(r.num("20")));i584<n584;i584++){
+impact584:for(let i584=0,n584=Math.max(0,Math.floor(r.num("20")));i584<n584;i584++){
 c.block="hx1l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="2q0l";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["kv7g",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact584;}
 }else{
 c.block="fcf3";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kv7g",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact584;}
 }
 c.block="m9za";r.guard(c);
 r.command(c,"change_variable",["kv7g","-0.4",null]);
@@ -23329,16 +23716,18 @@ yield* r.call(c,"05j0",["-2","7","0"]);
 yield 1;
 }
 c.block="whoi";r.guard(c);
-for(let i585=0,n585=Math.max(0,Math.floor(r.num("5")));i585<n585;i585++){
+impact585:for(let i585=0,n585=Math.max(0,Math.floor(r.num("5")));i585<n585;i585++){
 c.block="3sv3";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="wqbc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="lzym";r.guard(c);
 r.command(c,"move_x",["0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact585;}
 }else{
 c.block="bmds";r.guard(c);
 r.command(c,"move_x",["-0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact585;}
 }
 c.block="jz4y";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
@@ -23404,14 +23793,16 @@ c.block="b2mt";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="4ajd";r.guard(c);
-for(let i586=0,n586=Math.max(0,Math.floor(r.num("20")));i586<n586;i586++){
+impact586:for(let i586=0,n586=Math.max(0,Math.floor(r.num("20")));i586<n586;i586++){
 c.block="vz1j";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="yyql";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["ega4",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact586;}
 }else{
 c.block="eakv";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ega4",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact586;}
 }
 c.block="23hg";r.guard(c);
 r.command(c,"change_variable",["ega4","-0.1",null]);
@@ -23432,16 +23823,18 @@ r.command(c,"change_variable",["ha8n","1",null]);
 yield 1;
 }
 c.block="qjy8";r.guard(c);
-for(let i587=0,n587=Math.max(0,Math.floor(r.num("5")));i587<n587;i587++){
+impact587:for(let i587=0,n587=Math.max(0,Math.floor(r.num("5")));i587<n587;i587++){
 c.block="x37t";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="dbe9";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="7wjp";r.guard(c);
 r.command(c,"move_x",["0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact587;}
 }else{
 c.block="lxsc";r.guard(c);
 r.command(c,"move_x",["-0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact587;}
 }
 c.block="0k29";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
@@ -23495,14 +23888,16 @@ c.block="4oax";r.guard(c);
 r.command(c,"flip_y",[null]);
 }
 c.block="8uz7";r.guard(c);
-for(let i588=0,n588=Math.max(0,Math.floor(r.num("20")));i588<n588;i588++){
+impact588:for(let i588=0,n588=Math.max(0,Math.floor(r.num("20")));i588<n588;i588++){
 c.block="bvte";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="imhv";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["ega4",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact588;}
 }else{
 c.block="lrmv";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ega4",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact588;}
 }
 c.block="ypsf";r.guard(c);
 r.command(c,"change_variable",["ega4","-0.1",null]);
@@ -23523,16 +23918,18 @@ r.command(c,"change_variable",["ha8n","1",null]);
 yield 1;
 }
 c.block="jwnl";r.guard(c);
-for(let i589=0,n589=Math.max(0,Math.floor(r.num("5")));i589<n589;i589++){
+impact589:for(let i589=0,n589=Math.max(0,Math.floor(r.num("5")));i589<n589;i589++){
 c.block="zopx";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","20",null]);
 c.block="8upo";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="93h8";r.guard(c);
 r.command(c,"move_x",["0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact589;}
 }else{
 c.block="poc9";r.guard(c);
 r.command(c,"move_x",["-0.1",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact589;}
 }
 c.block="lbn9";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
@@ -24868,9 +25265,10 @@ r.command(c,"set_variable",["hh2k","10",null]);
 c.block="168p";r.guard(c);
 r.command(c,"set_variable",["o979",r.value(c,"get_variable",["846x",null]),null]);
 c.block="2hjk";r.guard(c);
-for(let i624=0,n624=Math.max(0,Math.floor(r.num("50")));i624<n624;i624++){
+impact624:for(let i624=0,n624=Math.max(0,Math.floor(r.num("50")));i624<n624;i624++){
 c.block="8rpz";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["hh2k",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact624;}
 c.block="0hd3";r.guard(c);
 r.command(c,"change_variable",["hh2k","-0.2",null]);
 c.block="oi6n";r.guard(c);
@@ -25001,9 +25399,10 @@ r.command(c,"set_variable",["o979",r.value(c,"get_variable",["846x",null]),null]
 c.block="2bp4";r.guard(c);
 r.command(c,"set_variable",["sy5z","-5",null]);
 c.block="i8co";r.guard(c);
-for(let i629=0,n629=Math.max(0,Math.floor(r.num("70")));i629<n629;i629++){
+impact629:for(let i629=0,n629=Math.max(0,Math.floor(r.num("70")));i629<n629;i629++){
 c.block="t68d";r.guard(c);
 r.command(c,"move_direction",["3.3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact629;}
 c.block="xhsn";r.guard(c);
 r.command(c,"change_variable",["sy5z","-0.2",null]);
 c.block="8p5c";r.guard(c);
@@ -25389,9 +25788,10 @@ r.command(c,"set_variable",["qknu","10",null]);
 c.block="168p";r.guard(c);
 r.command(c,"set_variable",["i4mv",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="2hjk";r.guard(c);
-for(let i644=0,n644=Math.max(0,Math.floor(r.num("50")));i644<n644;i644++){
+impact644:for(let i644=0,n644=Math.max(0,Math.floor(r.num("50")));i644<n644;i644++){
 c.block="8rpz";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["qknu",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact644;}
 c.block="0hd3";r.guard(c);
 r.command(c,"change_variable",["qknu","-0.2",null]);
 c.block="oi6n";r.guard(c);
@@ -25522,9 +25922,10 @@ r.command(c,"set_variable",["i4mv",r.value(c,"get_variable",["etjn",null]),null]
 c.block="2bp4";r.guard(c);
 r.command(c,"set_variable",["0xsx","-5",null]);
 c.block="i8co";r.guard(c);
-for(let i649=0,n649=Math.max(0,Math.floor(r.num("70")));i649<n649;i649++){
+impact649:for(let i649=0,n649=Math.max(0,Math.floor(r.num("70")));i649<n649;i649++){
 c.block="t68d";r.guard(c);
 r.command(c,"move_direction",["3.3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact649;}
 c.block="xhsn";r.guard(c);
 r.command(c,"change_variable",["0xsx","-0.2",null]);
 c.block="8p5c";r.guard(c);
@@ -26668,7 +27069,7 @@ r.command(c,"set_variable",["qu0m","1",null]);
 }
 }
 c.block="6xeo";r.guard(c);
-for(let i705=0,n705=Math.max(0,Math.floor(r.num("10")));i705<n705;i705++){
+impact705:for(let i705=0,n705=Math.max(0,Math.floor(r.num("10")));i705<n705;i705++){
 c.block="6gs2";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qu0m",null]),"EQUAL","0"]))){
 c.block="bp87";r.guard(c);
@@ -26683,31 +27084,37 @@ c.block="zela";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="qmcx";r.guard(c);
 r.command(c,"move_y",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact705;}
 c.block="j2wi";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="h8ad";r.guard(c);
 r.command(c,"move_x",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact705;}
 }else{
 c.block="onm3";r.guard(c);
 r.command(c,"move_x",["-18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact705;}
 }
 yield 1;
 }
 c.block="4y9l";r.guard(c);
-for(let i706=0,n706=Math.max(0,Math.floor(r.num("10")));i706<n706;i706++){
+impact706:for(let i706=0,n706=Math.max(0,Math.floor(r.num("10")));i706<n706;i706++){
 c.block="t7uw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="5cyo";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="k54w";r.guard(c);
 r.command(c,"move_y",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact706;}
 c.block="hkch";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="zlrq";r.guard(c);
 r.command(c,"move_x",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact706;}
 }else{
 c.block="tjt6";r.guard(c);
 r.command(c,"move_x",["-18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact706;}
 }
 yield 1;
 }
@@ -26782,18 +27189,21 @@ r.command(c,"message_cast",["8fts",null]);
 }
 }
 c.block="scwk";r.guard(c);
-for(let i708=0,n708=Math.max(0,Math.floor(r.num("10")));i708<n708;i708++){
+impact708:for(let i708=0,n708=Math.max(0,Math.floor(r.num("10")));i708<n708;i708++){
 c.block="j57y";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="d44c";r.guard(c);
 r.command(c,"move_y",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact708;}
 c.block="nf02";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="edii";r.guard(c);
 r.command(c,"move_x",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact708;}
 }else{
 c.block="5uiu";r.guard(c);
 r.command(c,"move_x",["-25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact708;}
 }
 c.block="op1b";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qu0m",null]),"EQUAL","0"]))){
@@ -26810,20 +27220,23 @@ r.command(c,"message_cast",["8fts",null]);
 yield 1;
 }
 c.block="jbr8";r.guard(c);
-for(let i709=0,n709=Math.max(0,Math.floor(r.num("10")));i709<n709;i709++){
+impact709:for(let i709=0,n709=Math.max(0,Math.floor(r.num("10")));i709<n709;i709++){
 c.block="xbde";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="knwu";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="d6al";r.guard(c);
 r.command(c,"move_y",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact709;}
 c.block="eoxq";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="o9nj";r.guard(c);
 r.command(c,"move_x",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact709;}
 }else{
 c.block="oniq";r.guard(c);
 r.command(c,"move_x",["-25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact709;}
 }
 yield 1;
 }
@@ -26898,18 +27311,21 @@ r.command(c,"set_variable",["9af4","9",null]);
 }
 }
 c.block="o2l8";r.guard(c);
-for(let i711=0,n711=Math.max(0,Math.floor(r.num("10")));i711<n711;i711++){
+impact711:for(let i711=0,n711=Math.max(0,Math.floor(r.num("10")));i711<n711;i711++){
 c.block="z8gp";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="l0s1";r.guard(c);
 r.command(c,"move_y",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact711;}
 c.block="l22y";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="j200";r.guard(c);
 r.command(c,"move_x",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact711;}
 }else{
 c.block="j4su";r.guard(c);
 r.command(c,"move_x",["-25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact711;}
 }
 c.block="0glz";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qu0m",null]),"EQUAL","0"]))){
@@ -26926,20 +27342,23 @@ r.command(c,"set_variable",["9af4","9",null]);
 yield 1;
 }
 c.block="3v08";r.guard(c);
-for(let i712=0,n712=Math.max(0,Math.floor(r.num("10")));i712<n712;i712++){
+impact712:for(let i712=0,n712=Math.max(0,Math.floor(r.num("10")));i712<n712;i712++){
 c.block="lvl0";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
 c.block="7mpm";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="djoo";r.guard(c);
 r.command(c,"move_y",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact712;}
 c.block="l6cl";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="d9sc";r.guard(c);
 r.command(c,"move_x",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact712;}
 }else{
 c.block="on22";r.guard(c);
 r.command(c,"move_x",["-25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact712;}
 }
 yield 1;
 }
@@ -27425,7 +27844,7 @@ r.command(c,"set_variable",["dsbc","1",null]);
 }
 }
 c.block="6xeo";r.guard(c);
-for(let i732=0,n732=Math.max(0,Math.floor(r.num("10")));i732<n732;i732++){
+impact732:for(let i732=0,n732=Math.max(0,Math.floor(r.num("10")));i732<n732;i732++){
 c.block="6gs2";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dsbc",null]),"EQUAL","0"]))){
 c.block="klbs";r.guard(c);
@@ -27440,29 +27859,35 @@ c.block="v0pq";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="wxq7";r.guard(c);
 r.command(c,"move_y",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact732;}
 c.block="v16n";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="u15t";r.guard(c);
 r.command(c,"move_x",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact732;}
 }else{
 c.block="s5ev";r.guard(c);
 r.command(c,"move_x",["-18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact732;}
 }
 yield 1;
 }
 c.block="4y9l";r.guard(c);
-for(let i733=0,n733=Math.max(0,Math.floor(r.num("10")));i733<n733;i733++){
+impact733:for(let i733=0,n733=Math.max(0,Math.floor(r.num("10")));i733<n733;i733++){
 c.block="cm63";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="9qmw";r.guard(c);
 r.command(c,"move_y",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact733;}
 c.block="h79d";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="ug8q";r.guard(c);
 r.command(c,"move_x",["18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact733;}
 }else{
 c.block="e16k";r.guard(c);
 r.command(c,"move_x",["-18",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact733;}
 }
 c.block="t7uw";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
@@ -27539,7 +27964,7 @@ r.command(c,"message_cast",["8fts",null]);
 }
 }
 c.block="scwk";r.guard(c);
-for(let i735=0,n735=Math.max(0,Math.floor(r.num("10")));i735<n735;i735++){
+impact735:for(let i735=0,n735=Math.max(0,Math.floor(r.num("10")));i735<n735;i735++){
 c.block="op1b";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dsbc",null]),"EQUAL","0"]))){
 c.block="m3ho";r.guard(c);
@@ -27556,29 +27981,35 @@ c.block="gb8h";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="wksn";r.guard(c);
 r.command(c,"move_y",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact735;}
 c.block="1f2f";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="p33w";r.guard(c);
 r.command(c,"move_x",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact735;}
 }else{
 c.block="xakc";r.guard(c);
 r.command(c,"move_x",["-25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact735;}
 }
 yield 1;
 }
 c.block="jbr8";r.guard(c);
-for(let i736=0,n736=Math.max(0,Math.floor(r.num("10")));i736<n736;i736++){
+impact736:for(let i736=0,n736=Math.max(0,Math.floor(r.num("10")));i736<n736;i736++){
 c.block="sp96";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="yxvz";r.guard(c);
 r.command(c,"move_y",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact736;}
 c.block="y27q";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="w2jt";r.guard(c);
 r.command(c,"move_x",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact736;}
 }else{
 c.block="7lsr";r.guard(c);
 r.command(c,"move_x",["-25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact736;}
 }
 c.block="xbde";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
@@ -27655,7 +28086,7 @@ r.command(c,"set_variable",["nccn","9",null]);
 }
 }
 c.block="ey7i";r.guard(c);
-for(let i738=0,n738=Math.max(0,Math.floor(r.num("10")));i738<n738;i738++){
+impact738:for(let i738=0,n738=Math.max(0,Math.floor(r.num("10")));i738<n738;i738++){
 c.block="z37u";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["dsbc",null]),"EQUAL","0"]))){
 c.block="0hev";r.guard(c);
@@ -27672,29 +28103,35 @@ c.block="xeo0";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="hqji";r.guard(c);
 r.command(c,"move_y",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact738;}
 c.block="8hku";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="zici";r.guard(c);
 r.command(c,"move_x",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact738;}
 }else{
 c.block="vj13";r.guard(c);
 r.command(c,"move_x",["-25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact738;}
 }
 yield 1;
 }
 c.block="pibm";r.guard(c);
-for(let i739=0,n739=Math.max(0,Math.floor(r.num("10")));i739<n739;i739++){
+impact739:for(let i739=0,n739=Math.max(0,Math.floor(r.num("10")));i739<n739;i739++){
 c.block="pgf9";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="8yui";r.guard(c);
 r.command(c,"move_y",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact739;}
 c.block="6qdm";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="cm2x";r.guard(c);
 r.command(c,"move_x",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact739;}
 }else{
 c.block="fc9c";r.guard(c);
 r.command(c,"move_x",["-25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact739;}
 }
 c.block="6vfg";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","10",null]);
@@ -30614,16 +31051,19 @@ r.command(c,"set_variable",["xy3h","3",null]);
 c.block="ctjx";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="nb36";r.guard(c);
-for(let i816=0,n816=Math.max(0,Math.floor(r.num("30")));i816<n816;i816++){
+impact816:for(let i816=0,n816=Math.max(0,Math.floor(r.num("30")));i816<n816;i816++){
 c.block="20h8";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["xy3h",null]),"DIVIDE","1.7"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact816;}
 c.block="012o";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ksxr",null]),"EQUAL","1"]))){
 c.block="gnga";r.guard(c);
 r.command(c,"move_x",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact816;}
 }else{
 c.block="hqkd";r.guard(c);
 r.command(c,"move_x",["-4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact816;}
 }
 c.block="qv2h";r.guard(c);
 r.command(c,"rotate_relative",["12",null]);
@@ -30714,16 +31154,19 @@ r.command(c,"set_variable",["xy3h","2.5",null]);
 c.block="ernq";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="58db";r.guard(c);
-for(let i819=0,n819=Math.max(0,Math.floor(r.num("50")));i819<n819;i819++){
+impact819:for(let i819=0,n819=Math.max(0,Math.floor(r.num("50")));i819<n819;i819++){
 c.block="ny1v";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["xy3h",null]),"DIVIDE","2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact819;}
 c.block="t9qb";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ksxr",null]),"EQUAL","1"]))){
 c.block="9kid";r.guard(c);
 r.command(c,"move_x",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact819;}
 }else{
 c.block="0rdg";r.guard(c);
 r.command(c,"move_x",["-4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact819;}
 }
 c.block="nf49";r.guard(c);
 r.command(c,"rotate_relative",["12",null]);
@@ -30953,16 +31396,19 @@ r.command(c,"set_variable",["k2jo","3",null]);
 c.block="ctjx";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="nb36";r.guard(c);
-for(let i827=0,n827=Math.max(0,Math.floor(r.num("30")));i827<n827;i827++){
+impact827:for(let i827=0,n827=Math.max(0,Math.floor(r.num("30")));i827<n827;i827++){
 c.block="20h8";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["k2jo",null]),"DIVIDE","1.7"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact827;}
 c.block="012o";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["98ee",null]),"EQUAL","1"]))){
 c.block="gnga";r.guard(c);
 r.command(c,"move_x",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact827;}
 }else{
 c.block="hqkd";r.guard(c);
 r.command(c,"move_x",["-4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact827;}
 }
 c.block="qv2h";r.guard(c);
 r.command(c,"rotate_relative",["12",null]);
@@ -31053,16 +31499,19 @@ r.command(c,"set_variable",["k2jo","2.5",null]);
 c.block="ernq";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="58db";r.guard(c);
-for(let i830=0,n830=Math.max(0,Math.floor(r.num("50")));i830<n830;i830++){
+impact830:for(let i830=0,n830=Math.max(0,Math.floor(r.num("50")));i830<n830;i830++){
 c.block="ny1v";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"get_variable",["k2jo",null]),"DIVIDE","2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact830;}
 c.block="t9qb";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["98ee",null]),"EQUAL","1"]))){
 c.block="9kid";r.guard(c);
 r.command(c,"move_x",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact830;}
 }else{
 c.block="0rdg";r.guard(c);
 r.command(c,"move_x",["-4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact830;}
 }
 c.block="nf49";r.guard(c);
 r.command(c,"rotate_relative",["12",null]);
@@ -32136,7 +32585,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="x6vs";r.guard(c);
-for(let i850=0,n850=Math.max(0,Math.floor(r.num("33")));i850<n850;i850++){
+impact850:for(let i850=0,n850=Math.max(0,Math.floor(r.num("33")));i850<n850;i850++){
 c.block="8afw";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="ldz1";r.guard(c);
@@ -32145,6 +32594,7 @@ c.block="ma43";r.guard(c);
 r.command(c,"create_clone",["3fqc",null]);
 c.block="rjlx";r.guard(c);
 r.command(c,"move_direction",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact850;}
 c.block="29k9";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="cgm8";r.guard(c);
@@ -32169,6 +32619,7 @@ if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="qz45";r.guard(c);
 r.command(c,"move_direction",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact850;}
 c.block="6uy7";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="y6nj";r.guard(c);
@@ -32298,7 +32749,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="dljn";r.guard(c);
-for(let i852=0,n852=Math.max(0,Math.floor(r.num("9")));i852<n852;i852++){
+impact852:for(let i852=0,n852=Math.max(0,Math.floor(r.num("9")));i852<n852;i852++){
 c.block="ks6p";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="r6in";r.guard(c);
@@ -32315,6 +32766,7 @@ c.block="pwi9";r.guard(c);
 r.command(c,"create_clone",["3fqc",null]);
 c.block="qxn5";r.guard(c);
 r.command(c,"move_direction",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact852;}
 c.block="ivfh";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="63ru";r.guard(c);
@@ -32341,6 +32793,7 @@ if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="t58y";r.guard(c);
 r.command(c,"move_direction",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact852;}
 c.block="t6sh";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="fzc7";r.guard(c);
@@ -32647,7 +33100,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="bljj";r.guard(c);
-for(let i859=0,n859=Math.max(0,Math.floor(r.num("33")));i859<n859;i859++){
+impact859:for(let i859=0,n859=Math.max(0,Math.floor(r.num("33")));i859<n859;i859++){
 c.block="h554";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="vuxc";r.guard(c);
@@ -32656,6 +33109,7 @@ c.block="5x3e";r.guard(c);
 r.command(c,"create_clone",["3fqc",null]);
 c.block="e5y7";r.guard(c);
 r.command(c,"move_direction",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact859;}
 c.block="uyky";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="v8cg";r.guard(c);
@@ -32680,6 +33134,7 @@ if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="rq3r";r.guard(c);
 r.command(c,"move_direction",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact859;}
 c.block="nluh";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="xgw8";r.guard(c);
@@ -32815,7 +33270,7 @@ r.command(c,"delete_clone",[null]);
 if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="7toi";r.guard(c);
-for(let i861=0,n861=Math.max(0,Math.floor(r.num("9")));i861<n861;i861++){
+impact861:for(let i861=0,n861=Math.max(0,Math.floor(r.num("9")));i861<n861;i861++){
 c.block="ebmm";r.guard(c);
 r.command(c,"set_variable",["k5jj",r.value(c,"coordinate_object",[null,"self",null,"x"]),null]);
 c.block="kmym";r.guard(c);
@@ -32832,6 +33287,7 @@ c.block="hrwh";r.guard(c);
 r.command(c,"create_clone",["3fqc",null]);
 c.block="pb59";r.guard(c);
 r.command(c,"move_direction",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact861;}
 c.block="d0z1";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="p5ye";r.guard(c);
@@ -32858,6 +33314,7 @@ if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="0uhy";r.guard(c);
 r.command(c,"move_direction",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact861;}
 c.block="967v";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="ovf9";r.guard(c);
@@ -34011,9 +34468,10 @@ r.command(c,"rotate_relative",["180",null]);
 c.block="vdm3";r.guard(c);
 r.command(c,"set_variable",["rc0a","10",null]);
 c.block="85fg";r.guard(c);
-for(let i891=0,n891=Math.max(0,Math.floor(r.num("20")));i891<n891;i891++){
+impact891:for(let i891=0,n891=Math.max(0,Math.floor(r.num("20")));i891<n891;i891++){
 c.block="ux2t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rc0a",null]),"MULTI","1.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact891;}
 c.block="sksp";r.guard(c);
 r.command(c,"change_variable",["rc0a","-0.5",null]);
 c.block="t56m";r.guard(c);
@@ -34353,9 +34811,10 @@ r.command(c,"rotate_relative",["180",null]);
 c.block="vdm3";r.guard(c);
 r.command(c,"set_variable",["8h2g","10",null]);
 c.block="85fg";r.guard(c);
-for(let i901=0,n901=Math.max(0,Math.floor(r.num("20")));i901<n901;i901++){
+impact901:for(let i901=0,n901=Math.max(0,Math.floor(r.num("20")));i901<n901;i901++){
 c.block="ux2t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["8h2g",null]),"MULTI","1.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact901;}
 c.block="sksp";r.guard(c);
 r.command(c,"change_variable",["8h2g","-0.5",null]);
 c.block="t56m";r.guard(c);
@@ -35926,14 +36385,16 @@ r.command(c,"move_y",[r.value(c,"get_variable",["3xh6",null]),null]);
 c.block="wc15";r.guard(c);
 r.command(c,"change_variable",["3xh6","-10",null]);
 c.block="f4r9";r.guard(c);
-for(let i967=0,n967=Math.max(0,Math.floor(r.num("20")));i967<n967;i967++){
+impact967:for(let i967=0,n967=Math.max(0,Math.floor(r.num("20")));i967<n967;i967++){
 c.block="gmh6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["j830",null]),"EQUAL","1"]))){
 c.block="vcsp";r.guard(c);
 r.command(c,"move_x",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact967;}
 }else{
 c.block="4yq3";r.guard(c);
 r.command(c,"move_x",["-8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact967;}
 }
 c.block="l3m0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS_OR_EQUAL","12"]))){
@@ -35947,9 +36408,11 @@ c.block="gf2c";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["j830",null]),"EQUAL","1"]))){
 c.block="kh93";r.guard(c);
 r.command(c,"move_x",["3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact967;}
 }else{
 c.block="hmyl";r.guard(c);
 r.command(c,"move_x",["-3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact967;}
 }
 yield 1;
 }
@@ -35960,16 +36423,18 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="7lfx";r.guard(c);
-for(let i969=0,n969=Math.max(0,Math.floor(r.num("4")));i969<n969;i969++){
+impact969:for(let i969=0,n969=Math.max(0,Math.floor(r.num("4")));i969<n969;i969++){
 c.block="zh20";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","25",null]);
 c.block="c8l0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["j830",null]),"EQUAL","1"]))){
 c.block="xo9y";r.guard(c);
 r.command(c,"move_x",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact969;}
 }else{
 c.block="bxln";r.guard(c);
 r.command(c,"move_x",["-4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact969;}
 }
 c.block="ww1m";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS_OR_EQUAL","12"]))){
@@ -36028,16 +36493,18 @@ yield 1;
 c.block="sjjv";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="7khy";r.guard(c);
-for(let i971=0,n971=Math.max(0,Math.floor(r.num("50")));i971<n971;i971++){
+impact971:for(let i971=0,n971=Math.max(0,Math.floor(r.num("50")));i971<n971;i971++){
 c.block="iexe";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["55","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="2fkv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["j830",null]),"EQUAL","1"]))){
 c.block="yiy5";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["m341",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact971;}
 }else{
 c.block="t9sg";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["m341",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact971;}
 }
 c.block="y2eg";r.guard(c);
 r.command(c,"set_variable",["m341",r.value(c,"calc_basic",[r.value(c,"get_variable",["m341",null]),"MULTI","0.91"]),null]);
@@ -36336,14 +36803,16 @@ r.command(c,"move_y",[r.value(c,"get_variable",["3xh6",null]),null]);
 c.block="wc15";r.guard(c);
 r.command(c,"change_variable",["3xh6","-10",null]);
 c.block="f4r9";r.guard(c);
-for(let i982=0,n982=Math.max(0,Math.floor(r.num("20")));i982<n982;i982++){
+impact982:for(let i982=0,n982=Math.max(0,Math.floor(r.num("20")));i982<n982;i982++){
 c.block="gmh6";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["o9np",null]),"EQUAL","1"]))){
 c.block="vcsp";r.guard(c);
 r.command(c,"move_x",["8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact982;}
 }else{
 c.block="4yq3";r.guard(c);
 r.command(c,"move_x",["-8",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact982;}
 }
 c.block="l3m0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS_OR_EQUAL","12"]))){
@@ -36357,9 +36826,11 @@ c.block="gf2c";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["o9np",null]),"EQUAL","1"]))){
 c.block="kh93";r.guard(c);
 r.command(c,"move_x",["3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact982;}
 }else{
 c.block="hmyl";r.guard(c);
 r.command(c,"move_x",["-3",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact982;}
 }
 yield 1;
 }
@@ -36370,16 +36841,18 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="7lfx";r.guard(c);
-for(let i984=0,n984=Math.max(0,Math.floor(r.num("4")));i984<n984;i984++){
+impact984:for(let i984=0,n984=Math.max(0,Math.floor(r.num("4")));i984<n984;i984++){
 c.block="zh20";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","25",null]);
 c.block="c8l0";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["o9np",null]),"EQUAL","1"]))){
 c.block="xo9y";r.guard(c);
 r.command(c,"move_x",["4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact984;}
 }else{
 c.block="bxln";r.guard(c);
 r.command(c,"move_x",["-4",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact984;}
 }
 c.block="fx9a";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS_OR_EQUAL","7"]))){
@@ -36438,16 +36911,18 @@ yield 1;
 c.block="sjjv";r.guard(c);
 r.command(c,"message_cast",["tuhm",null]);
 c.block="7khy";r.guard(c);
-for(let i986=0,n986=Math.max(0,Math.floor(r.num("50")));i986<n986;i986++){
+impact986:for(let i986=0,n986=Math.max(0,Math.floor(r.num("50")));i986<n986;i986++){
 c.block="iexe";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["55","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="2fkv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["o9np",null]),"EQUAL","1"]))){
 c.block="yiy5";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["xyub",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact986;}
 }else{
 c.block="t9sg";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["xyub",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact986;}
 }
 c.block="y2eg";r.guard(c);
 r.command(c,"set_variable",["xyub",r.value(c,"calc_basic",[r.value(c,"get_variable",["xyub",null]),"MULTI","0.91"]),null]);
@@ -36626,9 +37101,10 @@ r.command(c,"set_variable",["vhpg","10",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i991=0,n991=Math.max(0,Math.floor(r.num("55")));i991<n991;i991++){
+impact991:for(let i991=0,n991=Math.max(0,Math.floor(r.num("55")));i991<n991;i991++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhpg",null]),"DIVIDE","2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact991;}
 c.block="jtw3";r.guard(c);
 r.command(c,"change_variable",["vhpg","-0.2",null]);
 c.block="gvza";r.guard(c);
@@ -36694,7 +37170,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",
 c.block="n84t";r.guard(c);
 r.command(c,"set_variable",["vhpg","5",null]);
 c.block="m2go";r.guard(c);
-for(let i995=0,n995=Math.max(0,Math.floor(r.num("25")));i995<n995;i995++){
+impact995:for(let i995=0,n995=Math.max(0,Math.floor(r.num("25")));i995<n995;i995++){
 c.block="50pn";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="x2no";r.guard(c);
@@ -36703,14 +37179,16 @@ c.block="toc0";r.guard(c);
 r.command(c,"change_variable",["gefw",r.value(c,"calc_basic",[r.value(c,"get_variable",["vhpg",null]),"DIVIDE","3"]),null]);
 c.block="yhic";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["gefw",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact995;}
 yield 1;
 }
 c.block="8btx";r.guard(c);
-for(let i996=0,n996=Math.max(0,Math.floor(r.num("30")));i996<n996;i996++){
+impact996:for(let i996=0,n996=Math.max(0,Math.floor(r.num("30")));i996<n996;i996++){
 c.block="oaux";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="5kkg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["gefw",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact996;}
 yield 1;
 }
 c.block="7w6x";r.guard(c);
@@ -36724,9 +37202,10 @@ r.command(c,"see_angle_object",["n230",null]);
 c.block="1a8w";r.guard(c);
 r.command(c,"set_variable",["vhpg","10",null]);
 c.block="v9cg";r.guard(c);
-for(let i998=0,n998=Math.max(0,Math.floor(r.num("55")));i998<n998;i998++){
+impact998:for(let i998=0,n998=Math.max(0,Math.floor(r.num("55")));i998<n998;i998++){
 c.block="y0wb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vhpg",null]),"MULTI","0.8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact998;}
 c.block="v7ca";r.guard(c);
 r.command(c,"change_variable",["vhpg","-0.2",null]);
 c.block="ll6g";r.guard(c);
@@ -37197,9 +37676,10 @@ r.command(c,"set_variable",["6e0c","10",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i1025=0,n1025=Math.max(0,Math.floor(r.num("55")));i1025<n1025;i1025++){
+impact1025:for(let i1025=0,n1025=Math.max(0,Math.floor(r.num("55")));i1025<n1025;i1025++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["6e0c",null]),"DIVIDE","2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1025;}
 c.block="jtw3";r.guard(c);
 r.command(c,"change_variable",["6e0c","-0.2",null]);
 c.block="gvza";r.guard(c);
@@ -37265,7 +37745,7 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",
 c.block="n84t";r.guard(c);
 r.command(c,"set_variable",["6e0c","5",null]);
 c.block="m2go";r.guard(c);
-for(let i1029=0,n1029=Math.max(0,Math.floor(r.num("25")));i1029<n1029;i1029++){
+impact1029:for(let i1029=0,n1029=Math.max(0,Math.floor(r.num("25")));i1029<n1029;i1029++){
 c.block="e7aa";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="x2no";r.guard(c);
@@ -37274,14 +37754,16 @@ c.block="toc0";r.guard(c);
 r.command(c,"change_variable",["hu1f",r.value(c,"calc_basic",[r.value(c,"get_variable",["6e0c",null]),"DIVIDE","3"]),null]);
 c.block="yhic";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["hu1f",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1029;}
 yield 1;
 }
 c.block="8btx";r.guard(c);
-for(let i1030=0,n1030=Math.max(0,Math.floor(r.num("30")));i1030<n1030;i1030++){
+impact1030:for(let i1030=0,n1030=Math.max(0,Math.floor(r.num("30")));i1030<n1030;i1030++){
 c.block="ye5e";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="5kkg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["hu1f",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1030;}
 yield 1;
 }
 c.block="7w6x";r.guard(c);
@@ -37295,9 +37777,10 @@ r.command(c,"see_angle_object",["ocqj",null]);
 c.block="1a8w";r.guard(c);
 r.command(c,"set_variable",["6e0c","10",null]);
 c.block="v9cg";r.guard(c);
-for(let i1032=0,n1032=Math.max(0,Math.floor(r.num("55")));i1032<n1032;i1032++){
+impact1032:for(let i1032=0,n1032=Math.max(0,Math.floor(r.num("55")));i1032<n1032;i1032++){
 c.block="y0wb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["6e0c",null]),"MULTI","0.8"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1032;}
 c.block="v7ca";r.guard(c);
 r.command(c,"change_variable",["6e0c","-0.2",null]);
 c.block="ll6g";r.guard(c);
@@ -37437,9 +37920,10 @@ r.command(c,"set_variable",["uton","8",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i1039=0,n1039=Math.max(0,Math.floor(r.num("40")));i1039<n1039;i1039++){
+impact1039:for(let i1039=0,n1039=Math.max(0,Math.floor(r.num("40")));i1039<n1039;i1039++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["uton",null]),"DIVIDE","1.3"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1039;}
 c.block="nfhd";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["uton",null]),"MULTI","5"]),null]);
 c.block="3lqp";r.guard(c);
@@ -37507,9 +37991,10 @@ r.command(c,"set_variable",["uton","10",null]);
 c.block="o817";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["igg4"]),null]);
 c.block="ybln";r.guard(c);
-for(let i1041=0,n1041=Math.max(0,Math.floor(r.num("50")));i1041<n1041;i1041++){
+impact1041:for(let i1041=0,n1041=Math.max(0,Math.floor(r.num("50")));i1041<n1041;i1041++){
 c.block="p5lr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["uton",null]),"DIVIDE","1.6"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1041;}
 c.block="ktiv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["uton",null]),"MULTI","4"]),null]);
 c.block="jk4a";r.guard(c);
@@ -37631,9 +38116,10 @@ r.command(c,"set_variable",["uton","8",null]);
 c.block="00qw";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="mbze";r.guard(c);
-for(let i1049=0,n1049=Math.max(0,Math.floor(r.num("40")));i1049<n1049;i1049++){
+impact1049:for(let i1049=0,n1049=Math.max(0,Math.floor(r.num("40")));i1049<n1049;i1049++){
 c.block="gr03";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["uton",null]),"DIVIDE","1.3"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1049;}
 c.block="h1sy";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["uton",null]),"MULTI","5"]),null]);
 c.block="jbli";r.guard(c);
@@ -37938,9 +38424,10 @@ r.command(c,"set_variable",["kzhe","10",null]);
 c.block="6acz";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="6ns3";r.guard(c);
-for(let i1059=0,n1059=Math.max(0,Math.floor(r.num("50")));i1059<n1059;i1059++){
+impact1059:for(let i1059=0,n1059=Math.max(0,Math.floor(r.num("50")));i1059<n1059;i1059++){
 c.block="pnt0";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"MULTI","1.3"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1059;}
 c.block="ipln";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"MULTI","5"]),null]);
 c.block="778c";r.guard(c);
@@ -38024,9 +38511,10 @@ r.command(c,"set_variable",["kzhe","8",null]);
 c.block="jz5w";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="jtg5";r.guard(c);
-for(let i1063=0,n1063=Math.max(0,Math.floor(r.num("40")));i1063<n1063;i1063++){
+impact1063:for(let i1063=0,n1063=Math.max(0,Math.floor(r.num("40")));i1063<n1063;i1063++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"DIVIDE","1.3"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1063;}
 c.block="nfhd";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"MULTI","5"]),null]);
 c.block="3lqp";r.guard(c);
@@ -38092,9 +38580,10 @@ r.command(c,"set_variable",["kzhe","10",null]);
 c.block="9bh4";r.guard(c);
 r.command(c,"sound_something_with_block",[r.value(c,"get_sounds",["15co"]),null]);
 c.block="ybln";r.guard(c);
-for(let i1065=0,n1065=Math.max(0,Math.floor(r.num("50")));i1065<n1065;i1065++){
+impact1065:for(let i1065=0,n1065=Math.max(0,Math.floor(r.num("50")));i1065<n1065;i1065++){
 c.block="p5lr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"DIVIDE","1.6"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1065;}
 c.block="ktiv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"MULTI","4"]),null]);
 c.block="jk4a";r.guard(c);
@@ -38216,9 +38705,10 @@ r.command(c,"set_variable",["kzhe","8",null]);
 c.block="00qw";r.guard(c);
 r.command(c,"move_direction",["5",null]);
 c.block="mbze";r.guard(c);
-for(let i1073=0,n1073=Math.max(0,Math.floor(r.num("40")));i1073<n1073;i1073++){
+impact1073:for(let i1073=0,n1073=Math.max(0,Math.floor(r.num("40")));i1073<n1073;i1073++){
 c.block="gr03";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"DIVIDE","1.3"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1073;}
 c.block="h1sy";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"get_variable",["kzhe",null]),"MULTI","5"]),null]);
 c.block="jbli";r.guard(c);
@@ -40417,9 +40907,10 @@ r.command(c,"set_variable",["5m8k","10",null]);
 c.block="meal";r.guard(c);
 r.command(c,"set_variable",["n7yi",r.value(c,"get_variable",["846x",null]),null]);
 c.block="6pcw";r.guard(c);
-for(let i1134=0,n1134=Math.max(0,Math.floor(r.num("30")));i1134<n1134;i1134++){
+impact1134:for(let i1134=0,n1134=Math.max(0,Math.floor(r.num("30")));i1134<n1134;i1134++){
 c.block="rss2";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["5m8k",null]),"DIVIDE","1.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1134;}
 c.block="6hrr";r.guard(c);
 r.command(c,"change_variable",["5m8k","-0.33",null]);
 c.block="znb5";r.guard(c);
@@ -40495,9 +40986,10 @@ r.command(c,"set_variable",["5m8k","10",null]);
 c.block="55yv";r.guard(c);
 r.command(c,"set_variable",["wge9","0.06",null]);
 c.block="fy0h";r.guard(c);
-for(let i1137=0,n1137=Math.max(0,Math.floor(r.num("30")));i1137<n1137;i1137++){
+impact1137:for(let i1137=0,n1137=Math.max(0,Math.floor(r.num("30")));i1137<n1137;i1137++){
 c.block="9b1t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["5m8k",null]),"MULTI","1.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1137;}
 c.block="g8o3";r.guard(c);
 r.command(c,"change_variable",["5m8k","-0.3",null]);
 c.block="qnwx";r.guard(c);
@@ -40569,9 +41061,10 @@ r.command(c,"set_variable",["5m8k","10",null]);
 c.block="0kmw";r.guard(c);
 r.command(c,"set_variable",["n7yi",r.value(c,"get_variable",["846x",null]),null]);
 c.block="jrlc";r.guard(c);
-for(let i1140=0,n1140=Math.max(0,Math.floor(r.num("40")));i1140<n1140;i1140++){
+impact1140:for(let i1140=0,n1140=Math.max(0,Math.floor(r.num("40")));i1140<n1140;i1140++){
 c.block="9f0l";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["5m8k",null]),"MULTI","1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1140;}
 c.block="41rk";r.guard(c);
 r.command(c,"change_variable",["5m8k","-0.1",null]);
 c.block="9jtc";r.guard(c);
@@ -40612,6 +41105,7 @@ if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="shyk";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["5m8k",null]),"MULTI","1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1140;}
 c.block="dc94";r.guard(c);
 r.command(c,"change_variable",["5m8k","-0.1",null]);
 c.block="ge72";r.guard(c);
@@ -40942,9 +41436,10 @@ r.command(c,"set_variable",["vj8w","10",null]);
 c.block="meal";r.guard(c);
 r.command(c,"set_variable",["rxjz",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="6pcw";r.guard(c);
-for(let i1149=0,n1149=Math.max(0,Math.floor(r.num("30")));i1149<n1149;i1149++){
+impact1149:for(let i1149=0,n1149=Math.max(0,Math.floor(r.num("30")));i1149<n1149;i1149++){
 c.block="rss2";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vj8w",null]),"DIVIDE","1.5"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1149;}
 c.block="6hrr";r.guard(c);
 r.command(c,"change_variable",["vj8w","-0.33",null]);
 c.block="znb5";r.guard(c);
@@ -41020,9 +41515,10 @@ r.command(c,"set_variable",["vj8w","10",null]);
 c.block="dots";r.guard(c);
 r.command(c,"set_variable",["jg77","0.06",null]);
 c.block="fy0h";r.guard(c);
-for(let i1152=0,n1152=Math.max(0,Math.floor(r.num("30")));i1152<n1152;i1152++){
+impact1152:for(let i1152=0,n1152=Math.max(0,Math.floor(r.num("30")));i1152<n1152;i1152++){
 c.block="9b1t";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vj8w",null]),"MULTI","1.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1152;}
 c.block="g8o3";r.guard(c);
 r.command(c,"change_variable",["vj8w","-0.3",null]);
 c.block="qnwx";r.guard(c);
@@ -41094,9 +41590,10 @@ r.command(c,"set_variable",["vj8w","10",null]);
 c.block="0kmw";r.guard(c);
 r.command(c,"set_variable",["rxjz",r.value(c,"get_variable",["etjn",null]),null]);
 c.block="jrlc";r.guard(c);
-for(let i1155=0,n1155=Math.max(0,Math.floor(r.num("40")));i1155<n1155;i1155++){
+impact1155:for(let i1155=0,n1155=Math.max(0,Math.floor(r.num("40")));i1155<n1155;i1155++){
 c.block="z8zt";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vj8w",null]),"MULTI","1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1155;}
 c.block="tm7w";r.guard(c);
 r.command(c,"change_variable",["vj8w","-0.1",null]);
 c.block="0csf";r.guard(c);
@@ -41137,6 +41634,7 @@ if(c.thread.cancelled||c.e.dead)return;
 }
 c.block="80wm";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["vj8w",null]),"MULTI","1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1155;}
 c.block="iba9";r.guard(c);
 r.command(c,"change_variable",["vj8w","-0.1",null]);
 c.block="oepz";r.guard(c);
@@ -42325,11 +42823,12 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r
 yield 1;
 }
 c.block="dyfe";r.guard(c);
-for(let i1186=0,n1186=Math.max(0,Math.floor(r.num("70")));i1186<n1186;i1186++){
+impact1186:for(let i1186=0,n1186=Math.max(0,Math.floor(r.num("70")));i1186<n1186;i1186++){
 c.block="g7r7";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="9h5v";r.guard(c);
 r.command(c,"move_direction",["1.5",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1186;}
 c.block="urfv";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"get_variable",["esrc",null]),"MULTI","3"]),"PLUS","14"]),null]);
 c.block="br7x";r.guard(c);
@@ -42338,9 +42837,11 @@ c.block="jhio";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ly05",null]),"EQUAL","1"]))){
 c.block="7kxs";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["esrc",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1186;}
 }else{
 c.block="jdgn";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["esrc",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1186;}
 }
 c.block="r9c4";r.guard(c);
 r.command(c,"change_variable",["esrc","-0.1",null]);
@@ -42436,11 +42937,12 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r
 yield 1;
 }
 c.block="xzr4";r.guard(c);
-for(let i1190=0,n1190=Math.max(0,Math.floor(r.num("70")));i1190<n1190;i1190++){
+impact1190:for(let i1190=0,n1190=Math.max(0,Math.floor(r.num("70")));i1190<n1190;i1190++){
 c.block="b5fa";r.guard(c);
 r.command(c,"see_angle_object",["n230",null]);
 c.block="bpzs";r.guard(c);
 r.command(c,"move_direction",["1.5",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1190;}
 c.block="8617";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"get_variable",["esrc",null]),"MULTI","3"]),"PLUS","14"]),null]);
 c.block="w8iq";r.guard(c);
@@ -42449,9 +42951,11 @@ c.block="gn2g";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ly05",null]),"EQUAL","1"]))){
 c.block="ace4";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["esrc",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1190;}
 }else{
 c.block="9r71";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["esrc",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1190;}
 }
 c.block="b196";r.guard(c);
 r.command(c,"change_variable",["esrc","-0.1",null]);
@@ -42554,17 +43058,20 @@ r.command(c,"set_variable",["5qjp",r.value(c,"calc_rand",[null,"1.3",null,"2.6",
 c.block="1iq9";r.guard(c);
 r.command(c,"set_variable",["r6ch",r.value(c,"calc_rand",[null,"1.3",null,"2.6",null]),null]);
 c.block="5et1";r.guard(c);
-for(let i1193=0,n1193=Math.max(0,Math.floor(r.num("85")));i1193<n1193;i1193++){
+impact1193:for(let i1193=0,n1193=Math.max(0,Math.floor(r.num("85")));i1193<n1193;i1193++){
 c.block="r5tv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wlkh",null]),"EQUAL","1"]))){
 c.block="xwi3";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["r6ch",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1193;}
 }else{
 c.block="82qd";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["r6ch",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1193;}
 }
 c.block="dfze";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["5qjp",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1193;}
 c.block="rt8v";r.guard(c);
 r.command(c,"change_variable",["5qjp","-0.1",null]);
 c.block="urx1";r.guard(c);
@@ -42625,11 +43132,12 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r
 yield 1;
 }
 c.block="nf3k";r.guard(c);
-for(let i1196=0,n1196=Math.max(0,Math.floor(r.num("70")));i1196<n1196;i1196++){
+impact1196:for(let i1196=0,n1196=Math.max(0,Math.floor(r.num("70")));i1196<n1196;i1196++){
 c.block="cs5q";r.guard(c);
 r.command(c,"see_angle_object",["n230",null]);
 c.block="2tgh";r.guard(c);
 r.command(c,"move_direction",["1.5",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1196;}
 c.block="yflb";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"get_variable",["r6ch",null]),"MULTI","3"]),"PLUS","14"]),null]);
 c.block="fp5o";r.guard(c);
@@ -42638,9 +43146,11 @@ c.block="2p1w";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wlkh",null]),"EQUAL","1"]))){
 c.block="mlhr";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["r6ch",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1196;}
 }else{
 c.block="jibl";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["r6ch",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1196;}
 }
 c.block="2dx9";r.guard(c);
 r.command(c,"change_variable",["r6ch","-0.1",null]);
@@ -42928,17 +43438,20 @@ r.command(c,"set_variable",["aeuc",r.value(c,"calc_rand",[null,"1.3",null,"2.6",
 c.block="1iq9";r.guard(c);
 r.command(c,"set_variable",["ig4r",r.value(c,"calc_rand",[null,"1.3",null,"2.6",null]),null]);
 c.block="5et1";r.guard(c);
-for(let i1202=0,n1202=Math.max(0,Math.floor(r.num("85")));i1202<n1202;i1202++){
+impact1202:for(let i1202=0,n1202=Math.max(0,Math.floor(r.num("85")));i1202<n1202;i1202++){
 c.block="r5tv";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yoq7",null]),"EQUAL","1"]))){
 c.block="xwi3";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["ig4r",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1202;}
 }else{
 c.block="82qd";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ig4r",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1202;}
 }
 c.block="dfze";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["aeuc",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1202;}
 c.block="rt8v";r.guard(c);
 r.command(c,"change_variable",["aeuc","-0.1",null]);
 c.block="urx1";r.guard(c);
@@ -42999,11 +43512,12 @@ r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r
 yield 1;
 }
 c.block="nf3k";r.guard(c);
-for(let i1205=0,n1205=Math.max(0,Math.floor(r.num("70")));i1205<n1205;i1205++){
+impact1205:for(let i1205=0,n1205=Math.max(0,Math.floor(r.num("70")));i1205<n1205;i1205++){
 c.block="cs5q";r.guard(c);
 r.command(c,"see_angle_object",["ocqj",null]);
 c.block="2tgh";r.guard(c);
 r.command(c,"move_direction",["1.5",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1205;}
 c.block="yflb";r.guard(c);
 r.command(c,"rotate_relative",[r.value(c,"calc_basic",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ig4r",null]),"MULTI","3"]),"PLUS","14"]),null]);
 c.block="fp5o";r.guard(c);
@@ -43012,9 +43526,11 @@ c.block="2p1w";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["yoq7",null]),"EQUAL","1"]))){
 c.block="mlhr";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["ig4r",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1205;}
 }else{
 c.block="jibl";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ig4r",null]),"MULTI","-1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1205;}
 }
 c.block="2dx9";r.guard(c);
 r.command(c,"change_variable",["ig4r","-0.1",null]);
@@ -43335,9 +43851,10 @@ r.command(c,"set_variable",["3qwu","5",null]);
 c.block="6bap";r.guard(c);
 r.command(c,"move_direction",["10",null]);
 c.block="6pcw";r.guard(c);
-for(let i1214=0,n1214=Math.max(0,Math.floor(r.num("50")));i1214<n1214;i1214++){
+impact1214:for(let i1214=0,n1214=Math.max(0,Math.floor(r.num("50")));i1214<n1214;i1214++){
 c.block="9d29";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["3qwu",null]),"DIVIDE","1.3"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1214;}
 c.block="3jz9";r.guard(c);
 r.command(c,"change_variable",["3qwu","-0.1",null]);
 c.block="y78b";r.guard(c);
@@ -43740,9 +44257,10 @@ r.command(c,"set_variable",["7pl6","5",null]);
 c.block="6bap";r.guard(c);
 r.command(c,"move_direction",["10",null]);
 c.block="6pcw";r.guard(c);
-for(let i1227=0,n1227=Math.max(0,Math.floor(r.num("50")));i1227<n1227;i1227++){
+impact1227:for(let i1227=0,n1227=Math.max(0,Math.floor(r.num("50")));i1227<n1227;i1227++){
 c.block="rss2";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["7pl6",null]),"DIVIDE","1.3"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1227;}
 c.block="6hrr";r.guard(c);
 r.command(c,"change_variable",["7pl6","-0.1",null]);
 c.block="owld";r.guard(c);
@@ -45704,7 +46222,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="4kv2";r.guard(c);
 r.command(c,"show",[null]);
 c.block="xgi1";r.guard(c);
-for(let i1301=0,n1301=Math.max(0,Math.floor(r.num("6")));i1301<n1301;i1301++){
+impact1301:for(let i1301=0,n1301=Math.max(0,Math.floor(r.num("6")));i1301<n1301;i1301++){
 c.block="afs9";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="6kt6";r.guard(c);
@@ -45745,9 +46263,11 @@ c.block="s7kb";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="qswc";r.guard(c);
 r.command(c,"move_x",["-12",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1301;}
 }else{
 c.block="i2cz";r.guard(c);
 r.command(c,"move_x",["12",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1301;}
 }
 c.block="ni2f";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
@@ -45785,9 +46305,11 @@ c.block="xws4";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="hxyw";r.guard(c);
 r.command(c,"move_x",["-12",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1301;}
 }else{
 c.block="pu3u";r.guard(c);
 r.command(c,"move_x",["12",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1301;}
 }
 yield 1;
 }
@@ -45982,16 +46504,18 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="z5h7";r.guard(c);
 r.command(c,"show",[null]);
 c.block="ewcu";r.guard(c);
-for(let i1308=0,n1308=Math.max(0,Math.floor(r.num("6")));i1308<n1308;i1308++){
+impact1308:for(let i1308=0,n1308=Math.max(0,Math.floor(r.num("6")));i1308<n1308;i1308++){
 c.block="qa5l";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="wnd7";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="f0xv";r.guard(c);
 r.command(c,"move_x",["-13",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1308;}
 }else{
 c.block="0r96";r.guard(c);
 r.command(c,"move_x",["13",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1308;}
 }
 c.block="i7c1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS","10"]))){
@@ -46031,9 +46555,11 @@ c.block="eowa";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="qadc";r.guard(c);
 r.command(c,"move_x",["-19",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1308;}
 }else{
 c.block="vspf";r.guard(c);
 r.command(c,"move_x",["19",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1308;}
 }
 c.block="ikjd";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
@@ -46071,9 +46597,11 @@ c.block="ns5a";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="n4f2";r.guard(c);
 r.command(c,"move_x",["-19",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1308;}
 }else{
 c.block="et9z";r.guard(c);
 r.command(c,"move_x",["19",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1308;}
 }
 yield 1;
 }
@@ -48004,7 +48532,7 @@ r.command(c,"set_variable",["1plw","1.5",null]);
 c.block="ez7f";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="2kvy";r.guard(c);
-for(let i1381=0,n1381=Math.max(0,Math.floor(r.num("130")));i1381<n1381;i1381++){
+impact1381:for(let i1381=0,n1381=Math.max(0,Math.floor(r.num("130")));i1381<n1381;i1381++){
 c.block="x2tg";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="dze1";r.guard(c);
@@ -48013,6 +48541,7 @@ c.block="g580";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["1plw",null]),"MULTI","-5"]),null]);
 c.block="bk4j";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1381;}
 c.block="4ym5";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="56je";r.guard(c);
@@ -48023,10 +48552,12 @@ c.block="4t9e";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="ssrv";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"00h9",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1381;}
 c.block="u7mx";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4dff",null]),null]);
 c.block="27s1";r.guard(c);
 r.command(c,"move_direction",["11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1381;}
 c.block="lf94";r.guard(c);
 r.command(c,"set_variable",["h282","1",null]);
 c.block="df1k";r.guard(c);
@@ -48041,8 +48572,10 @@ c.block="5v2i";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="yre6";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["4q4r",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1381;}
 c.block="bfjz";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["k50y",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1381;}
 c.block="a8i2";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jcf6",null]),"EQUAL","0"]))){
 c.block="t8bp";r.guard(c);
@@ -48066,6 +48599,7 @@ c.block="y3ya";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="glxp";r.guard(c);
 r.command(c,"move_direction",["10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1381;}
 c.block="cyyp";r.guard(c);
 for(let i1384=0,n1384=Math.max(0,Math.floor(r.num("111")));i1384<n1384;i1384++){
 yield 1;
@@ -48084,7 +48618,7 @@ yield 1;
 }
 }else{
 c.block="c8p5";r.guard(c);
-for(let i1386=0,n1386=Math.max(0,Math.floor(r.num("130")));i1386<n1386;i1386++){
+impact1386:for(let i1386=0,n1386=Math.max(0,Math.floor(r.num("130")));i1386<n1386;i1386++){
 c.block="husl";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="agjz";r.guard(c);
@@ -48093,6 +48627,7 @@ c.block="4cfr";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["1plw",null]),"MULTI","5"]),null]);
 c.block="uk2g";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","-1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1386;}
 c.block="529r";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="kwsw";r.guard(c);
@@ -48103,10 +48638,12 @@ c.block="vp44";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="8hx5";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"00h9",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1386;}
 c.block="0zwo";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4dff",null]),null]);
 c.block="6io2";r.guard(c);
 r.command(c,"move_direction",["-11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1386;}
 c.block="vcxa";r.guard(c);
 r.command(c,"set_variable",["h282","1",null]);
 c.block="czsv";r.guard(c);
@@ -48121,8 +48658,10 @@ c.block="lcxt";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="s5s2";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["4q4r",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1386;}
 c.block="m9q1";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["k50y",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1386;}
 c.block="li4l";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["jcf6",null]),"EQUAL","0"]))){
 c.block="x6st";r.guard(c);
@@ -48146,6 +48685,7 @@ c.block="lawi";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="5sym";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1386;}
 c.block="auye";r.guard(c);
 for(let i1389=0,n1389=Math.max(0,Math.floor(r.num("111")));i1389<n1389;i1389++){
 yield 1;
@@ -48180,7 +48720,7 @@ r.command(c,"set_variable",["1plw",r.value(c,"get_variable",["pora",null]),null]
 c.block="1ycg";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="xyuf";r.guard(c);
-for(let i1391=0,n1391=Math.max(0,Math.floor(r.num("10")));i1391<n1391;i1391++){
+impact1391:for(let i1391=0,n1391=Math.max(0,Math.floor(r.num("10")));i1391<n1391;i1391++){
 c.block="hf5p";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="w6uu";r.guard(c);
@@ -48189,10 +48729,12 @@ c.block="aypi";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["1plw",null]),"MULTI","-5"]),null]);
 c.block="5m0d";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1391;}
 c.block="2h3w";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="n04t";r.guard(c);
 r.command(c,"move_direction",[10,null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1391;}
 c.block="vxw8";r.guard(c);
 for(let i1392=0,n1392=Math.max(0,Math.floor(r.num("111")));i1392<n1392;i1392++){
 yield 1;
@@ -48210,7 +48752,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="yjxi";r.guard(c);
-for(let i1394=0,n1394=Math.max(0,Math.floor(r.num("155")));i1394<n1394;i1394++){
+impact1394:for(let i1394=0,n1394=Math.max(0,Math.floor(r.num("155")));i1394<n1394;i1394++){
 c.block="cn2e";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="gftt";r.guard(c);
@@ -48219,6 +48761,7 @@ c.block="qqrw";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["1plw",null]),"MULTI","-5"]),null]);
 c.block="731a";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1394;}
 c.block="h6ff";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="vhdn";r.guard(c);
@@ -48229,6 +48772,7 @@ c.block="smxj";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="y0kp";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"00h9",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1394;}
 c.block="1r4u";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4dff",null]),null]);
 c.block="0dok";r.guard(c);
@@ -48245,8 +48789,10 @@ c.block="08qe";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="pf9x";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["4q4r",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1394;}
 c.block="9vpg";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["k50y",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1394;}
 yield 1;
 }
 c.block="ecq1";r.guard(c);
@@ -48265,6 +48811,7 @@ c.block="1ahh";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="zapo";r.guard(c);
 r.command(c,"move_direction",[10,null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1394;}
 c.block="j1vt";r.guard(c);
 for(let i1397=0,n1397=Math.max(0,Math.floor(r.num("111")));i1397<n1397;i1397++){
 yield 1;
@@ -48283,7 +48830,7 @@ yield 1;
 }
 }else{
 c.block="klku";r.guard(c);
-for(let i1399=0,n1399=Math.max(0,Math.floor(r.num("10")));i1399<n1399;i1399++){
+impact1399:for(let i1399=0,n1399=Math.max(0,Math.floor(r.num("10")));i1399<n1399;i1399++){
 c.block="gkuz";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="0dll";r.guard(c);
@@ -48292,10 +48839,12 @@ c.block="uz5s";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["1plw",null]),"MULTI","5"]),null]);
 c.block="fm1v";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","-1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1399;}
 c.block="xcos";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="s5mq";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1399;}
 c.block="i5vf";r.guard(c);
 for(let i1400=0,n1400=Math.max(0,Math.floor(r.num("111")));i1400<n1400;i1400++){
 yield 1;
@@ -48313,7 +48862,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="wc0f";r.guard(c);
-for(let i1402=0,n1402=Math.max(0,Math.floor(r.num("155")));i1402<n1402;i1402++){
+impact1402:for(let i1402=0,n1402=Math.max(0,Math.floor(r.num("155")));i1402<n1402;i1402++){
 c.block="ait2";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="i236";r.guard(c);
@@ -48322,6 +48871,7 @@ c.block="t5ce";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["1plw",null]),"MULTI","5"]),null]);
 c.block="p43c";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","-1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1402;}
 c.block="uq9d";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="w4l5";r.guard(c);
@@ -48332,6 +48882,7 @@ c.block="j7d2";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="ehuf";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"00h9",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1402;}
 c.block="gbk6";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4dff",null]),null]);
 c.block="jlml";r.guard(c);
@@ -48348,8 +48899,10 @@ c.block="du99";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="guix";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["4q4r",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1402;}
 c.block="za4a";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["k50y",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1402;}
 yield 1;
 }
 c.block="htl7";r.guard(c);
@@ -48368,6 +48921,7 @@ c.block="y5wy";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="anx9";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1402;}
 c.block="ww8d";r.guard(c);
 for(let i1405=0,n1405=Math.max(0,Math.floor(r.num("111")));i1405<n1405;i1405++){
 yield 1;
@@ -48398,7 +48952,7 @@ r.command(c,"set_variable",["1plw","1.5",null]);
 c.block="gfnk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","1"]))){
 c.block="az08";r.guard(c);
-for(let i1407=0,n1407=Math.max(0,Math.floor(r.num("130")));i1407<n1407;i1407++){
+impact1407:for(let i1407=0,n1407=Math.max(0,Math.floor(r.num("130")));i1407<n1407;i1407++){
 c.block="2g83";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="v95w";r.guard(c);
@@ -48407,6 +48961,7 @@ c.block="c8lr";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["1plw",null]),"MULTI","-5"]),null]);
 c.block="026a";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1407;}
 c.block="fju1";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="m5v3";r.guard(c);
@@ -48417,10 +48972,12 @@ c.block="6rzv";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="mv3v";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"00h9",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1407;}
 c.block="9ei3";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4dff",null]),null]);
 c.block="07e7";r.guard(c);
 r.command(c,"move_direction",["11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1407;}
 c.block="78yn";r.guard(c);
 r.command(c,"set_variable",["h282","1",null]);
 c.block="bybx";r.guard(c);
@@ -48435,8 +48992,10 @@ c.block="va7b";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="yttp";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["4q4r",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1407;}
 c.block="9k67";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["k50y",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1407;}
 yield 1;
 }
 c.block="8is5";r.guard(c);
@@ -48455,6 +49014,7 @@ c.block="esrm";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="id13";r.guard(c);
 r.command(c,"move_direction",["10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1407;}
 c.block="h41g";r.guard(c);
 for(let i1410=0,n1410=Math.max(0,Math.floor(r.num("111")));i1410<n1410;i1410++){
 yield 1;
@@ -48473,7 +49033,7 @@ yield 1;
 }
 }else{
 c.block="lfqk";r.guard(c);
-for(let i1412=0,n1412=Math.max(0,Math.floor(r.num("130")));i1412<n1412;i1412++){
+impact1412:for(let i1412=0,n1412=Math.max(0,Math.floor(r.num("130")));i1412<n1412;i1412++){
 c.block="ti81";r.guard(c);
 r.command(c,"change_variable",["h282","-0.02",null]);
 c.block="zftv";r.guard(c);
@@ -48482,6 +49042,7 @@ c.block="zqu7";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["1plw",null]),"MULTI","5"]),null]);
 c.block="h7lb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["h282",null]),"DIVIDE","-1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1412;}
 c.block="hw3t";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"n230",null]))){
 c.block="82v5";r.guard(c);
@@ -48492,10 +49053,12 @@ c.block="69ks";r.guard(c);
 r.command(c,"see_angle_object",["00h9",null]);
 c.block="v5wl";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"00h9",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1412;}
 c.block="nigy";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4dff",null]),null]);
 c.block="yzpq";r.guard(c);
 r.command(c,"move_direction",["-11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1412;}
 c.block="t7oh";r.guard(c);
 r.command(c,"set_variable",["h282","1",null]);
 c.block="oduj";r.guard(c);
@@ -48510,8 +49073,10 @@ c.block="8tgm";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="ios1";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["4q4r",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1412;}
 c.block="sz4m";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["k50y",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1412;}
 yield 1;
 }
 c.block="yzkh";r.guard(c);
@@ -48530,6 +49095,7 @@ c.block="wye2";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="0ati";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1412;}
 c.block="xg7i";r.guard(c);
 for(let i1415=0,n1415=Math.max(0,Math.floor(r.num("111")));i1415<n1415;i1415++){
 yield 1;
@@ -49403,13 +49969,15 @@ r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[nul
 yield 1;
 }
 c.block="7eqg";r.guard(c);
-for(let i1445=0,n1445=Math.max(0,Math.floor(r.num("20")));i1445<n1445;i1445++){
+impact1445:for(let i1445=0,n1445=Math.max(0,Math.floor(r.num("20")));i1445<n1445;i1445++){
 c.block="rczp";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="fhpu";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"x"])]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1445;}
 c.block="ipoe";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"00h9",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"n8fg",null,"y"])]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1445;}
 c.block="onuz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -49443,9 +50011,10 @@ r.command(c,"move_direction",["5",null]);
 c.block="f5jo";r.guard(c);
 r.command(c,"set_variable",["0l1v","7.5",null]);
 c.block="zhm0";r.guard(c);
-for(let i1446=0,n1446=Math.max(0,Math.floor(r.num("25")));i1446<n1446;i1446++){
+impact1446:for(let i1446=0,n1446=Math.max(0,Math.floor(r.num("25")));i1446<n1446;i1446++){
 c.block="osrr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["0l1v",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1446;}
 c.block="qp7q";r.guard(c);
 r.command(c,"change_variable",["0l1v","-0.2",null]);
 c.block="l1vw";r.guard(c);
@@ -49475,6 +50044,7 @@ r.command(c,"change_variable",["c9o4","-30",null]);
 }
 c.block="psdv";r.guard(c);
 r.command(c,"move_direction",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1446;}
 c.block="fnhl";r.guard(c);
 r.command(c,"rotate_relative",["-90",null]);
 c.block="r4sh";r.guard(c);
@@ -49491,6 +50061,7 @@ c.block="mc3c";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["80","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="hlcy";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["0l1v",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1446;}
 c.block="g62v";r.guard(c);
 r.command(c,"change_variable",["0l1v","-0.1",null]);
 yield 1;
@@ -49548,13 +50119,14 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="223g";r.guard(c);
 r.command(c,"set_scale_size",["40",null]);
 c.block="ta6x";r.guard(c);
-for(let i1450=0,n1450=Math.max(0,Math.floor(r.num("25")));i1450<n1450;i1450++){
+impact1450:for(let i1450=0,n1450=Math.max(0,Math.floor(r.num("25")));i1450<n1450;i1450++){
 c.block="pq8v";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","4",null]);
 c.block="hz7b";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["80","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="j5sq";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["0l1v",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1450;}
 c.block="z57p";r.guard(c);
 r.command(c,"change_variable",["0l1v","-0.1",null]);
 yield 1;
@@ -49588,9 +50160,10 @@ r.command(c,"move_direction",["6",null]);
 c.block="s6wa";r.guard(c);
 r.command(c,"set_variable",["0l1v","7.2",null]);
 c.block="jtg5";r.guard(c);
-for(let i1451=0,n1451=Math.max(0,Math.floor(r.num("30")));i1451<n1451;i1451++){
+impact1451:for(let i1451=0,n1451=Math.max(0,Math.floor(r.num("30")));i1451<n1451;i1451++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["0l1v",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1451;}
 c.block="bin3";r.guard(c);
 r.command(c,"change_variable",["0l1v","-0.18",null]);
 c.block="gvza";r.guard(c);
@@ -50948,7 +51521,7 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="4kv2";r.guard(c);
 r.command(c,"show",[null]);
 c.block="xgi1";r.guard(c);
-for(let i1490=0,n1490=Math.max(0,Math.floor(r.num("6")));i1490<n1490;i1490++){
+impact1490:for(let i1490=0,n1490=Math.max(0,Math.floor(r.num("6")));i1490<n1490;i1490++){
 c.block="afs9";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="6kt6";r.guard(c);
@@ -50989,9 +51562,11 @@ c.block="s7kb";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="qswc";r.guard(c);
 r.command(c,"move_x",["-12",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1490;}
 }else{
 c.block="i2cz";r.guard(c);
 r.command(c,"move_x",["12",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1490;}
 }
 c.block="ni2f";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
@@ -51029,9 +51604,11 @@ c.block="5klx";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="cs43";r.guard(c);
 r.command(c,"move_x",["-12",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1490;}
 }else{
 c.block="mkqm";r.guard(c);
 r.command(c,"move_x",["12",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1490;}
 }
 yield 1;
 }
@@ -51224,16 +51801,18 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="z5h7";r.guard(c);
 r.command(c,"show",[null]);
 c.block="ewcu";r.guard(c);
-for(let i1497=0,n1497=Math.max(0,Math.floor(r.num("6")));i1497<n1497;i1497++){
+impact1497:for(let i1497=0,n1497=Math.max(0,Math.floor(r.num("6")));i1497<n1497;i1497++){
 c.block="qa5l";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="wnd7";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="f0xv";r.guard(c);
 r.command(c,"move_x",["-13",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1497;}
 }else{
 c.block="0r96";r.guard(c);
 r.command(c,"move_x",["13",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1497;}
 }
 c.block="i7c1";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS","10"]))){
@@ -51273,9 +51852,11 @@ c.block="eowa";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="qadc";r.guard(c);
 r.command(c,"move_x",["-19",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1497;}
 }else{
 c.block="vspf";r.guard(c);
 r.command(c,"move_x",["19",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1497;}
 }
 c.block="ikjd";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
@@ -51313,9 +51894,11 @@ c.block="62ro";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="1m3x";r.guard(c);
 r.command(c,"move_x",["-19",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1497;}
 }else{
 c.block="c4g4";r.guard(c);
 r.command(c,"move_x",["19",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1497;}
 }
 yield 1;
 }
@@ -52740,13 +53323,15 @@ r.command(c,"rotate_absolute",["0",null]);
 c.block="lxqv";r.guard(c);
 r.command(c,"change_to_some_shape",[r.value(c,"get_pictures",["mv7s"]),null]);
 c.block="1h3b";r.guard(c);
-for(let i1552=0,n1552=Math.max(0,Math.floor(r.num("15")));i1552<n1552;i1552++){
+impact1552:for(let i1552=0,n1552=Math.max(0,Math.floor(r.num("15")));i1552<n1552;i1552++){
 c.block="kms4";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="qr38";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["n44m",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1552;}
 c.block="ketb";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["usae",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1552;}
 c.block="ujgp";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="2gj4";r.guard(c);
@@ -53286,7 +53871,7 @@ r.command(c,"set_variable",["rix4","1.5",null]);
 c.block="ez7f";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="2kvy";r.guard(c);
-for(let i1571=0,n1571=Math.max(0,Math.floor(r.num("130")));i1571<n1571;i1571++){
+impact1571:for(let i1571=0,n1571=Math.max(0,Math.floor(r.num("130")));i1571<n1571;i1571++){
 c.block="x2tg";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="dze1";r.guard(c);
@@ -53295,6 +53880,7 @@ c.block="g580";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rix4",null]),"MULTI","-5"]),null]);
 c.block="bk4j";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1571;}
 c.block="4ym5";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="7sf8";r.guard(c);
@@ -53305,10 +53891,12 @@ c.block="4t9e";r.guard(c);
 r.command(c,"see_angle_object",["n8fg",null]);
 c.block="ssrv";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"n8fg",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1571;}
 c.block="u7mx";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4hqu",null]),null]);
 c.block="27s1";r.guard(c);
 r.command(c,"move_direction",["11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1571;}
 c.block="lf94";r.guard(c);
 r.command(c,"set_variable",["ud2t","1",null]);
 c.block="df1k";r.guard(c);
@@ -53323,8 +53911,10 @@ c.block="5v2i";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="yre6";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["uus3",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1571;}
 c.block="bfjz";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["e5t2",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1571;}
 c.block="7xnx";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ec6d",null]),"EQUAL","0"]))){
 c.block="t8bp";r.guard(c);
@@ -53348,6 +53938,7 @@ c.block="y3ya";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="glxp";r.guard(c);
 r.command(c,"move_direction",["10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1571;}
 c.block="80x1";r.guard(c);
 for(let i1574=0,n1574=Math.max(0,Math.floor(r.num("111")));i1574<n1574;i1574++){
 yield 1;
@@ -53366,7 +53957,7 @@ yield 1;
 }
 }else{
 c.block="c8p5";r.guard(c);
-for(let i1576=0,n1576=Math.max(0,Math.floor(r.num("130")));i1576<n1576;i1576++){
+impact1576:for(let i1576=0,n1576=Math.max(0,Math.floor(r.num("130")));i1576<n1576;i1576++){
 c.block="husl";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="agjz";r.guard(c);
@@ -53375,6 +53966,7 @@ c.block="4cfr";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rix4",null]),"MULTI","5"]),null]);
 c.block="uk2g";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","-1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1576;}
 c.block="hvqr";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="58u2";r.guard(c);
@@ -53385,10 +53977,12 @@ c.block="if2s";r.guard(c);
 r.command(c,"see_angle_object",["n8fg",null]);
 c.block="7vuo";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"n8fg",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1576;}
 c.block="kbam";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4hqu",null]),null]);
 c.block="6gc3";r.guard(c);
 r.command(c,"move_direction",["-11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1576;}
 c.block="na3f";r.guard(c);
 r.command(c,"set_variable",["ud2t","1",null]);
 c.block="i4wz";r.guard(c);
@@ -53403,8 +53997,10 @@ c.block="p0bl";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="4r5d";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["uus3",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1576;}
 c.block="s47h";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["e5t2",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1576;}
 c.block="l3r5";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ec6d",null]),"EQUAL","0"]))){
 c.block="p9tc";r.guard(c);
@@ -53428,6 +54024,7 @@ c.block="lawi";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="5sym";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1576;}
 c.block="auye";r.guard(c);
 for(let i1579=0,n1579=Math.max(0,Math.floor(r.num("111")));i1579<n1579;i1579++){
 yield 1;
@@ -53462,7 +54059,7 @@ r.command(c,"set_variable",["rix4",r.value(c,"get_variable",["wubx",null]),null]
 c.block="1ycg";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="xyuf";r.guard(c);
-for(let i1581=0,n1581=Math.max(0,Math.floor(r.num("10")));i1581<n1581;i1581++){
+impact1581:for(let i1581=0,n1581=Math.max(0,Math.floor(r.num("10")));i1581<n1581;i1581++){
 c.block="hf5p";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="w6uu";r.guard(c);
@@ -53471,10 +54068,12 @@ c.block="aypi";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rix4",null]),"MULTI","-5"]),null]);
 c.block="5m0d";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1581;}
 c.block="2h3w";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="n04t";r.guard(c);
 r.command(c,"move_direction",[10,null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1581;}
 c.block="vxw8";r.guard(c);
 for(let i1582=0,n1582=Math.max(0,Math.floor(r.num("111")));i1582<n1582;i1582++){
 yield 1;
@@ -53492,7 +54091,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="yjxi";r.guard(c);
-for(let i1584=0,n1584=Math.max(0,Math.floor(r.num("155")));i1584<n1584;i1584++){
+impact1584:for(let i1584=0,n1584=Math.max(0,Math.floor(r.num("155")));i1584<n1584;i1584++){
 c.block="cn2e";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="gftt";r.guard(c);
@@ -53501,6 +54100,7 @@ c.block="qqrw";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rix4",null]),"MULTI","-5"]),null]);
 c.block="731a";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1584;}
 c.block="h6ff";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="5auv";r.guard(c);
@@ -53511,6 +54111,7 @@ c.block="smxj";r.guard(c);
 r.command(c,"see_angle_object",["n8fg",null]);
 c.block="y0kp";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"n8fg",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1584;}
 c.block="1r4u";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4hqu",null]),null]);
 c.block="0dok";r.guard(c);
@@ -53527,8 +54128,10 @@ c.block="08qe";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="pf9x";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["uus3",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1584;}
 c.block="9vpg";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["e5t2",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1584;}
 yield 1;
 }
 c.block="ecq1";r.guard(c);
@@ -53547,6 +54150,7 @@ c.block="1ahh";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="zapo";r.guard(c);
 r.command(c,"move_direction",[10,null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1584;}
 c.block="j1vt";r.guard(c);
 for(let i1587=0,n1587=Math.max(0,Math.floor(r.num("111")));i1587<n1587;i1587++){
 yield 1;
@@ -53565,7 +54169,7 @@ yield 1;
 }
 }else{
 c.block="klku";r.guard(c);
-for(let i1589=0,n1589=Math.max(0,Math.floor(r.num("10")));i1589<n1589;i1589++){
+impact1589:for(let i1589=0,n1589=Math.max(0,Math.floor(r.num("10")));i1589<n1589;i1589++){
 c.block="gkuz";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="0dll";r.guard(c);
@@ -53574,10 +54178,12 @@ c.block="uz5s";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rix4",null]),"MULTI","5"]),null]);
 c.block="fm1v";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","-1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1589;}
 c.block="xcos";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="s5mq";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1589;}
 c.block="i5vf";r.guard(c);
 for(let i1590=0,n1590=Math.max(0,Math.floor(r.num("111")));i1590<n1590;i1590++){
 yield 1;
@@ -53595,7 +54201,7 @@ if(c.thread.cancelled||c.e.dead)return;
 yield 1;
 }
 c.block="wc0f";r.guard(c);
-for(let i1592=0,n1592=Math.max(0,Math.floor(r.num("155")));i1592<n1592;i1592++){
+impact1592:for(let i1592=0,n1592=Math.max(0,Math.floor(r.num("155")));i1592<n1592;i1592++){
 c.block="ait2";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="i236";r.guard(c);
@@ -53604,6 +54210,7 @@ c.block="t5ce";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rix4",null]),"MULTI","5"]),null]);
 c.block="p43c";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","-1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1592;}
 c.block="pv4r";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="q2ju";r.guard(c);
@@ -53614,6 +54221,7 @@ c.block="crus";r.guard(c);
 r.command(c,"see_angle_object",["n8fg",null]);
 c.block="czv5";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"n8fg",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1592;}
 c.block="qhwc";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4hqu",null]),null]);
 c.block="n96d";r.guard(c);
@@ -53630,8 +54238,10 @@ c.block="xvf5";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="5l8m";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["uus3",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1592;}
 c.block="julu";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["e5t2",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1592;}
 yield 1;
 }
 c.block="cbtz";r.guard(c);
@@ -53650,6 +54260,7 @@ c.block="69ec";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="n2to";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1592;}
 c.block="nk5q";r.guard(c);
 for(let i1595=0,n1595=Math.max(0,Math.floor(r.num("111")));i1595<n1595;i1595++){
 yield 1;
@@ -53680,7 +54291,7 @@ r.command(c,"set_variable",["rix4","1.5",null]);
 c.block="gfnk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","1"]))){
 c.block="az08";r.guard(c);
-for(let i1597=0,n1597=Math.max(0,Math.floor(r.num("130")));i1597<n1597;i1597++){
+impact1597:for(let i1597=0,n1597=Math.max(0,Math.floor(r.num("130")));i1597<n1597;i1597++){
 c.block="2g83";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="v95w";r.guard(c);
@@ -53689,6 +54300,7 @@ c.block="c8lr";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rix4",null]),"MULTI","-5"]),null]);
 c.block="026a";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1597;}
 c.block="asz7";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="ceoe";r.guard(c);
@@ -53699,10 +54311,12 @@ c.block="dqw2";r.guard(c);
 r.command(c,"see_angle_object",["n8fg",null]);
 c.block="y28j";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"n8fg",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1597;}
 c.block="236l";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4hqu",null]),null]);
 c.block="heyp";r.guard(c);
 r.command(c,"move_direction",["11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1597;}
 c.block="k4q7";r.guard(c);
 r.command(c,"set_variable",["ud2t","1",null]);
 c.block="2k86";r.guard(c);
@@ -53717,8 +54331,10 @@ c.block="rc7h";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="7dvg";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["uus3",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1597;}
 c.block="9xe3";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["e5t2",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1597;}
 yield 1;
 }
 c.block="n8bi";r.guard(c);
@@ -53737,6 +54353,7 @@ c.block="smj1";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="no3u";r.guard(c);
 r.command(c,"move_direction",["10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1597;}
 c.block="0e6m";r.guard(c);
 for(let i1600=0,n1600=Math.max(0,Math.floor(r.num("111")));i1600<n1600;i1600++){
 yield 1;
@@ -53755,7 +54372,7 @@ yield 1;
 }
 }else{
 c.block="lfqk";r.guard(c);
-for(let i1602=0,n1602=Math.max(0,Math.floor(r.num("130")));i1602<n1602;i1602++){
+impact1602:for(let i1602=0,n1602=Math.max(0,Math.floor(r.num("130")));i1602<n1602;i1602++){
 c.block="ti81";r.guard(c);
 r.command(c,"change_variable",["ud2t","-0.02",null]);
 c.block="zftv";r.guard(c);
@@ -53764,6 +54381,7 @@ c.block="zqu7";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"calc_basic",[r.value(c,"get_variable",["rix4",null]),"MULTI","5"]),null]);
 c.block="h7lb";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["ud2t",null]),"DIVIDE","-1.4"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1602;}
 c.block="fh9h";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"ocqj",null]))){
 c.block="ysm7";r.guard(c);
@@ -53774,10 +54392,12 @@ c.block="a9je";r.guard(c);
 r.command(c,"see_angle_object",["n8fg",null]);
 c.block="loph";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"distance_something",[null,"n8fg",null]),"MULTI","0.2"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1602;}
 c.block="d5ev";r.guard(c);
 r.command(c,"rotate_absolute",[r.value(c,"get_variable",["4hqu",null]),null]);
 c.block="r8ls";r.guard(c);
 r.command(c,"move_direction",["-11",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1602;}
 c.block="ssjv";r.guard(c);
 r.command(c,"set_variable",["ud2t","1",null]);
 c.block="jgea";r.guard(c);
@@ -53792,8 +54412,10 @@ c.block="pprk";r.guard(c);
 r.command(c,"locate",["n8fg",null]);
 c.block="t9iz";r.guard(c);
 r.command(c,"move_x",[r.value(c,"get_variable",["uus3",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1602;}
 c.block="j3mw";r.guard(c);
 r.command(c,"move_y",[r.value(c,"get_variable",["e5t2",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1602;}
 yield 1;
 }
 c.block="mmdc";r.guard(c);
@@ -53812,6 +54434,7 @@ c.block="kihc";r.guard(c);
 if(r.truth(r.value(c,"reach_something",[null,"2bx4",null]))){
 c.block="bqqc";r.guard(c);
 r.command(c,"move_direction",["-10",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1602;}
 c.block="kx4f";r.guard(c);
 for(let i1605=0,n1605=Math.max(0,Math.floor(r.num("111")));i1605<n1605;i1605++){
 yield 1;
@@ -54394,13 +55017,15 @@ r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[nul
 yield 1;
 }
 c.block="7eqg";r.guard(c);
-for(let i1624=0,n1624=Math.max(0,Math.floor(r.num("20")));i1624<n1624;i1624++){
+impact1624:for(let i1624=0,n1624=Math.max(0,Math.floor(r.num("20")));i1624<n1624;i1624++){
 c.block="rczp";r.guard(c);
 r.command(c,"locate",["00h9",null]);
 c.block="fhpu";r.guard(c);
 r.command(c,"move_x",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"x"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"x"])]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1624;}
 c.block="ipoe";r.guard(c);
 r.command(c,"move_y",[r.value(c,"calc_basic",[r.value(c,"coordinate_object",[null,"n8fg",null,"y"]),"MINUS",r.value(c,"coordinate_object",[null,"00h9",null,"y"])]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1624;}
 c.block="onuz";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","5",null]);
 yield 1;
@@ -54434,9 +55059,10 @@ r.command(c,"move_direction",["5",null]);
 c.block="f5jo";r.guard(c);
 r.command(c,"set_variable",["wpmb","7.5",null]);
 c.block="zhm0";r.guard(c);
-for(let i1625=0,n1625=Math.max(0,Math.floor(r.num("25")));i1625<n1625;i1625++){
+impact1625:for(let i1625=0,n1625=Math.max(0,Math.floor(r.num("25")));i1625<n1625;i1625++){
 c.block="osrr";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["wpmb",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1625;}
 c.block="qp7q";r.guard(c);
 r.command(c,"change_variable",["wpmb","-0.2",null]);
 c.block="l1vw";r.guard(c);
@@ -54466,6 +55092,7 @@ r.command(c,"change_variable",["lgp6","-30",null]);
 }
 c.block="psdv";r.guard(c);
 r.command(c,"move_direction",["25",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1625;}
 c.block="fnhl";r.guard(c);
 r.command(c,"rotate_relative",["-90",null]);
 c.block="r4sh";r.guard(c);
@@ -54482,6 +55109,7 @@ c.block="mc3c";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["80","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="hlcy";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["wpmb",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1625;}
 c.block="g62v";r.guard(c);
 r.command(c,"change_variable",["wpmb","-0.1",null]);
 yield 1;
@@ -54539,13 +55167,14 @@ r.command(c,"change_effect_amount",["transparency","0",null]);
 c.block="223g";r.guard(c);
 r.command(c,"set_scale_size",["40",null]);
 c.block="ta6x";r.guard(c);
-for(let i1629=0,n1629=Math.max(0,Math.floor(r.num("25")));i1629<n1629;i1629++){
+impact1629:for(let i1629=0,n1629=Math.max(0,Math.floor(r.num("25")));i1629<n1629;i1629++){
 c.block="pq8v";r.guard(c);
 r.command(c,"add_effect_amount",["transparency","4",null]);
 c.block="hz7b";r.guard(c);
 r.command(c,"change_scale_size",[r.value(c,"calc_basic",[r.value(c,"calc_basic",["80","MINUS",r.value(c,"coordinate_object",[null,"self",null,"size"])]),"DIVIDE","8"]),null]);
 c.block="j5sq";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["wpmb",null]),"MULTI","0.75"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1629;}
 c.block="z57p";r.guard(c);
 r.command(c,"change_variable",["wpmb","-0.1",null]);
 yield 1;
@@ -54579,9 +55208,10 @@ r.command(c,"move_direction",["6",null]);
 c.block="s6wa";r.guard(c);
 r.command(c,"set_variable",["wpmb","7.2",null]);
 c.block="jtg5";r.guard(c);
-for(let i1630=0,n1630=Math.max(0,Math.floor(r.num("30")));i1630<n1630;i1630++){
+impact1630:for(let i1630=0,n1630=Math.max(0,Math.floor(r.num("30")));i1630<n1630;i1630++){
 c.block="3deg";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"get_variable",["wpmb",null]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1630;}
 c.block="bin3";r.guard(c);
 r.command(c,"change_variable",["wpmb","-0.18",null]);
 c.block="gvza";r.guard(c);
@@ -56071,7 +56701,7 @@ r.command(c,"set_color",["#000000",null]);
 c.block="97c4";r.guard(c);
 r.command(c,"set_variable",["rtoa","15",null]);
 c.block="571o";r.guard(c);
-for(let i1676=0,n1676=Math.max(0,Math.floor(r.num("50")));i1676<n1676;i1676++){
+impact1676:for(let i1676=0,n1676=Math.max(0,Math.floor(r.num("50")));i1676<n1676;i1676++){
 c.block="ddr9";r.guard(c);
 r.command(c,"change_variable",["rtoa",r.value(c,"calc_basic",[r.value(c,"get_variable",["ejox",null]),"DIVIDE","80"]),null]);
 c.block="m05v";r.guard(c);
@@ -56084,6 +56714,7 @@ c.block="wfg6";r.guard(c);
 r.command(c,"start_drawing",[null]);
 c.block="gmhh";r.guard(c);
 r.command(c,"move_y",["400",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1676;}
 c.block="z099";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="yfzr";r.guard(c);
@@ -56110,7 +56741,7 @@ r.command(c,"set_variable",["rtoa","1",null]);
 c.block="10qv";r.guard(c);
 r.command(c,"set_variable",["ejox","50",null]);
 c.block="wp88";r.guard(c);
-for(let i1677=0,n1677=Math.max(0,Math.floor(r.num("2")));i1677<n1677;i1677++){
+impact1677:for(let i1677=0,n1677=Math.max(0,Math.floor(r.num("2")));i1677<n1677;i1677++){
 c.block="vb12";r.guard(c);
 for(let i1678=0,n1678=Math.max(0,Math.floor(r.num("10")));i1678<n1678;i1678++){
 c.block="4ive";r.guard(c);
@@ -56123,10 +56754,12 @@ c.block="2u1a";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="kfd8";r.guard(c);
 r.command(c,"move_y",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1677;}
 c.block="khnr";r.guard(c);
 r.command(c,"start_drawing",[null]);
 c.block="7inm";r.guard(c);
 r.command(c,"move_y",["400",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1677;}
 c.block="eb8o";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="msof";r.guard(c);
@@ -56138,7 +56771,7 @@ r.command(c,"message_cast",["gg6a",null]);
 yield 1;
 }
 c.block="0q95";r.guard(c);
-for(let i1679=0,n1679=Math.max(0,Math.floor(r.num("3")));i1679<n1679;i1679++){
+impact1679:for(let i1679=0,n1679=Math.max(0,Math.floor(r.num("3")));i1679<n1679;i1679++){
 c.block="pmmk";r.guard(c);
 for(let i1680=0,n1680=Math.max(0,Math.floor(r.num("10")));i1680<n1680;i1680++){
 c.block="o0rc";r.guard(c);
@@ -56151,10 +56784,12 @@ c.block="iiju";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="x6dn";r.guard(c);
 r.command(c,"move_y",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1679;}
 c.block="722r";r.guard(c);
 r.command(c,"start_drawing",[null]);
 c.block="6fu7";r.guard(c);
 r.command(c,"move_y",["400",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1679;}
 c.block="wft6";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="9wfi";r.guard(c);
@@ -56170,7 +56805,7 @@ r.command(c,"brush_erase_all",[null]);
 c.block="5r91";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="a33p";r.guard(c);
-for(let i1681=0,n1681=Math.max(0,Math.floor(r.num("50")));i1681<n1681;i1681++){
+impact1681:for(let i1681=0,n1681=Math.max(0,Math.floor(r.num("50")));i1681<n1681;i1681++){
 c.block="agtm";r.guard(c);
 r.command(c,"change_brush_transparency",["2",null]);
 c.block="i7yp";r.guard(c);
@@ -56179,10 +56814,12 @@ c.block="txp0";r.guard(c);
 r.command(c,"locate",["ocqj",null]);
 c.block="o8o6";r.guard(c);
 r.command(c,"move_y",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1681;}
 c.block="e5qe";r.guard(c);
 r.command(c,"start_drawing",[null]);
 c.block="l1j1";r.guard(c);
 r.command(c,"move_y",["400",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1681;}
 c.block="lo2a";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 yield 1;
@@ -56200,7 +56837,7 @@ r.command(c,"set_color",["#000000",null]);
 c.block="szft";r.guard(c);
 r.command(c,"set_variable",["rtoa","15",null]);
 c.block="xvar";r.guard(c);
-for(let i1682=0,n1682=Math.max(0,Math.floor(r.num("50")));i1682<n1682;i1682++){
+impact1682:for(let i1682=0,n1682=Math.max(0,Math.floor(r.num("50")));i1682<n1682;i1682++){
 c.block="92co";r.guard(c);
 r.command(c,"change_variable",["rtoa",r.value(c,"calc_basic",[r.value(c,"get_variable",["ejox",null]),"DIVIDE","80"]),null]);
 c.block="wwvl";r.guard(c);
@@ -56213,6 +56850,7 @@ c.block="rz7h";r.guard(c);
 r.command(c,"start_drawing",[null]);
 c.block="01x0";r.guard(c);
 r.command(c,"move_y",["400",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1682;}
 c.block="78cr";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="aybb";r.guard(c);
@@ -56239,7 +56877,7 @@ r.command(c,"set_variable",["rtoa","1",null]);
 c.block="7e6r";r.guard(c);
 r.command(c,"set_variable",["ejox","50",null]);
 c.block="vrfw";r.guard(c);
-for(let i1683=0,n1683=Math.max(0,Math.floor(r.num("2")));i1683<n1683;i1683++){
+impact1683:for(let i1683=0,n1683=Math.max(0,Math.floor(r.num("2")));i1683<n1683;i1683++){
 c.block="90dr";r.guard(c);
 for(let i1684=0,n1684=Math.max(0,Math.floor(r.num("10")));i1684<n1684;i1684++){
 c.block="akg8";r.guard(c);
@@ -56252,10 +56890,12 @@ c.block="jzo9";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="fwdl";r.guard(c);
 r.command(c,"move_y",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1683;}
 c.block="3tkw";r.guard(c);
 r.command(c,"start_drawing",[null]);
 c.block="ezol";r.guard(c);
 r.command(c,"move_y",["400",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1683;}
 c.block="p6ix";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="zzde";r.guard(c);
@@ -56267,7 +56907,7 @@ r.command(c,"message_cast",["gg6a",null]);
 yield 1;
 }
 c.block="bq83";r.guard(c);
-for(let i1685=0,n1685=Math.max(0,Math.floor(r.num("3")));i1685<n1685;i1685++){
+impact1685:for(let i1685=0,n1685=Math.max(0,Math.floor(r.num("3")));i1685<n1685;i1685++){
 c.block="w3yn";r.guard(c);
 for(let i1686=0,n1686=Math.max(0,Math.floor(r.num("10")));i1686<n1686;i1686++){
 c.block="m2mn";r.guard(c);
@@ -56280,10 +56920,12 @@ c.block="drpr";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="1eqn";r.guard(c);
 r.command(c,"move_y",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1685;}
 c.block="0xz0";r.guard(c);
 r.command(c,"start_drawing",[null]);
 c.block="o8sb";r.guard(c);
 r.command(c,"move_y",["400",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1685;}
 c.block="no20";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 c.block="6mv0";r.guard(c);
@@ -56299,7 +56941,7 @@ r.command(c,"brush_erase_all",[null]);
 c.block="8f6s";r.guard(c);
 r.command(c,"message_cast",["gg6a",null]);
 c.block="1a1z";r.guard(c);
-for(let i1687=0,n1687=Math.max(0,Math.floor(r.num("50")));i1687<n1687;i1687++){
+impact1687:for(let i1687=0,n1687=Math.max(0,Math.floor(r.num("50")));i1687<n1687;i1687++){
 c.block="u9e2";r.guard(c);
 r.command(c,"change_brush_transparency",["2",null]);
 c.block="rct1";r.guard(c);
@@ -56308,10 +56950,12 @@ c.block="02dh";r.guard(c);
 r.command(c,"locate",["n230",null]);
 c.block="tbhz";r.guard(c);
 r.command(c,"move_y",["-7",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1687;}
 c.block="vaf1";r.guard(c);
 r.command(c,"start_drawing",[null]);
 c.block="7n6v";r.guard(c);
 r.command(c,"move_y",["400",null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact1687;}
 c.block="3pvk";r.guard(c);
 r.command(c,"stop_drawing",[null]);
 yield 1;
