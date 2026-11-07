@@ -1,3 +1,4 @@
+import { harlanStopgap } from './harlan-stopgap.js';
 import { princeRoyalFlag } from './prince-flag.js';
 import { stenBarricade } from './barricade.js';
 import { STRATEGIC_SECONDARY_SKILLS } from './strategic-secondary-skills.js';
@@ -8,7 +9,7 @@ import { NEW_SECONDARY_SKILLS, restorePresentation } from './expanded-secondary-
 import { brandFireZone } from "./brand-fire-zone.js";
 import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
 import { smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic } from "./additional-secondary-skills.js";
-export const SECONDARY_SKILLS = [princeRoyalFlag, stenBarricade, brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, ...STRATEGIC_SECONDARY_SKILLS, castleCastling];
+export const SECONDARY_SKILLS = [harlanStopgap, princeRoyalFlag, stenBarricade, brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, ...STRATEGIC_SECONDARY_SKILLS, castleCastling];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
   // Nevil's archived 1P body references a black/green variant; use the same orange
   // body as 2P and the original selector, preserving picture id, size and hit geometry.

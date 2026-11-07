@@ -165,7 +165,7 @@ test("previewing another character resets original-skill default; extra selectio
   r.globals.set("jx38", 1); r.globals.set("yraj", 1); r.globals.set("16fh", 1);
   r.secondarySkills.syncSelection(); r.secondarySkills.selectKey(82);
   r.globals.set("16fh", 26); r.secondarySkills.syncSelection();
-  assert.equal(r.secondarySkills.selectKey(82), false);
+  assert.equal(r.secondarySkills.selectionInfo(1).secondary, false);
   r.globals.set("16fh", 1); r.secondarySkills.syncSelection();
   assert.equal(r.secondarySkills.selectionInfo(1).name, "폭발표식");
   for (const file of ["../public/index.html", "../public/entry.css", "../public/src/entry-app.js"])

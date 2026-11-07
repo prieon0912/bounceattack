@@ -277,10 +277,12 @@ export const elementSwordArts=definition(24,'원소술',ELEMENT,'element-sword-a
  }
 });
 function cleanse(r,side,caster){
+ const wasFeared=r.num(r.get(caster,id(side,"mfr0","mnus")))>0;
  const foe=3-side,opponent=r.secondarySkills.state(foe);
  const keys=side===1?['8w41','05ze','9af4','mfr0','td66','bpvc','v5ew','f7zw','omu7','wr8j','96zg']:
    ['wyyq','1vu0','nccn','mnus','ziwi','bpvd','f1dk','932j','igdl','u3f8','7rtf'];
  for(const key of keys)r.set(caster,key,['96zg','7rtf'].includes(key)?1:0);
+ if(wasFeared)r.set(caster,id(side,'utbg','j88w'),0);
  r.add(caster,id(side,'bpv0','bpv5'),1);
  if(opponent.slow?.side===side)delete opponent.slow;
  if(opponent.burn)opponent.burn.until=r.tick-1;
