@@ -1,5 +1,5 @@
 
-import { prepareSkill } from './additional-secondary-skills.js';
+import { prepareSkill, skillVisual } from './additional-secondary-skills.js';
 
 export const BARRICADE = Object.freeze({
   character: 2, manaCost: 55, cooldownTicks: 60, decayTicks: 60,
@@ -44,13 +44,34 @@ function validLocation(r, side, wall) {
   if (r.reach(wall, '6tzq') || r.reach(wall, '2bx4')) return false;
   return !overlapsPlayer(r,wall);
 }
-function hurt(wall, damage) {
+function destroy(r,wall) {
+  if(wall.dead)return;
+  wall.dead=true;
+  for(let index=0;index<3;index++){
+    const piece=skillVisual(r,wall.barricadeOwner,'sten-barricade-piece-'+index,
+      wall.x,wall.y,BARRICADE.width,'barricade-debris');
+    piece.scaleX=wall.scaleX;piece.scaleY=wall.scaleY;
+    r.spawn(piece,function*(rt){
+      let velocityY=.9-index*.25;
+      try{
+        for(let age=0;age<22;age++){
+          piece.x+=(index-1)*.65;
+          piece.y+=velocityY;velocityY-=.12;
+          piece.rotation+=(index-1)*4;
+          piece.effects.transparency=age/21*100;
+          yield 1;
+        }
+      }finally{piece.dead=true;}
+    },'barricade_break');
+  }
+}
+function hurt(r, wall, damage) {
   if(wall.secondaryEffect==='boom-turret'){
     wall.installationHealth=Math.max(0,wall.installationHealth-damage);
     return;
   }
   wall.barricadeHealth = Math.max(0, wall.barricadeHealth - damage);
-  if (wall.barricadeHealth === 0) wall.dead = true;
+  if (wall.barricadeHealth === 0) destroy(r,wall);
 }
 // Sweep in stage units so fast bullets cannot pass through a thin barricade.
 function firstContact(r, e, dx, dy) {
@@ -148,8 +169,11 @@ export const stenBarricade = {
   character: 2, name: '바리케이드', manaCost: BARRICADE.manaCost,
   cooldownTicks: BARRICADE.cooldownTicks, lockVariable: false,
   icon: 'assets/secondary/sten-barricade-icon.svg', secondaryPictureId: 'sten-barricade-icon',
-  description: '바로 앞에 이동과 공격을 막는 바리케이드를 설치합니다.',
-  effectPictures: [['sten-barricade-wall','assets/secondary/sten-barricade.svg',{width:24,height:72}]],
+  description: '이동과 공격을 막는 바리케이드를 설치합니다.',
+  effectPictures: [
+    ['sten-barricade-wall','assets/secondary/sten-barricade-wall.svg',{width:24,height:72}],
+    ...[0,1,2].map(index=>['sten-barricade-piece-'+index,'assets/secondary/sten-barricade-piece-'+index+'.svg',{width:24,height:72}]),
+  ],
   prepare: prepareSkill,
   canCast(r,side) {
     const probe = makeWall(r,side);
@@ -161,7 +185,7 @@ export const stenBarricade = {
   },
   *cast(r,c,{side}) {
     const wall = makeWall(r,side);
-    for (const old of walls(r)) if (old.barricadeOwner===side) old.dead=true;
+    for (const old of walls(r)) if (old.barricadeOwner===side) destroy(r,old);
     r.entities.unshift(wall);
   },
   afterStep(r,side,state) {
@@ -171,10 +195,10 @@ export const stenBarricade = {
     }
     for(const wall of walls(r)){
       if(wall.barricadeOwner!==side)continue;
-      if(r.num(r.globals.get(sid(side,'akf6','7ir2')))<=0){wall.dead=true;continue;}
+      if(r.num(r.globals.get(sid(side,'akf6','7ir2')))<=0){destroy(r,wall);continue;}
       if(r.tick>=wall.barricadeDecayAt){
         const decay=1+Math.floor((r.tick-wall.barricadeDecayAt)/BARRICADE.decayTicks);
-        hurt(wall,decay);wall.barricadeDecayAt+=decay*BARRICADE.decayTicks;
+        hurt(r,wall,decay);wall.barricadeDecayAt+=decay*BARRICADE.decayTicks;
         if(wall.dead)continue;
       }
       if(wall.barricadePendingReturn){
@@ -183,7 +207,7 @@ export const stenBarricade = {
       }
       fall(r,wall);
       if(wall.y<BARRICADE.voidY){
-        hurt(wall,BARRICADE.voidDamage);wall.barricadeFallSpeed=0;
+        hurt(r,wall,BARRICADE.voidDamage);wall.barricadeFallSpeed=0;
         if(wall.dead)continue;
         if(!shiftToFreeSpace(r,wall,state.barricadeSpawn)){
           wall.barricadePendingReturn=true;wall.visible=false;
@@ -207,7 +231,7 @@ export const stenBarricade = {
       e.x += dx*hit.fraction;
       wallSlam(r,e,side);
     } else {
-      hurt(hit.wall,damage); e.dead=true;
+      hurt(r,hit.wall,damage); e.dead=true;
     }
     return true;
   },
@@ -242,7 +266,7 @@ export const stenBarricade = {
     const wall=(selected?.tick===r.tick&&installations(r).find(w=>w.uid===selected.uid))||
       lineContact(r,c.e.projectileOrigin?{...c.e.projectileOrigin,combatSide:c.e.combatSide}:c.e,target);
     if(!wall)return;
-    hurt(wall,-r.num(args[0]));
+    hurt(r,wall,-r.num(args[0]));
     c.barricadeBlocked={tick:r.tick,side:targetSide};
     return true;
   },

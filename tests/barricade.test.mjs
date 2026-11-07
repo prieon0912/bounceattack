@@ -130,3 +130,18 @@ test('Melee weapons and point-distance punches can damage a barricade without a 
   r.run(1);assert.equal(barrier.barricadeHealth,20);assert.equal(r.globals.get('7ir2'),hp);assert.deepEqual(r.faults,[]);
  }
 });
+
+test('Destroyed barricade emits three matching non-colliding fragments and cleans them up',()=>{
+ const r=game();r.run(1,[82]);const barrier=wall(r);
+ barrier.barricadeHealth=1;r.run(60);
+ assert.equal(barrier.dead,true);
+ const pieces=r.entities.filter(e=>e.secondaryEffect==='barricade-debris');
+ assert.equal(pieces.length,3);
+ for(const piece of pieces){
+  assert.equal(piece.scaleX,barrier.scaleX);assert.equal(piece.scaleY,barrier.scaleY);
+  assert.notEqual(piece.objectId,'6tzq');
+ }
+ const positions=pieces.map(e=>[e.x,e.y,e.rotation]);
+ r.run(5);assert.notDeepEqual(pieces.map(e=>[e.x,e.y,e.rotation]),positions);
+ r.run(22);assert.ok(pieces.every(e=>e.dead));assert.deepEqual(r.faults,[]);
+});

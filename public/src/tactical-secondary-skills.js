@@ -3,7 +3,7 @@ import { prepareSkill as prepare, skillVisual as visual } from './additional-sec
 import { showStatusVisual } from './expanded-secondary-skills.js';
 export const RAGE_QUIT=Object.freeze({manaCost:34,radius:55,damage:7,push:25,slow:8,slowTicks:90,cooldownTicks:300});
 export const HUNTING_TRAP=Object.freeze({manaCost:30,durationTicks:360,rootTicks:90,initialSpeed:8,speedDecay:.02,initialTilt:1.5,tiltDecay:.06,flightTicks:130,radius:28,cooldownTicks:300});
-export const TURRET=Object.freeze({manaCost:51,health:20,decayTicks:60,decayDamage:2,maxShots:6,intervalTicks:180,cooldownTicks:0,triggerRadius:35,damagePerShot:3,baseBurstDamage:2,push:25,slow:8,slowTicks:90});
+export const TURRET=Object.freeze({manaCost:51,health:20,decayTicks:60,decayDamage:2,maxShots:6,intervalTicks:180,cooldownTicks:0,triggerRadius:70,damagePerShot:3,baseBurstDamage:2,push:25,slow:8,slowTicks:90});
 const id=(s,a,b)=>s===1?a:b,body=(r,s)=>r.originals.get(id(s,'00h9','n8fg'));
 const alive=(r,s)=>r.scene==='7dwq'&&r.num(r.globals.get(id(s,'akf6','7ir2')))>0&&r.num(r.globals.get('r71b'))===0;
 const visible=(r,s)=>r.num(r.globals.get(id(s,'ob2m','rav6')))===0;

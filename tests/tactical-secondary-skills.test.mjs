@@ -337,3 +337,16 @@ for(const side of [1,2]){
   assert.deepEqual(r.faults,[]);
  });
 }
+
+test('Turret explosion radius is 70, twice its previous radius',()=>{
+ for(const distance of [69,71]){
+  const r=game(23),target=body(r,2),state=r.secondarySkills.state(1);
+  r.collisionProvider=()=>false;r.run(1,[82]);
+  const turret=r.entities.find(e=>e.uid===state.turretUid);
+  target.x=turret.x+distance;target.y=turret.y;
+  const before=r.num(r.globals.get('7ir2'));
+  turret.installationHealth=0;r.run(2);
+  assert.equal(r.num(r.globals.get('7ir2')),distance===69?before-20:before);
+  assert.deepEqual(r.faults,[]);
+ }
+});
