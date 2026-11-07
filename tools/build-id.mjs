@@ -39,6 +39,8 @@ for (const path of [
   "public/src/prince-flag.js",
   "public/src/harlan-stopgap.js",
   "public/assets/secondary/harlan-stopgap-icon.svg",
+  "public/assets/secondary/harlan-stopgap-blade.svg",
+  "public/assets/secondary/harlan-stopgap-wave.svg",
   "public/assets/secondary/prince-royal-flag.svg",
   "public/assets/secondary/prince-royal-flag-radius.svg",
   "public/assets/secondary/prince-royal-flag-icon.svg",
