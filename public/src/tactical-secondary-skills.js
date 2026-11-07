@@ -530,35 +530,34 @@ export const devilMageTaboo=definition(19,'금기',TABOO,'devil-mage-taboo','체
   r.add(caster,id(side,'qn98','thom'),TABOO.manaGain);
  }
 });
-export const LIGHT_SURGE=Object.freeze({manaCost:26,cooldownTicks:60,offsets:[30,80,130],intervalTicks:9,speed:3,radius:30,damage:4,push:18,slow:6,slowTicks:30});
-export const alphaLightSurge=definition(28,'빛의 쇄도',LIGHT_SURGE,'alpha-light-surge','빛을 차례로 발사해 폭발시키며, 적에게 피해와 넉백, 둔화를 줍니다.',{
- prepare(p){this.effectPictures=[alias(p,'7h6f','alpha-surge-light',1),alias(p,'q4lr','alpha-surge-flight')];prepare.call(this,p);},
+export const LIGHT_SURGE=Object.freeze({manaCost:31,cooldownTicks:60,offsets:[30,80,130],speed:3,radius:40,damage:4,push:18,slow:6,slowTicks:30});
+export const alphaLightSurge=definition(28,'빛의 쇄도',LIGHT_SURGE,'alpha-light-surge','빛 하나를 발사해 세 번 폭발시키며, 적에게 피해와 넉백, 둔화를 줍니다.',{
+ prepare(p){this.effectPictures=[alias(p,'7h6f','alpha-surge-light',3),alias(p,'7h6f','alpha-surge-flight',1)];prepare.call(this,p);},
  slowValue:logitechRageQuit.slowValue,
  *cast(r,c,{side,caster,state}){
-  const origin={x:caster.x,y:caster.y},direction=facing(r,side);
-  for(let index=0;index<LIGHT_SURGE.offsets.length&&alive(r,side);index++){
-   this.fire(r,side,state,origin,direction,LIGHT_SURGE.offsets[index]);
-   if(index<LIGHT_SURGE.offsets.length-1)yield LIGHT_SURGE.intervalTicks;
-  }
+  this.fire(r,side,state,{x:caster.x,y:caster.y},facing(r,side));
  },
- fire(r,side,state,origin,direction,range){
-  const cfg=LIGHT_SURGE,shot=visual(r,side,'alpha-surge-flight',origin.x,origin.y,13,'alpha-surge-flight');
-  shot.rotation=Math.floor(r.random()*360);
-  r.spawn(shot,function*(rt,c){let traveled=0,frame=0;try{
-   flight:while(traveled<range&&alive(rt,side)){
+ fire(r,side,state,origin,direction){
+  const cfg=LIGHT_SURGE,range=cfg.offsets[cfg.offsets.length-1];
+  const shot=visual(r,side,'alpha-surge-flight',origin.x,origin.y,13,'alpha-surge-flight');
+  r.spawn(shot,function*(rt,c){let traveled=0,frame=0,nextBurst=0;try{
+   while(traveled<range&&alive(rt,side)){
     for(let step=0;step<cfg.speed&&traveled<range;step++){
      const old=shot.x;shot.x=origin.x+direction*(traveled+1);
      if(Math.abs(shot.x)>239||rt.reach(shot,'6tzq')||rt.reach(shot,'2bx4')||projectileInstallationContact(rt,shot)){
-      shot.x=old;break flight;
+      shot.x=old;
+      yield* alphaLightSurge.explode(rt,c,side,state,{x:shot.x,y:shot.y},direction);
+      return;
      }
      traveled++;
-     if(canStrike(rt,side)&&Math.hypot(shot.x-body(rt,3-side).x,shot.y-body(rt,3-side).y)<=9)break flight;
+     if(traveled===cfg.offsets[nextBurst]){
+      yield* alphaLightSurge.explode(rt,c,side,state,{x:shot.x,y:shot.y},direction);
+      nextBurst++;
+     }
     }
-    shot.rotation+=2;
     if(frame++%5===0)alphaLightSurge.trail(rt,side,shot);
     if(traveled<range)yield 1;
    }
-   if(alive(rt,side))yield* alphaLightSurge.explode(rt,c,side,state,{x:shot.x,y:shot.y},direction);
   }finally{shot.dead=true;}},'alpha_surge_projectile');
  },
  trail(r,side,shot){
@@ -593,7 +592,7 @@ export const alphaLightSurge=definition(28,'빛의 쇄도',LIGHT_SURGE,'alpha-li
     // Horizontal recoil moves by force/15; vertical velocity is applied twice.
     r.add(target,id(3-side,'du2p','iblx'),dy/normalizer*impulse/30);
     state.slow={side:3-side,value:cfg.slow,until:r.tick+cfg.slowTicks};
-    showStatusVisual(r,side,'slow',cfg.slowTicks);
+
    }
   }
  }

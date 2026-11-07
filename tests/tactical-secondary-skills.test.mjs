@@ -354,7 +354,7 @@ test('Turret explosion radius is 70, twice its previous radius',()=>{
 
 for(const side of [1,2]){
  const key=side===1?82:80,dir=side===1?1:-1;
- test(`Alpha Light Surge side ${side}: native basic light flight then circular blasts at 30,80,130`,()=>{
+ test(`Alpha Light Surge side ${side}: one projectile produces circular blasts at 30,80,130`,()=>{
   const r=game(28,side,true),caster=body(r,side),target=body(r,3-side),origin={x:caster.x,y:caster.y};
   r.globals.set(side===1?'etjn':'846x',dir>0?1:0);r.collisionProvider=()=>false;target.x=500;
   const blasts=[],launches=[],spawn=r.spawn.bind(r);
@@ -363,13 +363,13 @@ for(const side of [1,2]){
    if(event==='alpha_surge_projectile')launches.push(r.tick);
    return spawn(e,fn,event);
   };
-  r.run(1,[key]);assert.equal(r.globals.get(side===1?'qn98':'thom'),74);
+  r.run(1,[key]);assert.equal(r.globals.get(side===1?'qn98':'thom'),69);
   assert.equal(blasts.length,0);assert.ok(r.entities.some(e=>e.secondaryEffect==='alpha-surge-flight'));
   caster.x+=200;caster.y+=60;r.globals.set(side===1?'etjn':'846x',dir>0?0:1);
   r.run(100);
   assert.deepEqual(blasts.map(h=>h.x),[30,80,130].map(x=>origin.x+dir*x));
   assert.ok(blasts.every(h=>h.y===origin.y));
-  assert.equal(launches[1]-launches[0],9);assert.equal(launches[2]-launches[1],9);
+  assert.equal(launches.length,1);
   assert.ok(!r.entities.some(e=>['alpha-light-surge','alpha-surge-flight','alpha-surge-trail'].includes(e.secondaryEffect)&&!e.dead));
   assert.deepEqual(r.faults,[]);
  });
@@ -378,7 +378,10 @@ for(const side of [1,2]){
   r.globals.set(side===1?'etjn':'846x',dir>0?1:0);r.collisionProvider=()=>false;
   target.x=caster.x+dir*30;target.y=caster.y;r.globals.set(force,0);
   const hits=[],call=r.call.bind(r);r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push(args[0]);yield*call(c,id,args);};
-  r.run(55,[key]);assert.deepEqual(hits,[-4,-4,-4]);assert.equal(r.num(r.globals.get(force)),dir*18*.625*3);
+  r.run(1,[key]);r.run(10);
+  target.x=caster.x+dir*80;r.run(17);
+  target.x=caster.x+dir*130;r.run(17);
+  assert.deepEqual(hits,[-4,-4,-4]);assert.equal(r.num(r.globals.get(force)),dir*18*.625*3);
   assert.equal(r.secondarySkills.state(side).slow.value,6);assert.deepEqual(r.faults,[]);
  });
  test(`Alpha Light Surge side ${side}: stealth excludes damage, CC immunity excludes knockback and slow`,()=>{
@@ -388,7 +391,7 @@ for(const side of [1,2]){
    r.globals.set(hidden?(side===1?'rav6':'ob2m'):(side===1?'ec6d':'jcf6'),1);
    r.globals.set(force,0);const hp=side===1?'7ir2':'akf6',before=r.num(r.globals.get(hp));r.run(65,[key]);
    assert.equal(r.secondarySkills.state(side).slow,undefined);assert.equal(r.num(r.globals.get(force)),0);
-   assert.equal(r.num(r.globals.get(hp)),hidden?before:before-12);assert.deepEqual(r.faults,[]);
+   assert.equal(r.num(r.globals.get(hp)),hidden?before:before-4);assert.deepEqual(r.faults,[]);
   }
  });
 }
@@ -396,15 +399,15 @@ test('Alpha Light Surge explodes at terrain contact instead of disappearing',()=
  const r=game(28),caster=body(r,1);r.globals.set('etjn',1);body(r,2).x=500;
  r.collisionProvider=(e,id)=>id==='6tzq'&&e.secondaryEffect==='alpha-surge-flight'&&e.x>=caster.x+20;
  const points=[],spawn=r.spawn.bind(r);r.spawn=(e,fn,event)=>{if(event==='alpha_light_surge')points.push(e.x);return spawn(e,fn,event);};
- r.run(60,[82]);assert.deepEqual(points,[caster.x+19,caster.x+19,caster.x+19]);assert.deepEqual(r.faults,[]);
+ r.run(60,[82]);assert.deepEqual(points,[caster.x+19]);assert.deepEqual(r.faults,[]);
 });
 
-test('Alpha Light Surge circular explosion radius is 30',()=>{
- for(const height of [28,31]){
+test('Alpha Light Surge circular explosion radius is 40',()=>{
+ for(const height of [38,41]){
   const r=game(28),caster=body(r,1),target=body(r,2);r.globals.set('etjn',1);r.collisionProvider=()=>false;
   target.x=caster.x+30;target.y=caster.y+height;
   const before=r.num(r.globals.get('7ir2'));r.run(100,[82]);
-  assert.equal(r.num(r.globals.get('7ir2')),height===28?before-4:before);assert.deepEqual(r.faults,[]);
+  assert.equal(r.num(r.globals.get('7ir2')),height===38?before-4:before);assert.deepEqual(r.faults,[]);
  }
 });
 
@@ -432,6 +435,20 @@ test('Alpha radial recoil uses the exact center-to-target vector, including vert
    const horizontal=r.num(r.globals.get(xForce))/15,vertical=r.num(r.globals.get(yVelocity))*2;
    assert.ok(Math.abs(horizontal*dy-vertical*dx)<1e-9);
   }
+  assert.deepEqual(r.faults,[]);
+ }
+});
+
+test('Alpha circular blast excludes square corners and applies slow without an extra status icon',()=>{
+ for(const [dx,dy,hit] of [[30,30,false],[25,25,true]]){
+  const r=game(28),def=r.secondarySkills.definition(1),target=body(r,2),before=r.num(r.globals.get('7ir2'));
+  target.x=dx;target.y=dy;
+  r.spawn(body(r,1),function*(rt,c){yield*def.explode(rt,c,1,rt.secondarySkills.state(1),{x:0,y:0},1);},'test_circle');
+  r.run(1);assert.equal(r.num(r.globals.get('7ir2')),hit?before-4:before);
+  if(hit)assert.equal(r.secondarySkills.state(1).slow.value,6);
+  assert.ok(!r.entities.some(e=>e.secondaryEffect==='secondary-slow'));
+  const blast=r.entities.find(e=>e.secondaryEffect==='alpha-light-surge');
+  assert.equal(blast.picture.fileurl,r.defs.get('7h6f').sprite.pictures[3].fileurl);
   assert.deepEqual(r.faults,[]);
  }
 });
