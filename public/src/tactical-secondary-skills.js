@@ -352,4 +352,24 @@ export const artenesFirework=definition(25,'폭죽 사냥',FIREWORK,'artenes-fir
   }finally{arrow.dead=true;}
  }
 });
-export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts,michaelBlessing,lycanDarkness,artenesFirework];
+export const INVADER_PULSE=Object.freeze({manaCost:35,cooldownTicks:60,radius:80,damage:4,damagePerBar:2,manaPerBar:3});
+export const invaderPulse=definition(13,'공명 파열',INVADER_PULSE,'invader-pulse','주변에 펄스를 방출해 피해를 주고, 쌓인 파열을 폭발시켜 추가 피해를 주며 적의 마나를 감소시킵니다.',{
+ effectPictures:[['invader-pulse-ring','assets/secondary/invader-pulse.svg',{width:100,height:100}]],
+ *cast(r,c,{side,caster,target}){
+  const cfg=INVADER_PULSE,pulse=visual(r,side,'invader-pulse-ring',caster.x,caster.y,2,'invader-pulse');
+  r.spawn(pulse,function*(rt){try{
+   for(let age=1;age<=18&&alive(rt,side);age++){
+    rt.setSize(pulse,2+(cfg.radius*2-2)*(1-(1-age/18)**2));
+    pulse.effects.transparency=age/18*100;yield 1;
+   }
+  }finally{pulse.dead=true;}},'invader_pulse');
+  if(!canStrike(r,side)||Math.hypot(caster.x-target.x,caster.y-target.y)>cfg.radius)return;
+  // The original meter shows one full bar for every two internal stacks.
+  const stacks=Math.max(0,r.num(r.get(pulse,'oafg'))),bars=stacks/2;
+  r.set(pulse,'oafg',0);r.set(pulse,'s9yw',0);
+  const mana=id(3-side,'qn98','thom');
+  if(bars>0)r.set(target,mana,Math.max(0,r.num(r.get(target,mana))-bars*cfg.manaPerBar));
+  yield* r.call(c,id(side,'qy83','05j0'),[-(cfg.damage+bars*cfg.damagePerBar),0,1]);
+ }
+});
+export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts,michaelBlessing,lycanDarkness,artenesFirework,invaderPulse];

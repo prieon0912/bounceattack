@@ -127,3 +127,29 @@ for(const side of [1,2]){
   }
  });
 }
+
+for(const side of [1,2]){
+ const key=side===1?82:80,foe=3-side,mana=side===1?'thom':'qn98';
+ test(`Invader pulse side ${side}: consumes own stacks, damages and drains MP, one-second cooldown`,()=>{
+  const r=game(13,side,true),owner=r.originals.get(side===1?'wkk5':'6r3z');
+  r.set(owner,'oafg',6);r.set(owner,'s9yw',1);
+  const other=r.originals.get(side===1?'6r3z':'wkk5');r.set(other,'oafg',4);
+  const hits=[],call=r.call.bind(r);
+  r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push(args[0]);yield*call(c,id,args);};
+  r.run(1,[key]);assert.deepEqual(hits,[-10]);assert.equal(r.globals.get(mana),91);
+  assert.equal(r.get(owner,'oafg'),0);assert.equal(r.get(other,'oafg'),4);
+  const ring=r.entities.find(e=>e.secondaryEffect==='invader-pulse');assert.ok(ring);
+  r.run(29,[key]);assert.equal(hits.length,1);
+  r.set(owner,'oafg',2);r.run(30);r.run(1,[key]);assert.deepEqual(hits,[-10,-6]);
+  assert.equal(r.globals.get(mana),88);assert.deepEqual(r.faults,[]);
+ });
+ test(`Invader pulse side ${side}: range and stealth preserve stacks and target mana`,()=>{
+  for(const mode of ['far','hidden']){
+   const r=game(13,side,true),owner=r.originals.get(side===1?'wkk5':'6r3z');
+   r.set(owner,'oafg',6);
+   if(mode==='far')body(r,foe).x=body(r,side).x+81;
+   else r.globals.set(foe===1?'ob2m':'rav6',1);
+   r.run(1,[key]);assert.equal(r.get(owner,'oafg'),6);assert.equal(r.globals.get(mana),100);assert.deepEqual(r.faults,[]);
+  }
+ });
+}
