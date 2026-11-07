@@ -164,7 +164,7 @@ test("previewing another character resets original-skill default; extra selectio
   const r = game(); r.loadScene("1ckl");
   r.globals.set("jx38", 1); r.globals.set("yraj", 1); r.globals.set("16fh", 1);
   r.secondarySkills.syncSelection(); r.secondarySkills.selectKey(82);
-  r.globals.set("16fh", 2); r.secondarySkills.syncSelection();
+  r.globals.set("16fh", 22); r.secondarySkills.syncSelection();
   assert.equal(r.secondarySkills.selectKey(82), false);
   r.globals.set("16fh", 1); r.secondarySkills.syncSelection();
   assert.equal(r.secondarySkills.selectionInfo(1).name, "폭발표식");
@@ -192,7 +192,8 @@ test("real original roster click commits 1P skill and presents fresh 2P default 
   const secondTile = r.entities.find(e => e.objectId === "3y3g" && e.clone && Number(r.get(e,"9k0l")) === 2);
   Object.assign(r.mouse,{x:secondTile.x,y:secondTile.y});
   for (let i=0;i<30;i++) r.step();
-  assert.equal(r.secondarySkills.selectKey(80),false);
+  assert.equal(r.secondarySkills.selectionInfo(2).secondary,false);
+  assert.equal(r.secondarySkills.selectionInfo(2).name,"충격총");
   r.click(secondTile.x,secondTile.y);
   for (let i=0;i<45;i++) r.step();
   assert.equal(r.secondarySkills.choice(1),"secondary");

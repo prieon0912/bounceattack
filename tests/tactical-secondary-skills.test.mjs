@@ -19,7 +19,7 @@ for(const side of [1,2]){
  const child=r.makeEntity(owner.def,owner);r.secondarySkills.onClone({e:owner,block:'7jk9'},child);assert.equal(child.dead,false);let x=body(r,side).x,y=body(r,side).y+4,speed=8,tilt=1.5;for(let tick=0;tick<10;tick++){speed-=.02;tilt-=.06;x+=dir*Math.cos(tilt*5*Math.PI/180)*speed/1.4;y+=Math.sin(tilt*5*Math.PI/180)*speed/1.4;r.run(1);const net=r.entities.find(e=>e.uid===st.netUid);assert.ok(Math.abs(net.x-x)<1e-8);assert.ok(Math.abs(net.y-y)<1e-8);}r.run(100);const net=r.entities.find(e=>e.uid===st.netUid);assert.ok(net?.trapLanded);assert.ok(net.y>=0&&net.y<1);assert.ok(Math.abs(net.scaleX/net.scaleY-1/.22)<1e-8);body(r,foe).x=net.x;body(r,foe).y=net.y+50;r.run(2);assert.equal(net.dead,false);assert.equal(r.num(r.globals.get(foe===1?'05ze':'1vu0')),0);body(r,foe).y=net.y+r.size(body(r,foe))/2;r.run(2);assert.equal(net.dead,true);assert.ok(r.num(r.globals.get(foe===1?'05ze':'1vu0'))>=1.8);assert.equal(st.netUid,undefined);assert.ok(r.entities.some(e=>e.secondaryEffect==='secondary-root'&&!e.dead));assert.deepEqual(r.faults,[]);
  const expires=game(9,side),o=expires.originals.get(side===1?'5rp3':'6xoo');Object.assign(body(expires,side),{x:-dir*180,y:6});body(expires,foe).y=100;expires.globals.set(side===1?'etjn':'846x',dir>0?1:0);expires.collisionProvider=(e,id)=>id==='6tzq'&&e.y<=0;expires.run(1,[key]);expires.run(500);assert.equal(expires.secondarySkills.state(side).netUid,undefined);assert.deepEqual(expires.faults,[]);
  });
- test(`Turret side ${side}: stationary, every 3 seconds, native basic missiles in both directions`,()=>{const r=game(23,side),st=r.secondarySkills.state(side),caster=body(r,side);r.collisionProvider=()=>false;const x=caster.x,y=caster.y;const busy=side===1?'rr24':'qvkr',facing=side===1?'etjn':'846x';r.globals.set(busy,1);r.globals.set(facing,1);r.run(1,[key]);assert.equal(r.globals.get(side===1?'qn98':'thom'),40);const turret=r.entities.find(e=>e.uid===st.turretUid);caster.x+=100;caster.y+=40;r.run(179);assert.equal(st.turretShots,0);r.run(2);assert.equal(st.turretShots,2);assert.equal(turret.x,x);assert.equal(turret.y,y-2);const shots=r.entities.filter(e=>e.secondaryEffect==='turret-rocket'&&!e.dead);assert.equal(shots.length,2);assert.ok(shots.some(e=>e.rotation===0));assert.ok(shots.some(e=>e.rotation===180));for(const shot of shots){assert.ok(Math.abs(shot.x-x)<30);assert.ok(Math.abs(shot.y-(y-1))<1e-8);assert.equal(r.get(shot,busy),0);assert.equal(shot.picture.id,side===1?'ogvv':'febz');}assert.equal(r.globals.get(busy),1);assert.equal(r.globals.get(facing),1);r.run(360);assert.equal(st.turretShots,6);assert.equal(st.turretUid,undefined);assert.equal(turret.dead,true);assert.deepEqual(r.faults,[]);});
+ test(`Turret side ${side}: stationary, every 3 seconds, native basic missiles in both directions`,()=>{const r=game(23,side),st=r.secondarySkills.state(side),caster=body(r,side);r.collisionProvider=()=>false;const x=caster.x,y=caster.y;const busy=side===1?'rr24':'qvkr',facing=side===1?'etjn':'846x';r.globals.set(busy,1);r.globals.set(facing,1);r.run(1,[key]);assert.equal(r.globals.get(side===1?'qn98':'thom'),49);const turret=r.entities.find(e=>e.uid===st.turretUid);caster.x+=100;caster.y+=40;r.run(179);assert.equal(st.turretShots,0);r.run(2);assert.equal(st.turretShots,2);assert.equal(turret.x,x);assert.equal(turret.y,y-2);const shots=r.entities.filter(e=>e.secondaryEffect==='turret-rocket'&&!e.dead);assert.equal(shots.length,2);assert.ok(shots.some(e=>e.rotation===0));assert.ok(shots.some(e=>e.rotation===180));for(const shot of shots){assert.ok(Math.abs(shot.x-x)<30);assert.ok(Math.abs(shot.y-(y-1))<1e-8);assert.equal(r.get(shot,busy),0);assert.equal(shot.picture.id,side===1?'ogvv':'febz');}assert.equal(r.globals.get(busy),1);assert.equal(r.globals.get(facing),1);r.run(420);assert.equal(st.turretShots,6);assert.equal(st.turretUid,undefined);assert.equal(turret.dead,true);assert.deepEqual(r.faults,[]);});
 }
 test('All three primary skills remain and their new secondary names are registered',()=>{for(const [character,name] of [[34,'빡종'],[9,'사냥용 덫'],[23,'터렛']]){const r=game(character),d=r.secondarySkills.definitions.get(character);assert.equal(d.name,name);assert.ok(d.primaryName);assert.notEqual(d.primaryName,name);assert.ok(d.primaryPictureId);assert.ok(r.project.objects.find(o=>o.id==='o9rj').sprite.pictures.some(p=>p.id===d.secondaryPictureId));}});
 
@@ -35,9 +35,35 @@ import {MemoryStore} from '../server/store.js';
 test('Original blurred menu preserves primary skills and resets 2P default for the new skills',()=>{for(const character of [9,23,34]){const r=game(character);r.loadScene('1ckl');r.globals.set('jx38',1);r.globals.set('16fh',character);r.globals.set('yraj',1);r.secondarySkills.syncSelection();const d=r.secondarySkills.definitions.get(character);assert.equal(r.originals.get('o9rj').picture.id,d.primaryPictureId);assert.ok(r.secondarySkills.selectKey(82));assert.equal(r.originals.get('o9rj').picture.id,d.secondaryPictureId);assert.equal(r.originals.get('3my6').text,d.description);r.globals.set('y75t',character);r.command({e:r.originals.get('o9rj')},'set_variable',['jx38',2]);r.secondarySkills.syncSelection();assert.equal(r.secondarySkills.choice(1),'secondary');assert.equal(r.secondarySkills.selectionInfo(2).name,d.primaryName);r.globals.set('yraj',0);assert.equal(r.secondarySkills.selectKey(80),false);}});
 test('Matchmaking accepts all three secondaries, including same-character matches',async()=>{for(const character of [9,23,34]){const hub=new RoomHub(new MemoryStore()),build='a'.repeat(64);await hub.matchmake({},{build,character,skill:'secondary'});const room=await hub.matchmake({},{build,character,skill:'secondary'});assert.deepEqual(room.match.skills,['secondary','secondary']);}});
 
-for(const side of [1,2])test(`Turret side ${side}: proximity destroys turret for remaining missiles times three, native CC, MP60`,()=>{for(const elapsed of [0,180,360]){const r=game(23,side),st=r.secondarySkills.state(side),caster=body(r,side),target=body(r,3-side),calls=[];r.collisionProvider=()=>false;target.x=caster.x+120;const original=r.call.bind(r);r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))calls.push(args[0]);yield*original(c,id,args);};r.run(1,[side===1?82:80]);assert.equal(r.globals.get(side===1?'qn98':'thom'),40);r.run(elapsed);const shots=st.turretShots,turret=r.entities.find(e=>e.uid===st.turretUid);target.x=turret.x+10;target.y=turret.y;r.run(2);assert.deepEqual(calls,[-(6-shots)*3]);assert.equal(st.turretBurstDamage,(6-shots)*3);assert.equal(turret.dead,true);assert.equal(st.turretUid,undefined);assert.equal(st.turretShots,shots);assert.equal(st.slow.value,8);assert.ok(r.num(r.globals.get(side===1?'lgp6':'c9o4'))>0);r.run(200);assert.equal(st.turretShots,shots);assert.deepEqual(r.faults,[]);}});
+for(const side of [1,2])test(`Turret side ${side}: proximity is harmless, HP destruction explodes, MP51, immediate replacement`,()=>{
+ for(const elapsed of [0,180,360]){
+  const r=game(23,side),st=r.secondarySkills.state(side),caster=body(r,side),target=body(r,3-side),calls=[];
+  r.collisionProvider=()=>false;target.x=caster.x+120;
+  const original=r.call.bind(r);r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))calls.push(args[0]);yield*original(c,id,args);};
+  r.run(1,[side===1?82:80]);assert.equal(r.globals.get(side===1?'qn98':'thom'),49);r.run(elapsed);
+  const shots=st.turretShots,turret=r.entities.find(e=>e.uid===st.turretUid);
+  target.x=turret.x+10;target.y=turret.y;r.run(2);assert.equal(turret.dead,false);assert.equal(st.turretBurstDamage,undefined);
+  turret.installationHealth=0;r.run(2);
+  assert.deepEqual(calls,[-(2+(6-shots)*3)]);assert.equal(st.turretBurstDamage,2+(6-shots)*3);
+  assert.equal(turret.dead,true);assert.equal(st.turretUid,undefined);assert.equal(st.slow.value,8);
+  assert.ok(r.num(r.globals.get(side===1?'lgp6':'c9o4'))>0);
+  r.globals.set(side===1?'qn98':'thom',100);r.run(1);r.run(1,[side===1?82:80]);assert.ok(st.turretUid);
+  assert.deepEqual(r.faults,[]);
+ }
+});
 
-test('Turret proximity does not reveal stealth and respects CC immunity',()=>{for(const side of [1,2])for(const hidden of [true,false]){const r=game(23,side),foe=3-side,st=r.secondarySkills.state(side);body(r,foe).x=body(r,side).x+10;r.globals.set(hidden?(foe===1?'ob2m':'rav6'):(foe===1?'jcf6':'ec6d'),1);r.run(3,[side===1?82:80]);if(hidden){assert.ok(st.turretUid);assert.equal(st.turretBurstDamage,undefined);}else{assert.equal(st.turretUid,undefined);assert.equal(st.turretBurstDamage,18);assert.equal(st.slow,undefined);assert.equal(r.num(r.globals.get(foe===1?'c9o4':'lgp6')),0);}assert.deepEqual(r.faults,[]);}});
+test('Turret explosion excludes stealth and respects CC immunity',()=>{
+ for(const side of [1,2])for(const hidden of [true,false]){
+  const r=game(23,side),foe=3-side,st=r.secondarySkills.state(side);
+  body(r,foe).x=body(r,side).x+10;
+  r.globals.set(hidden?(foe===1?'ob2m':'rav6'):(foe===1?'jcf6':'ec6d'),1);
+  r.run(1,[side===1?82:80]);const turret=r.entities.find(e=>e.uid===st.turretUid);
+  turret.installationHealth=0;r.run(2);
+  assert.equal(st.turretUid,undefined);assert.equal(st.turretBurstDamage,20);
+  assert.equal(st.slow,undefined);assert.equal(r.num(r.globals.get(foe===1?'c9o4':'lgp6')),0);
+  assert.deepEqual(r.faults,[]);
+ }
+});
 
 for (const side of [1,2]) {
  const key=side===1?82:80,dir=side===1?1:-1;
@@ -290,5 +316,24 @@ for(const side of [1,2]){
   }
   const r=game(19,side);r.globals.set(hp,11);r.globals.set(mp,90);r.run(1,[key]);
   assert.equal(r.globals.get(hp),1);assert.equal(r.globals.get(mp),100);
+ });
+}
+
+for(const side of [1,2]){
+ test(`Turret side ${side}: HP20, automatic loss 2 per second, enemy bullets damage it without hitting its owner`,()=>{
+  const r=game(23,side),st=r.secondarySkills.state(side),key=side===1?82:80;
+  r.collisionProvider=()=>false;body(r,3-side).x=180;
+  r.run(1,[key]);const turret=r.entities.find(e=>e.uid===st.turretUid);
+  assert.equal(turret.installationHealth,20);r.run(59);assert.equal(turret.installationHealth,20);
+  r.run(1);assert.equal(turret.installationHealth,18);
+  const gun=r.originals.get('pvlq'),shot=r.makeEntity(gun.def,gun);
+  Object.assign(shot,{clone:true,combatSide:3-side,barricadeProjectileDamage:4,x:turret.x-40,y:turret.y,
+   width:4,height:4,regX:2,regY:2,scaleX:1,scaleY:1,visible:true});
+  r.entities.push(shot);r.move(shot,80,0);
+  assert.equal(shot.dead,true);assert.equal(turret.installationHealth,14);
+  const own=r.makeEntity(gun.def,gun);Object.assign(own,{...shot,uid:++r.sequence,dead:false,combatSide:side,x:turret.x-40});
+  r.entities.push(own);r.move(own,80,0);assert.equal(own.dead,false);assert.equal(turret.installationHealth,14);
+  r.run(420);assert.equal(turret.dead,true);assert.equal(st.turretUid,undefined);
+  assert.deepEqual(r.faults,[]);
  });
 }

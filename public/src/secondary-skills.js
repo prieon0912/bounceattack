@@ -1,3 +1,4 @@
+import { stenBarricade } from './barricade.js';
 import { STRATEGIC_SECONDARY_SKILLS } from './strategic-secondary-skills.js';
 import { TACTICAL_SECONDARY_SKILLS } from './tactical-secondary-skills.js';
 import { castleCastling } from './castle.js';
@@ -6,7 +7,7 @@ import { NEW_SECONDARY_SKILLS, restorePresentation } from './expanded-secondary-
 import { brandFireZone } from "./brand-fire-zone.js";
 import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
 import { smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic } from "./additional-secondary-skills.js";
-export const SECONDARY_SKILLS = [brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, ...STRATEGIC_SECONDARY_SKILLS, castleCastling];
+export const SECONDARY_SKILLS = [stenBarricade, brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, ...STRATEGIC_SECONDARY_SKILLS, castleCastling];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
   // Nevil's archived 1P body references a black/green variant; use the same orange
   // body as 2P and the original selector, preserving picture id, size and hit geometry.
@@ -80,6 +81,7 @@ export class SecondarySkillSystem {
     }
   }
   onFunction(c, id, args) {
+    if(this.eachHook("blocksFunction",c,id,args))return false;
     if (this.runtime.scene !== "7dwq") return;
     for (const side of [1, 2]) {
       const definition = this.definition(side), state = this.state(side);
@@ -180,6 +182,21 @@ export class SecondarySkillSystem {
   beforeStep() { restorePresentation(this.runtime); }
   afterStep() { this.eachHook("afterStep"); }
   hidden(e) { return this.eachHook("hidden",e); }
+  reachValue(c, target, value) {
+    for(const side of [1,2]){
+      const state=this.state(side),def=this.definition(side);
+      if(state.mode==='secondary'&&def?.reachValue)value=def.reachValue(this.runtime,c,target,value,side,state);
+    }
+    return value;
+  }
+  targetDistanceValue(c, target, value) {
+    for(const side of [1,2]){
+      const state=this.state(side),def=this.definition(side);
+      if(state.mode==='secondary'&&def?.targetDistanceValue)value=def.targetDistanceValue(this.runtime,c,target,value,side,state);
+    }
+    return value;
+  }
+  blocksMove(e, dx, dy) { return this.eachHook("blocksMove",e,dx,dy); }
   blocksCollision(e) { return this.eachHook("blocksCollision",e); }
   skipThread(t) { return this.eachHook("skipThread",t); }
   distanceValue(c,id,value) { for(const side of [1,2]) {const st=this.state(side),def=this.definition(side);if(st.mode==="secondary"&&def?.distanceValue)value=def.distanceValue(this.runtime,c,id,value,side,st);}return value; }

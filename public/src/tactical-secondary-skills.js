@@ -1,8 +1,9 @@
+import { installationCombat } from './barricade.js';
 import { prepareSkill as prepare, skillVisual as visual } from './additional-secondary-skills.js';
 import { showStatusVisual } from './expanded-secondary-skills.js';
 export const RAGE_QUIT=Object.freeze({manaCost:34,radius:55,damage:7,push:25,slow:8,slowTicks:90,cooldownTicks:300});
 export const HUNTING_TRAP=Object.freeze({manaCost:30,durationTicks:360,rootTicks:90,initialSpeed:8,speedDecay:.02,initialTilt:1.5,tiltDecay:.06,flightTicks:130,radius:28,cooldownTicks:300});
-export const TURRET=Object.freeze({manaCost:60,durationTicks:540,intervalTicks:180,cooldownTicks:720,triggerRadius:35,damagePerShot:3,push:25,slow:8,slowTicks:90});
+export const TURRET=Object.freeze({manaCost:51,health:20,decayTicks:60,decayDamage:2,maxShots:6,intervalTicks:180,cooldownTicks:0,triggerRadius:35,damagePerShot:3,baseBurstDamage:2,push:25,slow:8,slowTicks:90});
 const id=(s,a,b)=>s===1?a:b,body=(r,s)=>r.originals.get(id(s,'00h9','n8fg'));
 const alive=(r,s)=>r.scene==='7dwq'&&r.num(r.globals.get(id(s,'akf6','7ir2')))>0&&r.num(r.globals.get('r71b'))===0;
 const visible=(r,s)=>r.num(r.globals.get(id(s,'ob2m','rav6')))===0;
@@ -41,25 +42,61 @@ export const amazonesHuntingTrap=definition(9,'사냥용 덫',HUNTING_TRAP,'amaz
  }
 
 });
-export const boomTurret=definition(23,'터렛',TURRET,'boom-turret','앞뒤로 바주카를 발사합니다. 적이 접근한다면 자폭하며 적에게 피해를 줍니다.',{
- effectPictures:[],prepare(p){this.effectPictures=[['boom-turret-body','assets/secondary/boom-turret.svg',{width:240,height:180}],alias(p,'6115','turret-original-explosion',4)];prepare.call(this,p);},
+export const boomTurret=definition(23,'터렛',TURRET,'boom-turret','앞뒤로 바주카를 발사합니다. HP가 소진되면 폭파되어 적에게 피해를 줍니다.',{
+ ...installationCombat,
+ effectPictures:[],
+ prepare(p){this.effectPictures=[['boom-turret-body','assets/secondary/boom-turret.svg',{width:240,height:180}],alias(p,'6115','turret-original-explosion',4)];prepare.call(this,p);},
  slowValue:logitechRageQuit.slowValue,
- canCast(r,s){return !r.secondarySkills.state(s).turretUid;},
- *cast(r,c,{side,caster,target,state}){const cfg=TURRET,turret=visual(r,side,'boom-turret-body',caster.x,caster.y-2,28,'boom-turret');state.turretUid=turret.uid;state.turretShots=0;
-  try{for(let age=0;age<=cfg.durationTicks&&alive(r,side);age++){
-   if(alive(r,3-side)&&visible(r,side)&&visible(r,3-side)&&Math.hypot(target.x-turret.x,target.y-turret.y)<=cfg.triggerRadius){
-    const remaining=Math.max(0,2*Math.floor(cfg.durationTicks/cfg.intervalTicks)-state.turretShots);state.turretBurstDamage=remaining*cfg.damagePerShot;turret.dead=true;
-    const blast=visual(r,side,'turret-original-explosion',turret.x,turret.y,10,'turret-burst');r.spawn(blast,function*(rt){try{for(let i=0;i<18;i++){rt.setSize(blast,10+(cfg.triggerRadius*2-10)*(1-(1-i/18)**2));blast.effects.transparency=i/18*100;yield 1;}}finally{blast.dead=true;}},'turret_burst');
-    if(remaining>0)yield* r.call(c,id(side,'qy83','05j0'),[-state.turretBurstDamage,0,1]);
-    if(vulnerable(r,3-side)){const direction=Math.sign(target.x-turret.x)||(r.num(r.globals.get(id(side,'etjn','846x')))===1?1:-1);r.add(target,id(3-side,'c9o4','lgp6'),direction*cfg.push*.625);state.slow={side:3-side,value:cfg.slow,until:r.tick+cfg.slowTicks};showStatusVisual(r,side,'slow',cfg.slowTicks);}break;
+ canCast(r,side){return !r.secondarySkills.state(side).turretUid;},
+ *cast(r,c,{side,caster,target,state}){
+  const cfg=TURRET,turret=visual(r,side,'boom-turret-body',caster.x,caster.y-2,28,'boom-turret');
+  turret.installationOwner=side;turret.installationHealth=cfg.health;
+  state.turretUid=turret.uid;state.turretShots=0;delete state.turretBurstDamage;
+  const start=r.tick;
+  try{
+   for(let age=0;alive(r,side);age=r.tick-start){
+    if(age>0&&age%cfg.decayTicks===0)turret.installationHealth=Math.max(0,turret.installationHealth-cfg.decayDamage);
+    if(turret.installationHealth<=0){
+     const remaining=Math.max(0,cfg.maxShots-state.turretShots);
+     state.turretBurstDamage=cfg.baseBurstDamage+remaining*cfg.damagePerShot;
+     turret.dead=true;
+     const blast=visual(r,side,'turret-original-explosion',turret.x,turret.y,10,'turret-burst');
+     r.spawn(blast,function*(rt){try{
+      for(let i=0;i<18;i++){
+       rt.setSize(blast,10+(cfg.triggerRadius*2-10)*(1-(1-i/18)**2));
+       blast.effects.transparency=i/18*100;yield 1;
+      }
+     }finally{blast.dead=true;}},'turret_burst');
+     if(canStrike(r,side)&&Math.hypot(target.x-turret.x,target.y-turret.y)<=cfg.triggerRadius){
+      yield* r.call({...c,e:blast},id(side,'qy83','05j0'),[-state.turretBurstDamage,0,1]);
+      if(vulnerable(r,3-side)){
+       const direction=Math.sign(target.x-turret.x)||facing(r,side);
+       r.add(target,id(3-side,'c9o4','lgp6'),direction*cfg.push*.625);
+       state.slow={side:3-side,value:cfg.slow,until:r.tick+cfg.slowTicks};
+       showStatusVisual(r,side,'slow',cfg.slowTicks);
+      }
+     }
+     break;
+    }
+    if(age>0&&age%cfg.intervalTicks===0&&state.turretShots<cfg.maxShots){
+     for(const direction of [-1,1]){this.fire(r,side,turret.x,turret.y+4,direction);state.turretShots++;}
+    }
+    yield 1;
    }
-   if(age>0&&age%cfg.intervalTicks===0){for(const direction of [-1,1]){this.fire(r,side,turret.x,turret.y+4,direction);state.turretShots++;}}
-   if(age===cfg.durationTicks)break;turret.effects.transparency=age>cfg.durationTicks-20?(age-cfg.durationTicks+20)/20*100:0;yield 1;
-  }}
-  finally{turret.dead=true;if(state.turretUid===turret.uid)delete state.turretUid;}
+  }finally{turret.dead=true;if(state.turretUid===turret.uid)delete state.turretUid;}
  },
- fire(r,side,x,y,direction){const owner=r.originals.get(id(side,'6115','g1va')),shot=r.makeEntity(owner.def,owner);Object.assign(shot,{clone:true,combatSide:side,secondaryEffect:'turret-rocket',turretOrigin:{side,x,y},nativeSkillVariables:{[id(side,'rr24','qvkr')]:0,[id(side,'etjn','846x')]:direction>0?1:0},x,y,rotation:direction>0?0:180});r.entities.unshift(shot);r.dispatchEntity(shot,'when_clone_start');return shot;},
- onCommand(r,c,type,args,side){if(c.e.turretOrigin?.side!==side||type!=='locate'||args[0]!==id(side,'00h9','n8fg'))return;c.e.x=c.e.turretOrigin.x;c.e.y=c.e.turretOrigin.y;return false;}
+ fire(r,side,x,y,direction){
+  const owner=r.originals.get(id(side,'6115','g1va')),shot=r.makeEntity(owner.def,owner);
+  Object.assign(shot,{clone:true,combatSide:side,secondaryEffect:'turret-rocket',turretOrigin:{side,x,y},
+   nativeSkillVariables:{[id(side,'rr24','qvkr')]:0,[id(side,'etjn','846x')]:direction>0?1:0},
+   x,y,rotation:direction>0?0:180});
+  r.entities.unshift(shot);r.secondarySkills.onClone({e:shot},shot);r.dispatchEntity(shot,'when_clone_start');return shot;
+ },
+ onCommand(r,c,type,args,side){
+  if(installationCombat.onCommand(r,c,type,args)===false)return false;
+  if(c.e.turretOrigin?.side!==side||type!=='locate'||args[0]!==id(side,'00h9','n8fg'))return;
+  c.e.x=c.e.turretOrigin.x;c.e.y=c.e.turretOrigin.y;return false;
+ }
 });
 const JAB={manaCost:18,cooldownTicks:48,range:44.2,damage:5};
 const PILLAR={manaCost:26,cooldownTicks:180,offset:24,width:24,height:56,damage:4,lift:1.35,slow:8,slowTicks:120};
@@ -460,6 +497,7 @@ export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다
   const caster=body(r,side),target=body(r,3-side),direction=facing(r,side),x=caster.x,y=caster.y-4.5;
   const fan=visual(r,side,'tesla-prism-fan',x,y,2,'tesla-prism');
   const slope=Math.tan(TESLA_PRISM.halfAngle*Math.PI/180),range=enhanced?596:548,steps=enhanced?36:33;
+  fan.projectileOrigin={x,y};
   r.spawn(fan,function*(rt,c){let hit=false;try{
    for(let age=0;age<steps&&alive(rt,side);age++){
     const radius=Math.min(range,20+(age+1)*16);
