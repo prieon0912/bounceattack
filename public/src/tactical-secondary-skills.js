@@ -353,7 +353,7 @@ export const artenesFirework=definition(25,'폭죽 사냥',FIREWORK,'artenes-fir
  }
 });
 export const INVADER_PULSE=Object.freeze({manaCost:35,cooldownTicks:60,radius:80,damage:4,damagePerBar:2,manaPerBar:3});
-export const invaderPulse=definition(13,'공명 파열',INVADER_PULSE,'invader-pulse','주변에 펄스를 방출해 피해를 주고, 쌓인 파열을 폭발시켜 추가 피해를 주며 적의 마나를 감소시킵니다.',{
+export const invaderPulse=definition(13,'공명 파열',INVADER_PULSE,'invader-pulse','주변으로 펄스를 방출하며 피해를 주고, 파열중첩을 즉시 터뜨립니다.',{
  effectPictures:[['invader-pulse-ring','assets/secondary/invader-pulse.svg',{width:100,height:100}]],
  *cast(r,c,{side,caster,target}){
   const cfg=INVADER_PULSE,pulse=visual(r,side,'invader-pulse-ring',caster.x,caster.y,2,'invader-pulse');
@@ -373,7 +373,7 @@ export const invaderPulse=definition(13,'공명 파열',INVADER_PULSE,'invader-p
  }
 });
 export const REAPER_MARCH=Object.freeze({manaCost:32,cooldownTicks:60,distance:100,dashTicks:18,radius:35,dashDamage:5,slashDamage:3,rootTicks:60});
-export const chronosReaperMarch=definition(15,'사신의 행차',REAPER_MARCH,'chronos-reaper-march','돌진에 닿은 적을 밀고 가 속박시킨 뒤 주변을 낫으로 벱니다.',{
+export const chronosReaperMarch=definition(15,'사신의 행차',REAPER_MARCH,'chronos-reaper-march','돌진한 후 주위를 낫으로 뱁니다.',{
  prepare(p){this.effectPictures=[alias(p,'c6xa','reaper-march-scythe')];prepare.call(this,p);},
  canCast(r,side){return r.num(r.get(body(r,side),id(side,'05ze','1vu0')))<=0;},
  blocksKey(r,key,side,state){return state.reaperDashing&&(side===1?[65,68,87,69,83]:[37,39,38,13,40]).includes(key);},
@@ -445,7 +445,7 @@ export const axeRage=definition(5,'분노',AXE_RAGE,'axe-rage','5초 동안 이�
   finally{delete state.rageUntil;}
  }
 });
-export const TESLA_PRISM=Object.freeze({manaCost:24,cooldownTicks:60,halfAngle:12.5,damageMultiplier:.9});
+export const TESLA_PRISM=Object.freeze({manaCost:24,cooldownTicks:60,halfAngle:10,damageMultiplier:.9});
 export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다음 일반 공격이 부채꼴로 퍼지지만 피해량이 10% 감소합니다.',{
  effectPictures:[['tesla-prism-fan','assets/secondary/tesla-prism-fan.svg',{width:100,height:100}]],
  canCast(r,side){return !r.secondarySkills.state(side).prismArmed;},
