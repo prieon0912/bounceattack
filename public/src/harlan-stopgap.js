@@ -4,7 +4,7 @@ import {damageInstallationsInRadius,projectileInstallationContact} from './barri
 
 export const STOPGAP=Object.freeze({
  manaCost:32,cooldownTicks:60,durationTicks:300,attackTicks:36,
- swingTicks:12,range:22,damage:4,fearDamage:8,waveDamage:4,waveFearDamage:6,waveRange:70,waveSpeed:5,
+ swingTicks:12,gripX:110,gripY:310,waveHeight:6,range:22,damage:4,fearDamage:8,waveDamage:4,waveFearDamage:6,waveRange:70,waveSpeed:5,
 });
 const sid=(side,a,b)=>side===1?a:b;
 const body=(r,side)=>r.originals.get(sid(side,'00h9','n8fg'));
@@ -25,7 +25,7 @@ export const harlanStopgap={
  prepare(project){
   const picture=project.objects.find(o=>o.id==='nijg').sprite.pictures[0];
   this.effectPictures=[
-   ['harlan-stopgap-blade','assets/secondary/harlan-stopgap-blade.svg',picture.dimension],
+   ['harlan-stopgap-blade','assets/secondary/harlan-stopgap-blade.png',picture.dimension],
    ['harlan-stopgap-wave','assets/secondary/harlan-stopgap-wave.svg',{width:24,height:44}],
   ];
   prepareSkill.call(this,project);
@@ -43,9 +43,10 @@ export const harlanStopgap={
   const native=owner(r,side);
   const blade=skillVisual(r,side,'harlan-stopgap-blade',caster.x,caster.y,21,'harlan-stopgap');
   Object.assign(blade,{
-   width:native.width,height:native.height,regX:native.regX,regY:native.regY,
+   width:native.width,height:native.height,regX:STOPGAP.gripX,regY:STOPGAP.gripY,
    scaleX:Math.abs(native.scaleX),scaleY:Math.abs(native.scaleY),
   });
+  blade.effects.brightness=5;blade.effects.transparency=6;
   blade.installationAreaDamage=true;
   state.stopgapUntil=r.tick+STOPGAP.durationTicks;state.stopgapBladeUid=blade.uid;state.stopgapAttackAt=r.tick;
   try{
@@ -84,7 +85,7 @@ export const harlanStopgap={
   }finally{finish(r,state);delete state.stopgapAttackAt;}
  },
  fireWave(r,side,state,caster,direction){
-  const wave=skillVisual(r,side,'harlan-stopgap-wave',caster.x+direction*12,caster.y,22,'harlan-stopgap-wave');
+  const wave=skillVisual(r,side,'harlan-stopgap-wave',caster.x+direction*12,caster.y+STOPGAP.waveHeight,22,'harlan-stopgap-wave');
   wave.scaleX=Math.abs(wave.scaleX)*direction;
   wave.installationAreaDamage=true;
   r.spawn(wave,function*(rt,c){let traveled=0;try{

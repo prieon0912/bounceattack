@@ -93,10 +93,10 @@ for(const side of [1,2]){
   const hits=[],call=r.call.bind(r);r.call=function*(c,id,args){if(id===sid(side,'qy83','05j0'))hits.push(args[0]);yield*call(c,id,args);};
   r.run(1,[sid(side,82,80)]);
   const blade=r.entities.find(e=>e.secondaryEffect==='harlan-stopgap');
-  assert.deepEqual([blade.width,blade.height,blade.regX,blade.regY],[w.width,w.height,w.regX,w.regY]);
+  assert.deepEqual([blade.width,blade.height,blade.regX,blade.regY],[w.width,w.height,110,310]);
   assert.equal(Math.abs(blade.scaleX),Math.abs(w.scaleX));assert.equal(Math.abs(blade.scaleY),Math.abs(w.scaleY));
   assert.ok(Math.abs(r.size(blade)-21)<1e-8);
-  assert.equal(blade.picture.fileurl,'assets/secondary/harlan-stopgap-blade.svg');
+  assert.equal(blade.picture.fileurl,'assets/secondary/harlan-stopgap-blade.png');
   r.run(20,[sid(side,69,13)]);assert.deepEqual(hits,[-4]);assert.deepEqual(r.faults,[]);
  });
  test(`Stopgap side ${side}: wave checks fear on impact and stops after real dagger pickup`,()=>{
@@ -111,5 +111,27 @@ for(const side of [1,2]){
   r.run(36,[sid(side,69,13)]);r.command({e:w},'set_variable',['zhz6',0]);r.run(1);
   assert.ok(!r.entities.some(e=>e.secondaryEffect==='harlan-stopgap-wave'&&!e.dead));
   assert.deepEqual(r.faults,[]);
+ });
+}
+
+test('Temporary blade uses the exact original cropped PNG with its pivot inside the handle',()=>{
+ assert.deepEqual(
+  fs.readFileSync(new URL('../public/assets/secondary/harlan-stopgap-blade.png',import.meta.url)),
+  fs.readFileSync(new URL('../public/assets/temp/ee/63/image/ee638752mvpihd8r00064431d3999gjn.png',import.meta.url))
+ );
+ const r=game(26,2),w=weapon(r,1);r.set(w,'zhz6',1);r.run(1,[82]);
+ const blade=r.entities.find(e=>e.secondaryEffect==='harlan-stopgap');
+ assert.equal(blade.regX,110);assert.equal(blade.regY,310);
+ assert.equal(blade.effects.brightness,5);assert.equal(blade.effects.transparency,6);
+});
+for(const side of [1,2]){
+ test(`Grounded temporary slash side ${side}: wave clears the floor and travels to its target`,()=>{
+  const r=game(side===1?26:2,side===2?26:2),caster=body(r,side),target=body(r,3-side),w=weapon(r,side);
+  const floor=r.bounds(caster).bottom;
+  r.collisionProvider=(e,id)=>id==='6tzq'&&r.bounds(e).bottom<floor-.01;
+  r.set(w,'zhz6',1);target.x=caster.x+(side===1?1:-1)*60;target.y=caster.y;
+  const hits=[],call=r.call.bind(r);r.call=function*(c,id,args){if(id===sid(side,'qy83','05j0'))hits.push(args[0]);yield*call(c,id,args);};
+  r.run(1,[sid(side,82,80)]);r.run(20,[sid(side,69,13)]);
+  assert.deepEqual(hits,[-4]);assert.deepEqual(r.faults,[]);
  });
 }
