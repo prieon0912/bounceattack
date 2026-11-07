@@ -1,4 +1,4 @@
-import { installationCombat, damageInstallationsInRadius } from './barricade.js';
+import { installationCombat, damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
 import { prepareSkill as prepare, skillVisual as visual } from './additional-secondary-skills.js';
 import { showStatusVisual } from './expanded-secondary-skills.js';
 export const RAGE_QUIT=Object.freeze({manaCost:34,radius:55,damage:7,push:25,slow:8,slowTicks:90,cooldownTicks:300});
@@ -530,32 +530,71 @@ export const devilMageTaboo=definition(19,'금기',TABOO,'devil-mage-taboo','체
   r.add(caster,id(side,'qn98','thom'),TABOO.manaGain);
  }
 });
-export const LIGHT_SURGE=Object.freeze({manaCost:26,cooldownTicks:60,offsets:[30,65,100],intervalTicks:9,radius:25,damage:4,slow:6,slowTicks:30});
-export const alphaLightSurge=definition(28,'빛의 쇄도',LIGHT_SURGE,'alpha-light-surge','전방에 빛을 차례로 폭발시켜 피해를 주고 잠시 둔화시킵니다.',{
- prepare(p){this.effectPictures=[alias(p,'7h6f','alpha-surge-light',1)];prepare.call(this,p);},
+export const LIGHT_SURGE=Object.freeze({manaCost:26,cooldownTicks:60,offsets:[30,80,130],intervalTicks:9,speed:3,radius:30,damage:4,push:18,slow:6,slowTicks:30});
+export const alphaLightSurge=definition(28,'빛의 쇄도',LIGHT_SURGE,'alpha-light-surge','빛을 차례로 발사해 폭발시키며, 적에게 피해와 넉백, 둔화를 줍니다.',{
+ prepare(p){this.effectPictures=[alias(p,'7h6f','alpha-surge-light',1),alias(p,'q4lr','alpha-surge-flight')];prepare.call(this,p);},
  slowValue:logitechRageQuit.slowValue,
- *cast(r,c,{side,caster,target,state}){
-  const cfg=LIGHT_SURGE,origin={x:caster.x,y:caster.y},direction=facing(r,side);
-  for(let index=0;index<cfg.offsets.length&&alive(r,side);index++){
-   const point={x:origin.x+direction*cfg.offsets[index],y:origin.y};
-   const blast=visual(r,side,'alpha-surge-light',point.x,point.y,4,'alpha-light-surge');
-   blast.installationAreaDamage=true;
-   r.spawn(blast,function*(rt){try{
-    for(let frame=0;frame<16;frame++){
-     rt.setSize(blast,4+(cfg.radius*2-4)*(1-(1-Math.min(1,(frame+1)/6))**2));
-     blast.effects.transparency=frame<6?10:10+(frame-6)/9*90;
-     yield 1;
+ *cast(r,c,{side,caster,state}){
+  const origin={x:caster.x,y:caster.y},direction=facing(r,side);
+  for(let index=0;index<LIGHT_SURGE.offsets.length&&alive(r,side);index++){
+   this.fire(r,side,state,origin,direction,LIGHT_SURGE.offsets[index]);
+   if(index<LIGHT_SURGE.offsets.length-1)yield LIGHT_SURGE.intervalTicks;
+  }
+ },
+ fire(r,side,state,origin,direction,range){
+  const cfg=LIGHT_SURGE,shot=visual(r,side,'alpha-surge-flight',origin.x,origin.y,13,'alpha-surge-flight');
+  shot.rotation=Math.floor(r.random()*360);
+  r.spawn(shot,function*(rt,c){let traveled=0,frame=0;try{
+   flight:while(traveled<range&&alive(rt,side)){
+    for(let step=0;step<cfg.speed&&traveled<range;step++){
+     const old=shot.x;shot.x=origin.x+direction*(traveled+1);
+     if(Math.abs(shot.x)>239||rt.reach(shot,'6tzq')||rt.reach(shot,'2bx4')||projectileInstallationContact(rt,shot)){
+      shot.x=old;break flight;
+     }
+     traveled++;
+     if(canStrike(rt,side)&&Math.hypot(shot.x-body(rt,3-side).x,shot.y-body(rt,3-side).y)<=9)break flight;
     }
-   }finally{blast.dead=true;}},'alpha_light_surge');
-   if(visible(r,side))damageInstallationsInRadius(r,side,point,cfg.radius,cfg.damage);
-   if(canStrike(r,side)&&Math.hypot(target.x-point.x,target.y-point.y)<=cfg.radius){
-    yield* r.call({...c,e:blast},id(side,'qy83','05j0'),[-cfg.damage,0,1]);
-    if(vulnerable(r,3-side)){
-     state.slow={side:3-side,value:cfg.slow,until:r.tick+cfg.slowTicks};
-     showStatusVisual(r,side,'slow',cfg.slowTicks);
-    }
+    shot.rotation+=2;
+    if(frame++%5===0)alphaLightSurge.trail(rt,side,shot);
+    if(traveled<range)yield 1;
    }
-   if(index<cfg.offsets.length-1)yield cfg.intervalTicks;
+   if(alive(rt,side))yield* alphaLightSurge.explode(rt,c,side,state,{x:shot.x,y:shot.y},direction);
+  }finally{shot.dead=true;}},'alpha_surge_projectile');
+ },
+ trail(r,side,shot){
+  const trail=visual(r,side,'alpha-surge-flight',shot.x,shot.y,13,'alpha-surge-trail');
+  trail.rotation=shot.rotation;
+  r.spawn(trail,function*(rt){try{
+   for(let age=0;age<26;age++){
+    rt.setSize(trail,Math.max(1,13-age*.5));trail.rotation+=2;
+    trail.effects.transparency=age/25*100;yield 1;
+   }
+  }finally{trail.dead=true;}},'alpha_surge_trail');
+ },
+ *explode(r,c,side,state,point,direction){
+  const cfg=LIGHT_SURGE,target=body(r,3-side);
+  const blast=visual(r,side,'alpha-surge-light',point.x,point.y,4,'alpha-light-surge');
+  blast.installationAreaDamage=true;
+  r.spawn(blast,function*(rt){try{
+   for(let frame=0;frame<16;frame++){
+    rt.setSize(blast,4+(cfg.radius*2-4)*(1-(1-Math.min(1,(frame+1)/6))**2));
+    blast.effects.transparency=frame<6?10:10+(frame-6)/9*90;yield 1;
+   }
+  }finally{blast.dead=true;}},'alpha_light_surge');
+  if(visible(r,side))damageInstallationsInRadius(r,side,point,cfg.radius,cfg.damage);
+  if(canStrike(r,side)&&Math.hypot(target.x-point.x,target.y-point.y)<=cfg.radius){
+   yield* r.call({...c,e:blast},id(side,'qy83','05j0'),[-cfg.damage,0,1]);
+   if(vulnerable(r,3-side)){
+    let dx=target.x-point.x,dy=target.y-point.y;
+    const distance=Math.hypot(dx,dy);
+    if(distance===0)dx=direction;
+    const impulse=cfg.push*.625,normalizer=distance||1;
+    r.add(target,id(3-side,'c9o4','lgp6'),dx/normalizer*impulse);
+    // Horizontal recoil moves by force/15; vertical velocity is applied twice.
+    r.add(target,id(3-side,'du2p','iblx'),dy/normalizer*impulse/30);
+    state.slow={side:3-side,value:cfg.slow,until:r.tick+cfg.slowTicks};
+    showStatusVisual(r,side,'slow',cfg.slowTicks);
+   }
   }
  }
 });

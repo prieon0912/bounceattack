@@ -65,6 +65,9 @@ function destroy(r,wall) {
     },'barricade_break');
   }
 }
+export function projectileInstallationContact(r,projectile) {
+  return installations(r).find(target=>canHitInstallation(projectile,target)&&r.overlap(projectile,target))||null;
+}
 export function damageInstallationsInRadius(r,side,point,radius,damage) {
   for(const target of installations(r)){
     if(!canHitInstallation({combatSide:side},target))continue;

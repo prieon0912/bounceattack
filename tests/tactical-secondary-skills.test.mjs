@@ -351,31 +351,87 @@ test('Turret explosion radius is 70, twice its previous radius',()=>{
  }
 });
 
+
 for(const side of [1,2]){
  const key=side===1?82:80,dir=side===1?1:-1;
- test(`Alpha Light Surge side ${side}: MP26, fixed origin, nine-tick spacing and three separate four-damage hits`,()=>{
+ test(`Alpha Light Surge side ${side}: native basic light flight then circular blasts at 30,80,130`,()=>{
   const r=game(28,side,true),caster=body(r,side),target=body(r,3-side),origin={x:caster.x,y:caster.y};
-  r.globals.set(side===1?'etjn':'846x',dir>0?1:0);r.collisionProvider=()=>false;
-  const hits=[],call=r.call.bind(r);
-  r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push({tick:r.tick,damage:args[0],x:c.e.x,y:c.e.y});yield*call(c,id,args);};
-  target.x=origin.x+dir*30;r.run(1,[key]);assert.equal(r.globals.get(side===1?'qn98':'thom'),74);
+  r.globals.set(side===1?'etjn':'846x',dir>0?1:0);r.collisionProvider=()=>false;target.x=500;
+  const blasts=[],launches=[],spawn=r.spawn.bind(r);
+  r.spawn=(e,fn,event)=>{
+   if(event==='alpha_light_surge')blasts.push({tick:r.tick,x:e.x,y:e.y});
+   if(event==='alpha_surge_projectile')launches.push(r.tick);
+   return spawn(e,fn,event);
+  };
+  r.run(1,[key]);assert.equal(r.globals.get(side===1?'qn98':'thom'),74);
+  assert.equal(blasts.length,0);assert.ok(r.entities.some(e=>e.secondaryEffect==='alpha-surge-flight'));
   caster.x+=200;caster.y+=60;r.globals.set(side===1?'etjn':'846x',dir>0?0:1);
-  target.x=origin.x+dir*65;target.y=origin.y;r.run(9);
-  target.x=origin.x+dir*100;r.run(9);
-  assert.deepEqual(hits.map(h=>h.damage),[-4,-4,-4]);
-  assert.deepEqual(hits.map(h=>h.x),[30,65,100].map(x=>origin.x+dir*x));
-  assert.equal(hits[1].tick-hits[0].tick,9);assert.equal(hits[2].tick-hits[1].tick,9);
-  assert.ok(hits.every(h=>h.y===origin.y));assert.equal(r.secondarySkills.state(side).slow.value,6);
-  r.run(50);assert.ok(!r.entities.some(e=>e.secondaryEffect==='alpha-light-surge'&&!e.dead));assert.deepEqual(r.faults,[]);
+  r.run(100);
+  assert.deepEqual(blasts.map(h=>h.x),[30,80,130].map(x=>origin.x+dir*x));
+  assert.ok(blasts.every(h=>h.y===origin.y));
+  assert.equal(launches[1]-launches[0],9);assert.equal(launches[2]-launches[1],9);
+  assert.ok(!r.entities.some(e=>['alpha-light-surge','alpha-surge-flight','alpha-surge-trail'].includes(e.secondaryEffect)&&!e.dead));
+  assert.deepEqual(r.faults,[]);
  });
- test(`Alpha Light Surge side ${side}: stealth excludes damage; CC immunity excludes slow`,()=>{
+ test(`Alpha Light Surge side ${side}: three four-damage impacts, forward knockback and half-second slow`,()=>{
+  const r=game(28,side),caster=body(r,side),target=body(r,3-side),force=side===1?'lgp6':'c9o4';
+  r.globals.set(side===1?'etjn':'846x',dir>0?1:0);r.collisionProvider=()=>false;
+  target.x=caster.x+dir*30;target.y=caster.y;r.globals.set(force,0);
+  const hits=[],call=r.call.bind(r);r.call=function*(c,id,args){if(id===(side===1?'qy83':'05j0'))hits.push(args[0]);yield*call(c,id,args);};
+  r.run(55,[key]);assert.deepEqual(hits,[-4,-4,-4]);assert.equal(r.num(r.globals.get(force)),dir*18*.625*3);
+  assert.equal(r.secondarySkills.state(side).slow.value,6);assert.deepEqual(r.faults,[]);
+ });
+ test(`Alpha Light Surge side ${side}: stealth excludes damage, CC immunity excludes knockback and slow`,()=>{
   for(const hidden of [true,false]){
-   const r=game(28,side),caster=body(r,side),target=body(r,3-side);
-   r.globals.set(side===1?'etjn':'846x',1);target.x=caster.x+30;
+   const r=game(28,side),caster=body(r,side),target=body(r,3-side),force=side===1?'lgp6':'c9o4';
+   r.globals.set(side===1?'etjn':'846x',1);r.collisionProvider=()=>false;target.x=caster.x+30;
    r.globals.set(hidden?(side===1?'rav6':'ob2m'):(side===1?'ec6d':'jcf6'),1);
-   const hp=side===1?'7ir2':'akf6',before=r.num(r.globals.get(hp));r.run(20,[key]);
-   assert.equal(r.secondarySkills.state(side).slow,undefined);
-   assert.equal(r.num(r.globals.get(hp)),hidden?before:before-4);assert.deepEqual(r.faults,[]);
+   r.globals.set(force,0);const hp=side===1?'7ir2':'akf6',before=r.num(r.globals.get(hp));r.run(65,[key]);
+   assert.equal(r.secondarySkills.state(side).slow,undefined);assert.equal(r.num(r.globals.get(force)),0);
+   assert.equal(r.num(r.globals.get(hp)),hidden?before:before-12);assert.deepEqual(r.faults,[]);
   }
  });
 }
+test('Alpha Light Surge explodes at terrain contact instead of disappearing',()=>{
+ const r=game(28),caster=body(r,1);r.globals.set('etjn',1);body(r,2).x=500;
+ r.collisionProvider=(e,id)=>id==='6tzq'&&e.secondaryEffect==='alpha-surge-flight'&&e.x>=caster.x+20;
+ const points=[],spawn=r.spawn.bind(r);r.spawn=(e,fn,event)=>{if(event==='alpha_light_surge')points.push(e.x);return spawn(e,fn,event);};
+ r.run(60,[82]);assert.deepEqual(points,[caster.x+19,caster.x+19,caster.x+19]);assert.deepEqual(r.faults,[]);
+});
+
+test('Alpha Light Surge circular explosion radius is 30',()=>{
+ for(const height of [28,31]){
+  const r=game(28),caster=body(r,1),target=body(r,2);r.globals.set('etjn',1);r.collisionProvider=()=>false;
+  target.x=caster.x+30;target.y=caster.y+height;
+  const before=r.num(r.globals.get('7ir2'));r.run(100,[82]);
+  assert.equal(r.num(r.globals.get('7ir2')),height===28?before-4:before);assert.deepEqual(r.faults,[]);
+ }
+});
+
+test('Alpha explosion pushes away from its center regardless of firing direction',()=>{
+ for(const side of [1,2])for(const offset of [-8,8]){
+  const r=game(28,side),def=r.secondarySkills.definition(side),caster=body(r,side),target=body(r,3-side);
+  const point={x:0,y:0},force=side===1?'lgp6':'c9o4';
+  target.x=offset;target.y=0;r.globals.set(force,0);
+  r.spawn(caster,function*(rt,c){yield*def.explode(rt,c,side,rt.secondarySkills.state(side),point,-Math.sign(offset));},'test_alpha_explosion');
+  r.run(1);assert.equal(r.num(r.globals.get(force)),Math.sign(offset)*18*.625);
+  assert.deepEqual(r.faults,[]);
+ }
+});
+
+test('Alpha radial recoil uses the exact center-to-target vector, including vertical and arbitrary diagonal directions',()=>{
+ for(const side of [1,2])for(const [dx,dy] of [[0,12],[0,-12],[3,7],[-8,3],[7,-2],[-4,-9],[0,0]]){
+  const r=game(28,side),def=r.secondarySkills.definition(side),caster=body(r,side),target=body(r,3-side);
+  const xForce=side===1?'lgp6':'c9o4',yVelocity=side===1?'iblx':'du2p';
+  target.x=dx;target.y=dy;r.globals.set(xForce,0);r.globals.set(yVelocity,0);
+  r.spawn(caster,function*(rt,c){yield*def.explode(rt,c,side,rt.secondarySkills.state(side),{x:0,y:0},1);},'test_radial_recoil');
+  r.run(1);const length=Math.hypot(dx,dy)||1,impulse=18*.625;
+  assert.ok(Math.abs(r.num(r.globals.get(xForce))-(dx===0&&dy===0?impulse:dx/length*impulse))<1e-9);
+  assert.ok(Math.abs(r.num(r.globals.get(yVelocity))-dy/length*impulse/30)<1e-9);
+  if(dx&&dy){
+   const horizontal=r.num(r.globals.get(xForce))/15,vertical=r.num(r.globals.get(yVelocity))*2;
+   assert.ok(Math.abs(horizontal*dy-vertical*dx)<1e-9);
+  }
+  assert.deepEqual(r.faults,[]);
+ }
+});
