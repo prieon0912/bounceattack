@@ -201,7 +201,7 @@ for(const side of [1,2]){
   for(const enhanced of [false,true])for(const rooted of [false,true]){
    const r=game(17,side,true),caster=body(r,side),target=body(r,3-side),weapon=r.originals.get(side===1?'5c1h':'8rb4');
    r.collisionProvider=()=>false;r.globals.set(side===1?'etjn':'846x',dir>0?1:0);
-   target.x=caster.x+dir*60;target.y=caster.y+15;
+   target.x=caster.x+dir*60;target.y=caster.y+5;
    r.globals.set(side===1?'1vu0':'05ze',rooted?1:0);r.run(1,[key]);
    assert.equal(r.globals.get(side===1?'qn98':'thom'),76);assert.equal(r.secondarySkills.state(side).prismArmed,true);
    r.globals.set(side===1?'rr24':'qvkr',enhanced?1:0);
@@ -237,5 +237,33 @@ for(const side of [1,2]){
   r.run(30,[side===1?69:13]);assert.equal(r.secondarySkills.state(side).prismArmed,true);
   r.run(28,[side===1?69:13]);assert.equal(r.secondarySkills.state(side).prismArmed,false);
   assert.ok(r.entities.some(e=>e.secondaryEffect==='tesla-prism'));assert.deepEqual(r.faults,[]);
+ });
+}
+
+test('Original object and picture geometry is unchanged from the archived Entry project',()=>{
+ const original=JSON.parse(fs.readFileSync(new URL('../source/original-project.json',import.meta.url)));
+ for(const old of original.objects){
+  const current=project.objects.find(o=>o.id===old.id);assert.ok(current,old.id);
+  for(const field of ['width','height','scaleX','scaleY','regX','regY'])assert.equal(current.entity[field],old.entity[field],old.id+' '+field);
+  for(const picture of old.sprite.pictures){
+   const now=current.sprite.pictures.find(p=>p.id===picture.id);
+   if(now)assert.deepEqual(now.dimension,picture.dimension,old.id+' '+picture.id);
+  }
+ }
+});
+for(const side of [1,2]){
+ test(`Axe Rage side ${side} preserves axe size throughout the buff`,()=>{
+  const r=game(5,side),axe=r.originals.get(side===1?'f5gc':'45b6');
+  const before=[axe.width,axe.height,axe.scaleX,axe.scaleY,axe.regX,axe.regY];
+  r.run(1,[side===1?82:80]);r.run(300);
+  assert.deepEqual([axe.width,axe.height,axe.scaleX,axe.scaleY,axe.regX,axe.regY],before);
+ });
+ test(`Tesla Prism side ${side} rejects the former outer half of its cone`,()=>{
+  const r=game(17,side),caster=body(r,side),target=body(r,3-side),weapon=r.originals.get(side===1?'5c1h':'8rb4'),direction=side===1?1:-1;
+  r.collisionProvider=()=>false;r.globals.set(side===1?'etjn':'846x',direction>0?1:0);
+  target.x=caster.x+direction*100;target.y=caster.y-4.5+100*Math.tan(20*Math.PI/180);
+  r.run(1,[side===1?82:80]);const hp=r.globals.get(side===1?'7ir2':'akf6');
+  r.command({e:weapon,block:'f7j2'},'create_clone',['self']);r.run(50);
+  assert.equal(r.globals.get(side===1?'7ir2':'akf6'),hp);assert.deepEqual(r.faults,[]);
  });
 }

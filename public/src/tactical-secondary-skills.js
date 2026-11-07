@@ -445,7 +445,7 @@ export const axeRage=definition(5,'분노',AXE_RAGE,'axe-rage','5초 동안 이�
   finally{delete state.rageUntil;}
  }
 });
-export const TESLA_PRISM=Object.freeze({manaCost:24,cooldownTicks:60,halfAngle:25,damageMultiplier:.9});
+export const TESLA_PRISM=Object.freeze({manaCost:24,cooldownTicks:60,halfAngle:12.5,damageMultiplier:.9});
 export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다음 일반 공격이 부채꼴로 퍼지지만 피해량이 10% 감소합니다.',{
  effectPictures:[['tesla-prism-fan','assets/secondary/tesla-prism-fan.svg',{width:100,height:100}]],
  canCast(r,side){return !r.secondarySkills.state(side).prismArmed;},
