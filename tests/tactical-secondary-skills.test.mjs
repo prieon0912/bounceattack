@@ -267,3 +267,28 @@ for(const side of [1,2]){
   assert.equal(r.globals.get(side===1?'7ir2':'akf6'),hp);assert.deepEqual(r.faults,[]);
  });
 }
+
+for(const side of [1,2]){
+ const key=side===1?82:80,hp=side===1?'akf6':'7ir2',mp=side===1?'qn98':'thom';
+ test(`Taboo side ${side}: direct resource exchange, shields untouched, half-second cooldown and one cast per press`,()=>{
+  const r=game(19,side,true),shield=side===1?'cfmd':'g4sc';
+  r.globals.set(hp,51);r.globals.set(mp,50);r.globals.set(shield,30);
+  r.run(1,[key]);const first=r.tick;
+  assert.equal(r.globals.get(hp),41);assert.equal(r.globals.get(mp),60);assert.equal(r.globals.get(shield),30);
+  assert.equal(r.secondarySkills.state(side).readyAt,first+30);
+  r.run(40,[key]);assert.equal(r.globals.get(hp),41);
+  r.run(1);r.run(1,[key]);assert.equal(r.globals.get(hp),31);assert.equal(r.globals.get(mp),70);
+  r.run(1);r.run(1,[key]);assert.equal(r.globals.get(hp),31);
+  assert.deepEqual(r.faults,[]);
+ });
+ test(`Taboo side ${side}: low HP, full MP and stun cannot consume resources`,()=>{
+  for(const mode of ['low','full','stun']){
+   const r=game(19,side);r.globals.set(hp,mode==='low'?10:50);r.globals.set(mp,mode==='full'?91:50);
+   if(mode==='stun')r.globals.set(side===1?'8w41':'wyyq',1);
+   const before=[r.globals.get(hp),r.globals.get(mp)];r.run(1,[key]);
+   assert.deepEqual([r.globals.get(hp),r.globals.get(mp)],before);assert.deepEqual(r.faults,[]);
+  }
+  const r=game(19,side);r.globals.set(hp,11);r.globals.set(mp,90);r.run(1,[key]);
+  assert.equal(r.globals.get(hp),1);assert.equal(r.globals.get(mp),100);
+ });
+}

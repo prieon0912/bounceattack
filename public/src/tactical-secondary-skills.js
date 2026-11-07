@@ -481,4 +481,15 @@ export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다
   }finally{fan.dead=true;}},'tesla_prism');
  }
 });
-export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts,michaelBlessing,lycanDarkness,artenesFirework,invaderPulse,chronosReaperMarch,axeRage,teslaPrism];
+export const TABOO=Object.freeze({manaCost:0,cooldownTicks:30,healthCost:10,manaGain:10});
+export const devilMageTaboo=definition(19,'금기',TABOO,'devil-mage-taboo','체력 10을 소모하여 마나 10을 회복합니다.',{
+ canCast(r,side){
+  return r.num(r.globals.get(id(side,'akf6','7ir2')))>TABOO.healthCost&&r.num(r.globals.get(id(side,'qn98','thom')))<=100-TABOO.manaGain;
+ },
+ *cast(r,c,{side,caster}){
+  // Resource payment bypasses shields, mitigation and attack-triggered effects.
+  r.add(caster,id(side,'akf6','7ir2'),-TABOO.healthCost);
+  r.add(caster,id(side,'qn98','thom'),TABOO.manaGain);
+ }
+});
+export const TACTICAL_SECONDARY_SKILLS=[logitechRageQuit,amazonesHuntingTrap,boomTurret,kanJab,wartWaterPillar,elementSwordArts,michaelBlessing,lycanDarkness,artenesFirework,invaderPulse,chronosReaperMarch,axeRage,teslaPrism,devilMageTaboo];

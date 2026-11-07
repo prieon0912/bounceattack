@@ -434,5 +434,6 @@ module.exports = function applyBalancePatch(project) {
   }
 
   for (const [objectId, stacks] of scripts) objects.get(objectId).script = JSON.stringify(stacks);
+  project.variables.find(v => v.id === "x7mx").array[16].data = "응축 에너지";
   return project;
 };
