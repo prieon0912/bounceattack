@@ -8,8 +8,8 @@ const BALL = {
   baseball: { size: 6, gravity: .14, bounce: .73, life: 102 },
 };
 const CONTROLS = [
-  { character: 'y75t', body: '00h9', hero: 'n230', mana: 'qn98', facing: 'etjn', attack: 69, skill: 82, ultimate: 83, preview: 'j5y7', weapon: '31us' },
-  { character: 's5vb', body: 'n8fg', hero: 'ocqj', mana: 'thom', facing: '846x', attack: 13, skill: 80, ultimate: 40, preview: 'zyy3', weapon: 'mimn' },
+  { character: 'y75t', body: '00h9', hero: 'n230', profile: 'afvb', mana: 'qn98', facing: 'etjn', attack: 69, skill: 82, ultimate: 83, preview: 'j5y7', weapon: '31us' },
+  { character: 's5vb', body: 'n8fg', hero: 'ocqj', profile: '8svk', mana: 'thom', facing: '846x', attack: 13, skill: 80, ultimate: 40, preview: 'zyy3', weapon: 'mimn' },
 ];
 const data = side => CONTROLS[side - 1];
 export const michaelDefense = {
@@ -108,6 +108,11 @@ export class MichaelSystem {
       if (!this.active(side) || !this.state(side)) continue;
       const keys = data(side), st = this.state(side), player = this.body(side);
       const hero = r.originals.get(keys.hero);
+      const profile = r.originals.get(keys.profile);
+      if (profile) {
+        const suffix = st.sport === 'basketball' ? '' : '-' + st.sport;
+        r.setPicture(profile, 'michael-' + keys.profile + suffix);
+      }
       r.setPicture(hero, 'michael-' + keys.hero);
       r.setSize(hero, 16);
       const art = 'michael-' + (st.sport === 'baseball' ? 'bat' : st.sport);
@@ -277,22 +282,22 @@ export class MichaelSystem {
     st.swingAt = r.tick;
     const volley = r.tick;
     const options = { volley, life: 150 };
+    const fire = (degrees, speed) => {
+      const angle = degrees * Math.PI / 180;
+      this.launch(side, direction * Math.cos(angle) * speed, Math.sin(angle) * speed, 4, options);
+    };
     if (st.sport === 'basketball') {
-      for (let i = 0; i < 5; i++) this.launch(side, direction * (2 + i * .95), -2 - i * .65, 4, options);
+      for (const angle of [-72, -56, -40, -24, -8]) fire(angle, 5.2);
     } else if (st.sport === 'football') {
       r.spawn(this.body(side), function* volleys(rt) {
-        for (const height of [-1.6, 0, 1.6]) {
+        for (const angles of [[-34, -23], [-7, 7], [23, 34]]) {
           if (!rt.castle.alive(side) || rt.castle.blocked(side)) return;
-          for (const offset of [-.32, .32])
-            rt.michael.launch(side, direction * 6.5, height + offset, 4, options);
-          if (height < 1.6) yield 5;
+          for (const angle of angles) fire(angle, 6.5);
+          if (angles[0] !== 23) yield 5;
         }
       }, 'michael_volleys');
     } else {
-      for (let i = 0; i < 7; i++) {
-        const angle = (-25 + i * 16) * Math.PI / 180;
-        this.launch(side, direction * Math.cos(angle) * 6, Math.sin(angle) * 6, 4, options);
-      }
+      for (const angle of [-45, -25, -5, 15, 35, 55, 75]) fire(angle, 6);
     }
   }
 }

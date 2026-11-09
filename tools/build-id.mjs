@@ -15,6 +15,9 @@ for (const path of [
   "public/assets/michael/defense.svg",
   "public/assets/michael/football.svg",
   "public/assets/michael/portrait.svg",
+  "public/assets/michael/profile-basketball.svg",
+  "public/assets/michael/profile-football.svg",
+  "public/assets/michael/profile-baseball.svg",
   "public/assets/michael/skill.svg",
   "public/assets/michael/ultimate.svg",
 

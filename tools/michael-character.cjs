@@ -17,10 +17,15 @@ module.exports = function addMichael(project) {
   }
   for (const [id,art] of Object.entries({
     j5y7:'body', zyy3:'body', n230:'body', ocqj:'body',
-    o9rj:'skill', '4ffm':'ultimate', pyez:'attack', afvb:'portrait', '8svk':'portrait',
+    o9rj:'skill', '4ffm':'ultimate', pyez:'attack', afvb:'profile-basketball', '8svk':'profile-basketball',
   })) {
     const pictures = object(id).sprite.pictures;
     pictures.splice(35,0,picture('michael-'+id,art,pictures[34].dimension));
+  }
+  for (const id of ['afvb','8svk']) {
+    const pictures = object(id).sprite.pictures;
+    for (const sport of ['football','baseball'])
+      pictures.push(picture('michael-'+id+'-'+sport,'profile-'+sport,pictures[35].dimension));
   }
   for (const id of ['31us','mimn']) object(id).sprite.pictures.push(picture('michael-preview-'+id,'basketball'));
   const effects = object('hb4u').sprite.pictures;

@@ -49,6 +49,7 @@ for (const [sport, count] of [['basketball', 5], ['football', 6], ['baseball', 7
     const r = fixture(sport);
     r.keys.add(83);
     run(r, 12);
+    assert.equal(r.originals.get('afvb').picture.fileurl, 'assets/michael/profile-' + sport + '.svg');
     assert.equal(balls(r).length, count);
     assert.equal(r.globals.get('qn98'), 38);
     assert.deepEqual(r.faults, []);
@@ -107,6 +108,11 @@ test('seeded mirror matches roll independently and reproduce the same state', ()
   for (const r of [a,b]) {
     run(r, 240);
     assert.notEqual(r.michael.state(1), r.michael.state(2));
+    for (const [side, id] of [[1, 'afvb'], [2, '8svk']]) {
+      const profile = r.originals.get(id);
+      assert.equal(profile.visible, true);
+      assert.equal(profile.picture.fileurl, 'assets/michael/profile-' + r.michael.state(side).sport + '.svg');
+    }
     r.globals.set('qn98', 100);
     r.globals.set('thom', 100);
     r.keys = new Set([83, 40, 69, 13]);
