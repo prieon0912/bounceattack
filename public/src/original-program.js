@@ -6641,9 +6641,10 @@ r.command(c,"set_scale_size",["120",null]);
 c.block="8zpd";r.guard(c);
 r.command(c,"set_variable",["nqdf","0.001",null]);
 c.block="gxj6";r.guard(c);
-while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"coordinate_object",[null,"self",null,"y"]),"LESS_OR_EQUAL",r.value(c,"get_variable",["n5md",null])]))){
+impact_gxj6:while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"coordinate_object",[null,"self",null,"y"]),"LESS_OR_EQUAL",r.value(c,"get_variable",["n5md",null])]))){
 c.block="m9vd";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["nqdf",null]),"DIVIDE","1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact_gxj6;}
 c.block="ejdi";r.guard(c);
 r.command(c,"change_variable",["nqdf",r.value(c,"calc_basic",[r.value(c,"get_variable",["nqdf",null]),"MULTI","0.4"]),null]);
 c.block="y3il";r.guard(c);
@@ -6742,9 +6743,10 @@ r.command(c,"set_scale_size",["120",null]);
 c.block="r8ra";r.guard(c);
 r.command(c,"set_variable",["nqdf","0.001",null]);
 c.block="ybcm";r.guard(c);
-while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"coordinate_object",[null,"self",null,"y"]),"LESS_OR_EQUAL",r.value(c,"coordinate_object",[null,"00h9",null,"y"])]))){
+impact_ybcm:while(!r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"coordinate_object",[null,"self",null,"y"]),"LESS_OR_EQUAL",r.value(c,"coordinate_object",[null,"00h9",null,"y"])]))){
 c.block="ip2k";r.guard(c);
 r.command(c,"move_direction",[r.value(c,"calc_basic",[r.value(c,"get_variable",["nqdf",null]),"DIVIDE","1"]),null]);
+if(c.e.barricadeImpact){c.e.barricadeImpact=false;c.e.barricadeEndpointMode=true;break impact_ybcm;}
 c.block="7shx";r.guard(c);
 r.command(c,"change_variable",["nqdf",r.value(c,"calc_basic",[r.value(c,"get_variable",["nqdf",null]),"MULTI","0.4"]),null]);
 c.block="x3i5";r.guard(c);

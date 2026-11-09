@@ -1,7 +1,7 @@
 // Original Nevil basic: size 20, contact radius 18, 70 outbound ticks,
 // velocity 7 / 1.3 with 0.1 deceleration, and one 8-damage hit per leg.
 export const HOMING_BOOMERANG = Object.freeze({
-  manaCost: 24, damage: 8, size: 20, hitRadius: 18, outboundTicks: 70,
+  manaCost: 24, damage: 8, size: 20, hitRadius: 18, outboundTicks: 45, outboundRange: 160,
   initialSpeed: 7, acceleration: 0.1, speedDivisor: 1.3, catchRadius: 18,
 });
 export const nevilHomingBoomerang = {
@@ -46,13 +46,14 @@ export const nevilHomingBoomerang = {
     };
     try {
       r.play(projectile, side === 1 ? "sg5x" : "6p9l");
-      let hitOutbound = false;
-      for (let tick = 0; tick < config.outboundTicks; tick++) {
+      let hitOutbound = false, traveled = 10;
+      for (let tick = 0; tick < config.outboundTicks && traveled < config.outboundRange; tick++) {
         if (target.dead || Number(r.globals.get("r71b")) !== 0) return;
         const speed = Math.max(0, config.initialSpeed - config.acceleration * tick);
         const [dx, dy] = unit(target.x - projectile.x, target.y - projectile.y);
-        const distance = Math.min(speed / config.speedDivisor, Math.hypot(target.x - projectile.x, target.y - projectile.y));
+        const distance = Math.min(config.outboundRange - traveled, speed / config.speedDivisor, Math.hypot(target.x - projectile.x, target.y - projectile.y));
         r.move(projectile, dx * distance, dy * distance);
+        traveled += distance;
         r.rotate(projectile, projectile.rotation + speed * 4);
         if (!hitOutbound) hitOutbound = yield* hit(r);
         yield 1;
@@ -61,7 +62,7 @@ export const nevilHomingBoomerang = {
       // moving, and finish when within the original 18-unit catch distance.
       flight.phase = "return";
       r.play(projectile, side === 1 ? "ctma" : "xhhz");
-      let speed = Math.max(0, config.initialSpeed - config.acceleration * config.outboundTicks);
+      let speed = 0;
       let hitReturn = false;
       while (Math.hypot(caster.x - projectile.x, caster.y - projectile.y) > config.catchRadius) {
         if (Number(r.globals.get("r71b")) !== 0) return;

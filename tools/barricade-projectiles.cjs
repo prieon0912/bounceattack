@@ -53,7 +53,8 @@ module.exports = function annotateProjectiles(project) {
       function markFlight(node,insideFlight=false) {
         if(!node||typeof node!=="object")return;
         let flight=insideFlight;
-        if(node.type==="repeat_basic"&&!insideFlight&&containsMovement(node.statements)){
+        const eclipseDrop = object.id === "adtt" && ["gxj6", "ybcm"].includes(node.id);
+        if(!insideFlight&&(eclipseDrop||(node.type==="repeat_basic"&&containsMovement(node.statements)))){
           node.barricadeFlight=true;object.barricadeEndpoint=true;flight=true;
         }
         Object.values(node).forEach(value=>{

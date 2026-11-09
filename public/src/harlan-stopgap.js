@@ -11,12 +11,19 @@ const body=(r,side)=>r.originals.get(sid(side,'00h9','n8fg'));
 const owner=(r,side)=>r.originals.get(sid(side,'nijg','e7ip'));
 const away=(r,side)=>r.num(r.get(owner(r,side),'zhz6'))===1;
 const alive=(r,side)=>r.scene==='7dwq'&&r.num(r.globals.get(sid(side,'akf6','7ir2')))>0&&r.num(r.globals.get('r71b'))===0;
-const facing=(r,side)=>r.num(r.globals.get(sid(side,'etjn','846x')))===1?1:-1;
+function facing(r,side,previous){
+ const left=r.keys.has(sid(side,65,37)),right=r.keys.has(sid(side,68,39));
+ if(left!==right){
+  const feared=r.num(r.globals.get(sid(side,'v5ew','f1dk')))===1&&r.num(r.globals.get(sid(side,'jcf6','ec6d')))===0;
+  return (right?1:-1)*(feared?-1:1);
+ }
+ return previous??(r.num(r.globals.get(sid(side,'etjn','846x')))===1?1:-1);
+}
 function active(r,side,state){return state.stopgapUntil>r.tick&&away(r,side)&&alive(r,side);}
 function finish(r,state){
  const blade=r.entities.find(e=>e.uid===state.stopgapBladeUid);
  if(blade)blade.dead=true;
- delete state.stopgapUntil;delete state.stopgapBladeUid;delete state.stopgapSwing;
+ delete state.stopgapUntil;delete state.stopgapBladeUid;delete state.stopgapSwing;delete state.stopgapFacing;
 }
 export const harlanStopgap={
  character:26,name:'임시방편',manaCost:STOPGAP.manaCost,cooldownTicks:STOPGAP.cooldownTicks,
@@ -48,17 +55,19 @@ export const harlanStopgap={
   });
   blade.effects.brightness=5;blade.effects.transparency=6;
   blade.installationAreaDamage=true;
-  state.stopgapUntil=r.tick+STOPGAP.durationTicks;state.stopgapBladeUid=blade.uid;state.stopgapAttackAt=r.tick;
+  state.stopgapUntil=r.tick+STOPGAP.durationTicks;state.stopgapBladeUid=blade.uid;state.stopgapAttackAt=r.tick;state.stopgapFacing=facing(r,side);
   try{
    while(active(r,side,state)){
-    const direction=facing(r,side),stunned=r.num(r.globals.get(sid(side,'8w41','wyyq')))>0;
+    const direction=facing(r,side,state.stopgapFacing),stunned=r.num(r.globals.get(sid(side,'8w41','wyyq')))>0;
+    state.stopgapFacing=direction;
     if(r.keys.has(sid(side,69,13))&&!stunned&&r.tick>=state.stopgapAttackAt){
      state.stopgapAttackAt=r.tick+STOPGAP.attackTicks;
      state.stopgapSwing={start:r.tick,direction,hit:false,installationsHit:false};
     }
-    blade.x=caster.x+direction*9;blade.y=caster.y-2;
-    blade.scaleX=Math.abs(blade.scaleX)*direction;
     const swing=state.stopgapSwing,age=swing?r.tick-swing.start:STOPGAP.swingTicks;
+    const bladeDirection=swing&&age<STOPGAP.swingTicks&&!stunned?swing.direction:direction;
+    blade.x=caster.x+bladeDirection*9;blade.y=caster.y-2;
+    blade.scaleX=Math.abs(blade.scaleX)*bladeDirection;
     blade.rotation=age<STOPGAP.swingTicks?swing.direction*(-75+age/11*150):0;
     if(stunned)delete state.stopgapSwing;
     else if(swing&&age>=3&&age<STOPGAP.swingTicks){

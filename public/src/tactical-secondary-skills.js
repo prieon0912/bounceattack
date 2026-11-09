@@ -1,7 +1,7 @@
 import { installationCombat, damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
 import { prepareSkill as prepare, skillVisual as visual } from './additional-secondary-skills.js';
 import { showStatusVisual } from './expanded-secondary-skills.js';
-export const RAGE_QUIT=Object.freeze({manaCost:34,radius:55,damage:7,push:25,slow:8,slowTicks:90,cooldownTicks:300});
+export const RAGE_QUIT=Object.freeze({manaCost:34,radius:110,damage:7,push:50,slow:8,slowTicks:90,cooldownTicks:300});
 export const HUNTING_TRAP=Object.freeze({manaCost:30,durationTicks:360,rootTicks:90,initialSpeed:8,speedDecay:.02,initialTilt:1.5,tiltDecay:.06,flightTicks:130,radius:28,cooldownTicks:300});
 export const TURRET=Object.freeze({manaCost:51,health:20,decayTicks:60,decayDamage:2,maxShots:6,intervalTicks:180,cooldownTicks:0,triggerRadius:70,damagePerShot:3,baseBurstDamage:2,push:25,slow:8,slowTicks:90});
 const id=(s,a,b)=>s===1?a:b,body=(r,s)=>r.originals.get(id(s,'00h9','n8fg'));
@@ -51,6 +51,11 @@ export const boomTurret=definition(23,'터렛',TURRET,'boom-turret','앞뒤로 �
  *cast(r,c,{side,caster,target,state}){
   const cfg=TURRET,turret=visual(r,side,'boom-turret-body',caster.x,caster.y-2,28,'boom-turret');
   turret.installationOwner=side;turret.installationHealth=cfg.health;
+  const hitsTerrain=()=>r.reach(turret,'6tzq')||r.reach(turret,'2bx4');
+  const spawnY=turret.y;
+  while(hitsTerrain()&&turret.y-spawnY<r.bounds(turret).top-r.bounds(turret).bottom)turret.y++;
+  if(hitsTerrain()){turret.dead=true;return;}
+  let fallSpeed=0,grounded=false;
   state.turretUid=turret.uid;state.turretShots=0;delete state.turretBurstDamage;
   const start=r.tick;
   try{
@@ -78,7 +83,15 @@ export const boomTurret=definition(23,'터렛',TURRET,'boom-turret','앞뒤로 �
      }
      break;
     }
-    if(age>0&&age%cfg.intervalTicks===0&&state.turretShots<cfg.maxShots){
+    fallSpeed=Math.min(6,fallSpeed+.2);
+    grounded=false;
+    const steps=Math.ceil(fallSpeed),dy=fallSpeed/steps;
+    for(let i=0;i<steps;i++){
+     turret.y-=dy;
+     if(hitsTerrain()){turret.y+=dy;fallSpeed=0;grounded=true;break;}
+    }
+    if(turret.y<-250)break;
+    if(grounded&&age>0&&age%cfg.intervalTicks===0&&state.turretShots<cfg.maxShots){
      for(const direction of [-1,1]){this.fire(r,side,turret.x,turret.y+4,direction);state.turretShots++;}
     }
     yield 1;
@@ -363,7 +376,7 @@ export const lycanDarkness=definition(29,'어둠',DARKNESS,'lycan-darkness','5�
   }}finally{delete state.darkStartedAt;delete state.darkUntil;}
  }
 });
-const FIREWORK={manaCost:39,cooldownTicks:54,speed:9,range:180,radius:45};
+const FIREWORK={manaCost:39,cooldownTicks:54,speed:9,range:180,radius:56};
 export const artenesFirework=definition(25,'폭죽 사냥',FIREWORK,'artenes-firework','공중에서 터지는 폭죽을 발사합니다.',{
  prepare(p){this.effectPictures=[['artenes-firework-arrow','assets/secondary/artenes-firework-rocket.svg',{width:90,height:40}],alias(p,'6115','artenes-firework-blast',4)];prepare.call(this,p);},
  *cast(r,c,{side,caster,target}){
@@ -498,7 +511,7 @@ export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다
  fire(r,side,enhanced){
   const caster=body(r,side),target=body(r,3-side),direction=facing(r,side),x=caster.x,y=caster.y-4.5;
   const fan=visual(r,side,'tesla-prism-fan',x,y,2,'tesla-prism');
-  const slope=Math.tan(TESLA_PRISM.halfAngle*Math.PI/180),range=enhanced?596:548,steps=enhanced?36:33;
+  const slope=Math.tan(TESLA_PRISM.halfAngle*Math.PI/180),range=enhanced?298:274,steps=Math.ceil((range-20)/16);
   fan.projectileOrigin={x,y};
   r.spawn(fan,function*(rt,c){let hit=false;try{
    for(let age=0;age<steps&&alive(rt,side);age++){

@@ -52,7 +52,7 @@ function expression(b){if(b===null||typeof b!=='object')return q(b);if(Array.isA
 function body(blocks,depth=0,loopDepth=0,flightLabel=null){let out='';for(const b of blocks){const t=b.type,a=b.params||[],s=b.statements||[];counts[t]=(counts[t]||0)+1;emitted.push(b.id);out+=`c.block=${q(b.id)};r.guard(c);\n`;if(t==='_if'||t==='if_else'){out+=`if(r.truth(${expression(a[0])})){\n${body(s[0]||[],depth+1,loopDepth,flightLabel)}}`;if(t==='if_else')out+=`else{\n${body(s[1]||[],depth+1,loopDepth,flightLabel)}}`;out+='\n';}
 else if(t==='repeat_basic'){const n=loop++,label=b.barricadeFlight?'impact'+n:flightLabel;out+=`${b.barricadeFlight?label+':':''}for(let i${n}=0,n${n}=Math.max(0,Math.floor(r.num(${expression(a[0])})));i${n}<n${n};i${n}++){\n${body(s[0]||[],depth+1,loopDepth+1,label)}yield 1;\n}\n`;}
 else if(t==='repeat_inf'){out+=`while(true){\n${body(s[0]||[],depth+1,loopDepth+1,flightLabel)}yield 1;\n}\n`;}
-else if(t==='repeat_while_true'){const cond=`r.truth(${expression(a[0])})`;out+=`while(${a[1]==='until'?'!':''}${cond}){\n${body(s[0]||[],depth+1,loopDepth+1,flightLabel)}yield 1;\n}\n`;}
+else if(t==='repeat_while_true'){const cond=`r.truth(${expression(a[0])})`,label=b.barricadeFlight?'impact_'+b.id:flightLabel;out+=`${b.barricadeFlight?label+':':''}while(${a[1]==='until'?'!':''}${cond}){\n${body(s[0]||[],depth+1,loopDepth+1,label)}yield 1;\n}\n`;}
 else if(t==='stop_repeat'){if(!loopDepth)throw Error('Break outside loop '+b.id);out+='break;\n';}
 else if(t==='wait_until_true')out+=`while(!r.truth(${expression(a[0])})){yield 1;}\n`;
 else if(t==='wait_second')out+=`yield* r.wait(c,${expression(a[0])});\n`;

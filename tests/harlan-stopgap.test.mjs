@@ -135,3 +135,21 @@ for(const side of [1,2]){
   assert.deepEqual(hits,[-4]);assert.deepEqual(r.faults,[]);
  });
 }
+
+
+test('Stopgap remembers the last movement direction even if native dagger facing stays locked', () => {
+ for (const side of [1,2]) {
+  const r=game(side===1?26:2,side===2?26:2);
+  r.set(weapon(r,side),'zhz6',1);
+  body(r,3-side).x=120;
+  r.globals.set(sid(side,'etjn','846x'),1);
+  r.run(1,[sid(side,82,80)]);
+  r.run(1,[sid(side,65,37)]);
+  r.run(5,[sid(side,69,13)]);
+  const blade=r.entities.find(e=>e.secondaryEffect==='harlan-stopgap');
+  const wave=r.entities.find(e=>e.secondaryEffect==='harlan-stopgap-wave');
+  assert.ok(blade.x<body(r,side).x);
+  assert.ok(wave?.x<body(r,side).x);
+  assert.deepEqual(r.faults,[]);
+ }
+});

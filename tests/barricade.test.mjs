@@ -204,3 +204,25 @@ test('Brand fire zone attached to a fireball is installed at its barricade impac
  assert.equal(state.zone.x,shot.x);assert.equal(state.zone.y,shot.y);
  assert.equal(state.pendingShot,undefined);assert.deepEqual(r.faults,[]);
 });
+
+
+test('Eclipse falling sword finishes the impact and despawns after a barricade collision', () => {
+ for (const side of [1,2]) {
+  const r=game(side);
+  r.run(1,[side===1?82:80]);
+  const barrier=wall(r),target=r.originals.get(side===1?'00h9':'n8fg');
+  const avatar=r.originals.get(side===1?'n230':'ocqj');
+  Object.assign(target,{x:barrier.x,y:0});
+  Object.assign(avatar,{x:barrier.x,y:0});
+  r.globals.set(side===1?'s5vb':'y75t',4);
+  const weapon=r.originals.get(side===1?'5p2k':'6ct7');
+  r.command({e:weapon},'create_clone',['adtt']);
+  const sword=r.entities.find(e=>e.clone&&e.objectId==='adtt');
+  r.run(140);
+  assert.equal(sword.barricadeEndpointMode,true);
+  assert.equal(sword.barricadeImpact,false);
+  r.run(160);
+  assert.ok(sword.dead);
+  assert.deepEqual(r.faults,[]);
+ }
+});
