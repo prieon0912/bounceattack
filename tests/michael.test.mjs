@@ -130,6 +130,8 @@ test('online matchmaking preserves both Michael loadouts', async () => {
   const room = await hub.matchmake({}, { build, character: 36, skill: 'secondary' });
   assert.deepEqual([room.match.p1, room.match.p2], [36,36]);
   assert.deepEqual(room.match.skills, ['primary','secondary']);
+  assert.equal(room.match.sportRolls.length, 2);
+  assert.ok(room.match.sportRolls.every(roll => [0,1,2].includes(roll)));
 });
 
 test('baseball uses a melee basic and reflects a frontal shot with the second skill', () => {
@@ -151,4 +153,22 @@ test('baseball uses a melee basic and reflects a frontal shot with the second sk
   assert.equal(incoming.michaelBall.side, 1);
   assert.ok(incoming.michaelBall.vx > 0);
   assert.deepEqual(r.faults, []);
+});
+
+
+test('new online and offline matches can start in all three sports', () => {
+  const r = runtime();
+  for (const [index, sport] of ['basketball', 'football', 'baseball'].entries()) {
+    r.start({ p1: 36, p2: 36, seed: 22, sportRolls: [index, 2 - index] });
+    run(r, 1);
+    assert.equal(r.michael.state(1).sport, sport);
+    assert.equal(r.michael.state(2).sport, ['baseball','football','basketball'][index]);
+    r.randomSource = () => (index + .5) / 3;
+    r.startProject();
+    r.globals.set('y75t', 36);
+    r.globals.set('s5vb', 2);
+    r.loadScene('7dwq');
+    run(r, 1);
+    assert.equal(r.michael.state(1).sport, sport);
+  }
 });

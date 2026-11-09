@@ -27,7 +27,7 @@ module.exports = function addMichael(project) {
     for (const sport of ['football','baseball'])
       pictures.push(picture('michael-'+id+'-'+sport,'profile-'+sport,pictures[35].dimension));
   }
-  for (const id of ['31us','mimn']) object(id).sprite.pictures.push(picture('michael-preview-'+id,'basketball'));
+  for (const id of ['31us','mimn']) object(id).sprite.pictures.push(picture('michael-preview-'+id,'preview'));
   const effects = object('hb4u').sprite.pictures;
   for (const art of ['basketball','football','baseball','bat'])
     effects.push(picture('michael-'+art,art));

@@ -261,6 +261,7 @@ export class RoomHub {
             p1: r.players[0].character,
             p2: r.players[1].character,
             skills: r.players.map(player => player.skill || "primary"),
+            sportRolls: r.players.map(player => player.character === 36 ? randomInt(3) : null),
             map: r.map,
             // Starting input delay (2 frames ≈ 33 ms); each client then adapts
             // its own delay to the measured ping (entry-app.js adaptDelay).

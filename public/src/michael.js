@@ -31,7 +31,7 @@ export const michaelDefense = {
 };
 
 export class MichaelSystem {
-  constructor(runtime) { this.r = runtime; }
+  constructor(runtime) { this.r = runtime; this.rolls = []; }
 
   active(side) {
     return this.r.scene === '7dwq' && Number(this.r.globals.get(data(side).character)) === MICHAEL_ID;
@@ -59,8 +59,10 @@ export class MichaelSystem {
     for (const side of [1, 2]) {
       if (!this.active(side)) continue;
       if (!this.state(side)) {
+        const roll = this.rolls[side - 1];
+        const sport = Number.isInteger(roll) ? SPORTS[roll] : undefined;
         r.globals.set('michael:' + side, {
-          sport: SPORTS[Math.floor(r.random() * SPORTS.length)],
+          sport: sport ?? SPORTS[Math.floor(r.random() * SPORTS.length)],
           attackAt: 0, skillAt: 0, ultimateAt: 0, swingAt: -100, guardUntil: 0,
         });
         continue;
