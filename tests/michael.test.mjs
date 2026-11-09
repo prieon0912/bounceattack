@@ -89,17 +89,20 @@ test('football secondary loadout traps a frontal ball and buffs the next shot', 
   run(r, 1);
   assert.ok(r.michael.state(1).guardUntil > r.tick);
   Object.assign(r.michael.body(2), { x: 30, y: 0 });
-  const incoming = r.michael.launch(1, -6, 0, 5, { x: -12, y: 0 });
-  incoming.michaelBall.side = 2;
-  incoming.combatSide = 2;
+  const incoming = [0, 10].map(y => r.michael.launch(1, -6, 0, 5, { x: 1, y }));
+  for (const shot of incoming) {
+    shot.michaelBall.side = 2;
+    shot.combatSide = 2;
+  }
   r.keys.clear();
-  run(r, 2);
-  assert.ok(incoming.dead);
-  assert.equal(r.michael.state(1).trapped, true);
+  run(r, 1);
+  assert.ok(incoming.every(shot => shot.dead));
+  assert.equal(r.michael.state(1).trapped, 2);
   r.keys.add(69);
   run(r, 1);
-  assert.equal(balls(r)[0].michaelBall.life, 68);
-  assert.equal(r.michael.state(1).trapped, false);
+  assert.equal(balls(r).length, 3);
+  assert.ok(balls(r).every(shot => shot.michaelBall.life === 100));
+  assert.equal(r.michael.state(1).trapped, 0);
 });
 
 test('seeded mirror matches roll independently and reproduce the same state', () => {
@@ -134,7 +137,7 @@ test('online matchmaking preserves both Michael loadouts', async () => {
   assert.ok(room.match.sportRolls.every(roll => [0,1,2].includes(roll)));
 });
 
-test('baseball uses a melee basic and reflects a frontal shot with the second skill', () => {
+test('baseball uses a melee basic and advances on the next three swings after the second skill', () => {
   const r = fixture('baseball', true);
   Object.assign(r.michael.body(2), { x: 3, y: 0 });
   const hp = r.globals.get('7ir2');
@@ -146,14 +149,15 @@ test('baseball uses a melee basic and reflects a frontal shot with the second sk
   assert.equal(balls(r).length, 0);
   r.keys = new Set([82]);
   run(r, 1);
-  Object.assign(r.michael.body(2), { x: 50, y: 0 });
-  const incoming = r.michael.launch(1, -6, 0, 5, { x: -12, y: 0 });
-  incoming.michaelBall.side = 2;
-  incoming.combatSide = 2;
-  r.keys.clear();
-  run(r, 2);
-  assert.equal(incoming.michaelBall.side, 1);
-  assert.ok(incoming.michaelBall.vx > 0);
+  Object.assign(r.michael.body(2), { x: 150, y: 0 });
+  const player = r.michael.body(1);
+  for (let i = 0; i < 4; i++) {
+    const before = player.x;
+    r.michael.basic(1);
+    r.keys.clear();
+    run(r, 9);
+    assert.equal(player.x - before, i < 3 ? 30 : 0);
+  }
   assert.deepEqual(r.faults, []);
 });
 

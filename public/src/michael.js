@@ -32,7 +32,7 @@ export const michaelDefense = {
   character: MICHAEL_ID, name: '수비 전술', manaCost: 24, cooldownTicks: 0, lockVariable: false,
   icon: 'assets/michael/defense.svg', secondaryPictureId: 'michael-defense',
   primaryName: '공격 전술', primaryDescription: '레이업, 감아차기, 토스 배팅 중 현재 종목의 기술을 사용합니다.',
-  description: '스텝백, 트래핑, 받아치기 중 현재 종목의 기술을 사용합니다.',
+  description: '농구는 스텝백, 축구는 트래핑, 야구는 수비 쉬프트로 다음 세 번의 평타 때 전진합니다.',
   prepare(project) {
     const pictures = project.objects.find(object => object.id === 'o9rj').sprite.pictures;
     const primary = pictures.find(picture => picture.id === 'michael-o9rj');
@@ -65,6 +65,16 @@ export class MichaelSystem {
   heldPosition(side) {
     const player = this.body(side);
     return { x: player.x + this.facing(side) * 8, y: player.y - 2 };
+  }
+
+  boostWalk(context, args) {
+    if (!['afct', 'i0j3', 'zwdh', 'xcn9'].includes(context.block)) return;
+    for (const side of [1, 2]) {
+      if (this.active(side) && context.e === this.body(side) && this.state(side)?.speedUntil > this.r.tick) {
+        args[0] = this.r.num(args[0]) * 1.2;
+        return;
+      }
+    }
   }
 
   blocksKey(key) {
@@ -109,6 +119,7 @@ export class MichaelSystem {
         st.attackAt = r.tick + 32;
         this.basic(side);
       }
+      if (st.guardUntil > r.tick) this.trapNearby(side);
     }
   }
 
@@ -171,7 +182,7 @@ export class MichaelSystem {
       : { x: player.x + Math.sign(vx) * 10, y: player.y + 4 };
     return this.projectile(side, {
       ...BALL[sport], vx, vy, damage,
-      art: 'michael-' + sport,
+      art: 'michael-' + sport, sport,
       ...origin,
       ...options,
     });
@@ -234,11 +245,15 @@ export class MichaelSystem {
             const victim = rt.michael.body(target);
             if (Math.hypot(e.x - victim.x, e.y - victim.y) > radius + 8 || !rt.castle.canHit(ball.side)) continue;
             if (ball.volley?.hitUntil > rt.tick) continue;
-            if (rt.michael.intercept(e, target, ball.damage)) {
+            if (rt.michael.intercept(e, target)) {
               if (e.dead) return;
               break;
             }
             if (ball.volley) ball.volley.hitUntil = rt.tick + 18;
+            if (ball.sport === 'basketball') {
+              const state = rt.michael.state(ball.side);
+              if (state) state.speedUntil = rt.tick + 120;
+            }
             yield* rt.call(context, ball.side === 1 ? 'qy83' : '05j0', [-ball.damage, 0, 1]);
             if (ball.slow) rt.michael.applySlow(ball.side);
             return;
@@ -251,7 +266,17 @@ export class MichaelSystem {
     return e;
   }
 
-  intercept(entity, side, damage) {
+  trapNearby(side) {
+    const player = this.body(side), direction = this.facing(side);
+    for (const entity of this.r.entities) {
+      if (entity.dead || !entity.visible || (entity.michaelBall?.side ?? entity.combatSide) !== 3 - side) continue;
+      const forward = (entity.x - player.x) * direction;
+      if (forward < 0 || forward > 32 || Math.abs(entity.y - player.y) > 18) continue;
+      this.intercept(entity, side);
+    }
+  }
+
+  intercept(entity, side) {
     const st = this.state(side), r = this.r;
     if (!this.active(side) || !st || st.guardUntil <= r.tick || r.castle.blocked(side)) return false;
     const ball = entity.michaelBall;
@@ -262,24 +287,9 @@ export class MichaelSystem {
     if ((!ball && !native && !chessShot) || owner !== 3 - side) return false;
     const player = this.body(side), direction = this.facing(side);
     if ((entity.x - player.x) * direction < -2) return false;
-    st.guardUntil = 0;
-    if (st.sport === 'football') {
-      entity.dead = true;
-      st.trapped = true;
-    } else if (ball) {
-      ball.side = side;
-      ball.vx = direction * Math.max(4, Math.abs(ball.vx));
-      ball.vy = Math.max(.5, ball.vy);
-      ball.volley = null;
-      ball.curve = 0;
-      entity.combatSide = side;
-      entity.x = player.x + direction * (ball.size / 2 + 9);
-    } else {
-      entity.dead = true;
-      this.launch(side, direction * 6, .8, damage, {
-        art: entity.picture, size: Math.min(15, r.size(entity)),
-      });
-    }
+    if (entity.dead) return false;
+    entity.dead = true;
+    st.trapped = (st.trapped ?? 0) + 1;
     return true;
   }
 
@@ -295,18 +305,32 @@ export class MichaelSystem {
     st.swingAt = this.r.tick;
     if (st.sport === 'basketball') this.launch(side, direction * 3.5, -2.8, 5, { firstBounceBoost: Math.sqrt(2.5) });
     else if (st.sport === 'football') {
-      this.launch(side, direction * 6, 0, 5, { life: st.trapped ? 68 : 50 });
-      st.trapped = false;
+      const extra = st.trapped ?? 0;
+      st.trapped = 0;
+      const life = extra > 0 ? 100 : 50;
+      this.launch(side, direction * 6, 0, 5, { life });
+      for (let index = 0; index < extra; index++) {
+        const spread = Math.min(26, 7 * Math.ceil((index + 1) / 2));
+        const angle = (index % 2 ? -spread : spread) * Math.PI / 180;
+        this.launch(side, direction * 6 * Math.cos(angle), 6 * Math.sin(angle), 5, { life });
+      }
     } else {
       const r = this.r;
+      const advancing = (st.shiftSwings ?? 0) > 0;
+      if (advancing) st.shiftSwings--;
       r.spawn(this.body(side), function* swing(rt, context) {
+        let hit = false;
         for (let age = 0; age < BAT.swingTicks; age++) {
+          if (!rt.castle.alive(side) || rt.castle.blocked(side)) return;
           const player = rt.michael.body(side), enemy = rt.michael.body(3 - side);
-          if (batTouches(player, enemy, direction, age) && rt.castle.canHit(side)) {
+          if (advancing && age < 5 && !rt.secondarySkills.blocksMove(player, direction * 6, 0))
+            rt.castle.move(side, direction * 6, 0);
+          if (!hit && batTouches(player, enemy, direction, age) && rt.castle.canHit(side)) {
+            hit = true;
             yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-BAT.damage, 0, 1]);
             if (rt.michael.applySlow(side))
               rt.castle.knockback(3 - side, 22 * (Math.sign(enemy.x - player.x) || direction));
-            return;
+            if (!advancing) return;
           }
           yield 1;
         }
@@ -318,7 +342,8 @@ export class MichaelSystem {
     const r = this.r, st = this.state(side), direction = this.facing(side);
     st.swingAt = r.tick;
     if (defense && st.sport !== 'basketball') {
-      st.guardUntil = r.tick + 18;
+      if (st.sport === 'baseball') st.shiftSwings = 3;
+      else st.guardUntil = r.tick + 18;
       return;
     }
     if (st.sport === 'basketball') {
@@ -340,7 +365,7 @@ export class MichaelSystem {
     const r = this.r, st = this.state(side), direction = this.facing(side);
     st.swingAt = r.tick;
     const volley = { hitUntil: 0 };
-    const options = { volley, life: 480 };
+    const options = { volley, life: st.sport === 'baseball' ? 300 : 480 };
     if (st.sport === 'basketball') {
       options.bounce = 1;
       options.firstBounceBoost = Math.sqrt(2.5);
