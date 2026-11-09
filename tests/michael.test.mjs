@@ -16,7 +16,7 @@ const runtime = () => {
 const balls = r => r.entities.filter(e => e.michaelBall && !e.dead);
 const run = (r, ticks) => { for (let i = 0; i < ticks; i++) r.step(); };
 function fixture(sport, secondary = false) {
-  const r = runtime().start({ p1: 36, p2: 2, seed: 22, skills: [secondary ? 'secondary' : 'primary'] });
+  const r = runtime().start({ p1: 36, p2: 2, seed: 22, skills: [secondary ? 'secondary' : 'primary'], sportRolls: [['basketball','football','baseball'].indexOf(sport)] });
   run(r, 240);
   for (const thread of [...r.threads, ...r.pending]) thread.cancelled = true;
   r.michael.state(1).sport = sport;
@@ -98,7 +98,7 @@ test('football secondary loadout traps a frontal ball and buffs the next shot', 
   assert.equal(r.michael.state(1).trapped, true);
   r.keys.add(69);
   run(r, 1);
-  assert.equal(balls(r)[0].michaelBall.life, 135);
+  assert.equal(balls(r)[0].michaelBall.life, 68);
   assert.equal(r.michael.state(1).trapped, false);
 });
 
@@ -136,11 +136,13 @@ test('online matchmaking preserves both Michael loadouts', async () => {
 
 test('baseball uses a melee basic and reflects a frontal shot with the second skill', () => {
   const r = fixture('baseball', true);
-  Object.assign(r.michael.body(2), { x: -9, y: 0 });
+  Object.assign(r.michael.body(2), { x: 8, y: 0 });
   const hp = r.globals.get('7ir2');
   r.keys.add(69);
-  run(r, 1);
-  assert.equal(r.globals.get('7ir2'), hp - 7);
+  run(r, 9);
+  assert.equal(r.globals.get('7ir2'), hp - 10);
+  const bat = r.entities.find(e => e.michaelEffect === 'held' && e.combatSide === 1);
+  assert.deepEqual([bat.regX, bat.regY, r.size(bat)], [24, 77, 34]);
   assert.equal(balls(r).length, 0);
   r.keys = new Set([82]);
   run(r, 1);
@@ -171,4 +173,27 @@ test('new online and offline matches can start in all three sports', () => {
     run(r, 1);
     assert.equal(r.michael.state(1).sport, sport);
   }
+});
+test('football starts at the held ball, halves basic travel and curves with a hit slow', () => {
+  const r = fixture('football');
+  r.michael.afterStep();
+  const held = r.entities.find(e => e.michaelEffect === 'held' && e.combatSide === 1);
+  r.michael.basic(1);
+  const basic = balls(r)[0];
+  assert.deepEqual([basic.x, basic.y, basic.michaelBall.life], [held.x, held.y, 50]);
+  basic.dead = true;
+  for (const height of [-40, 40]) {
+    Object.assign(r.michael.body(2), { x: 120, y: height });
+    r.michael.skill(1, false);
+    const shot = balls(r)[0];
+    run(r, 3);
+    assert.equal(Math.sign(shot.michaelBall.vy), Math.sign(height));
+    shot.dead = true;
+  }
+  Object.assign(r.michael.body(2), { x: 0, y: 3 });
+  r.michael.skill(1, false);
+  run(r, 5);
+  assert.equal(r.get(r.michael.body(2), 'nccn'), 4);
+  assert.ok(r.secondarySkills.state(1).slow.until > r.tick);
+  assert.deepEqual(r.faults, []);
 });

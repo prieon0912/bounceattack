@@ -1,3 +1,4 @@
+import { showStatusVisual } from './expanded-secondary-skills.js';
 import { damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
 
 export const MICHAEL_ID = 36;
@@ -5,8 +6,24 @@ const SPORTS = ['basketball', 'football', 'baseball'];
 const BALL = {
   basketball: { size: 12, gravity: .19, bounce: .86, life: 112 },
   football: { size: 9, gravity: 0, bounce: .91, life: 100 },
-  baseball: { size: 6, gravity: .14, bounce: .73, life: 102 },
+  baseball: { size: 6, gravity: .14, bounce: .865, life: 102 },
 };
+const BAT = { size: 34, gripX: 24, gripY: 77, tipX: 85, tipY: 18, damage: 10, swingTicks: 9 };
+const batRotation = age => age < 0 || age >= 13 ? 0
+  : age < BAT.swingTicks ? -12 + age * 12 : 84 * (13 - age) / 4;
+
+function batTouches(player, enemy, direction, age) {
+  const angle = batRotation(age) * Math.PI / 180;
+  const dx = (BAT.tipX - BAT.gripX) * BAT.size / 100;
+  const dy = (BAT.tipY - BAT.gripY) * BAT.size / 100;
+  const tipX = direction * (dx * Math.cos(angle) - dy * Math.sin(angle));
+  const tipY = -(dx * Math.sin(angle) + dy * Math.cos(angle));
+  const x = enemy.x - (player.x + direction * 8);
+  const y = enemy.y - (player.y - 2);
+  const along = Math.max(0, Math.min(1, (x * tipX + y * tipY) / (tipX ** 2 + tipY ** 2)));
+  return Math.hypot(x - along * tipX, y - along * tipY) <= 10;
+}
+
 const CONTROLS = [
   { character: 'y75t', body: '00h9', hero: 'n230', profile: 'afvb', mana: 'qn98', facing: 'etjn', attack: 69, skill: 82, ultimate: 83, preview: 'j5y7', weapon: '31us' },
   { character: 's5vb', body: 'n8fg', hero: 'ocqj', profile: '8svk', mana: 'thom', facing: '846x', attack: 13, skill: 80, ultimate: 40, preview: 'zyy3', weapon: 'mimn' },
@@ -26,6 +43,11 @@ export const michaelDefense = {
     if (!pictures.some(picture => picture.id === this.secondaryPictureId))
       pictures.push({ ...primary, id: this.secondaryPictureId, fileurl: this.icon });
   },
+  slowValue(runtime, entity, id, raw, state) {
+    const slow = state.slow;
+    return slow?.until > runtime.tick && id === (slow.side === 1 ? '9af4' : 'nccn')
+      ? Math.max(runtime.num(raw), slow.value) : raw;
+  },
   canCast() { return false; },
   *cast() {},
 };
@@ -40,6 +62,11 @@ export class MichaelSystem {
   state(side) { return this.r.globals.get('michael:' + side); }
   body(side) { return this.r.originals.get(data(side).body); }
   facing(side) { return Number(this.r.globals.get(data(side).facing)) === 1 ? 1 : -1; }
+
+  heldPosition(side) {
+    const player = this.body(side);
+    return { x: player.x + this.facing(side) * 8, y: player.y - 2 };
+  }
 
   blocksKey(key) {
     return CONTROLS.some(({ attack, skill, ultimate }, index) =>
@@ -119,12 +146,15 @@ export class MichaelSystem {
       r.setSize(hero, 16);
       const art = 'michael-' + (st.sport === 'baseball' ? 'bat' : st.sport);
       const held = r.entities.find(e => e.michaelEffect === 'held' && e.combatSide === side)
-        || this.visual(side, art, player.x, player.y, st.sport === 'baseball' ? 14 : 10, 'held');
+        || this.visual(side, art, player.x, player.y, st.sport === 'baseball' ? BAT.size : 10, 'held');
       const direction = this.facing(side), age = r.tick - st.swingAt;
-      held.x = player.x + direction * 8;
-      held.y = player.y - 2;
+      Object.assign(held, this.heldPosition(side));
       held.scaleX = direction * Math.abs(held.scaleX);
-      held.rotation = age < 12 ? direction * Math.sin(age / 12 * Math.PI) * 75 : 0;
+      if (st.sport === 'baseball') {
+        held.regX = BAT.gripX;
+        held.regY = BAT.gripY;
+        held.rotation = direction * batRotation(age);
+      } else held.rotation = age < 12 ? direction * Math.sin(age / 12 * Math.PI) * 75 : 0;
       held.visible = hero.visible && r.castle.alive(side)
         && !r.num(r.globals.get(side === 1 ? 'ob2m' : 'rav6'));
     }
@@ -132,10 +162,13 @@ export class MichaelSystem {
 
   launch(side, vx, vy, damage, options = {}) {
     const player = this.body(side);
+    const sport = this.state(side).sport;
+    const origin = sport === 'football' ? this.heldPosition(side)
+      : { x: player.x + Math.sign(vx) * 10, y: player.y + 4 };
     return this.projectile(side, {
-      ...BALL[this.state(side).sport], vx, vy, damage,
-      art: 'michael-' + this.state(side).sport,
-      x: player.x + Math.sign(vx) * 10, y: player.y + 4,
+      ...BALL[sport], vx, vy, damage,
+      art: 'michael-' + sport,
+      ...origin,
       ...options,
     });
   }
@@ -161,7 +194,12 @@ export class MichaelSystem {
     r.spawn(e, function* fly(rt, context) {
       try {
         for (let age = 0; age < ball.life && rt.castle.alive(ball.side) && rt.castle.alive(3 - ball.side); age++) {
-          ball.vy = Math.max(-8, ball.vy - ball.gravity);
+          if (ball.curve && age < 24) {
+            const { vx, vy, curve } = ball;
+            ball.vx = vx * Math.cos(curve) - vy * Math.sin(curve);
+            ball.vy = vx * Math.sin(curve) + vy * Math.cos(curve);
+          }
+          if (ball.gravity) ball.vy = Math.max(-8, ball.vy - ball.gravity);
           const steps = Math.max(1, Math.ceil(Math.max(Math.abs(ball.vx), Math.abs(ball.vy)) / 2));
           for (let i = 0; i < steps; i++) {
             const x = e.x, y = e.y;
@@ -169,12 +207,18 @@ export class MichaelSystem {
             if (Math.abs(e.x) > 240 - radius || rt.michael.terrain(e)) {
               e.x = x;
               ball.vx *= -ball.bounce;
+              if (ball.curve) ball.curve *= -1;
             }
             e.y += ball.vy / steps;
             if (e.y > 135 - radius || rt.michael.terrain(e)) {
               e.y = y;
               const falling = ball.vy < 0;
               ball.vy *= -ball.bounce;
+              if (ball.curve) ball.curve *= -1;
+              if (falling && ball.firstBounceBoost) {
+                ball.vy *= ball.firstBounceBoost;
+                ball.firstBounceBoost = 0;
+              }
               if (falling && ball.gravity >= .1 && ball.vy < 1) ball.vy = 1;
             }
             if (e.y < -135 - radius) return;
@@ -192,6 +236,7 @@ export class MichaelSystem {
             }
             if (ball.volley) ball.volley.hitUntil = rt.tick + 18;
             yield* rt.call(context, ball.side === 1 ? 'qy83' : '05j0', [-ball.damage, 0, 1]);
+            if (ball.slow) rt.michael.applySlow(ball.side);
             return;
           }
           e.rotation += ball.vx * 4;
@@ -222,6 +267,7 @@ export class MichaelSystem {
       ball.vx = direction * Math.max(4, Math.abs(ball.vx));
       ball.vy = Math.max(.5, ball.vy);
       ball.volley = null;
+      ball.curve = 0;
       entity.combatSide = side;
       entity.x = player.x + direction * (ball.size / 2 + 9);
     } else {
@@ -233,21 +279,30 @@ export class MichaelSystem {
     return true;
   }
 
+  applySlow(side) {
+    const r = this.r, target = 3 - side;
+    if (r.num(r.globals.get(target === 1 ? 'jcf6' : 'ec6d')) !== 0) return false;
+    r.secondarySkills.state(side).slow = { side: target, value: 4, until: r.tick + 60 };
+    showStatusVisual(r, side, 'slow', 60);
+    return true;
+  }
+
   basic(side) {
     const st = this.state(side), direction = this.facing(side);
     st.swingAt = this.r.tick;
-    if (st.sport === 'basketball') this.launch(side, direction * 3.5, -2.8, 5);
+    if (st.sport === 'basketball') this.launch(side, direction * 3.5, -2.8, 5, { firstBounceBoost: Math.sqrt(2.5) });
     else if (st.sport === 'football') {
-      this.launch(side, direction * 6, 0, 5, { life: st.trapped ? 135 : 100 });
+      this.launch(side, direction * 6, 0, 5, { life: st.trapped ? 68 : 50 });
       st.trapped = false;
     } else {
       const r = this.r;
       r.spawn(this.body(side), function* swing(rt, context) {
-        for (let age = 0; age < 6; age++) {
+        for (let age = 0; age < BAT.swingTicks; age++) {
           const player = rt.michael.body(side), enemy = rt.michael.body(3 - side);
-          const ahead = (enemy.x - player.x) * direction, height = enemy.y - player.y;
-          if (ahead >= -3 && ahead <= 27 && height >= -10 && height <= 22 && rt.castle.canHit(side)) {
-            yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-7, 0, 1]);
+          if (batTouches(player, enemy, direction, age) && rt.castle.canHit(side)) {
+            yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-BAT.damage, 0, 1]);
+            if (rt.michael.applySlow(side))
+              rt.castle.knockback(3 - side, 22 * (Math.sign(enemy.x - player.x) || direction));
             return;
           }
           yield 1;
@@ -264,26 +319,29 @@ export class MichaelSystem {
       return;
     }
     if (st.sport === 'basketball') {
-      if (defense) this.launch(side, direction * 1.6, -4, 4, { x: this.body(side).x });
+      if (defense) this.launch(side, direction * 1.6, -4, 6, { x: this.body(side).x });
       r.spawn(this.body(side), function* step(rt) {
         for (let age = 0; age < 6 && !rt.castle.blocked(side); age++) {
           rt.castle.move(side, defense ? -direction * 3 : 0, defense ? 0 : 2);
           yield 1;
         }
-        if (!defense && !rt.castle.blocked(side)) rt.michael.launch(side, direction * 4, 4.5, 8);
+        if (!defense && !rt.castle.blocked(side)) rt.michael.launch(side, direction * 4, 4.5, 8, { life: BALL.basketball.life * 3 });
       }, 'michael_step');
-    } else if (st.sport === 'football') this.launch(side, direction * 5.1, 2.8, 8);
-    else this.launch(side, direction * 5.2, 3.8, 8);
+    } else if (st.sport === 'football') {
+      const vertical = this.body(3 - side).y >= this.body(side).y ? 1 : -1;
+      this.launch(side, direction * 5.8, 0, 8, { curve: direction * vertical * .026, slow: true });
+    } else this.launch(side, direction * 5.2, 3.8, 8);
   }
 
   ultimate(side) {
     const r = this.r, st = this.state(side), direction = this.facing(side);
     st.swingAt = r.tick;
     const volley = { hitUntil: 0 };
-    const options = { volley, life: 240 };
+    const options = { volley, life: 480 };
+    const damage = st.sport === 'basketball' ? 6 : 4;
     const fire = (degrees, speed) => {
       const angle = degrees * Math.PI / 180;
-      this.launch(side, direction * Math.cos(angle) * speed, Math.sin(angle) * speed, 4, options);
+      this.launch(side, direction * Math.cos(angle) * speed, Math.sin(angle) * speed, damage, options);
     };
     if (st.sport === 'basketball') {
       for (const angle of [-72, -56, -40, -24, -8]) fire(angle, 5.2);
