@@ -4,6 +4,7 @@ import { Runtime } from "./runtime.js";
 import { registerOriginal } from "./original-program.js";
 import { OnlineConnection } from "./online.js";
 import { FrameSync, KEYS } from "./frame-sync.js";
+import { InputDelayController } from "./network-delay.js";
 const canvas = document.getElementById("stage"),
   status = document.getElementById("status");
 const assets = new Assets(),
@@ -86,18 +87,11 @@ const FORFEIT_AFTER = 15000;
 let claimSent = false;
 let forfeitWin = false,
   forfeitHp = null;
-// Adaptive input delay: as small as the connection allows (3 frames ≈ 50 ms
-// for ping ≤ ~40 ms), growing only while ping is high or spiky.
+// Size the buffer from the actual peer path, including a Redis relay.
 const FRAME_MS = 1000 / 60;
-let recentPings = [];
+let delayController = new InputDelayController();
 function adaptDelay(mode, ping) {
-  recentPings = [...recentPings.slice(-3), ping];
-  const rtt = Math.max(...recentPings);
-  // Direct: peer round trip, so one-way ≈ rtt/2. Relay: ping is to the
-  // server only; the path to the opponent is ≈ both legs plus the Redis relay.
-  const oneWay = mode === "direct" ? rtt / 2 : rtt + 12;
-  const frames = Math.ceil((oneWay + 10) / FRAME_MS) + 1;
-  sync.setDelay(Math.max(3, Math.min(12, frames)));
+  sync.setDelay(delayController.observe(ping, mode));
 }
 let postMatch = false;
 function endMatch() {
@@ -170,7 +164,7 @@ function search() {
         runtime.start(match);
         runtime.originalUI = true;
         Object.assign(runtime.mouse, { x: -9999, y: -9999, down: false });
-        recentPings = [];
+        delayController = new InputDelayController();
         sync = new FrameSync(connection.identity.role, {
           delay: match.delay,
           onSend: (frames) => connection.input(frames),
@@ -205,9 +199,9 @@ function search() {
       status.textContent = text;
     },
     onStatus: (s) => {
-      if (sync && s.ping !== undefined) adaptDelay(s.mode, s.ping);
+      if (sync && s.peerPing) adaptDelay(s.mode, s.ping);
       if (sync && s.ping !== undefined)
-        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · ${s.mode === "direct" ? "상대 핑" : "서버 핑"} ${Math.round(s.ping)}ms · ${s.mode === "direct" ? "직접 연결" : "서버 중계"} · 입력 지연 ${Math.round(sync.delay * FRAME_MS)}ms`;
+        status.textContent = `온라인 대전 · ${connection.identity.role + 1}P · ${s.peerPing ? "상대 핑" : "서버 핑"} ${Math.round(s.ping)}ms · ${s.mode === "direct" ? "직접 연결" : "서버 중계"} · 입력 지연 ${Math.round(sync.delay * FRAME_MS)}ms`;
     },
   });
   connection.command({
@@ -341,7 +335,9 @@ function update(now) {
   // Keep real elapsed time when drawing is suspended; dropping it extended timed skills.
   elapsed += Math.max(0, now - last);
   last = now;
+  let onlineSteps = 0;
   while (elapsed + 1e-7 >= 1000 / 60) {
+    if (sync && onlineSteps++ >= 8) break;
     if (sync) {
       // The original sets 게임 끝 (r71b) when a fighter falls. Both clients
       // reach that frame identically, so lockstep can end here: the ending

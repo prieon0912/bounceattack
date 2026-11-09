@@ -567,7 +567,7 @@ try {
     saved &&
     Number.isInteger(saved.character) &&
     saved.character >= 1 &&
-    saved.character <= 35 &&
+    saved.character <= 36 &&
     [0, 1].includes(saved.role) &&
     /^[A-F0-9]{8}$/.test(saved.code) &&
     typeof saved.token === "string" &&

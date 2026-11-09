@@ -15,7 +15,7 @@ const validInt = (n, min, max) => Number.isInteger(n) && n >= min && n <= max;
 const skillChoice = (character, choice) => {
   if (choice !== undefined && choice !== "primary" && choice !== "secondary")
     throw new RoomError("스킬 선택을 확인해 주세요.");
-  if (choice === "secondary" && ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35].includes(character))
+  if (choice === "secondary" && ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36].includes(character))
     throw new RoomError("이 캐릭터는 아직 세컨드 스킬이 없어요.");
   return choice || "primary";
 };
@@ -84,7 +84,7 @@ export class RoomHub {
   }
   async create(ctx, msg) {
     this.validateBuild(msg.build);
-    if (!validInt(msg.character, 1, 35) || !validInt(msg.map, 1, 6))
+    if (!validInt(msg.character, 1, 36) || !validInt(msg.map, 1, 6))
       throw new RoomError("캐릭터와 전장을 확인해 주세요.");
     skillChoice(msg.character, msg.skill);
     ctx.token = randomBytes(24).toString("hex");
@@ -121,7 +121,7 @@ export class RoomHub {
   async join(ctx, msg) {
     this.validateBuild(msg.build);
     const code = String(msg.code || "").toUpperCase();
-    if (!/^[A-F0-9]{8}$/.test(code) || !validInt(msg.character, 1, 35))
+    if (!/^[A-F0-9]{8}$/.test(code) || !validInt(msg.character, 1, 36))
       throw new RoomError("8자리 방 코드를 확인해 주세요.");
     skillChoice(msg.character, msg.skill);
     ctx.token = randomBytes(24).toString("hex");
@@ -150,7 +150,7 @@ export class RoomHub {
   }
   async matchmake(ctx, msg) {
     this.validateBuild(msg.build);
-    if (!validInt(msg.character, 1, 35))
+    if (!validInt(msg.character, 1, 36))
       throw new RoomError("캐릭터를 선택해 주세요.");
     // Online matchmaking always plays on 미션존 (map 6) for now.
     const own = await this.create(ctx, { ...msg, map: ONLINE_MAP });
@@ -239,7 +239,7 @@ export class RoomHub {
           throw new RoomError("이미 끝난 대전이에요.");
         if (r.match.winner === undefined) r.match.winner = ctx.role;
       } else if (msg.type === "pick") {
-        if (r.phase !== "lobby" || !validInt(msg.character, 1, 35))
+        if (r.phase !== "lobby" || !validInt(msg.character, 1, 36))
           throw new RoomError("지금은 캐릭터를 바꿀 수 없어요.");
         p.skill = skillChoice(msg.character, msg.skill);
         p.character = msg.character;
@@ -262,9 +262,9 @@ export class RoomHub {
             p2: r.players[1].character,
             skills: r.players.map(player => player.skill || "primary"),
             map: r.map,
-            // Starting input delay (3 frames = 50 ms); each client then adapts
+            // Starting input delay (2 frames ≈ 33 ms); each client then adapts
             // its own delay to the measured ping (entry-app.js adaptDelay).
-            delay: 3,
+            delay: 2,
           };
         }
       } else if (msg.type === "rematch") {
@@ -275,7 +275,7 @@ export class RoomHub {
     });
   }
   async relay(ctx, msg) {
-    const fast = msg.type === "input" && this.store.publishMatchInput;
+    const fast = ["input", "checksum", "sync", "netping", "netpong"].includes(msg.type) && this.store.publishMatchInput;
     const r = fast ? null : await this.state(ctx.code);
     if (!fast) this.authorize(r, ctx);
     const out = { type: msg.type, role: ctx.role };
@@ -302,6 +302,10 @@ export class RoomHub {
         )
           throw new RoomError("올바르지 않은 대전 입력이에요.");
         out.frames = msg.frames;
+      } else if (["netping", "netpong"].includes(msg.type)) {
+        if (!Number.isFinite(msg.at) || msg.at < 0)
+          throw new RoomError("잘못된 지연 측정이에요.");
+        out.at = msg.at;
       } else if (msg.type === "sync") {
         if (!validInt(msg.from, 1, 10_000_000))
           throw new RoomError("입력 순서를 확인할 수 없어요.");

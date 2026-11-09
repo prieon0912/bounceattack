@@ -64,6 +64,7 @@ async function setup(t) {
     await store.close();
   });
   return {
+    store,
     servers,
     client: async (index) => {
       const c = await new Client(
@@ -152,4 +153,43 @@ test("same character choices start an online mirror match", async (t) => {
   );
   assert.equal(started.room.match.p1, 14);
   assert.equal(started.room.match.p2, 14);
+});
+
+
+test("a delayed Redis reply does not serialize later inputs or peer latency probes", async (t) => {
+  const {client, store} = await setup(t);
+  const a = await client(0), b = await client(1);
+  a.send({type:"create", build, character:1, map:6});
+  const host = await a.wait(m=>m.type==="joined");
+  b.send({type:"join", build, code:host.code, character:2});
+  await b.wait(m=>m.type==="joined");
+  a.send({type:"ready", ready:true}); b.send({type:"ready", ready:true});
+  const {room} = await a.wait(m=>m.type==="room"&&m.room.phase==="playing");
+  await b.wait(m=>m.type==="room"&&m.room.phase==="playing");
+  const epoch=room.match.epoch;
+  const originalGet=store.get.bind(store);
+  let release, entered;
+  const blocked=new Promise(resolve=>release=resolve);
+  const started=new Promise(resolve=>entered=resolve);
+  let armed=true;
+  store.get=async key=>{
+    if(armed&&key.includes(":room:")) { armed=false; entered(); await blocked; }
+    return originalGet(key);
+  };
+  t.after(()=>release());
+  a.send({type:"input",epoch,frames:[[4,8]]});
+  await started;
+  a.send({type:"input",epoch,frames:[[5,16]]});
+  const later=await b.wait(m=>m.type==="input",1000);
+  assert.deepEqual(later.frames,[[5,16]]);
+  a.send({type:"netping",epoch,at:123});
+  const probe=await b.wait(m=>m.type==="netping",1000);
+  assert.equal(probe.role,0);
+  b.send({type:"netpong",epoch,at:probe.at});
+  const pong=await a.wait(m=>m.type==="netpong",1000);
+  assert.equal(pong.at,123); assert.equal(pong.role,1);
+  release();
+  assert.deepEqual((await b.wait(m=>m.type==="input")).frames,[[4,8]]);
+  a.send({type:"netping",epoch:"wrong",at:123});
+  assert.match((await a.wait(m=>m.type==="error")).message,/종료/);
 });

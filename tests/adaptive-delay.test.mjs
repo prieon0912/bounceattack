@@ -13,7 +13,7 @@ function runtime(p1, p2) {
   return r.start({ p1, p2, seed: 77 });
 }
 test("each side may change its own input delay mid-match without desync", () => {
-  for (const [p1, p2] of [[1, 2], [5, 9], [14, 14], [20, 33]]) {
+  for (const [p1, p2] of [[1, 2], [5, 9], [14, 14], [20, 33], [35, 35]]) {
     const rs = [runtime(p1, p2), runtime(p1, p2)],
       queue = [],
       faults = [];
@@ -37,7 +37,7 @@ test("each side may change its own input delay mid-match without desync", () => 
         }
       for (let role = 0; role < 2; role++) {
         if (rs[role].tick >= 600) continue;
-        if (clock % 37 === role * 11) syncs[role].setDelay(2 + Math.floor(rand() * 6));
+        if (clock % 37 === role * 11) syncs[role].setDelay(1 + Math.floor(rand() * 7));
         syncs[role].mask = Math.floor(rand() * 64);
         syncs[role].advance(rs[role]);
       }

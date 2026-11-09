@@ -38,7 +38,8 @@ test("production client transport fallback resumes lost WebSockets and preserves
     () => doneReject(Error("Online transport timed out")),
     10000,
   );
-  let closedOnce = false;
+  let closedOnce = false, probed = false;
+  const peerMeasurements = [];
   t.after(async () => {
     clearTimeout(timeout);
     for (const c of clients) c.close();
@@ -54,6 +55,7 @@ test("production client transport fallback resumes lost WebSockets and preserves
         if (role === 0) codeResolve(info.code);
       },
       onError: (message) => doneReject(Error(message)),
+      onStatus: status => { if (status.peerPing) peerMeasurements[role] = status; },
       onRoom: (room) => {
         if (room.phase !== "playing" || runtimes[role]) return;
         const r = new Runtime(project, { headless: true });
@@ -103,6 +105,10 @@ test("production client transport fallback resumes lost WebSockets and preserves
       syncs[role].mask = runtimes[role].tick % 80 < 20 ? 8 : 0;
       syncs[role].advance(runtimes[role]);
     }
+    if (!probed && runtimes[0]?.tick > 10 && runtimes[1]?.tick > 10) {
+      probed = true;
+      for (const client of clients) client.ping();
+    }
     if (!closedOnce && runtimes[0]?.tick > 30) {
       closedOnce = true;
       clients[0].ws.close();
@@ -115,6 +121,10 @@ test("production client transport fallback resumes lost WebSockets and preserves
   t.after(() => clearInterval(pump));
   await done;
   assert.equal(closedOnce, true);
+  for (let role = 0; role < 2; role++) {
+    assert.equal(peerMeasurements[role]?.mode, "relay");
+    assert.ok(peerMeasurements[role].ping >= 0);
+  }
   assert.deepEqual(faults, []);
   assert.deepEqual(
     runtimes.map((r) => r.faults),

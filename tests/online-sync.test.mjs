@@ -12,8 +12,8 @@ function runtime(p1, p2) {
   registerOriginal(r);
   return r.start({ p1, p2, seed: 20261027 });
 }
-test("all 34 fighters stay identical across clients with delayed, reordered input batches", () => {
-  for (let character = 1; character <= 34; character++) {
+test("all 35 fighters stay identical across clients with delayed, reordered input batches", () => {
+  for (let character = 1; character <= 35; character++) {
     const rs = [
         runtime(character, character === 2 ? 1 : 2),
         runtime(character, character === 2 ? 1 : 2),

@@ -1,7 +1,7 @@
 {
   "objects": 372,
   "threads": 1037,
-  "emittedStatementCount": 22390,
+  "emittedStatementCount": 22391,
   "emittedBlockIds": [
     "fzxg",
     "ri1i",
@@ -1023,6 +1023,7 @@
     "wbrk",
     "2kmy",
     "castle-select-create",
+    "michael-select-create",
     "c5oe",
     "9nvi",
     "zqoq",
@@ -22432,7 +22433,7 @@
     "rotate_relative": 662,
     "change_scale_size": 427,
     "delete_clone": 482,
-    "create_clone": 628,
+    "create_clone": 629,
     "locate_xy": 76,
     "repeat_while_true": 76,
     "sound_volume_change": 3,

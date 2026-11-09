@@ -63,6 +63,8 @@ export function createOnlineServer({ local = false, store = null } = {}) {
       lastMessageAt = Date.now(),
       messageBudget = 160,
       lastPulse = 0;
+    const realtime = new Set(["input", "checksum", "sync", "netping", "netpong"]);
+    const inFlight = new Set();
     const attach = async (room) => {
       let attached = false;
       const buffered = [];
@@ -96,53 +98,65 @@ export function createOnlineServer({ local = false, store = null } = {}) {
       try { msg = JSON.parse(String(raw)); } catch {}
       // Report socket RTT separately from the Redis relay queue.
       if (msg?.type === "ping") send({ type: "pong", at: msg.at });
-      queue = queue
-        .then(async () => {
-          try {
-            if (!msg || typeof msg.type !== "string")
-              throw new RoomError("올바르지 않은 요청이에요.");
-            if (["create", "join", "resume", "matchmake"].includes(msg.type)) {
-              if (ctx.code) throw new RoomError("이미 방에 접속해 있어요.");
-              await attach(await hub[msg.type](ctx, msg));
-            } else if (msg.type === "ping") {
-              if (ctx.code && Date.now() - lastPulse > 15000) {
-                lastPulse = Date.now();
-                await store.touch("bounce:v1:room:" + ctx.code, 7200);
-              }
-            } else if (["pick", "map", "ready", "rematch", "claim"].includes(msg.type)) {
-              const room = await hub.action(ctx, msg);
-              if (room.notice)
-                await hub.publish(ctx.code, {
-                  type: "notice",
-                  message: room.notice,
-                });
-            } else if (
-              ["signal", "input", "checksum", "sync", "pause", "forfeit"].includes(
-                msg.type,
-              )
-            ) {
-              if (!ctx.code) throw new RoomError("먼저 방에 입장해 주세요.");
-              await hub.relay(ctx, msg);
-            } else throw new RoomError("지원하지 않는 요청이에요.");
-          } catch (error) {
-            send({
-              type: "error",
-              message:
-                error instanceof RoomError
-                  ? error.message
-                  : "대전 서버에 연결하지 못했어요. Redis 설정과 연결 상태를 확인해 주세요.",
-            });
-          }
-        })
-        .catch(() => {});
+      const handle = async () => {
+        try {
+          if (!msg || typeof msg.type !== "string")
+            throw new RoomError("올바르지 않은 요청이에요.");
+          if (["create", "join", "resume", "matchmake"].includes(msg.type)) {
+            if (ctx.code) throw new RoomError("이미 방에 접속해 있어요.");
+            await attach(await hub[msg.type](ctx, msg));
+          } else if (msg.type === "ping") {
+            if (ctx.code && Date.now() - lastPulse > 15000) {
+              lastPulse = Date.now();
+              await store.touch("bounce:v1:room:" + ctx.code, 7200);
+            }
+          } else if (["pick", "map", "ready", "rematch", "claim"].includes(msg.type)) {
+            const room = await hub.action(ctx, msg);
+            if (room.notice)
+              await hub.publish(ctx.code, {
+                type: "notice",
+                message: room.notice,
+              });
+          } else if (
+            ["signal", "input", "checksum", "sync", "pause", "forfeit", "netping", "netpong"].includes(
+              msg.type,
+            )
+          ) {
+            if (!ctx.code) throw new RoomError("먼저 방에 입장해 주세요.");
+            await hub.relay(ctx, msg);
+          } else throw new RoomError("지원하지 않는 요청이에요.");
+        } catch (error) {
+          send({
+            type: "error",
+            message:
+              error instanceof RoomError
+                ? error.message
+                : "대전 서버에 연결하지 못했어요. Redis 설정과 연결 상태를 확인해 주세요.",
+          });
+        }
+      };
+      // Inputs have explicit frame numbers and Redis atomically checks the session.
+      // Pipeline them after preceding lobby operations instead of paying one Redis
+      // round trip serially for every 60 Hz input. Keep control operations ordered.
+      if (realtime.has(msg?.type)) {
+        if (inFlight.size >= 64) {
+          ws.close(1013, "Input relay overloaded");
+          return;
+        }
+        const task = queue.then(handle).catch(() => {});
+        inFlight.add(task);
+        task.finally(() => inFlight.delete(task));
+      } else {
+        const preceding = [...inFlight];
+        queue = queue.then(() => Promise.allSettled(preceding)).then(handle).catch(() => {});
+      }
     });
     ws.on("close", () => {
-      queue
-        .finally(async () => {
-          await unwatch?.();
-          await hub.leave(ctx);
-        })
-        .catch(() => {});
+      queue.finally(async () => {
+        await Promise.allSettled([...inFlight]);
+        await unwatch?.();
+        await hub.leave(ctx);
+      }).catch(() => {});
     });
     ws.on("error", () => {});
   });

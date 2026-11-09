@@ -122,18 +122,6 @@ export class OnlineConnection {
         this.connect();
         return;
       }
-      if (msg.type === "netping") {
-        this.direct({ type: "netpong", at: msg.at });
-        return;
-      }
-      if (msg.type === "netpong") {
-        this.emit("onStatus", {
-          mode: "direct",
-          connected: true,
-          ping: Math.round(performance.now() - msg.at),
-        });
-        return;
-      }
       if (!this.identity || msg.role === this.identity.role) return;
     }
     if (msg.type === "joined") {
@@ -171,6 +159,20 @@ export class OnlineConnection {
     }
     if (msg.type === "signal") {
       await this.signal(msg.data);
+      return;
+    }
+    if (["netping", "netpong"].includes(msg.type)) {
+      if (!this.identity || msg.role === this.identity.role ||
+          msg.epoch !== this.room?.match?.epoch || !Number.isFinite(msg.at)) return;
+      if (msg.type === "netping") this.gameplay({ type: "netpong", at: msg.at });
+      else {
+        const ping = performance.now() - msg.at;
+        if (ping < 0 || ping > 30000) return;
+        this.emit("onStatus", {
+          mode: direct ? "direct" : "relay", connected: true,
+          ping: Math.round(ping), peerPing: true,
+        });
+      }
       return;
     }
     if (
@@ -234,7 +236,7 @@ export class OnlineConnection {
     if (!globalThis.RTCPeerConnection) return;
     this.offerAt = Date.now();
     const pc = this.createPeer();
-    this.bindChannel(pc.createDataChannel("battle", { ordered: true }));
+    this.bindChannel(pc.createDataChannel("battle", { ordered: false }));
     await pc.setLocalDescription(await pc.createOffer());
     this.command({
       type: "signal",
@@ -361,7 +363,8 @@ export class OnlineConnection {
   ping() {
     if (this.closed || !this.identity) return;
     const at = performance.now();
-    if (this.directReady()) this.direct({ type: "netping", at });
+    if (this.room?.phase === "playing" && this.room.match)
+      this.gameplay({ type: "netping", at });
     else if (this.ws?.readyState === 1) this.command({ type: "ping", at });
   }
   close() {
