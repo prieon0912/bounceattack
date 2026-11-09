@@ -94,8 +94,7 @@ export class Renderer {
         Math.min(1, 1 - (e.effects.transparency || 0) / 100),
       );
       const filters = [];
-      const brightness = e.picture?.id === "michael-select"
-        ? Math.max(-24, e.effects.brightness) : e.effects.brightness;
+      const brightness = e.effects.brightness;
       if (brightness)
         filters.push(`brightness(${Math.max(0, 100 + brightness)}%)`);
       if (e.effects.color)
