@@ -1,14 +1,13 @@
-import { showStatusVisual } from './expanded-secondary-skills.js';
 import { damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
 
 export const MICHAEL_ID = 36;
 const SPORTS = ['basketball', 'football', 'baseball'];
 const BALL = {
-  basketball: { size: 12, gravity: .19, bounce: .86, life: 112 },
+  basketball: { size: 12, gravity: .19, bounce: .9, life: 112 },
   football: { size: 9, gravity: 0, bounce: .91, life: 100 },
-  baseball: { size: 6, gravity: .14, bounce: .865, life: 102 },
+  baseball: { size: 6, gravity: .14, bounce: .95, maxFallSpeed: 32, life: 102 },
 };
-const BAT = { size: 34, gripX: 24, gripY: 77, tipX: 85, tipY: 18, damage: 10, swingTicks: 9 };
+const BAT = { size: 24, gripX: 24, gripY: 77, tipX: 85, tipY: 18, damage: 10, swingTicks: 9 };
 const batRotation = age => age < 0 || age >= 13 ? 0
   : age < BAT.swingTicks ? -12 + age * 12 : 84 * (13 - age) / 4;
 
@@ -128,8 +127,13 @@ export class MichaelSystem {
         const ball = r.originals.get(keys.preview), held = r.originals.get(keys.weapon);
         const direction = keys.attack === 69 ? 1 : -1;
         r.setPicture(held, 'michael-preview-' + keys.weapon);
-        r.setSize(held, 23);
-        Object.assign(held, { x: ball.x + direction * 19, y: ball.y - 6, rotation: 0, visible: ball.visible });
+        r.setSize(held, 39);
+        held.scaleX = Math.abs(held.scaleX) * direction;
+        held.scaleY = Math.abs(held.scaleY);
+        Object.assign(held, {
+          regX: held.width / 2, regY: held.height / 2,
+          x: ball.x + direction * 19, y: ball.y - 2, rotation: 0, visible: ball.visible,
+        });
       }
       return;
     }
@@ -199,7 +203,7 @@ export class MichaelSystem {
             ball.vx = vx * Math.cos(curve) - vy * Math.sin(curve);
             ball.vy = vx * Math.sin(curve) + vy * Math.cos(curve);
           }
-          if (ball.gravity) ball.vy = Math.max(-8, ball.vy - ball.gravity);
+          if (ball.gravity) ball.vy = Math.max(-(ball.maxFallSpeed ?? 8), ball.vy - ball.gravity);
           const steps = Math.max(1, Math.ceil(Math.max(Math.abs(ball.vx), Math.abs(ball.vy)) / 2));
           for (let i = 0; i < steps; i++) {
             const x = e.x, y = e.y;
@@ -283,7 +287,6 @@ export class MichaelSystem {
     const r = this.r, target = 3 - side;
     if (r.num(r.globals.get(target === 1 ? 'jcf6' : 'ec6d')) !== 0) return false;
     r.secondarySkills.state(side).slow = { side: target, value: 4, until: r.tick + 60 };
-    showStatusVisual(r, side, 'slow', 60);
     return true;
   }
 
@@ -330,7 +333,7 @@ export class MichaelSystem {
     } else if (st.sport === 'football') {
       const vertical = this.body(3 - side).y >= this.body(side).y ? 1 : -1;
       this.launch(side, direction * 5.8, 0, 8, { curve: direction * vertical * .026, slow: true });
-    } else this.launch(side, direction * 5.2, 3.8, 8);
+    } else this.launch(side, direction * 20.8, 15.2, 8);
   }
 
   ultimate(side) {
@@ -338,13 +341,17 @@ export class MichaelSystem {
     st.swingAt = r.tick;
     const volley = { hitUntil: 0 };
     const options = { volley, life: 480 };
+    if (st.sport === 'basketball') {
+      options.bounce = 1;
+      options.firstBounceBoost = Math.sqrt(2.5);
+    }
     const damage = st.sport === 'basketball' ? 6 : 4;
     const fire = (degrees, speed) => {
       const angle = degrees * Math.PI / 180;
       this.launch(side, direction * Math.cos(angle) * speed, Math.sin(angle) * speed, damage, options);
     };
     if (st.sport === 'basketball') {
-      for (const angle of [-72, -56, -40, -24, -8]) fire(angle, 5.2);
+      for (const angle of [-72, -56, -40, -24, -8]) fire(angle, 6.24);
     } else if (st.sport === 'football') {
       r.spawn(this.body(side), function* volleys(rt) {
         for (const angles of [[-34, -23], [-7, 7], [23, 34]]) {
@@ -354,7 +361,7 @@ export class MichaelSystem {
         }
       }, 'michael_volleys');
     } else {
-      for (const angle of [-45, -25, -5, 15, 35, 55, 75]) fire(angle, 6);
+      for (const angle of [-45, -25, -5, 15, 35, 55, 75]) fire(angle, 24);
     }
   }
 }

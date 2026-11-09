@@ -94,8 +94,10 @@ export class Renderer {
         Math.min(1, 1 - (e.effects.transparency || 0) / 100),
       );
       const filters = [];
-      if (e.effects.brightness)
-        filters.push(`brightness(${Math.max(0, 100 + e.effects.brightness)}%)`);
+      const brightness = e.picture?.id === "michael-select"
+        ? Math.max(-24, e.effects.brightness) : e.effects.brightness;
+      if (brightness)
+        filters.push(`brightness(${Math.max(0, 100 + brightness)}%)`);
       if (e.effects.color)
         filters.push(`hue-rotate(${e.effects.color * 3.6}deg)`);
       c.filter = filters.join(" ") || "none";

@@ -48,7 +48,7 @@ for (const [sport, count] of [['basketball', 5], ['football', 6], ['baseball', 7
   test(sport + ' ultimate releases the correct number of balls from the normal controls', () => {
     const r = fixture(sport);
     r.keys.add(83);
-    run(r, 12);
+    run(r, sport === 'football' ? 12 : 1);
     assert.equal(r.originals.get('afvb').picture.fileurl, 'assets/michael/profile-' + sport + '.svg');
     assert.equal(balls(r).length, count);
     assert.equal(r.globals.get('qn98'), 38);
@@ -136,13 +136,13 @@ test('online matchmaking preserves both Michael loadouts', async () => {
 
 test('baseball uses a melee basic and reflects a frontal shot with the second skill', () => {
   const r = fixture('baseball', true);
-  Object.assign(r.michael.body(2), { x: 8, y: 0 });
+  Object.assign(r.michael.body(2), { x: 3, y: 0 });
   const hp = r.globals.get('7ir2');
   r.keys.add(69);
   run(r, 9);
   assert.equal(r.globals.get('7ir2'), hp - 10);
   const bat = r.entities.find(e => e.michaelEffect === 'held' && e.combatSide === 1);
-  assert.deepEqual([bat.regX, bat.regY, r.size(bat)], [24, 77, 34]);
+  assert.deepEqual([bat.regX, bat.regY, r.size(bat)], [24, 77, 24]);
   assert.equal(balls(r).length, 0);
   r.keys = new Set([82]);
   run(r, 1);
