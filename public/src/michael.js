@@ -4,7 +4,7 @@ export const MICHAEL_ID = 36;
 const SPORTS = ['basketball', 'football', 'baseball'];
 const BALL = {
   basketball: { size: 12, gravity: .19, bounce: .86, life: 112 },
-  football: { size: 9, gravity: .025, bounce: .91, life: 100 },
+  football: { size: 9, gravity: 0, bounce: .91, life: 100 },
   baseball: { size: 6, gravity: .14, bounce: .73, life: 102 },
 };
 const CONTROLS = [
@@ -185,15 +185,12 @@ export class MichaelSystem {
             const target = 3 - ball.side;
             const victim = rt.michael.body(target);
             if (Math.hypot(e.x - victim.x, e.y - victim.y) > radius + 8 || !rt.castle.canHit(ball.side)) continue;
-            const st = rt.michael.state(ball.side);
-            if (ball.volley && st?.lastVolleyHit?.id === ball.volley && st.lastVolleyHit.until > rt.tick) continue;
+            if (ball.volley?.hitUntil > rt.tick) continue;
             if (rt.michael.intercept(e, target, ball.damage)) {
               if (e.dead) return;
               break;
             }
-            if (ball.volley && st) {
-              st.lastVolleyHit = { id: ball.volley, until: rt.tick + 18 };
-            }
+            if (ball.volley) ball.volley.hitUntil = rt.tick + 18;
             yield* rt.call(context, ball.side === 1 ? 'qy83' : '05j0', [-ball.damage, 0, 1]);
             return;
           }
@@ -275,15 +272,15 @@ export class MichaelSystem {
         }
         if (!defense && !rt.castle.blocked(side)) rt.michael.launch(side, direction * 4, 4.5, 8);
       }, 'michael_step');
-    } else if (st.sport === 'football') this.launch(side, direction * 5.1, 2.8, 8, { gravity: .09 });
+    } else if (st.sport === 'football') this.launch(side, direction * 5.1, 2.8, 8);
     else this.launch(side, direction * 5.2, 3.8, 8);
   }
 
   ultimate(side) {
     const r = this.r, st = this.state(side), direction = this.facing(side);
     st.swingAt = r.tick;
-    const volley = r.tick;
-    const options = { volley, life: 150 };
+    const volley = { hitUntil: 0 };
+    const options = { volley, life: 240 };
     const fire = (degrees, speed) => {
       const angle = degrees * Math.PI / 180;
       this.launch(side, direction * Math.cos(angle) * speed, Math.sin(angle) * speed, 4, options);
