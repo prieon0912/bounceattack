@@ -127,12 +127,12 @@ export class MichaelSystem {
         const ball = r.originals.get(keys.preview), held = r.originals.get(keys.weapon);
         const direction = keys.attack === 69 ? 1 : -1;
         r.setPicture(held, 'michael-preview-' + keys.weapon);
-        r.setSize(held, 33);
+        r.setSize(held, r.size(ball) / .458);
         held.scaleX = Math.abs(held.scaleX) * direction;
         held.scaleY = Math.abs(held.scaleY);
         Object.assign(held, {
-          regX: held.width / 2, regY: held.height / 2,
-          x: ball.x + direction * 35, y: ball.y, rotation: 0, visible: ball.visible,
+          regX: held.width * .398, regY: held.height / 2,
+          x: ball.x, y: ball.y, rotation: 0, visible: ball.visible,
         });
       }
       return;
