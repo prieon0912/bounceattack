@@ -22,7 +22,7 @@ module.exports = function addEcola(project) {
     const art = form => ['afvb', '8svk'].includes(id) ? 'profile-' + form : ['j5y7', 'zyy3'].includes(id) ? 'preview' : form;
     const baseArt = art('base');
     const baseDimension = baseArt === 'preview'
-      ? { ...dimension, width: dimension.width * 1.2, height: dimension.height * 1.2 }
+      ? { ...dimension, width: dimension.width * 1.24, height: dimension.height * 1.24 }
       : dimension;
     pictures.splice(36, 0, picture('ecola-base', baseArt, baseDimension));
     if (!['j5y7', 'zyy3'].includes(id))
