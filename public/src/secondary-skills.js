@@ -1,3 +1,4 @@
+import { ECOLA_ID, ecolaFission } from './ecola.js';
 import { michaelDefense } from './michael.js';
 import { harlanStopgap } from './harlan-stopgap.js';
 import { princeRoyalFlag } from './prince-flag.js';
@@ -10,7 +11,7 @@ import { NEW_SECONDARY_SKILLS, restorePresentation } from './expanded-secondary-
 import { brandFireZone } from "./brand-fire-zone.js";
 import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
 import { smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic } from "./additional-secondary-skills.js";
-export const SECONDARY_SKILLS = [harlanStopgap, princeRoyalFlag, stenBarricade, brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, ...STRATEGIC_SECONDARY_SKILLS, castleCastling, michaelDefense];
+export const SECONDARY_SKILLS = [harlanStopgap, princeRoyalFlag, stenBarricade, brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, ...STRATEGIC_SECONDARY_SKILLS, castleCastling, michaelDefense, ecolaFission];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
   // Nevil's archived 1P body references a black/green variant; use the same orange
   // body as 2P and the original selector, preserving picture id, size and hit geometry.
@@ -37,7 +38,7 @@ export class SecondarySkillSystem {
     this.definitions = new Map();
     for (const definition of definitions) {
       const { character, manaCost = 0, cooldownTicks = 0, cast } = definition;
-      if (!Number.isInteger(character) || character < 1 || character > 36 ||
+      if (!Number.isInteger(character) || character < 1 || character > ECOLA_ID ||
           this.definitions.has(character) || !Number.isFinite(manaCost) || manaCost < 0 ||
           !Number.isInteger(cooldownTicks) || cooldownTicks < 0 || typeof cast !== "function")
         throw Error("Invalid secondary skill definition");

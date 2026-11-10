@@ -7,6 +7,9 @@ for (const path of [
   "public/src/runtime.js",
   "public/src/castle.js",
   "public/src/michael.js",
+  "public/src/ecola.js",
+  ...fs.readdirSync(new URL("../public/assets/ecola/", import.meta.url)).sort()
+    .map(name => "public/assets/ecola/" + name),
   "public/assets/michael/attack.svg",
   "public/assets/michael/baseball.svg",
   "public/assets/michael/basketball.svg",

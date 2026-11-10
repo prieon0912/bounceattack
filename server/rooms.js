@@ -5,6 +5,7 @@ import {
   createHash,
   timingSafeEqual,
 } from "node:crypto";
+import { ECOLA_ID } from "../public/src/ecola.js";
 const ONLINE_MAP = 6;
 const TTL = 7200,
   prefix = "bounce:v1:",
@@ -15,7 +16,7 @@ const validInt = (n, min, max) => Number.isInteger(n) && n >= min && n <= max;
 const skillChoice = (character, choice) => {
   if (choice !== undefined && choice !== "primary" && choice !== "secondary")
     throw new RoomError("스킬 선택을 확인해 주세요.");
-  if (choice === "secondary" && ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36].includes(character))
+  if (choice === "secondary" && !validInt(character, 1, ECOLA_ID))
     throw new RoomError("이 캐릭터는 아직 세컨드 스킬이 없어요.");
   return choice || "primary";
 };
@@ -84,7 +85,7 @@ export class RoomHub {
   }
   async create(ctx, msg) {
     this.validateBuild(msg.build);
-    if (!validInt(msg.character, 1, 36) || !validInt(msg.map, 1, 6))
+    if (!validInt(msg.character, 1, ECOLA_ID) || !validInt(msg.map, 1, 6))
       throw new RoomError("캐릭터와 전장을 확인해 주세요.");
     skillChoice(msg.character, msg.skill);
     ctx.token = randomBytes(24).toString("hex");
@@ -121,7 +122,7 @@ export class RoomHub {
   async join(ctx, msg) {
     this.validateBuild(msg.build);
     const code = String(msg.code || "").toUpperCase();
-    if (!/^[A-F0-9]{8}$/.test(code) || !validInt(msg.character, 1, 36))
+    if (!/^[A-F0-9]{8}$/.test(code) || !validInt(msg.character, 1, ECOLA_ID))
       throw new RoomError("8자리 방 코드를 확인해 주세요.");
     skillChoice(msg.character, msg.skill);
     ctx.token = randomBytes(24).toString("hex");
@@ -150,7 +151,7 @@ export class RoomHub {
   }
   async matchmake(ctx, msg) {
     this.validateBuild(msg.build);
-    if (!validInt(msg.character, 1, 36))
+    if (!validInt(msg.character, 1, ECOLA_ID))
       throw new RoomError("캐릭터를 선택해 주세요.");
     // Online matchmaking always plays on 미션존 (map 6) for now.
     const own = await this.create(ctx, { ...msg, map: ONLINE_MAP });
@@ -239,7 +240,7 @@ export class RoomHub {
           throw new RoomError("이미 끝난 대전이에요.");
         if (r.match.winner === undefined) r.match.winner = ctx.role;
       } else if (msg.type === "pick") {
-        if (r.phase !== "lobby" || !validInt(msg.character, 1, 36))
+        if (r.phase !== "lobby" || !validInt(msg.character, 1, ECOLA_ID))
           throw new RoomError("지금은 캐릭터를 바꿀 수 없어요.");
         p.skill = skillChoice(msg.character, msg.skill);
         p.character = msg.character;

@@ -301,10 +301,11 @@ export class MichaelSystem {
     if (!this.active(side) || !st || st.guardUntil <= r.tick || r.castle.blocked(side)) return false;
     const ball = entity.michaelBall;
     const chessShot = entity.castleEffect === 'projectile';
+    const ecolaShot = entity.ecolaEffect === 'shot' && !entity.ecolaFakeShot;
     const native = entity.clone && entity.def.barricadeDamage &&
       r.threads.some(thread => thread.e === entity && !thread.cancelled && thread.event === 'when_clone_start');
     const owner = ball?.side ?? entity.combatSide ?? (native ? 3 - side : null);
-    if ((!ball && !native && !chessShot) || owner !== 3 - side) return false;
+    if ((!ball && !native && !chessShot && !ecolaShot) || owner !== 3 - side) return false;
     const player = this.body(side), direction = this.facing(side);
     if ((entity.x - player.x) * direction < -2) return false;
     if (entity.dead) return false;

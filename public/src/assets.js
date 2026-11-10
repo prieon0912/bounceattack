@@ -70,14 +70,15 @@ export class Assets {
       return this.pending.get(picture.fileurl);
     const task = (async () => {
       let image;
+      const preferPng = picture.pngFallback !== false && picture.fileurl.endsWith(".svg");
       try {
         image = await this.decode(
-          picture.fileurl.endsWith(".svg")
+          preferPng
             ? picture.fileurl.replace(/\.svg$/, ".png")
             : picture.fileurl,
         );
       } catch (error) {
-        if (!picture.fileurl.endsWith(".svg")) throw error;
+        if (!preferPng) throw error;
         image = await this.decode(picture.fileurl);
       }
       const width = Math.max(1, Math.round(picture.dimension.width));
