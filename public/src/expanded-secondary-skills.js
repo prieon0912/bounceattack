@@ -14,15 +14,18 @@ function status(r,s,type,amount,ticks){
  r.spawn(e,function*(rt){yield ticks;if(rt.get(e,generation)===token)rt.set(e,id,0);},'secondary_status');
 }
 // Use the original status artwork even when its native script is character-gated.
-function statusVisual(r,s,type,ticks){
+function statusVisual(r,s,type,ticks,{fitBody=false,white=false}={}){
  const foe=3-s,object=type==='root'?ids(foe,'n095','2eo3'):type==='slow'?ids(foe,'5kuy','t0fv'):ids(foe,'hk0k','j2qx');
  const original=r.originals.get(object),picture=original.def.sprite.pictures[type==='slow'?1:0];
  const marker=r.makeEntity(r.defs.get('hb4u'));Object.assign(marker,{clone:true,combatSide:foe,secondaryEffect:`secondary-${type}`,picture,width:picture.dimension.width,height:picture.dimension.height,regX:picture.dimension.width/2,regY:picture.dimension.height/2,x:body(r,foe).x,y:body(r,foe).y,visible:true,scaleX:1,scaleY:1,rotation:0});
- r.setSize(marker,type==='stun'?18:type==='root'?26:22);r.entities.unshift(marker);
+ const avatar=r.originals.get(ids(foe,'n230','ocqj'));
+ if(white)marker.effects.whiteSilhouette=true;
+ r.setSize(marker,fitBody?r.size(avatar):type==='stun'?18:type==='root'?26:22);r.entities.unshift(marker);
  r.spawn(marker,function*(rt){try{for(let tick=0;tick<ticks&&alive(rt,foe);tick++){
   if(type==='root'&&rt.num(rt.globals.get(ids(foe,'05ze','1vu0')))<=0)break;
   if(type==='stun'&&rt.num(rt.globals.get(ids(foe,'8w41','wyyq')))===0)break;
   const target=body(rt,foe);marker.x=target.x;marker.y=target.y+(type==='stun'?15:type==='slow'?-7:0);marker.visible=visibleTarget(rt,s)&&!(type==='stun'&&original.visible);
+  if(fitBody)rt.setSize(marker,rt.size(avatar));
   if(type==='stun')marker.rotation=Math.sin(tick/6)*12;
   if(type==='slow')marker.effects.transparency=20+30*(tick%20)/20;
   yield 1;

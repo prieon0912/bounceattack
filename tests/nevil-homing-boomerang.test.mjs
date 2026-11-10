@@ -25,7 +25,7 @@ test("outbound boomerang follows each new target position using original project
   const vx=e.x-x,vy=e.y-y,tx=target.x-x,ty=target.y-y;
   if(r.secondarySkills.state(1).boomerang.phase==="outbound"&&Math.hypot(vx,vy)>1e-6){assert.ok(Math.abs(vx*ty-vy*tx)<1e-6);checks++;}
  }
- assert.ok(checks>25);assert.deepEqual(r.faults,[]);
+ assert.ok(checks>20);assert.deepEqual(r.faults,[]);
 });
 test("return re-aims at the moving caster each tick and catches within the original 18 units on both sides",()=>{
  for(const side of [1,2]){
@@ -51,8 +51,9 @@ test("return re-aims at the moving caster each tick and catches within the origi
 test("each leg deals original basic damage 8 once, with matching 2P behavior",()=>{
  for(const [p1,p2,side]of [[3,2,1],[2,3,2]]){
   const r=game(p1,p2),hpId=side===1?"7ir2":"akf6",hp=r.num(r.globals.get(hpId));
+  r.originals.get(side===1?"n8fg":"00h9").x=side===1?30:-30;
   step(r,side===1?16:0,side===2?16:0);
-  for(let i=0;i<34;i++)step(r);
+  for(let i=0;i<22;i++)step(r);
   assert.equal(hp-r.num(r.globals.get(hpId)),8,"outbound hit");
   for(let i=0;i<250;i++)step(r);
   assert.equal(hp-r.num(r.globals.get(hpId)),16,"one hit each leg");

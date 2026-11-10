@@ -5,7 +5,7 @@ export const CASTLE = Object.freeze({id:35,startMana:100,maxMana:100,skillMana:4
 export const PIECES = Object.freeze({
  pawn:{name:'폰',damage:4,range:62.5,interval:33},knight:{name:'나이트',damage:6,range:96.1125,dash:54.8625,interval:39},
  bishop:{name:'비숍',damage:7,range:110,interval:39},rook:{name:'룩',damage:8,range:158.4,interval:42},
- queen:{name:'퀸',damage:10,range:184.8,interval:36},king:{name:'킹',damage:12,range:140,interval:39}
+ queen:{name:'퀸',damage:8,range:184.8,interval:36},king:{name:'킹',damage:12,range:140,interval:39}
 });
 export function promotedPiece(random){const n=random()*100;return n<30?'knight':n<60?'bishop':n<80?'rook':n<95?'queen':'king';}
 const sid=(s,a,b)=>s===1?a:b,body=(r,s)=>r.originals.get(sid(s,'00h9','n8fg'));
@@ -35,7 +35,7 @@ export class CastleSystem{
   yield* r.call(c,s===1?'qy83':'05j0',[-damage,0,1]);this.reward(s,attack);if(effect)this.status(foe,effect);return true;
  }
  status(s,effect){const r=this.r,e=body(r,s);if(r.num(r.globals.get(sid(s,'jcf6','ec6d')))!==0)return;
-  if(effect.root&&!effect.push){r.set(e,info(s).root,Math.max(r.num(r.get(e,info(s).root)),effect.root*.02+.02));showStatusVisual(r,3-s,'root',effect.root);}
+  if(effect.root&&!effect.push){r.set(e,info(s).root,Math.max(r.num(r.get(e,info(s).root)),effect.root*.02+.02));showStatusVisual(r,3-s,'root',effect.root,{fitBody:true,white:true});}
   if(effect.push){this.knockback(s,effect.push,effect.root?12:0);if(effect.root)r.spawn(e,function*(rt){yield 12;if(rt.castle.alive(s))rt.castle.status(s,{root:effect.root});},'castle_push_root');}
   if(effect.stun&&r.num(r.get(e,info(s).stun))===0){const id=info(s).stun,generation=sid(s,'bpv0','bpv5');r.add(e,generation,1);const token=r.get(e,generation);r.set(e,id,1);showStatusVisual(r,3-s,'stun',effect.stun);r.spawn(e,function*(rt){yield effect.stun;if(rt.get(e,generation)===token)rt.set(e,id,0);},'castle_stun');}
   if(effect.slow){const state=this.state(3-s);if(state)state.slow={side:s,value:effect.slow,until:r.tick+(effect.ticks||60)};showStatusVisual(r,3-s,'slow',effect.ticks||60);}

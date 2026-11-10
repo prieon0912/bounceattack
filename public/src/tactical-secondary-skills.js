@@ -1,7 +1,7 @@
 import { installationCombat, damageInstallationsInRadius, projectileInstallationContact, coneInstallationContact, damageInstallation } from './barricade.js';
 import { prepareSkill as prepare, skillVisual as visual } from './additional-secondary-skills.js';
 import { showStatusVisual } from './expanded-secondary-skills.js';
-export const RAGE_QUIT=Object.freeze({manaCost:34,radius:110,damage:7,push:50,slow:8,slowTicks:90,cooldownTicks:60});
+export const RAGE_QUIT=Object.freeze({manaCost:34,radius:110,damage:7,push:80,slow:8,slowTicks:90,cooldownTicks:60});
 export const HUNTING_TRAP=Object.freeze({manaCost:30,durationTicks:360,rootTicks:90,initialSpeed:8,speedDecay:.02,initialTilt:1.5,tiltDecay:.06,flightTicks:130,radius:28,cooldownTicks:360});
 export const TURRET=Object.freeze({manaCost:51,health:20,decayTicks:60,decayDamage:2,maxShots:6,intervalTicks:180,cooldownTicks:0,triggerRadius:70,damagePerShot:3,baseBurstDamage:2,push:25,slow:8,slowTicks:90});
 const id=(s,a,b)=>s===1?a:b,body=(r,s)=>r.originals.get(id(s,'00h9','n8fg'));
@@ -19,7 +19,7 @@ export const logitechRageQuit=definition(34,'빡종',RAGE_QUIT,'logitech-rage-qu
   r.spawn(wave,function*(rt){try{for(let i=1;i<=18&&alive(rt,side);i++){rt.setSize(wave,2+(cfg.radius*2-2)*(1-(1-i/18)**2));wave.effects.transparency=40+i/18*60;yield 1;}}finally{wave.dead=true;}},'rage_wave');
   if(!alive(r,3-side)||!visible(r,side)||!visible(r,3-side)||Math.hypot(caster.x-target.x,caster.y-target.y)>cfg.radius)return;
   yield* r.call(c,id(side,'qy83','05j0'),[-cfg.damage,0,1]);if(!vulnerable(r,3-side))return;
-  const direction=Math.sign(target.x-caster.x)||(r.num(r.globals.get(id(side,'etjn','846x')))===1?1:-1);r.add(target,id(3-side,'c9o4','lgp6'),direction*cfg.push*.625);state.slow={side:3-side,value:cfg.slow,until:r.tick+cfg.slowTicks};showStatusVisual(r,side,'slow',cfg.slowTicks);
+  const direction=Math.sign(target.x-caster.x)||(r.num(r.globals.get(id(side,'etjn','846x')))===1?1:-1);r.add(target,id(3-side,'c9o4','lgp6'),direction*cfg.push*.625);state.slow={side:3-side,value:cfg.slow,until:r.tick+cfg.slowTicks};
  }
 });
 export const amazonesHuntingTrap=definition(9,'사냥용 덫',HUNTING_TRAP,'amazones-hunting-trap','적을 속박시키는 그물 덫을 발사합니다.',{
@@ -434,7 +434,7 @@ export const invaderPulse=definition(13,'공명 파열',INVADER_PULSE,'invader-p
 });
 export const REAPER_MARCH=Object.freeze({manaCost:32,cooldownTicks:60,distance:100,dashTicks:18,radius:35,dashDamage:5,slashDamage:3,rootTicks:60});
 export const chronosReaperMarch=definition(15,'사신의 행차',REAPER_MARCH,'chronos-reaper-march','돌진한 후 주위를 낫으로 뱁니다.',{
- prepare(p){this.effectPictures=[alias(p,'c6xa','reaper-march-scythe')];prepare.call(this,p);},
+ prepare(p){this.effectPictures=[alias(p,'c6xa','reaper-march-scythe'),['reaper-march-bind','assets/secondary/chronos-reaper-root.svg',{width:100,height:100}]];prepare.call(this,p);},
  canCast(r,side){return r.num(r.get(body(r,side),id(side,'05ze','1vu0')))<=0;},
  blocksKey(r,key,side,state){return state.reaperDashing&&(side===1?[65,68,87,69,83]:[37,39,38,13,40]).includes(key);},
  *cast(r,c,{side,caster,target,state}){
@@ -476,13 +476,14 @@ export const chronosReaperMarch=definition(15,'사신의 행차',REAPER_MARCH,'c
    r.add(slash,'ha8n',1);r.set(slash,'lq8z',1);
    yield* r.call(hitContext,damageFunction,[-cfg.dashDamage,0,1]);
    if(root(r,side,cfg.rootTicks,false)){
-    const mark=visual(r,side,'reaper-march-scythe',target.x,target.y-7,28,'reaper-march-root');
+    const avatar=r.originals.get(id(side,'ocqj','n230'));
+    const mark=visual(r,side,'reaper-march-bind',target.x,target.y,r.size(avatar)*1.2,'reaper-march-root');
     mark.effects.transparency=20;
-    mark.rotation=direction*90;
     r.spawn(mark,function*(rt){
      try{
       for(let age=0;age<cfg.rootTicks&&alive(rt,3-side)&&rt.num(rt.get(target,id(side,'1vu0','05ze')))>0;age++){
-       mark.x=target.x;mark.y=target.y-7;
+       mark.x=target.x;mark.y=target.y;
+       rt.setSize(mark,rt.size(avatar)*1.2);
        mark.visible=visible(rt,3-side);
        mark.effects.transparency=20+60*Math.max(0,(age-48)/12);
        yield 1;

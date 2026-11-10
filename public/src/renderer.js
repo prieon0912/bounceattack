@@ -94,6 +94,7 @@ export class Renderer {
         Math.min(1, 1 - (e.effects.transparency || 0) / 100),
       );
       const filters = [];
+      if (e.effects.whiteSilhouette) filters.push("brightness(0) invert(1)");
       const brightness = e.effects.brightness;
       if (brightness)
         filters.push(`brightness(${Math.max(0, 100 + brightness)}%)`);

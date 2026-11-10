@@ -1,7 +1,7 @@
 // Original Nevil basic: size 20, contact radius 18, 70 outbound ticks,
 // velocity 7 / 1.3 with 0.1 deceleration, and one 8-damage hit per leg.
 export const HOMING_BOOMERANG = Object.freeze({
-  manaCost: 24, damage: 8, size: 20, hitRadius: 18, outboundTicks: 45, outboundRange: 160,
+  manaCost: 24, damage: 8, size: 20, hitRadius: 18, outboundTicks: 45, outboundRange: 150,
   initialSpeed: 7, acceleration: 0.1, speedDivisor: 1.3, catchRadius: 18,
 });
 export const nevilHomingBoomerang = {
