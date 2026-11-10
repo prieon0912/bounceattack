@@ -19,7 +19,7 @@ module.exports = function addEcola(project) {
   for (const id of ['j5y7', 'zyy3', 'n230', 'ocqj', 'afvb', '8svk']) {
     const pictures = object(id).sprite.pictures;
     const dimension = pictures[35].dimension;
-    const art = form => ['afvb', '8svk'].includes(id) ? 'profile-' + form : form;
+    const art = form => ['afvb', '8svk'].includes(id) ? 'profile-' + form : ['j5y7', 'zyy3'].includes(id) ? 'preview' : form;
     pictures.splice(36, 0, picture('ecola-base', art('base'), dimension));
     if (!['j5y7', 'zyy3'].includes(id))
       pictures.push(...forms.slice(1).map(form => picture('ecola-' + form, art(form), dimension)));

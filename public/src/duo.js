@@ -334,13 +334,18 @@ export class DuoSystem {
     r.spawn(e, function* fly(rt, context) {
       let vy = 1.7;
       try {
-        for (let age = 0; age < 68 && rt.castle.alive(side); age++) {
+        flight: for (let age = 0; age < 68 && rt.castle.alive(side); age++) {
           const enemy = rt.duo.body(3 - side);
           vy -= .15;
           for (let part = 0; part < 3; part++) {
+            const x = e.x, y = e.y;
             e.x += direction * 1.35;
             e.y += vy / 3;
-            if (Math.abs(e.x) > 239 || e.y < -138 || rt.duo.terrain(e)) return;
+            if (Math.abs(e.x) > 239 || e.y < -138 || rt.duo.terrain(e)) {
+              e.x = x;
+              e.y = y;
+              break flight;
+            }
             rt.duo.hitMinion(3 - side, e, 4);
             if (projectileInstallationContact(rt, e)) {
               damageInstallationsInRadius(rt, side, e, 8, 4);
@@ -352,6 +357,10 @@ export class DuoSystem {
             }
           }
           e.rotation += direction * 17;
+          yield 1;
+        }
+        for (let tick = 1; tick <= 12 && rt.castle.alive(side); tick++) {
+          e.effects.transparency = tick * 100 / 12;
           yield 1;
         }
       } finally { e.dead = true; }
