@@ -15,13 +15,13 @@ function menu() {
   for (let i = 0; i < 15; i++) r.step();
   return r;
 }
-test("original selector initializes all 36 clone positions before shared counters are reused", () => {
+test("original selector initializes all 37 clone positions before shared counters are reused", () => {
   const r = menu(),
     groups = ["3y3g", "k089", "646h", "a091", "ncwe"];
   const tiles = r.entities.filter(
     (e) => e.clone && groups.includes(e.objectId),
   );
-  assert.equal(tiles.length, 36);
+  assert.equal(tiles.length, 37);
   for (const id of groups) {
     const row = tiles.filter((e) => e.objectId === id);
     assert.equal(new Set(row.map((e) => e.x)).size, row.length);
@@ -49,5 +49,5 @@ test("source menu scenes initialize and transitions cancel the previous scene", 
 const selectorIndex={ '3y3g':'9k0l',k089:'ttn8','646h':'olrb',a091:'dytc',ncwe:'eti2' };
 const advance=(r,n)=>{for(let i=0;i<n;i++)r.step();};
 function tileFor(r,character){r.globals.set('iqtj',character>24?1:0);advance(r,2);return r.entities.find(e=>e.clone&&selectorIndex[e.objectId]&&r.num(r.get(e,selectorIndex[e.objectId]))===character);}
-test('all 36 offline choices dim and reject reselection, but an unchosen tile still confirms for 2P',()=>{for(let character=1;character<=36;character++){const r=menu(),tile=tileFor(r,character);assert.ok(tile);r.click(tile.x,tile.y);advance(r,3);assert.equal(r.num(r.globals.get('jc9i')),character);assert.equal(r.num(r.globals.get('jx38')),2);r.mouse.x=230;r.mouse.y=120;advance(r,35);assert.equal(tile.effects.brightness,-50);r.click(tile.x,tile.y);advance(r,3);assert.equal(r.num(r.globals.get('jx38')),2,`locked ${character}`);assert.notEqual(r.num(r.globals.get('s5vb')),character);const other=character%36+1,next=tileFor(r,other);r.click(next.x,next.y);advance(r,3);assert.equal(r.num(r.globals.get('ymu4')),other);assert.equal(r.num(r.globals.get('jx38')),0);assert.deepEqual(r.faults,[]);}});
-test('random offline picks record the same confirmed locks and cannot be reselected manually',()=>{const r=menu(),random=r.originals.get('yvxw');r.random=()=>.999;r.click(random.x,random.y);advance(r,3);assert.equal(r.globals.get('jc9i'),36);r.mouse.x=230;r.mouse.y=120;advance(r,35);const tile=tileFor(r,36);r.click(tile.x,tile.y);advance(r,3);assert.equal(r.num(r.globals.get('jx38')),2);r.random=()=>0;r.click(random.x,random.y);advance(r,4);assert.equal(r.globals.get('ymu4'),1);assert.equal(r.num(r.globals.get('jx38')),0);assert.deepEqual(r.faults,[]);});
+test('all 37 offline choices dim and reject reselection, but an unchosen tile still confirms for 2P',()=>{for(let character=1;character<=37;character++){const r=menu(),tile=tileFor(r,character);assert.ok(tile);r.click(tile.x,tile.y);advance(r,3);assert.equal(r.num(r.globals.get('jc9i')),character);assert.equal(r.num(r.globals.get('jx38')),2);r.mouse.x=230;r.mouse.y=120;advance(r,35);assert.equal(tile.effects.brightness,-50);r.click(tile.x,tile.y);advance(r,3);assert.equal(r.num(r.globals.get('jx38')),2,`locked ${character}`);assert.notEqual(r.num(r.globals.get('s5vb')),character);const other=character%37+1,next=tileFor(r,other);r.click(next.x,next.y);advance(r,3);assert.equal(r.num(r.globals.get('ymu4')),other);assert.equal(r.num(r.globals.get('jx38')),0);assert.deepEqual(r.faults,[]);}});
+test('random offline picks record the same confirmed locks and cannot be reselected manually',()=>{const r=menu(),random=r.originals.get('yvxw');r.random=()=>.999;r.click(random.x,random.y);advance(r,3);assert.equal(r.globals.get('jc9i'),37);r.mouse.x=230;r.mouse.y=120;advance(r,35);const tile=tileFor(r,37);r.click(tile.x,tile.y);advance(r,3);assert.equal(r.num(r.globals.get('jx38')),2);r.random=()=>0;r.click(random.x,random.y);advance(r,4);assert.equal(r.globals.get('ymu4'),1);assert.equal(r.num(r.globals.get('jx38')),0);assert.deepEqual(r.faults,[]);});

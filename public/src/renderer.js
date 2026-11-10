@@ -51,7 +51,7 @@ export class Renderer {
     const arenaBackground = night && drawOrder.find(e => e.objectId === "m9cz" && e.visible && !e.dead);
     if (night && !arenaBackground) drawNightSky(c, night);
     for (const e of drawOrder) {
-      if (e.dead || runtime.secondarySkills.hidden(e) || runtime.castle.hidden(e)) continue;
+      if (e.dead || e.ecolaHidden || runtime.secondarySkills.hidden(e) || runtime.castle.hidden(e)) continue;
       // Entry's brush has flat (butt) ends; round caps made the HP/MP bars
       // poke out of the slanted (trapezoid) frame. Consecutive segments with
       // the same style are stroked as one polyline so corners stay joined.
@@ -89,12 +89,17 @@ export class Renderer {
       c.translate(e.x, -e.y);
       c.rotate((e.rotation * Math.PI) / 180);
       c.scale(e.scaleX, e.scaleY);
+      if (e.ecolaPose) {
+        c.rotate(e.ecolaPose.tilt);
+        c.scale(e.ecolaPose.x, e.ecolaPose.y);
+      }
       c.globalAlpha = Math.max(
         0,
         Math.min(1, 1 - (e.effects.transparency || 0) / 100),
       );
       const filters = [];
       if (e.effects.whiteSilhouette) filters.push("brightness(0) invert(1)");
+      if (e.ecolaPose?.flash) filters.push("brightness(2.1) saturate(.65)");
       const brightness = e.effects.brightness;
       if (brightness)
         filters.push(`brightness(${Math.max(0, 100 + brightness)}%)`);
@@ -144,7 +149,7 @@ export class Renderer {
           );
         }
       } else {
-        const asset = this.assets.get(e.picture);
+        const asset = this.assets.get(e.ecolaPose?.picture ?? e.picture);
         if (asset)
           c.drawImage(asset.image, -e.regX, -e.regY, e.width, e.height);
       }
