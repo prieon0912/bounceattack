@@ -22,6 +22,20 @@ npm start
 - 온라인에서는 각자 자기 캐릭터만 조작합니다. 두 사람 모두 A/D, W, E/R/S를 사용할 수 있고 2P용 방향키·O/P/↓도 같은 동작으로 매핑됩니다.
 - 온라인 배포에는 아래의 Redis 연결이 필요합니다. 로컬 실행은 메모리 방 저장소를 사용하므로 설치 없이 두 브라우저로 테스트할 수 있습니다.
 
+## Render 배포
+
+GitHub에 이 변경을 푸시한 뒤 Render에서 **New → Blueprint**로 저장소를 연결합니다. 루트의 `render.yaml`이 싱가포르의 무료 Node Web Service 한 개를 설정합니다. 기존 Render 서비스에 적용하려면 아래 값을 사용합니다.
+
+| 항목 | 값 |
+|---|---|
+| 서비스 유형 | Web Service |
+| Build Command | `npm ci && npm run build` |
+| Start Command | `npm start` |
+| Health Check Path | `/healthz` |
+| 환경 변수 | `HOST=0.0.0.0` |
+
+게임 페이지와 온라인 WebSocket은 같은 주소에서 제공됩니다. 기본 단일 인스턴스에서는 서버 메모리에 대전 방을 저장하므로 Redis가 없어도 매칭됩니다. 재시작하면 열려 있던 방은 사라집니다. Redis를 사용하려면 Render 환경 변수에 `REDIS_URL`을 추가하세요. 기존 Vercel 프로젝트에 설정한 환경 변수는 자동으로 복사되지 않습니다.
+
 ## Vercel 배포
 
 1. Vercel에서 **Add New → Project**를 선택하고 `prieon0912/bounceattack` 저장소를 연결합니다.
