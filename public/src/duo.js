@@ -30,7 +30,7 @@ const MAX_PEELS = 12;
 const isDuo = id => id === PHAGE_ID || id === BANANA_ID;
 
 function loadout(character, primaryPictureId, secondaryPictureId, details) {
-  const art = id => `assets/${id}.svg`;
+  const art = id => `assets/${id}-icon.svg`;
   return {
     character, primaryPictureId, secondaryPictureId, lockVariable: false,
     primaryIcon: art(primaryPictureId), icon: art(secondaryPictureId), ...details,

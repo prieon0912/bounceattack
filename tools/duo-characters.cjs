@@ -39,7 +39,7 @@ module.exports = function addDuoCharacters(project) {
     }
     for (const [id, art] of [['pyez', fighter.attack], ['o9rj', fighter.skill], ['4ffm', fighter.ultimate]]) {
       const pictures = object(id).sprite.pictures;
-      pictures.splice(index, 0, picture(art, art, pictures[index - 1].dimension));
+      pictures.splice(index, 0, picture(art, art + '-icon', pictures[index - 1].dimension));
     }
     const portrait = fighter.base.split('/')[0] + '/portrait';
     tile.sprite.pictures[index - 32] = picture(`duo-select-${fighter.id}`, portrait, tile.sprite.pictures[4].dimension);
