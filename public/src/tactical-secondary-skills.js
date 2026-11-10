@@ -1,8 +1,8 @@
 import { installationCombat, damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
 import { prepareSkill as prepare, skillVisual as visual } from './additional-secondary-skills.js';
 import { showStatusVisual } from './expanded-secondary-skills.js';
-export const RAGE_QUIT=Object.freeze({manaCost:34,radius:110,damage:7,push:50,slow:8,slowTicks:90,cooldownTicks:300});
-export const HUNTING_TRAP=Object.freeze({manaCost:30,durationTicks:360,rootTicks:90,initialSpeed:8,speedDecay:.02,initialTilt:1.5,tiltDecay:.06,flightTicks:130,radius:28,cooldownTicks:300});
+export const RAGE_QUIT=Object.freeze({manaCost:34,radius:110,damage:7,push:50,slow:8,slowTicks:90,cooldownTicks:60});
+export const HUNTING_TRAP=Object.freeze({manaCost:30,durationTicks:360,rootTicks:90,initialSpeed:8,speedDecay:.02,initialTilt:1.5,tiltDecay:.06,flightTicks:130,radius:28,cooldownTicks:360});
 export const TURRET=Object.freeze({manaCost:51,health:20,decayTicks:60,decayDamage:2,maxShots:6,intervalTicks:180,cooldownTicks:0,triggerRadius:70,damagePerShot:3,baseBurstDamage:2,push:25,slow:8,slowTicks:90});
 const id=(s,a,b)=>s===1?a:b,body=(r,s)=>r.originals.get(id(s,'00h9','n8fg'));
 const alive=(r,s)=>r.scene==='7dwq'&&r.num(r.globals.get(id(s,'akf6','7ir2')))>0&&r.num(r.globals.get('r71b'))===0;
@@ -112,7 +112,7 @@ export const boomTurret=definition(23,'터렛',TURRET,'boom-turret','앞뒤로 �
  }
 });
 const JAB={manaCost:18,cooldownTicks:48,range:44.2,damage:5};
-const PILLAR={manaCost:26,cooldownTicks:180,offset:24,width:24,height:56,damage:4,lift:1.35,slow:8,slowTicks:120};
+const PILLAR={manaCost:26,cooldownTicks:120,offset:24,width:24,height:56,damage:4,lift:1.35,slow:8,slowTicks:120};
 const canStrike=(r,s)=>[s,3-s].every(p=>alive(r,p)&&visible(r,p)&&!r.secondarySkills.hidden(body(r,p))&&!r.castle.hidden(body(r,p)));
 const facing=(r,s)=>r.num(r.globals.get(id(s,'etjn','846x')))===1?1:-1;
 export const kanJab=definition(8,'잽',JAB,'kan-jab','앞쪽으로 주먹을 빠르게 뻗습니다.',{
@@ -336,7 +336,7 @@ export const michaelBlessing=definition(33,'대 천사의 축복',BLESSING,'mich
   }}finally{light.dead=true;delete state.blessingUntil;delete state.blessingHitAt;}
  }
 });
-const DARKNESS={manaCost:50,cooldownTicks:540,ticks:300,slow:7,fearTicks:48};
+const DARKNESS={manaCost:50,cooldownTicks:240,ticks:300,slow:7,fearTicks:48};
 export const lycanDarkness=definition(29,'어둠',DARKNESS,'lycan-darkness','5초 동안 어둠이 온 세상을 뒤덮게 합니다.',{
  slowValue(r,e,key,raw,state){return logitechRageQuit.slowValue(r,e,key,raw,state);},
  onFunction(r,c,fn,args,side,state){
@@ -363,17 +363,25 @@ export const lycanDarkness=definition(29,'어둠',DARKNESS,'lycan-darkness','5�
   }},'lycan_darkness_fear');
  },
  *cast(r,c,{side,caster,state}){
-  const start=r.tick,mana=id(side,'qn98','thom');
-  state.darkStartedAt=start;
-  state.darkUntil=start+DARKNESS.ticks;
+  const refreshing=state.darkUntil>r.tick;
+  state.darkUntil=r.tick+DARKNESS.ticks;
   if(vulnerable(r,3-side))state.slow={side:3-side,value:DARKNESS.slow,until:state.darkUntil};
-  let awarded=0;
-  try{while(alive(r,side)){
-   const elapsed=r.tick-start,earned=Math.min(5,Math.floor(elapsed/60));
-   if(earned>awarded){r.set(caster,mana,Math.min(100,r.num(r.get(caster,mana))+8*(earned-awarded)));awarded=earned;}
-   if(elapsed>=DARKNESS.ticks)break;
-   yield 1;
-  }}finally{delete state.darkStartedAt;delete state.darkUntil;}
+  if(refreshing)return;
+  state.darkStartedAt=r.tick;
+  const mana=id(side,'qn98','thom');
+  r.spawn(caster,function*(rt){
+   let nextCharge=state.darkStartedAt+60;
+   try{
+    while(alive(rt,side)){
+     if(rt.tick>=nextCharge&&nextCharge<=state.darkUntil){
+      rt.set(caster,mana,Math.min(100,rt.num(rt.get(caster,mana))+8));
+      nextCharge+=60;
+     }
+     if(rt.tick>=state.darkUntil)break;
+     yield 1;
+    }
+   }finally{delete state.darkStartedAt;delete state.darkUntil;}
+  },'lycan_darkness');
  }
 });
 const FIREWORK={manaCost:39,cooldownTicks:54,speed:9,range:180,radius:56};

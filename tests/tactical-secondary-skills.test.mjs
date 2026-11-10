@@ -468,3 +468,22 @@ test('airborne turret falls onto the stage and stays on the surface', () => {
   r.run(10);
   assert.ok(Math.abs(turret.y - landedY) < 1e-8);
 });
+
+test('Darkness can be recast at four seconds and refreshes one continuous charge effect', () => {
+  const r = game(29), state = r.secondarySkills.state(1);
+  r.run(1, [82]);
+  const first = r.tick;
+  r.run(239);
+  r.run(1, [82]);
+  assert.equal(r.tick, first + 240);
+  assert.equal(state.darkUntil, r.tick + 300);
+  assert.equal(state.slow.until, state.darkUntil);
+  assert.equal(r.threads.filter(t => t.event === 'lycan_darkness').length, 1);
+  assert.equal(r.globals.get('qn98'), 32);
+  r.run(60);
+  assert.equal(r.globals.get('qn98'), 40);
+  assert.ok(state.darkUntil > r.tick);
+  r.run(240);
+  assert.equal(r.globals.get('qn98'), 72);
+  assert.equal(state.darkUntil, undefined);
+});

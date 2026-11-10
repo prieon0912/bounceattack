@@ -1,5 +1,5 @@
 import {prepareSkill as prepare,skillVisual as visual} from './additional-secondary-skills.js';
-export const MAGNET_COMMAND=Object.freeze({manaCost:40,durationTicks:180,cooldownTicks:480});
+export const MAGNET_COMMAND=Object.freeze({manaCost:40,durationTicks:180,cooldownTicks:180});
 export const HELL_GATE=Object.freeze({manaCost:38,durationTicks:360,cooldownTicks:600,radius:14,travelCooldown:30});
 const id=(s,a,b)=>s===1?a:b,body=(r,s)=>r.originals.get(id(s,'00h9','n8fg'));
 const alive=(r,s)=>r.scene==='7dwq'&&r.num(r.globals.get(id(s,'akf6','7ir2')))>0&&r.num(r.globals.get('r71b'))===0;

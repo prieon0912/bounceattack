@@ -105,7 +105,7 @@ export class CastleSystem{
   this.shot(s,attack,{a:form==='rook'?angle(direction,0):angle(foe.x-e.x,foe.y-e.y),range:piece.range,damage:piece.damage,size:form==='rook'?18:form==='king'?22:12.6,speed:form==='rook'?4:form==='king'?5:6,homing:form==='queen'||form==='king',effect:form==='king'?{slow:4,ticks:24}:null});
  }
  skill(s){const r=this.r,state=this.state(s),form=state.form,e=body(r,s),foe=body(r,3-s),direction=turn(r,s),defensive=r.secondarySkills.state(s).mode==='secondary';
-  if(r.tick<state.skillAt||r.num(r.globals.get(info(s).mana))<40)return;this.mana(s,-40);state.skillVisualAt=r.tick;state.skillAt=r.tick+((defensive&&['rook','queen','king'].includes(form))?360:300);
+  if(r.tick<state.skillAt||r.num(r.globals.get(info(s).mana))<40)return;this.mana(s,-40);state.skillVisualAt=r.tick;state.skillAt=r.tick+(defensive&&form==='pawn'?180:300);
   if(defensive){state.castlingVisualAt=r.tick;
    if(form==='pawn')this.shield(s,3,300);
    if(form==='knight'){state.actionUntil=r.tick+10;r.spawn(e,function*(rt){for(let i=0;i<10&&rt.castle.alive(s)&&!rt.castle.blocked(s);i++){rt.castle.move(s,-direction*4.5,i<5?2:-2);yield 1;}},'castle_retreat');}

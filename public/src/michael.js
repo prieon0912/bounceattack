@@ -32,7 +32,7 @@ export const michaelDefense = {
   character: MICHAEL_ID, name: '수비 전술', manaCost: 24, cooldownTicks: 0, lockVariable: false,
   icon: 'assets/michael/defense.svg', secondaryPictureId: 'michael-defense',
   primaryName: '공격 전술', primaryDescription: '레이업, 감아차기, 토스 배팅 중 현재 종목의 기술을 사용합니다.',
-  description: '농구는 스텝백, 축구는 트래핑, 야구는 수비 시프트로 다음 세 번의 평타 때 전진합니다.',
+  description: '스텝백, 트래핑, 수비 시프트 중 현재 종목의 기술을 사용합니다.',
   prepare(project) {
     const pictures = project.objects.find(object => object.id === 'o9rj').sprite.pictures;
     const primary = pictures.find(picture => picture.id === 'michael-o9rj');
