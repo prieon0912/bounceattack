@@ -11,7 +11,7 @@ const vulnerable=(r,s)=>r.num(r.globals.get(id(s,'jcf6','ec6d')))===0;
 const picture=(p,object,index=0)=>p.objects.find(o=>o.id===object).sprite.pictures[index];
 const alias=(p,object,key,index=0)=>{const q=picture(p,object,index);return[key,q.fileurl,q.dimension];};
 function definition(character,name,cfg,key,description,extra){return{character,name,manaCost:cfg.manaCost,cooldownTicks:cfg.cooldownTicks,lockVariable:false,prepare,icon:`assets/secondary/${key}-icon.svg`,secondaryPictureId:key+'-icon',description,...extra};}
-function root(r,source,ticks){const foe=3-source,e=body(r,foe);if(!vulnerable(r,foe))return false;const variable=id(foe,'05ze','1vu0');r.set(e,variable,Math.max(r.num(r.get(e,variable)),(ticks+1)*.02));showStatusVisual(r,source,'root',ticks+1);return true;}
+function root(r,source,ticks,showMarker=true){const foe=3-source,e=body(r,foe);if(!vulnerable(r,foe))return false;const variable=id(foe,'05ze','1vu0');r.set(e,variable,Math.max(r.num(r.get(e,variable)),(ticks+1)*.02));if(showMarker)showStatusVisual(r,source,'root',ticks+1);return true;}
 export const logitechRageQuit=definition(34,'빡종',RAGE_QUIT,'logitech-rage-quit','주변 적에게 피해를 주고 밀쳐내며 둔화시킵니다.',{
  effectPictures:[],prepare(p){this.effectPictures=[alias(p,'chu8','rage-original-wave')];prepare.call(this,p);},
  slowValue(r,e,variable,raw,st){const slow=st.slow;if(slow?.until>r.tick&&visible(r,slow.side)&&vulnerable(r,slow.side)&&variable===id(slow.side,'9af4','nccn'))return Math.max(r.num(raw),slow.value);return raw;},
@@ -475,7 +475,21 @@ export const chronosReaperMarch=definition(15,'사신의 행차',REAPER_MARCH,'c
   if(caught&&canStrike(r,side)){
    r.add(slash,'ha8n',1);r.set(slash,'lq8z',1);
    yield* r.call(hitContext,damageFunction,[-cfg.dashDamage,0,1]);
-   root(r,side,cfg.rootTicks);
+   if(root(r,side,cfg.rootTicks,false)){
+    const mark=visual(r,side,'reaper-march-scythe',target.x,target.y-7,28,'reaper-march-root');
+    mark.effects.transparency=20;
+    mark.rotation=direction*90;
+    r.spawn(mark,function*(rt){
+     try{
+      for(let age=0;age<cfg.rootTicks&&alive(rt,3-side)&&rt.num(rt.get(target,id(side,'1vu0','05ze')))>0;age++){
+       mark.x=target.x;mark.y=target.y-7;
+       mark.visible=visible(rt,3-side);
+       mark.effects.transparency=20+60*Math.max(0,(age-48)/12);
+       yield 1;
+      }
+     }finally{mark.dead=true;}
+    },'reaper_march_root');
+   }
   }
   if(canStrike(r,side)&&Math.hypot(caster.x-target.x,caster.y-target.y)<=cfg.radius){
    r.add(slash,'ha8n',1);r.set(slash,'lq8z',1);

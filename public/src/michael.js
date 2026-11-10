@@ -388,23 +388,24 @@ export class MichaelSystem {
       options.bounce = 1;
       options.firstBounceBoost = Math.sqrt(2.5);
     }
-    const damage = st.sport === 'basketball' ? 6 : 4;
-    const fire = (degrees, speed) => {
-      const angle = degrees * Math.PI / 180;
+    const damage = { basketball: 6, football: 5, baseball: 4 }[st.sport];
+    const fire = speed => {
+      const angle = r.random() * Math.PI / 2;
       this.launch(side, direction * Math.cos(angle) * speed, Math.sin(angle) * speed, damage, options);
     };
     if (st.sport === 'basketball') {
-      for (const angle of [-72, -56, -40, -24, -8]) fire(angle, 6.24);
+      for (let shot = 0; shot < 5; shot++) fire(6.24);
     } else if (st.sport === 'football') {
       r.spawn(this.body(side), function* volleys(rt) {
-        for (const angles of [[-34, -23], [-7, 7], [23, 34]]) {
+        for (let pair = 0; pair < 3; pair++) {
           if (!rt.castle.alive(side) || rt.castle.blocked(side)) return;
-          for (const angle of angles) fire(angle, 6.5);
-          if (angles[0] !== 23) yield 5;
+          fire(6.5);
+          fire(6.5);
+          if (pair < 2) yield 5;
         }
       }, 'michael_volleys');
     } else {
-      for (const angle of [-45, -25, -5, 15, 35, 55, 75]) fire(angle, 18);
+      for (let shot = 0; shot < 7; shot++) fire(18);
     }
   }
 }

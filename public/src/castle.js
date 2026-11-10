@@ -1,7 +1,7 @@
 import BigNumber from './vendor/bignumber.mjs';
 import { showStatusVisual } from './expanded-secondary-skills.js';
 // Castle's values are kept together so each piece can be tuned independently.
-export const CASTLE = Object.freeze({id:35,startMana:20,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,ultimateCooldown:360,heldSize:11.25,previewHeldSize:31.25});
+export const CASTLE = Object.freeze({id:35,startMana:100,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,ultimateCooldown:360,heldSize:11.25,previewHeldSize:31.25});
 export const PIECES = Object.freeze({
  pawn:{name:'폰',damage:4,range:62.5,interval:33},knight:{name:'나이트',damage:6,range:96.1125,dash:54.8625,interval:39},
  bishop:{name:'비숍',damage:7,range:110,interval:39},rook:{name:'룩',damage:8,range:158.4,interval:42},
@@ -127,7 +127,7 @@ export class CastleSystem{
    if(state.promotionUntil&&r.tick>=state.promotionUntil){state.promotionUntil=0;state.form=promotedPiece(r.random);state.until=r.tick+CASTLE.transformTicks;}
    // Only hidden Bishop/Queen time is excluded; cooldowns and the real-time clock keep advancing.
    if(['bishop','queen'].includes(state.form)&&state.stealthUntil>0&&r.tick<=state.stealthUntil&&r.num(r.globals.get(info(s).stealth))>0&&this.alive(s))state.until++;
-   if(this.alive(s)&&r.num(r.globals.get(sid(s,'dqcb','a5tc')))===0)this.mana(s,this.manaRate()*.5);
+   if(this.alive(s)&&r.num(r.globals.get(sid(s,'dqcb','a5tc')))===0)this.mana(s,this.manaRate()*.3);
    if(state.form!=='pawn'&&r.tick>=state.until){state.form='pawn';state.until=0;state.crown=null;}
    if(state.stealthUntil&&r.tick>=state.stealthUntil)this.endConceal(s);
    const skill=r.keys.has(s===1?82:80),ultimate=r.keys.has(s===1?83:40),skillEdge=skill&&!state.skillDown,ultimateEdge=ultimate&&!state.ultimateDown;state.skillDown=skill;state.ultimateDown=ultimate;
@@ -140,7 +140,7 @@ export class CastleSystem{
  afterStep(){const r=this.r;
   // Castle uses the same separate held-weapon arrangement as the original roster.
   if(r.scene==='1ckl'){for(const [s,weapon]of [[1,'31us'],[2,'mimn']]){const e=r.originals.get(weapon);if(!e)continue;if(r.num(r.globals.get(info(s).character))===35){const ball=r.originals.get(sid(s,'j5y7','zyy3'));r.setPicture(e,'castle-held-pawn-'+weapon);r.setSize(e,CASTLE.previewHeldSize);e.x=ball.x+(s===1?1:-1)*19;e.y=ball.y-6;e.rotation=0;e.scaleX=Math.abs(e.scaleX)*(s===1?1:-1);e.visible=ball.visible;e.castlePreviewHidden=true;}else if(e.castlePreviewHidden){e.visible=true;delete e.castlePreviewHidden;}}return;}
-  for(const s of [1,2]){if(!this.active(s))continue;const state=this.state(s);if(!state)continue;if(!state.initialized){r.globals.set(info(s).mana,20);state.spawn={x:body(r,s).x,y:body(r,s).y};state.initialized=true;}
+  for(const s of [1,2]){if(!this.active(s))continue;const state=this.state(s);if(!state)continue;if(!state.initialized){r.globals.set(info(s).mana,CASTLE.startMana);state.spawn={x:body(r,s).x,y:body(r,s).y};state.initialized=true;}
    if(state.promotionUntil){body(r,s).x=state.lockX;body(r,s).y=state.lockY;}
    const e=r.originals.get(sid(s,'n230','ocqj'));if(e){r.setPicture(e,`castle-${state.form}-${e.objectId}`);r.setSize(e,16);e.rotation=0;}
    let held=r.entities.find(e=>!e.dead&&e.castleEffect==='held'&&e.combatSide===s);
