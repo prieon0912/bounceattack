@@ -99,7 +99,7 @@ test('evolution branches are selected by direction and stay separate in mirrors'
   assert.deepEqual(r.faults, []);
 });
 
-test('ultimate shows previous hit damage and the fifth hit summons ten weak, destructible minions', () => {
+test('ultimate spends charges immediately and grants two bonus minions at five charges', () => {
   const r = game(), state = r.duo.state(1);
   r.globals.set('qn98', 100);
   const swing = () => { faceOff(r); key(r, 69); step(r, 34); };
@@ -108,18 +108,18 @@ test('ultimate shows previous hit damage and the fifth hit summons ten weak, des
   assert.equal(state.hits, 2);
   assert.equal(state.damage, 10);
   key(r, 83);
-  assert.ok(state.armedUntil > r.tick);
-  assert.equal(r.duo.effects(1, 'minion').length, 0);
-  swing();
-  swing();
-  swing();
+  assert.equal(r.duo.effects(1, 'minion').length, 4);
+  assert.equal(state.hits, 0);
+  step(r, 421);
+  r.globals.set('qn98', 100);
+  for (let i = 0; i < 5; i++) swing();
+  key(r, 83);
   const swarm = r.duo.effects(1, 'minion');
-  assert.equal(swarm.length, 10);
+  assert.equal(swarm.length, 12);
   assert.ok(swarm.every(e => e.duoEffect.hp === 3));
-  assert.equal(state.revealed, 25);
   assert.equal(state.hits, 0);
   r.duo.damageMinion(swarm[0], 3);
-  assert.equal(r.duo.effects(1, 'minion').length, 9);
+  assert.equal(r.duo.effects(1, 'minion').length, 11);
   const before = r.globals.get('7ir2');
   step(r, 150);
   const inflicted = before - r.globals.get('7ir2');

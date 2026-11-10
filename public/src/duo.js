@@ -26,7 +26,7 @@ const EVOLUTION = {
     { ...BASE, walk: .88, armor: .82, interval: 37 },
   ],
 };
-const MAX_PEELS = 12;
+const CALTROP_LIFETIME = 30 * 60;
 const isDuo = id => id === PHAGE_ID || id === BANANA_ID;
 
 function loadout(character, primaryPictureId, secondaryPictureId, details) {
@@ -252,35 +252,26 @@ export class DuoSystem {
       if (lost && state.hits < 5) {
         state.hits++;
         state.damage = Math.round((state.damage + lost) * 100) / 100;
-        rt.duo.trySummon(side, state);
       }
     }, 'phage_strike');
   }
 
   mark(side, state) {
     const r = this.r;
-    if (state.armedUntil > r.tick || state.swarmUntil > r.tick || !this.mana(side, -52)) return;
-    state.armedUntil = r.tick + 720;
+    if (!state.hits || state.swarmUntil > r.tick || !r.castle.alive(3 - side) || !this.mana(side, -52)) return;
+    const victim = this.body(3 - side);
+    const count = state.hits * 2 + (state.hits === 5 ? 2 : 0);
     state.ultimateAt = r.tick + 420;
-    this.trySummon(side, state);
-  }
-
-  trySummon(side, state) {
-    const r = this.r, victim = this.body(3 - side);
-    if (state.hits < 5 || !(state.armedUntil > r.tick) || !r.castle.alive(3 - side)) return;
-    state.revealed = state.damage;
-    state.revealUntil = r.tick + 96;
     state.hits = 0;
     state.damage = 0;
-    state.armedUntil = 0;
     state.swarmUntil = r.tick + 420;
     state.swarmHitAt = r.tick + 28;
     this.flash(side, 'phage/mark', victim.x, victim.y, 54, 22);
-    for (let index = 0; index < 10; index++) this.minion(side, victim, index, state);
+    for (let index = 0; index < count; index++) this.minion(side, victim, index, count, state);
   }
 
-  minion(side, target, index, state) {
-    const r = this.r, angle = index * Math.PI / 5;
+  minion(side, target, index, count, state) {
+    const r = this.r, angle = index * 2 * Math.PI / count;
     const e = this.visual(side, 'phage/core',
       Math.max(-230, Math.min(230, target.x + Math.cos(angle) * 31)),
       Math.max(-127, Math.min(124, target.y + Math.sin(angle) * 23)),
@@ -450,13 +441,11 @@ export class DuoSystem {
 
   trap(side, x, y, vx) {
     const r = this.r, target = 3 - side;
-    const traps = this.effects(side, 'trap');
-    if (traps.length >= MAX_PEELS) traps[0].dead = true;
     const e = this.visual(side, 'banana/peel', x, y, 13, 'trap', { landed: false });
     r.spawn(e, function* drop(rt, context) {
       let vy = 2.7;
       try {
-        for (let age = 0; !e.dead && rt.castle.alive(side) && rt.castle.alive(target); age++) {
+        for (let age = 0; age < CALTROP_LIFETIME && !e.dead && rt.castle.alive(side) && rt.castle.alive(target); age++) {
           if (age < 20 && !e.duoEffect.landed) {
             const oldX = e.x;
             e.x += vx;
@@ -518,19 +507,27 @@ export class DuoSystem {
     for (const side of [1, 2]) {
       const r = this.r, state = this.state(side);
       if (!state || !r.castle.alive(side) || !r.castle.alive(3 - side)) continue;
-      if (!(state.armedUntil > r.tick || state.revealUntil > r.tick)) continue;
+      if (this.character(side) !== PHAGE_ID) continue;
       const target = this.body(3 - side);
-      const text = state.armedUntil > r.tick ? `${state.hits}/5 · ${state.damage}` : `5/5 · ${state.revealed}`;
+      const filled = state.hits;
       const x = Math.max(-206, Math.min(206, target.x)), y = Math.max(-118, -target.y - 24);
       ctx.save();
-      ctx.font = 'bold 9px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      const width = ctx.measureText(text).width + 9;
-      ctx.fillStyle = '#392556';
-      ctx.fillRect(x - width / 2, y - 6, width, 12);
-      ctx.fillStyle = '#f5ddff';
-      ctx.fillText(text, x, y);
+      ctx.lineWidth = 1.2;
+      for (let slot = 0; slot < 5; slot++) {
+        const center = x + (slot - 2) * 8;
+        ctx.beginPath();
+        ctx.moveTo(center, y - 4.5);
+        ctx.lineTo(center + 3.5, y - 2);
+        ctx.lineTo(center + 3.5, y + 2);
+        ctx.lineTo(center, y + 4.5);
+        ctx.lineTo(center - 3.5, y + 2);
+        ctx.lineTo(center - 3.5, y - 2);
+        ctx.closePath();
+        ctx.fillStyle = slot < filled ? '#a88cf9' : '#392556';
+        ctx.strokeStyle = slot < filled ? '#513079' : '#9277b6';
+        ctx.fill();
+        ctx.stroke();
+      }
       ctx.restore();
     }
   }
