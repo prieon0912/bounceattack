@@ -1,4 +1,4 @@
-import { installationCombat, damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
+import { installationCombat, damageInstallationsInRadius, projectileInstallationContact, coneInstallationContact, damageInstallation } from './barricade.js';
 import { prepareSkill as prepare, skillVisual as visual } from './additional-secondary-skills.js';
 import { showStatusVisual } from './expanded-secondary-skills.js';
 export const RAGE_QUIT=Object.freeze({manaCost:34,radius:110,damage:7,push:50,slow:8,slowTicks:90,cooldownTicks:60});
@@ -523,17 +523,23 @@ export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다
   fan.projectileOrigin={x,y};
   r.spawn(fan,function*(rt,c){let hit=false;try{
    for(let age=0;age<steps&&alive(rt,side);age++){
-    const radius=Math.min(range,20+(age+1)*16);
+    const reach=Math.min(range,20+(age+1)*16);
+    const blocker=coneInstallationContact(rt,fan,x,y,direction,slope,reach);
+    const radius=blocker?.distance??reach;
     fan.x=x+direction*radius/2;fan.y=y;fan.scaleX=direction*radius/fan.width;
     fan.scaleY=2*radius*slope/fan.height;fan.effects.transparency=20;
     const dx=(target.x-x)*direction,dy=target.y-y;
-    if(!hit&&canStrike(rt,side)&&dx>=-8&&dx<=radius+8&&Math.abs(dy)<=Math.max(0,dx)*slope+8){
+    if(!hit&&canStrike(rt,side)&&dx>=-8&&dx<=radius+8&&(!blocker||dx<radius)&&Math.abs(dy)<=Math.max(0,dx)*slope+8){
      hit=true;
      const rooted=rt.num(rt.get(target,id(3-side,'05ze','1vu0')))>0;
      const base=enhanced?(rooted?41:27):(rooted?26:17);
      yield* rt.call(c,id(side,'qy83','05j0'),[-base,10,2]);
      rt.add(target,id(3-side,'c9o4','lgp6'),direction*20);
      if(enhanced)rt.set(target,id(3-side,'9af4','nccn'),18);
+     break;
+    }
+    if(blocker){
+     damageInstallation(rt,blocker.wall,enhanced?27:17);
      break;
     }
     yield 1;

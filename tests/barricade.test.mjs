@@ -226,3 +226,48 @@ test('Eclipse falling sword finishes the impact and despawns after a barricade c
   assert.deepEqual(r.faults,[]);
  }
 });
+
+test('Prism stops its visible front at a barricade and only damages the wall', async () => {
+ const {teslaPrism}=await import('../public/src/tactical-secondary-skills.js');
+ for(const side of [1,2]){
+  const r=game(side);
+  r.run(1,[side===1?82:80]);
+  const barrier=wall(r),shooter=3-side;
+  const caster=r.originals.get(shooter===1?'00h9':'n8fg');
+  Object.assign(caster,{x:barrier.x+100,y:0});
+  r.globals.set(shooter===1?'etjn':'846x',0);
+  const health=side===1?'akf6':'7ir2',before=r.globals.get(health);
+  teslaPrism.fire(r,shooter,false);
+  r.run(5);
+  const fan=r.entities.find(e=>e.secondaryEffect==='tesla-prism');
+  assert.ok(fan);
+  assert.ok(Math.abs(r.bounds(fan).left-r.bounds(barrier).right)<1e-8);
+  assert.equal(barrier.barricadeHealth,13);
+  assert.equal(r.globals.get(health),before);
+ }
+});
+
+
+test('Prism stops at enemy turrets and flags while passing friendly installations', async () => {
+ const {teslaPrism}=await import('../public/src/tactical-secondary-skills.js');
+ for(const effect of ['boom-turret','prince-flag']){
+  const r=game(1),caster=r.originals.get('00h9'),target=r.originals.get('n8fg');
+  Object.assign(caster,{x:-100,y:0});
+  Object.assign(target,{x:70,y:0});
+  for(const [x,owner] of [[-35,1],[0,2]]){
+   const entity=r.makeEntity(r.defs.get('hb4u'));
+   Object.assign(entity,{x,y:0,visible:true,secondaryEffect:effect,installationOwner:owner,installationHealth:20});
+   r.setSize(entity,20);
+   r.entities.push(entity);
+  }
+  const [friendly,enemy]=r.entities.filter(e=>e.secondaryEffect===effect);
+  const hp=r.globals.get('7ir2');
+  teslaPrism.fire(r,1,false);
+  r.run(7);
+  const fan=r.entities.find(e=>e.secondaryEffect==='tesla-prism');
+  assert.ok(Math.abs(r.bounds(fan).right-r.bounds(enemy).left)<1e-8);
+  assert.equal(friendly.installationHealth,20);
+  assert.equal(enemy.installationHealth,3);
+  assert.equal(r.globals.get('7ir2'),hp);
+ }
+});

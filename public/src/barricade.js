@@ -65,6 +65,23 @@ function destroy(r,wall) {
     },'barricade_break');
   }
 }
+export function coneInstallationContact(r, attacker, x, y, direction, slope, reach) {
+  let nearest = null;
+  for (const wall of installations(r)) {
+    if (!wall.visible || !canHitInstallation(attacker, wall)) continue;
+    const bounds = r.bounds(wall);
+    const front = direction > 0 ? bounds.left - x : x - bounds.right;
+    const back = direction > 0 ? bounds.right - x : x - bounds.left;
+    const height = Math.max(bounds.bottom - y, y - bounds.top, 0);
+    const distance = Math.max(0, front);
+    if (Math.max(distance, height / slope) > Math.min(back, reach)) continue;
+    if (!nearest || distance < nearest.distance) nearest = { wall, distance };
+  }
+  return nearest;
+}
+
+export { hurt as damageInstallation };
+
 export function projectileInstallationContact(r,projectile) {
   return installations(r).find(target=>canHitInstallation(projectile,target)&&r.overlap(projectile,target))||null;
 }
