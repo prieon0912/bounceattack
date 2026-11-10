@@ -20,7 +20,11 @@ module.exports = function addEcola(project) {
     const pictures = object(id).sprite.pictures;
     const dimension = pictures[35].dimension;
     const art = form => ['afvb', '8svk'].includes(id) ? 'profile-' + form : ['j5y7', 'zyy3'].includes(id) ? 'preview' : form;
-    pictures.splice(36, 0, picture('ecola-base', art('base'), dimension));
+    const baseArt = art('base');
+    const baseDimension = baseArt === 'preview'
+      ? { ...dimension, width: dimension.width * 1.2, height: dimension.height * 1.2 }
+      : dimension;
+    pictures.splice(36, 0, picture('ecola-base', baseArt, baseDimension));
     if (!['j5y7', 'zyy3'].includes(id))
       pictures.push(...forms.slice(1).map(form => picture('ecola-' + form, art(form), dimension)));
   }

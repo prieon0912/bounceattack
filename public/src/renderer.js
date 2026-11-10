@@ -149,9 +149,13 @@ export class Renderer {
           );
         }
       } else {
-        const asset = this.assets.get(e.duoPicture ?? e.ecolaPose?.picture ?? e.picture);
-        if (asset)
-          c.drawImage(asset.image, -e.regX, -e.regY, e.width, e.height);
+        const picture = e.duoPicture ?? e.ecolaPose?.picture ?? e.picture;
+        const asset = this.assets.get(picture);
+        if (asset) {
+          // Spike's held art extends past the right edge of its body sprite.
+          const width = picture.fileurl === "assets/banana/body.svg" ? e.width * 1.32 : e.width;
+          c.drawImage(asset.image, -e.regX, -e.regY, width, e.height);
+        }
       }
       c.restore();
       if (e === arenaBackground) drawNightSky(c, night);
