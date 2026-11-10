@@ -51,11 +51,34 @@ export class Runtime {
  case'value_of_index_from_list':return (this.get(e,a[1])||[])[Math.floor(n(a[3]))-1]??0;case'get_project_timer_value':return this.timer;case'get_sound_duration':return this.sound(e,a[1])?.duration||0;case'get_sound_volume':return e.volume;case'combine_something':return String(a[1]??'')+String(a[3]??'');default:throw Error('Expression '+type);}}
  sound(e,id){return e.def.sprite?.sounds?.find(s=>s.id===id||s.name===id)||null;}
  play(e,id,start=0,duration=null){if(this.headless||this.muted)return;const s=this.sound(e,id);if(!s)return;try{const sound=new Audio(s.fileurl);sound.volume=Math.max(0,Math.min(1,e.volume/100));sound.currentTime=Math.max(0,start);this.playing??=new Set();this.playing.add(sound);sound.addEventListener('ended',()=>this.playing.delete(sound),{once:true});sound.play().catch(()=>this.playing.delete(sound));if(duration!==null)setTimeout(()=>{sound.pause();this.playing.delete(sound);},duration*1000);}catch{}}
- command(c,type,a){if(this.secondarySkills.onCommand(c,type,a)===false)return;if(type==='move_x')this.michael.boostWalk(c,a);const e=c.e,n=x=>this.num(x);switch(type){case'set_variable':this.secondarySkills.onSelectionCommand(type,a);this.set(e,a[0],a[1]);break;case'change_variable':this.add(e,a[0],a[1]);break;case'move_x':this.move(e,a[0],0);break;case'move_y':this.move(e,0,a[0]);break;case'locate_xy':this.move(e,n(a[0])-e.x,n(a[1])-e.y,false);break;case'locate_x':this.move(e,n(a[0])-e.x,0,false);break;case'locate_y':this.move(e,0,n(a[0])-e.y,false);break;case'locate':{const t=a[0]==='mouse'?this.mouse:this.target(e,a[0]);if(t)this.move(e,t.x-e.x,t.y-e.y,false);break;}
- case'move_direction':this.moveAngle(e,e.rotation+e.direction,a[0]);break;case'move_to_angle':this.moveAngle(e,a[0],a[1]);break;case'rotate_relative':this.rotate(e,e.rotation+n(a[0]));break;case'rotate_absolute':this.rotate(e,a[0]);break;case'direction_relative':this.direction(e,e.direction+n(a[0]));break;case'direction_absolute':this.direction(e,a[0]);break;case'see_angle_object':this.look(e,a[0]);break;
+ command(c,type,a){if(this.secondarySkills.onCommand(c,type,a)===false)return;if(type==='move_x')this.michael.boostWalk(c,a);const e=c.e,n=x=>this.num(x);switch(type){case'set_variable':this.secondarySkills.onSelectionCommand(type,a);this.set(e,a[0],a[1]);break;case'change_variable':this.add(e,a[0],a[1]);if(e.objectId==='cba1'&&c.block==='29eg')delete e.gearPending;break;case'move_x':this.move(e,a[0],0);break;case'move_y':this.move(e,0,a[0]);break;case'locate_xy':this.move(e,n(a[0])-e.x,n(a[1])-e.y,false);break;case'locate_x':this.move(e,n(a[0])-e.x,0,false);break;case'locate_y':this.move(e,0,n(a[0])-e.y,false);break;case'locate':{const t=a[0]==='mouse'?this.mouse:this.target(e,a[0]);if(t)this.move(e,t.x-e.x,t.y-e.y,false);break;}
+ case'move_direction':this.moveAngle(e,e.rotation+e.direction,a[0]);break;case'move_to_angle':this.moveAngle(e,a[0],a[1]);break;case'rotate_relative':this.rotate(e,e.rotation+(e.objectId==='cba1'&&c.block==='yrja'&&e.gearLaunchAngle!==undefined?e.gearLaunchAngle:n(a[0])));break;case'rotate_absolute':this.rotate(e,a[0]);break;case'direction_relative':this.direction(e,e.direction+n(a[0]));break;case'direction_absolute':this.direction(e,a[0]);break;case'see_angle_object':this.look(e,a[0]);break;
  case'set_scale_size':this.setSize(e,a[0]);break;case'change_scale_size':this.setSize(e,this.size(e)+n(a[0]));break;case'change_to_some_shape':this.setPicture(e,a[0]);break;case'change_to_next_shape':{const p=e.def.sprite.pictures;const i=mod(p.indexOf(e.picture)+(a[0]==='prev'?-1:1),p.length);this.setPicture(e,p[i]?.id);break;}
  case'flip_x':e.scaleY*=-1;break;case'flip_y':e.scaleX*=-1;break;case'show':e.visible=true;break;case'hide':e.visible=false;break;
- case'create_clone':{const target=this.target(e,a[0]);if(!target)throw Error('Missing clone source '+a[0]);if(this.entities.length>this.maxClones)throw Error('Clone safety limit exceeded');const child=this.makeEntity(target.def,target);if(this.mirror&&e.combatSide&&(!target.def.combatSide||target.def.mirrorShared))child.combatSide=e.combatSide;const i=this.entities.indexOf(target);this.entities.splice(i+1,0,child);this.secondarySkills.onClone(c,child);this.dispatchEntity(child,'when_clone_start');break;}
+ case'create_clone':{
+ const target=this.target(e,a[0]);
+ if(!target)throw Error('Missing clone source '+a[0]);
+ const gear=target.objectId==='cba1',burst=gear&&n(a[2])===3;
+ let count=1,angle=0;
+ if(burst){
+  const key=this.sideKey(e,'7rns');
+  const pending=this.entities.filter(item=>!item.dead&&item.gearPending&&this.sideKey(item,'7rns')===key).length;
+  count=Math.max(0,Math.min(3,10-n(this.get(e,'7rns'))-pending));
+  if(count)angle=this.random()*360;
+ }
+ for(let shot=0;shot<count;shot++){
+  if(this.entities.length>this.maxClones)throw Error('Clone safety limit exceeded');
+  const child=this.makeEntity(target.def,target);
+  if(this.mirror&&e.combatSide&&(!target.def.combatSide||target.def.mirrorShared))child.combatSide=e.combatSide;
+  if(gear)child.gearPending=true;
+  if(burst)child.gearLaunchAngle=angle+shot*120;
+  const i=this.entities.indexOf(target);
+  this.entities.splice(i+1,0,child);
+  this.secondarySkills.onClone(c,child);
+  this.dispatchEntity(child,'when_clone_start');
+ }
+ break;
+}
  case'delete_clone':if(e.clone){e.dead=true;for(const t of this.threads.concat(this.pending))if(t.e===e)t.cancelled=true;}break;
  case'message_cast':for(const target of [...this.entities])if(!target.dead&&!(this.mirror&&target.def.mirrorShared&&e.combatSide&&target.combatSide!==e.combatSide))this.dispatchEntity(target,'when_message_cast',a[0]);break;
  case'stop_object':{const option=a[0];for(const t of this.threads.concat(this.pending)){const match=option==='all'||option==='thisOnly'&&t.e===e||option==='thisObject'&&t.e.objectId===e.objectId&&(!this.mirror||t.e.combatSide===e.combatSide)||option==='thisThread'&&t===c.thread||option==='otherThread'&&t.e===e&&t!==c.thread||option==='other_objects'&&t.e.objectId!==e.objectId;if(match)t.cancelled=true;}break;}

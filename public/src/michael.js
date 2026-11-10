@@ -365,7 +365,7 @@ export class MichaelSystem {
     st.swingAt = r.tick;
     if (defense && st.sport !== 'basketball') {
       if (st.sport === 'baseball') st.shiftSwings = 3;
-      else st.guardUntil = r.tick + 18;
+      else st.guardUntil = r.tick + 120;
       return;
     }
     if (st.sport === 'basketball') {

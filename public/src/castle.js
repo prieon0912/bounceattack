@@ -11,7 +11,7 @@ export function promotedPiece(random){const n=random()*100;return n<30?'knight':
 const sid=(s,a,b)=>s===1?a:b,body=(r,s)=>r.originals.get(sid(s,'00h9','n8fg'));
 const info=s=>({character:sid(s,'y75t','s5vb'),mana:sid(s,'qn98','thom'),hp:sid(s,'akf6','7ir2'),stun:sid(s,'8w41','wyyq'),root:sid(s,'05ze','1vu0'),stealth:sid(s,'ob2m','rav6'),shield:sid(s,'cfmd','g4sc')});
 const angle=(x,y)=>Math.atan2(y,x),turn=(r,s)=>r.num(r.globals.get(sid(s,'etjn','846x')))===1?1:-1;
-export const castleCastling={character:35,name:'캐슬링',manaCost:40,cooldownTicks:0,lockVariable:false,
+export const castleCastling={character:35,name:'캐슬링',manaCost:20,cooldownTicks:0,lockVariable:false,
  icon:'assets/castle/castling-icon.svg',secondaryPictureId:'castle-castling-icon',description:'현재 기물의 방어 전술을 사용합니다.',
  prepare(project){const icons=project.objects.find(o=>o.id==='o9rj').sprite.pictures;this.primaryPictureId=icons[34].id;this.primaryIcon=icons[34].fileurl;this.primaryName='체크';this.primaryDescription='현재 기물의 공격 전술을 사용합니다.';if(!icons.some(p=>p.id===this.secondaryPictureId))icons.push({...structuredClone(icons[34]),id:this.secondaryPictureId,fileurl:this.icon});},
  // Both loadouts are executed by CastleSystem, sharing the same piece-aware cooldown.
@@ -105,7 +105,8 @@ export class CastleSystem{
   this.shot(s,attack,{a:form==='rook'?angle(direction,0):angle(foe.x-e.x,foe.y-e.y),range:piece.range,damage:piece.damage,size:form==='rook'?18:form==='king'?22:12.6,speed:form==='rook'?4:form==='king'?5:6,homing:form==='queen'||form==='king',effect:form==='king'?{slow:4,ticks:24}:null});
  }
  skill(s){const r=this.r,state=this.state(s),form=state.form,e=body(r,s),foe=body(r,3-s),direction=turn(r,s),defensive=r.secondarySkills.state(s).mode==='secondary';
-  if(r.tick<state.skillAt||r.num(r.globals.get(info(s).mana))<40)return;this.mana(s,-40);state.skillVisualAt=r.tick;state.skillAt=r.tick+(defensive&&form==='pawn'?180:300);
+  const cost=defensive?castleCastling.manaCost:CASTLE.skillMana;
+  if(r.tick<state.skillAt||r.num(r.globals.get(info(s).mana))<cost)return;this.mana(s,-cost);state.skillVisualAt=r.tick;state.skillAt=r.tick+(defensive&&form==='pawn'?180:300);
   if(defensive){state.castlingVisualAt=r.tick;
    if(form==='pawn')this.shield(s,3,300);
    if(form==='knight'){state.actionUntil=r.tick+10;r.spawn(e,function*(rt){for(let i=0;i<10&&rt.castle.alive(s)&&!rt.castle.blocked(s);i++){rt.castle.move(s,-direction*4.5,i<5?2:-2);yield 1;}},'castle_retreat');}

@@ -327,9 +327,9 @@ module.exports = function applyBalancePatch(project) {
     const pick = locate(o, "48hh");
     if (pick.block.type !== "if_else") throw Error("Balance patch: 캐논 target");
     pick.list.splice(pick.index, 1, ...pick.block.statements[0]);
-    //  - R(P스킬) 적중 시 파편 1개 (기존 파편 상한 조건 그대로)
+    //  - 강화포 적중 시 기어 3개를 120도 간격으로 발사 (최대 보유량 10).
     for (const h of hits)
-      insertAfter(o, h, [iff(cmp(get("초과정수"), "LESS_OR_EQUAL", num(9)), [blk("create_clone", ["cba1", null])])]);
+      insertAfter(o, h, [iff(cmp(get("초과정수"), "LESS_OR_EQUAL", num(9)), [blk("create_clone", ["cba1", null, num(3)])])]);
   }
   //  - 궁 피해 7 → 6
   setNumber("hyk2", "s6b7", [0], -7, -6);
