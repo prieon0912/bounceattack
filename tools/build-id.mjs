@@ -98,6 +98,8 @@ for (const path of [
   "public/assets/secondary/logitech-rage-quit-icon.svg",
   "public/assets/secondary/amazones-hunting-trap-icon.svg",
   "public/assets/secondary/amazones-net.svg",
+  "public/assets/secondary/amazones-net-folded.svg",
+  "public/assets/secondary/amazones-net-bind.svg",
   "public/assets/secondary/boom-turret-icon.svg",
   "public/assets/secondary/boom-turret.svg",
 

@@ -23,20 +23,42 @@ export const logitechRageQuit=definition(34,'빡종',RAGE_QUIT,'logitech-rage-qu
  }
 });
 export const amazonesHuntingTrap=definition(9,'사냥용 덫',HUNTING_TRAP,'amazones-hunting-trap','적을 속박시키는 그물 덫을 발사합니다.',{
- effectPictures:[['hunting-net','assets/secondary/amazones-net.svg',{width:100,height:100}]],
+ effectPictures:[
+  ['hunting-net','assets/secondary/amazones-net.svg',{width:100,height:100}],
+  ['hunting-net-folded','assets/secondary/amazones-net-folded.svg',{width:100,height:100}],
+  ['hunting-net-bind','assets/secondary/amazones-net-bind.svg',{width:100,height:100}],
+ ],
  canCast(r,s){return !r.secondarySkills.state(s).netUid;},
  *cast(r,c,{side,caster,state}){this.launch(r,side,state,{x:caster.x,y:caster.y+4});},
- launch(r,side,state,origin){const cfg=HUNTING_TRAP,caster=body(r,side),target=body(r,3-side),direction=r.num(r.globals.get(id(side,'etjn','846x')))===1?1:-1,net=visual(r,side,'hunting-net',origin?.x??caster.x,origin?.y??caster.y,12,'hunting-net');state.netUid=net.uid;
+ launch(r,side,state,origin){const cfg=HUNTING_TRAP,caster=body(r,side),target=body(r,3-side),direction=r.num(r.globals.get(id(side,'etjn','846x')))===1?1:-1,net=visual(r,side,'hunting-net-folded',origin?.x??caster.x,origin?.y??caster.y,12,'hunting-net');state.netUid=net.uid;
   r.spawn(net,function*(rt){let landed=false,landedAt=0,speed=cfg.initialSpeed,tilt=cfg.initialTilt;try{for(let age=0;age<cfg.flightTicks+cfg.durationTicks+20&&alive(rt,side);age++){
    if(!landed){if(age>=cfg.flightTicks||net.y < -155||Math.abs(net.x)>255)return;
     // The original spear changes speed and pitch by these exact amounts each tick.
-    speed-=cfg.speedDecay;tilt-=cfg.tiltDecay;const angle=tilt*5*Math.PI/180,dx=direction*Math.cos(angle)*speed/1.4,dy=Math.sin(angle)*speed/1.4,parts=Math.max(1,Math.ceil(Math.hypot(dx,dy)));net.rotation=direction>0?-tilt*5:tilt*5;
-    for(let n=0;n<parts;n++){net.x+=dx/parts;if(rt.reach(net,'6tzq')||rt.reach(net,'2bx4'))return;const oldY=net.y;net.y+=dy/parts;if(rt.reach(net,'6tzq')||rt.reach(net,'2bx4')){net.y=oldY;if(dy<=0){landed=true;landedAt=rt.tick;net.rotation=0;net.scaleY=net.scaleX*.22;net.trapLanded=true;}else return;break;}}
+    speed-=cfg.speedDecay;tilt-=cfg.tiltDecay;const angle=tilt*5*Math.PI/180,dx=direction*Math.cos(angle)*speed/1.4,dy=Math.sin(angle)*speed/1.4,parts=Math.max(1,Math.ceil(Math.hypot(dx,dy)));net.rotation=direction*(-tilt*5+Math.sin(age*.4)*12);
+    for(let n=0;n<parts;n++){net.x+=dx/parts;if(rt.reach(net,'6tzq')||rt.reach(net,'2bx4'))return;const oldY=net.y;net.y+=dy/parts;if(rt.reach(net,'6tzq')||rt.reach(net,'2bx4')){net.y=oldY;if(dy<=0){landed=true;landedAt=rt.tick;rt.setPicture(net,'hunting-net');net.rotation=0;net.scaleY=net.scaleX*.22;net.trapLanded=true;}else return;break;}}
    }
-   if(landed){const age=rt.tick-landedAt;if(age>=cfg.durationTicks)return;const width=12+(cfg.radius*2-12)*Math.min(1,age/12);net.scaleX=width/net.width;net.scaleY=net.scaleX*.22;net.effects.transparency=age>cfg.durationTicks-30?(age-cfg.durationTicks+30)/30*100:0;
+   if(landed){const age=rt.tick-landedAt;if(age>=cfg.durationTicks)return;const width=12+(cfg.radius*2-12)*Math.min(1,age/12);const open=1-(1-Math.min(1,age/12))**3;net.scaleX=(12+(cfg.radius*2-12)*open)/net.width;net.scaleY=net.scaleX*(.22+.10*Math.sin(Math.PI*open));net.effects.transparency=age>cfg.durationTicks-30?(age-cfg.durationTicks+30)/30*100:0;
     // A ground net catches feet, rather than rooting players jumping above it.
     const targetHeight=rt.size(target)||18,inside=Math.abs(net.x-target.x)<=width/2+targetHeight/2&&Math.abs(net.y-(target.y-targetHeight/2))<=10;
-    if(alive(rt,3-side)&&visible(rt,side)&&visible(rt,3-side)&&inside){root(rt,side,cfg.rootTicks);return;}
+    if(alive(rt,3-side)&&visible(rt,side)&&visible(rt,3-side)&&inside){
+     if(root(rt,side,cfg.rootTicks,false)){
+      const avatar=rt.originals.get(id(side,'ocqj','n230'));
+      const binding=visual(rt,side,'hunting-net-bind',target.x,target.y,rt.size(avatar)*1.15,'secondary-root');
+      binding.combatSide=3-side;
+      rt.spawn(binding,function*(runtime){
+       try{
+        for(let frame=0;frame<cfg.rootTicks&&alive(runtime,3-side)&&runtime.num(runtime.get(target,id(side,'1vu0','05ze')))>0;frame++){
+         binding.x=target.x;binding.y=target.y;
+         binding.visible=visible(runtime,3-side);
+         runtime.setSize(binding,runtime.size(avatar)*(1.15+.24*Math.max(0,1-frame/7)));
+         binding.effects.transparency=65*Math.max(0,(frame-cfg.rootTicks+9)/9);
+         yield 1;
+        }
+       }finally{binding.dead=true;}
+      },'hunting_net_bind');
+     }
+     return;
+    }
    }yield 1;
   }}finally{net.dead=true;if(state.netUid===net.uid)delete state.netUid;}},'hunting_net');
  }

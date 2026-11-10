@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <defs><clipPath id="bind"><path d="M12 25Q50 40 88 25L80 75Q50 91 20 75Z"/></clipPath></defs>
+  <path d="M12 25Q50 40 88 25L80 75Q50 91 20 75Z" fill="#dbc799" fill-opacity=".26" stroke="#3b3023" stroke-width="6"/>
+  <g clip-path="url(#bind)" fill="none" stroke="#e6d1a0" stroke-width="4">
+    <path d="M0 25l68 64M20 25l68 64M40 25l68 64M-20 25l68 64M100 25L32 89M80 25L12 89M60 25L-8 89M120 25L52 89"/>
+  </g>
+  <path d="M12 25Q50 40 88 25M20 75Q50 91 80 75" fill="none" stroke="#f0d9a7" stroke-width="3" stroke-linecap="round"/>
+  <path d="m46 52 10-4 5 8-10 4z" fill="#e8ce94" stroke="#3b3023" stroke-width="3"/>
+</svg>
