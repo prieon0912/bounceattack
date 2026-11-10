@@ -33,9 +33,10 @@ module.exports = function addDuoCharacters(project) {
     }
     for (const id of ['j5y7', 'zyy3', 'n230', 'ocqj', 'afvb', '8svk']) {
       const pictures = object(id).sprite.pictures, dimension = pictures[index - 1].dimension;
-      pictures.splice(index, 0, picture(fighter.base, fighter.base, dimension));
+      const asset = art => ['afvb', '8svk'].includes(id) ? art.replace('/', '/profile-') : art;
+      pictures.splice(index, 0, picture(fighter.base, asset(fighter.base), dimension));
       if (id !== 'j5y7' && id !== 'zyy3')
-        pictures.push(...fighter.forms.map(art => picture(art, art, dimension)));
+        pictures.push(...fighter.forms.map(art => picture(art, asset(art), dimension)));
     }
     for (const [id, art] of [['pyez', fighter.attack], ['o9rj', fighter.skill], ['4ffm', fighter.ultimate]]) {
       const pictures = object(id).sprite.pictures;
