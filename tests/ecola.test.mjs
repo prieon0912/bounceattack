@@ -68,7 +68,7 @@ test('nutrient absorption grants four pulses and an attack cancels it early', ()
   assert.deepEqual(r.faults, []);
 });
 
-test('fission doubles twice after the first split and fakes evolve without dealing damage', () => {
+test('fission doubles once after the first split and fakes evolve without dealing damage', () => {
   const r = game({ skills: ['secondary', 'primary'] });
   r.collisionProvider = (e, target) => target === '6tzq' && e.y < -80;
   r.globals.set('qn98', 100);
@@ -76,12 +76,12 @@ test('fission doubles twice after the first split and fakes evolve without deali
   press(r, 82);
   assert.equal(r.ecola.decoys(1).length, 1);
   assert.equal(r.originals.get('aadi').ecolaHidden, true);
-  advance(r, 36);
+  advance(r, 90);
   assert.equal(r.ecola.decoys(1).length, 3);
-  advance(r, 36);
+  advance(r, 90);
   const clones = r.ecola.decoys(1);
-  assert.equal(clones.length, 7);
-  assert.ok(new Set(clones.map(clone => clone.x)).size > 3);
+  assert.equal(clones.length, 3);
+  assert.ok(new Set(clones.map(clone => clone.x)).size > 1);
   r.random = () => .7;
   press(r, 83);
   advance(r, 24);

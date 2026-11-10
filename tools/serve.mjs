@@ -1,10 +1,10 @@
 import { createOnlineServer } from "../server/online-server.js";
-import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("../public", import.meta.url)),
   port = Number(process.env.PORT || 4173),
+  host = process.env.HOST || "127.0.0.1",
   mime = {
     ".html": "text/html; charset=utf-8",
     ".css": "text/css; charset=utf-8",
@@ -21,7 +21,12 @@ const { server } = createOnlineServer({ local: true });
 const onlineRequest = server.listeners("request")[0];
 server.removeAllListeners("request");
 server.on("request", (req, res) => {
-  if (new URL(req.url, "http://localhost").pathname === "/api/online") {
+  const pathname = new URL(req.url, "http://localhost").pathname;
+  if (pathname === "/healthz") {
+    res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" }).end("ok");
+    return;
+  }
+  if (pathname === "/api/online") {
     onlineRequest(req, res);
     return;
   }
@@ -29,7 +34,7 @@ server.on("request", (req, res) => {
   try {
     file = path.resolve(
       root,
-      "." + decodeURIComponent(new URL(req.url, "http://localhost").pathname),
+      "." + decodeURIComponent(pathname),
     );
   } catch {
     res.writeHead(400).end();
@@ -52,6 +57,6 @@ server.on("request", (req, res) => {
     res.writeHead(404).end("Not found");
   }
 });
-server.listen(port, "127.0.0.1", () =>
-  console.log(`Bounce Attack: http://127.0.0.1:${port}`),
+server.listen(port, host, () =>
+  console.log(`Bounce Attack listening on ${host}:${server.address().port}`),
 );
