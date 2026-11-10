@@ -505,8 +505,8 @@ export const axeRage=definition(5,'분노',AXE_RAGE,'axe-rage','5초 동안 이�
   finally{delete state.rageUntil;}
  }
 });
-export const TESLA_PRISM=Object.freeze({manaCost:24,cooldownTicks:60,halfAngle:5,damageMultiplier:.9});
-export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다음 일반 공격이 부채꼴로 퍼지지만 피해량이 10% 감소합니다.',{
+export const TESLA_PRISM=Object.freeze({manaCost:24,cooldownTicks:60,halfAngle:5});
+export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다음 일반 공격이 삼각형으로 퍼집니다.',{
  effectPictures:[['tesla-prism-fan','assets/secondary/tesla-prism-fan.svg',{width:100,height:100}]],
  canCast(r,side){return !r.secondarySkills.state(side).prismArmed;},
  *cast(r,c,{state}){state.prismArmed=true;},
@@ -527,11 +527,11 @@ export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다
     fan.x=x+direction*radius/2;fan.y=y;fan.scaleX=direction*radius/fan.width;
     fan.scaleY=2*radius*slope/fan.height;fan.effects.transparency=20;
     const dx=(target.x-x)*direction,dy=target.y-y;
-    if(!hit&&canStrike(rt,side)&&dx>=-8&&Math.hypot(dx,dy)<=radius+8&&Math.abs(dy)<=Math.max(0,dx)*slope+8){
+    if(!hit&&canStrike(rt,side)&&dx>=-8&&dx<=radius+8&&Math.abs(dy)<=Math.max(0,dx)*slope+8){
      hit=true;
      const rooted=rt.num(rt.get(target,id(3-side,'05ze','1vu0')))>0;
      const base=enhanced?(rooted?41:27):(rooted?26:17);
-     yield* rt.call(c,id(side,'qy83','05j0'),[-base*TESLA_PRISM.damageMultiplier,10,2]);
+     yield* rt.call(c,id(side,'qy83','05j0'),[-base,10,2]);
      rt.add(target,id(3-side,'c9o4','lgp6'),direction*20);
      if(enhanced)rt.set(target,id(3-side,'9af4','nccn'),18);
      break;

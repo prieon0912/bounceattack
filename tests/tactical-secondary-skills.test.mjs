@@ -224,7 +224,7 @@ for(const side of [1,2]){
 
 for(const side of [1,2]){
  const key=side===1?82:80,dir=side===1?1:-1;
- test(`Tesla Prism side ${side}: next native shot only, fan hit, normal/enhanced and rooted damage reduced ten percent`,()=>{
+ test(`Tesla Prism side ${side}: next native shot only, fan hit, normal/enhanced and rooted damage preserved`,()=>{
   for(const enhanced of [false,true])for(const rooted of [false,true]){
    const r=game(17,side,true),caster=body(r,side),target=body(r,3-side),weapon=r.originals.get(side===1?'5c1h':'8rb4');
    r.collisionProvider=()=>false;r.globals.set(side===1?'etjn':'846x',dir>0?1:0);
@@ -236,7 +236,7 @@ for(const side of [1,2]){
    r.command({e:weapon,block:enhanced?'cowr':'f7j2'},'create_clone',['self']);
    assert.equal(r.secondarySkills.state(side).prismArmed,false);r.run(45);
    const base=enhanced?(rooted?41:27):(rooted?26:17);
-   assert.equal(hits.length,1);assert.ok(Math.abs(hits[0]+base*.9)<1e-9);
+   assert.equal(hits.length,1);assert.ok(Math.abs(hits[0]+base)<1e-9);
    assert.equal(r.num(r.globals.get(side===1?'lgp6':'c9o4')),dir*20);
    if(enhanced)assert.equal(r.num(r.globals.get(side===1?'nccn':'9af4')),18);
    const next=r.makeEntity(weapon.def,weapon);r.secondarySkills.onClone({e:weapon,block:'f7j2'},next);assert.equal(next.dead,false);
