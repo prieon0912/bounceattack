@@ -259,25 +259,20 @@ export class DuoSystem {
   mark(side, state) {
     const r = this.r;
     if (!state.hits || state.swarmUntil > r.tick || !r.castle.alive(3 - side) || !this.mana(side, -52)) return;
-    const victim = this.body(3 - side);
+    const origin = this.body(side), victim = this.body(3 - side);
     const count = state.hits * 2 + (state.hits === 5 ? 2 : 0);
     state.ultimateAt = r.tick + 420;
     state.hits = 0;
     state.damage = 0;
     state.swarmUntil = r.tick + 420;
     state.swarmHitAt = r.tick + 28;
-    this.flash(side, 'phage/mark', victim.x, victim.y, 54, 22);
-    for (let index = 0; index < count; index++) this.minion(side, victim, index, count, state);
+    this.flash(side, 'phage/mark', origin.x, origin.y, 54, 22);
+    for (let index = 0; index < count; index++) this.minion(side, origin, victim, index, count, state);
   }
 
-  minion(side, target, index, count, state) {
+  minion(side, origin, target, index, count, state) {
     const r = this.r, angle = index * 2 * Math.PI / count;
-    const e = this.visual(side, 'phage/core',
-      Math.max(-230, Math.min(230, target.x + Math.cos(angle) * 31)),
-      Math.max(-127, Math.min(124, target.y + Math.sin(angle) * 23)),
-      11, 'minion', { hp: 3 });
-    // Spawn on the free side of platforms so grounded targets do not trap the swarm.
-    for (let lift = 0; lift < 9 && e.y < 121 && this.terrain(e); lift++) e.y += 4;
+    const e = this.visual(side, 'phage/core', origin.x, origin.y, 11, 'minion', { hp: 3 });
     r.spawn(e, function* hunt(rt, context) {
       try {
         while (rt.tick < state.swarmUntil && rt.castle.alive(side) && rt.castle.alive(3 - side)) {
@@ -288,7 +283,7 @@ export class DuoSystem {
           const dx = Math.max(-1.75, Math.min(1.75, (x - e.x) / 6));
           const dy = Math.max(-1.5, Math.min(1.5, (y - e.y) / 6));
           rt.duo.moveMinion(e, dx, dy);
-          if (Math.hypot(e.x - target.x, e.y - target.y) <= 13 && rt.tick >= state.swarmHitAt && rt.castle.canHit(side)) {
+          if (Math.hypot(e.x - target.x, e.y - target.y) <= 13 && rt.tick >= state.swarmHitAt && rt.castle.canHit(side) && !rt.duo.terrain(e)) {
             state.swarmHitAt = rt.tick + 36;
             yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-1, 0, 1]);
             rt.duo.flash(side, 'phage/swipe', e.x, e.y, 12, 6);
@@ -300,11 +295,9 @@ export class DuoSystem {
   }
 
   moveMinion(e, dx, dy) {
-    const x = e.x, y = e.y;
-    e.x = Math.max(-232, Math.min(232, x + dx));
-    if (this.terrain(e)) e.x = x;
-    e.y = Math.max(-127, Math.min(124, y + dy));
-    if (this.terrain(e)) e.y = y;
+    // Flying minions can pass through platforms while pursuing the target.
+    e.x = Math.max(-232, Math.min(232, e.x + dx));
+    e.y = Math.max(-127, Math.min(124, e.y + dy));
     e.rotation = dx * 7;
   }
 
@@ -507,21 +500,21 @@ export class DuoSystem {
     for (const side of [1, 2]) {
       const r = this.r, state = this.state(side);
       if (!state || !r.castle.alive(side) || !r.castle.alive(3 - side)) continue;
-      if (this.character(side) !== PHAGE_ID) continue;
-      const target = this.body(3 - side);
+      if (this.character(side) !== PHAGE_ID || state.hits === 0) continue;
+      const fighter = this.body(side);
       const filled = state.hits;
-      const x = Math.max(-206, Math.min(206, target.x)), y = Math.max(-118, -target.y - 24);
+      const x = Math.max(-222, Math.min(222, fighter.x)), y = Math.min(131, -fighter.y + 12);
       ctx.save();
-      ctx.lineWidth = 1.2;
+      ctx.lineWidth = .8;
       for (let slot = 0; slot < 5; slot++) {
-        const center = x + (slot - 2) * 8;
+        const center = x + (slot - 2) * 5;
         ctx.beginPath();
-        ctx.moveTo(center, y - 4.5);
-        ctx.lineTo(center + 3.5, y - 2);
-        ctx.lineTo(center + 3.5, y + 2);
-        ctx.lineTo(center, y + 4.5);
-        ctx.lineTo(center - 3.5, y + 2);
-        ctx.lineTo(center - 3.5, y - 2);
+        ctx.moveTo(center, y - 3);
+        ctx.lineTo(center + 2, y - 1.25);
+        ctx.lineTo(center + 2, y + 1.25);
+        ctx.lineTo(center, y + 3);
+        ctx.lineTo(center - 2, y + 1.25);
+        ctx.lineTo(center - 2, y - 1.25);
         ctx.closePath();
         ctx.fillStyle = slot < filled ? '#a88cf9' : '#392556';
         ctx.strokeStyle = slot < filled ? '#513079' : '#9277b6';
