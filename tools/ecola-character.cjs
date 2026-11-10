@@ -19,9 +19,10 @@ module.exports = function addEcola(project) {
   for (const id of ['j5y7', 'zyy3', 'n230', 'ocqj', 'afvb', '8svk']) {
     const pictures = object(id).sprite.pictures;
     const dimension = pictures[35].dimension;
-    pictures.splice(36, 0, picture('ecola-base', 'base', dimension));
+    const art = form => ['afvb', '8svk'].includes(id) ? 'profile-' + form : form;
+    pictures.splice(36, 0, picture('ecola-base', art('base'), dimension));
     if (!['j5y7', 'zyy3'].includes(id))
-      pictures.push(...forms.slice(1).map(form => picture('ecola-' + form, form, dimension)));
+      pictures.push(...forms.slice(1).map(form => picture('ecola-' + form, art(form), dimension)));
   }
   for (const [id, art] of [['o9rj', 'absorb'], ['4ffm', 'evolve'], ['pyez', 'attack']]) {
     const pictures = object(id).sprite.pictures;
@@ -33,7 +34,7 @@ module.exports = function addEcola(project) {
     picture('ecola-pulse', 'pulse'),
   );
   const tile = object('ncwe');
-  tile.sprite.pictures[4] = picture('ecola-select', 'base', tile.sprite.pictures[3].dimension);
+  tile.sprite.pictures[4] = picture('ecola-select', 'select', tile.sprite.pictures[3].dimension);
   const stacks = JSON.parse(tile.script);
   stacks.find(stack => stack[0]?.id === 'ndxn').push({
     id: 'ecola-select-create', type: 'create_clone', params: ['self', null], statements: [],

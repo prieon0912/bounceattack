@@ -320,11 +320,11 @@ export class EcolaSystem {
     const charge = state.evolveUntil ? Math.max(0, 1 - (state.evolveUntil - tick) / 24) : 0;
     const fire = Math.max(0, 1 - (tick - (fireAt ?? -20)) / 7);
     const hit = Math.max(0, 1 - (tick - (hitAt ?? -20)) / 8);
-    const bob = Math.sin((tick + phase) * (state.form === 'flagella' ? .38 : .18));
+    const scale = 1 + charge * .12 + fire * .04 + hit * .03;
     entity.ecolaPose = {
-      x: 1 + charge * .48 + fire * .2 + hit * .08,
-      y: 1 + charge * .56 - fire * .16 + bob * (state.form === 'wilt' ? .1 : .045),
-      tilt: state.form === 'flagella' ? bob * .11 : bob * .035,
+      x: scale,
+      y: scale,
+      tilt: state.form === 'flagella' ? Math.sin((tick + phase) * .38) * .08 : 0,
       flash: hit > 0 || (charge > .45 && tick % 6 < 3),
     };
   }
