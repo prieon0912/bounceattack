@@ -1,8 +1,11 @@
 import { damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
 
 export const ECOLA_ID = 37;
-const BODY_SIZE = 24;
+// The circle is 77 of the SVG's 100 units, including its outline.
+const BODY_SIZE = 16 / .77;
 const FISSION_TICKS = 300;
+const FISSION_SPLIT_INTERVAL = 90;
+const FISSION_MAX_SPLITS = 2;
 const FORMS = {
   base: {},
   flagella: { weight: 25, walk: 1.25, jump: 1.15 },
@@ -22,7 +25,7 @@ export const ecolaFission = {
   icon: 'assets/ecola/fission.svg', secondaryPictureId: 'ecola-fission',
   primaryName: '양분흡수', primaryPictureId: 'ecola-absorb', primaryIcon: 'assets/ecola/absorb.svg',
   primaryDescription: '2초 동안 이속 35% 감소, 마나 최대 28 회복.',
-  description: 'MP 28. 가짜가 최대 7마리로 늘고 5초 뒤 사라집니다.',
+  description: 'MP 28. 가짜가 최대 3마리로 늘고 5초 뒤 사라집니다.',
   prepare(project) {
     const pictures = project.objects.find(o => o.id === 'o9rj').sprite.pictures;
     const primary = pictures.find(p => p.id === this.primaryPictureId);
@@ -134,7 +137,7 @@ export class EcolaSystem {
       }
       if (state.fissionUntil) {
         if (r.tick >= state.fissionUntil) this.clearDecoys(side);
-        else if (state.splits < 3 && r.tick >= state.splitAt) this.split(side, state);
+        else if (state.splits < FISSION_MAX_SPLITS && r.tick >= state.splitAt) this.split(side, state);
       }
       if (r.castle.blocked(side) || state.evolveUntil) continue;
 
@@ -217,7 +220,7 @@ export class EcolaSystem {
       this.pulse(side, source, 16, 9);
     }
     state.splits++;
-    state.splitAt = this.r.tick + 36;
+    state.splitAt = this.r.tick + FISSION_SPLIT_INTERVAL;
   }
 
   terrain(e) { return this.r.reach(e, '6tzq') || this.r.reach(e, '2bx4'); }
