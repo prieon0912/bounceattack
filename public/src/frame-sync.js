@@ -37,6 +37,8 @@ export function stateHash(runtime) {
       add(Number(v).toFixed(6));
     add(e.visible);
     add(e.picture?.id);
+    if (e.duoEffect) add(JSON.stringify(e.duoEffect));
+    if (e.duoMinionHitAt !== undefined) add(e.duoMinionHitAt);
     for (const [key, value] of e.locals) {
       add(key);
       add(JSON.stringify(value));

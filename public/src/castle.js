@@ -40,7 +40,7 @@ export class CastleSystem{
   if(effect.stun&&r.num(r.get(e,info(s).stun))===0){const id=info(s).stun,generation=sid(s,'bpv0','bpv5');r.add(e,generation,1);const token=r.get(e,generation);r.set(e,id,1);showStatusVisual(r,3-s,'stun',effect.stun);r.spawn(e,function*(rt){yield effect.stun;if(rt.get(e,generation)===token)rt.set(e,id,0);},'castle_stun');}
   if(effect.slow){const state=this.state(3-s);if(state)state.slow={side:s,value:effect.slow,until:r.tick+(effect.ticks||60)};showStatusVisual(r,3-s,'slow',effect.ticks||60);}
  }
- canHit(s){const r=this.r;return this.alive(s)&&this.alive(3-s)&&r.num(r.globals.get(info(s).stealth))===0&&r.num(r.globals.get(info(3-s).stealth))===0;}
+ canHit(s){const r=this.r;return this.alive(s)&&this.alive(3-s)&&!r.duo.dormant(s)&&!r.duo.dormant(3-s)&&r.num(r.globals.get(info(s).stealth))===0&&r.num(r.globals.get(info(3-s).stealth))===0;}
  hidden(e){for(const side of [1,2])if(this.active(side)&&this.state(side)?.stealthUntil>this.r.tick&&([sid(side,'00h9','n8fg'),sid(side,'n230','ocqj'),sid(side,'zlk5','79eo'),sid(side,'aadi','0y61')].includes(e.objectId)||(e.combatSide===side&&['held','native-shield'].includes(e.castleEffect))))return true;return false;}
  blocksAttackCollision(a,b){return (this.hidden(a)&&b.combatSide&&b.combatSide!==a.combatSide)||(this.hidden(b)&&a.combatSide&&a.combatSide!==b.combatSide);}
  onDamage(side,source){const st=this.state(side);if(this.active(side)&&source===3-side&&st?.crown)st.crown=null;}
@@ -89,6 +89,7 @@ export class CastleSystem{
    const step=Math.min(speed,range-distance),parts=Math.max(1,Math.ceil(step));
    for(let i=0;i<parts;i++){e.x+=Math.cos(a)*step/parts;e.y+=Math.sin(a)*step/parts;distance+=step/parts;
     if(Math.abs(e.x)>254||e.y>205||e.y<-205)return;
+    rt.duo.hitMinion(3-s,e,damage);
     if(rt.castle.canHit(s)&&Math.hypot(e.x-target.x,e.y-target.y)<=size*.5+8){yield* rt.castle.hit(c,s,damage,attack,effect);return;}
    }yield 1;
   }}finally{e.dead=true;}},'castle_projectile');return e;

@@ -149,7 +149,7 @@ export class Renderer {
           );
         }
       } else {
-        const asset = this.assets.get(e.ecolaPose?.picture ?? e.picture);
+        const asset = this.assets.get(e.duoPicture ?? e.ecolaPose?.picture ?? e.picture);
         if (asset)
           c.drawImage(asset.image, -e.regX, -e.regY, e.width, e.height);
       }
@@ -157,6 +157,7 @@ export class Renderer {
       if (e === arenaBackground) drawNightSky(c, night);
     }
     runtime.castle?.draw(c);
+    runtime.duo?.draw(c);
     c.restore();
   }
 }

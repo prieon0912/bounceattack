@@ -239,6 +239,7 @@ export class MichaelSystem {
               if (falling && ball.gravity >= .1 && ball.vy < 1) ball.vy = 1;
             }
             if (e.y < -135 - radius) return;
+            rt.duo.hitMinion(3 - ball.side, e, ball.damage);
             if (projectileInstallationContact(rt, e)) {
               damageInstallationsInRadius(rt, ball.side, e, radius + 1, ball.damage);
               return;
@@ -302,10 +303,11 @@ export class MichaelSystem {
     const ball = entity.michaelBall;
     const chessShot = entity.castleEffect === 'projectile';
     const ecolaShot = entity.ecolaEffect === 'shot' && !entity.ecolaFakeShot;
+    const peel = entity.duoEffect?.kind === 'projectile';
     const native = entity.clone && entity.def.barricadeDamage &&
       r.threads.some(thread => thread.e === entity && !thread.cancelled && thread.event === 'when_clone_start');
     const owner = ball?.side ?? entity.combatSide ?? (native ? 3 - side : null);
-    if ((!ball && !native && !chessShot && !ecolaShot) || owner !== 3 - side) return false;
+    if ((!ball && !native && !chessShot && !ecolaShot && !peel) || owner !== 3 - side) return false;
     const player = this.body(side), direction = this.facing(side);
     if ((entity.x - player.x) * direction < -2) return false;
     if (entity.dead) return false;

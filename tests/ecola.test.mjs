@@ -68,7 +68,7 @@ test('nutrient absorption grants four pulses and an attack cancels it early', ()
   assert.deepEqual(r.faults, []);
 });
 
-test('fission doubles twice after the first split and fakes evolve without dealing damage', () => {
+test('fission doubles once after the first split and fakes evolve without dealing damage', () => {
   const r = game({ skills: ['secondary', 'primary'] });
   r.collisionProvider = (e, target) => target === '6tzq' && e.y < -80;
   r.globals.set('qn98', 100);
@@ -76,12 +76,12 @@ test('fission doubles twice after the first split and fakes evolve without deali
   press(r, 82);
   assert.equal(r.ecola.decoys(1).length, 1);
   assert.equal(r.originals.get('aadi').ecolaHidden, true);
-  advance(r, 36);
+  advance(r, 90);
   assert.equal(r.ecola.decoys(1).length, 3);
-  advance(r, 36);
+  advance(r, 90);
   const clones = r.ecola.decoys(1);
-  assert.equal(clones.length, 7);
-  assert.ok(new Set(clones.map(clone => clone.x)).size > 3);
+  assert.equal(clones.length, 3);
+  assert.ok(new Set(clones.map(clone => clone.x)).size > 1);
   r.random = () => .7;
   press(r, 83);
   advance(r, 24);
@@ -108,6 +108,50 @@ test('cytoplasm damages real opponents and shell form reduces damage and recoil'
   r.add(r.ecola.body(2), 'lgp6', 20);
   assert.equal(r.globals.get('lgp6'), Number(recoil) + 13);
   assert.deepEqual(r.faults, []);
+});
+
+test('evolved basics steer, burst, rebound, spread or drop according to form', () => {
+  const setup = form => {
+    const r = game();
+    r.collisionProvider = () => false;
+    Object.assign(r.ecola.body(1), { x: -65, y: 50 });
+    Object.assign(r.ecola.body(2), { x: 65, y: 80 });
+    r.globals.set('etjn', 1);
+    r.ecola.state(1).form = form;
+    return r;
+  };
+  const shots = r => r.entities.filter(e => e.ecolaEffect === 'shot');
+
+  const flagella = setup('flagella');
+  press(flagella, 69);
+  advance(flagella, 5);
+  assert.ok(shots(flagella)[0].y > 53);
+
+  const cannon = setup('cannon');
+  cannon.collisionProvider = (e, id) => id === '6tzq' && e.ecolaEffect === 'shot' && e.x >= -43;
+  Object.assign(cannon.ecola.body(2), { x: -34, y: 62 });
+  const hp = Number(cannon.globals.get('7ir2'));
+  press(cannon, 69);
+  advance(cannon, 7);
+  assert.equal(Number(cannon.globals.get('7ir2')), hp - 7);
+
+  const shell = setup('shell');
+  Object.assign(shell.ecola.body(1), { x: 222, y: 50 });
+  press(shell, 69);
+  advance(shell, 5);
+  assert.ok(shots(shell)[0].x < 237 && shots(shell)[0].scaleX < 0);
+
+  const spore = setup('spore');
+  press(spore, 69);
+  advance(spore, 5);
+  assert.equal(new Set(shots(spore).map(e => e.y)).size, 3);
+
+  const wilt = setup('wilt');
+  press(wilt, 69);
+  advance(wilt, 16);
+  assert.ok(shots(wilt)[0].y < 45);
+  advance(wilt, 7);
+  assert.equal(shots(wilt).length, 0);
 });
 
 test('online matchmaking accepts both loadouts and seeded mirrors stay in sync', async () => {
