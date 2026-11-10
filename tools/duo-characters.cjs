@@ -32,7 +32,9 @@ module.exports = function addDuoCharacters(project) {
       list[index] = { ...list[index - 1], data: fighter.text[i] };
     }
     for (const id of ['j5y7', 'zyy3', 'n230', 'ocqj', 'afvb', '8svk']) {
-      const pictures = object(id).sprite.pictures, dimension = pictures[index - 1].dimension;
+      const pictures = object(id).sprite.pictures;
+      // Use Michael's original-size slot. Collie's preview includes extra padding for its spikes.
+      const dimension = pictures[35].dimension;
       const asset = art => ['afvb', '8svk'].includes(id) ? art.replace('/', '/profile-') : art;
       pictures.splice(index, 0, picture(fighter.base, asset(fighter.base), dimension));
       if (id !== 'j5y7' && id !== 'zyy3')
