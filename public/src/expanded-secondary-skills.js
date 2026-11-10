@@ -126,15 +126,15 @@ export const eclipseDeparture=definition(4,'궤도 이탈',30,'eclipse-departure
    }
    const destination={x:target.x,y:target.y};
    for(const entry of swords){const e=entry.blade,dx=destination.x-e.x,dy=destination.y-e.y,len=Math.hypot(dx,dy);
-    entry.dx=len?dx/len:0;entry.dy=len?dy/len:0;entry.remaining=len+10;entry.phase='outbound';
-    entry.destination={x:destination.x+entry.dx*10,y:destination.y+entry.dy*10};
+    entry.dx=len?dx/len:0;entry.dy=len?dy/len:0;entry.remaining=Math.min(150,len+10);entry.phase='outbound';
+    entry.destination={x:e.x+entry.dx*entry.remaining,y:e.y+entry.dy*entry.remaining};
     e.secondaryDestination={...entry.destination};
    }
    while(swords.some(entry=>entry.phase!=='caught')&&alive(r,side)){
     for(const entry of swords){const e=entry.blade;if(entry.phase==='caught')continue;
      if(entry.phase==='outbound'){
       const step=Math.min(5,entry.remaining);e.x+=entry.dx*step;e.y+=entry.dy*step;entry.remaining-=step;
-      if(!entry.struck&&Math.hypot(e.x-target.x,e.y-target.y)<=18&&visibleTarget(r,side)){entry.struck=true;yield* hit(r,c,side,4,'slow',6,60);}
+      if(!entry.struck&&Math.hypot(e.x-target.x,e.y-target.y)<=18&&visibleTarget(r,side)){entry.struck=true;yield* hit(r,c,side,4);}
       if(entry.remaining<=1e-8){e.x=entry.destination.x;e.y=entry.destination.y;entry.phase='return';}
      }else{const dx=caster.x-e.x,dy=caster.y-e.y,len=Math.hypot(dx,dy);if(len<=8){entry.phase='caught';e.dead=true;continue;}e.x+=dx/len*Math.min(7,len);e.y+=dy/len*Math.min(7,len);e.rotation=45-Math.atan2(dy,dx)*180/Math.PI;}
     }yield 1;

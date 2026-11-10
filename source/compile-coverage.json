@@ -1,7 +1,7 @@
 {
   "objects": 372,
   "threads": 1037,
-  "emittedStatementCount": 22394,
+  "emittedStatementCount": 22392,
   "emittedBlockIds": [
     "fzxg",
     "ri1i",
@@ -14931,7 +14931,6 @@
     "gvff",
     "hoh8",
     "h33a",
-    "1bdg",
     "wt7y",
     "gtzw",
     "fthi",
@@ -15053,7 +15052,6 @@
     "gvff",
     "hoh8",
     "8nyj",
-    "4ki0",
     "wt7y",
     "gtzw",
     "fthi",
@@ -22405,7 +22403,7 @@
     "if_else": 1163,
     "move_x": 934,
     "_if": 3128,
-    "set_variable": 3176,
+    "set_variable": 3174,
     "func_qy83": 236,
     "stop_drawing": 47,
     "move_y": 537,

@@ -18737,7 +18737,7 @@ r.command(c,"show",[null]);
 c.block="dt6p";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="dq2o";r.guard(c);
-impact508:for(let i508=0,n508=Math.max(0,Math.floor(r.num("100")));i508<n508;i508++){
+impact508:for(let i508=0,n508=Math.max(0,Math.floor(r.num("60")));i508<n508;i508++){
 c.block="1yxk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="cpnk";r.guard(c);
@@ -18864,7 +18864,7 @@ r.command(c,"show",[null]);
 c.block="dump";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="f3pt";r.guard(c);
-impact510:for(let i510=0,n510=Math.max(0,Math.floor(r.num("100")));i510<n510;i510++){
+impact510:for(let i510=0,n510=Math.max(0,Math.floor(r.num("60")));i510<n510;i510++){
 c.block="t4ek";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",null]),"EQUAL","1"]))){
 c.block="ckkl";r.guard(c);
@@ -19945,7 +19945,7 @@ r.command(c,"show",[null]);
 c.block="dt6p";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="dq2o";r.guard(c);
-impact521:for(let i521=0,n521=Math.max(0,Math.floor(r.num("100")));i521<n521;i521++){
+impact521:for(let i521=0,n521=Math.max(0,Math.floor(r.num("60")));i521<n521;i521++){
 c.block="1yxk";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="cpnk";r.guard(c);
@@ -20072,7 +20072,7 @@ r.command(c,"show",[null]);
 c.block="lmwn";r.guard(c);
 r.command(c,"set_thickness",["1",null]);
 c.block="u3p5";r.guard(c);
-impact523:for(let i523=0,n523=Math.max(0,Math.floor(r.num("100")));i523<n523;i523++){
+impact523:for(let i523=0,n523=Math.max(0,Math.floor(r.num("60")));i523<n523;i523++){
 c.block="z6hr";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",null]),"EQUAL","1"]))){
 c.block="qfvm";r.guard(c);
@@ -33501,9 +33501,9 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["wyyq",
 c.block="ygdy";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["40",null]))){
 c.block="qhr9";r.guard(c);
-if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER_OR_EQUAL","57"]))){
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER_OR_EQUAL","59"]))){
 c.block="g0xa";r.guard(c);
-r.command(c,"change_variable",["thom","-57",null]);
+r.command(c,"change_variable",["thom","-59",null]);
 c.block="jmhg";r.guard(c);
 r.command(c,"set_variable",["qvkr","0",null]);
 c.block="8rl9";r.guard(c);
@@ -33551,7 +33551,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["ob2m",
 c.block="awzc";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"n230",null]),"LESS","33"]))){
 c.block="3n8g";r.guard(c);
-r.command(c,"change_variable",["thom","65",null]);
+r.command(c,"change_variable",["thom","66",null]);
 c.block="2636";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["thom",null]),"GREATER","100"]))){
 c.block="7h0i";r.guard(c);
@@ -33877,9 +33877,9 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["8w41",
 c.block="x3z4";r.guard(c);
 if(r.truth(r.value(c,"is_press_some_key",["83",null]))){
 c.block="t71x";r.guard(c);
-if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER_OR_EQUAL","57"]))){
+if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER_OR_EQUAL","59"]))){
 c.block="4g8a";r.guard(c);
-r.command(c,"change_variable",["qn98","-57",null]);
+r.command(c,"change_variable",["qn98","-59",null]);
 c.block="j3ni";r.guard(c);
 r.command(c,"set_variable",["rr24","0",null]);
 c.block="2gly";r.guard(c);
@@ -33927,7 +33927,7 @@ if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["rav6",
 c.block="y81s";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"distance_something",[null,"ocqj",null]),"LESS","33"]))){
 c.block="vvgx";r.guard(c);
-r.command(c,"change_variable",["qn98","65",null]);
+r.command(c,"change_variable",["qn98","66",null]);
 c.block="bfai";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["qn98",null]),"GREATER","100"]))){
 c.block="6ws9";r.guard(c);
@@ -40004,8 +40004,6 @@ c.block="hoh8";r.guard(c);
 r.command(c,"set_variable",["ac5f","200",null]);
 c.block="h33a";r.guard(c);
 yield* r.call(c,"05j0",["-3","4","1"]);
-c.block="1bdg";r.guard(c);
-r.command(c,"set_variable",["9af4","15",null]);
 }
 }
 }else{
@@ -40343,8 +40341,6 @@ c.block="hoh8";r.guard(c);
 r.command(c,"set_variable",["3xyz","200",null]);
 c.block="8nyj";r.guard(c);
 yield* r.call(c,"qy83",["-3","4","1"]);
-c.block="4ki0";r.guard(c);
-r.command(c,"set_variable",["nccn","15",null]);
 }
 }
 }else{

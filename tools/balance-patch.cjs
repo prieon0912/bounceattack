@@ -109,11 +109,11 @@ module.exports = function applyBalancePatch(project) {
   setNumber("9srf", "olxu", [0], 3, 0); // 1P 방어막 만료 → func_albn(0)
   setNumber("9thh", "q4yu", [0], 3, 0); // 2P 방어막 만료 → func_41z4(0)
 
-  // 2. 데빌메이지 — 궁 MP 55 → 57, 적중 환급 64 → 65
+  // 2. 데빌메이지 — 궁 MP 55 → 59, 적중 환급 64 → 66
   for (const [o, cond, cost, refund] of [["dg09", "t71x", "4g8a", "vvgx"], ["zzbm", "qhr9", "g0xa", "3n8g"]]) {
-    setNumber(o, cond, [0, 2], 55, 57);
-    setNumber(o, cost, [1], -55, -57);
-    setNumber(o, refund, [1], 64, 65);
+    setNumber(o, cond, [0, 2], 55, 59);
+    setNumber(o, cost, [1], -55, -59);
+    setNumber(o, refund, [1], 64, 66);
   }
 
   // 3. 하란 — 칼을 회수할 수 있는 범위 30 → 45.
@@ -431,6 +431,18 @@ module.exports = function applyBalancePatch(project) {
     setNumber(o,grow,[0,0,0],145,156);
     const damage=locate(o,hit).block.params[0].params[0];
     damage.params[2]=calc(damage.params[2],"DIVIDE",num(156/145));
+  }
+
+  // Eclipse: remove the slow from empowered orbit hits only.
+  for (const [objectId, blockId] of [["q6zw", "4ki0"], ["kxwh", "1bdg"]]) {
+    const slow = locate(objectId, blockId);
+    if (slow.block.type !== "set_variable") throw Error("Unexpected Eclipse slow block");
+    slow.list.splice(slow.index, 1);
+  }
+
+  // Invader: shorten both directional branches of Mental Weakening by 40%.
+  for (const [objectId, blocks] of [["wkk5", ["dq2o", "u3p5"]], ["6r3z", ["dq2o", "f3pt"]]]) {
+    for (const blockId of blocks) setNumber(objectId, blockId, [0], 100, 60);
   }
 
   for (const [objectId, stacks] of scripts) objects.get(objectId).script = JSON.stringify(stacks);
