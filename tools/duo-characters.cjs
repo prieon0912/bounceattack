@@ -41,7 +41,8 @@ module.exports = function addDuoCharacters(project) {
       const pictures = object(id).sprite.pictures;
       pictures.splice(index, 0, picture(art, art, pictures[index - 1].dimension));
     }
-    tile.sprite.pictures[index - 32] = picture(`duo-select-${fighter.id}`, fighter.base, tile.sprite.pictures[4].dimension);
+    const portrait = fighter.base.split('/')[0] + '/portrait';
+    tile.sprite.pictures[index - 32] = picture(`duo-select-${fighter.id}`, portrait, tile.sprite.pictures[4].dimension);
     init.push({
       id: `duo-select-create-${fighter.id}`, type: 'create_clone', params: ['self', null], statements: [],
     });

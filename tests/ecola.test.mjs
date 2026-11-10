@@ -110,6 +110,50 @@ test('cytoplasm damages real opponents and shell form reduces damage and recoil'
   assert.deepEqual(r.faults, []);
 });
 
+test('evolved basics steer, burst, rebound, spread or drop according to form', () => {
+  const setup = form => {
+    const r = game();
+    r.collisionProvider = () => false;
+    Object.assign(r.ecola.body(1), { x: -65, y: 50 });
+    Object.assign(r.ecola.body(2), { x: 65, y: 80 });
+    r.globals.set('etjn', 1);
+    r.ecola.state(1).form = form;
+    return r;
+  };
+  const shots = r => r.entities.filter(e => e.ecolaEffect === 'shot');
+
+  const flagella = setup('flagella');
+  press(flagella, 69);
+  advance(flagella, 5);
+  assert.ok(shots(flagella)[0].y > 53);
+
+  const cannon = setup('cannon');
+  cannon.collisionProvider = (e, id) => id === '6tzq' && e.ecolaEffect === 'shot' && e.x >= -43;
+  Object.assign(cannon.ecola.body(2), { x: -34, y: 62 });
+  const hp = Number(cannon.globals.get('7ir2'));
+  press(cannon, 69);
+  advance(cannon, 7);
+  assert.equal(Number(cannon.globals.get('7ir2')), hp - 7);
+
+  const shell = setup('shell');
+  Object.assign(shell.ecola.body(1), { x: 222, y: 50 });
+  press(shell, 69);
+  advance(shell, 5);
+  assert.ok(shots(shell)[0].x < 237 && shots(shell)[0].scaleX < 0);
+
+  const spore = setup('spore');
+  press(spore, 69);
+  advance(spore, 5);
+  assert.equal(new Set(shots(spore).map(e => e.y)).size, 3);
+
+  const wilt = setup('wilt');
+  press(wilt, 69);
+  advance(wilt, 16);
+  assert.ok(shots(wilt)[0].y < 45);
+  advance(wilt, 7);
+  assert.equal(shots(wilt).length, 0);
+});
+
 test('online matchmaking accepts both loadouts and seeded mirrors stay in sync', async () => {
   const build = JSON.parse(fs.readFileSync(new URL('../public/data/build.json', import.meta.url))).id;
   const hub = new RoomHub(new MemoryStore());

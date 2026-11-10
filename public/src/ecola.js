@@ -8,7 +8,7 @@ const FORMS = {
   flagella: { weight: 25, walk: 1.25, jump: 1.15 },
   cannon: { weight: 20, damage: 7, size: 13, speed: 3.4 },
   shell: { weight: 20, walk: .9, armor: .75, recoil: .65 },
-  spore: { weight: 20, interval: 25, speed: 4.8, size: 8, damage: 4 },
+  spore: { weight: 20, interval: 25, speed: 4.8, size: 7, damage: 2 },
   wilt: { weight: 15, walk: .8, jump: .85, size: 7, damage: 4 },
 };
 const CONTROLS = [
@@ -282,31 +282,66 @@ export class EcolaSystem {
   }
 
   shot(side, source, direction, fake) {
-    const r = this.r, name = this.state(side).form, form = FORMS[name], size = form.size ?? 10;
+    const name = this.state(side).form;
+    const volley = { hits: 0, maxHits: name === 'spore' ? 2 : 1 };
+    const vertical = name === 'spore' ? [-1.45, 0, 1.45] : [name === 'wilt' ? 1.1 : 0];
+    for (const vy of vertical) this.projectile(side, source, direction, fake, name, vy, volley);
+  }
+
+  projectile(side, source, direction, fake, name, vy, volley) {
+    const r = this.r, form = FORMS[name], size = form.size ?? 10;
+    const damage = form.damage ?? 5;
     const start = { x: source.x + direction * 9, y: source.y + 1 };
     const e = this.visual(side, 'ecola-shot-' + name, start, size, 'shot');
     e.ecolaFakeShot = fake;
     e.scaleX = direction * Math.abs(e.scaleX);
     r.spawn(e, function* fly(rt, context) {
+      let vx = direction * (form.speed ?? 4), canBounce = name === 'shell';
+      const explosive = name === 'cannon';
+      const enemy = rt.ecola.body(3 - side);
+      const hit = (radius) => rt.castle.canHit(side) &&
+        Math.hypot(e.x - enemy.x, e.y - enemy.y) <= radius;
       try {
-        for (let age = 0; age < 44 && rt.castle.alive(side); age++) {
-          const speed = form.speed ?? 4;
+        const life = name === 'wilt' ? 22 : 44;
+        for (let age = 0; age < life && rt.castle.alive(side); age++) {
+          if (name === 'flagella' && (enemy.x - e.x) * vx > 0)
+            vy += (Math.max(-1.5, Math.min(1.5, (enemy.y - e.y) / 20)) - vy) * .18;
+          if (name === 'wilt') vy -= .25;
+          e.rotation = -Math.atan2(vy, Math.abs(vx)) * Math.sign(vx) * 180 / Math.PI;
           for (let i = 0; i < 3; i++) {
-            e.x += direction * speed / 3;
-            if (Math.abs(e.x) > 238 || rt.ecola.terrain(e)) return;
-            if (fake) continue;
-            rt.duo.hitMinion(3 - side, e, form.damage ?? 5);
-            if (projectileInstallationContact(rt, e)) {
-              damageInstallationsInRadius(rt, side, e, size / 2 + 1, form.damage ?? 5);
-              return;
+            const x = e.x, y = e.y;
+            e.x += vx / 3;
+            const wall = Math.abs(e.x) > 238 || rt.ecola.terrain(e);
+            if (wall) e.x = x;
+            e.y += vy / 3;
+            const ceiling = e.y > 133 || (vy !== 0 && rt.ecola.terrain(e));
+            if (ceiling) e.y = y;
+            if (e.y < -135) return;
+            if ((wall || ceiling) && canBounce) {
+              canBounce = false;
+              if (wall) vx *= -1;
+              if (ceiling) vy *= -1;
+              e.scaleX = Math.sign(vx) * Math.abs(e.scaleX);
+              continue;
             }
-            for (const decoy of rt.ecola.decoys(3 - side)) {
-              if (Math.hypot(e.x - decoy.x, e.y - decoy.y) <= size / 2 + 8) rt.ecola.flash(decoy);
+            if ((wall || ceiling) && !explosive) return;
+            const installation = !fake && !wall && !ceiling && projectileInstallationContact(rt, e);
+            if (!fake) {
+              rt.duo.hitMinion(3 - side, e, damage);
+              const radius = explosive ? 19 : size / 2 + 8;
+              for (const decoy of rt.ecola.decoys(3 - side)) {
+                if (Math.hypot(e.x - decoy.x, e.y - decoy.y) <= radius) rt.ecola.flash(decoy);
+              }
             }
-            const enemy = rt.ecola.body(3 - side);
-            if (rt.castle.canHit(side) && Math.hypot(e.x - enemy.x, e.y - enemy.y) <= size / 2 + 8) {
-              yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-(form.damage ?? 5), 0, 1]);
-              if (!e.dead) rt.ecola.pulse(side, e, 12, 8);
+            const direct = !fake && hit(size / 2 + 8);
+            if (wall || ceiling || installation || direct) {
+              if (installation || (explosive && !fake))
+                damageInstallationsInRadius(rt, side, e, explosive ? 19 : size / 2 + 1, damage);
+              if (!fake && (direct || (explosive && hit(19))) && volley.hits < volley.maxHits) {
+                volley.hits++;
+                yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-damage, 0, 1]);
+              }
+              if (!e.dead && (explosive || direct)) rt.ecola.pulse(side, e, explosive ? 33 : 12, explosive ? 13 : 8);
               return;
             }
           }

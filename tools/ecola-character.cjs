@@ -7,7 +7,7 @@ module.exports = function addEcola(project) {
   const labels = {
     '5pvu': 'E. 콜라 2', xxgw: '분열하는 변이체', of7a: '형태 적응',
     dw8v: '진화 결과에 따라 몸과 능력치가 바뀝니다.',
-    twcx: '세포질 발사', wynm: '정면으로 세포질을 발사합니다. 형태에 따라 탄의 성질이 바뀝니다.',
+    twcx: '세포질 발사', wynm: '진화 형태에 따라 유도·폭발·반사·산탄·낙하탄이 됩니다.',
     x7mx: '양분흡수', gsve: '2초 동안 이속 35% 감소, 마나 최대 28 회복.',
     '74ed': '진화', '9m7u': 'MP 60. 다음 진화나 경기 끝까지 변신. 퇴화 가능.',
   };
@@ -33,7 +33,7 @@ module.exports = function addEcola(project) {
     picture('ecola-pulse', 'pulse'),
   );
   const tile = object('ncwe');
-  tile.sprite.pictures[4] = picture('ecola-select', 'base', tile.sprite.pictures[3].dimension);
+  tile.sprite.pictures[4] = picture('ecola-select', 'portrait', tile.sprite.pictures[3].dimension);
   const stacks = JSON.parse(tile.script);
   stacks.find(stack => stack[0]?.id === 'ndxn').push({
     id: 'ecola-select-create', type: 'create_clone', params: ['self', null], statements: [],
