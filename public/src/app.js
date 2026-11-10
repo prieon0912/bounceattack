@@ -296,16 +296,15 @@ function mode(enabled) {
   roster();
 }
 function frame(now) {
-  const delta = Math.min(250, now - last);
+  const delta = Math.max(0, now - last);
   last = now;
   if (runtime && !$("battle").hidden) {
     if (!runtime.paused && runtime.running) {
       accumulator += delta;
       let count = 0;
-      while (accumulator >= stepMs && count++ < 8) {
+      while (accumulator + 1e-7 >= stepMs && count++ < 32) {
         if (sync) {
           if (!sync.advance(runtime)) {
-            accumulator = Math.min(accumulator, stepMs);
             break;
           }
           lastProgress = now;
@@ -316,9 +315,8 @@ function frame(now) {
               hash: sync.checkpoint(runtime),
             });
         } else runtime.step();
-        accumulator -= stepMs;
+        accumulator = Math.max(0, accumulator - stepMs);
       }
-      if (count >= 8) accumulator = 0;
       if (sync && !sync.failed && !runtime.paused) {
         if (now - lastProgress > 800) {
           overlay("친구의 연결을 기다리고 있어요…");

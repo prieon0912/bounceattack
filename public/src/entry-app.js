@@ -335,9 +335,9 @@ function update(now) {
   // Keep real elapsed time when drawing is suspended; dropping it extended timed skills.
   elapsed += Math.max(0, now - last);
   last = now;
-  let onlineSteps = 0;
-  while (elapsed + 1e-7 >= 1000 / 60) {
-    if (sync && onlineSteps++ >= 8) break;
+  let steps = 0;
+  while (elapsed + 1e-7 >= 1000 / 60 && steps++ < 32) {
+
     if (sync) {
       // The original sets 게임 끝 (r71b) when a fighter falls. Both clients
       // reach that frame identically, so lockstep can end here: the ending
