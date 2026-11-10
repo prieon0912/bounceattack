@@ -23,9 +23,9 @@ const WALK_BLOCKS = new Set(['afct', 'i0j3', 'zwdh', 'xcn9']);
 export const ecolaFission = {
   character: ECOLA_ID, name: '이분법', manaCost: 28, cooldownTicks: 480, lockVariable: false,
   icon: 'assets/ecola/fission.svg', secondaryPictureId: 'ecola-fission',
-  primaryName: '양분흡수', primaryPictureId: 'ecola-absorb', primaryIcon: 'assets/ecola/absorb.svg',
-  primaryDescription: '2초 동안 이속 35% 감소, 마나 최대 28 회복.',
-  description: 'MP 28. 가짜가 최대 3마리로 늘고 5초 뒤 사라집니다.',
+  primaryName: '양분 흡수', primaryPictureId: 'ecola-absorb', primaryIcon: 'assets/ecola/absorb.svg',
+  primaryDescription: '2초 동안 이동 속도가 감소하며 MP를 추가적으로 획득합니다.',
+  description: '잠시 유지되는 자신의 복제본을 최대 3마리까지 만듭니다. 복제본은 게임플레이에 그 어떠한 영향도 주지 않습니다.',
   prepare(project) {
     const pictures = project.objects.find(o => o.id === 'o9rj').sprite.pictures;
     const primary = pictures.find(p => p.id === this.primaryPictureId);

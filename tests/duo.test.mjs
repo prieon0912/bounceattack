@@ -40,6 +40,7 @@ test('dormancy prevents health loss, recoil, movement and attacks, then returns 
   r.globals.set('qn98', 50);
   key(r, 82);
   const phage = r.duo.body(1), position = [phage.x, phage.y];
+  r.globals.set('akf6', r.globals.get('xr74') - 5);
   const hp = r.globals.get('akf6'), enemyHp = r.globals.get('7ir2');
   const until = r.duo.state(1).dormantUntil;
   assert.equal(r.originals.get('n230').duoPicture.id, 'phage/dormant');
@@ -58,19 +59,30 @@ test('dormancy prevents health loss, recoil, movement and attacks, then returns 
   step(r, until - r.tick - 1);
   const before = r.globals.get('qn98');
   step(r, 1);
-  assert.ok(r.globals.get('qn98') >= before + 14);
+  assert.ok(r.globals.get('qn98') >= before + 5);
+  step(r, 1);
+  assert.equal(r.globals.get('akf6'), hp + 1);
   assert.equal(r.duo.dormant(1), false);
   assert.equal(r.originals.get('n230').duoPicture.id, 'phage/core');
   assert.deepEqual(r.faults, []);
 });
 
+test('first evolution without a direction rolls either branch', () => {
+  for (const [roll, branch] of [[.25, 'armor'], [.75, 'needle']]) {
+    const r = game({ skills: ['secondary', 'primary'] });
+    r.random = () => roll;
+    r.globals.set('qn98', 100);
+    key(r, 82);
+    assert.equal(r.duo.state(1).tier, 1);
+    assert.equal(r.duo.state(1).branch, branch);
+  }
+});
+
+
 test('evolution branches are selected by direction and stay separate in mirrors', () => {
   const r = game({ p2: 38, skills: ['secondary', 'secondary'] });
   r.globals.set('qn98', 100);
   r.globals.set('thom', 100);
-  key(r, 82, 80);
-  assert.equal(r.duo.state(1).tier, 0);
-  step(r, 1);
   key(r, 65, 82, 39, 80);
   const left = r.duo.state(1), right = r.duo.state(2);
   assert.equal(left.branch, 'armor');

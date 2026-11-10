@@ -46,14 +46,14 @@ function loadout(character, primaryPictureId, secondaryPictureId, details) {
 }
 
 export const phageEvolution = loadout(PHAGE_ID, 'phage/dormant', 'phage/needle', {
-  name: '진화', primaryName: '휴면상태',
-  primaryDescription: 'MP 10. 2.5초간 굳어 무적. 해제 시 MP 14 회복.',
-  description: 'MP 24/32. 첫 진화: 왼쪽+스킬 장갑, 오른쪽+스킬 추적.',
+  name: '진화', primaryName: '휴면 상태',
+  primaryDescription: '2.5초동안 굳으며 무적 상태가 됩니다.',
+  description: '자신의 진화 방향을 선택하여 진화합니다.',
 });
 export const bananaReturn = loadout(BANANA_ID, 'banana/slide', 'banana/return', {
-  name: '반품 접수', primaryName: '껍질 미끄럼',
-  primaryDescription: 'MP 22. 앞으로 미끄러지며 한 번 밀쳐냅니다.',
-  description: 'MP 24. 반품표를 남기고 3초 안에 다시 눌러 돌아갑니다.',
+  name: '복귀 표식', primaryName: '어깨치기',
+  primaryDescription: '앞으로 돌진하며 부딪힌 적을 밀쳐냅니다.',
+  description: '현재 위치에 표식을 남깁니다. 3초 안에 다시 사용하면 그 자리로 돌아갑니다.',
 });
 
 export class DuoSystem {
@@ -158,7 +158,14 @@ export class DuoSystem {
       if (!r.castle.alive(side) || this.dormant(side)) continue;
       if (state.dormantUntil) {
         state.dormantUntil = 0;
-        this.mana(side, 14);
+        this.mana(side, 5);
+        const maxHp = side === 1 ? 'xr74' : '67ko';
+        const healing = Math.min(1, r.num(r.globals.get(maxHp)) - r.num(r.globals.get(control.hp)));
+        if (healing > 0) {
+          r.spawn(this.body(side), function* recover(rt, context) {
+            yield* rt.call(context, side === 1 ? 'albn' : '41z4', [healing]);
+          }, 'phage_dormant_recovery');
+        }
       }
       if (r.castle.blocked(side) || state.slideUntil > r.tick) continue;
       const secondary = r.secondarySkills.state(side).mode === 'secondary';
@@ -181,7 +188,7 @@ export class DuoSystem {
   phageSkill(side, state, secondary) {
     const r = this.r, body = this.body(side), control = SIDES[side - 1];
     if (!secondary) {
-      if (!this.mana(side, -10)) return;
+      if (!this.mana(side, -30)) return;
       state.dormantUntil = r.tick + 150;
       state.skillAt = r.tick + 540;
       state.lockX = body.x;
@@ -190,9 +197,8 @@ export class DuoSystem {
       return;
     }
     const left = r.keys.has(control.left), right = r.keys.has(control.right);
-    const branch = state.branch ?? (left !== right ? (left ? 'armor' : 'needle') : null);
-    if (!branch || state.tier >= 2 || !this.mana(side, state.tier ? -32 : -24)) return;
-    state.branch = branch;
+    if (state.tier >= 2 || !this.mana(side, state.tier ? -32 : -24)) return;
+    state.branch ??= left !== right ? (left ? 'armor' : 'needle') : (r.random() < .5 ? 'armor' : 'needle');
     state.tier++;
     state.skillAt = r.tick + 240;
     this.flash(side, 'phage/mark', body.x, body.y, 26 + state.tier * 3, 23);
@@ -480,7 +486,7 @@ export class DuoSystem {
       const base = character === PHAGE_ID ? 'phage/core' : 'banana/body';
       const art = dormant ? 'phage/dormant' : state.branch ? 'phage/' + state.branch : base;
       r.setPicture(hero, base);
-      r.setSize(hero, character === PHAGE_ID ? 24 : 22);
+      r.setSize(hero, 16);
       hero.duoPicture = r.pictureFrom(hero.def, art);
       const profile = r.originals.get(control.profile);
       if (profile) r.setPicture(profile, art);

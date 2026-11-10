@@ -5,11 +5,11 @@ module.exports = function addEcola(project) {
     dimension, imageType: 'svg', pngFallback: false,
   });
   const labels = {
-    '5pvu': 'E. 콜라 2', xxgw: '분열하는 변이체', of7a: '형태 적응',
+    '5pvu': '콜리', xxgw: '분열하는 변이체', of7a: '형태 적응',
     dw8v: '진화 결과에 따라 몸과 능력치가 바뀝니다.',
-    twcx: '세포질 발사', wynm: '진화 형태에 따라 유도·폭발·반사·산탄·낙하탄이 됩니다.',
-    x7mx: '양분흡수', gsve: '2초 동안 이속 35% 감소, 마나 최대 28 회복.',
-    '74ed': '진화', '9m7u': 'MP 60. 다음 진화나 경기 끝까지 변신. 퇴화 가능.',
+    twcx: '세포질 발사', wynm: '진화 형태에 따른 세포질을 발사합니다.',
+    x7mx: '양분 흡수', gsve: '2초 동안 이동 속도가 감소하며 MP를 추가적으로 획득합니다.',
+    '74ed': '진화', '9m7u': '자신의 다른 진화 형태로 형태를 변경합니다.',
   };
   for (const [id, data] of Object.entries(labels)) {
     const list = project.variables.find(v => v.id === id).array;
