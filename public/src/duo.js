@@ -32,13 +32,13 @@ const isDuo = id => id === PHAGE_ID || id === BANANA_ID;
 function loadout(character, primaryPictureId, secondaryPictureId, details) {
   const art = id => `assets/${id}-icon.svg`;
   return {
-    character, primaryPictureId, secondaryPictureId, lockVariable: false,
+    character, primaryPictureId, secondaryPictureId: secondaryPictureId + '-skill-icon', lockVariable: false,
     primaryIcon: art(primaryPictureId), icon: art(secondaryPictureId), ...details,
     prepare(project) {
       const pictures = project.objects.find(o => o.id === 'o9rj').sprite.pictures;
       const primary = pictures.find(p => p.id === primaryPictureId);
-      if (primary && !pictures.some(p => p.id === secondaryPictureId))
-        pictures.push({ ...primary, id: secondaryPictureId, fileurl: this.icon });
+      if (primary && !pictures.some(p => p.id === this.secondaryPictureId))
+        pictures.push({ ...primary, id: this.secondaryPictureId, fileurl: this.icon });
     },
     canCast() { return false; },
     *cast() {},
@@ -190,7 +190,7 @@ export class DuoSystem {
     if (!secondary) {
       if (!this.mana(side, -30)) return;
       state.dormantUntil = r.tick + 150;
-      state.skillAt = r.tick + 540;
+      state.skillAt = r.tick + 300;
       state.lockX = body.x;
       state.lockY = body.y;
       this.freeze(side, state);
@@ -200,7 +200,7 @@ export class DuoSystem {
     if (state.tier >= 2 || !this.mana(side, state.tier ? -32 : -24)) return;
     state.branch ??= left !== right ? (left ? 'armor' : 'needle') : (r.random() < .5 ? 'armor' : 'needle');
     state.tier++;
-    state.skillAt = r.tick + 240;
+    state.skillAt = r.tick + 300;
     this.flash(side, 'phage/mark', body.x, body.y, 26 + state.tier * 3, 23);
   }
 
@@ -219,10 +219,24 @@ export class DuoSystem {
   strike(side, state) {
     const r = this.r, fighter = this.body(side), direction = this.facing(side), stats = this.stats(state);
     state.attackAt = r.tick + stats.interval;
+    const tail = this.visual(side, 'phage/swipe', fighter.x, fighter.y, stats.range + 5, 'swing');
+    tail.scaleX *= direction;
+    r.spawn(tail, function* animate(rt) {
+      try {
+        for (let tick = 0; tick < 15 && rt.castle.alive(side) && !rt.castle.blocked(side) && !rt.duo.dormant(side); tick++) {
+          const degrees = -68 + 138 * tick / 14;
+          const radians = degrees * Math.PI / 180;
+          tail.rotation = degrees * direction;
+          tail.x = fighter.x + direction * Math.cos(radians) * stats.range / 2;
+          tail.y = fighter.y - Math.sin(radians) * stats.range / 2;
+          tail.effects.transparency = 10 + Math.max(0, tick - 6) * 10;
+          yield 1;
+        }
+      } finally { tail.dead = true; }
+    }, 'phage_tail_animation');
     r.spawn(fighter, function* swing(rt, context) {
       yield 5;
       if (!rt.castle.alive(side) || rt.castle.blocked(side) || rt.duo.dormant(side)) return;
-      rt.duo.flash(side, 'phage/swipe', fighter.x + direction * stats.range / 2, fighter.y, stats.range + 5, 10, direction);
       const enemy = rt.duo.body(3 - side);
       const reaches = (target, extra = 0) => {
         const forward = (target.x - fighter.x) * direction;
@@ -367,7 +381,7 @@ export class DuoSystem {
       return;
     }
     if (!this.mana(side, -22)) return;
-    state.skillAt = r.tick + 300;
+    state.skillAt = r.tick + 60;
     state.slideUntil = r.tick + 12;
     this.flash(side, 'banana/slide', body.x, body.y, 25, 12, direction);
     r.spawn(body, function* slide(rt, context) {
@@ -405,7 +419,7 @@ export class DuoSystem {
     }
     if (Math.abs(body.x) > 232 || body.y < -125 || body.y > 125 || !this.mana(side, -24)) return;
     const ticket = state.returnPoint = { x: body.x, y: body.y, until: r.tick + 180 };
-    state.skillAt = r.tick + 420;
+    state.skillAt = r.tick + 180;
     const marker = this.visual(side, 'banana/return', ticket.x, ticket.y + 12, 16, 'return');
     r.spawn(marker, function* showTicket(rt) {
       while (state.returnPoint === ticket && rt.castle.alive(side)) {
@@ -420,13 +434,13 @@ export class DuoSystem {
 
   scatter(side, state) {
     const r = this.r, body = this.body(side);
-    const count = Math.min(6, MAX_PEELS - this.effects(side, 'trap').length);
-    if (count <= 0 || !this.mana(side, -55)) return;
-    state.ultimateAt = r.tick + 480;
+
+    if (!this.mana(side, -55)) return;
+    state.ultimateAt = r.tick + 300;
     state.skillAt = Math.max(state.skillAt, r.tick + 36);
     const { x, y } = body;
     r.spawn(body, function* scatterPeels(rt) {
-      for (const offset of [-18, 18, -42, 42, -66, 66].slice(0, count)) {
+      for (const offset of [-18, 18, -42, 42, -66, 66]) {
         if (!rt.castle.alive(side)) break;
         rt.duo.trap(side, x, y + 7, offset / 20);
         yield 6;
@@ -436,11 +450,13 @@ export class DuoSystem {
 
   trap(side, x, y, vx) {
     const r = this.r, target = 3 - side;
+    const traps = this.effects(side, 'trap');
+    if (traps.length >= MAX_PEELS) traps[0].dead = true;
     const e = this.visual(side, 'banana/peel', x, y, 13, 'trap', { landed: false });
-    r.spawn(e, function* drop(rt) {
+    r.spawn(e, function* drop(rt, context) {
       let vy = 2.7;
       try {
-        for (let age = 0; rt.castle.alive(side) && rt.castle.alive(target); age++) {
+        for (let age = 0; !e.dead && rt.castle.alive(side) && rt.castle.alive(target); age++) {
           if (age < 20 && !e.duoEffect.landed) {
             const oldX = e.x;
             e.x += vx;
@@ -456,12 +472,16 @@ export class DuoSystem {
             e.duoEffect.landed = false;
           }
           if (e.y < -142) return;
-          const enemy = rt.duo.body(target), slip = rt.globals.get('duo-slip:' + target);
-          if (e.duoEffect.landed && !(slip?.readyAt > rt.tick) && rt.castle.canHit(side) &&
-              Math.abs(enemy.x - e.x) < 9 && Math.abs(enemy.y - e.y) < 9) {
-            rt.globals.set('duo-slip:' + target, { readyAt: rt.tick + 100, slowUntil: rt.tick + 36 });
+          const enemy = rt.duo.body(target);
+          const touching = e.duoEffect.landed &&
+            Math.abs(enemy.x - e.x) < 9 && Math.abs(enemy.y - e.y) < 9;
+          if (!touching) e.duoEffect.triggered = false;
+          if (touching && !e.duoEffect.triggered && rt.castle.canHit(side)) {
+            e.duoEffect.triggered = true;
+            rt.globals.set('duo-slip:' + target, { slowUntil: rt.tick + 36 });
             rt.castle.knockback(target, 18 * (Math.sign(enemy.x - e.x) || rt.duo.facing(target)));
             rt.duo.flash(side, 'banana/slide', enemy.x, enemy.y, 20, 12);
+            yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-1, 0, 1]);
           }
           e.rotation = e.duoEffect.landed ? 0 : e.rotation + (vx < 0 ? -10 : 10);
           yield 1;

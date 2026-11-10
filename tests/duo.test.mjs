@@ -89,7 +89,7 @@ test('evolution branches are selected by direction and stay separate in mirrors'
   assert.equal(right.branch, 'needle');
   assert.equal(r.originals.get('n230').duoPicture.id, 'phage/armor');
   assert.equal(r.originals.get('ocqj').duoPicture.id, 'phage/needle');
-  step(r, 240);
+  step(r, 300);
   key(r, 68, 82, 80);
   assert.equal(left.tier, 2);
   assert.equal(left.branch, 'armor');
