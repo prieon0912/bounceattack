@@ -505,7 +505,7 @@ export const axeRage=definition(5,'분노',AXE_RAGE,'axe-rage','5초 동안 이�
   finally{delete state.rageUntil;}
  }
 });
-export const TESLA_PRISM=Object.freeze({manaCost:24,cooldownTicks:60,halfAngle:10,damageMultiplier:.9});
+export const TESLA_PRISM=Object.freeze({manaCost:24,cooldownTicks:60,halfAngle:5,damageMultiplier:.9});
 export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다음 일반 공격이 부채꼴로 퍼지지만 피해량이 10% 감소합니다.',{
  effectPictures:[['tesla-prism-fan','assets/secondary/tesla-prism-fan.svg',{width:100,height:100}]],
  canCast(r,side){return !r.secondarySkills.state(side).prismArmed;},
@@ -519,7 +519,7 @@ export const teslaPrism=definition(17,'프리즘',TESLA_PRISM,'tesla-prism','다
  fire(r,side,enhanced){
   const caster=body(r,side),target=body(r,3-side),direction=facing(r,side),x=caster.x,y=caster.y-4.5;
   const fan=visual(r,side,'tesla-prism-fan',x,y,2,'tesla-prism');
-  const slope=Math.tan(TESLA_PRISM.halfAngle*Math.PI/180),range=enhanced?298:274,steps=Math.ceil((range-20)/16);
+  const slope=Math.tan(TESLA_PRISM.halfAngle*Math.PI/180),range=enhanced?596:548,steps=Math.ceil((range-20)/16);
   fan.projectileOrigin={x,y};
   r.spawn(fan,function*(rt,c){let hit=false;try{
    for(let age=0;age<steps&&alive(rt,side);age++){

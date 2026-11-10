@@ -201,3 +201,16 @@ test('football starts at the held ball, halves basic travel and curves with a hi
   assert.ok(r.secondarySkills.state(1).slow.until > r.tick);
   assert.deepEqual(r.faults, []);
 });
+
+test('a glancing football hit reflects off the opponent and keeps the ball alive', () => {
+  const r = fixture('football');
+  const target = r.michael.body(2);
+  Object.assign(target, { x: 0, y: 4 });
+  const hp = r.globals.get('7ir2');
+  const ball = r.michael.launch(1, 6, 0, 5);
+  run(r, 8);
+  assert.equal(r.globals.get('7ir2'), hp - 5);
+  assert.equal(ball.dead, false);
+  assert.ok(ball.michaelBall.vx < 0 && ball.michaelBall.vy < 0);
+  assert.ok(Math.abs(Math.hypot(ball.michaelBall.vx, ball.michaelBall.vy) - 6) < 1e-9);
+});

@@ -5,7 +5,7 @@ const SPORTS = ['basketball', 'football', 'baseball'];
 const BALL = {
   basketball: { size: 12, gravity: .19, bounce: .9, life: 112 },
   football: { size: 9, gravity: 0, bounce: .91, life: 100 },
-  baseball: { size: 6, gravity: .14, bounce: .95, maxFallSpeed: 32, life: 102 },
+  baseball: { size: 6, gravity: .14, bounce: .95, maxFallSpeed: 24, life: 102 },
 };
 const BAT = { size: 24, gripX: 24, gripY: 77, tipX: 85, tipY: 18, damage: 10, swingTicks: 9 };
 const batRotation = age => age < 0 || age >= 13 ? 0
@@ -243,12 +243,31 @@ export class MichaelSystem {
             }
             const target = 3 - ball.side;
             const victim = rt.michael.body(target);
-            if (Math.hypot(e.x - victim.x, e.y - victim.y) > radius + 8 || !rt.castle.canHit(ball.side)) continue;
-            if (ball.volley?.hitUntil > rt.tick) continue;
-            if (rt.michael.intercept(e, target)) {
-              if (e.dead) return;
-              break;
+            const dx = e.x - victim.x, dy = e.y - victim.y;
+            const distance = Math.hypot(dx, dy);
+            if (distance > radius + 8) {
+              ball.touchingTarget = false;
+              continue;
             }
+            if (ball.touchingTarget || !rt.castle.canHit(ball.side)) continue;
+            if (rt.michael.intercept(e, target)) return;
+
+            // Reflect the incoming velocity about the outward contact normal.
+            const speed = Math.hypot(ball.vx, ball.vy);
+            if (speed < 1e-9) continue;
+            const nx = distance > 1e-9 ? dx / distance : -ball.vx / speed;
+            const ny = distance > 1e-9 ? dy / distance : -ball.vy / speed;
+            const approach = ball.vx * nx + ball.vy * ny;
+            if (approach >= 0) continue;
+            ball.touchingTarget = true;
+            ball.vx -= 2 * approach * nx;
+            ball.vy -= 2 * approach * ny;
+            if (ball.curve) ball.curve *= -1;
+            if (Math.hypot(x - victim.x, y - victim.y) > radius + 8) {
+              e.x = x;
+              e.y = y;
+            }
+            if (ball.volley?.hitUntil > rt.tick) continue;
             if (ball.volley) ball.volley.hitUntil = rt.tick + 18;
             if (ball.sport === 'basketball') {
               const state = rt.michael.state(ball.side);
@@ -256,7 +275,6 @@ export class MichaelSystem {
             }
             yield* rt.call(context, ball.side === 1 ? 'qy83' : '05j0', [-ball.damage, 0, 1]);
             if (ball.slow) rt.michael.applySlow(ball.side);
-            return;
           }
           e.rotation += ball.vx * 4;
           yield 1;
@@ -358,7 +376,7 @@ export class MichaelSystem {
     } else if (st.sport === 'football') {
       const vertical = this.body(3 - side).y >= this.body(side).y ? 1 : -1;
       this.launch(side, direction * 5.8, 0, 8, { curve: direction * vertical * .026, slow: true });
-    } else this.launch(side, direction * 20.8, 15.2, 8);
+    } else this.launch(side, direction * 15.6, 11.4, 8);
   }
 
   ultimate(side) {
@@ -386,7 +404,7 @@ export class MichaelSystem {
         }
       }, 'michael_volleys');
     } else {
-      for (const angle of [-45, -25, -5, 15, 35, 55, 75]) fire(angle, 24);
+      for (const angle of [-45, -25, -5, 15, 35, 55, 75]) fire(angle, 18);
     }
   }
 }
