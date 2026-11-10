@@ -50,10 +50,10 @@ export const phageEvolution = loadout(PHAGE_ID, 'phage/dormant', 'phage/needle',
   primaryDescription: 'MP 10. 2.5초간 굳어 무적. 해제 시 MP 14 회복.',
   description: 'MP 24/32. 첫 진화: 왼쪽+스킬 장갑, 오른쪽+스킬 추적.',
 });
-export const bananaBait = loadout(BANANA_ID, 'banana/slide', 'banana/peel', {
-  name: '미끼 껍질', primaryName: '껍질 미끄럼',
+export const bananaReturn = loadout(BANANA_ID, 'banana/slide', 'banana/return', {
+  name: '반품 접수', primaryName: '껍질 미끄럼',
   primaryDescription: 'MP 22. 앞으로 미끄러지며 한 번 밀쳐냅니다.',
-  description: 'MP 16. 발밑에 오래 남는 미끄럼 함정을 놓습니다.',
+  description: 'MP 24. 반품표를 남기고 3초 안에 다시 눌러 돌아갑니다.',
 });
 
 export class DuoSystem {
@@ -154,6 +154,7 @@ export class DuoSystem {
       const skillEdge = skill && !state.skillDown, ultimateEdge = ultimate && !state.ultimateDown;
       state.skillDown = skill;
       state.ultimateDown = ultimate;
+      if (state.returnPoint?.until <= r.tick) delete state.returnPoint;
       if (!r.castle.alive(side) || this.dormant(side)) continue;
       if (state.dormantUntil) {
         state.dormantUntil = 0;
@@ -164,7 +165,7 @@ export class DuoSystem {
       if (ultimateEdge && r.tick >= state.ultimateAt) {
         if (character === PHAGE_ID) this.mark(side, state);
         else this.scatter(side, state);
-      } else if (skillEdge && r.tick >= state.skillAt) {
+      } else if (skillEdge && (r.tick >= state.skillAt || state.returnPoint)) {
         if (character === PHAGE_ID) this.phageSkill(side, state, secondary);
         else this.bananaSkill(side, state, secondary);
       } else if (r.keys.has(control.attack) && r.tick >= state.attackAt) {
@@ -356,9 +357,7 @@ export class DuoSystem {
   bananaSkill(side, state, secondary) {
     const r = this.r, body = this.body(side), direction = this.facing(side);
     if (secondary) {
-      if (this.effects(side, 'trap').length >= MAX_PEELS || !this.mana(side, -16)) return;
-      state.skillAt = r.tick + 240;
-      this.trap(side, body.x, body.y + 5, 0, 0);
+      this.returnPeel(side, state);
       return;
     }
     if (!this.mana(side, -22)) return;
@@ -380,6 +379,39 @@ export class DuoSystem {
     }, 'banana_slide');
   }
 
+  returnPeel(side, state) {
+    const r = this.r, body = this.body(side), point = state.returnPoint;
+    if (point) {
+      if (r.num(r.globals.get(side === 1 ? '05ze' : '1vu0')) > 0) return;
+      const probe = { ...body, x: point.x, y: point.y, visible: true };
+      while (probe.y <= Math.min(125, point.y + 6) && this.terrain(probe)) probe.y++;
+      if (probe.y > Math.min(125, point.y + 6) ||
+          r.entities.some(e => e.secondaryEffect === 'sten-barricade' && r.overlap(probe, e))) return;
+
+      this.flash(side, 'banana/return', body.x, body.y, 23, 13);
+      body.x = probe.x;
+      body.y = probe.y;
+      const { fall, recoil, momentum } = SIDES[side - 1];
+      for (const id of [fall, recoil, momentum]) r.globals.set(id, 0);
+      delete state.returnPoint;
+      this.flash(side, 'banana/return', body.x, body.y, 29, 18);
+      return;
+    }
+    if (Math.abs(body.x) > 232 || body.y < -125 || body.y > 125 || !this.mana(side, -24)) return;
+    const ticket = state.returnPoint = { x: body.x, y: body.y, until: r.tick + 180 };
+    state.skillAt = r.tick + 420;
+    const marker = this.visual(side, 'banana/return', ticket.x, ticket.y + 12, 16, 'return');
+    r.spawn(marker, function* showTicket(rt) {
+      while (state.returnPoint === ticket && rt.castle.alive(side)) {
+        const remaining = ticket.until - rt.tick;
+        marker.effects.transparency = remaining < 45 && remaining % 12 < 6 ? 65 : 10;
+        marker.y = ticket.y + 12 + Math.sin(rt.tick * .12) * 1.4;
+        yield 1;
+      }
+      marker.dead = true;
+    }, 'banana_return');
+  }
+
   scatter(side, state) {
     const r = this.r, body = this.body(side);
     const count = Math.min(6, MAX_PEELS - this.effects(side, 'trap').length);
@@ -390,20 +422,20 @@ export class DuoSystem {
     r.spawn(body, function* scatterPeels(rt) {
       for (const offset of [-18, 18, -42, 42, -66, 66].slice(0, count)) {
         if (!rt.castle.alive(side)) break;
-        rt.duo.trap(side, x, y + 7, offset / 20, 20);
+        rt.duo.trap(side, x, y + 7, offset / 20);
         yield 6;
       }
     }, 'banana_scatter');
   }
 
-  trap(side, x, y, vx, travel) {
+  trap(side, x, y, vx) {
     const r = this.r, target = 3 - side;
     const e = this.visual(side, 'banana/peel', x, y, 13, 'trap', { landed: false });
     r.spawn(e, function* drop(rt) {
-      let vy = travel ? 2.7 : 0;
+      let vy = 2.7;
       try {
         for (let age = 0; rt.castle.alive(side) && rt.castle.alive(target); age++) {
-          if (age < travel && !e.duoEffect.landed) {
+          if (age < 20 && !e.duoEffect.landed) {
             const oldX = e.x;
             e.x += vx;
             if (Math.abs(e.x) > 232 || rt.duo.terrain(e)) e.x = oldX;

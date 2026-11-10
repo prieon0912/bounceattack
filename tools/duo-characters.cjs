@@ -46,7 +46,7 @@ module.exports = function addDuoCharacters(project) {
       id: `duo-select-create-${fighter.id}`, type: 'create_clone', params: ['self', null], statements: [],
     });
   }
-  const art = ['phage/core', 'phage/swipe', 'phage/mark', 'banana/peel', 'banana/slide', 'banana/pile'];
+  const art = ['phage/core', 'phage/swipe', 'phage/mark', 'banana/peel', 'banana/slide', 'banana/pile', 'banana/return'];
   object('hb4u').sprite.pictures.push(...art.map(id => picture(id, id)));
   tile.script = JSON.stringify(stacks);
 

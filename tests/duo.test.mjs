@@ -147,6 +147,38 @@ test('banana basic deals damage and ultimate peels persist, trip enemies only, a
   assert.deepEqual(r.faults, []);
 });
 
+test('return ticket recalls once without dropping a peel and expires if unused', () => {
+  const r = game({ p1: 39, skills: ['secondary'] });
+  faceOff(r);
+  r.globals.set('qn98', 70);
+  key(r, 82);
+  const body = r.duo.body(1), state = r.duo.state(1);
+  const { x, y, until } = state.returnPoint;
+  assert.equal(until - r.tick, 180);
+  assert.equal(r.duo.effects(1, 'return').length, 1);
+  assert.equal(r.duo.effects(1, 'trap').length, 0);
+  assert.ok(r.globals.get('qn98') < 47);
+  body.x += 65;
+  step(r, 1);
+  r.globals.set('akf6', 66);
+  const before = r.globals.get('qn98');
+  key(r, 82);
+  assert.equal(body.x, x);
+  assert.ok(Math.abs(body.y - y) < 1);
+  assert.equal(state.returnPoint, undefined);
+  assert.equal(r.duo.effects(1, 'return').length, 0);
+  assert.equal(r.globals.get('akf6'), 66);
+  assert.ok(r.globals.get('qn98') >= before);
+
+  step(r, 420);
+  r.globals.set('qn98', 70);
+  key(r, 82);
+  step(r, 180);
+  assert.equal(state.returnPoint, undefined);
+  assert.equal(r.duo.effects(1, 'return').length, 0);
+  assert.deepEqual(r.faults, []);
+});
+
 test('online matchmaking accepts both new secondary loadouts and effects stay in sync', async () => {
   const hub = new RoomHub(new MemoryStore());
   await hub.matchmake({}, { build, character: 38, skill: 'secondary' });
@@ -161,6 +193,8 @@ test('online matchmaking accepts both new secondary loadouts and effects stay in
   }
   for (let tick = 0; tick < 180; tick++) {
     for (const r of [a, b]) {
+      if (tick === 6) r.duo.body(2).x += 45;
+      if (tick === 10) r.keys.add(80);
       if (tick === 15) r.keys.add(40);
       if (tick % 32 === 0) r.keys.add(69);
       r.step();

@@ -1,4 +1,4 @@
-import { BANANA_ID, phageEvolution, bananaBait } from './duo.js';
+import { BANANA_ID, phageEvolution, bananaReturn } from './duo.js';
 import { ecolaFission } from './ecola.js';
 import { michaelDefense } from './michael.js';
 import { harlanStopgap } from './harlan-stopgap.js';
@@ -12,7 +12,7 @@ import { NEW_SECONDARY_SKILLS, restorePresentation } from './expanded-secondary-
 import { brandFireZone } from "./brand-fire-zone.js";
 import { nevilHomingBoomerang } from "./nevil-homing-boomerang.js";
 import { smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic } from "./additional-secondary-skills.js";
-export const SECONDARY_SKILLS = [harlanStopgap, princeRoyalFlag, stenBarricade, brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, ...STRATEGIC_SECONDARY_SKILLS, castleCastling, michaelDefense, ecolaFission, phageEvolution, bananaBait];
+export const SECONDARY_SKILLS = [harlanStopgap, princeRoyalFlag, stenBarricade, brandFireZone, nevilHomingBoomerang, smokeHealingPotion, atlenSwordWave, brookeBarrage, nukeMaximumFirepower, matrixReversalMagic, ...NEW_SECONDARY_SKILLS, ...TACTICAL_SECONDARY_SKILLS, ...STRATEGIC_SECONDARY_SKILLS, castleCastling, michaelDefense, ecolaFission, phageEvolution, bananaReturn];
 export function prepareSecondarySkills(project, definitions = SECONDARY_SKILLS) {
   // Nevil's archived 1P body references a black/green variant; use the same orange
   // body as 2P and the original selector, preserving picture id, size and hit geometry.
