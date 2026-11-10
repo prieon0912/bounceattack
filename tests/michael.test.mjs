@@ -155,8 +155,8 @@ test('baseball uses a melee basic and advances on the next three swings after th
     const before = player.x;
     r.michael.basic(1);
     r.keys.clear();
-    run(r, 9);
-    assert.equal(player.x - before, i < 3 ? 30 : 0);
+    run(r, 12);
+    assert.ok(Math.abs(player.x - before - (i < 3 ? 48 : 0)) < 1e-8);
   }
   assert.deepEqual(r.faults, []);
 });

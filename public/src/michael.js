@@ -109,12 +109,14 @@ export class MichaelSystem {
       st.skillDown = skill;
       st.ultimateDown = ultimate;
       if (!r.castle.alive(side) || r.castle.blocked(side)) continue;
+      const defense = r.secondarySkills.state(side).mode === 'secondary';
+      const skillCost = defense || st.sport === 'baseball' ? 24 : 16;
       if (ultimateEdge && r.tick >= st.ultimateAt && this.spend(side, 62)) {
         st.ultimateAt = r.tick + 180;
         this.ultimate(side);
-      } else if (skillEdge && r.tick >= st.skillAt && this.spend(side, 24)) {
+      } else if (skillEdge && r.tick >= st.skillAt && this.spend(side, skillCost)) {
         st.skillAt = r.tick + 60;
-        this.skill(side, r.secondarySkills.state(side).mode === 'secondary');
+        this.skill(side, defense);
       } else if (r.keys.has(keys.attack) && r.tick >= st.attackAt) {
         st.attackAt = r.tick + 32;
         this.basic(side);
@@ -338,12 +340,14 @@ export class MichaelSystem {
       if (advancing) st.shiftSwings--;
       r.spawn(this.body(side), function* swing(rt, context) {
         let hit = false;
-        for (let age = 0; age < BAT.swingTicks; age++) {
+        const shiftDistance = advancing ? 48 : 0, shiftSpeed = 4;
+        const ticks = Math.max(BAT.swingTicks, Math.ceil(shiftDistance / shiftSpeed));
+        for (let age = 0; age < ticks; age++) {
           if (!rt.castle.alive(side) || rt.castle.blocked(side)) return;
           const player = rt.michael.body(side), enemy = rt.michael.body(3 - side);
-          if (advancing && age < 5 && !rt.secondarySkills.blocksMove(player, direction * 6, 0))
-            rt.castle.move(side, direction * 6, 0);
-          if (!hit && batTouches(player, enemy, direction, age) && rt.castle.canHit(side)) {
+          const dx = direction * Math.max(0, Math.min(shiftSpeed, shiftDistance - age * shiftSpeed));
+          if (dx && !rt.secondarySkills.blocksMove(player, dx, 0)) rt.castle.move(side, dx, 0);
+          if (!hit && age < BAT.swingTicks && batTouches(player, enemy, direction, age) && rt.castle.canHit(side)) {
             hit = true;
             yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-BAT.damage, 0, 1]);
             if (rt.michael.applySlow(side))
