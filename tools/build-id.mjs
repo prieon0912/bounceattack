@@ -30,6 +30,7 @@ for (const path of [
   "public/assets/michael/ultimate.svg",
 
   "public/assets/castle/profile.svg",
+  ...["knight", "bishop", "rook", "queen", "king"].map(form => "public/assets/castle/profile-" + form + ".svg"),
   "public/assets/castle/crown.svg",
   "public/assets/castle/pawn-held.svg",
   "public/assets/castle/knight-held.svg",

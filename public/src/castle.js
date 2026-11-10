@@ -144,6 +144,8 @@ export class CastleSystem{
   if(r.scene==='1ckl'){for(const [s,weapon]of [[1,'31us'],[2,'mimn']]){const e=r.originals.get(weapon);if(!e)continue;if(r.num(r.globals.get(info(s).character))===35){const ball=r.originals.get(sid(s,'j5y7','zyy3'));r.setPicture(e,'castle-held-pawn-'+weapon);r.setSize(e,CASTLE.previewHeldSize);e.x=ball.x+(s===1?1:-1)*19;e.y=ball.y-6;e.rotation=0;e.scaleX=Math.abs(e.scaleX)*(s===1?1:-1);e.visible=ball.visible;e.castlePreviewHidden=true;}else if(e.castlePreviewHidden){e.visible=true;delete e.castlePreviewHidden;}}return;}
   for(const s of [1,2]){if(!this.active(s))continue;const state=this.state(s);if(!state)continue;if(!state.initialized){r.globals.set(info(s).mana,CASTLE.startMana);state.spawn={x:body(r,s).x,y:body(r,s).y};state.initialized=true;}
    if(state.promotionUntil){body(r,s).x=state.lockX;body(r,s).y=state.lockY;}
+   const profile=r.originals.get(sid(s,'afvb','8svk'));
+   if(profile)r.setPicture(profile,'castle-profile-'+(state.form==='pawn'?'':state.form+'-')+profile.objectId);
    const e=r.originals.get(sid(s,'n230','ocqj'));if(e){r.setPicture(e,`castle-${state.form}-${e.objectId}`);r.setSize(e,16);e.rotation=0;}
    let held=r.entities.find(e=>!e.dead&&e.castleEffect==='held'&&e.combatSide===s);
    if(!held)held=this.visual(s,'castle-held-'+state.form,0,0,CASTLE.heldSize,'held');

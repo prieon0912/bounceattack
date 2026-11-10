@@ -6,7 +6,11 @@ module.exports=function(project){
  for(const id of ['j5y7','zyy3','n230','ocqj']){const o=project.objects.find(o=>o.id===id);o.sprite.pictures.splice(34,0,picture('castle-pawn-'+id,'pawn.svg',180,180));if(['n230','ocqj'].includes(id))for(const form of ['knight','bishop','rook','queen','king'])o.sprite.pictures.push(picture('castle-'+form+'-'+id,form+'.svg',180,180));}
  // 평타 아이콘(템포)은 캐릭터 아이콘과 다른 체스 시계 그림.
  for(const [id,key]of [['o9rj','check'],['4ffm','promotion'],['pyez','tempo']])project.objects.find(o=>o.id===id).sprite.pictures.splice(34,0,picture('castle-'+key+'-'+id,key+'-icon.svg',380,380));
- for(const id of ['afvb','8svk'])project.objects.find(o=>o.id===id).sprite.pictures.splice(34,0,picture('castle-profile-'+id,'profile.svg',500,500));
+ for(const id of ['afvb','8svk']){
+  const profiles=project.objects.find(o=>o.id===id).sprite.pictures;
+  profiles.splice(34,0,picture('castle-profile-'+id,'profile.svg',500,500));
+  for(const form of ['knight','bishop','rook','queen','king'])profiles.push(picture('castle-profile-'+form+'-'+id,'profile-'+form+'.svg',500,500));
+ }
  for(const id of ['31us','mimn'])project.objects.find(o=>o.id===id).sprite.pictures.push(picture('castle-held-pawn-'+id,'pawn-held.svg'));
  const effect=project.objects.find(o=>o.id==='hb4u');for(const form of ['pawn','knight','bishop','rook','queen','king'])effect.sprite.pictures.push(picture('castle-shot-'+form,form+'-shot.svg'));for(const form of ['pawn','knight','bishop','rook','queen','king'])effect.sprite.pictures.push(picture('castle-held-'+form,form+'-held.svg'));
  effect.sprite.pictures.push(picture('castle-crown','crown.svg',100,80));
