@@ -1,7 +1,7 @@
 {
   "objects": 372,
   "threads": 1037,
-  "emittedStatementCount": 22392,
+  "emittedStatementCount": 22394,
   "emittedBlockIds": [
     "fzxg",
     "ri1i",
@@ -1025,6 +1025,8 @@
     "castle-select-create",
     "michael-select-create",
     "ecola-select-create",
+    "duo-select-create-38",
+    "duo-select-create-39",
     "c5oe",
     "9nvi",
     "zqoq",
@@ -22434,7 +22436,7 @@
     "rotate_relative": 662,
     "change_scale_size": 427,
     "delete_clone": 482,
-    "create_clone": 630,
+    "create_clone": 632,
     "locate_xy": 76,
     "repeat_while_true": 76,
     "sound_volume_change": 3,

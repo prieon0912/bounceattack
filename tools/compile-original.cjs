@@ -20,6 +20,7 @@ require('./balance-patch.cjs')(project);
 require('./castle-character.cjs')(project);
 require('./michael-character.cjs')(project);
 require('./ecola-character.cjs')(project);
+require('./duo-characters.cjs')(project);
 // Mirror matches isolate the original effects that were shared by both players.
 const sharedCore=new Set(['m0id','ocqj','n230','n8fg','00h9','m9cz']);
 for(const object of project.objects){

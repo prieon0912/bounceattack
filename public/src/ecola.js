@@ -295,6 +295,7 @@ export class EcolaSystem {
             e.x += direction * speed / 3;
             if (Math.abs(e.x) > 238 || rt.ecola.terrain(e)) return;
             if (fake) continue;
+            rt.duo.hitMinion(3 - side, e, form.damage ?? 5);
             if (projectileInstallationContact(rt, e)) {
               damageInstallationsInRadius(rt, side, e, size / 2 + 1, form.damage ?? 5);
               return;
