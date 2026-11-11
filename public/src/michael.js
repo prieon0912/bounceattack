@@ -271,7 +271,10 @@ export class MichaelSystem {
               e.y = y;
             }
             if (ball.volley?.hitUntil > rt.tick) continue;
-            if (ball.volley) ball.volley.hitUntil = rt.tick + 18;
+            if (ball.volley) {
+              ball.volley.hitUntil = rt.tick + 18;
+              context.thornAttackGroup = ball.volley.group;
+            }
             if (ball.sport === 'basketball') {
               const state = rt.michael.state(ball.side);
               if (state) state.speedUntil = rt.tick + 120;
@@ -389,7 +392,7 @@ export class MichaelSystem {
   ultimate(side) {
     const r = this.r, st = this.state(side), direction = this.facing(side);
     st.swingAt = r.tick;
-    const volley = { hitUntil: 0 };
+    const volley = { hitUntil: 0, group: 'michael:' + r.tick };
     const options = { volley, life: st.sport === 'baseball' ? 300 : 480 };
     if (st.sport === 'basketball') {
       options.bounce = 1;

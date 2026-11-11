@@ -9,7 +9,8 @@ for (const path of [
   "public/src/michael.js",
   "public/src/ecola.js",
   "public/src/duo.js",
-  ...["phage", "banana"].flatMap(folder =>
+  "public/src/thorn.js",
+  ...["phage", "banana", "thorn"].flatMap(folder =>
     fs.readdirSync(new URL("../public/assets/" + folder + "/", import.meta.url)).sort()
       .map(name => "public/assets/" + folder + "/" + name)),
   ...fs.readdirSync(new URL("../public/assets/ecola/", import.meta.url)).sort()

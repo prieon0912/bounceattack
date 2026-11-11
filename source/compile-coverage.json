@@ -1,7 +1,7 @@
 {
   "objects": 372,
   "threads": 1037,
-  "emittedStatementCount": 22392,
+  "emittedStatementCount": 22393,
   "emittedBlockIds": [
     "fzxg",
     "ri1i",
@@ -1027,6 +1027,7 @@
     "ecola-select-create",
     "duo-select-create-38",
     "duo-select-create-39",
+    "duo-select-create-40",
     "c5oe",
     "9nvi",
     "zqoq",
@@ -22434,7 +22435,7 @@
     "rotate_relative": 662,
     "change_scale_size": 427,
     "delete_clone": 482,
-    "create_clone": 632,
+    "create_clone": 633,
     "locate_xy": 76,
     "repeat_while_true": 76,
     "sound_volume_change": 3,

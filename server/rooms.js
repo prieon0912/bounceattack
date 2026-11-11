@@ -5,7 +5,7 @@ import {
   createHash,
   timingSafeEqual,
 } from "node:crypto";
-import { BANANA_ID } from "../public/src/duo.js";
+import { THORN_ID } from "../public/src/thorn.js";
 const ONLINE_MAP = 6;
 const TTL = 7200,
   prefix = "bounce:v1:",
@@ -16,7 +16,7 @@ const validInt = (n, min, max) => Number.isInteger(n) && n >= min && n <= max;
 const skillChoice = (character, choice) => {
   if (choice !== undefined && choice !== "primary" && choice !== "secondary")
     throw new RoomError("스킬 선택을 확인해 주세요.");
-  if (choice === "secondary" && !validInt(character, 1, BANANA_ID))
+  if (choice === "secondary" && !validInt(character, 1, THORN_ID))
     throw new RoomError("이 캐릭터는 아직 세컨드 스킬이 없어요.");
   return choice || "primary";
 };
@@ -85,7 +85,7 @@ export class RoomHub {
   }
   async create(ctx, msg) {
     this.validateBuild(msg.build);
-    if (!validInt(msg.character, 1, BANANA_ID) || !validInt(msg.map, 1, 6))
+    if (!validInt(msg.character, 1, THORN_ID) || !validInt(msg.map, 1, 6))
       throw new RoomError("캐릭터와 전장을 확인해 주세요.");
     skillChoice(msg.character, msg.skill);
     ctx.token = randomBytes(24).toString("hex");
@@ -122,7 +122,7 @@ export class RoomHub {
   async join(ctx, msg) {
     this.validateBuild(msg.build);
     const code = String(msg.code || "").toUpperCase();
-    if (!/^[A-F0-9]{8}$/.test(code) || !validInt(msg.character, 1, BANANA_ID))
+    if (!/^[A-F0-9]{8}$/.test(code) || !validInt(msg.character, 1, THORN_ID))
       throw new RoomError("8자리 방 코드를 확인해 주세요.");
     skillChoice(msg.character, msg.skill);
     ctx.token = randomBytes(24).toString("hex");
@@ -151,7 +151,7 @@ export class RoomHub {
   }
   async matchmake(ctx, msg) {
     this.validateBuild(msg.build);
-    if (!validInt(msg.character, 1, BANANA_ID))
+    if (!validInt(msg.character, 1, THORN_ID))
       throw new RoomError("캐릭터를 선택해 주세요.");
     // Online matchmaking always plays on 미션존 (map 6) for now.
     const own = await this.create(ctx, { ...msg, map: ONLINE_MAP });
@@ -240,7 +240,7 @@ export class RoomHub {
           throw new RoomError("이미 끝난 대전이에요.");
         if (r.match.winner === undefined) r.match.winner = ctx.role;
       } else if (msg.type === "pick") {
-        if (r.phase !== "lobby" || !validInt(msg.character, 1, BANANA_ID))
+        if (r.phase !== "lobby" || !validInt(msg.character, 1, THORN_ID))
           throw new RoomError("지금은 캐릭터를 바꿀 수 없어요.");
         p.skill = skillChoice(msg.character, msg.skill);
         p.character = msg.character;
