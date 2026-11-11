@@ -57,9 +57,9 @@ export const bananaReturn = loadout(BANANA_ID, 'banana/slide', 'banana/return', 
   description: '현재 위치에 표식을 남깁니다. 3초 안에 다시 사용하면 그 자리로 돌아갑니다.',
 });
 export const thornSpin = loadout(THORN_ID, 'thorn/guard', 'thorn/spin', {
-  name: '무한회전문', primaryName: '고슴도치',
-  primaryDescription: 'MP 25. 3초 동안 반사 확률이 40%로 올라갑니다.',
-  description: 'MP 32. 2.4초 동안 움직이며 연속으로 회전합니다.',
+  name: '회전 연타', primaryName: '철권 가드',
+  primaryDescription: '양 철권으로 몸을 가려 3초 동안 피해 반사 확률을 40%로 높입니다.',
+  description: '2.4초 동안 이동하며 두 철권을 연속으로 휘두릅니다.',
 });
 
 export class DuoSystem {
@@ -511,7 +511,7 @@ export class DuoSystem {
       const art = state.guardUntil > r.tick ? 'thorn/guard'
         : dormant ? 'phage/dormant' : state.branch ? 'phage/' + state.branch : base;
       r.setPicture(hero, base);
-      r.setSize(hero, character === THORN_ID ? 20 : 16);
+      r.setSize(hero, 16);
       hero.duoPicture = r.pictureFrom(hero.def, art);
       const profile = r.originals.get(control.profile);
       if (profile) r.setPicture(profile, art);
