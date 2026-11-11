@@ -94,6 +94,13 @@ export function damageInstallationsInRadius(r,side,point,radius,damage) {
     if(Math.hypot(dx,dy)<=radius)hurt(r,target,damage);
   }
 }
+export function damageInstallationsOnContact(r, weapon, damage, struck) {
+  for (const target of installations(r)) {
+    if (struck.has(target) || !canHitInstallation(weapon, target) || !r.overlap(weapon, target)) continue;
+    struck.add(target);
+    hurt(r, target, damage);
+  }
+}
 function hurt(r, wall, damage) {
   if(['boom-turret','prince-flag'].includes(wall.secondaryEffect)){
     wall.installationHealth=Math.max(0,wall.installationHealth-damage);

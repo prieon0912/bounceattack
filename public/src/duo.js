@@ -58,8 +58,8 @@ export const bananaReturn = loadout(BANANA_ID, 'banana/slide', 'banana/return', 
 });
 export const thornSpin = loadout(THORN_ID, 'thorn/guard', 'thorn/spin', {
   name: '회전 연타', primaryName: '교차 가드',
-  primaryDescription: '두 쌍절곤을 교차해 3초 동안 피해 반사 확률을 40%로 높입니다.',
-  description: '2.4초 동안 이동하며 두 쌍절곤을 연속으로 휘두릅니다.',
+  primaryDescription: '방어 태세를 취해 3초 동안 피해 반사 확률을 40%로 높입니다.',
+  description: '2.4초 동안 이동하며 쌍절곤을 연속으로 휘두릅니다.',
 });
 
 export class DuoSystem {
@@ -512,7 +512,9 @@ export class DuoSystem {
         : dormant ? 'phage/dormant' : state.branch ? 'phage/' + state.branch : base;
       r.setPicture(hero, base);
       r.setSize(hero, 16);
-      hero.duoPicture = r.pictureFrom(hero.def, art);
+      const spinning = character === THORN_ID && state.weaponSpinUntil > r.tick;
+      const avatar = spinning ? (art === 'thorn/guard' ? 'thorn/guard-bare' : 'thorn/bare') : art;
+      hero.duoPicture = r.pictureFrom(hero.def, avatar);
       const profile = r.originals.get(control.profile);
       if (profile) r.setPicture(profile, art);
     }

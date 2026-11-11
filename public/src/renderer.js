@@ -1,3 +1,4 @@
+import { THORN_IDLE_WEAPON_SIZE, THORN_WEAPON_OFFSET } from "./thorn.js";
 function drawNightSky(c, opacity) {
   c.save();
   c.globalAlpha = opacity;
@@ -150,13 +151,28 @@ export class Renderer {
         }
       } else {
         const picture = e.duoPicture ?? e.ecolaPose?.picture ?? e.picture;
-        const asset = this.assets.get(picture);
+        const thornIdle = picture?.fileurl === "assets/thorn/body.svg";
+        const heldNunchaku = thornIdle || picture?.id === "thorn/guard";
+        const asset = this.assets.get(thornIdle ? { fileurl: "assets/thorn/bare.svg" } : picture);
         if (asset) {
           // Spike's held art extends past the right edge of its body sprite.
           const width = picture.fileurl === "assets/banana/body.svg" ? e.width * 1.32 : e.width;
           const padding = picture.fileurl === "assets/ecola/base.svg" ? .05 : 0;
           c.drawImage(asset.image, -e.regX - e.width * padding, -e.regY - e.height * padding,
             width + 2 * e.width * padding, e.height * (1 + 2 * padding));
+          if (heldNunchaku) {
+            const weapon = this.assets.get({ fileurl: "assets/thorn/weapon-folded.svg" });
+            if (weapon) {
+              const size = e.width * THORN_IDLE_WEAPON_SIZE / 16;
+              const x = -e.regX + e.width * (.5 + THORN_WEAPON_OFFSET / 16);
+              const y = -e.regY + e.height / 2;
+              c.save();
+              c.translate(x, y);
+              c.scale(-1, 1);
+              c.drawImage(weapon.image, -size / 2, -size / 2, size, size);
+              c.restore();
+            }
+          }
         }
       }
       c.restore();
