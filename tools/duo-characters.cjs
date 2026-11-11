@@ -15,7 +15,7 @@ module.exports = function addDuoCharacters(project) {
     },
     {
       id: 39, base: 'banana/body', attack: 'banana/peel', skill: 'banana/slide', ultimate: 'banana/pile',
-      forms: [],
+      forms: [], battle: 'banana/core',
       text: ['스파이크', '전투 공병', '지형 활용', '설치된 마름쇠는 바닥이 사라지면 떨어집니다.',
         '쇠못 투척', '마름쇠를 포물선으로 던져 피해를 줍니다.',
         '어깨치기', '앞으로 돌진하며 부딪힌 적을 밀쳐냅니다.',
@@ -28,6 +28,22 @@ module.exports = function addDuoCharacters(project) {
         '쌍절곤', '쌍절곤을 몸 주위로 돌려 주변 적에게 피해를 줍니다.',
         '교차 가드', '방어 태세를 취해 3초 동안 피해 반사 확률을 40%로 높입니다.',
         '연막 난타', '3초간 연막을 펼쳐 범위 안의 적을 가두고, 가까이 붙은 적에게 연속으로 피해를 줍니다.'],
+    },
+    {
+      id: 41, base: 'octopus/body', attack: 'octopus/tentacle', skill: 'octopus/grapple', ultimate: 'octopus/dream',
+      forms: [],
+      text: ['꿈을 꾸는 문어', '꿈속의 촉수', '빨판', '촉수 끝에 맞은 적을 살짝 끌어당깁니다.',
+        '촉수 찰싹', '정면으로 촉수를 뻗어 피해 5를 줍니다.',
+        '빨판 점프', 'MP 24. 지형에 촉수를 붙입니다. 점프로 놓습니다.',
+        '꿈속의 문어', 'MP 60. 왼쪽·오른쪽·위로 촉수가 차례로 솟습니다.'],
+    },
+    {
+      id: 42, base: 'zealot/body', attack: 'zealot/ember', skill: 'zealot/rocket', ultimate: 'zealot/burst',
+      forms: [],
+      text: ['광신도', '도화선의 불씨', '점화', '성냥불로 자기 폭죽에 불을 붙입니다.',
+        '성냥불', '불씨를 던져 피해 4를 줍니다.',
+        '제단', 'MP 22. 폭죽을 최대 세 개 놓습니다.',
+        '불꽃놀이', 'MP 60. 폭죽을 차례로 터뜨립니다. 최대 두 번 적중.'],
     },
   ];
   const labels = ['5pvu', 'xxgw', 'of7a', 'dw8v', 'twcx', 'wynm', 'x7mx', 'gsve', '74ed', '9m7u'];
@@ -47,6 +63,8 @@ module.exports = function addDuoCharacters(project) {
       pictures.splice(index, 0, picture(fighter.base, asset(fighter.base), dimension));
       if (id !== 'j5y7' && id !== 'zyy3')
         pictures.push(...fighter.forms.map(art => picture(art, asset(art), dimension)));
+      if (fighter.battle && ['n230', 'ocqj'].includes(id))
+        pictures.push(picture(fighter.battle, fighter.battle, dimension));
     }
     for (const [id, art] of [['pyez', fighter.attack], ['o9rj', fighter.skill], ['4ffm', fighter.ultimate]]) {
       const pictures = object(id).sprite.pictures;
@@ -63,8 +81,19 @@ module.exports = function addDuoCharacters(project) {
     pictures.push(picture('thorn/bare', 'thorn/bare', pictures[35].dimension));
     pictures.push(picture('thorn/guard-bare', 'thorn/guard', pictures[35].dimension));
   }
-  const art = ['phage/core', 'phage/swipe', 'phage/mark', 'banana/peel', 'banana/slide', 'banana/pile', 'banana/return', 'thorn/sweep', 'thorn/weapon', 'thorn/weapon-folded', 'thorn/reflect-impact'];
+  const art = ['phage/core', 'phage/swipe', 'phage/mark', 'banana/peel', 'banana/slide', 'banana/pile', 'banana/return',
+    'banana/held', 'thorn/sweep', 'thorn/weapon', 'thorn/weapon-folded', 'thorn/reflect-impact',
+    'octopus/tentacle', 'octopus/dream-tentacle', 'zealot/candle', 'zealot/ember', 'zealot/rocket', 'zealot/lit', 'zealot/burst'];
   object('hb4u').sprite.pictures.push(...art.map(id => picture(id, id)));
+  const cloneSetup = stacks.find(stack => stack.some(block => block.id === '7exj'));
+  cloneSetup.push({
+    id: 'duo-select-next-row', type: '_if',
+    params: [{ type: 'boolean_basic_operator', params: [{ type: 'get_variable', params: ['eti2', null] }, 'GREATER', 40] }],
+    statements: [[
+      { id: 'duo-select-wrap-x', type: 'move_x', params: [-320, null], statements: [] },
+      { id: 'duo-select-wrap-y', type: 'move_y', params: [-40, null], statements: [] },
+    ]],
+  });
   tile.script = JSON.stringify(stacks);
 
   const max = roster.at(-1).id;
