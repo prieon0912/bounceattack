@@ -74,14 +74,14 @@ test('HP drains at two-second intervals and the circular basic hits behind the f
   assert.equal(hp(r, 1), first);
   advance(r, 1);
   assert.equal(hp(r, 1), first - 1);
-  assert.equal(r.thorn.walk(1), 1.2);
+  assert.equal(r.thorn.walk(1), 1.28);
   const fighter = r.duo.body(1), enemy = r.duo.body(2);
   Object.assign(enemy, { x: fighter.x - 12, y: fighter.y });
   r.globals.set('etjn', 1);
   const before = hp(r, 2);
   press(r, 69);
   advance(r, 18);
-  assert.equal(hp(r, 2), before - 5);
+  assert.equal(hp(r, 2), before - 7);
   assert.deepEqual(r.faults, []);
 });
 
@@ -89,14 +89,14 @@ test('spin has six scheduled hits, replaces the basic during its window and slow
   const r = game({ p2: 2, skills: ['secondary'] });
   const before = hp(r, 2);
   press(r, 82);
-  assert.equal(r.thorn.walk(1), 1.02);
+  assert.equal(r.thorn.walk(1), 1.1776);
   assert.equal(hp(r, 2), before);
   r.keys.add(69);
   advance(r, 143);
   r.keys.clear();
-  assert.equal(hp(r, 2), before - 15);
+  assert.equal(hp(r, 2), before - 18);
   advance(r, 1);
-  assert.equal(r.thorn.walk(1), 1.2);
+  assert.equal(r.thorn.walk(1), 1.28);
   assert.deepEqual(r.faults, []);
 });
 
@@ -108,16 +108,16 @@ test('smoke confines only the caught opponent, deals proximity damage, and expir
   const before = hp(r, 2);
   assert.equal(zone.caught, true);
   advance(r, 30);
-  assert.equal(hp(r, 2), before - 2);
+  assert.equal(hp(r, 2), before - 3);
   r.move(enemy, 200, 0, false);
-  assert.ok(Math.hypot(enemy.x - zone.x, enemy.y - zone.y) <= 60);
+  assert.ok(Math.hypot(enemy.x - zone.x, enemy.y - zone.y) <= 66);
   r.move(owner, -90, 0, false);
-  assert.ok(owner.x < zone.x - 60);
+  assert.ok(owner.x < zone.x - 66);
   advance(r, 40);
-  assert.equal(hp(r, 2), before - 2);
+  assert.equal(hp(r, 2), before - 3);
   advance(r, zone.until - r.tick + 1);
   r.move(enemy, 50, 0, false);
-  assert.ok(enemy.x > zone.x + 60);
+  assert.ok(enemy.x > zone.x + 66);
 
   const outside = game({ p2: 2 });
   outside.duo.body(2).x = 90;

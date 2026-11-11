@@ -33,18 +33,35 @@ function press(r, ...keys) {
   r.keys.clear();
 }
 
-test('octopus reaches forward, and its echo hits the original position after moving away', () => {
+test('octopus rotates, deals damage once, and its echo strikes where the attack started', () => {
   const r = game(41, 2, ['secondary']);
   press(r, 82);
   const before = hp(r);
   press(r, 69);
   advance(r, 8);
-  assert.equal(hp(r), before - 5);
+  assert.equal(hp(r), before - 7);
   assert.ok(Number(r.globals.get('lgp6')) < 0);
   r.duo.body(1).x = 110;
   advance(r, 35);
-  assert.equal(hp(r), before - 9);
+  assert.equal(hp(r), before - 12);
   assert.equal(r.duo.state(1).echoUntil, 0);
+  assert.deepEqual(r.faults, []);
+});
+
+test('octopus hits an enemy behind it when the visible arm sweeps past', () => {
+  const r = game(41), enemy = r.duo.body(2), before = hp(r);
+  enemy.x = -102;
+  press(r, 69);
+  advance(r, 7);
+  const arm = r.duo.effects(1, 'octopus-arm')[0];
+  const firstAngle = arm.rotation;
+  assert.equal(hp(r), before);
+  advance(r, 12);
+  assert.ok(Math.abs(arm.rotation - firstAngle) > 90);
+  assert.equal(hp(r), before - 7);
+  advance(r, 15);
+  assert.equal(hp(r), before - 7);
+  assert.equal(r.duo.effects(1, 'octopus-arm').length, 0);
   assert.deepEqual(r.faults, []);
 });
 
@@ -67,13 +84,13 @@ test('octopus dream attacks left, then right, then up with at most two hits', ()
   Object.assign(enemy, { x: -94, y: -47 });
   press(r, 83);
   advance(r, 20);
-  assert.equal(hp(r), before - 7);
+  assert.equal(hp(r), before - 9);
   Object.assign(enemy, { x: -24, y: -47 });
   advance(r, 19);
-  assert.equal(hp(r), before - 14);
+  assert.equal(hp(r), before - 18);
   Object.assign(enemy, { x: -60, y: -18 });
   advance(r, 21);
-  assert.equal(hp(r), before - 14);
+  assert.equal(hp(r), before - 18);
   assert.deepEqual(r.faults, []);
 });
 
@@ -91,7 +108,7 @@ test('zealot lights an altar with an ember and its column hits after the fuse', 
   assert.equal(rocket.picture.id, 'zealot/lit');
   assert.equal(hp(r), before);
   advance(r, rocket.duoEffect.blastAt - r.tick);
-  assert.equal(hp(r), before - 7);
+  assert.equal(hp(r), before - 9);
   assert.equal(rockets(r).length, 0);
   assert.deepEqual(r.faults, []);
 });
@@ -102,7 +119,7 @@ test('zealot leap places a delayed rocket, and fireworks count at most two hits 
   press(leap, 82);
   const [rocket] = rockets(leap);
   assert.equal(rocket.x, x);
-  assert.equal(rocket.duoEffect.blastAt - leap.tick, 48);
+  assert.equal(rocket.duoEffect.blastAt - leap.tick, 42);
   advance(leap, 12);
   assert.ok(leap.duo.body(1).x > x + 15);
 
@@ -116,7 +133,7 @@ test('zealot leap places a delayed rocket, and fireworks count at most two hits 
     Object.assign(enemy, { x: e.x, y: e.y });
     advance(r, e.duoEffect.blastAt - r.tick);
   }
-  assert.equal(hp(r), before - 14);
+  assert.equal(hp(r), before - 18);
   assert.deepEqual([...r.faults, ...leap.faults], []);
 });
 

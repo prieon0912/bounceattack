@@ -5,11 +5,12 @@ const HP = ['akf6', '7ir2'];
 const DAMAGE_DISPLAY = ['c19k', '9bgr'];
 const ARENA_HAZARDS = new Set(['6npu', 'h6v1', '6tzq', '2bx4']);
 export const THORN_IDLE_WEAPON_SIZE = 20;
-const THORN_WEAPON_SIZE = 42;
-const BASIC_ATTACK_TICKS = 36;
+const THORN_WEAPON_SIZE = 48;
+const BASIC_ATTACK_TICKS = 33;
 export const THORN_WEAPON_OFFSET = 5.4;
 const SPIN_TICKS = 144;
-const SMOKE_RADIUS = 60;
+const SPIN_DAMAGE = 3;
+const SMOKE_RADIUS = 66;
 const SMOKE_TICKS = 180;
 
 export class ThornSystem {
@@ -21,7 +22,7 @@ export class ThornSystem {
 
   walk(side) {
     const state = this.state(side);
-    return state ? 1.2 * (state.spinUntil > this.r.tick ? .85 : 1) : 1;
+    return state ? 1.28 * (state.spinUntil > this.r.tick ? .92 : 1) : 1;
   }
 
   tick(side, state) {
@@ -34,7 +35,7 @@ export class ThornSystem {
     if (!r.castle.alive(side)) return;
     if (r.tick < state.spinUntil && r.tick >= state.spinAt) {
       state.spinAt += 24;
-      if (!r.castle.blocked(side)) this.sweep(side, 2.5, state.spinUntil);
+      if (!r.castle.blocked(side)) this.sweep(side, SPIN_DAMAGE, state.spinUntil);
     }
     const zone = state.smoke;
     if (!zone) return;
@@ -46,8 +47,8 @@ export class ThornSystem {
     zone.nextHit += 30;
     const body = r.duo.body(side), enemy = r.duo.body(3 - side);
     if (Math.hypot(body.x - zone.x, body.y - zone.y) <= SMOKE_RADIUS &&
-        Math.hypot(body.x - enemy.x, body.y - enemy.y) <= 24)
-      this.hit(side, 2, 'smoke:' + zone.until);
+        Math.hypot(body.x - enemy.x, body.y - enemy.y) <= 29)
+      this.hit(side, 3, 'smoke:' + zone.until);
   }
 
   skill(side, state, secondary) {
@@ -58,7 +59,7 @@ export class ThornSystem {
       state.spinUntil = r.tick + SPIN_TICKS;
       state.spinAt = r.tick + 24;
       state.attackAt = Math.max(state.attackAt, state.spinUntil);
-      this.sweep(side, 2.5, state.spinUntil);
+      this.sweep(side, SPIN_DAMAGE, state.spinUntil);
     } else {
       state.skillAt = r.tick + 480;
       state.guardUntil = r.tick + 180;
@@ -67,7 +68,7 @@ export class ThornSystem {
 
   basic(side, state) {
     state.attackAt = this.r.tick + BASIC_ATTACK_TICKS;
-    this.sweep(side, 5);
+    this.sweep(side, 7);
   }
 
   animateWeapon(side, duration, damage = 0, group = null) {
@@ -90,10 +91,12 @@ export class ThornSystem {
           const turn = Math.min(1, Math.max(0, (age - 4) / (duration - 9)));
           weapon.x = body.x + restingOffset * (1 - ease);
           weapon.y = body.y;
-          weapon.rotation = direction * turn * 360;
+          weapon.rotation = direction * (turn * 360 - Math.sin(turn * Math.PI * 2) * 12);
           rt.setPicture(weapon, age < 2 || age >= duration - 2 ? 'thorn/weapon-folded' : 'thorn/weapon');
           rt.setSize(weapon, THORN_IDLE_WEAPON_SIZE + (THORN_WEAPON_SIZE - THORN_IDLE_WEAPON_SIZE) * ease);
           if (damage && age >= 4 && age <= duration - 5) {
+            const angle = (weapon.rotation - direction * 55) * Math.PI / 180;
+            rt.duo.trace(weapon, '#707a91', weapon.x - Math.cos(angle) * direction * 20, weapon.y + Math.sin(angle) * direction * 20);
             if (!struck.has(enemy) && rt.castle.canHit(side) && rt.overlap(weapon, enemy)) {
               struck.add(enemy);
               rt.thorn.hit(side, damage, group);
@@ -222,6 +225,15 @@ export class ThornSystem {
       ctx.strokeStyle = zone.caught ? '#8f69cd' : '#aaa0be';
       ctx.setLineDash(zone.caught ? [] : [4, 4]);
       ctx.stroke();
+      ctx.clip();
+      ctx.fillStyle = 'rgba(94, 76, 129, .12)';
+      for (let i = 0; i < 6; i++) {
+        const phase = r.tick * (.021 + i * .002) + i * 2.4;
+        ctx.beginPath();
+        ctx.ellipse(zone.x + Math.cos(phase) * (25 + i * 5), -zone.y + Math.sin(phase) * (18 + i * 6),
+          22 + i % 3 * 6, 6 + i % 3 * 2, Math.sin(phase) * .3, 0, Math.PI * 2);
+        ctx.fill();
+      }
       ctx.restore();
     }
   }

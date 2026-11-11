@@ -4,15 +4,15 @@ export const ECOLA_ID = 37;
 // The circle is 77 of the SVG's 100 units, including its outline.
 const BODY_SIZE = 16 / .77;
 const FISSION_TICKS = 300;
-const FISSION_SPLIT_INTERVAL = 90;
+const FISSION_SPLIT_INTERVAL = 60;
 const FISSION_MAX_SPLITS = 2;
 const FORMS = {
-  base: {},
-  flagella: { weight: 25, walk: 1.25, jump: 1.15 },
-  cannon: { weight: 20, damage: 7, size: 13, speed: 3.4 },
-  shell: { weight: 20, walk: .9, armor: .75, recoil: .65 },
-  spore: { weight: 20, interval: 25, speed: 4.8, size: 7, damage: 2 },
-  wilt: { weight: 15, walk: .8, jump: .85, size: 7, damage: 4 },
+  base: { trail: '#91cd42' },
+  flagella: { weight: 25, walk: 1.25, jump: 1.15, trail: '#42bda1' },
+  cannon: { weight: 20, damage: 9, size: 15, speed: 3.8, trail: '#eb9c48' },
+  shell: { weight: 20, walk: .9, armor: .75, recoil: .65, damage: 7, trail: '#7d94b3' },
+  spore: { weight: 20, interval: 23, speed: 5, size: 8, damage: 3, trail: '#a67ce0' },
+  wilt: { weight: 15, walk: .8, jump: .85, size: 8, damage: 5, trail: '#9d9664' },
 };
 const CONTROLS = [
   { character: 'y75t', body: '00h9', hero: 'n230', profile: 'afvb', marker: 'aadi', previewWeapon: '31us', mana: 'qn98', facing: 'etjn', jump: 87, attack: 69, skill: 82, ultimate: 83 },
@@ -24,8 +24,8 @@ export const ecolaFission = {
   character: ECOLA_ID, name: '이분법', manaCost: 28, cooldownTicks: 480, lockVariable: false,
   icon: 'assets/ecola/fission.svg', secondaryPictureId: 'ecola-fission',
   primaryName: '양분 흡수', primaryPictureId: 'ecola-absorb', primaryIcon: 'assets/ecola/absorb.svg',
-  primaryDescription: '2초 동안 이동 속도가 감소하며 MP를 추가적으로 획득합니다.',
-  description: '잠시 유지되는 자신의 복제본을 최대 3마리까지 만듭니다. 복제본은 게임플레이에 그 어떠한 영향도 주지 않습니다.',
+  primaryDescription: '느릿느릿 움직이며 양분을 흡수해 마나를 채웁니다.',
+  description: '둘로 갈라져 가짜 콜리를 만듭니다. 복제본도 움직이며 세포질을 쏘는 시늉을 합니다.',
   prepare(project) {
     const pictures = project.objects.find(o => o.id === 'o9rj').sprite.pictures;
     const primary = pictures.find(p => p.id === this.primaryPictureId);
@@ -74,7 +74,7 @@ export class EcolaSystem {
     if (!state) return;
     const form = FORMS[state.form];
     if (type === 'move_x' && WALK_BLOCKS.has(context.block))
-      args[0] = this.r.num(args[0]) * (form.walk ?? 1) * (state.absorbUntil ? .65 : 1);
+      args[0] = this.r.num(args[0]) * 1.1 * (form.walk ?? 1) * (state.absorbUntil ? .65 : 1);
     // Gravity is fixed, so jump height scales with the square of launch speed.
     if (type === 'set_variable' && context.block === 'ufg7' && form.jump)
       args[1] = this.r.num(args[1]) * Math.sqrt(form.jump);
@@ -129,7 +129,7 @@ export class EcolaSystem {
         if (r.castle.blocked(side) || r.keys.has(controls.attack) || r.keys.has(controls.jump))
           state.absorbUntil = 0;
         else if (r.tick >= state.absorbNext) {
-          this.mana(side, 7);
+          this.mana(side, 9);
           state.absorbNext += 30;
           this.pulse(side, this.body(side), 20);
           if (r.tick >= state.absorbUntil) state.absorbUntil = 0;
@@ -162,7 +162,7 @@ export class EcolaSystem {
           state.absorbUntil = r.tick + 120;
         }
       } else if (r.keys.has(controls.attack) && r.tick >= state.attackAt) {
-        state.attackAt = r.tick + (FORMS[state.form].interval ?? 33);
+        state.attackAt = r.tick + (FORMS[state.form].interval ?? 27);
         state.fireAt = r.tick;
         this.shot(side, this.body(side), this.facing(side), false);
       }
@@ -293,14 +293,14 @@ export class EcolaSystem {
   }
 
   projectile(side, source, direction, fake, name, vy, volley) {
-    const r = this.r, form = FORMS[name], size = form.size ?? 10;
-    const damage = form.damage ?? 5;
+    const r = this.r, form = FORMS[name], size = form.size ?? 12;
+    const damage = form.damage ?? 6;
     const start = { x: source.x + direction * 9, y: source.y + 1 };
     const e = this.visual(side, 'ecola-shot-' + name, start, size, 'shot');
     e.ecolaFakeShot = fake;
     e.scaleX = direction * Math.abs(e.scaleX);
     r.spawn(e, function* fly(rt, context) {
-      let vx = direction * (form.speed ?? 4), canBounce = name === 'shell';
+      let vx = direction * (form.speed ?? 4.5), canBounce = name === 'shell';
       const explosive = name === 'cannon';
       const enemy = rt.ecola.body(3 - side);
       const hit = (radius) => rt.castle.canHit(side) &&
@@ -309,9 +309,10 @@ export class EcolaSystem {
         const life = name === 'wilt' ? 22 : 44;
         for (let age = 0; age < life && rt.castle.alive(side); age++) {
           if (name === 'flagella' && (enemy.x - e.x) * vx > 0)
-            vy += (Math.max(-1.5, Math.min(1.5, (enemy.y - e.y) / 20)) - vy) * .18;
+            vy += (Math.max(-1.9, Math.min(1.9, (enemy.y - e.y) / 18)) - vy) * .2;
           if (name === 'wilt') vy -= .25;
-          e.rotation = -Math.atan2(vy, Math.abs(vx)) * Math.sign(vx) * 180 / Math.PI;
+          rt.duo.trace(e, form.trail);
+          e.rotation = (-Math.atan2(vy, Math.abs(vx)) * 180 / Math.PI + Math.sin(age * .52) * 7) * Math.sign(vx);
           for (let i = 0; i < 3; i++) {
             const x = e.x, y = e.y;
             e.x += vx / 3;
@@ -346,7 +347,7 @@ export class EcolaSystem {
                 context.thornAttackGroup = volley.group;
                 yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-damage, 0, 1]);
               }
-              if (!e.dead && (explosive || direct)) rt.ecola.pulse(side, e, explosive ? 33 : 12, explosive ? 13 : 8);
+              if (!e.dead && (explosive || direct)) rt.ecola.pulse(side, e, explosive ? 38 : 15, explosive ? 13 : 8);
               return;
             }
           }

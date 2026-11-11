@@ -56,7 +56,7 @@ test('nutrient absorption grants four pulses and an attack cancels it early', ()
   r.globals.set('thom', 0);
   press(r, 82);
   advance(r, 120);
-  assert.ok(Math.abs(r.globals.get('qn98') - r.globals.get('thom') - 28) < .01);
+  assert.ok(Math.abs(r.globals.get('qn98') - r.globals.get('thom') - 36) < .01);
   advance(r, 300);
   r.globals.set('qn98', 0);
   r.globals.set('thom', 0);
@@ -64,7 +64,7 @@ test('nutrient absorption grants four pulses and an attack cancels it early', ()
   advance(r, 32);
   press(r, 69);
   advance(r, 90);
-  assert.ok(Math.abs(r.globals.get('qn98') - r.globals.get('thom') - 7) < .01);
+  assert.ok(Math.abs(r.globals.get('qn98') - r.globals.get('thom') - 9) < .01);
   assert.deepEqual(r.faults, []);
 });
 
@@ -76,7 +76,9 @@ test('fission doubles once after the first split and fakes evolve without dealin
   press(r, 82);
   assert.equal(r.ecola.decoys(1).length, 1);
   assert.equal(r.originals.get('aadi').ecolaHidden, true);
-  advance(r, 90);
+  advance(r, 59);
+  assert.equal(r.ecola.decoys(1).length, 1);
+  advance(r, 1);
   assert.equal(r.ecola.decoys(1).length, 3);
   advance(r, 90);
   const clones = r.ecola.decoys(1);
@@ -103,7 +105,7 @@ test('cytoplasm damages real opponents and shell form reduces damage and recoil'
   const hp = r.globals.get('7ir2');
   press(r, 69);
   advance(r, 10);
-  assert.equal(r.globals.get('7ir2'), hp - 3.75);
+  assert.equal(r.globals.get('7ir2'), hp - 4.5);
   const recoil = r.globals.get('lgp6');
   r.add(r.ecola.body(2), 'lgp6', 20);
   assert.equal(r.globals.get('lgp6'), Number(recoil) + 13);
@@ -133,7 +135,7 @@ test('evolved basics steer, burst, rebound, spread or drop according to form', (
   const hp = Number(cannon.globals.get('7ir2'));
   press(cannon, 69);
   advance(cannon, 7);
-  assert.equal(Number(cannon.globals.get('7ir2')), hp - 7);
+  assert.equal(Number(cannon.globals.get('7ir2')), hp - 9);
 
   const shell = setup('shell');
   Object.assign(shell.ecola.body(1), { x: 222, y: 50 });

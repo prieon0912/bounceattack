@@ -1,13 +1,14 @@
-import { damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
+import { damageInstallationsInRadius, damageInstallationsOnContact, projectileInstallationContact } from './barricade.js';
 
 export const OCTOPUS_ID = 41;
 export const ZEALOT_ID = 42;
 const ATTACK = [null, 'qy83', '05j0'];
 const JUMP = [null, 87, 38];
 const FALL = [null, 'du2p', 'iblx'];
-const EMBER = { damage: 4, speed: 4.3, life: 24 };
-const ROCKET_RANGE = 52;
-const ROCKET_WIDTH = 13;
+const EMBER = { damage: 6, speed: 4.8, life: 27 };
+const ROCKET_RANGE = 63;
+const ROCKET_WIDTH = 16;
+const ROCKET_DAMAGE = 9;
 
 export class CasterSystem {
   constructor(runtime) { this.r = runtime; }
@@ -19,7 +20,7 @@ export class CasterSystem {
 
   basic(side, state, character) {
     const r = this.r;
-    state.attackAt = r.tick + (character === OCTOPUS_ID ? 34 : 32);
+    state.attackAt = r.tick + (character === OCTOPUS_ID ? 33 : 27);
     if (character === ZEALOT_ID) {
       this.ember(side);
       return;
@@ -27,10 +28,10 @@ export class CasterSystem {
     const body = r.duo.body(side), direction = r.duo.facing(side);
     const origin = { x: body.x, y: body.y };
     const group = 'octopus-basic:' + r.tick;
-    this.tentacle(side, origin, direction, 0, 50, 5, 6, group, { follow: body, pull: true });
+    this.spinArm(side, body, direction, 7, group);
     if (state.echoUntil > r.tick) {
       state.echoUntil = 0;
-      this.tentacle(side, origin, direction, 0, 50, 4, 36, group, { dream: true });
+      this.spinArm(side, origin, direction, 5, group, true);
     }
   }
 
@@ -47,6 +48,8 @@ export class CasterSystem {
     if (state.echoUntil > r.tick || !r.duo.mana(side, -28)) return;
     state.echoUntil = r.tick + 360;
     state.skillAt = r.tick + 330;
+    const body = r.duo.body(side);
+    r.duo.flash(side, 'octopus/dream-tentacle', body.x, body.y + 8, 20, 12);
   }
 
   ultimate(side, state, character) {
@@ -61,7 +64,7 @@ export class CasterSystem {
     const volley = { hits: 0, limit: 2 };
     const group = 'octopus-dream:' + r.tick;
     for (const [index, [dx, dy]] of [[-1, 0], [1, 0], [0, 1]].entries())
-      this.tentacle(side, origin, dx, dy, 76, 7, 18 + index * 19, group, { dream: true, volley, warning: 18 });
+      this.dreamArm(side, origin, dx, dy, 18 + index * 16, group, volley);
   }
 
   stretch(effect, x, y, dx, dy, length, thickness) {
@@ -72,35 +75,74 @@ export class CasterSystem {
     effect.rotation = -Math.atan2(dy, dx) * 180 / Math.PI;
   }
 
-  tentacle(side, origin, dx, dy, length, damage, delay, group, options) {
+  spinArm(side, origin, direction, damage, group, dream = false) {
     const r = this.r;
-    const { dream, follow, pull, volley, warning = dream ? 18 : delay } = options;
-    const art = volley ? 'octopus/dream-tentacle' : 'octopus/tentacle';
+    const art = dream ? 'octopus/dream-tentacle' : 'octopus/tentacle';
     const arm = r.duo.visual(side, art, origin.x, origin.y, 1, 'octopus-arm');
-    r.spawn(arm, function* attack(rt, context) {
+    arm.visible = !dream;
+    r.spawn(arm, function* swing(rt, context) {
+      const struck = new Set();
+      const enemy = rt.originals.get(side === 1 ? 'ocqj' : 'n230');
       try {
-        for (let age = 0; age < delay + 15; age++) {
-          if (!rt.castle.alive(side)) return;
-          const source = follow ?? origin;
-          const telegraph = age < delay;
-          arm.visible = age >= delay - warning;
-          arm.effects.transparency = telegraph ? 72 : Math.max(0, (age - delay - 3) * 6);
-          arm.effects.color = dream && !volley ? 22 : 0;
-          const extension = telegraph && follow ? .34 + .58 * age / delay : 1;
-          rt.caster.stretch(arm, source.x, source.y, dx, dy, length * extension, volley ? 46 : 32);
-          if (age === delay && !(follow && rt.castle.blocked(side))) {
-            const enemy = rt.duo.body(3 - side);
-            const along = (enemy.x - source.x) * dx + (enemy.y - source.y) * dy;
-            const across = Math.abs((enemy.x - source.x) * dy - (enemy.y - source.y) * dx);
-            if (along >= 0 && along <= length && across <= (dream ? 13 : 11)) {
-              if (rt.castle.canHit(side) && (!volley || volley.hits < volley.limit)) {
-                if (volley) volley.hits++;
-                yield* rt.caster.hit(context, side, damage, group);
-                if (pull && along >= length - 15) rt.castle.knockback(3 - side, -dx * 10);
-              }
-            }
-            damageInstallationsInRadius(rt, side, arm, length / 2, damage);
+        if (dream) yield 30;
+        for (let age = 0; age < 32 && rt.castle.alive(side); age++) {
+          if (!dream && rt.castle.blocked(side)) return;
+          const reach = Math.min(1, age / 5, (31 - age) / 5);
+          const turn = Math.max(0, Math.min(1, (age - 4) / 23));
+          // A little windup and a loose tip give the sweep a wrist-like snap.
+          const angle = -0.27 - .30 * Math.sin(Math.PI * Math.min(1, age / 5)) +
+            turn * Math.PI * 2 + .19 * Math.sin(turn * Math.PI * 2);
+          const dx = direction * Math.cos(angle), dy = Math.sin(angle);
+          const length = 16 + reach * (dream ? 44 : 41) + reach * 3 * Math.sin(turn * 9);
+          arm.visible = true;
+          arm.effects.transparency = dream ? 27 : 0;
+          rt.caster.stretch(arm, origin.x, origin.y, dx, dy, length, 24 + reach * 6);
+          if (age >= 5 && age <= 27) {
+            rt.duo.trace(arm, dream ? '#c596fa' : '#9962d3', origin.x + dx * length * .86, origin.y + dy * length * .86);
+            yield* rt.caster.armContact(context, side, arm, enemy, damage, group, struck, dream ? null : { origin, dx, dy, length });
           }
+          yield 1;
+        }
+      } finally { arm.dead = true; }
+    }, 'octopus_spin');
+  }
+
+  *armContact(context, side, arm, enemy, damage, group, struck, tip = null, volley = null) {
+    const r = this.r;
+    if ((!volley || volley.hits < 2) && !struck.has(enemy) && r.castle.canHit(side) && r.overlap(arm, enemy)) {
+      struck.add(enemy);
+      if (volley) volley.hits++;
+      yield* this.hit(context, side, damage, group);
+      if (tip) {
+        const { origin, dx, dy, length } = tip;
+        const along = (enemy.x - origin.x) * dx + (enemy.y - origin.y) * dy;
+        if (along >= length * .68) r.castle.knockback(3 - side, -dx * 14);
+      }
+    }
+    for (const minion of r.duo.effects(3 - side, 'minion')) {
+      if (struck.has(minion) || !r.overlap(arm, minion)) continue;
+      struck.add(minion);
+      r.duo.damageMinion(minion, damage);
+    }
+    damageInstallationsOnContact(r, arm, damage, struck);
+  }
+
+  dreamArm(side, origin, dx, dy, delay, group, volley) {
+    const r = this.r;
+    const arm = r.duo.visual(side, 'octopus/dream-tentacle', origin.x, origin.y, 1, 'octopus-arm');
+    arm.visible = false;
+    r.spawn(arm, function* attack(rt, context) {
+      const struck = new Set();
+      const enemy = rt.originals.get(side === 1 ? 'ocqj' : 'n230');
+      try {
+        if (delay > 14) yield delay - 14;
+        for (let age = -14; age < 17 && rt.castle.alive(side); age++) {
+          arm.visible = true;
+          arm.effects.transparency = age < 0 ? 77 : Math.max(0, (age - 6) * 9);
+          const length = age < 0 ? 89 : 89 - Math.max(0, age - 7) * 5;
+          rt.caster.stretch(arm, origin.x, origin.y, dx, dy, length, 52);
+          if (age >= 0 && age <= 7)
+            yield* rt.caster.armContact(context, side, arm, enemy, 9, group, struck, null, volley);
           yield 1;
         }
       } finally { arm.dead = true; }
@@ -135,11 +177,13 @@ export class CasterSystem {
           if (distance < 10) return;
           rt.caster.stretch(tether, body.x, body.y, dx / distance, dy / distance, distance, 19);
           if (rt.keys.has(JUMP[side])) {
-            rt.globals.set(FALL[side], 2.5);
-            rt.castle.knockback(side, Math.sign(dx) * 15);
+            rt.globals.set(FALL[side], 3.1);
+            rt.castle.knockback(side, Math.sign(dx) * 19);
             return;
           }
-          rt.castle.move(side, dx / distance * 3.3, dy / distance * 3.3);
+          rt.duo.trace(tether, '#b484eb', body.x, body.y);
+          const speed = Math.min(4.5, 2.3 + age * .55);
+          rt.castle.move(side, dx / distance * speed, dy / distance * speed);
           yield 1;
         }
       } finally { tether.dead = true; }
@@ -148,14 +192,16 @@ export class CasterSystem {
 
   ember(side) {
     const r = this.r, body = r.duo.body(side), direction = r.duo.facing(side);
-    const spark = r.duo.visual(side, 'zealot/ember', body.x + direction * 9, body.y + 2, 12, 'projectile');
+    const spark = r.duo.visual(side, 'zealot/ember', body.x + direction * 9, body.y + 2, 15, 'projectile');
     spark.scaleX *= direction;
     const group = 'zealot-ember:' + r.tick;
     r.spawn(spark, function* fly(rt, context) {
-      let vy = .8;
+      let vy = 1.15;
       try {
         for (let age = 0; age < EMBER.life && rt.castle.alive(side); age++) {
           vy -= .10;
+          rt.duo.trace(spark, '#ff8b31');
+          spark.rotation = -direction * Math.atan2(vy, EMBER.speed) * 180 / Math.PI + Math.sin(age * .7) * 7;
           for (let part = 0; part < 3; part++) {
             spark.x += direction * EMBER.speed / 3;
             spark.y += vy / 3;
@@ -163,7 +209,7 @@ export class CasterSystem {
             const rocket = rt.duo.effects(side, 'zealot-rocket').find(e => e.duoEffect.altar &&
               !e.duoEffect.blastAt && Math.hypot(e.x - spark.x, e.y - spark.y) <= 14);
             if (rocket) {
-              rt.caster.light(rocket, 36);
+              rt.caster.light(rocket, 26);
               return;
             }
             rt.duo.hitMinion(3 - side, spark, EMBER.damage);
@@ -203,12 +249,12 @@ export class CasterSystem {
     state.skillAt = r.tick + (secondary ? 360 : 120);
     const rocket = this.rocket(side, point, !secondary);
     if (!secondary) return;
-    this.light(rocket, 48);
+    this.light(rocket, 42);
     const direction = r.duo.facing(side);
-    r.globals.set(FALL[side], 2.6);
+    r.globals.set(FALL[side], 3.1);
     r.spawn(body, function* leap(rt) {
       for (let age = 0; age < 9 && rt.castle.alive(side) && !rt.castle.blocked(side); age++) {
-        rt.castle.move(side, direction * 3.3, 0);
+        rt.castle.move(side, direction * (4.8 - age * .25), 0);
         yield 1;
       }
     }, 'zealot_leap');
@@ -247,9 +293,9 @@ export class CasterSystem {
     rocket.visible = false;
     const column = r.duo.visual(side, 'zealot/ember', x, y + ROCKET_RANGE / 2, 1, 'zealot-column');
     this.stretch(column, x, y, 0, 1, ROCKET_RANGE, 29);
-    r.duo.flash(side, 'zealot/burst', x, y + ROCKET_RANGE - 3, 27, 14);
-    r.duo.flash(side, 'zealot/burst', x - 13, y + ROCKET_RANGE - 10, 13, 10);
-    r.duo.flash(side, 'zealot/burst', x + 12, y + ROCKET_RANGE - 16, 11, 11);
+    r.duo.flash(side, 'zealot/burst', x, y + ROCKET_RANGE - 3, 33, 17);
+    r.duo.flash(side, 'zealot/burst', x - 15, y + ROCKET_RANGE - 11, 16, 13);
+    r.duo.flash(side, 'zealot/burst', x + 12, y + ROCKET_RANGE - 19, 13, 11);
     r.spawn(column, function* flare() {
       for (let age = 0; age < 13; age++) {
         column.effects.transparency = Math.max(0, age - 4) * 9;
@@ -261,9 +307,9 @@ export class CasterSystem {
     if (r.castle.canHit(side) && Math.abs(enemy.x - x) <= ROCKET_WIDTH &&
         enemy.y >= y - 8 && enemy.y <= y + ROCKET_RANGE && (!volley || volley.hits < 2)) {
       if (volley) volley.hits++;
-      yield* this.hit(context, side, 7, group);
+      yield* this.hit(context, side, ROCKET_DAMAGE, group);
     }
-    damageInstallationsInRadius(r, side, { x, y: y + ROCKET_RANGE / 2 }, 24, 7);
+    damageInstallationsInRadius(r, side, { x, y: y + ROCKET_RANGE / 2 }, 29, ROCKET_DAMAGE);
   }
 
   fireworks(side, state) {

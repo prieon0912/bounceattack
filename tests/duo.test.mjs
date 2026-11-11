@@ -59,9 +59,9 @@ test('dormancy prevents health loss, recoil, movement and attacks, then returns 
   step(r, until - r.tick - 1);
   const before = r.globals.get('qn98');
   step(r, 1);
-  assert.ok(r.globals.get('qn98') >= before + 5);
+  assert.ok(r.globals.get('qn98') >= before + 9);
   step(r, 1);
-  assert.equal(r.globals.get('akf6'), hp + 1);
+  assert.equal(r.globals.get('akf6'), hp + 3);
   assert.equal(r.duo.dormant(1), false);
   assert.equal(r.originals.get('n230').duoPicture.id, 'phage/core');
   assert.deepEqual(r.faults, []);
@@ -94,8 +94,8 @@ test('evolution branches are selected by direction and stay separate in mirrors'
   assert.equal(left.tier, 2);
   assert.equal(left.branch, 'armor');
   assert.equal(right.tier, 2);
-  assert.equal(r.duo.stats(left).armor, .82);
-  assert.equal(r.duo.stats(right).range, 44);
+  assert.equal(r.duo.stats(left).armor, .80);
+  assert.equal(r.duo.stats(right).range, 53);
   assert.deepEqual(r.faults, []);
 });
 
@@ -106,7 +106,7 @@ test('ultimate spends charges immediately and grants two bonus minions at five c
   swing();
   swing();
   assert.equal(state.hits, 2);
-  assert.equal(state.damage, 10);
+  assert.equal(state.damage, 14);
   key(r, 83);
   assert.equal(r.duo.effects(1, 'minion').length, 4);
   assert.equal(state.hits, 0);
@@ -116,14 +116,14 @@ test('ultimate spends charges immediately and grants two bonus minions at five c
   key(r, 83);
   const swarm = r.duo.effects(1, 'minion');
   assert.equal(swarm.length, 12);
-  assert.ok(swarm.every(e => e.duoEffect.hp === 3));
+  assert.ok(swarm.every(e => e.duoEffect.hp === 4));
   assert.equal(state.hits, 0);
-  r.duo.damageMinion(swarm[0], 3);
+  r.duo.damageMinion(swarm[0], 4);
   assert.equal(r.duo.effects(1, 'minion').length, 11);
   const before = r.globals.get('7ir2');
   step(r, 150);
   const inflicted = before - r.globals.get('7ir2');
-  assert.ok(inflicted > 0 && inflicted <= 5, String(inflicted));
+  assert.ok(inflicted > 0 && inflicted <= 8, String(inflicted));
   step(r, 430);
   assert.equal(r.duo.effects(1, 'minion').length, 0);
   assert.deepEqual(r.faults, []);
@@ -135,7 +135,7 @@ test('banana basic deals damage and ultimate peels persist, trip enemies only, a
   const start = r.globals.get('7ir2');
   key(r, 69);
   step(r, 18);
-  assert.equal(r.globals.get('7ir2'), start - 4);
+  assert.equal(r.globals.get('7ir2'), start - 6);
   r.globals.set('qn98', 100);
   key(r, 83);
   step(r, 105);

@@ -1,4 +1,26 @@
 import { THORN_IDLE_WEAPON_SIZE, THORN_WEAPON_OFFSET } from "./thorn.js";
+import { drawSelectorDetails, SELECTOR_OVERLAY, showsSelectorDetails } from "./selector-details.js";
+
+function drawMotionTrail(c, entity, tick) {
+  const { color, points } = entity.motionTrail;
+  const opacity = 1 - (entity.effects.transparency || 0) / 100;
+  c.save();
+  c.strokeStyle = color;
+  c.lineCap = "round";
+  for (let i = 0; i < points.length - 1; i++) {
+    const a = points[i], b = points[i + 1];
+    const fade = 1 - (tick - a.tick) / 8;
+    if (fade <= 0 || Math.hypot(b.x - a.x, b.y - a.y) > 28) continue;
+    c.globalAlpha = .48 * opacity * fade;
+    c.lineWidth = (i % 3 === 1 ? 3.1 : 2.1) * fade;
+    c.beginPath();
+    c.moveTo(a.x, -a.y);
+    c.lineTo(b.x, -b.y);
+    c.stroke();
+  }
+  c.restore();
+}
+
 function drawNightSky(c, opacity) {
   c.save();
   c.globalAlpha = opacity;
@@ -35,6 +57,7 @@ export class Renderer {
     c.rect(-240, -135, 480, 270);
     c.clip();
     const drawOrder = runtime.entities.slice().reverse();
+    const selector = runtime.scene === "1ckl";
     const gates = drawOrder.filter(e => e.secondaryEffect === "hell-gate");
     if (gates.length) {
       const foreground = drawOrder.filter(e => e.secondaryEffect !== "hell-gate");
@@ -53,6 +76,7 @@ export class Renderer {
     if (night && !arenaBackground) drawNightSky(c, night);
     for (const e of drawOrder) {
       if (e.dead || e.ecolaHidden || runtime.secondarySkills.hidden(e) || runtime.castle.hidden(e)) continue;
+      if (selector && SELECTOR_OVERLAY.has(e.objectId)) continue;
       // Entry's brush has flat (butt) ends; round caps made the HP/MP bars
       // poke out of the slanted (trapezoid) frame. Consecutive segments with
       // the same style are stroked as one polyline so corners stay joined.
@@ -86,6 +110,7 @@ export class Renderer {
         c.restore();
       }
       if (!e.visible) continue;
+      if (e.motionTrail) drawMotionTrail(c, e, runtime.tick);
       c.save();
       c.translate(e.x, -e.y);
       c.rotate((e.rotation * Math.PI) / 180);
@@ -113,18 +138,7 @@ export class Renderer {
         c.textAlign = ["center", "left", "right"][e.textAlign ?? 0] || "center";
         c.fillStyle = e.colour || "#fff";
         const text = String(e.text ?? e.def.text ?? "");
-        if (!e.lineBreak && e.objectId === "3my6" && runtime.scene === "1ckl" &&
-            [1, 2, 3, 4, 5, 6, 7, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 25, 26, 27, 28, 29, 30, 32, 33, 35, 36, 37].includes(Number(runtime.globals.get("16fh")))) {
-          // Fit the changed descriptions inside their original slot, with no new UI.
-          const limit = (230 - e.x) / Math.max(.01, Math.abs(e.scaleX));
-          const lines = []; let line = "";
-          for (const char of text) {
-            if (line && c.measureText(line + char).width > limit) { lines.push(line); line = ""; }
-            line += char;
-          }
-          lines.push(line);
-          lines.forEach((value, i) => c.fillText(value, 0, i * ((parseFloat(e.font) || 20) + 2)));
-        } else if (!e.lineBreak) c.fillText(text, 0, 0);
+        if (!e.lineBreak) c.fillText(text, 0, 0);
         else {
           const lines = [];
           for (const paragraph of text.split("\n")) {
@@ -181,6 +195,7 @@ export class Renderer {
     runtime.castle?.draw(c);
     runtime.duo?.draw(c);
     runtime.thorn?.draw(c);
+    if (showsSelectorDetails(runtime)) drawSelectorDetails(c, runtime, this.assets);
     c.restore();
   }
 }

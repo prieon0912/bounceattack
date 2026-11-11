@@ -6,10 +6,10 @@ module.exports = function addEcola(project) {
   });
   const labels = {
     '5pvu': '콜리', xxgw: '분열하는 변이체', of7a: '형태 적응',
-    dw8v: '진화 결과에 따라 몸과 능력치가 바뀝니다.',
-    twcx: '세포질 발사', wynm: '진화 형태에 따른 세포질을 발사합니다.',
-    x7mx: '양분 흡수', gsve: '2초 동안 이동 속도가 감소하며 MP를 추가적으로 획득합니다.',
-    '74ed': '진화', '9m7u': '자신의 다른 진화 형태로 형태를 변경합니다.',
+    dw8v: '진화한 몸에 따라 움직임과 공격이 달라집니다.',
+    twcx: '세포질 발사', wynm: '세포질을 뱉습니다. 진화하면 탄의 모양과 궤적도 바뀝니다.',
+    x7mx: '양분 흡수', gsve: '느릿느릿 움직이며 양분을 흡수해 마나를 채웁니다.',
+    '74ed': '진화', '9m7u': '무작위로 몸이 변이합니다. 다음 진화까지 그 모습으로 싸웁니다.',
   };
   for (const [id, data] of Object.entries(labels)) {
     const list = project.variables.find(v => v.id === id).array;
