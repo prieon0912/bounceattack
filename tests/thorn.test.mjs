@@ -54,10 +54,16 @@ test('reflection uses actual HP loss, rolls once per attack, and guard raises th
   r.random = () => .39;
   attack(r, 'outside-guard');
   assert.equal(hp(r, 2), reflected);
+  for (let frame = 0; frame < 18; frame++) r.step();
   press(r, 82);
   assert.equal(r.originals.get('n230').duoPicture.id, 'thorn/guard');
   attack(r, 'during-guard');
   assert.equal(hp(r, 2), reflected - 10);
+  assert.equal(r.duo.effects(1, 'thorn-weapon').length, 1);
+  assert.equal(r.originals.get('n230').duoPicture.id, 'thorn/guard-bare');
+  assert.ok(r.duo.effects(1, 'flash').some(effect => effect.picture.id === 'thorn/reflect-impact'));
+  for (let frame = 0; frame < 18; frame++) r.step();
+  assert.equal(r.originals.get('n230').duoPicture.id, 'thorn/guard');
   assert.deepEqual(r.faults, []);
 });
 
@@ -84,7 +90,7 @@ test('spin has six scheduled hits, replaces the basic during its window and slow
   const before = hp(r, 2);
   press(r, 82);
   assert.equal(r.thorn.walk(1), 1.02);
-  assert.equal(hp(r, 2), before - 2.5);
+  assert.equal(hp(r, 2), before);
   r.keys.add(69);
   advance(r, 143);
   r.keys.clear();

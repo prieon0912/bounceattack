@@ -23,10 +23,10 @@ module.exports = function addDuoCharacters(project) {
     },
     {
       id: 40, base: 'thorn/body', attack: 'thorn/sweep', skill: 'thorn/guard', ultimate: 'thorn/smoke',
-      forms: ['thorn/guard'], battle: 'thorn/core',
-      text: ['너클', '쌍철권 격투가', '되치기', '이동 속도가 20% 빠르며 2초마다 HP를 1 잃습니다. 피격 시 20% 확률로 잃은 HP의 두 배를 상대에게 돌려줍니다.',
-        '쌍철권', '두 철권을 몸 주위로 돌려 주변 적에게 피해를 줍니다.',
-        '철권 가드', '양 철권으로 몸을 가려 3초 동안 피해 반사 확률을 40%로 높입니다.',
+      forms: ['thorn/guard'],
+      text: ['체인', '쌍절곤 격투가', '되치기', '이동 속도가 20% 빠르며 2초마다 HP를 1 잃습니다. 피격 시 20% 확률로 잃은 HP의 두 배를 상대에게 돌려줍니다.',
+        '쌍절곤', '쌍절곤을 몸 주위로 돌려 주변 적에게 피해를 줍니다.',
+        '교차 가드', '방어 태세를 취해 3초 동안 피해 반사 확률을 40%로 높입니다.',
         '연막 난타', '3초간 연막을 펼쳐 범위 안의 적을 가두고, 가까이 붙은 적에게 연속으로 피해를 줍니다.'],
     },
     {
@@ -76,9 +76,14 @@ module.exports = function addDuoCharacters(project) {
       id: `duo-select-create-${fighter.id}`, type: 'create_clone', params: ['self', null], statements: [],
     });
   }
+  for (const id of ['n230', 'ocqj']) {
+    const pictures = object(id).sprite.pictures;
+    pictures.push(picture('thorn/bare', 'thorn/bare', pictures[35].dimension));
+    pictures.push(picture('thorn/guard-bare', 'thorn/guard', pictures[35].dimension));
+  }
   const art = ['phage/core', 'phage/swipe', 'phage/mark', 'banana/peel', 'banana/slide', 'banana/pile', 'banana/return',
-    'banana/held', 'thorn/sweep', 'thorn/fist', 'octopus/tentacle', 'octopus/dream-tentacle',
-    'zealot/candle', 'zealot/ember', 'zealot/rocket', 'zealot/lit', 'zealot/burst'];
+    'banana/held', 'thorn/sweep', 'thorn/weapon', 'thorn/weapon-folded', 'thorn/reflect-impact',
+    'octopus/tentacle', 'octopus/dream-tentacle', 'zealot/candle', 'zealot/ember', 'zealot/rocket', 'zealot/lit', 'zealot/burst'];
   object('hb4u').sprite.pictures.push(...art.map(id => picture(id, id)));
   const cloneSetup = stacks.find(stack => stack.some(block => block.id === '7exj'));
   cloneSetup.push({

@@ -37,7 +37,6 @@ const BODY_ART = {
 };
 const HELD_ART = {
   [BANANA_ID]: [['banana/held', 15, 10, -2]],
-  [THORN_ID]: [['thorn/fist', 11, 10, -2], ['thorn/fist', 11, -10, -2]],
   [ZEALOT_ID]: [['zealot/candle', 15, 9, -1]],
   [OCTOPUS_ID]: [['octopus/tentacle', 11, 8, -2]],
 };
@@ -69,9 +68,9 @@ export const bananaReturn = loadout(BANANA_ID, 'banana/slide', 'banana/return', 
   description: '현재 위치에 표식을 남깁니다. 3초 안에 다시 사용하면 그 자리로 돌아갑니다.',
 });
 export const thornSpin = loadout(THORN_ID, 'thorn/guard', 'thorn/spin', {
-  name: '회전 연타', primaryName: '철권 가드',
-  primaryDescription: '양 철권으로 몸을 가려 3초 동안 피해 반사 확률을 40%로 높입니다.',
-  description: '2.4초 동안 이동하며 두 철권을 연속으로 휘두릅니다.',
+  name: '회전 연타', primaryName: '교차 가드',
+  primaryDescription: '방어 태세를 취해 3초 동안 피해 반사 확률을 40%로 높입니다.',
+  description: '2.4초 동안 이동하며 쌍절곤을 연속으로 휘두릅니다.',
 });
 export const octopusEcho = loadout(OCTOPUS_ID, 'octopus/grapple', 'octopus/echo', {
   name: '잠꼬대', primaryName: '빨판 점프',
@@ -537,22 +536,23 @@ export class DuoSystem {
         : dormant ? 'phage/dormant' : state.branch ? 'phage/' + state.branch : base;
       r.setPicture(hero, base);
       r.setSize(hero, 16);
-      const bare = art === base && (character === BANANA_ID || character === THORN_ID);
-      hero.duoPicture = r.pictureFrom(hero.def, bare ? base.replace('/body', '/core') : art);
+      const spinning = character === THORN_ID && state.weaponSpinUntil > r.tick;
+      const avatar = spinning ? (art === 'thorn/guard' ? 'thorn/guard-bare' : 'thorn/bare')
+        : character === BANANA_ID ? 'banana/core' : art;
+      hero.duoPicture = r.pictureFrom(hero.def, avatar);
       const profile = r.originals.get(control.profile);
       if (profile) r.setPicture(profile, art);
-      this.updateHeld(side, character, hero, state, bare);
+      this.updateHeld(side, character, hero, state);
     }
   }
 
-  updateHeld(side, character, hero, state, bare) {
+  updateHeld(side, character, hero, state) {
     const r = this.r;
     const items = HELD_ART[character];
     if (!items) return;
     const held = state.held ??= items.map(([art, size]) => this.visual(side, art, hero.x, hero.y, size, 'held').uid);
     const direction = this.facing(side);
     const visible = hero.visible && r.castle.alive(side) && !r.num(r.globals.get(side === 1 ? 'ob2m' : 'rav6'));
-    const sweeping = character === THORN_ID && this.effects(side, 'thorn-sweep').length > 0;
     const casting = character === OCTOPUS_ID && r.entities.some(e => e.combatSide === side && !e.dead && e.visible &&
       ['octopus-arm', 'octopus-grapple'].includes(e.duoEffect?.kind));
     for (const [index, [, , dx, dy]] of items.entries()) {
@@ -562,7 +562,7 @@ export class DuoSystem {
       effect.y = hero.y + dy;
       effect.scaleX = Math.abs(effect.scaleX) * direction * Math.sign(dx);
       if (character === OCTOPUS_ID) effect.effects.color = state.echoUntil > r.tick ? 22 : 0;
-      effect.visible = visible && !sweeping && !casting && (character !== THORN_ID || bare);
+      effect.visible = visible && !casting;
     }
   }
 

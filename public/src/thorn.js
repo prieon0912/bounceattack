@@ -1,9 +1,13 @@
-import { damageInstallationsInRadius } from './barricade.js';
+import { damageInstallationsOnContact } from './barricade.js';
 
 export const THORN_ID = 40;
 const HP = ['akf6', '7ir2'];
 const DAMAGE_DISPLAY = ['c19k', '9bgr'];
 const ARENA_HAZARDS = new Set(['6npu', 'h6v1', '6tzq', '2bx4']);
+export const THORN_IDLE_WEAPON_SIZE = 20;
+const THORN_WEAPON_SIZE = 42;
+const BASIC_ATTACK_TICKS = 36;
+export const THORN_WEAPON_OFFSET = 5.4;
 const SPIN_TICKS = 144;
 const SMOKE_RADIUS = 60;
 const SMOKE_TICKS = 180;
@@ -62,32 +66,54 @@ export class ThornSystem {
   }
 
   basic(side, state) {
-    state.attackAt = this.r.tick + 36;
+    state.attackAt = this.r.tick + BASIC_ATTACK_TICKS;
     this.sweep(side, 5);
   }
 
+  animateWeapon(side, duration, damage = 0, group = null) {
+    const r = this.r, body = r.duo.body(side), state = this.state(side);
+    const direction = r.duo.facing(side);
+    const previous = r.duo.effects(side, 'thorn-weapon')[0];
+    if (!damage && previous?.duoEffect.damaging) return;
+    if (previous) previous.dead = true;
+    const restingOffset = THORN_WEAPON_OFFSET * direction;
+    const weapon = r.duo.visual(side, 'thorn/weapon-folded', body.x + restingOffset, body.y, THORN_IDLE_WEAPON_SIZE, 'thorn-weapon', { damaging: damage > 0 });
+    state.weaponSpinUntil = r.tick + duration;
+    weapon.scaleX *= -direction;
+    r.spawn(weapon, function* animate(rt) {
+      const struck = new Set();
+      const enemy = rt.originals.get(side === 1 ? 'ocqj' : 'n230');
+      try {
+        for (let age = 0; age < duration && !weapon.dead; age++) {
+          const approach = Math.min(1, age / 4, (duration - 1 - age) / 4);
+          const ease = approach * approach * (3 - 2 * approach);
+          const turn = Math.min(1, Math.max(0, (age - 4) / (duration - 9)));
+          weapon.x = body.x + restingOffset * (1 - ease);
+          weapon.y = body.y;
+          weapon.rotation = direction * turn * 360;
+          rt.setPicture(weapon, age < 2 || age >= duration - 2 ? 'thorn/weapon-folded' : 'thorn/weapon');
+          rt.setSize(weapon, THORN_IDLE_WEAPON_SIZE + (THORN_WEAPON_SIZE - THORN_IDLE_WEAPON_SIZE) * ease);
+          if (damage && age >= 4 && age <= duration - 5) {
+            if (!struck.has(enemy) && rt.castle.canHit(side) && rt.overlap(weapon, enemy)) {
+              struck.add(enemy);
+              rt.thorn.hit(side, damage, group);
+            }
+            for (const minion of rt.duo.effects(3 - side, 'minion')) {
+              if (struck.has(minion) || !rt.overlap(weapon, minion)) continue;
+              struck.add(minion);
+              rt.duo.damageMinion(minion, damage);
+            }
+            damageInstallationsOnContact(rt, weapon, damage, struck);
+          }
+          yield 1;
+        }
+      } finally { weapon.dead = true; }
+    }, 'thorn_weapon_visual');
+  }
+
   sweep(side, damage, spin) {
-    const r = this.r, body = r.duo.body(side);
-    const effect = r.duo.visual(side, 'thorn/sweep', body.x, body.y, 42, 'thorn-sweep');
-    r.spawn(effect, function* animate() {
-      const duration = spin ? 24 : 14;
-      for (let age = 0; age < duration; age++) {
-        effect.x = body.x;
-        effect.y = body.y;
-        effect.rotation = age * 360 / duration;
-        effect.effects.transparency = 10 + age * 65 / duration;
-        yield 1;
-      }
-      effect.dead = true;
-    }, 'thorn_sweep_visual');
-    const enemy = r.duo.body(3 - side);
-    damageInstallationsInRadius(r, side, body, 22, damage);
-    for (const minion of r.duo.effects(3 - side, 'minion')) {
-      if (Math.hypot(body.x - minion.x, body.y - minion.y) <= 22)
-        r.duo.damageMinion(minion, damage);
-    }
-    if (Math.hypot(body.x - enemy.x, body.y - enemy.y) <= 22)
-      this.hit(side, damage, spin ? 'spin:' + spin : 'basic:' + r.tick);
+    const group = spin ? 'spin:' + spin : 'basic:' + this.r.tick;
+    this.animateWeapon(side, spin ? 24 : BASIC_ATTACK_TICKS, damage, group);
   }
 
   hit(side, damage, group) {
@@ -167,7 +193,8 @@ export class ThornSystem {
     } finally {
       r.secondarySkills.reflecting = reflecting;
     }
-    r.duo.flash(side, 'thorn/sweep', body.x, body.y, 30, 14);
+    r.duo.flash(side, 'thorn/reflect-impact', body.x, body.y, 30, 14);
+    this.animateWeapon(side, 18);
   }
 
   tagClone(context, child) {
