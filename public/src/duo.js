@@ -57,9 +57,9 @@ export const bananaReturn = loadout(BANANA_ID, 'banana/slide', 'banana/return', 
   description: '현재 위치에 표식을 남깁니다. 3초 안에 다시 사용하면 그 자리로 돌아갑니다.',
 });
 export const thornSpin = loadout(THORN_ID, 'thorn/guard', 'thorn/spin', {
-  name: '회전 연타', primaryName: '철권 가드',
-  primaryDescription: '양 철권으로 몸을 가려 3초 동안 피해 반사 확률을 40%로 높입니다.',
-  description: '2.4초 동안 이동하며 두 철권을 연속으로 휘두릅니다.',
+  name: '회전 연타', primaryName: '교차 가드',
+  primaryDescription: '두 쌍절곤을 교차해 3초 동안 피해 반사 확률을 40%로 높입니다.',
+  description: '2.4초 동안 이동하며 두 쌍절곤을 연속으로 휘두릅니다.',
 });
 
 export class DuoSystem {
