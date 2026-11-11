@@ -286,7 +286,7 @@ export class EcolaSystem {
 
   shot(side, source, direction, fake) {
     const name = this.state(side).form;
-    const volley = { hits: 0, maxHits: name === 'spore' ? 2 : 1 };
+    const volley = { hits: 0, maxHits: name === 'spore' ? 2 : 1, group: 'ecola:' + this.r.tick };
     const vertical = name === 'spore' ? [-1.45, 0, 1.45] : [name === 'wilt' ? 1.1 : 0];
     for (const vy of vertical) this.projectile(side, source, direction, fake, name, vy, volley);
   }
@@ -342,6 +342,7 @@ export class EcolaSystem {
                 damageInstallationsInRadius(rt, side, e, explosive ? 19 : size / 2 + 1, damage);
               if (!fake && (direct || (explosive && hit(19))) && volley.hits < volley.maxHits) {
                 volley.hits++;
+                context.thornAttackGroup = volley.group;
                 yield* rt.call(context, side === 1 ? 'qy83' : '05j0', [-damage, 0, 1]);
               }
               if (!e.dead && (explosive || direct)) rt.ecola.pulse(side, e, explosive ? 33 : 12, explosive ? 13 : 8);

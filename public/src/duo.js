@@ -1,4 +1,5 @@
 import { damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
+import { THORN_ID } from './thorn.js';
 
 export const PHAGE_ID = 38;
 export const BANANA_ID = 39;
@@ -27,7 +28,7 @@ const EVOLUTION = {
   ],
 };
 const CALTROP_LIFETIME = 30 * 60;
-const isDuo = id => id === PHAGE_ID || id === BANANA_ID;
+const isCustom = id => id === PHAGE_ID || id === BANANA_ID || id === THORN_ID;
 
 function loadout(character, primaryPictureId, secondaryPictureId, details) {
   const art = id => `assets/${id}-icon.svg`;
@@ -55,6 +56,11 @@ export const bananaReturn = loadout(BANANA_ID, 'banana/slide', 'banana/return', 
   primaryDescription: '앞으로 돌진하며 부딪힌 적을 밀쳐냅니다.',
   description: '현재 위치에 표식을 남깁니다. 3초 안에 다시 사용하면 그 자리로 돌아갑니다.',
 });
+export const thornSpin = loadout(THORN_ID, 'thorn/guard', 'thorn/spin', {
+  name: '무한회전문', primaryName: '고슴도치',
+  primaryDescription: 'MP 25. 3초 동안 반사 확률이 40%로 올라갑니다.',
+  description: 'MP 32. 2.4초 동안 움직이며 연속으로 회전합니다.',
+});
 
 export class DuoSystem {
   constructor(runtime) { this.r = runtime; }
@@ -75,7 +81,7 @@ export class DuoSystem {
 
   blocksKey(key) {
     return this.r.scene === '7dwq' && SIDES.some(({ attack, skill, ultimate }, i) =>
-      isDuo(this.character(i + 1)) && (key === attack || key === skill || key === ultimate));
+      isCustom(this.character(i + 1)) && (key === attack || key === skill || key === ultimate));
   }
 
   freezesBody(entity) {
@@ -103,7 +109,8 @@ export class DuoSystem {
     const side = SIDES.findIndex(item => item.body === context.e.objectId) + 1;
     if (!side) return;
     const state = this.state(side), slip = this.r.globals.get('duo-slip:' + side);
-    const movement = (state ? this.stats(state).walk : 1) * (slip?.slowUntil > this.r.tick ? .55 : 1);
+    const movement = (state ? this.stats(state).walk : 1) * this.r.thorn.walk(side) *
+      (slip?.slowUntil > this.r.tick ? .55 : 1);
     if (movement !== 1) args[0] = this.r.num(args[0]) * movement;
   }
 
@@ -143,7 +150,7 @@ export class DuoSystem {
     if (r.scene !== '7dwq') return;
     for (const side of [1, 2]) {
       const character = this.character(side);
-      if (!isDuo(character)) continue;
+      if (!isCustom(character)) continue;
       const key = 'duo:' + side, control = SIDES[side - 1];
       if (!this.state(side)) {
         r.globals.set(key, { attackAt: 0, skillAt: 0, ultimateAt: 0, hits: 0, damage: 0, tier: 0 });
@@ -156,6 +163,8 @@ export class DuoSystem {
       state.ultimateDown = ultimate;
       if (state.returnPoint?.until <= r.tick) delete state.returnPoint;
       if (!r.castle.alive(side) || this.dormant(side)) continue;
+      if (character === THORN_ID) r.thorn.tick(side, state);
+      if (!r.castle.alive(side)) continue;
       if (state.dormantUntil) {
         state.dormantUntil = 0;
         this.mana(side, 5);
@@ -171,12 +180,15 @@ export class DuoSystem {
       const secondary = r.secondarySkills.state(side).mode === 'secondary';
       if (ultimateEdge && r.tick >= state.ultimateAt) {
         if (character === PHAGE_ID) this.mark(side, state);
+        else if (character === THORN_ID) r.thorn.smoke(side, state);
         else this.scatter(side, state);
       } else if (skillEdge && (r.tick >= state.skillAt || state.returnPoint)) {
         if (character === PHAGE_ID) this.phageSkill(side, state, secondary);
+        else if (character === THORN_ID) r.thorn.skill(side, state, secondary);
         else this.bananaSkill(side, state, secondary);
       } else if (r.keys.has(control.attack) && r.tick >= state.attackAt) {
         if (character === PHAGE_ID) this.strike(side, state);
+        else if (character === THORN_ID) r.thorn.basic(side, state);
         else {
           state.attackAt = r.tick + 37;
           this.throwPeel(side);
@@ -485,7 +497,8 @@ export class DuoSystem {
     const r = this.r;
     for (const side of [1, 2]) {
       const control = SIDES[side - 1], character = this.character(side);
-      if (r.scene === '1ckl' && isDuo(character)) r.originals.get(control.weapon).visible = false;
+      if (r.scene === '1ckl' && isCustom(character)) r.originals.get(control.weapon).visible = false;
+      if (r.scene === '7dwq') r.thorn.confine(this.body(side));
       const state = this.state(side);
       if (!state) continue;
       const dormant = this.dormant(side), hero = r.originals.get(control.hero);
@@ -494,10 +507,11 @@ export class DuoSystem {
         hero.x = state.lockX;
         hero.y = state.lockY;
       }
-      const base = character === PHAGE_ID ? 'phage/core' : 'banana/body';
-      const art = dormant ? 'phage/dormant' : state.branch ? 'phage/' + state.branch : base;
+      const base = character === PHAGE_ID ? 'phage/core' : character === THORN_ID ? 'thorn/body' : 'banana/body';
+      const art = state.guardUntil > r.tick ? 'thorn/guard'
+        : dormant ? 'phage/dormant' : state.branch ? 'phage/' + state.branch : base;
       r.setPicture(hero, base);
-      r.setSize(hero, 16);
+      r.setSize(hero, character === THORN_ID ? 20 : 16);
       hero.duoPicture = r.pictureFrom(hero.def, art);
       const profile = r.originals.get(control.profile);
       if (profile) r.setPicture(profile, art);

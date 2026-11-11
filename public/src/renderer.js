@@ -164,6 +164,7 @@ export class Renderer {
     }
     runtime.castle?.draw(c);
     runtime.duo?.draw(c);
+    runtime.thorn?.draw(c);
     c.restore();
   }
 }

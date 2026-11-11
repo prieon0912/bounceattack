@@ -21,6 +21,14 @@ module.exports = function addDuoCharacters(project) {
         '어깨치기', '앞으로 돌진하며 부딪힌 적을 밀쳐냅니다.',
         '마름쇠 살포', '30초간 유지되는 마름쇠를 뿌려 밟은 적에게 피해를 주고 밀쳐내며 둔화시킵니다.'],
     },
+    {
+      id: 40, base: 'thorn/body', attack: 'thorn/sweep', skill: 'thorn/guard', ultimate: 'thorn/smoke',
+      forms: ['thorn/guard'],
+      text: ['나를 건드리지 말아요', '성급한 반격수', '나를 건드리지 말아요', '이속 +20%, 2초마다 체력 1 감소. 20% 확률로 피해를 2배 반사합니다.',
+        '한 바퀴', '몸 주변을 한 바퀴 쓸어 피해 5를 줍니다.',
+        '고슴도치', 'MP 25. 3초 동안 반사 확률이 40%로 올라갑니다.',
+        '연막', 'MP 60. 3초간 적을 가두고 가까이 있으면 피해를 줍니다.'],
+    },
   ];
   const labels = ['5pvu', 'xxgw', 'of7a', 'dw8v', 'twcx', 'wynm', 'x7mx', 'gsve', '74ed', '9m7u'];
   const tile = object('ncwe'), stacks = JSON.parse(tile.script);
@@ -50,7 +58,7 @@ module.exports = function addDuoCharacters(project) {
       id: `duo-select-create-${fighter.id}`, type: 'create_clone', params: ['self', null], statements: [],
     });
   }
-  const art = ['phage/core', 'phage/swipe', 'phage/mark', 'banana/peel', 'banana/slide', 'banana/pile', 'banana/return'];
+  const art = ['phage/core', 'phage/swipe', 'phage/mark', 'banana/peel', 'banana/slide', 'banana/pile', 'banana/return', 'thorn/sweep'];
   object('hb4u').sprite.pictures.push(...art.map(id => picture(id, id)));
   tile.script = JSON.stringify(stacks);
 
