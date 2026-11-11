@@ -1,6 +1,5 @@
 import { Assets } from "./assets.js";
 import { Renderer } from "./renderer.js";
-import { showsSelectorDetails } from "./selector-details.js";
 import { Runtime } from "./runtime.js";
 import { registerOriginal } from "./original-program.js";
 import { OnlineConnection } from "./online.js";
@@ -52,7 +51,7 @@ const P2_PREVIEW = new Set(["zyy3", "mimn", "pe89"]);
 function sceneUI() {
   menu.hidden = !ready || runtime.scene !== "qc29";
   const hideP2 = onlineMode && !sync && runtime.scene === "1ckl";
-  unknownP2.hidden = !hideP2 || showsSelectorDetails(runtime);
+  unknownP2.hidden = !hideP2;
   if (hideP2)
     for (const e of runtime.entities)
       if (P2_PREVIEW.has(e.objectId)) e.visible = false;
