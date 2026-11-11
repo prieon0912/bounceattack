@@ -1,5 +1,6 @@
 import { damageInstallationsInRadius, projectileInstallationContact } from './barricade.js';
 import { THORN_ID } from './thorn.js';
+import { OCTOPUS_ID, ZEALOT_ID } from './caster.js';
 
 export const PHAGE_ID = 38;
 export const BANANA_ID = 39;
@@ -28,7 +29,18 @@ const EVOLUTION = {
   ],
 };
 const CALTROP_LIFETIME = 30 * 60;
-const isCustom = id => id === PHAGE_ID || id === BANANA_ID || id === THORN_ID;
+const isCaster = id => id === OCTOPUS_ID || id === ZEALOT_ID;
+const isCustom = id => id === PHAGE_ID || id === BANANA_ID || id === THORN_ID || isCaster(id);
+const BODY_ART = {
+  [PHAGE_ID]: 'phage/core', [THORN_ID]: 'thorn/body', [BANANA_ID]: 'banana/body',
+  [OCTOPUS_ID]: 'octopus/body', [ZEALOT_ID]: 'zealot/body',
+};
+const HELD_ART = {
+  [BANANA_ID]: [['banana/held', 15, 10, -2]],
+  [THORN_ID]: [['thorn/fist', 11, 10, -2], ['thorn/fist', 11, -10, -2]],
+  [ZEALOT_ID]: [['zealot/candle', 15, 9, -1]],
+  [OCTOPUS_ID]: [['octopus/tentacle', 11, 8, -2]],
+};
 
 function loadout(character, primaryPictureId, secondaryPictureId, details) {
   const art = id => `assets/${id}-icon.svg`;
@@ -60,6 +72,16 @@ export const thornSpin = loadout(THORN_ID, 'thorn/guard', 'thorn/spin', {
   name: '회전 연타', primaryName: '철권 가드',
   primaryDescription: '양 철권으로 몸을 가려 3초 동안 피해 반사 확률을 40%로 높입니다.',
   description: '2.4초 동안 이동하며 두 철권을 연속으로 휘두릅니다.',
+});
+export const octopusEcho = loadout(OCTOPUS_ID, 'octopus/grapple', 'octopus/echo', {
+  name: '잠꼬대', primaryName: '빨판 점프',
+  primaryDescription: 'MP 24. 지형에 촉수를 붙입니다. 점프로 놓습니다.',
+  description: 'MP 28. 다음 평타 자리에 0.5초 뒤 촉수가 한 번 더 나옵니다.',
+});
+export const zealotLeap = loadout(ZEALOT_ID, 'zealot/rocket', 'zealot/leap', {
+  name: '불꽃걸음', primaryName: '제단',
+  primaryDescription: 'MP 22. 폭죽을 최대 세 개 놓습니다.',
+  description: 'MP 28. 뛰어오르며 0.8초 뒤 터지는 폭죽을 놓습니다.',
 });
 
 export class DuoSystem {
@@ -181,14 +203,17 @@ export class DuoSystem {
       if (ultimateEdge && r.tick >= state.ultimateAt) {
         if (character === PHAGE_ID) this.mark(side, state);
         else if (character === THORN_ID) r.thorn.smoke(side, state);
+        else if (isCaster(character)) r.caster.ultimate(side, state, character);
         else this.scatter(side, state);
       } else if (skillEdge && (r.tick >= state.skillAt || state.returnPoint)) {
         if (character === PHAGE_ID) this.phageSkill(side, state, secondary);
         else if (character === THORN_ID) r.thorn.skill(side, state, secondary);
+        else if (isCaster(character)) r.caster.skill(side, state, character, secondary);
         else this.bananaSkill(side, state, secondary);
       } else if (r.keys.has(control.attack) && r.tick >= state.attackAt) {
         if (character === PHAGE_ID) this.strike(side, state);
         else if (character === THORN_ID) r.thorn.basic(side, state);
+        else if (isCaster(character)) r.caster.basic(side, state, character);
         else {
           state.attackAt = r.tick + 37;
           this.throwPeel(side);
@@ -507,14 +532,37 @@ export class DuoSystem {
         hero.x = state.lockX;
         hero.y = state.lockY;
       }
-      const base = character === PHAGE_ID ? 'phage/core' : character === THORN_ID ? 'thorn/body' : 'banana/body';
+      const base = BODY_ART[character];
       const art = state.guardUntil > r.tick ? 'thorn/guard'
         : dormant ? 'phage/dormant' : state.branch ? 'phage/' + state.branch : base;
       r.setPicture(hero, base);
       r.setSize(hero, 16);
-      hero.duoPicture = r.pictureFrom(hero.def, art);
+      const bare = art === base && (character === BANANA_ID || character === THORN_ID);
+      hero.duoPicture = r.pictureFrom(hero.def, bare ? base.replace('/body', '/core') : art);
       const profile = r.originals.get(control.profile);
       if (profile) r.setPicture(profile, art);
+      this.updateHeld(side, character, hero, state, bare);
+    }
+  }
+
+  updateHeld(side, character, hero, state, bare) {
+    const r = this.r;
+    const items = HELD_ART[character];
+    if (!items) return;
+    const held = state.held ??= items.map(([art, size]) => this.visual(side, art, hero.x, hero.y, size, 'held').uid);
+    const direction = this.facing(side);
+    const visible = hero.visible && r.castle.alive(side) && !r.num(r.globals.get(side === 1 ? 'ob2m' : 'rav6'));
+    const sweeping = character === THORN_ID && this.effects(side, 'thorn-sweep').length > 0;
+    const casting = character === OCTOPUS_ID && r.entities.some(e => e.combatSide === side && !e.dead && e.visible &&
+      ['octopus-arm', 'octopus-grapple'].includes(e.duoEffect?.kind));
+    for (const [index, [, , dx, dy]] of items.entries()) {
+      const effect = r.entities.find(e => e.uid === held[index]);
+      if (!effect) continue;
+      effect.x = hero.x + direction * dx;
+      effect.y = hero.y + dy;
+      effect.scaleX = Math.abs(effect.scaleX) * direction * Math.sign(dx);
+      if (character === OCTOPUS_ID) effect.effects.color = state.echoUntil > r.tick ? 22 : 0;
+      effect.visible = visible && !sweeping && !casting && (character !== THORN_ID || bare);
     }
   }
 

@@ -288,6 +288,7 @@ export class EcolaSystem {
     const name = this.state(side).form;
     const volley = { hits: 0, maxHits: name === 'spore' ? 2 : 1, group: 'ecola:' + this.r.tick };
     const vertical = name === 'spore' ? [-1.45, 0, 1.45] : [name === 'wilt' ? 1.1 : 0];
+    this.r.duo.flash(side, 'ecola-shot-' + name, source.x + direction * 9, source.y + 1, 12, 7, direction);
     for (const vy of vertical) this.projectile(side, source, direction, fake, name, vy, volley);
   }
 

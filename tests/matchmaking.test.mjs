@@ -62,6 +62,6 @@ test("matchmaking preserves different skill loadouts in a mirror match without l
   const match = await hub.matchmake(b, { build, character: 1, skill: "primary" });
   assert.deepEqual(match.match.skills, ["secondary", "primary"]);
   assert.ok(!("skill" in hub.public(match).players[0]));
-  await assert.rejects(hub.matchmake({}, { build, character: 41, skill: "secondary" }));
+  await assert.rejects(hub.matchmake({}, { build, character: 43, skill: "secondary" }));
   await assert.rejects(hub.matchmake({}, { build, character: 1, skill: "invalid" }));
 });
