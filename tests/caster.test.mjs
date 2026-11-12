@@ -129,12 +129,40 @@ test('zealot leap places a delayed rocket, and fireworks damage with at most two
   const armed = rockets(r).sort((a, b) => a.duoEffect.blastAt - b.duoEffect.blastAt);
   assert.equal(armed.length, 4);
   assert.ok(armed.every((e, index) => index === 0 || e.duoEffect.blastAt - armed[index - 1].duoEffect.blastAt === 18));
+  assert.ok(armed[2].x < r.duo.body(1).x + 30);
+  advance(r, 18);
+  assert.ok(armed[2].x > r.duo.body(1).x + 60);
   for (const e of armed) {
     Object.assign(enemy, { x: e.x, y: e.y });
     advance(r, e.duoEffect.blastAt - r.tick);
   }
   assert.equal(hp(r), before - 36);
   assert.deepEqual([...r.faults, ...leap.faults], []);
+});
+
+test('firework tip deals damage beyond the main ray', () => {
+  const r = game(42);
+  const rocket = r.caster.rocket(1, { x: 0, y: -44 }, true);
+  r.caster.light(rocket, 1);
+  Object.assign(r.duo.body(2), { x: 0, y: 24 });
+  const before = hp(r);
+  advance(r, 1);
+  assert.equal(hp(r), before - 3);
+});
+
+test('a rocket falls after its support disappears and despawns in the void', () => {
+  const r = game(42);
+  const rocket = r.caster.rocket(1, { x: 100, y: -44 }, true);
+  let supported = true;
+  r.collisionProvider = (e, id) => id === '6tzq' && e.y < -49 && (e.x < 50 || supported);
+  advance(r, 5);
+  assert.equal(rocket.y, -44);
+  supported = false;
+  advance(r, 5);
+  assert.ok(rocket.y < -44 && !rocket.dead);
+  advance(r, 45);
+  assert.ok(rocket.dead);
+  assert.equal(rockets(r).length, 0);
 });
 
 test('the new loadouts enter online rooms and replay the same inputs deterministically', async () => {

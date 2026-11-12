@@ -178,7 +178,7 @@ export class Renderer {
         const asset = this.assets.get(thornIdle ? { fileurl: "assets/thorn/bare.svg" } : picture);
         if (asset) {
           // Spike's held art extends past the right edge of its body sprite.
-          const width = picture.fileurl === "assets/banana/body.svg" ? e.width * 1.32 : e.width;
+          const width = picture.fileurl === "assets/banana/body.svg" ? e.width * 1.48 : e.width;
           const padding = picture.fileurl === "assets/ecola/base.svg" ? .05 : 0;
           c.drawImage(asset.image, -e.regX - e.width * padding, -e.regY - e.height * padding,
             width + 2 * e.width * padding, e.height * (1 + 2 * padding));

@@ -39,8 +39,8 @@ const BODY_ART = {
   [OCTOPUS_ID]: 'octopus/body', [ZEALOT_ID]: 'zealot/body',
 };
 const HELD_ART = {
-  [BANANA_ID]: [['banana/held', 15, 10, -2]],
-  [ZEALOT_ID]: [['zealot/rocket', 17, 10, -1]],
+  [BANANA_ID]: [['banana/held', 19, 10, -2]],
+  [ZEALOT_ID]: [['zealot/rocket', 22, 10, -1]],
   [OCTOPUS_ID]: [['octopus/tentacle', 11, 8, -2]],
 };
 
@@ -574,8 +574,12 @@ export class DuoSystem {
     const controls = SIDES[side - 1];
     const moving = r.keys.has(controls.left) !== r.keys.has(controls.right) || state.slideUntil > r.tick;
     const bob = moving ? Math.sin(r.tick * .42) + Math.sin(r.tick * .79) * .35 : 0;
-    if (character === ZEALOT_ID)
-      state.rocketSway = (state.rocketSway ?? 0) * .7 + bob * .3;
+    if (character === ZEALOT_ID) {
+      const speed = Math.min(2, Math.abs(hero.x - (state.rocketLastX ?? hero.x)));
+      state.rocketLastX = hero.x;
+      state.rocketSway = (state.rocketSway ?? 0) * .8 + Math.sin(r.tick * .32) * speed * .2;
+      state.rocketFacing = (state.rocketFacing ?? direction) * .62 + direction * .38;
+    }
     const casting = character === OCTOPUS_ID && r.entities.some(e => e.combatSide === side && !e.dead && e.visible &&
       ['octopus-arm', 'octopus-grapple'].includes(e.duoEffect?.kind));
     for (const [index, [, , dx, dy]] of items.entries()) {
@@ -584,10 +588,16 @@ export class DuoSystem {
       effect.x = hero.x + direction * dx;
       effect.y = hero.y + dy + bob;
       if (character === ZEALOT_ID) {
-        effect.y = hero.y + dy + state.rocketSway;
-        effect.rotation = direction * (16 + state.rocketSway * 13);
-      } else effect.rotation = direction * bob * 8;
-      effect.scaleX = Math.abs(effect.scaleX) * direction * Math.sign(dx);
+        const facing = state.rocketFacing;
+        effect.x = hero.x + dx * facing;
+        effect.y = hero.y + dy + state.rocketSway * .6;
+        effect.rotation = facing * 16 + state.rocketSway * 4;
+        const width = items[index][1] / effect.width;
+        effect.scaleX = width * (Math.sign(facing) || direction) * (.65 + .35 * Math.abs(facing));
+      } else {
+        effect.rotation = direction * bob * 8;
+        effect.scaleX = Math.abs(effect.scaleX) * direction * Math.sign(dx);
+      }
       if (character === OCTOPUS_ID) effect.effects.color = state.echoUntil > r.tick ? 22 : 0;
       effect.visible = visible && !casting;
     }

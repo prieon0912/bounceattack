@@ -1,7 +1,7 @@
 import BigNumber from './vendor/bignumber.mjs';
 import { showStatusVisual } from './expanded-secondary-skills.js';
 // Castle's values are kept together so each piece can be tuned independently.
-export const CASTLE = Object.freeze({id:35,startMana:100,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,ultimateCooldown:360,heldSize:11.25,previewHeldSize:31.25});
+export const CASTLE = Object.freeze({id:35,startMana:100,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,ultimateCooldown:360,heldSize:15,previewHeldSize:41.5});
 export const PIECES = Object.freeze({
  pawn:{name:'폰',damage:4,range:62.5,interval:33},knight:{name:'나이트',damage:6,range:96.1125,dash:54.8625,interval:39},
  bishop:{name:'비숍',damage:7,range:110,interval:39},rook:{name:'룩',damage:8,range:158.4,interval:42},

@@ -40,10 +40,10 @@ module.exports = function addDuoCharacters(project) {
     {
       id: 42, base: 'zealot/body', attack: 'zealot/ember', skill: 'zealot/rocket', ultimate: 'zealot/burst',
       forms: [],
-      text: ['빈센트', '폭죽 조율사', '점화', '성냥불이 폭죽에 닿으면 도화선에 불이 붙습니다.',
+      text: ['빈센트', '불꽃의 명수', '점화', '성냥불이 폭죽에 닿으면 도화선에 불이 붙습니다.',
         '성냥불', '불씨를 튕겨 앞에 있는 적을 태웁니다.',
         '제단', '바닥에 폭죽을 놓습니다. 불을 붙이면 위쪽 세 방향으로 터집니다.',
-        '불꽃놀이', '앞에 폭죽을 늘어놓고 차례로 터뜨립니다. 먼저 놓아둔 폭죽에도 불이 옮겨붙습니다.'],
+        '불꽃놀이', '앞쪽으로 폭죽을 던져 차례로 터뜨립니다. 먼저 놓아둔 폭죽에도 불이 옮겨붙습니다.'],
     },
   ];
   const labels = ['5pvu', 'xxgw', 'of7a', 'dw8v', 'twcx', 'wynm', 'x7mx', 'gsve', '74ed', '9m7u'];
@@ -61,7 +61,9 @@ module.exports = function addDuoCharacters(project) {
       const dimension = pictures[35].dimension;
       const asset = art => ['afvb', '8svk'].includes(id) ? art.replace('/', '/profile-') : art;
       const selectionPreview = fighter.id >= 41 && ['j5y7', 'zyy3'].includes(id);
-      const baseArt = selectionPreview ? fighter.base.replace('/body', '/preview') : asset(fighter.base);
+      const baseArt = selectionPreview
+        ? fighter.base.replace('/body', id === 'zyy3' ? '/preview-2p' : '/preview')
+        : asset(fighter.base);
       const baseDimension = selectionPreview
         ? { ...dimension, width: dimension.width * 1.24, height: dimension.height * 1.24 }
         : dimension;

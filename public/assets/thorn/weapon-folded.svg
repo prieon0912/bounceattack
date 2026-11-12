@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-  <g transform="rotate(-20 50 50)">
-    <path d="M35 33Q48 16 64 35" fill="none" stroke="#161719" stroke-width="9"/>
-    <path d="m35 32 1 41m28-39-2 38" fill="none" stroke="#15161a" stroke-width="20" stroke-linecap="round"/>
-    <path d="m35 32 1 41m28-39-2 38" fill="none" stroke="#adb5bf" stroke-width="11" stroke-linecap="round"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M31 24Q22 15 19 31" fill="none" stroke="#15161a" stroke-width="8" stroke-linecap="round"/><path d="M31 24Q22 15 19 31" fill="none" stroke="#d5dbe3" stroke-width="3" stroke-dasharray="2 3"/><path d="M31 24 50 50M19 31 16 65" fill="none" stroke="#15161a" stroke-width="15" stroke-linecap="round"/><path d="M31 24 50 50M19 31 16 65" fill="none" stroke="#adb5bf" stroke-width="8" stroke-linecap="round"/></svg>

@@ -261,13 +261,37 @@ export class CasterSystem {
     }, 'zealot_leap');
   }
 
-  rocket(side, point, altar) {
+  rocket(side, point, altar, origin = null) {
     const r = this.r;
-    const rocket = r.duo.visual(side, 'zealot/rocket', point.x, point.y, 18, 'zealot-rocket', { altar });
+    const rocket = r.duo.visual(side, 'zealot/rocket', origin?.x ?? point.x, origin?.y ?? point.y, 18, 'zealot-rocket', { altar });
     const expires = r.tick + 600;
     r.spawn(rocket, function* fuse(rt, context) {
+      const support = { ...rt.duo.body(side) };
+      let age = 0, fall = 0;
       try {
         while (rt.castle.alive(side) && (rocket.duoEffect.blastAt || rt.tick < expires)) {
+          if (origin && age < 18) {
+            const progress = ++age / 18;
+            rocket.x = origin.x + (point.x - origin.x) * progress;
+            rocket.y = origin.y + (point.y - origin.y) * progress + 23 * Math.sin(Math.PI * progress);
+            rocket.rotation = (point.x < origin.x ? -1 : 1) * 360 * progress;
+            yield 1;
+            continue;
+          }
+          support.x = rocket.x;
+          support.y = rocket.y - 6;
+          if (rt.duo.terrain(support)) fall = 0;
+          else {
+            const previousY = rocket.y;
+            fall = Math.min(6, fall + .24);
+            for (let drop = Math.min(1, fall); drop <= fall; drop = Math.min(drop + 1, fall)) {
+              support.y = previousY - drop - 6;
+              rocket.y = previousY - drop;
+              if (rt.duo.terrain(support)) { fall = 0; break; }
+              if (drop === fall) break;
+            }
+          }
+          if (rocket.y < -142) return;
           const { blastAt, volley, group } = rocket.duoEffect;
           if (blastAt && rt.tick >= blastAt) {
             yield* rt.caster.burst(context, side, rocket, volley, group);
@@ -294,13 +318,15 @@ export class CasterSystem {
     rocket.visible = false;
     const enemy = r.duo.body(3 - side);
     const relativeX = enemy.x - x, relativeY = enemy.y - y;
-    let hits = 0;
+    let hits = 0, flashHits = 0;
     for (const angle of ROCKET_ANGLES) {
       const radians = angle * Math.PI / 180;
       const dx = Math.sin(radians), dy = Math.cos(radians);
       const column = r.duo.visual(side, 'zealot/ember', x, y, 1, 'zealot-column');
       this.stretch(column, x, y, dx, dy, ROCKET_RANGE, 29);
-      r.duo.flash(side, 'zealot/burst', x + dx * (ROCKET_RANGE - 3), y + dy * (ROCKET_RANGE - 3), 27, 17);
+      const tipX = dx * (ROCKET_RANGE - 3), tipY = dy * (ROCKET_RANGE - 3);
+      r.duo.flash(side, 'zealot/burst', x + tipX, y + tipY, 27, 17);
+      if (Math.hypot(relativeX - tipX, relativeY - tipY) <= 13.5) flashHits++;
       r.spawn(column, function* flare() {
         try {
           for (let age = 0; age < 13; age++) {
@@ -314,10 +340,12 @@ export class CasterSystem {
       if (along >= -8 && along <= ROCKET_RANGE && across <= ROCKET_WIDTH) hits++;
       damageInstallationsOnContact(r, column, ROCKET_DAMAGE, new Set());
     }
-    if (hits && r.castle.canHit(side) && (!volley || volley.hits < 2)) {
+    if ((hits || flashHits) && r.castle.canHit(side) && (!volley || volley.hits < 2)) {
       if (volley) volley.hits++;
       for (let hit = 0; hit < hits; hit++)
         yield* this.hit(context, side, ROCKET_DAMAGE, group);
+      for (let hit = 0; hit < flashHits; hit++)
+        yield* this.hit(context, side, 3, group);
     }
   }
 
@@ -330,7 +358,8 @@ export class CasterSystem {
       .filter(point => point && Math.abs(point.x) <= 230);
     if ((!points.length && !existing.length) || !r.duo.mana(side, -60)) return;
     state.ultimateAt = r.tick + 600;
-    const placed = points.map(point => this.rocket(side, point, false));
+    const origin = { x: body.x + direction * 10, y: body.y + 2 };
+    const placed = points.map(point => this.rocket(side, point, false, origin));
     for (const [index, rocket] of [...placed, ...existing].entries())
       this.light(rocket, 24 + index * 18, volley, group);
   }
