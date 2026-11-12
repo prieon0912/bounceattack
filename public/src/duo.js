@@ -40,7 +40,7 @@ const BODY_ART = {
 };
 const HELD_ART = {
   [BANANA_ID]: [['banana/held', 15, 10, -2]],
-  [ZEALOT_ID]: [['zealot/candle', 15, 9, -1]],
+  [ZEALOT_ID]: [['zealot/rocket', 17, 10, -1]],
   [OCTOPUS_ID]: [['octopus/tentacle', 11, 8, -2]],
 };
 
@@ -82,7 +82,7 @@ export const octopusEcho = loadout(OCTOPUS_ID, 'octopus/grapple', 'octopus/echo'
 });
 export const zealotLeap = loadout(ZEALOT_ID, 'zealot/rocket', 'zealot/leap', {
   name: '불꽃걸음', primaryName: '제단',
-  primaryDescription: '바닥에 폭죽을 놓습니다. 성냥불로 맞히면 도화선에 불이 붙습니다.',
+  primaryDescription: '바닥에 폭죽을 놓습니다. 불을 붙이면 위쪽 세 방향으로 터집니다.',
   description: '불붙은 폭죽을 두고 앞으로 뛰어오릅니다. 잠시 뒤 폭죽이 터집니다.',
 });
 
@@ -574,6 +574,8 @@ export class DuoSystem {
     const controls = SIDES[side - 1];
     const moving = r.keys.has(controls.left) !== r.keys.has(controls.right) || state.slideUntil > r.tick;
     const bob = moving ? Math.sin(r.tick * .42) + Math.sin(r.tick * .79) * .35 : 0;
+    if (character === ZEALOT_ID)
+      state.rocketSway = (state.rocketSway ?? 0) * .7 + bob * .3;
     const casting = character === OCTOPUS_ID && r.entities.some(e => e.combatSide === side && !e.dead && e.visible &&
       ['octopus-arm', 'octopus-grapple'].includes(e.duoEffect?.kind));
     for (const [index, [, , dx, dy]] of items.entries()) {
@@ -581,7 +583,10 @@ export class DuoSystem {
       if (!effect) continue;
       effect.x = hero.x + direction * dx;
       effect.y = hero.y + dy + bob;
-      effect.rotation = direction * bob * 8;
+      if (character === ZEALOT_ID) {
+        effect.y = hero.y + dy + state.rocketSway;
+        effect.rotation = direction * (16 + state.rocketSway * 13);
+      } else effect.rotation = direction * bob * 8;
       effect.scaleX = Math.abs(effect.scaleX) * direction * Math.sign(dx);
       if (character === OCTOPUS_ID) effect.effects.color = state.echoUntil > r.tick ? 22 : 0;
       effect.visible = visible && !casting;

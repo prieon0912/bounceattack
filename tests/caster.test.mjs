@@ -94,7 +94,7 @@ test('octopus dream attacks left, then right, then up with at most two hits', ()
   assert.deepEqual(r.faults, []);
 });
 
-test('zealot lights an altar with an ember and its column hits after the fuse', () => {
+test('zealot lights an altar with an ember and all three overlapping branches hit after the fuse', () => {
   const r = game(42), body = r.duo.body(1), enemy = r.duo.body(2);
   press(r, 82);
   const rocket = rockets(r)[0];
@@ -108,12 +108,12 @@ test('zealot lights an altar with an ember and its column hits after the fuse', 
   assert.equal(rocket.picture.id, 'zealot/lit');
   assert.equal(hp(r), before);
   advance(r, rocket.duoEffect.blastAt - r.tick);
-  assert.equal(hp(r), before - 9);
+  assert.equal(hp(r), before - 18);
   assert.equal(rockets(r).length, 0);
   assert.deepEqual(r.faults, []);
 });
 
-test('zealot leap places a delayed rocket, and fireworks count at most two hits across the chain', () => {
+test('zealot leap places a delayed rocket, and fireworks damage with at most two rockets across the chain', () => {
   const leap = game(42, 2, ['secondary']);
   const x = leap.duo.body(1).x;
   press(leap, 82);
@@ -133,7 +133,7 @@ test('zealot leap places a delayed rocket, and fireworks count at most two hits 
     Object.assign(enemy, { x: e.x, y: e.y });
     advance(r, e.duoEffect.blastAt - r.tick);
   }
-  assert.equal(hp(r), before - 18);
+  assert.equal(hp(r), before - 36);
   assert.deepEqual([...r.faults, ...leap.faults], []);
 });
 

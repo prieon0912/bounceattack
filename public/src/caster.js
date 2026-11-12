@@ -8,7 +8,8 @@ const FALL = [null, 'du2p', 'iblx'];
 const EMBER = { damage: 6, speed: 4.8, life: 27 };
 const ROCKET_RANGE = 63;
 const ROCKET_WIDTH = 16;
-const ROCKET_DAMAGE = 9;
+const ROCKET_DAMAGE = 6;
+const ROCKET_ANGLES = [-30, 0, 30];
 
 export class CasterSystem {
   constructor(runtime) { this.r = runtime; }
@@ -291,25 +292,33 @@ export class CasterSystem {
   *burst(context, side, rocket, volley, group) {
     const r = this.r, { x, y } = rocket;
     rocket.visible = false;
-    const column = r.duo.visual(side, 'zealot/ember', x, y + ROCKET_RANGE / 2, 1, 'zealot-column');
-    this.stretch(column, x, y, 0, 1, ROCKET_RANGE, 29);
-    r.duo.flash(side, 'zealot/burst', x, y + ROCKET_RANGE - 3, 33, 17);
-    r.duo.flash(side, 'zealot/burst', x - 15, y + ROCKET_RANGE - 11, 16, 13);
-    r.duo.flash(side, 'zealot/burst', x + 12, y + ROCKET_RANGE - 19, 13, 11);
-    r.spawn(column, function* flare() {
-      for (let age = 0; age < 13; age++) {
-        column.effects.transparency = Math.max(0, age - 4) * 9;
-        yield 1;
-      }
-      column.dead = true;
-    }, 'zealot_flare');
     const enemy = r.duo.body(3 - side);
-    if (r.castle.canHit(side) && Math.abs(enemy.x - x) <= ROCKET_WIDTH &&
-        enemy.y >= y - 8 && enemy.y <= y + ROCKET_RANGE && (!volley || volley.hits < 2)) {
-      if (volley) volley.hits++;
-      yield* this.hit(context, side, ROCKET_DAMAGE, group);
+    const relativeX = enemy.x - x, relativeY = enemy.y - y;
+    let hits = 0;
+    for (const angle of ROCKET_ANGLES) {
+      const radians = angle * Math.PI / 180;
+      const dx = Math.sin(radians), dy = Math.cos(radians);
+      const column = r.duo.visual(side, 'zealot/ember', x, y, 1, 'zealot-column');
+      this.stretch(column, x, y, dx, dy, ROCKET_RANGE, 29);
+      r.duo.flash(side, 'zealot/burst', x + dx * (ROCKET_RANGE - 3), y + dy * (ROCKET_RANGE - 3), 27, 17);
+      r.spawn(column, function* flare() {
+        try {
+          for (let age = 0; age < 13; age++) {
+            column.effects.transparency = Math.max(0, age - 4) * 9;
+            yield 1;
+          }
+        } finally { column.dead = true; }
+      }, 'zealot_flare');
+      const along = relativeX * dx + relativeY * dy;
+      const across = Math.abs(relativeX * dy - relativeY * dx);
+      if (along >= -8 && along <= ROCKET_RANGE && across <= ROCKET_WIDTH) hits++;
+      damageInstallationsOnContact(r, column, ROCKET_DAMAGE, new Set());
     }
-    damageInstallationsInRadius(r, side, { x, y: y + ROCKET_RANGE / 2 }, 29, ROCKET_DAMAGE);
+    if (hits && r.castle.canHit(side) && (!volley || volley.hits < 2)) {
+      if (volley) volley.hits++;
+      for (let hit = 0; hit < hits; hit++)
+        yield* this.hit(context, side, ROCKET_DAMAGE, group);
+    }
   }
 
   fireworks(side, state) {
