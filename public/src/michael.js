@@ -99,7 +99,7 @@ export class MichaelSystem {
         const sport = Number.isInteger(roll) ? SPORTS[roll] : undefined;
         r.globals.set('michael:' + side, {
           sport: sport ?? SPORTS[Math.floor(r.random() * SPORTS.length)],
-          attackAt: 0, skillAt: 0, ultimateAt: 0, swingAt: -100, guardUntil: 0,
+          attackAt: 0, skillActionUntil: 0, volleyUntil: 0, swingAt: -100, guardUntil: 0,
         });
         continue;
       }
@@ -111,11 +111,9 @@ export class MichaelSystem {
       if (!r.castle.alive(side) || r.castle.blocked(side)) continue;
       const defense = r.secondarySkills.state(side).mode === 'secondary';
       const skillCost = defense || st.sport === 'baseball' ? 24 : 16;
-      if (ultimateEdge && r.tick >= st.ultimateAt && this.spend(side, 62)) {
-        st.ultimateAt = r.tick + 180;
+      if (ultimateEdge && r.tick >= st.volleyUntil && this.spend(side, 62)) {
         this.ultimate(side);
-      } else if (skillEdge && r.tick >= st.skillAt && this.spend(side, skillCost)) {
-        st.skillAt = r.tick + 60;
+      } else if (skillEdge && r.tick >= st.skillActionUntil && this.spend(side, skillCost)) {
         this.skill(side, defense);
       } else if (r.keys.has(keys.attack) && r.tick >= st.attackAt) {
         st.attackAt = r.tick + 32;
@@ -375,6 +373,7 @@ export class MichaelSystem {
       return;
     }
     if (st.sport === 'basketball') {
+      st.skillActionUntil = r.tick + 6;
       if (defense) this.launch(side, direction * 1.6, -4, 6, { x: this.body(side).x });
       r.spawn(this.body(side), function* step(rt) {
         for (let age = 0; age < 6 && !rt.castle.blocked(side); age++) {
@@ -406,6 +405,7 @@ export class MichaelSystem {
     if (st.sport === 'basketball') {
       for (let shot = 0; shot < 5; shot++) fire(6.24);
     } else if (st.sport === 'football') {
+      st.volleyUntil = r.tick + 11;
       r.spawn(this.body(side), function* volleys(rt) {
         for (let pair = 0; pair < 3; pair++) {
           if (!rt.castle.alive(side) || rt.castle.blocked(side)) return;

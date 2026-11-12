@@ -14043,7 +14043,7 @@ r.command(c,"change_variable",["thom","-43",null]);
 c.block="2u01";r.guard(c);
 r.command(c,"create_clone",["2d81",null]);
 c.block="gbl6";r.guard(c);
-r.command(c,"set_variable",["f50x","18",null]);
+r.command(c,"set_variable",["f50x","-1",null]);
 }
 }
 }
@@ -14329,7 +14329,7 @@ r.command(c,"change_variable",["qn98","-43",null]);
 c.block="2u01";r.guard(c);
 r.command(c,"create_clone",["2d81",null]);
 c.block="gbl6";r.guard(c);
-r.command(c,"set_variable",["f50x","18",null]);
+r.command(c,"set_variable",["f50x","-1",null]);
 }
 }
 }
@@ -36548,7 +36548,7 @@ r.command(c,"message_cast",["h4k2",null]);
 c.block="gqez";r.guard(c);
 r.command(c,"create_clone",["lrz9",null]);
 c.block="3vhp";r.guard(c);
-r.command(c,"set_variable",["oao7","4.5",null]);
+r.command(c,"set_variable",["oao7","-1",null]);
 }
 }
 c.block="cp89";r.guard(c);
@@ -36580,7 +36580,7 @@ r.command(c,"message_cast",["h4k2",null]);
 c.block="652q";r.guard(c);
 r.command(c,"create_clone",["lrz9",null]);
 c.block="3xdo";r.guard(c);
-r.command(c,"set_variable",["oao7","4.5",null]);
+r.command(c,"set_variable",["oao7","-1",null]);
 }
 }
 yield 1;
@@ -36966,7 +36966,7 @@ r.command(c,"message_cast",["hcrg",null]);
 c.block="gqez";r.guard(c);
 r.command(c,"create_clone",["lrz9",null]);
 c.block="3vhp";r.guard(c);
-r.command(c,"set_variable",["oao7","4.5",null]);
+r.command(c,"set_variable",["oao7","-1",null]);
 }
 }
 c.block="cp89";r.guard(c);
@@ -36998,7 +36998,7 @@ r.command(c,"message_cast",["hcrg",null]);
 c.block="7mq4";r.guard(c);
 r.command(c,"create_clone",["lrz9",null]);
 c.block="sk8j";r.guard(c);
-r.command(c,"set_variable",["oao7","4.5",null]);
+r.command(c,"set_variable",["oao7","-1",null]);
 }
 }
 yield 1;
@@ -40228,7 +40228,7 @@ r.command(c,"change_variable",["thom","-47",null]);
 c.block="b3y6";r.guard(c);
 r.command(c,"create_clone",["adtt",null]);
 c.block="c0u8";r.guard(c);
-r.command(c,"set_variable",["1gc8","2",null]);
+r.command(c,"set_variable",["1gc8","-1",null]);
 }
 }
 }
@@ -40471,7 +40471,7 @@ r.command(c,"create_clone",["adtt",null]);
 c.block="uovl";r.guard(c);
 r.command(c,"change_variable",["qn98","-47",null]);
 c.block="8r9z";r.guard(c);
-r.command(c,"set_variable",["1gc8","2",null]);
+r.command(c,"set_variable",["1gc8","-1",null]);
 }
 }
 }
@@ -45667,7 +45667,7 @@ yield 1;
 c.block="xajj";r.guard(c);
 r.command(c,"set_variable",["tr7h","0",null]);
 c.block="69v8";r.guard(c);
-r.command(c,"set_variable",["6c6a","0.6",null]);
+r.command(c,"set_variable",["6c6a","0",null]);
 }
 }
 }
@@ -46051,7 +46051,7 @@ yield 1;
 c.block="6hfk";r.guard(c);
 r.command(c,"set_variable",["fu65","0",null]);
 c.block="eyx9";r.guard(c);
-r.command(c,"set_variable",["nt9j","6",null]);
+r.command(c,"set_variable",["nt9j","-1",null]);
 }
 }
 c.block="odql";r.guard(c);
@@ -47178,7 +47178,7 @@ yield 1;
 c.block="vpbx";r.guard(c);
 r.command(c,"set_variable",["4eov","0",null]);
 c.block="38sr";r.guard(c);
-r.command(c,"set_variable",["042r","0.7",null]);
+r.command(c,"set_variable",["042r","0",null]);
 c.block="zagg";r.guard(c);
 r.command(c,"set_variable",["w1bm","0",null]);
 }
@@ -50472,7 +50472,7 @@ r.command(c,"set_variable",["qvkr","2",null]);
 c.block="eqw4";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="86b5";r.guard(c);
-r.command(c,"set_variable",["0ius","8",null]);
+r.command(c,"set_variable",["0ius","-1",null]);
 c.block="6cm8";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["846x",null]),"EQUAL","0"]))){
 c.block="1106";r.guard(c);
@@ -50964,7 +50964,7 @@ yield 1;
 c.block="xajj";r.guard(c);
 r.command(c,"set_variable",["tr7h","0",null]);
 c.block="v6jb";r.guard(c);
-r.command(c,"set_variable",["6c6a","0.6",null]);
+r.command(c,"set_variable",["6c6a","0",null]);
 }
 }
 }
@@ -51350,7 +51350,7 @@ yield 1;
 c.block="6hfk";r.guard(c);
 r.command(c,"set_variable",["ri3z","0",null]);
 c.block="eyx9";r.guard(c);
-r.command(c,"set_variable",["nt9j","6",null]);
+r.command(c,"set_variable",["nt9j","-1",null]);
 }
 }
 c.block="odql";r.guard(c);
@@ -52472,7 +52472,7 @@ yield 1;
 c.block="vpbx";r.guard(c);
 r.command(c,"set_variable",["4eov","0",null]);
 c.block="38sr";r.guard(c);
-r.command(c,"set_variable",["miex","0.7",null]);
+r.command(c,"set_variable",["miex","0",null]);
 c.block="6yy1";r.guard(c);
 r.command(c,"set_variable",["755w","0",null]);
 }
@@ -55520,7 +55520,7 @@ r.command(c,"set_variable",["rr24","2",null]);
 c.block="1g5a";r.guard(c);
 r.command(c,"create_clone",["self",null]);
 c.block="8l2c";r.guard(c);
-r.command(c,"set_variable",["0ius","8",null]);
+r.command(c,"set_variable",["0ius","-1",null]);
 c.block="eair";r.guard(c);
 if(r.truth(r.value(c,"boolean_basic_operator",[r.value(c,"get_variable",["etjn",null]),"EQUAL","0"]))){
 c.block="kosf";r.guard(c);

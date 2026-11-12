@@ -227,7 +227,7 @@ export const wartWaterPillar=definition(21,'물기둥',PILLAR,'wart-water-pillar
   }}finally{effect.dead=true;for(const drop of spray)drop.dead=true;}
  }
 });
-const ELEMENT={manaCost:41,cooldownTicks:240,attackCooldownTicks:60};
+const ELEMENT={manaCost:41,cooldownTicks:0};
 const elementOf=(r,s)=>r.num(r.get(body(r,s),'arfp'));
 const stunKey=s=>id(s,'8w41','wyyq');
 const areaRadius=44;
@@ -249,7 +249,6 @@ export const elementSwordArts=definition(24,'원소술',ELEMENT,'element-sword-a
  },
  *cast(r,c,{side,caster,target,state}){
   const element=elementOf(r,side),dir=facing(r,side),x=caster.x,y=caster.y;
-  if(element!==2)state.readyAt=r.tick+ELEMENT.attackCooldownTicks;
   const slash=visual(r,side,element===0?'element-fire-sword':'element-art-'+element,x,y,element===0?47:element===1?36:29,'element-slash');
   if(element===0){slash.regX=106;slash.regY=279;state.fireSwing=true;}
   let hit=false;state.elementSwing=true;

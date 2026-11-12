@@ -48,7 +48,6 @@ export class CasterSystem {
     }
     if (state.echoUntil > r.tick || !r.duo.mana(side, -28)) return;
     state.echoUntil = r.tick + 360;
-    state.skillAt = r.tick + 330;
     const body = r.duo.body(side);
     r.duo.flash(side, 'octopus/dream-tentacle', body.x, body.y + 8, 20, 12);
   }
@@ -60,7 +59,7 @@ export class CasterSystem {
       return;
     }
     if (!r.duo.mana(side, -60)) return;
-    state.ultimateAt = r.tick + 600;
+    state.ultimateActionUntil = r.tick + 1;
     const body = r.duo.body(side), origin = { x: body.x, y: body.y };
     const volley = { hits: 0, limit: 2 };
     const group = 'octopus-dream:' + r.tick;
@@ -168,8 +167,7 @@ export class CasterSystem {
   grapple(side, state) {
     const r = this.r, body = r.duo.body(side);
     const point = this.anchor(body, r.duo.facing(side));
-    if (!point || !r.duo.mana(side, -24)) return;
-    state.skillAt = r.tick + 270;
+    if (!point || r.duo.effects(side, 'octopus-grapple').length || !r.duo.mana(side, -24)) return;
     const tether = r.duo.visual(side, 'octopus/tentacle', body.x, body.y, 1, 'octopus-grapple');
     r.spawn(tether, function* pull(rt) {
       try {
@@ -247,9 +245,9 @@ export class CasterSystem {
     if (!point) return;
     if (!secondary && r.duo.effects(side, 'zealot-rocket').filter(e => e.duoEffect.altar).length >= 3) return;
     if (!r.duo.mana(side, secondary ? -28 : -22)) return;
-    state.skillAt = r.tick + (secondary ? 360 : 120);
     const rocket = this.rocket(side, point, !secondary);
     if (!secondary) return;
+    state.skillActionUntil = r.tick + 9;
     this.light(rocket, 42);
     const direction = r.duo.facing(side);
     r.globals.set(FALL[side], 3.1);
@@ -357,7 +355,7 @@ export class CasterSystem {
     const points = [21, 49, 77].map(distance => this.landing(body, body.x + direction * distance))
       .filter(point => point && Math.abs(point.x) <= 230);
     if ((!points.length && !existing.length) || !r.duo.mana(side, -60)) return;
-    state.ultimateAt = r.tick + 600;
+    state.ultimateActionUntil = r.tick + 18;
     const origin = { x: body.x + direction * 10, y: body.y + 2 };
     const placed = points.map(point => this.rocket(side, point, false, origin));
     for (const [index, rocket] of [...placed, ...existing].entries())

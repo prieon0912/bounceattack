@@ -21,7 +21,7 @@ const CONTROLS = [
 const WALK_BLOCKS = new Set(['afct', 'i0j3', 'zwdh', 'xcn9']);
 
 export const ecolaFission = {
-  character: ECOLA_ID, name: '이분법', manaCost: 28, cooldownTicks: 480, lockVariable: false,
+  character: ECOLA_ID, name: '이분법', manaCost: 28, cooldownTicks: 0, lockVariable: false,
   icon: 'assets/ecola/fission.svg', secondaryPictureId: 'ecola-fission',
   primaryName: '양분 흡수', primaryPictureId: 'ecola-absorb', primaryIcon: 'assets/ecola/absorb.svg',
   primaryDescription: '느릿느릿 움직이며 양분을 흡수해 마나를 채웁니다.',
@@ -106,7 +106,7 @@ export class EcolaSystem {
       if (!this.active(side)) continue;
       const key = 'ecola:' + side, controls = CONTROLS[side - 1];
       if (!this.state(side)) {
-        r.globals.set(key, { form: 'base', attackAt: 0, skillAt: 0, ultimateAt: 0 });
+        r.globals.set(key, { form: 'base', attackAt: 0, absorbUntil: 0 });
         continue;
       }
       const state = this.state(side);
@@ -141,23 +141,20 @@ export class EcolaSystem {
       }
       if (r.castle.blocked(side) || state.evolveUntil) continue;
 
-      if (ultimateEdge && r.tick >= state.ultimateAt && this.mana(side, -60)) {
+      if (ultimateEdge && this.mana(side, -60)) {
         state.absorbUntil = 0;
-        state.ultimateAt = r.tick + 180;
         state.evolveUntil = r.tick + 24;
         const first = rollForm(r.random);
         state.nextForm = first === state.form ? rollForm(r.random) : first;
         this.pulseGroup(side, 26, 24);
-      } else if (skillEdge && r.tick >= state.skillAt) {
+      } else if (skillEdge && !(state.absorbUntil > r.tick)) {
         if (r.secondarySkills.state(side).mode === 'secondary') {
           if (!state.fissionUntil && this.mana(side, -ecolaFission.manaCost)) {
-            state.skillAt = r.tick + ecolaFission.cooldownTicks;
             state.fissionUntil = r.tick + FISSION_TICKS;
             state.splits = 0;
             this.split(side, state);
           }
         } else {
-          state.skillAt = r.tick + 300;
           state.absorbNext = r.tick + 30;
           state.absorbUntil = r.tick + 120;
         }

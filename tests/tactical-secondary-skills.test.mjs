@@ -104,7 +104,7 @@ for(const side of [1,2])test(`Elemental Sword Arts side ${side}: all forms deal 
   r.functions.set(side===1?'qy83':'05j0',{...native,fn:function*(rt,c){received.push(c.args[param]);yield* native.fn(rt,c);}});
   const start=r.tick;r.run(12,[key]);assert.deepEqual(received,[[-8,-7,-6][form]]);
   assert.equal(r.globals.get(side===1?'qn98':'thom'),59);
-  assert.equal(r.secondarySkills.state(side).readyAt-start,form===2?241:61);
+  assert.equal(r.secondarySkills.state(side).readyAt-start,1);
   if(form===0){assert.ok(r.secondarySkills.state(side).slow.until>r.tick);r.run(185);assert.deepEqual(received,[-8,-2,-2,-2]);}
   if(form===1){const stun=side===1?'wyyq':'8w41';assert.equal(r.num(r.globals.get(stun)),1);r.run(35);assert.equal(r.num(r.globals.get(stun)),0);}
   if(form===2){
@@ -157,7 +157,7 @@ for(const side of [1,2]){
 
 for(const side of [1,2]){
  const key=side===1?82:80,foe=3-side,mana=side===1?'thom':'qn98';
- test(`Invader pulse side ${side}: consumes own stacks, damages and drains MP, one-second cooldown`,()=>{
+ test(`Invader pulse side ${side}: consumes own stacks, damages and drains MP`,()=>{
   const r=game(13,side,true),owner=r.originals.get(side===1?'wkk5':'6r3z');
   r.set(owner,'oafg',6);r.set(owner,'s9yw',1);
   const other=r.originals.get(side===1?'6r3z':'wkk5');r.set(other,'oafg',4);
@@ -297,15 +297,15 @@ for(const side of [1,2]){
 
 for(const side of [1,2]){
  const key=side===1?82:80,hp=side===1?'akf6':'7ir2',mp=side===1?'qn98':'thom';
- test(`Taboo side ${side}: direct resource exchange, shields untouched, half-second cooldown and one cast per press`,()=>{
+ test(`Taboo side ${side}: direct resource exchange, shields untouched and one cast per press`,()=>{
   const r=game(19,side,true),shield=side===1?'cfmd':'g4sc';
   r.globals.set(hp,51);r.globals.set(mp,50);r.globals.set(shield,30);
   r.run(1,[key]);const first=r.tick;
   assert.equal(r.globals.get(hp),41);assert.equal(r.globals.get(mp),60);assert.equal(r.globals.get(shield),30);
-  assert.equal(r.secondarySkills.state(side).readyAt,first+30);
+  assert.equal(r.secondarySkills.state(side).readyAt,first);
   r.run(40,[key]);assert.equal(r.globals.get(hp),41);
   r.run(1);r.run(1,[key]);assert.equal(r.globals.get(hp),31);assert.equal(r.globals.get(mp),70);
-  r.run(1);r.run(1,[key]);assert.equal(r.globals.get(hp),31);
+  r.run(1);r.run(1,[key]);assert.equal(r.globals.get(hp),21);
   assert.deepEqual(r.faults,[]);
  });
  test(`Taboo side ${side}: low HP, full MP and stun cannot consume resources`,()=>{

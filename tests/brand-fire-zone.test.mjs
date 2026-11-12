@@ -239,7 +239,7 @@ test("fire zone arms first, follows the next actual basic fireball, and installs
     step(r,side===1?16:0,side===2?16:0);
     const state = r.secondarySkills.state(side), armedAt = r.tick;
     assert.equal(state.armed,true); assert.equal(state.zone,undefined);
-    assert.equal(state.readyAt,armedAt+300);
+    assert.equal(state.readyAt,armedAt);
     body.x += side===1 ? -30 : 30;
     step(r); step(r,side===1?8:0,side===2?8:0); step(r,side===1?8:0,side===2?8:0);
     let impact = null;

@@ -445,6 +445,19 @@ module.exports = function applyBalancePatch(project) {
     for (const blockId of blocks) setNumber(objectId, blockId, [0], 100, 60);
   }
 
+  // Retire recast timers in the native skills. Their action stacks still
+  // finish normally, including cast animation, movement and recovery.
+  for (const [objectId, blockId, previous, unlocked] of [
+    ["sn6j", "v6jb", 0.6, 0], ["rlr8", "69v8", 0.6, 0],
+    ["plg8", "8l2c", 8, -1], ["cvkh", "8l2c", 8, -1], ["cvkh", "86b5", 8, -1],
+    ["7h6f", "gbl6", 18, -1], ["zwgp", "gbl6", 18, -1],
+    ["6ct7", "8r9z", 2, -1], ["5p2k", "c0u8", 2, -1],
+    ["ri23", "38sr", 0.7, 0], ["m2p4", "38sr", 0.7, 0],
+    ["jk2d", "eyx9", 6, -1], ["5isi", "eyx9", 6, -1],
+    ["6y87", "3vhp", 4.5, -1], ["6y87", "sk8j", 4.5, -1],
+    ["8boq", "3vhp", 4.5, -1], ["8boq", "3xdo", 4.5, -1],
+  ]) setNumber(objectId, blockId, [1], previous, unlocked);
+
   for (const [objectId, stacks] of scripts) objects.get(objectId).script = JSON.stringify(stacks);
   project.variables.find(v => v.id === "x7mx").array[16].data = "응축 에너지";
   return project;

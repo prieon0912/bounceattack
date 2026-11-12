@@ -183,7 +183,7 @@ export class DuoSystem {
       if (!isCustom(character)) continue;
       const key = 'duo:' + side, control = SIDES[side - 1];
       if (!this.state(side)) {
-        r.globals.set(key, { attackAt: 0, skillAt: 0, ultimateAt: 0, hits: 0, damage: 0, tier: 0 });
+        r.globals.set(key, { attackAt: 0, skillActionUntil: 0, ultimateActionUntil: 0, hits: 0, damage: 0, tier: 0 });
         continue;
       }
       const state = this.state(side);
@@ -208,12 +208,12 @@ export class DuoSystem {
       }
       if (r.castle.blocked(side) || state.slideUntil > r.tick) continue;
       const secondary = r.secondarySkills.state(side).mode === 'secondary';
-      if (ultimateEdge && r.tick >= state.ultimateAt) {
+      if (ultimateEdge && r.tick >= state.ultimateActionUntil) {
         if (character === PHAGE_ID) this.mark(side, state);
         else if (character === THORN_ID) r.thorn.smoke(side, state);
         else if (isCaster(character)) r.caster.ultimate(side, state, character);
         else this.scatter(side, state);
-      } else if (skillEdge && (r.tick >= state.skillAt || state.returnPoint)) {
+      } else if (skillEdge && r.tick >= state.skillActionUntil) {
         if (character === PHAGE_ID) this.phageSkill(side, state, secondary);
         else if (character === THORN_ID) r.thorn.skill(side, state, secondary);
         else if (isCaster(character)) r.caster.skill(side, state, character, secondary);
@@ -235,7 +235,6 @@ export class DuoSystem {
     if (!secondary) {
       if (!this.mana(side, -30)) return;
       state.dormantUntil = r.tick + 150;
-      state.skillAt = r.tick + 300;
       state.lockX = body.x;
       state.lockY = body.y;
       this.freeze(side, state);
@@ -245,7 +244,7 @@ export class DuoSystem {
     if (state.tier >= 2 || !this.mana(side, state.tier ? -32 : -24)) return;
     state.branch ??= left !== right ? (left ? 'armor' : 'needle') : (r.random() < .5 ? 'armor' : 'needle');
     state.tier++;
-    state.skillAt = r.tick + 300;
+    state.skillActionUntil = r.tick + 23;
     this.flash(side, 'phage/mark', body.x, body.y, 26 + state.tier * 3, 23);
   }
 
@@ -309,7 +308,6 @@ export class DuoSystem {
     if (!state.hits || state.swarmUntil > r.tick || !r.castle.alive(3 - side) || !this.mana(side, -52)) return;
     const origin = this.body(side), victim = this.body(3 - side);
     const count = state.hits * 2 + (state.hits === 5 ? 2 : 0);
-    state.ultimateAt = r.tick + 420;
     state.hits = 0;
     state.damage = 0;
     state.swarmUntil = r.tick + 420;
@@ -426,7 +424,6 @@ export class DuoSystem {
       return;
     }
     if (!this.mana(side, -22)) return;
-    state.skillAt = r.tick + 60;
     state.slideUntil = r.tick + 12;
     this.flash(side, 'banana/slide', body.x, body.y, 27, 12, direction);
     r.spawn(body, function* slide(rt, context) {
@@ -466,7 +463,6 @@ export class DuoSystem {
     }
     if (Math.abs(body.x) > 232 || body.y < -125 || body.y > 125 || !this.mana(side, -24)) return;
     const ticket = state.returnPoint = { x: body.x, y: body.y, until: r.tick + 180 };
-    state.skillAt = r.tick + 180;
     const marker = this.visual(side, 'banana/return', ticket.x, ticket.y + 12, 16, 'return');
     r.spawn(marker, function* showTicket(rt) {
       while (state.returnPoint === ticket && rt.castle.alive(side)) {
@@ -483,8 +479,7 @@ export class DuoSystem {
     const r = this.r, body = this.body(side);
 
     if (!this.mana(side, -55)) return;
-    state.ultimateAt = r.tick + 300;
-    state.skillAt = Math.max(state.skillAt, r.tick + 36);
+    state.ultimateActionUntil = r.tick + 36;
     const { x, y } = body;
     r.spawn(body, function* scatterPeels(rt) {
       for (const offset of [-22, 22, -48, 48, -75, 75]) {

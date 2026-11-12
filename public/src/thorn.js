@@ -53,15 +53,13 @@ export class ThornSystem {
 
   skill(side, state, secondary) {
     const r = this.r;
-    if (!r.duo.mana(side, secondary ? -32 : -25)) return;
+    if ((secondary ? state.spinUntil : state.guardUntil) > r.tick || !r.duo.mana(side, secondary ? -32 : -25)) return;
     if (secondary) {
-      state.skillAt = r.tick + 420;
       state.spinUntil = r.tick + SPIN_TICKS;
       state.spinAt = r.tick + 24;
       state.attackAt = Math.max(state.attackAt, state.spinUntil);
       this.sweep(side, SPIN_DAMAGE, state.spinUntil);
     } else {
-      state.skillAt = r.tick + 480;
       state.guardUntil = r.tick + 180;
     }
   }
@@ -130,9 +128,8 @@ export class ThornSystem {
 
   smoke(side, state) {
     const r = this.r;
-    if (!r.duo.mana(side, -60)) return;
+    if (state.smoke?.until >= r.tick || !r.duo.mana(side, -60)) return;
     const { x, y } = r.duo.body(side), enemy = r.duo.body(3 - side);
-    state.ultimateAt = r.tick + 720;
     state.smoke = {
       x, y, until: r.tick + SMOKE_TICKS, nextHit: r.tick + 30,
       caught: r.castle.alive(3 - side) && Math.hypot(enemy.x - x, enemy.y - y) <= SMOKE_RADIUS,

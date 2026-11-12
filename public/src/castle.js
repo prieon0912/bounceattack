@@ -1,7 +1,7 @@
 import BigNumber from './vendor/bignumber.mjs';
 import { showStatusVisual } from './expanded-secondary-skills.js';
 // Castle's values are kept together so each piece can be tuned independently.
-export const CASTLE = Object.freeze({id:35,startMana:100,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,ultimateCooldown:360,heldSize:15,previewHeldSize:41.5});
+export const CASTLE = Object.freeze({id:35,startMana:100,maxMana:100,skillMana:40,ultimateMana:60,transformTicks:600,promotionTicks:18,heldSize:15,previewHeldSize:41.5});
 export const PIECES = Object.freeze({
  pawn:{name:'폰',damage:4,range:62.5,interval:33},knight:{name:'나이트',damage:6,range:96.1125,dash:54.8625,interval:39},
  bishop:{name:'비숍',damage:7,range:110,interval:39},rook:{name:'룩',damage:8,range:158.4,interval:42},
@@ -107,7 +107,7 @@ export class CastleSystem{
  }
  skill(s){const r=this.r,state=this.state(s),form=state.form,e=body(r,s),foe=body(r,3-s),direction=turn(r,s),defensive=r.secondarySkills.state(s).mode==='secondary';
   const cost=defensive?castleCastling.manaCost:CASTLE.skillMana;
-  if(r.tick<state.skillAt||r.num(r.globals.get(info(s).mana))<cost)return;this.mana(s,-cost);state.skillVisualAt=r.tick;state.skillAt=r.tick+(defensive&&form==='pawn'?180:300);
+  if(state.actionUntil>r.tick||state.stealthUntil>r.tick||r.num(r.globals.get(info(s).mana))<cost)return;this.mana(s,-cost);state.skillVisualAt=r.tick;
   if(defensive){state.castlingVisualAt=r.tick;
    if(form==='pawn')this.shield(s,3,300);
    if(form==='knight'){state.actionUntil=r.tick+10;r.spawn(e,function*(rt){for(let i=0;i<10&&rt.castle.alive(s)&&!rt.castle.blocked(s);i++){rt.castle.move(s,-direction*4.5,i<5?2:-2);yield 1;}},'castle_retreat');}
@@ -125,7 +125,7 @@ export class CastleSystem{
   this.crown(s);
  }
  step(){const r=this.r;if(r.scene!=='7dwq')return;
-  for(const s of [1,2]){if(!this.active(s))continue;let state=this.state(s);if(!state){state={initialized:false,form:'pawn',until:0,attackAt:0,skillAt:0,ultimateAt:0,actionUntil:0,promotionUntil:0,skillDown:false,ultimateDown:false};r.globals.set(`castle:${s}`,state);}if(!state.initialized)continue;
+  for(const s of [1,2]){if(!this.active(s))continue;let state=this.state(s);if(!state){state={initialized:false,form:'pawn',until:0,attackAt:0,actionUntil:0,promotionUntil:0,skillDown:false,ultimateDown:false};r.globals.set(`castle:${s}`,state);}if(!state.initialized)continue;
    if(state.promotionUntil&&r.tick>=state.promotionUntil){state.promotionUntil=0;state.form=promotedPiece(r.random);state.until=r.tick+CASTLE.transformTicks;}
    // Only hidden Bishop/Queen time is excluded; cooldowns and the real-time clock keep advancing.
    if(['bishop','queen'].includes(state.form)&&state.stealthUntil>0&&r.tick<=state.stealthUntil&&r.num(r.globals.get(info(s).stealth))>0&&this.alive(s))state.until++;
@@ -134,7 +134,7 @@ export class CastleSystem{
    if(state.stealthUntil&&r.tick>=state.stealthUntil)this.endConceal(s);
    const skill=r.keys.has(s===1?82:80),ultimate=r.keys.has(s===1?83:40),skillEdge=skill&&!state.skillDown,ultimateEdge=ultimate&&!state.ultimateDown;state.skillDown=skill;state.ultimateDown=ultimate;
    if(!this.alive(s)||this.blocked(s)||state.promotionUntil||state.stealthUntil>r.tick||r.tick<state.actionUntil)continue;
-   if(ultimateEdge&&state.form==='pawn'&&r.tick>=state.ultimateAt&&r.num(r.globals.get(info(s).mana))>=60){this.mana(s,-60);state.promotionUntil=r.tick+18;state.ultimateAt=r.tick+360;state.lockX=body(r,s).x;state.lockY=body(r,s).y;continue;}
+   if(ultimateEdge&&state.form==='pawn'&&r.num(r.globals.get(info(s).mana))>=60){this.mana(s,-60);state.promotionUntil=r.tick+18;state.lockX=body(r,s).x;state.lockY=body(r,s).y;continue;}
    if(skillEdge){this.skill(s);continue;}
    if(r.keys.has(s===1?69:13)&&r.tick>=state.attackAt)this.basic(s);
   }
